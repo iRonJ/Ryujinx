@@ -491,7 +491,7 @@ namespace Ryujinx.Graphics.Vulkan
 
             if (ranges != null)
             {
-                var rangeCopy = ranges;
+                var rangeCopy = ranges.ToArray();
 
                 _pendingDataRanges.Clear();
 
@@ -647,26 +647,31 @@ namespace Ryujinx.Graphics.Vulkan
         public bool RemoveOverlappingMirrors(int offset, int size)
         {
             List<ulong> toRemove = null;
-            toRemove = new List<ulong>();
             foreach (var key in _mirrors.Keys)
             {
                 (int keyOffset, int keySize) = FromMirrorKey(key);
                 if (!(offset + size <= keyOffset || offset >= keyOffset + keySize))
                 {
+                    if (toRemove == null)
+                    {
+                        toRemove = new List<ulong>();
+                    }
+
                     toRemove.Add(key);
                 }
             }
 
-            
+            if (toRemove != null)
+            {
                 foreach (var key in toRemove)
                 {
                     _mirrors.Remove(key);
                 }
 
+                return true;
+            }
 
-
-
-            return toRemove.Count > 0; ;
+            return false;
         }
 
         public unsafe void SetData(int offset, ReadOnlySpan<byte> data, CommandBufferScoped? cbs = null, Action endRenderPass = null, bool allowCbsWait = true)
