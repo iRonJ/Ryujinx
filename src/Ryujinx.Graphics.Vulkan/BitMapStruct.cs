@@ -94,13 +94,22 @@ namespace Ryujinx.Graphics.Vulkan
 
         public bool AnySet()
         {
-            for (int i = 0; i < _masks.Length; i++)
+            var span = _masks.Length;
+            for (int i = 0; i <= (span / 2); i++)
             {
-                if (_masks[i] != 0)
+                if ((_masks[i] | _masks[span - i-1]) != 0)
                 {
                     return true;
                 }
+
             }
+            //for (int i = 0; i < _masks.Length; i++)
+            //{
+            //    if (_masks[i] != 0)
+            //    {
+            //        return true;
+            //    }
+            //}
 
             return false;
         }
@@ -140,13 +149,23 @@ namespace Ryujinx.Graphics.Vulkan
                 return true;
             }
 
-            for (int i = startIndex + 1; i < endIndex; i++)
+            var span = endIndex - startIndex;
+            for (int i = 0; i <= (span / 2) - 1; i++)
             {
-                if (_masks[i] != 0)
+                if ((_masks[startIndex + 1 + i] | _masks[endIndex - i - 1]) != 0)
                 {
                     return true;
                 }
+
+                
             }
+            //for (int i = startIndex + 1; i < endIndex; i++)
+            //{
+            //    if (_masks[i] != 0)
+            //    {
+            //        return true;
+            //    }
+            //}
 
             if ((_masks[endIndex] & endMask) != 0)
             {
@@ -208,11 +227,17 @@ namespace Ryujinx.Graphics.Vulkan
             else
             {
                 _masks[startIndex] |= startMask;
-
-                for (int i = startIndex + 1; i < endIndex; i++)
+                var span = endIndex - startIndex;
+                for (int i = 0; i <= (span / 2)-1; i++)
                 {
-                    _masks[i] |= -1;
+                    _masks[startIndex + 1+i] |= -1;
+                    _masks[endIndex - i-1] |= -1;
                 }
+
+                //for (int i = startIndex + 1; i < endIndex; i++)
+                //{
+                //    _masks[i] |= -1;
+                //}
 
                 _masks[endIndex] |= endMask;
             }
@@ -226,9 +251,12 @@ namespace Ryujinx.Graphics.Vulkan
             ref var otherMasks = ref other._masks;
             ref var newMasks = ref result._masks;
 
-            for (int i = 0; i < masks.Length; i++)
+            for (int i = 0; i <= masks.Length/2; i++)
             {
+                var endV = masks.Length - 1 - i;
                 newMasks[i] = masks[i] | otherMasks[i];
+                newMasks[endV] = masks[endV] | otherMasks[endV];
+
             }
 
             return result;
@@ -246,17 +274,22 @@ namespace Ryujinx.Graphics.Vulkan
 
         public void Clear()
         {
-            for (int i = 0; i < _masks.Length; i++)
+            int len = _masks.Length;
+            for (int i = 0; i <= len / 2; i++)
             {
                 _masks[i] = 0;
+                _masks[len - 1 - i]=0;
             }
         }
 
         public void ClearInt(int start, int end)
         {
-            for (int i = start; i <= end; i++)
+            // for (int i = start; i <= end/2; i++)
+
+            for (int i = 0; i <= (end-start)/2; i++)
             {
-                _masks[i] = 0;
+                _masks[start+i] = 0;
+                _masks[end-i] = 0;
             }
         }
     }
