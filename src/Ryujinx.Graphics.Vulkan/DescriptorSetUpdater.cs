@@ -336,16 +336,17 @@ namespace Ryujinx.Graphics.Vulkan
             ITexture texture,
             ISampler sampler)
         {
-            if (texture is TextureBuffer textureBuffer)
-            {
-                _bufferTextureRefs[binding] = textureBuffer;
-            }
-            else if (texture is TextureView view)
+            if (texture is TextureView view) 
             {
                 view.Storage.InsertWriteToReadBarrier(cbs, AccessFlags.ShaderReadBit, stage.ConvertToPipelineStageFlags());
 
                 _textureRefs[binding] = view.GetImageView();
                 _samplerRefs[binding] = ((SamplerHolder)sampler)?.GetSampler();
+            }
+            else if (texture is TextureBuffer textureBuffer)
+            {
+                _bufferTextureRefs[binding] = textureBuffer;
+
             }
             else
             {
