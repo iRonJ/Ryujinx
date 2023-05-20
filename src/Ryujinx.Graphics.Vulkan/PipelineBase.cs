@@ -715,12 +715,17 @@ namespace Ryujinx.Graphics.Vulkan
                 _indexBuffer.BindIndexBuffer(Gd, Cbs);
             }
             */
-
-            for (int i = 0; i < _vertexBuffers.Length; i++)
+            //            for (int i = 0; i < _vertexBuffers.Length; i++)
+            var fSpan = _vertexBuffers.Length;
+            for (int i = 0; i <= _vertexBuffers.Length/2; i++)
             {
                 if (_vertexBuffers[i].Overlaps(buffer, offset, size))
                 {
                     _vertexBuffers[i].BindVertexBuffer(Gd, Cbs, (uint)i, ref _newState, _vertexBufferUpdater);
+                }
+                if (_vertexBuffers[fSpan-1-i].Overlaps(buffer, offset, size))
+                {
+                    _vertexBuffers[i].BindVertexBuffer(Gd, Cbs, (uint)(fSpan - 1 - i), ref _newState, _vertexBufferUpdater);
                 }
             }
 
