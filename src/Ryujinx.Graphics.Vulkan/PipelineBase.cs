@@ -723,7 +723,7 @@ namespace Ryujinx.Graphics.Vulkan
                 {
                     _vertexBuffers[i].BindVertexBuffer(Gd, Cbs, (uint)i, ref _newState, _vertexBufferUpdater);
                 }
-                if (_vertexBuffers[fSpan-1-i].Overlaps(buffer, offset, size))
+                if ((fSpan - 1 - i)!=i && _vertexBuffers[fSpan-1-i].Overlaps(buffer, offset, size))
                 {
                     _vertexBuffers[i].BindVertexBuffer(Gd, Cbs, (uint)(fSpan - 1 - i), ref _newState, _vertexBufferUpdater);
                 }
