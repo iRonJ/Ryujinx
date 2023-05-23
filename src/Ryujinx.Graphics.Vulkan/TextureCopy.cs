@@ -274,8 +274,8 @@ namespace Ryujinx.Graphics.Vulkan
                 blockHeight = srcInfo.BlockHeight;
             }
 
-            int width = Math.Min(srcWidth, dstWidth);
-            int height = Math.Min(srcHeight, dstHeight);
+            int width = Math.Max(srcWidth, dstWidth);
+            int height = Math.Max(srcHeight, dstHeight);
 
             ImageAspectFlags srcAspect = srcInfo.Format.ConvertAspectFlags();
             ImageAspectFlags dstAspect = dstInfo.Format.ConvertAspectFlags();

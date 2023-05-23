@@ -195,7 +195,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
         /// <returns>True if commands were received, false if wait timed out</returns>
         public bool WaitForCommands()
         {
-            return !_commandBufferQueue.IsEmpty || (_event.WaitOne(8) && !_commandBufferQueue.IsEmpty);
+            return !_commandBufferQueue.IsEmpty || (_event.WaitOne(1) && !_commandBufferQueue.IsEmpty);
         }
 
         /// <summary>

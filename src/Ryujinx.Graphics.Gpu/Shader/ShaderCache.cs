@@ -139,6 +139,11 @@ namespace Ryujinx.Graphics.Gpu.Shader
                     {
                         _cacheWriter.AddShader(programToSave.CachedProgram, programToSave.BinaryCode ?? programToSave.HostProgram.GetBinary());
                     }
+                    else {
+                        
+                        //_cacheWriter.AddShader(programToSave.CachedProgram, File.ReadAllBytes("/Users/ronj/Downloads/badshd.bin"));
+
+                    }
 
                     _programsToSaveQueue.Dequeue();
                 }

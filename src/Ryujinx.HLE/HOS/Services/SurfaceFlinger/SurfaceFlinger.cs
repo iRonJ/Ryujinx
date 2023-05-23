@@ -313,7 +313,7 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                     _device.System?.SignalVsync();
 
-                    _nextFrameEvent.WaitOne(17);
+                    _nextFrameEvent.WaitOne(8);
                     lastTicks = ticks;
                 }
                 else

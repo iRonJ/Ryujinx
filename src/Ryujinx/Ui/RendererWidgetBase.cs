@@ -33,7 +33,7 @@ namespace Ryujinx.Ui
     {
         private const int SwitchPanelWidth = 1280;
         private const int SwitchPanelHeight = 720;
-        private const int TargetFps = 60;
+        private const int TargetFps = 30;
         private const float MaxResolutionScale = 4.0f; // Max resolution hotkeys can scale to before wrapping.
         private const float VolumeDelta = 0.05f;
 
@@ -465,6 +465,7 @@ namespace Ryujinx.Ui
 
                     _chrono.Restart();
 
+
                     if (Device.WaitFifo())
                     {
                         Device.Statistics.RecordFifoStart();
@@ -722,7 +723,7 @@ namespace Ryujinx.Ui
                 TouchScreenManager.Update(false);
             }
 
-            Device.Hid.DebugPad.Update();
+            //Device.Hid.DebugPad.Update();
 
             return true;
         }
