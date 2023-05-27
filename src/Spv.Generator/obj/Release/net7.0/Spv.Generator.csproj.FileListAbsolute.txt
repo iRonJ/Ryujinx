@@ -1,0 +1,10 @@
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/bin/Release/net7.0/Spv.Generator.deps.json
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/bin/Release/net7.0/Spv.Generator.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/obj/Release/net7.0/Spv.Generator.csproj.AssemblyReference.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/obj/Release/net7.0/Spv.Generator.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/obj/Release/net7.0/Spv.Generator.AssemblyInfoInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/obj/Release/net7.0/Spv.Generator.AssemblyInfo.cs
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/obj/Release/net7.0/Spv.Generator.csproj.CoreCompileInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/obj/Release/net7.0/Spv.Generator.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/obj/Release/net7.0/refint/Spv.Generator.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Spv.Generator/obj/Release/net7.0/ref/Spv.Generator.dll

@@ -1,0 +1,17 @@
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/bin/Debug/net7.0/Ryujinx.Horizon.Common.deps.json
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/bin/Debug/net7.0/Ryujinx.Horizon.Common.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/bin/Debug/net7.0/Ryujinx.Horizon.Common.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/bin/Debug/net7.0/Ryujinx.Common.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/bin/Debug/net7.0/Ryujinx.Memory.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/bin/Debug/net7.0/Ryujinx.Memory.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/bin/Debug/net7.0/Ryujinx.Common.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/Ryujinx.Horizon.Common.csproj.AssemblyReference.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/Ryujinx.Horizon.Common.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/Ryujinx.Horizon.Common.AssemblyInfoInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/Ryujinx.Horizon.Common.AssemblyInfo.cs
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/Ryujinx.Horizon.Common.csproj.CoreCompileInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/Ryujinx.Horizon.Common.csproj.CopyComplete
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/Ryujinx.Horizon.Common.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/refint/Ryujinx.Horizon.Common.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/Ryujinx.Horizon.Common.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Common/obj/Debug/net7.0/ref/Ryujinx.Horizon.Common.dll

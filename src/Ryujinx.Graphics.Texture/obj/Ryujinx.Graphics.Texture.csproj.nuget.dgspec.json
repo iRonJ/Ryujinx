@@ -1,0 +1,235 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Texture/Ryujinx.Graphics.Texture.csproj": {}
+  },
+  "projects": {
+    "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Common/Ryujinx.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Common/Ryujinx.Common.csproj",
+        "projectName": "Ryujinx.Common",
+        "projectPath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Common/Ryujinx.Common.csproj",
+        "packagesPath": "/Users/ronj/.nuget/packages/",
+        "outputPath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Common/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "configFilePaths": [
+          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
+          "/Users/ronj/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.IO.RecyclableMemoryStream": {
+              "target": "Package",
+              "version": "[2.3.2, )",
+              "versionCentrallyManaged": true
+            },
+            "MsgPack.Cli": {
+              "target": "Package",
+              "version": "[1.0.1, )",
+              "versionCentrallyManaged": true
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[7.0.1, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Avalonia": "[0.10.19, )",
+            "Avalonia.Controls.DataGrid": "[0.10.19, )",
+            "Avalonia.Desktop": "[0.10.19, )",
+            "Avalonia.Diagnostics": "[0.10.19, )",
+            "Avalonia.Markup.Xaml.Loader": "[0.10.19, )",
+            "Avalonia.Svg": "[0.10.18, )",
+            "Avalonia.Svg.Skia": "[0.10.18, )",
+            "CommandLineParser": "[2.9.1, )",
+            "Concentus": "[1.1.7, )",
+            "DiscordRichPresence": "[1.1.3.18, )",
+            "DynamicData": "[7.13.8, )",
+            "FluentAvaloniaUI": "[1.4.5, )",
+            "GtkSharp.Dependencies": "[1.1.1, )",
+            "GtkSharp.Dependencies.osx": "[0.0.5, )",
+            "jp2masa.Avalonia.Flexbox": "[0.2.0, )",
+            "LibHac": "[0.18.0, )",
+            "Microsoft.CodeAnalysis.Analyzers": "[3.3.4, )",
+            "Microsoft.CodeAnalysis.CSharp": "[4.5.0, )",
+            "Microsoft.IO.RecyclableMemoryStream": "[2.3.2, )",
+            "Microsoft.NET.Test.Sdk": "[17.5.0, )",
+            "MsgPack.Cli": "[1.0.1, )",
+            "NUnit": "[3.13.3, )",
+            "NUnit3TestAdapter": "[4.1.0, )",
+            "OpenTK.Core": "[4.7.7, )",
+            "OpenTK.Graphics": "[4.7.7, )",
+            "OpenTK.OpenAL": "[4.7.7, )",
+            "OpenTK.Windowing.GraphicsLibraryFramework": "[4.7.7, )",
+            "Ryujinx.Audio.OpenAL.Dependencies": "[1.21.0.1, )",
+            "Ryujinx.Graphics.Nvdec.Dependencies": "[5.0.1-build13, )",
+            "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK": "[1.2.0, )",
+            "Ryujinx.GtkSharp": "[3.24.24.59-ryujinx, )",
+            "Ryujinx.SDL2-CS": "[2.26.3-build25, )",
+            "shaderc.net": "[0.1.0, )",
+            "SharpZipLib": "[1.4.2, )",
+            "Silk.NET.Vulkan": "[2.16.0, )",
+            "Silk.NET.Vulkan.Extensions.EXT": "[2.16.0, )",
+            "Silk.NET.Vulkan.Extensions.KHR": "[2.16.0, )",
+            "SixLabors.ImageSharp": "[1.0.4, )",
+            "SixLabors.ImageSharp.Drawing": "[1.0.0-beta11, )",
+            "SPB": "[0.0.4-build28, )",
+            "System.Drawing.Common": "[7.0.0, )",
+            "System.IdentityModel.Tokens.Jwt": "[6.30.1, )",
+            "System.IO.Hashing": "[7.0.0, )",
+            "System.Management": "[7.0.1, )",
+            "UnicornEngine.Unicorn": "[2.0.2-rc1-fb78016, )",
+            "XamlNameReferenceGenerator": "[1.6.1, )"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Texture/Ryujinx.Graphics.Texture.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Texture/Ryujinx.Graphics.Texture.csproj",
+        "projectName": "Ryujinx.Graphics.Texture",
+        "projectPath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Texture/Ryujinx.Graphics.Texture.csproj",
+        "packagesPath": "/Users/ronj/.nuget/packages/",
+        "outputPath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Texture/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "configFilePaths": [
+          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
+          "/Users/ronj/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Common/Ryujinx.Common.csproj": {
+                "projectPath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Common/Ryujinx.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "centralPackageVersions": {
+            "Avalonia": "[0.10.19, )",
+            "Avalonia.Controls.DataGrid": "[0.10.19, )",
+            "Avalonia.Desktop": "[0.10.19, )",
+            "Avalonia.Diagnostics": "[0.10.19, )",
+            "Avalonia.Markup.Xaml.Loader": "[0.10.19, )",
+            "Avalonia.Svg": "[0.10.18, )",
+            "Avalonia.Svg.Skia": "[0.10.18, )",
+            "CommandLineParser": "[2.9.1, )",
+            "Concentus": "[1.1.7, )",
+            "DiscordRichPresence": "[1.1.3.18, )",
+            "DynamicData": "[7.13.8, )",
+            "FluentAvaloniaUI": "[1.4.5, )",
+            "GtkSharp.Dependencies": "[1.1.1, )",
+            "GtkSharp.Dependencies.osx": "[0.0.5, )",
+            "jp2masa.Avalonia.Flexbox": "[0.2.0, )",
+            "LibHac": "[0.18.0, )",
+            "Microsoft.CodeAnalysis.Analyzers": "[3.3.4, )",
+            "Microsoft.CodeAnalysis.CSharp": "[4.5.0, )",
+            "Microsoft.IO.RecyclableMemoryStream": "[2.3.2, )",
+            "Microsoft.NET.Test.Sdk": "[17.5.0, )",
+            "MsgPack.Cli": "[1.0.1, )",
+            "NUnit": "[3.13.3, )",
+            "NUnit3TestAdapter": "[4.1.0, )",
+            "OpenTK.Core": "[4.7.7, )",
+            "OpenTK.Graphics": "[4.7.7, )",
+            "OpenTK.OpenAL": "[4.7.7, )",
+            "OpenTK.Windowing.GraphicsLibraryFramework": "[4.7.7, )",
+            "Ryujinx.Audio.OpenAL.Dependencies": "[1.21.0.1, )",
+            "Ryujinx.Graphics.Nvdec.Dependencies": "[5.0.1-build13, )",
+            "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK": "[1.2.0, )",
+            "Ryujinx.GtkSharp": "[3.24.24.59-ryujinx, )",
+            "Ryujinx.SDL2-CS": "[2.26.3-build25, )",
+            "shaderc.net": "[0.1.0, )",
+            "SharpZipLib": "[1.4.2, )",
+            "Silk.NET.Vulkan": "[2.16.0, )",
+            "Silk.NET.Vulkan.Extensions.EXT": "[2.16.0, )",
+            "Silk.NET.Vulkan.Extensions.KHR": "[2.16.0, )",
+            "SixLabors.ImageSharp": "[1.0.4, )",
+            "SixLabors.ImageSharp.Drawing": "[1.0.0-beta11, )",
+            "SPB": "[0.0.4-build28, )",
+            "System.Drawing.Common": "[7.0.0, )",
+            "System.IdentityModel.Tokens.Jwt": "[6.30.1, )",
+            "System.IO.Hashing": "[7.0.0, )",
+            "System.Management": "[7.0.1, )",
+            "UnicornEngine.Unicorn": "[2.0.2-rc1-fb78016, )",
+            "XamlNameReferenceGenerator": "[1.6.1, )"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

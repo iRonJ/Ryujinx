@@ -1,0 +1,12 @@
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/bin/Debug/net7.0/Ryujinx.Graphics.Device.deps.json
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/bin/Debug/net7.0/Ryujinx.Graphics.Device.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/bin/Debug/net7.0/Ryujinx.Graphics.Device.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/obj/Debug/net7.0/Ryujinx.Graphics.Device.csproj.AssemblyReference.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/obj/Debug/net7.0/Ryujinx.Graphics.Device.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/obj/Debug/net7.0/Ryujinx.Graphics.Device.AssemblyInfoInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/obj/Debug/net7.0/Ryujinx.Graphics.Device.AssemblyInfo.cs
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/obj/Debug/net7.0/Ryujinx.Graphics.Device.csproj.CoreCompileInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/obj/Debug/net7.0/Ryujinx.Graphics.Device.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/obj/Debug/net7.0/refint/Ryujinx.Graphics.Device.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/obj/Debug/net7.0/Ryujinx.Graphics.Device.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/obj/Debug/net7.0/ref/Ryujinx.Graphics.Device.dll

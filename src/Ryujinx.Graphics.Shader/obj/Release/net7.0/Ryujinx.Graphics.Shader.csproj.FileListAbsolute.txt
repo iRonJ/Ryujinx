@@ -1,0 +1,13 @@
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/bin/Release/net7.0/Ryujinx.Graphics.Shader.deps.json
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/bin/Release/net7.0/Ryujinx.Graphics.Shader.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/bin/Release/net7.0/Ryujinx.Common.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/bin/Release/net7.0/Spv.Generator.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/obj/Release/net7.0/Ryujinx.Graphics.Shader.csproj.AssemblyReference.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/obj/Release/net7.0/Ryujinx.Graphics.Shader.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/obj/Release/net7.0/Ryujinx.Graphics.Shader.AssemblyInfoInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/obj/Release/net7.0/Ryujinx.Graphics.Shader.AssemblyInfo.cs
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/obj/Release/net7.0/Ryujinx.Graphics.Shader.csproj.CoreCompileInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/obj/Release/net7.0/Ryujinx.Graphics.Shader.csproj.CopyComplete
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/obj/Release/net7.0/Ryujinx.Graphics.Shader.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/obj/Release/net7.0/refint/Ryujinx.Graphics.Shader.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Shader/obj/Release/net7.0/ref/Ryujinx.Graphics.Shader.dll

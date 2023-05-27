@@ -1,0 +1,17 @@
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/bin/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.deps.json
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/bin/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/bin/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/bin/Debug/net7.0/Ryujinx.Common.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/bin/Debug/net7.0/Ryujinx.Graphics.Video.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/bin/Debug/net7.0/Ryujinx.Common.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/bin/Debug/net7.0/Ryujinx.Graphics.Video.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.csproj.AssemblyReference.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.AssemblyInfoInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.AssemblyInfo.cs
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.csproj.CoreCompileInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.csproj.CopyComplete
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/refint/Ryujinx.Graphics.Nvdec.FFmpeg.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/Ryujinx.Graphics.Nvdec.FFmpeg.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Nvdec.FFmpeg/obj/Debug/net7.0/ref/Ryujinx.Graphics.Nvdec.FFmpeg.dll
