@@ -486,6 +486,10 @@ namespace Ryujinx.Graphics.Vulkan
             }
             else
             {
+                var buffer = Gd.BufferManager
+                    .GetBuffer(CommandBuffer, indirectBuffer.Handle, indirectBuffer.Offset, indirectBuffer.Size, false)
+                    .Get(Cbs, indirectBuffer.Offset, indirectBuffer.Size).Value;
+
                 ResumeTransformFeedbackInternal();
 
                 Gd.Api.CmdDrawIndexedIndirect(CommandBuffer, buffer, (ulong)indirectBuffer.Offset, 1, (uint)indirectBuffer.Size);
@@ -511,6 +515,10 @@ namespace Ryujinx.Graphics.Vulkan
             RecreatePipelineIfNeeded(PipelineBindPoint.Graphics);
             BeginRenderPass();
             DrawCount++;
+
+            var countBuffer = Gd.BufferManager
+                .GetBuffer(CommandBuffer, parameterBuffer.Handle, parameterBuffer.Offset, parameterBuffer.Size, false)
+                .Get(Cbs, parameterBuffer.Offset, parameterBuffer.Size).Value;
 
             if (_indexBufferPattern != null)
             {
@@ -555,9 +563,14 @@ namespace Ryujinx.Graphics.Vulkan
                         (uint)maxDrawCount,
                         (uint)stride);
                 }
+
             }
             else
             {
+                var buffer = Gd.BufferManager
+                    .GetBuffer(CommandBuffer, indirectBuffer.Handle, indirectBuffer.Offset, indirectBuffer.Size, false)
+                    .Get(Cbs, indirectBuffer.Offset, indirectBuffer.Size).Value;
+
                 ResumeTransformFeedbackInternal();
 
                 if (Gd.Capabilities.SupportsIndirectParameters)
@@ -602,6 +615,10 @@ namespace Ryujinx.Graphics.Vulkan
             ResumeTransformFeedbackInternal();
             DrawCount++;
 
+            var buffer = Gd.BufferManager
+                .GetBuffer(CommandBuffer, indirectBuffer.Handle, indirectBuffer.Offset, indirectBuffer.Size, false)
+                .Get(Cbs, indirectBuffer.Offset, indirectBuffer.Size).Value;
+
             Gd.Api.CmdDrawIndirect(CommandBuffer, buffer, (ulong)indirectBuffer.Offset, 1, (uint)indirectBuffer.Size);
         }
 
@@ -632,6 +649,14 @@ namespace Ryujinx.Graphics.Vulkan
             BeginRenderPass();
             ResumeTransformFeedbackInternal();
             DrawCount++;
+
+            var buffer = Gd.BufferManager
+                .GetBuffer(CommandBuffer, indirectBuffer.Handle, indirectBuffer.Offset, indirectBuffer.Size, false)
+                .Get(Cbs, indirectBuffer.Offset, indirectBuffer.Size).Value;
+
+            var countBuffer = Gd.BufferManager
+                .GetBuffer(CommandBuffer, parameterBuffer.Handle, parameterBuffer.Offset, parameterBuffer.Size, false)
+                .Get(Cbs, parameterBuffer.Offset, parameterBuffer.Size).Value;
 
             Gd.DrawIndirectCountApi.CmdDrawIndirectCount(
                 CommandBuffer,
