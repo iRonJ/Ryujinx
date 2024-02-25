@@ -1,4 +1,4 @@
-using Gtk;
+﻿using Gtk;
 using LibHac;
 using LibHac.Account;
 using LibHac.Common;
@@ -10,16 +10,15 @@ using LibHac.Ns;
 using LibHac.Tools.Fs;
 using LibHac.Tools.FsSystem;
 using LibHac.Tools.FsSystem.NcaUtils;
-using Ryujinx.Common;
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.FileSystem;
 using Ryujinx.HLE.HOS;
 using Ryujinx.HLE.HOS.Services.Account.Acc;
-using Ryujinx.UI.App.Common;
-using Ryujinx.UI.Common.Configuration;
-using Ryujinx.UI.Common.Helper;
-using Ryujinx.UI.Windows;
+using Ryujinx.Ui.App.Common;
+using Ryujinx.Ui.Common.Configuration;
+using Ryujinx.Ui.Common.Helper;
+using Ryujinx.Ui.Windows;
 using System;
 using System.Buffers;
 using System.Collections.Generic;
@@ -28,23 +27,23 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 
-namespace Ryujinx.UI.Widgets
+namespace Ryujinx.Ui.Widgets
 {
     public partial class GameTableContextMenu : Menu
     {
-        private readonly MainWindow _parent;
-        private readonly VirtualFileSystem _virtualFileSystem;
-        private readonly AccountManager _accountManager;
-        private readonly HorizonClient _horizonClient;
+        private readonly MainWindow                             _parent;
+        private readonly VirtualFileSystem                      _virtualFileSystem;
+        private readonly AccountManager                         _accountManager;
+        private readonly HorizonClient                          _horizonClient;
         private readonly BlitStruct<ApplicationControlProperty> _controlData;
 
         private readonly string _titleFilePath;
         private readonly string _titleName;
         private readonly string _titleIdText;
-        private readonly ulong _titleId;
+        private readonly ulong  _titleId;
 
         private MessageDialog _dialog;
-        private bool _cancel;
+        private bool          _cancel;
 
         public GameTableContextMenu(MainWindow parent, VirtualFileSystem virtualFileSystem, AccountManager accountManager, HorizonClient horizonClient, string titleFilePath, string titleName, string titleId, BlitStruct<ApplicationControlProperty> controlData)
         {
@@ -53,12 +52,12 @@ namespace Ryujinx.UI.Widgets
             InitializeComponent();
 
             _virtualFileSystem = virtualFileSystem;
-            _accountManager = accountManager;
-            _horizonClient = horizonClient;
-            _titleFilePath = titleFilePath;
-            _titleName = titleName;
-            _titleIdText = titleId;
-            _controlData = controlData;
+            _accountManager    = accountManager;
+            _horizonClient     = horizonClient;
+            _titleFilePath     = titleFilePath;
+            _titleName         = titleName;
+            _titleIdText       = titleId;
+            _controlData       = controlData;
 
             if (!ulong.TryParse(_titleIdText, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out _titleId))
             {
@@ -67,18 +66,16 @@ namespace Ryujinx.UI.Widgets
                 return;
             }
 
-            _openSaveUserDirMenuItem.Sensitive = !Utilities.IsZeros(controlData.ByteSpan) && controlData.Value.UserAccountSaveDataSize > 0;
-            _openSaveDeviceDirMenuItem.Sensitive = !Utilities.IsZeros(controlData.ByteSpan) && controlData.Value.DeviceSaveDataSize > 0;
-            _openSaveBcatDirMenuItem.Sensitive = !Utilities.IsZeros(controlData.ByteSpan) && controlData.Value.BcatDeliveryCacheStorageSize > 0;
+            _openSaveUserDirMenuItem.Sensitive   = !Utilities.IsZeros(controlData.ByteSpan) && controlData.Value.UserAccountSaveDataSize      > 0;
+            _openSaveDeviceDirMenuItem.Sensitive = !Utilities.IsZeros(controlData.ByteSpan) && controlData.Value.DeviceSaveDataSize           > 0;
+            _openSaveBcatDirMenuItem.Sensitive   = !Utilities.IsZeros(controlData.ByteSpan) && controlData.Value.BcatDeliveryCacheStorageSize > 0;
 
             string fileExt = System.IO.Path.GetExtension(_titleFilePath).ToLower();
-            bool hasNca = fileExt == ".nca" || fileExt == ".nsp" || fileExt == ".pfs0" || fileExt == ".xci";
+            bool   hasNca  = fileExt == ".nca" || fileExt == ".nsp" || fileExt == ".pfs0" || fileExt == ".xci";
 
             _extractRomFsMenuItem.Sensitive = hasNca;
             _extractExeFsMenuItem.Sensitive = hasNca;
-            _extractLogoMenuItem.Sensitive = hasNca;
-
-            _createShortcutMenuItem.Sensitive = !ReleaseInformation.IsFlatHubBuild;
+            _extractLogoMenuItem.Sensitive  = hasNca;
 
             PopupAtPointer(null);
         }
@@ -102,13 +99,13 @@ namespace Ryujinx.UI.Widgets
                     control = ref new BlitStruct<ApplicationControlProperty>(1).Value;
 
                     // The set sizes don't actually matter as long as they're non-zero because we use directory savedata.
-                    control.UserAccountSaveDataSize = 0x4000;
+                    control.UserAccountSaveDataSize        = 0x4000;
                     control.UserAccountSaveDataJournalSize = 0x4000;
 
                     Logger.Warning?.Print(LogClass.Application, "No control file was found for this game. Using a dummy one instead. This may cause inaccuracies in some games.");
                 }
 
-                Uid user = new((ulong)_accountManager.LastOpenedUser.UserId.High, (ulong)_accountManager.LastOpenedUser.UserId.Low);
+                Uid user = new Uid((ulong)_accountManager.LastOpenedUser.UserId.High, (ulong)_accountManager.LastOpenedUser.UserId.Low);
 
                 result = _horizonClient.Fs.EnsureApplicationSaveData(out _, new LibHac.Ncm.ApplicationId(titleId), in control, in user);
 
@@ -142,7 +139,7 @@ namespace Ryujinx.UI.Widgets
                 return;
             }
 
-            string saveRootPath = System.IO.Path.Combine(VirtualFileSystem.GetNandPath(), $"user/save/{saveDataId:x16}");
+            string saveRootPath = System.IO.Path.Combine(_virtualFileSystem.GetNandPath(), $"user/save/{saveDataId:x16}");
 
             if (!Directory.Exists(saveRootPath))
             {
@@ -151,7 +148,7 @@ namespace Ryujinx.UI.Widgets
             }
 
             string committedPath = System.IO.Path.Combine(saveRootPath, "0");
-            string workingPath = System.IO.Path.Combine(saveRootPath, "1");
+            string workingPath   = System.IO.Path.Combine(saveRootPath, "1");
 
             // If the committed directory exists, that path will be loaded the next time the savedata is mounted
             if (Directory.Exists(committedPath))
@@ -173,25 +170,25 @@ namespace Ryujinx.UI.Widgets
 
         private void ExtractSection(NcaSectionType ncaSectionType, int programIndex = 0)
         {
-            FileChooserNative fileChooser = new("Choose the folder to extract into", _parent, FileChooserAction.SelectFolder, "Extract", "Cancel");
+            FileChooserNative fileChooser = new FileChooserNative("Choose the folder to extract into", _parent, FileChooserAction.SelectFolder, "Extract", "Cancel");
 
-            ResponseType response = (ResponseType)fileChooser.Run();
-            string destination = fileChooser.Filename;
+            ResponseType response    = (ResponseType)fileChooser.Run();
+            string       destination = fileChooser.Filename;
 
             fileChooser.Dispose();
 
             if (response == ResponseType.Accept)
             {
-                Thread extractorThread = new(() =>
+                Thread extractorThread = new Thread(() =>
                 {
                     Gtk.Application.Invoke(delegate
                     {
                         _dialog = new MessageDialog(null, DialogFlags.DestroyWithParent, MessageType.Info, ButtonsType.Cancel, null)
                         {
-                            Title = "Ryujinx - NCA Section Extractor",
-                            Icon = new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.UI.Common.Resources.Logo_Ryujinx.png"),
-                            SecondaryText = $"Extracting {ncaSectionType} section from {System.IO.Path.GetFileName(_titleFilePath)}...",
-                            WindowPosition = WindowPosition.Center,
+                            Title          = "Ryujinx - NCA Section Extractor",
+                            Icon           = new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.Ui.Common.Resources.Logo_Ryujinx.png"),
+                            SecondaryText  = $"Extracting {ncaSectionType} section from {System.IO.Path.GetFileName(_titleFilePath)}...",
+                            WindowPosition = WindowPosition.Center
                         };
 
                         int dialogResponse = _dialog.Run();
@@ -202,142 +199,139 @@ namespace Ryujinx.UI.Widgets
                         }
                     });
 
-                    using FileStream file = new(_titleFilePath, FileMode.Open, FileAccess.Read);
-
-                    Nca mainNca = null;
-                    Nca patchNca = null;
-
-                    if ((System.IO.Path.GetExtension(_titleFilePath).ToLower() == ".nsp") ||
-                        (System.IO.Path.GetExtension(_titleFilePath).ToLower() == ".pfs0") ||
-                        (System.IO.Path.GetExtension(_titleFilePath).ToLower() == ".xci"))
+                    using (FileStream file = new FileStream(_titleFilePath, FileMode.Open, FileAccess.Read))
                     {
-                        IFileSystem pfs;
+                        Nca mainNca  = null;
+                        Nca patchNca = null;
 
-                        if (System.IO.Path.GetExtension(_titleFilePath) == ".xci")
+                        if ((System.IO.Path.GetExtension(_titleFilePath).ToLower() == ".nsp")  ||
+                            (System.IO.Path.GetExtension(_titleFilePath).ToLower() == ".pfs0") ||
+                            (System.IO.Path.GetExtension(_titleFilePath).ToLower() == ".xci"))
                         {
-                            Xci xci = new(_virtualFileSystem.KeySet, file.AsStorage());
+                            PartitionFileSystem pfs;
 
-                            pfs = xci.OpenPartition(XciPartitionType.Secure);
-                        }
-                        else
-                        {
-                            var pfsTemp = new PartitionFileSystem();
-                            pfsTemp.Initialize(file.AsStorage()).ThrowIfFailure();
-                            pfs = pfsTemp;
-                        }
-
-                        foreach (DirectoryEntryEx fileEntry in pfs.EnumerateEntries("/", "*.nca"))
-                        {
-                            using var ncaFile = new UniqueRef<IFile>();
-
-                            pfs.OpenFile(ref ncaFile.Ref, fileEntry.FullPath.ToU8Span(), OpenMode.Read).ThrowIfFailure();
-
-                            Nca nca = new(_virtualFileSystem.KeySet, ncaFile.Release().AsStorage());
-
-                            if (nca.Header.ContentType == NcaContentType.Program)
+                            if (System.IO.Path.GetExtension(_titleFilePath) == ".xci")
                             {
-                                int dataIndex = Nca.GetSectionIndexFromType(NcaSectionType.Data, NcaContentType.Program);
+                                Xci xci = new Xci(_virtualFileSystem.KeySet, file.AsStorage());
 
-                                if (nca.SectionExists(NcaSectionType.Data) && nca.Header.GetFsHeader(dataIndex).IsPatchSection())
+                                pfs = xci.OpenPartition(XciPartitionType.Secure);
+                            }
+                            else
+                            {
+                                pfs = new PartitionFileSystem(file.AsStorage());
+                            }
+
+                            foreach (DirectoryEntryEx fileEntry in pfs.EnumerateEntries("/", "*.nca"))
+                            {
+                                using var ncaFile = new UniqueRef<IFile>();
+
+                                pfs.OpenFile(ref ncaFile.Ref, fileEntry.FullPath.ToU8Span(), OpenMode.Read).ThrowIfFailure();
+
+                                Nca nca = new Nca(_virtualFileSystem.KeySet, ncaFile.Release().AsStorage());
+
+                                if (nca.Header.ContentType == NcaContentType.Program)
                                 {
-                                    patchNca = nca;
-                                }
-                                else
-                                {
-                                    mainNca = nca;
+                                    int dataIndex = Nca.GetSectionIndexFromType(NcaSectionType.Data, NcaContentType.Program);
+
+                                    if (nca.SectionExists(NcaSectionType.Data) && nca.Header.GetFsHeader(dataIndex).IsPatchSection())
+                                    {
+                                        patchNca = nca;
+                                    }
+                                    else
+                                    {
+                                        mainNca = nca;
+                                    }
                                 }
                             }
                         }
-                    }
-                    else if (System.IO.Path.GetExtension(_titleFilePath).ToLower() == ".nca")
-                    {
-                        mainNca = new Nca(_virtualFileSystem.KeySet, file.AsStorage());
-                    }
+                        else if (System.IO.Path.GetExtension(_titleFilePath).ToLower() == ".nca")
+                        {
+                            mainNca = new Nca(_virtualFileSystem.KeySet, file.AsStorage());
+                        }
 
-                    if (mainNca == null)
-                    {
-                        Logger.Error?.Print(LogClass.Application, "Extraction failure. The main NCA is not present in the selected file.");
+                        if (mainNca == null)
+                        {
+                            Logger.Error?.Print(LogClass.Application, "Extraction failure. The main NCA is not present in the selected file.");
 
-                        Gtk.Application.Invoke(delegate
+                            Gtk.Application.Invoke(delegate
                             {
                                 GtkDialog.CreateErrorDialog("Extraction failure. The main NCA is not present in the selected file.");
                             });
 
-                        return;
-                    }
+                            return;
+                        }
 
-                    (Nca updatePatchNca, _) = ApplicationLibrary.GetGameUpdateData(_virtualFileSystem, mainNca.Header.TitleId.ToString("x16"), programIndex, out _);
+                        (Nca updatePatchNca, _) = ApplicationLibrary.GetGameUpdateData(_virtualFileSystem, mainNca.Header.TitleId.ToString("x16"), programIndex, out _);
 
-                    if (updatePatchNca != null)
-                    {
-                        patchNca = updatePatchNca;
-                    }
+                        if (updatePatchNca != null)
+                        {
+                            patchNca = updatePatchNca;
+                        }
 
-                    int index = Nca.GetSectionIndexFromType(ncaSectionType, mainNca.Header.ContentType);
+                        int index = Nca.GetSectionIndexFromType(ncaSectionType, mainNca.Header.ContentType);
 
-                    bool sectionExistsInPatch = false;
+                        bool sectionExistsInPatch = false;
+                        if (patchNca != null)
+                        {
+                            sectionExistsInPatch = patchNca.CanOpenSection(index);
+                        }
 
-                    if (patchNca != null)
-                    {
-                        sectionExistsInPatch = patchNca.CanOpenSection(index);
-                    }
-
-                    IFileSystem ncaFileSystem = sectionExistsInPatch ? mainNca.OpenFileSystemWithPatch(patchNca, index, IntegrityCheckLevel.ErrorOnInvalid)
+                        IFileSystem ncaFileSystem = sectionExistsInPatch ? mainNca.OpenFileSystemWithPatch(patchNca, index, IntegrityCheckLevel.ErrorOnInvalid)
                                                                          : mainNca.OpenFileSystem(index, IntegrityCheckLevel.ErrorOnInvalid);
 
-                    FileSystemClient fsClient = _horizonClient.Fs;
+                        FileSystemClient fsClient = _horizonClient.Fs;
 
-                    string source = DateTime.Now.ToFileTime().ToString()[10..];
-                    string output = DateTime.Now.ToFileTime().ToString()[10..];
+                        string source = DateTime.Now.ToFileTime().ToString()[10..];
+                        string output = DateTime.Now.ToFileTime().ToString()[10..];
 
-                    using var uniqueSourceFs = new UniqueRef<IFileSystem>(ncaFileSystem);
-                    using var uniqueOutputFs = new UniqueRef<IFileSystem>(new LocalFileSystem(destination));
+                        using var uniqueSourceFs = new UniqueRef<IFileSystem>(ncaFileSystem);
+                        using var uniqueOutputFs = new UniqueRef<IFileSystem>(new LocalFileSystem(destination));
 
-                    fsClient.Register(source.ToU8Span(), ref uniqueSourceFs.Ref);
-                    fsClient.Register(output.ToU8Span(), ref uniqueOutputFs.Ref);
+                        fsClient.Register(source.ToU8Span(), ref uniqueSourceFs.Ref);
+                        fsClient.Register(output.ToU8Span(), ref uniqueOutputFs.Ref);
 
-                    (Result? resultCode, bool canceled) = CopyDirectory(fsClient, $"{source}:/", $"{output}:/");
+                        (Result? resultCode, bool canceled) = CopyDirectory(fsClient, $"{source}:/", $"{output}:/");
 
-                    if (!canceled)
-                    {
-                        if (resultCode.Value.IsFailure())
+                        if (!canceled)
                         {
-                            Logger.Error?.Print(LogClass.Application, $"LibHac returned error code: {resultCode.Value.ErrorCode}");
+                            if (resultCode.Value.IsFailure())
+                            {
+                                Logger.Error?.Print(LogClass.Application, $"LibHac returned error code: {resultCode.Value.ErrorCode}");
 
-                            Gtk.Application.Invoke(delegate
+                                Gtk.Application.Invoke(delegate
                                 {
                                     _dialog?.Dispose();
 
                                     GtkDialog.CreateErrorDialog("Extraction failed. Read the log file for further information.");
                                 });
-                        }
-                        else if (resultCode.Value.IsSuccess())
-                        {
-                            Gtk.Application.Invoke(delegate
+                            }
+                            else if (resultCode.Value.IsSuccess())
+                            {
+                                Gtk.Application.Invoke(delegate
                                 {
                                     _dialog?.Dispose();
 
-                                    MessageDialog dialog = new(null, DialogFlags.DestroyWithParent, MessageType.Info, ButtonsType.Ok, null)
+                                    MessageDialog dialog = new MessageDialog(null, DialogFlags.DestroyWithParent, MessageType.Info, ButtonsType.Ok, null)
                                     {
-                                        Title = "Ryujinx - NCA Section Extractor",
-                                        Icon = new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.UI.Common.Resources.Logo_Ryujinx.png"),
-                                        SecondaryText = "Extraction completed successfully.",
-                                        WindowPosition = WindowPosition.Center,
+                                        Title          = "Ryujinx - NCA Section Extractor",
+                                        Icon           = new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.Ui.Common.Resources.Logo_Ryujinx.png"),
+                                        SecondaryText  = "Extraction completed successfully.",
+                                        WindowPosition = WindowPosition.Center
                                     };
 
                                     dialog.Run();
                                     dialog.Dispose();
                                 });
+                            }
                         }
-                    }
 
-                    fsClient.Unmount(source.ToU8Span());
-                    fsClient.Unmount(output.ToU8Span());
-                })
-                {
-                    Name = "GUI.NcaSectionExtractorThread",
-                    IsBackground = true,
-                };
+                        fsClient.Unmount(source.ToU8Span());
+                        fsClient.Unmount(output.ToU8Span());
+                    }
+                });
+
+                extractorThread.Name         = "GUI.NcaSectionExtractorThread";
+                extractorThread.IsBackground = true;
                 extractorThread.Start();
             }
         }
@@ -345,10 +339,7 @@ namespace Ryujinx.UI.Widgets
         private (Result? result, bool canceled) CopyDirectory(FileSystemClient fs, string sourcePath, string destPath)
         {
             Result rc = fs.OpenDirectory(out DirectoryHandle sourceHandle, sourcePath.ToU8Span(), OpenDirectoryMode.All);
-            if (rc.IsFailure())
-            {
-                return (rc, false);
-            }
+            if (rc.IsFailure()) return (rc, false);
 
             using (sourceHandle)
             {
@@ -378,10 +369,7 @@ namespace Ryujinx.UI.Widgets
                         fs.CreateOrOverwriteFile(subDstPath, entry.Size);
 
                         rc = CopyFile(fs, subSrcPath, subDstPath);
-                        if (rc.IsFailure())
-                        {
-                            return (rc, false);
-                        }
+                        if (rc.IsFailure()) return (rc, false);
                     }
                 }
             }
@@ -389,33 +377,24 @@ namespace Ryujinx.UI.Widgets
             return (Result.Success, false);
         }
 
-        public static Result CopyFile(FileSystemClient fs, string sourcePath, string destPath)
+        public Result CopyFile(FileSystemClient fs, string sourcePath, string destPath)
         {
             Result rc = fs.OpenFile(out FileHandle sourceHandle, sourcePath.ToU8Span(), OpenMode.Read);
-            if (rc.IsFailure())
-            {
-                return rc;
-            }
+            if (rc.IsFailure()) return rc;
 
             using (sourceHandle)
             {
                 rc = fs.OpenFile(out FileHandle destHandle, destPath.ToU8Span(), OpenMode.Write | OpenMode.AllowAppend);
-                if (rc.IsFailure())
-                {
-                    return rc;
-                }
+                if (rc.IsFailure()) return rc;
 
                 using (destHandle)
                 {
-                    const int MaxBufferSize = 1024 * 1024;
+                    const int maxBufferSize = 1024 * 1024;
 
                     rc = fs.GetFileSize(out long fileSize, sourceHandle);
-                    if (rc.IsFailure())
-                    {
-                        return rc;
-                    }
+                    if (rc.IsFailure()) return rc;
 
-                    int bufferSize = (int)Math.Min(MaxBufferSize, fileSize);
+                    int bufferSize = (int)Math.Min(maxBufferSize, fileSize);
 
                     byte[] buffer = ArrayPool<byte>.Shared.Rent(bufferSize);
                     try
@@ -426,16 +405,10 @@ namespace Ryujinx.UI.Widgets
                             Span<byte> buf = buffer.AsSpan(0, toRead);
 
                             rc = fs.ReadFile(out long _, sourceHandle, offset, buf);
-                            if (rc.IsFailure())
-                            {
-                                return rc;
-                            }
+                            if (rc.IsFailure()) return rc;
 
                             rc = fs.WriteFile(destHandle, offset, buf, WriteOption.None);
-                            if (rc.IsFailure())
-                            {
-                                return rc;
-                            }
+                            if (rc.IsFailure()) return rc;
                         }
                     }
                     finally
@@ -444,10 +417,7 @@ namespace Ryujinx.UI.Widgets
                     }
 
                     rc = fs.FlushFile(destHandle);
-                    if (rc.IsFailure())
-                    {
-                        return rc;
-                    }
+                    if (rc.IsFailure()) return rc;
                 }
             }
 
@@ -496,16 +466,16 @@ namespace Ryujinx.UI.Widgets
 
         private void OpenTitleModDir_Clicked(object sender, EventArgs args)
         {
-            string modsBasePath = ModLoader.GetModsBasePath();
-            string titleModsPath = ModLoader.GetApplicationDir(modsBasePath, _titleIdText);
+            string modsBasePath  = ModLoader.GetModsBasePath();
+            string titleModsPath = ModLoader.GetTitleDir(modsBasePath, _titleIdText);
 
             OpenHelper.OpenFolder(titleModsPath);
         }
 
         private void OpenTitleSdModDir_Clicked(object sender, EventArgs args)
         {
-            string sdModsBasePath = ModLoader.GetSdModsBasePath();
-            string titleModsPath = ModLoader.GetApplicationDir(sdModsBasePath, _titleIdText);
+            string sdModsBasePath  = ModLoader.GetSdModsBasePath();
+            string titleModsPath   = ModLoader.GetTitleDir(sdModsBasePath, _titleIdText);
 
             OpenHelper.OpenFolder(titleModsPath);
         }
@@ -527,9 +497,9 @@ namespace Ryujinx.UI.Widgets
 
         private void OpenPtcDir_Clicked(object sender, EventArgs args)
         {
-            string ptcDir = System.IO.Path.Combine(AppDataManager.GamesDirPath, _titleIdText, "cache", "cpu");
+            string ptcDir  = System.IO.Path.Combine(AppDataManager.GamesDirPath, _titleIdText, "cache", "cpu");
 
-            string mainPath = System.IO.Path.Combine(ptcDir, "0");
+            string mainPath   = System.IO.Path.Combine(ptcDir, "0");
             string backupPath = System.IO.Path.Combine(ptcDir, "1");
 
             if (!Directory.Exists(ptcDir))
@@ -556,12 +526,12 @@ namespace Ryujinx.UI.Widgets
 
         private void PurgePtcCache_Clicked(object sender, EventArgs args)
         {
-            DirectoryInfo mainDir = new(System.IO.Path.Combine(AppDataManager.GamesDirPath, _titleIdText, "cache", "cpu", "0"));
-            DirectoryInfo backupDir = new(System.IO.Path.Combine(AppDataManager.GamesDirPath, _titleIdText, "cache", "cpu", "1"));
+            DirectoryInfo mainDir   = new DirectoryInfo(System.IO.Path.Combine(AppDataManager.GamesDirPath, _titleIdText, "cache", "cpu", "0"));
+            DirectoryInfo backupDir = new DirectoryInfo(System.IO.Path.Combine(AppDataManager.GamesDirPath, _titleIdText, "cache", "cpu", "1"));
 
             MessageDialog warningDialog = GtkDialog.CreateConfirmationDialog("Warning", $"You are about to queue a PPTC rebuild on the next boot of:\n\n<b>{_titleName}</b>\n\nAre you sure you want to proceed?");
 
-            List<FileInfo> cacheFiles = new();
+            List<FileInfo> cacheFiles = new List<FileInfo>();
 
             if (mainDir.Exists)
             {
@@ -581,7 +551,7 @@ namespace Ryujinx.UI.Widgets
                     {
                         file.Delete();
                     }
-                    catch (Exception e)
+                    catch(Exception e)
                     {
                         GtkDialog.CreateErrorDialog($"Error purging PPTC cache {file.Name}: {e}");
                     }
@@ -593,12 +563,12 @@ namespace Ryujinx.UI.Widgets
 
         private void PurgeShaderCache_Clicked(object sender, EventArgs args)
         {
-            DirectoryInfo shaderCacheDir = new(System.IO.Path.Combine(AppDataManager.GamesDirPath, _titleIdText, "cache", "shader"));
+            DirectoryInfo shaderCacheDir = new DirectoryInfo(System.IO.Path.Combine(AppDataManager.GamesDirPath, _titleIdText, "cache", "shader"));
 
             using MessageDialog warningDialog = GtkDialog.CreateConfirmationDialog("Warning", $"You are about to delete the shader cache for :\n\n<b>{_titleName}</b>\n\nAre you sure you want to proceed?");
 
-            List<DirectoryInfo> oldCacheDirectories = new();
-            List<FileInfo> newCacheFiles = new();
+            List<DirectoryInfo> oldCacheDirectories = new List<DirectoryInfo>();
+            List<FileInfo> newCacheFiles = new List<FileInfo>();
 
             if (shaderCacheDir.Exists)
             {
@@ -633,12 +603,6 @@ namespace Ryujinx.UI.Widgets
                     }
                 }
             }
-        }
-
-        private void CreateShortcut_Clicked(object sender, EventArgs args)
-        {
-            byte[] appIcon = new ApplicationLibrary(_virtualFileSystem).GetApplicationIcon(_titleFilePath, ConfigurationState.Instance.System.Language);
-            ShortcutHelper.CreateAppShortcut(_titleFilePath, _titleName, _titleIdText, appIcon);
         }
     }
 }

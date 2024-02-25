@@ -1,69 +1,69 @@
 ﻿using Gtk;
 using Pango;
-using Ryujinx.UI.Common.Configuration;
+using Ryujinx.Ui.Common.Configuration;
 using System.Reflection;
 
-namespace Ryujinx.UI.Windows
+namespace Ryujinx.Ui.Windows
 {
     public partial class AboutWindow : Window
     {
-        private Box _mainBox;
-        private Box _leftBox;
-        private Box _logoBox;
-        private Image _ryujinxLogo;
-        private Box _logoTextBox;
-        private Label _ryujinxLabel;
-        private Label _ryujinxPhoneticLabel;
-        private EventBox _ryujinxLink;
-        private Label _ryujinxLinkLabel;
-        private Label _versionLabel;
-        private Label _disclaimerLabel;
-        private EventBox _amiiboApiLink;
-        private Label _amiiboApiLinkLabel;
-        private Box _socialBox;
-        private EventBox _patreonEventBox;
-        private Box _patreonBox;
-        private Image _patreonLogo;
-        private Label _patreonLabel;
-        private EventBox _githubEventBox;
-        private Box _githubBox;
-        private Image _githubLogo;
-        private Label _githubLabel;
-        private Box _discordBox;
-        private EventBox _discordEventBox;
-        private Image _discordLogo;
-        private Label _discordLabel;
-        private EventBox _twitterEventBox;
-        private Box _twitterBox;
-        private Image _twitterLogo;
-        private Label _twitterLabel;
-        private Separator _separator;
-        private Box _rightBox;
-        private Label _aboutLabel;
-        private Label _aboutDescriptionLabel;
-        private Label _createdByLabel;
-        private TextView _createdByText;
-        private EventBox _contributorsEventBox;
-        private Label _contributorsLinkLabel;
-        private Label _patreonNamesLabel;
+        private Box            _mainBox;
+        private Box            _leftBox;
+        private Box            _logoBox;
+        private Image          _ryujinxLogo;
+        private Box            _logoTextBox;
+        private Label          _ryujinxLabel;
+        private Label          _ryujinxPhoneticLabel;
+        private EventBox       _ryujinxLink;
+        private Label          _ryujinxLinkLabel;
+        private Label          _versionLabel;
+        private Label          _disclaimerLabel;
+        private EventBox       _amiiboApiLink;
+        private Label          _amiiboApiLinkLabel;
+        private Box            _socialBox;
+        private EventBox       _patreonEventBox;
+        private Box            _patreonBox;
+        private Image          _patreonLogo;
+        private Label          _patreonLabel;
+        private EventBox       _githubEventBox;
+        private Box            _githubBox;
+        private Image          _githubLogo;
+        private Label          _githubLabel;
+        private Box            _discordBox;
+        private EventBox       _discordEventBox;
+        private Image          _discordLogo;
+        private Label          _discordLabel;
+        private EventBox       _twitterEventBox;
+        private Box            _twitterBox;
+        private Image          _twitterLogo;
+        private Label          _twitterLabel;
+        private Separator      _separator;
+        private Box            _rightBox;
+        private Label          _aboutLabel;
+        private Label          _aboutDescriptionLabel;
+        private Label          _createdByLabel;
+        private TextView       _createdByText;
+        private EventBox       _contributorsEventBox;
+        private Label          _contributorsLinkLabel;
+        private Label          _patreonNamesLabel;
         private ScrolledWindow _patreonNamesScrolled;
-        private TextView _patreonNamesText;
-        private EventBox _changelogEventBox;
-        private Label _changelogLinkLabel;
+        private TextView       _patreonNamesText;
 
         private void InitializeComponent()
         {
 
+#pragma warning disable CS0612
+
             //
             // AboutWindow
             //
-            CanFocus = false;
-            Resizable = false;
-            Modal = true;
+            CanFocus       = false;
+            Resizable      = false;
+            Modal          = true;
             WindowPosition = WindowPosition.Center;
-            DefaultWidth = 800;
-            DefaultHeight = 450;
-            TypeHint = Gdk.WindowTypeHint.Dialog;
+            DefaultWidth   = 800;
+            DefaultHeight  = 450;
+            TypeHint       = Gdk.WindowTypeHint.Dialog;
 
             //
             // _mainBox
@@ -75,9 +75,9 @@ namespace Ryujinx.UI.Windows
             //
             _leftBox = new Box(Orientation.Vertical, 0)
             {
-                Margin = 15,
-                MarginStart = 30,
-                MarginEnd = 0,
+                Margin      = 15,
+                MarginLeft  = 30,
+                MarginRight = 0
             };
 
             //
@@ -88,10 +88,10 @@ namespace Ryujinx.UI.Windows
             //
             // _ryujinxLogo
             //
-            _ryujinxLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.UI.Common.Resources.Logo_Ryujinx.png", 100, 100))
+            _ryujinxLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.Ui.Common.Resources.Logo_Ryujinx.png", 100, 100))
             {
-                Margin = 10,
-                MarginStart = 15,
+                Margin     = 10,
+                MarginLeft = 15
             };
 
             //
@@ -104,9 +104,9 @@ namespace Ryujinx.UI.Windows
             //
             _ryujinxLabel = new Label("Ryujinx")
             {
-                MarginTop = 15,
-                Justify = Justification.Center,
-                Attributes = new AttrList(),
+                MarginTop  = 15,
+                Justify    = Justification.Center,
+                Attributes = new AttrList()
             };
             _ryujinxLabel.Attributes.Insert(new Pango.AttrScale(2.7f));
 
@@ -115,7 +115,7 @@ namespace Ryujinx.UI.Windows
             //
             _ryujinxPhoneticLabel = new Label("(REE-YOU-JINX)")
             {
-                Justify = Justification.Center,
+                Justify = Justification.Center
             };
 
             //
@@ -133,8 +133,8 @@ namespace Ryujinx.UI.Windows
             _ryujinxLinkLabel = new Label("www.ryujinx.org")
             {
                 TooltipText = "Click to open the Ryujinx website in your default browser.",
-                Justify = Justification.Center,
-                Attributes = new AttrList(),
+                Justify     = Justification.Center,
+                Attributes  = new AttrList()
             };
             _ryujinxLinkLabel.Attributes.Insert(new Pango.AttrUnderline(Underline.Single));
 
@@ -143,37 +143,20 @@ namespace Ryujinx.UI.Windows
             //
             _versionLabel = new Label(Program.Version)
             {
-                Expand = true,
+                Expand  = true,
                 Justify = Justification.Center,
-                Margin = 5,
+                Margin  = 5
             };
-
-            //
-            // _changelogEventBox
-            //
-            _changelogEventBox = new EventBox();
-            _changelogEventBox.ButtonPressEvent += ChangelogButton_Pressed;
-
-            //
-            // _changelogLinkLabel
-            //
-            _changelogLinkLabel = new Label("View Changelog on GitHub")
-            {
-                TooltipText = "Click to open the changelog for this version in your default browser.",
-                Justify = Justification.Center,
-                Attributes = new AttrList(),
-            };
-            _changelogLinkLabel.Attributes.Insert(new Pango.AttrUnderline(Underline.Single));
 
             //
             // _disclaimerLabel
             //
             _disclaimerLabel = new Label("Ryujinx is not affiliated with Nintendo™,\nor any of its partners, in any way.")
             {
-                Expand = true,
-                Justify = Justification.Center,
-                Margin = 5,
-                Attributes = new AttrList(),
+                Expand     = true,
+                Justify    = Justification.Center,
+                Margin     = 5,
+                Attributes = new AttrList()
             };
             _disclaimerLabel.Attributes.Insert(new Pango.AttrScale(0.8f));
 
@@ -182,7 +165,7 @@ namespace Ryujinx.UI.Windows
             //
             _amiiboApiLink = new EventBox()
             {
-                Margin = 5,
+                Margin = 5
             };
             _amiiboApiLink.ButtonPressEvent += AmiiboApiButton_Pressed;
 
@@ -192,8 +175,8 @@ namespace Ryujinx.UI.Windows
             _amiiboApiLinkLabel = new Label("AmiiboAPI (www.amiiboapi.com) is used\nin our Amiibo emulation.")
             {
                 TooltipText = "Click to open the AmiiboAPI website in your default browser.",
-                Justify = Justification.Center,
-                Attributes = new AttrList(),
+                Justify     = Justification.Center,
+                Attributes  = new AttrList()
             };
             _amiiboApiLinkLabel.Attributes.Insert(new Pango.AttrScale(0.9f));
 
@@ -202,8 +185,8 @@ namespace Ryujinx.UI.Windows
             //
             _socialBox = new Box(Orientation.Horizontal, 0)
             {
-                Margin = 25,
-                MarginBottom = 10,
+                Margin       = 25,
+                MarginBottom = 10
             };
 
             //
@@ -211,7 +194,7 @@ namespace Ryujinx.UI.Windows
             //
             _patreonEventBox = new EventBox()
             {
-                TooltipText = "Click to open the Ryujinx Patreon page in your default browser.",
+                TooltipText = "Click to open the Ryujinx Patreon page in your default browser."
             };
             _patreonEventBox.ButtonPressEvent += PatreonButton_Pressed;
 
@@ -223,9 +206,9 @@ namespace Ryujinx.UI.Windows
             //
             // _patreonLogo
             //
-            _patreonLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.UI.Common.Resources.Logo_Patreon_Light.png", 30, 30))
+            _patreonLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.Ui.Common.Resources.Logo_Patreon_Light.png", 30, 30))
             {
-                Margin = 10,
+                Margin = 10
             };
 
             //
@@ -233,7 +216,7 @@ namespace Ryujinx.UI.Windows
             //
             _patreonLabel = new Label("Patreon")
             {
-                Justify = Justification.Center,
+                Justify = Justification.Center
             };
 
             //
@@ -241,7 +224,7 @@ namespace Ryujinx.UI.Windows
             //
             _githubEventBox = new EventBox()
             {
-                TooltipText = "Click to open the Ryujinx GitHub page in your default browser.",
+                TooltipText = "Click to open the Ryujinx GitHub page in your default browser."
             };
             _githubEventBox.ButtonPressEvent += GitHubButton_Pressed;
 
@@ -253,9 +236,9 @@ namespace Ryujinx.UI.Windows
             //
             // _githubLogo
             //
-            _githubLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.UI.Common.Resources.Logo_GitHub_Light.png", 30, 30))
+            _githubLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.Ui.Common.Resources.Logo_GitHub_Light.png", 30, 30))
             {
-                Margin = 10,
+                Margin = 10
             };
 
             //
@@ -263,7 +246,7 @@ namespace Ryujinx.UI.Windows
             //
             _githubLabel = new Label("GitHub")
             {
-                Justify = Justification.Center,
+                Justify = Justification.Center
             };
 
             //
@@ -276,16 +259,16 @@ namespace Ryujinx.UI.Windows
             //
             _discordEventBox = new EventBox()
             {
-                TooltipText = "Click to open an invite to the Ryujinx Discord server in your default browser.",
+                TooltipText = "Click to open an invite to the Ryujinx Discord server in your default browser."
             };
             _discordEventBox.ButtonPressEvent += DiscordButton_Pressed;
 
             //
             // _discordLogo
             //
-            _discordLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.UI.Common.Resources.Logo_Discord_Light.png", 30, 30))
+            _discordLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.Ui.Common.Resources.Logo_Discord_Light.png", 30, 30))
             {
-                Margin = 10,
+                Margin = 10
             };
 
             //
@@ -293,7 +276,7 @@ namespace Ryujinx.UI.Windows
             //
             _discordLabel = new Label("Discord")
             {
-                Justify = Justification.Center,
+                Justify = Justification.Center
             };
 
             //
@@ -301,7 +284,7 @@ namespace Ryujinx.UI.Windows
             //
             _twitterEventBox = new EventBox()
             {
-                TooltipText = "Click to open the Ryujinx Twitter page in your default browser.",
+                TooltipText = "Click to open the Ryujinx Twitter page in your default browser."
             };
             _twitterEventBox.ButtonPressEvent += TwitterButton_Pressed;
 
@@ -313,9 +296,9 @@ namespace Ryujinx.UI.Windows
             //
             // _twitterLogo
             //
-            _twitterLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.UI.Common.Resources.Logo_Twitter_Light.png", 30, 30))
+            _twitterLogo = new Image(new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.Ui.Common.Resources.Logo_Twitter_Light.png", 30, 30))
             {
-                Margin = 10,
+                Margin = 10
             };
 
             //
@@ -323,7 +306,7 @@ namespace Ryujinx.UI.Windows
             //
             _twitterLabel = new Label("Twitter")
             {
-                Justify = Justification.Center,
+                Justify = Justification.Center
             };
 
             //
@@ -331,7 +314,7 @@ namespace Ryujinx.UI.Windows
             //
             _separator = new Separator(Orientation.Vertical)
             {
-                Margin = 15,
+                Margin = 15
             };
 
             //
@@ -339,8 +322,8 @@ namespace Ryujinx.UI.Windows
             //
             _rightBox = new Box(Orientation.Vertical, 0)
             {
-                Margin = 15,
-                MarginTop = 40,
+                Margin    = 15,
+                MarginTop = 40
             };
 
             //
@@ -348,8 +331,8 @@ namespace Ryujinx.UI.Windows
             //
             _aboutLabel = new Label("About :")
             {
-                Halign = Align.Start,
-                Attributes = new AttrList(),
+                Halign     = Align.Start,
+                Attributes = new AttrList()
             };
             _aboutLabel.Attributes.Insert(new Pango.AttrWeight(Weight.Bold));
             _aboutLabel.Attributes.Insert(new Pango.AttrUnderline(Underline.Single));
@@ -363,7 +346,7 @@ namespace Ryujinx.UI.Windows
                                                "Developers interested in contributing can find out more on our GitHub or Discord.")
             {
                 Margin = 15,
-                Halign = Align.Start,
+                Halign = Align.Start
             };
 
             //
@@ -371,8 +354,8 @@ namespace Ryujinx.UI.Windows
             //
             _createdByLabel = new Label("Maintained by :")
             {
-                Halign = Align.Start,
-                Attributes = new AttrList(),
+                Halign     = Align.Start,
+                Attributes = new AttrList()
             };
             _createdByLabel.Attributes.Insert(new Pango.AttrWeight(Weight.Bold));
             _createdByLabel.Attributes.Insert(new Pango.AttrUnderline(Underline.Single));
@@ -382,11 +365,11 @@ namespace Ryujinx.UI.Windows
             //
             _createdByText = new TextView()
             {
-                WrapMode = Gtk.WrapMode.Word,
-                Editable = false,
+                WrapMode      = Gtk.WrapMode.Word,
+                Editable      = false,
                 CursorVisible = false,
-                Margin = 15,
-                MarginEnd = 30,
+                Margin        = 15,
+                MarginRight   = 30
             };
             _createdByText.Buffer.Text = "gdkchan, Ac_K, Thog, rip in peri peri, LDj3SNuD, emmaus, Thealexbarney, Xpl0itR, GoffyDude, »jD« and more...";
 
@@ -402,9 +385,9 @@ namespace Ryujinx.UI.Windows
             _contributorsLinkLabel = new Label("See All Contributors...")
             {
                 TooltipText = "Click to open the Contributors page in your default browser.",
-                MarginEnd = 30,
-                Halign = Align.End,
-                Attributes = new AttrList(),
+                MarginRight = 30,
+                Halign      = Align.End,
+                Attributes  = new AttrList()
             };
             _contributorsLinkLabel.Attributes.Insert(new Pango.AttrUnderline(Underline.Single));
 
@@ -413,8 +396,8 @@ namespace Ryujinx.UI.Windows
             //
             _patreonNamesLabel = new Label("Supported on Patreon by :")
             {
-                Halign = Align.Start,
-                Attributes = new AttrList(),
+                Halign     = Align.Start,
+                Attributes = new AttrList()
             };
             _patreonNamesLabel.Attributes.Insert(new Pango.AttrWeight(Weight.Bold));
             _patreonNamesLabel.Attributes.Insert(new Pango.AttrUnderline(Underline.Single));
@@ -424,10 +407,10 @@ namespace Ryujinx.UI.Windows
             //
             _patreonNamesScrolled = new ScrolledWindow()
             {
-                Margin = 15,
-                MarginEnd = 30,
-                Expand = true,
-                ShadowType = ShadowType.In,
+                Margin      = 15,
+                MarginRight = 30,
+                Expand      = true,
+                ShadowType  = ShadowType.In
             };
             _patreonNamesScrolled.SetPolicy(PolicyType.Never, PolicyType.Automatic);
 
@@ -436,10 +419,12 @@ namespace Ryujinx.UI.Windows
             //
             _patreonNamesText = new TextView()
             {
-                WrapMode = Gtk.WrapMode.Word,
+                WrapMode = Gtk.WrapMode.Word
             };
             _patreonNamesText.Buffer.Text = "Loading...";
             _patreonNamesText.SetProperty("editable", new GLib.Value(false));
+
+#pragma warning restore CS0612
 
             ShowComponent();
         }
@@ -479,11 +464,8 @@ namespace Ryujinx.UI.Windows
             _socialBox.Add(_discordEventBox);
             _socialBox.Add(_twitterEventBox);
 
-            _changelogEventBox.Add(_changelogLinkLabel);
-
             _leftBox.Add(_logoBox);
             _leftBox.Add(_versionLabel);
-            _leftBox.Add(_changelogEventBox);
             _leftBox.Add(_disclaimerLabel);
             _leftBox.Add(_amiiboApiLink);
             _leftBox.Add(_socialBox);

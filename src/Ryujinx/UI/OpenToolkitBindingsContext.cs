@@ -1,11 +1,11 @@
-using SPB.Graphics;
+﻿using SPB.Graphics;
 using System;
 
-namespace Ryujinx.UI
+namespace Ryujinx.Ui
 {
     public class OpenToolkitBindingsContext : OpenTK.IBindingsContext
     {
-        private readonly IBindingsContext _bindingContext;
+        private IBindingsContext _bindingContext;
 
         public OpenToolkitBindingsContext(IBindingsContext bindingsContext)
         {

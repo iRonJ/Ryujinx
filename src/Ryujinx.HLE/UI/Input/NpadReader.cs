@@ -1,7 +1,7 @@
-using Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common;
+﻿using Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common;
 using Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad;
 
-namespace Ryujinx.HLE.UI.Input
+namespace Ryujinx.HLE.Ui.Input
 {
     /// <summary>
     /// Class that converts Hid entries for the Npad into pressed / released events.
@@ -9,7 +9,7 @@ namespace Ryujinx.HLE.UI.Input
     class NpadReader
     {
         private readonly Switch _device;
-        private readonly NpadCommonState[] _lastStates;
+        private NpadCommonState[] _lastStates;
 
         public event NpadButtonHandler NpadButtonUpEvent;
         public event NpadButtonHandler NpadButtonDownEvent;
@@ -37,7 +37,7 @@ namespace Ryujinx.HLE.UI.Input
             return buttons;
         }
 
-        private static ref RingLifo<NpadCommonState> GetCommonStateLifo(ref NpadInternalState npad)
+        private ref RingLifo<NpadCommonState> GetCommonStateLifo(ref NpadInternalState npad)
         {
             switch (npad.StyleSet)
             {
@@ -58,7 +58,7 @@ namespace Ryujinx.HLE.UI.Input
             }
         }
 
-        public void Update(bool supressEvents = false)
+        public void Update(bool supressEvents=false)
         {
             ref var npads = ref _device.Hid.SharedMemory.Npads;
 
@@ -81,11 +81,7 @@ namespace Ryujinx.HLE.UI.Input
             int firstEntryNum;
 
             // Scan the LIFO for the first entry that is newer that what's already processed.
-            for (firstEntryNum = fullKeyEntries.Length - 1;
-                 firstEntryNum >= 0 && fullKeyEntries[firstEntryNum].Object.SamplingNumber <= lastEntry.SamplingNumber;
-                 firstEntryNum--)
-            {
-            }
+            for (firstEntryNum = fullKeyEntries.Length - 1; firstEntryNum >= 0 && fullKeyEntries[firstEntryNum].Object.SamplingNumber <= lastEntry.SamplingNumber; firstEntryNum--) ;
 
             if (firstEntryNum == -1)
             {

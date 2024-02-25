@@ -1,4 +1,4 @@
-namespace Ryujinx.UI.Common.Configuration.UI
+namespace Ryujinx.Ui.Common.Configuration.Ui
 {
     public struct WindowStartup
     {

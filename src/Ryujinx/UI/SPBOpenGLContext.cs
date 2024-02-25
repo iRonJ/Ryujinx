@@ -1,16 +1,16 @@
-using OpenTK.Graphics.OpenGL;
+﻿using OpenTK.Graphics.OpenGL;
 using Ryujinx.Graphics.OpenGL;
 using SPB.Graphics;
 using SPB.Graphics.OpenGL;
 using SPB.Platform;
 using SPB.Windowing;
 
-namespace Ryujinx.UI
+namespace Ryujinx.Ui
 {
     class SPBOpenGLContext : IOpenGLContext
     {
-        private readonly OpenGLContextBase _context;
-        private readonly NativeWindowBase _window;
+        private OpenGLContextBase _context;
+        private NativeWindowBase _window;
 
         private SPBOpenGLContext(OpenGLContextBase context, NativeWindowBase window)
         {
@@ -28,8 +28,6 @@ namespace Ryujinx.UI
         {
             _context.MakeCurrent(_window);
         }
-
-        public bool HasContext() => _context.IsCurrent;
 
         public static SPBOpenGLContext CreateBackgroundContext(OpenGLContextBase sharedContext)
         {

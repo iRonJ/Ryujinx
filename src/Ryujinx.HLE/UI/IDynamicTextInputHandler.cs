@@ -1,6 +1,6 @@
 using System;
 
-namespace Ryujinx.HLE.UI
+namespace Ryujinx.HLE.Ui
 {
     public interface IDynamicTextInputHandler : IDisposable
     {

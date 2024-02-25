@@ -1,16 +1,16 @@
-using DiscordRPC;
+﻿using DiscordRPC;
 using Ryujinx.Common;
-using Ryujinx.UI.Common.Configuration;
+using Ryujinx.Ui.Common.Configuration;
 
-namespace Ryujinx.UI.Common
+namespace Ryujinx.Ui.Common
 {
     public static class DiscordIntegrationModule
     {
         private const string Description = "A simple, experimental Nintendo Switch emulator.";
-        private const string CliendId = "568815339807309834";
+        private const string CliendId    = "568815339807309834";
 
         private static DiscordRpcClient _discordClient;
-        private static RichPresence _discordPresenceMain;
+        private static RichPresence     _discordPresenceMain;
 
         public static void Initialize()
         {
@@ -18,20 +18,20 @@ namespace Ryujinx.UI.Common
             {
                 Assets = new Assets
                 {
-                    LargeImageKey = "ryujinx",
-                    LargeImageText = Description,
+                    LargeImageKey  = "ryujinx",
+                    LargeImageText = Description
                 },
-                Details = "Main Menu",
-                State = "Idling",
+                Details    = "Main Menu",
+                State      = "Idling",
                 Timestamps = Timestamps.Now,
-                Buttons = new[]
+                Buttons    = new Button[]
                 {
-                    new Button
-                    {
-                        Label = "Website",
-                        Url   = "https://ryujinx.org/",
-                    },
-                },
+                    new Button()
+                    { 
+                        Label = "Website", 
+                        Url   = "https://ryujinx.org/"
+                    }
+                }
             };
 
             ConfigurationState.Instance.EnableDiscordIntegration.Event += Update;
@@ -66,22 +66,22 @@ namespace Ryujinx.UI.Common
             {
                 Assets = new Assets
                 {
-                    LargeImageKey = "game",
+                    LargeImageKey  = "game",
                     LargeImageText = titleName,
-                    SmallImageKey = "ryujinx",
+                    SmallImageKey  = "ryujinx",
                     SmallImageText = Description,
                 },
-                Details = $"Playing {titleName}",
-                State = (titleId == "0000000000000000") ? "Homebrew" : titleId.ToUpper(),
+                Details    = $"Playing {titleName}",
+                State      = (titleId == "0000000000000000") ? "Homebrew" : titleId.ToUpper(),
                 Timestamps = Timestamps.Now,
-                Buttons = new[]
+                Buttons    = new Button[]
                 {
-                    new Button
+                    new Button()
                     {
                         Label = "Website",
-                        Url = "https://ryujinx.org/",
-                    },
-                },
+                        Url   = "https://ryujinx.org/"
+                    }
+                }
             });
         }
 

@@ -1,7 +1,7 @@
-using Ryujinx.Common.Utilities;
+﻿using Ryujinx.Common.Utilities;
 using System.Text.Json.Serialization;
 
-namespace Ryujinx.UI.Common.Configuration
+namespace Ryujinx.Ui.Common.Configuration
 {
     [JsonConverter(typeof(TypedStringEnumConverter<AudioBackend>))]
     public enum AudioBackend
@@ -9,6 +9,6 @@ namespace Ryujinx.UI.Common.Configuration
         Dummy,
         OpenAl,
         SoundIo,
-        SDL2,
+        SDL2
     }
 }

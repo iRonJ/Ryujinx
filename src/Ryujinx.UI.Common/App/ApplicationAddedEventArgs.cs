@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace Ryujinx.UI.App.Common
+namespace Ryujinx.Ui.App.Common
 {
     public class ApplicationAddedEventArgs : EventArgs
     {

@@ -1,26 +1,26 @@
 using Gtk;
-using Ryujinx.UI.Common.Configuration;
+using Ryujinx.Ui.Common.Configuration;
 using System;
 using System.Reflection;
 using GUI = Gtk.Builder.ObjectAttribute;
 
-namespace Ryujinx.UI.Widgets
+namespace Ryujinx.Ui.Widgets
 {
     public class ProfileDialog : Dialog
     {
         public string FileName { get; private set; }
 
-#pragma warning disable CS0649, IDE0044 // Field is never assigned to, Add readonly modifier
+#pragma warning disable CS0649, IDE0044
         [GUI] Entry _profileEntry;
         [GUI] Label _errorMessage;
 #pragma warning restore CS0649, IDE0044
 
-        public ProfileDialog() : this(new Builder("Ryujinx.UI.Widgets.ProfileDialog.glade")) { }
+        public ProfileDialog() : this(new Builder("Ryujinx.Ui.Widgets.ProfileDialog.glade")) { }
 
         private ProfileDialog(Builder builder) : base(builder.GetRawOwnedObject("_profileDialog"))
         {
             builder.Autoconnect(this);
-            Icon = new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.UI.Common.Resources.Logo_Ryujinx.png");
+            Icon = new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.Ui.Common.Resources.Logo_Ryujinx.png");
         }
 
         private void OkToggle_Activated(object sender, EventArgs args)
