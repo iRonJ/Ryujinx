@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qkhui8xP5sI9Qr6JP6ibQgVVdB62NX1pqe0Qz9XnTsWbHLwozgHznEfQFUSH38bDeuab3MTO5J2j40UNR+QlEQ==",
+  "dgSpecHash": "RdxLWvgc9PB2PfnK+oy6SeUDrJcyKPjKKaRBXBNS3zEu5IU/d3cBUpKPmdW/7dF0/miGhPs7IhGDlI169HxdPg==",
   "success": true,
   "projectFilePath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx/Ryujinx.csproj",
   "expectedPackageFiles": [
@@ -168,15 +168,15 @@
     "/Users/ronj/.nuget/packages/system.threading.timer/4.0.1/system.threading.timer.4.0.1.nupkg.sha512",
     "/Users/ronj/.nuget/packages/system.xml.readerwriter/4.0.11/system.xml.readerwriter.4.0.11.nupkg.sha512",
     "/Users/ronj/.nuget/packages/system.xml.xdocument/4.0.11/system.xml.xdocument.4.0.11.nupkg.sha512",
-    "/Users/ronj/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/7.0.5/microsoft.aspnetcore.app.runtime.linux-x64.7.0.5.nupkg.sha512",
-    "/Users/ronj/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-x64/7.0.5/microsoft.aspnetcore.app.runtime.osx-x64.7.0.5.nupkg.sha512",
-    "/Users/ronj/.nuget/packages/microsoft.aspnetcore.app.runtime.win-x64/7.0.5/microsoft.aspnetcore.app.runtime.win-x64.7.0.5.nupkg.sha512",
-    "/Users/ronj/.nuget/packages/microsoft.netcore.app.host.linux-x64/7.0.5/microsoft.netcore.app.host.linux-x64.7.0.5.nupkg.sha512",
-    "/Users/ronj/.nuget/packages/microsoft.netcore.app.host.osx-x64/7.0.5/microsoft.netcore.app.host.osx-x64.7.0.5.nupkg.sha512",
-    "/Users/ronj/.nuget/packages/microsoft.netcore.app.host.win-x64/7.0.5/microsoft.netcore.app.host.win-x64.7.0.5.nupkg.sha512",
-    "/Users/ronj/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/7.0.5/microsoft.netcore.app.runtime.linux-x64.7.0.5.nupkg.sha512",
-    "/Users/ronj/.nuget/packages/microsoft.netcore.app.runtime.osx-x64/7.0.5/microsoft.netcore.app.runtime.osx-x64.7.0.5.nupkg.sha512",
-    "/Users/ronj/.nuget/packages/microsoft.netcore.app.runtime.win-x64/7.0.5/microsoft.netcore.app.runtime.win-x64.7.0.5.nupkg.sha512"
+    "/Users/ronj/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/7.0.16/microsoft.aspnetcore.app.runtime.linux-x64.7.0.16.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-x64/7.0.16/microsoft.aspnetcore.app.runtime.osx-x64.7.0.16.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.aspnetcore.app.runtime.win-x64/7.0.16/microsoft.aspnetcore.app.runtime.win-x64.7.0.16.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.netcore.app.host.linux-x64/7.0.16/microsoft.netcore.app.host.linux-x64.7.0.16.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.netcore.app.host.osx-x64/7.0.16/microsoft.netcore.app.host.osx-x64.7.0.16.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.netcore.app.host.win-x64/7.0.16/microsoft.netcore.app.host.win-x64.7.0.16.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/7.0.16/microsoft.netcore.app.runtime.linux-x64.7.0.16.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.netcore.app.runtime.osx-x64/7.0.16/microsoft.netcore.app.runtime.osx-x64.7.0.16.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.netcore.app.runtime.win-x64/7.0.16/microsoft.netcore.app.runtime.win-x64.7.0.16.nupkg.sha512"
   ],
   "logs": []
 }

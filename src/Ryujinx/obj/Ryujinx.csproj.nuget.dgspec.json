@@ -15,7 +15,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -110,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -125,7 +124,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -224,7 +222,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -239,7 +237,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -334,7 +331,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -349,7 +346,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -439,39 +435,39 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.osx-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.linux-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.osx-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             }
           ],
           "frameworkReferences": {
@@ -479,7 +475,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -505,7 +501,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -603,7 +598,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -618,7 +613,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -723,7 +717,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -738,7 +732,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -833,7 +826,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -848,7 +841,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -936,7 +928,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -951,7 +943,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -1046,7 +1037,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1061,7 +1052,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -1168,7 +1158,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1183,7 +1173,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -1278,7 +1267,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1293,7 +1282,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -1388,7 +1376,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1403,7 +1391,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -1498,7 +1485,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1513,7 +1500,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -1623,7 +1609,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1638,7 +1624,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -1743,7 +1728,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1758,7 +1743,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -1853,7 +1837,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1868,7 +1852,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -1960,7 +1943,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1975,7 +1958,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -2079,7 +2061,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -2094,7 +2076,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -2186,7 +2167,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -2201,7 +2182,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -2323,7 +2303,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -2338,7 +2318,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -2498,7 +2477,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -2513,7 +2492,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -2605,7 +2583,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -2620,7 +2598,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -2725,7 +2702,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -2740,7 +2717,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -2835,7 +2811,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -2850,7 +2826,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -2952,7 +2927,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -2967,7 +2942,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -3059,7 +3033,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -3074,7 +3048,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -3173,7 +3146,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -3188,7 +3161,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -3290,7 +3262,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -3305,7 +3277,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -3480,39 +3451,39 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.osx-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.linux-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.osx-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.16, 7.0.16]"
             }
           ],
           "frameworkReferences": {
@@ -3520,7 +3491,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -3546,7 +3517,6 @@
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
-          "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/NuGet.Config",
           "/Users/ronj/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -3634,7 +3604,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     }

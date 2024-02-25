@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QeG0pckEU8I1/v0S8chX+hpFIxk4/X4Uxhu3hLc/fE/NH6BV0igh8YweoL8AsnVAX13aCB5dXgGNg8LK5XTAAg==",
+  "dgSpecHash": "HB1c6bkUlCRZcfqwGlE+BhqPQWglWOLP62GF75R2o1n3VMJHKZ+mARBn6tzRV1IYGYVbjNiUtDsvGrU4CCPm3A==",
   "success": true,
   "projectFilePath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Input.SDL2/Ryujinx.Input.SDL2.csproj",
   "expectedPackageFiles": [
