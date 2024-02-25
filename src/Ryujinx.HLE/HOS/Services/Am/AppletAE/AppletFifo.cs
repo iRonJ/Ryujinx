@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -11,11 +7,7 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE
 {
     internal class AppletFifo<T> : IAppletFifo<T>
     {
-<<<<<<< HEAD
         private readonly ConcurrentQueue<T> _dataQueue;
-=======
-        private ConcurrentQueue<T> _dataQueue;
->>>>>>> 1ec71635b (sync with main branch)
 
         public event EventHandler DataAvailable;
 

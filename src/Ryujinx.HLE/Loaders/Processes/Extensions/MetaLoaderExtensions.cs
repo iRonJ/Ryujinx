@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using LibHac.Common;
-=======
-﻿using LibHac.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Fs;
 using LibHac.Fs.Fsa;
 using LibHac.Loader;
@@ -62,8 +58,4 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
             metaLoader.Load(npdmBuffer).ThrowIfFailure();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.Nvdec.Vp9.Types
-=======
-﻿namespace Ryujinx.Graphics.Nvdec.Vp9.Types
->>>>>>> 1ec71635b (sync with main branch)
 {
     internal enum BlockSize
     {
@@ -20,10 +16,6 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
         Block64x32 = 11,
         Block64x64 = 12,
         BlockSizes = 13,
-<<<<<<< HEAD
         BlockInvalid = BlockSizes,
-=======
-        BlockInvalid = BlockSizes
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

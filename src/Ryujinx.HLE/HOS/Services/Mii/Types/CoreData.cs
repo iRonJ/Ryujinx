@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static Ryujinx.HLE.HOS.Services.Mii.Types.RandomMiiConstants;
@@ -15,15 +11,9 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
     {
         public const int Size = 0x30;
 
-<<<<<<< HEAD
         private Array48<byte> _storage;
 
         public Span<byte> Storage => _storage.AsSpan();
-=======
-        private byte _storage;
-
-        public Span<byte> Storage => MemoryMarshal.CreateSpan(ref _storage, Size);
->>>>>>> 1ec71635b (sync with main branch)
 
         [StructLayout(LayoutKind.Sequential, Pack = 4, Size = 0x18)]
         public struct ElementInfo
@@ -84,11 +74,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         public void SetDefault()
         {
-<<<<<<< HEAD
             Storage.Clear();
-=======
-            Storage.Fill(0);
->>>>>>> 1ec71635b (sync with main branch)
 
             Nickname = Nickname.Default;
         }
@@ -389,30 +375,18 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         public Span<byte> GetNicknameStorage()
         {
-<<<<<<< HEAD
             return Storage[0x1c..];
-=======
-            return Storage.Slice(0x1c);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public Nickname Nickname
         {
             get => Nickname.FromBytes(GetNicknameStorage());
-<<<<<<< HEAD
             set => value.Raw[..20].CopyTo(GetNicknameStorage());
-=======
-            set => value.Raw.Slice(0, 20).CopyTo(GetNicknameStorage());
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static CoreData BuildRandom(UtilityImpl utilImpl, Age age, Gender gender, Race race)
         {
-<<<<<<< HEAD
             CoreData coreData = new();
-=======
-            CoreData coreData = new CoreData();
->>>>>>> 1ec71635b (sync with main branch)
 
             coreData.SetDefault();
 
@@ -466,7 +440,6 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
             int indexFor4 = 3 * (int)age + 9 * (int)gender + (int)race;
 
-<<<<<<< HEAD
             var facelineTypeInfo = RandomMiiFacelineArray[indexFor4];
             var facelineColorInfo = RandomMiiFacelineColorArray[3 * (int)gender + (int)race];
             var facelineWrinkleInfo = RandomMiiFacelineWrinkleArray[indexFor4];
@@ -490,31 +463,6 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             coreData.HairType = (HairType)hairTypeInfo.Values[utilImpl.GetRandom(hairTypeInfo.ValuesCount)];
             coreData.HairColor = (CommonColor)Helper.Ver3HairColorTable[hairColorInfo.Values[utilImpl.GetRandom(hairColorInfo.ValuesCount)]];
             coreData.HairFlip = (HairFlip)utilImpl.GetRandom((int)HairFlip.Max + 1);
-=======
-            var facelineTypeInfo    = RandomMiiFacelineArray[indexFor4];
-            var facelineColorInfo   = RandomMiiFacelineColorArray[3 * (int)gender + (int)race];
-            var facelineWrinkleInfo = RandomMiiFacelineWrinkleArray[indexFor4];
-            var facelineMakeInfo    = RandomMiiFacelineMakeArray[indexFor4];
-            var hairTypeInfo        = RandomMiiHairTypeArray[indexFor4];
-            var hairColorInfo       = RandomMiiHairColorArray[3 * (int)race + (int)age];
-            var eyeTypeInfo         = RandomMiiEyeTypeArray[indexFor4];
-            var eyeColorInfo        = RandomMiiEyeColorArray[(int)race];
-            var eyebrowTypeInfo     = RandomMiiEyebrowTypeArray[indexFor4];
-            var noseTypeInfo        = RandomMiiNoseTypeArray[indexFor4];
-            var mouthTypeInfo       = RandomMiiMouthTypeArray[indexFor4];
-            var glassTypeInfo       = RandomMiiGlassTypeArray[(int)age];
-
-            // Faceline
-            coreData.FacelineType    = (FacelineType)facelineTypeInfo.Values[utilImpl.GetRandom(facelineTypeInfo.ValuesCount)];
-            coreData.FacelineColor   = (FacelineColor)Helper.Ver3FacelineColorTable[facelineColorInfo.Values[utilImpl.GetRandom(facelineColorInfo.ValuesCount)]];
-            coreData.FacelineWrinkle = (FacelineWrinkle)facelineWrinkleInfo.Values[utilImpl.GetRandom(facelineWrinkleInfo.ValuesCount)];
-            coreData.FacelineMake    = (FacelineMake)facelineMakeInfo.Values[utilImpl.GetRandom(facelineMakeInfo.ValuesCount)];
-
-            // Hair
-            coreData.HairType  = (HairType)hairTypeInfo.Values[utilImpl.GetRandom(hairTypeInfo.ValuesCount)];
-            coreData.HairColor = (CommonColor)Helper.Ver3HairColorTable[hairColorInfo.Values[utilImpl.GetRandom(hairColorInfo.ValuesCount)]];
-            coreData.HairFlip  = (HairFlip)utilImpl.GetRandom((int)HairFlip.Max + 1);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Eye
             coreData.EyeType = (EyeType)eyeTypeInfo.Values[utilImpl.GetRandom(eyeTypeInfo.ValuesCount)];
@@ -523,7 +471,6 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             int eyeRotateKey2 = gender != Gender.Male ? 3 : 4;
 
             byte eyeRotateOffset = (byte)(32 - EyeRotateTable[eyeRotateKey1] + eyeRotateKey2);
-<<<<<<< HEAD
             byte eyeRotate = (byte)(32 - EyeRotateTable[(int)coreData.EyeType]);
 
             coreData.EyeColor = (CommonColor)Helper.Ver3EyeColorTable[eyeColorInfo.Values[utilImpl.GetRandom(eyeColorInfo.ValuesCount)]];
@@ -532,22 +479,11 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             coreData.EyeRotate = (byte)(eyeRotateOffset - eyeRotate);
             coreData.EyeX = 2;
             coreData.EyeY = (byte)(axisY + 12);
-=======
-            byte eyeRotate       = (byte)(32 - EyeRotateTable[(int)coreData.EyeType]);
-
-            coreData.EyeColor  = (CommonColor)Helper.Ver3EyeColorTable[eyeColorInfo.Values[utilImpl.GetRandom(eyeColorInfo.ValuesCount)]];
-            coreData.EyeScale  = 4;
-            coreData.EyeAspect = 3;
-            coreData.EyeRotate = (byte)(eyeRotateOffset - eyeRotate);
-            coreData.EyeX      = 2;
-            coreData.EyeY      = (byte)(axisY + 12);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Eyebrow
             coreData.EyebrowType = (EyebrowType)eyebrowTypeInfo.Values[utilImpl.GetRandom(eyebrowTypeInfo.ValuesCount)];
 
             int eyebrowRotateKey = race == Race.Asian ? 6 : 0;
-<<<<<<< HEAD
             int eyebrowY = race == Race.Asian ? 9 : 10;
 
             byte eyebrowRotateOffset = (byte)(32 - EyebrowRotateTable[eyebrowRotateKey] + 6);
@@ -559,37 +495,17 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             coreData.EyebrowRotate = (byte)(eyebrowRotateOffset - eyebrowRotate);
             coreData.EyebrowX = 2;
             coreData.EyebrowY = (byte)(axisY + eyebrowY);
-=======
-            int eyebrowY         = race == Race.Asian ? 9 : 10;
-
-            byte eyebrowRotateOffset = (byte)(32 - EyebrowRotateTable[eyebrowRotateKey] + 6);
-            byte eyebrowRotate       = (byte)(32 - EyebrowRotateTable[(int)coreData.EyebrowType]);
-
-            coreData.EyebrowColor  = coreData.HairColor;
-            coreData.EyebrowScale  = 4;
-            coreData.EyebrowAspect = 3;
-            coreData.EyebrowRotate = (byte)(eyebrowRotateOffset - eyebrowRotate);
-            coreData.EyebrowX      = 2;
-            coreData.EyebrowY      = (byte)(axisY + eyebrowY);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Nose
             int noseScale = gender == Gender.Female ? 3 : 4;
 
-<<<<<<< HEAD
             coreData.NoseType = (NoseType)noseTypeInfo.Values[utilImpl.GetRandom(noseTypeInfo.ValuesCount)];
             coreData.NoseScale = (byte)noseScale;
             coreData.NoseY = (byte)(axisY + 9);
-=======
-            coreData.NoseType  = (NoseType)noseTypeInfo.Values[utilImpl.GetRandom(noseTypeInfo.ValuesCount)];
-            coreData.NoseScale = (byte)noseScale;
-            coreData.NoseY     = (byte)(axisY + 9);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Mouth
             int mouthColor = gender == Gender.Female ? utilImpl.GetRandom(0, 4) : 0;
 
-<<<<<<< HEAD
             coreData.MouthType = (MouthType)mouthTypeInfo.Values[utilImpl.GetRandom(mouthTypeInfo.ValuesCount)];
             coreData.MouthColor = (CommonColor)Helper.Ver3MouthColorTable[mouthColor];
             coreData.MouthScale = 4;
@@ -598,27 +514,13 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
             // Beard & Mustache
             coreData.BeardColor = coreData.HairColor;
-=======
-            coreData.MouthType   = (MouthType)mouthTypeInfo.Values[utilImpl.GetRandom(mouthTypeInfo.ValuesCount)];
-            coreData.MouthColor  = (CommonColor)Helper.Ver3MouthColorTable[mouthColor];
-            coreData.MouthScale  = 4;
-            coreData.MouthAspect = 3;
-            coreData.MouthY      = (byte)(axisY + 13);
-
-            // Beard & Mustache
-            coreData.BeardColor    = coreData.HairColor;
->>>>>>> 1ec71635b (sync with main branch)
             coreData.MustacheScale = 4;
 
             if (gender == Gender.Male && age != Age.Young && utilImpl.GetRandom(10) < 2)
             {
                 BeardAndMustacheFlag mustacheAndBeardFlag = (BeardAndMustacheFlag)utilImpl.GetRandom(3);
 
-<<<<<<< HEAD
                 BeardType beardType = BeardType.None;
-=======
-                BeardType    beardType    = BeardType.None;
->>>>>>> 1ec71635b (sync with main branch)
                 MustacheType mustacheType = MustacheType.None;
 
                 if ((mustacheAndBeardFlag & BeardAndMustacheFlag.Beard) == BeardAndMustacheFlag.Beard)
@@ -632,24 +534,14 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
                 }
 
                 coreData.MustacheType = mustacheType;
-<<<<<<< HEAD
                 coreData.BeardType = beardType;
                 coreData.MustacheY = 10;
-=======
-                coreData.BeardType    = beardType;
-                coreData.MustacheY    = 10;
->>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
                 coreData.MustacheType = MustacheType.None;
-<<<<<<< HEAD
                 coreData.BeardType = BeardType.None;
                 coreData.MustacheY = (byte)(axisY + 10);
-=======
-                coreData.BeardType    = BeardType.None;
-                coreData.MustacheY    = (byte)(axisY + 10);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             // Glass
@@ -666,7 +558,6 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
                 }
             }
 
-<<<<<<< HEAD
             coreData.GlassType = glassType;
             coreData.GlassColor = (CommonColor)Helper.Ver3GlassColorTable[0];
             coreData.GlassScale = 4;
@@ -689,37 +580,12 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             coreData.RegionMove = 0;
             coreData.FontRegion = 0;
             coreData.Type = 0;
-=======
-            coreData.GlassType  = glassType;
-            coreData.GlassColor = (CommonColor)Helper.Ver3GlassColorTable[0];
-            coreData.GlassScale = 4;
-            coreData.GlassY     = (byte)(axisY + 10);
-
-            // Mole
-            coreData.MoleType  = 0;
-            coreData.MoleScale = 4;
-            coreData.MoleX     = 2;
-            coreData.MoleY     = 20;
-
-            // Body sizing
-            coreData.Height = 64;
-            coreData.Build  = 64;
-
-            // Misc
-            coreData.Nickname      = Nickname.Default;
-            coreData.Gender        = gender;
-            coreData.FavoriteColor = (byte)utilImpl.GetRandom(0, 11);
-            coreData.RegionMove    = 0;
-            coreData.FontRegion    = 0;
-            coreData.Type          = 0;
->>>>>>> 1ec71635b (sync with main branch)
 
             return coreData;
         }
 
         public void SetFromCharInfo(CharInfo charInfo)
         {
-<<<<<<< HEAD
             Nickname = charInfo.Nickname;
             FontRegion = charInfo.FontRegion;
             FavoriteColor = charInfo.FavoriteColor;
@@ -770,58 +636,6 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             MoleScale = charInfo.MoleScale;
             MoleX = charInfo.MoleX;
             MoleY = charInfo.MoleY;
-=======
-            Nickname        = charInfo.Nickname;
-            FontRegion      = charInfo.FontRegion;
-            FavoriteColor   = charInfo.FavoriteColor;
-            Gender          = charInfo.Gender;
-            Height          = charInfo.Height;
-            Build           = charInfo.Build;
-            Type            = charInfo.Type;
-            RegionMove      = charInfo.RegionMove;
-            FacelineType    = charInfo.FacelineType;
-            FacelineColor   = charInfo.FacelineColor;
-            FacelineWrinkle = charInfo.FacelineWrinkle;
-            FacelineMake    = charInfo.FacelineMake;
-            HairType        = charInfo.HairType;
-            HairColor       = charInfo.HairColor;
-            HairFlip        = charInfo.HairFlip;
-            EyeType         = charInfo.EyeType;
-            EyeColor        = charInfo.EyeColor;
-            EyeScale        = charInfo.EyeScale;
-            EyeAspect       = charInfo.EyeAspect;
-            EyeRotate       = charInfo.EyeRotate;
-            EyeX            = charInfo.EyeX;
-            EyeY            = charInfo.EyeY;
-            EyebrowType     = charInfo.EyebrowType;
-            EyebrowColor    = charInfo.EyebrowColor;
-            EyebrowScale    = charInfo.EyebrowScale;
-            EyebrowAspect   = charInfo.EyebrowAspect;
-            EyebrowRotate   = charInfo.EyebrowRotate;
-            EyebrowX        = charInfo.EyebrowX;
-            EyebrowY        = charInfo.EyebrowY;
-            NoseType        = charInfo.NoseType;
-            NoseScale       = charInfo.NoseScale;
-            NoseY           = charInfo.NoseY;
-            MouthType       = charInfo.MouthType;
-            MouthColor      = charInfo.MouthColor;
-            MouthScale      = charInfo.MouthScale;
-            MouthAspect     = charInfo.MouthAspect;
-            MouthY          = charInfo.MouthY;
-            BeardColor      = charInfo.BeardColor;
-            BeardType       = charInfo.BeardType;
-            MustacheType    = charInfo.MustacheType;
-            MustacheScale   = charInfo.MustacheScale;
-            MustacheY       = charInfo.MustacheY;
-            GlassType       = charInfo.GlassType;
-            GlassColor      = charInfo.GlassColor;
-            GlassScale      = charInfo.GlassScale;
-            GlassY          = charInfo.GlassY;
-            MoleType        = charInfo.MoleType;
-            MoleScale       = charInfo.MoleScale;
-            MoleX           = charInfo.MoleX;
-            MoleY           = charInfo.MoleY;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static bool operator ==(CoreData x, CoreData y)
@@ -904,11 +718,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         public override int GetHashCode()
         {
-<<<<<<< HEAD
             HashCode hashCode = new();
-=======
-            HashCode hashCode = new HashCode();
->>>>>>> 1ec71635b (sync with main branch)
 
             hashCode.Add(Nickname);
             hashCode.Add(FontRegion);
@@ -964,15 +774,9 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             return hashCode.ToHashCode();
         }
 
-<<<<<<< HEAD
         private readonly ReadOnlySpan<ElementInfo> ElementInfos => MemoryMarshal.Cast<byte, ElementInfo>(ElementInfoArray);
 
         private enum ElementInfoIndex
-=======
-        private static ReadOnlySpan<ElementInfo> ElementInfos => MemoryMarshal.Cast<byte, ElementInfo>(ElementInfoArray);
-
-        private enum ElementInfoIndex : int
->>>>>>> 1ec71635b (sync with main branch)
         {
             HairType,
             Height,
@@ -1022,19 +826,11 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             NoseScale,
             MouthScale,
             MustacheScale,
-<<<<<<< HEAD
             MoleScale,
         }
 
         #region "Element Info Array"
         private readonly ReadOnlySpan<byte> ElementInfoArray => new byte[]
-=======
-            MoleScale
-        }
-
-        #region "Element Info Array"
-        private static ReadOnlySpan<byte> ElementInfoArray => new byte[]
->>>>>>> 1ec71635b (sync with main branch)
         {
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
             0x83, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -1109,11 +905,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x1b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
             0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
             0x1b, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-<<<<<<< HEAD
             0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-=======
-            0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
->>>>>>> 1ec71635b (sync with main branch)
         };
         #endregion
     }

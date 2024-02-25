@@ -1,29 +1,16 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.IO;
 
 namespace Ryujinx.HLE.HOS
 {
     class HomebrewRomFsStream : Stream
     {
-<<<<<<< HEAD
         private readonly Stream _baseStream;
         private readonly long _positionOffset;
 
         public HomebrewRomFsStream(Stream baseStream, long positionOffset)
         {
             _baseStream = baseStream;
-=======
-        private Stream _baseStream;
-        private long   _positionOffset;
-
-        public HomebrewRomFsStream(Stream baseStream, long positionOffset)
-        {
-            _baseStream     = baseStream;
->>>>>>> 1ec71635b (sync with main branch)
             _positionOffset = positionOffset;
 
             _baseStream.Position = _positionOffset;

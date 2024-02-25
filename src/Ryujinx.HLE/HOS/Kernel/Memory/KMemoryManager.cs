@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Kernel.Common;
-=======
-﻿using Ryujinx.HLE.HOS.Kernel.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.HLE.HOS.Kernel.Memory

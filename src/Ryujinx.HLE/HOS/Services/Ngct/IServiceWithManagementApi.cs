@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Ngct
-=======
-﻿namespace Ryujinx.HLE.HOS.Services.Ngct
->>>>>>> 1ec71635b (sync with main branch)
 {
     [Service("ngct:s")] // 9.0.0+
     class IServiceWithManagementApi : IpcService
@@ -23,8 +19,4 @@ namespace Ryujinx.HLE.HOS.Services.Ngct
             return NgctServer.Filter(context);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

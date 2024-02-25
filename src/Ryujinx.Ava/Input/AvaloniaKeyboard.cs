@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Configuration.Hid;
-=======
-﻿using Ryujinx.Common.Configuration.Hid;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Configuration.Hid.Keyboard;
 using Ryujinx.Input;
 using System;
@@ -16,7 +12,6 @@ namespace Ryujinx.Ava.Input
     internal class AvaloniaKeyboard : IKeyboard
     {
         private readonly List<ButtonMappingEntry> _buttonsUserMapping;
-<<<<<<< HEAD
         private readonly AvaloniaKeyboardDriver _driver;
         private StandardKeyboardInputConfig _configuration;
 
@@ -31,31 +26,11 @@ namespace Ryujinx.Ava.Input
         private class ButtonMappingEntry
         {
             public readonly Key From;
-=======
-        private readonly AvaloniaKeyboardDriver   _driver;
-        private StandardKeyboardInputConfig       _configuration;
-
-        private readonly object _userMappingLock = new();
-
-        public string Id   { get; }
-        public string Name { get; }
-
-        public bool                IsConnected => true;
-        public GamepadFeaturesFlag Features    => GamepadFeaturesFlag.None;
-
-        private class ButtonMappingEntry
-        {
-            public readonly Key                  From;
->>>>>>> 1ec71635b (sync with main branch)
             public readonly GamepadButtonInputId To;
 
             public ButtonMappingEntry(GamepadButtonInputId to, Key from)
             {
-<<<<<<< HEAD
                 To = to;
-=======
-                To   = to;
->>>>>>> 1ec71635b (sync with main branch)
                 From = from;
             }
         }
@@ -65,13 +40,8 @@ namespace Ryujinx.Ava.Input
             _buttonsUserMapping = new List<ButtonMappingEntry>();
 
             _driver = driver;
-<<<<<<< HEAD
             Id = id;
             Name = name;
-=======
-            Id      = id;
-            Name    = name;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public KeyboardStateSnapshot GetKeyboardStateSnapshot()
@@ -82,11 +52,7 @@ namespace Ryujinx.Ava.Input
         public GamepadStateSnapshot GetMappedStateSnapshot()
         {
             KeyboardStateSnapshot rawState = GetKeyboardStateSnapshot();
-<<<<<<< HEAD
             GamepadStateSnapshot result = default;
-=======
-            GamepadStateSnapshot  result   = default;
->>>>>>> 1ec71635b (sync with main branch)
 
             lock (_userMappingLock)
             {
@@ -109,17 +75,10 @@ namespace Ryujinx.Ava.Input
                     }
                 }
 
-<<<<<<< HEAD
                 (short leftStickX, short leftStickY) = GetStickValues(ref rawState, _configuration.LeftJoyconStick);
                 (short rightStickX, short rightStickY) = GetStickValues(ref rawState, _configuration.RightJoyconStick);
 
                 result.SetStick(StickInputId.Left, ConvertRawStickValue(leftStickX), ConvertRawStickValue(leftStickY));
-=======
-                (short leftStickX,  short leftStickY)  = GetStickValues(ref rawState, _configuration.LeftJoyconStick);
-                (short rightStickX, short rightStickY) = GetStickValues(ref rawState, _configuration.RightJoyconStick);
-
-                result.SetStick(StickInputId.Left,  ConvertRawStickValue(leftStickX),  ConvertRawStickValue(leftStickY));
->>>>>>> 1ec71635b (sync with main branch)
                 result.SetStick(StickInputId.Right, ConvertRawStickValue(rightStickX), ConvertRawStickValue(rightStickY));
             }
 
@@ -161,10 +120,7 @@ namespace Ryujinx.Ava.Input
 
                 _buttonsUserMapping.Clear();
 
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 // Left JoyCon
                 _buttonsUserMapping.Add(new ButtonMappingEntry(GamepadButtonInputId.LeftStick,           (Key)_configuration.LeftJoyconStick.StickButton));
                 _buttonsUserMapping.Add(new ButtonMappingEntry(GamepadButtonInputId.DpadUp,              (Key)_configuration.LeftJoycon.DpadUp));
@@ -188,10 +144,7 @@ namespace Ryujinx.Ava.Input
                 _buttonsUserMapping.Add(new ButtonMappingEntry(GamepadButtonInputId.RightTrigger,        (Key)_configuration.RightJoycon.ButtonZr));
                 _buttonsUserMapping.Add(new ButtonMappingEntry(GamepadButtonInputId.SingleRightTrigger1, (Key)_configuration.RightJoycon.ButtonSr));
                 _buttonsUserMapping.Add(new ButtonMappingEntry(GamepadButtonInputId.SingleLeftTrigger1,  (Key)_configuration.RightJoycon.ButtonSl));
-<<<<<<< HEAD
 #pragma warning restore IDE0055
-=======
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -247,8 +200,4 @@ namespace Ryujinx.Ava.Input
 
         public void Dispose() { }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

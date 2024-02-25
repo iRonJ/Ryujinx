@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Nvdec.Vp9.Common;
 using Ryujinx.Graphics.Video;
 
@@ -92,11 +88,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
         public ArrayPtr<sbyte> AboveSegContext;
         public ArrayPtr<sbyte> AboveContext;
 
-<<<<<<< HEAD
         public readonly bool FrameIsIntraOnly()
-=======
-        public bool FrameIsIntraOnly()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return FrameType == FrameType.KeyFrame || IntraOnly;
         }
@@ -140,11 +132,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
             TileWorkerData = allocator.Allocate<TileWorkerData>(tileCols * tileRows + (maxThreads > 1 ? maxThreads : 0));
         }
 
-<<<<<<< HEAD
         public readonly void FreeTileWorkerData(MemoryAllocator allocator)
-=======
-        public void FreeTileWorkerData(MemoryAllocator allocator)
->>>>>>> 1ec71635b (sync with main branch)
         {
             allocator.Free(TileWorkerData);
         }
@@ -269,11 +257,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
             }
         }
 
-<<<<<<< HEAD
         private readonly void SetPartitionProbs(ref MacroBlockD xd)
-=======
-        private void SetPartitionProbs(ref MacroBlockD xd)
->>>>>>> 1ec71635b (sync with main branch)
         {
             xd.PartitionProbs = FrameIsIntraOnly()
                 ? new ArrayPtr<Array3<byte>>(ref Fc.Value.KfPartitionProb[0], 16)
@@ -309,11 +293,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
 
         public void SetupSegmentationDequant()
         {
-<<<<<<< HEAD
             const BitDepth BitDepth = BitDepth.Bits8; // TODO: Configurable
-=======
-            const BitDepth bitDepth = BitDepth.Bits8; // TODO: Configurable
->>>>>>> 1ec71635b (sync with main branch)
             // Build y/uv dequant values based on segmentation.
             if (Seg.Enabled)
             {
@@ -321,17 +301,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
                 for (i = 0; i < Constants.MaxSegments; ++i)
                 {
                     int qIndex = QuantCommon.GetQIndex(ref Seg, i, BaseQindex);
-<<<<<<< HEAD
                     YDequant[i][0] = QuantCommon.DcQuant(qIndex, YDcDeltaQ, BitDepth);
                     YDequant[i][1] = QuantCommon.AcQuant(qIndex, 0, BitDepth);
                     UvDequant[i][0] = QuantCommon.DcQuant(qIndex, UvDcDeltaQ, BitDepth);
                     UvDequant[i][1] = QuantCommon.AcQuant(qIndex, UvAcDeltaQ, BitDepth);
-=======
-                    YDequant[i][0] = QuantCommon.DcQuant(qIndex, YDcDeltaQ, bitDepth);
-                    YDequant[i][1] = QuantCommon.AcQuant(qIndex, 0, bitDepth);
-                    UvDequant[i][0] = QuantCommon.DcQuant(qIndex, UvDcDeltaQ, bitDepth);
-                    UvDequant[i][1] = QuantCommon.AcQuant(qIndex, UvAcDeltaQ, bitDepth);
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
             else
@@ -339,17 +312,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
                 int qIndex = BaseQindex;
                 // When segmentation is disabled, only the first value is used.  The
                 // remaining are don't cares.
-<<<<<<< HEAD
                 YDequant[0][0] = QuantCommon.DcQuant(qIndex, YDcDeltaQ, BitDepth);
                 YDequant[0][1] = QuantCommon.AcQuant(qIndex, 0, BitDepth);
                 UvDequant[0][0] = QuantCommon.DcQuant(qIndex, UvDcDeltaQ, BitDepth);
                 UvDequant[0][1] = QuantCommon.AcQuant(qIndex, UvAcDeltaQ, BitDepth);
-=======
-                YDequant[0][0] = QuantCommon.DcQuant(qIndex, YDcDeltaQ, bitDepth);
-                YDequant[0][1] = QuantCommon.AcQuant(qIndex, 0, bitDepth);
-                UvDequant[0][0] = QuantCommon.DcQuant(qIndex, UvDcDeltaQ, bitDepth);
-                UvDequant[0][1] = QuantCommon.AcQuant(qIndex, UvAcDeltaQ, bitDepth);
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 

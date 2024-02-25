@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Account.Acc.AsyncContext;
-=======
-﻿using Ryujinx.HLE.HOS.Services.Account.Acc.AsyncContext;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Account.Acc
 {
     class IAsyncNetworkServiceLicenseKindContext : IAsyncContext
     {
-<<<<<<< HEAD
         private readonly NetworkServiceLicenseKind? _serviceLicenseKind;
-=======
-        private NetworkServiceLicenseKind? _serviceLicenseKind;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IAsyncNetworkServiceLicenseKindContext(AsyncExecution asyncExecution, NetworkServiceLicenseKind? serviceLicenseKind) : base(asyncExecution)
         {

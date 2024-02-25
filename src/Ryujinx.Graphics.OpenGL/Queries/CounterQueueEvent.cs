@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using OpenTK.Graphics.OpenGL;
-=======
-﻿using OpenTK.Graphics.OpenGL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using System;
 using System.Threading;
@@ -22,22 +18,13 @@ namespace Ryujinx.Graphics.OpenGL.Queries
 
         public ulong DrawIndex { get; }
 
-<<<<<<< HEAD
         private readonly CounterQueue _queue;
         private readonly BufferedQuery _counter;
-=======
-        private CounterQueue _queue;
-        private BufferedQuery _counter;
->>>>>>> 1ec71635b (sync with main branch)
 
         private bool _hostAccessReserved = false;
         private int _refCount = 1; // Starts with a reference from the counter queue.
 
-<<<<<<< HEAD
         private readonly object _lock = new();
-=======
-        private object _lock = new object();
->>>>>>> 1ec71635b (sync with main branch)
         private ulong _result = ulong.MaxValue;
         private double _divisor = 1f;
 

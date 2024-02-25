@@ -1,6 +1,7 @@
 ﻿using Gtk;
+using System;
 
-namespace Ryujinx.Ui.Widgets
+namespace Ryujinx.UI.Widgets
 {
     public partial class GameTableContextMenu : Menu
     {
@@ -12,17 +13,18 @@ namespace Ryujinx.Ui.Widgets
         private MenuItem _manageCheatMenuItem;
         private MenuItem _openTitleModDirMenuItem;
         private MenuItem _openTitleSdModDirMenuItem;
-        private Menu     _extractSubMenu;
+        private Menu _extractSubMenu;
         private MenuItem _extractMenuItem;
         private MenuItem _extractRomFsMenuItem;
         private MenuItem _extractExeFsMenuItem;
         private MenuItem _extractLogoMenuItem;
-        private Menu     _manageSubMenu;
+        private Menu _manageSubMenu;
         private MenuItem _manageCacheMenuItem;
         private MenuItem _purgePtcCacheMenuItem;
         private MenuItem _purgeShaderCacheMenuItem;
         private MenuItem _openPtcDirMenuItem;
         private MenuItem _openShaderCacheDirMenuItem;
+        private MenuItem _createShortcutMenuItem;
 
         private void InitializeComponent()
         {
@@ -31,7 +33,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _openSaveUserDirMenuItem = new MenuItem("Open User Save Directory")
             {
-                TooltipText = "Open the directory which contains Application's User Saves."
+                TooltipText = "Open the directory which contains Application's User Saves.",
             };
             _openSaveUserDirMenuItem.Activated += OpenSaveUserDir_Clicked;
 
@@ -40,7 +42,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _openSaveDeviceDirMenuItem = new MenuItem("Open Device Save Directory")
             {
-                TooltipText = "Open the directory which contains Application's Device Saves."
+                TooltipText = "Open the directory which contains Application's Device Saves.",
             };
             _openSaveDeviceDirMenuItem.Activated += OpenSaveDeviceDir_Clicked;
 
@@ -49,7 +51,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _openSaveBcatDirMenuItem = new MenuItem("Open BCAT Save Directory")
             {
-                TooltipText = "Open the directory which contains Application's BCAT Saves."
+                TooltipText = "Open the directory which contains Application's BCAT Saves.",
             };
             _openSaveBcatDirMenuItem.Activated += OpenSaveBcatDir_Clicked;
 
@@ -58,7 +60,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _manageTitleUpdatesMenuItem = new MenuItem("Manage Title Updates")
             {
-                TooltipText = "Open the Title Update management window"
+                TooltipText = "Open the Title Update management window",
             };
             _manageTitleUpdatesMenuItem.Activated += ManageTitleUpdates_Clicked;
 
@@ -67,7 +69,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _manageDlcMenuItem = new MenuItem("Manage DLC")
             {
-                TooltipText = "Open the DLC management window"
+                TooltipText = "Open the DLC management window",
             };
             _manageDlcMenuItem.Activated += ManageDlc_Clicked;
 
@@ -76,7 +78,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _manageCheatMenuItem = new MenuItem("Manage Cheats")
             {
-                TooltipText = "Open the Cheat management window"
+                TooltipText = "Open the Cheat management window",
             };
             _manageCheatMenuItem.Activated += ManageCheats_Clicked;
 
@@ -85,7 +87,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _openTitleModDirMenuItem = new MenuItem("Open Mods Directory")
             {
-                TooltipText = "Open the directory which contains Application's Mods."
+                TooltipText = "Open the directory which contains Application's Mods.",
             };
             _openTitleModDirMenuItem.Activated += OpenTitleModDir_Clicked;
 
@@ -94,7 +96,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _openTitleSdModDirMenuItem = new MenuItem("Open Atmosphere Mods Directory")
             {
-                TooltipText = "Open the alternative SD card atmosphere directory which contains the Application's Mods."
+                TooltipText = "Open the alternative SD card atmosphere directory which contains the Application's Mods.",
             };
             _openTitleSdModDirMenuItem.Activated += OpenTitleSdModDir_Clicked;
 
@@ -116,7 +118,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _extractRomFsMenuItem = new MenuItem("RomFS")
             {
-                TooltipText = "Extract the RomFS section from Application's current config (including updates)."
+                TooltipText = "Extract the RomFS section from Application's current config (including updates).",
             };
             _extractRomFsMenuItem.Activated += ExtractRomFs_Clicked;
 
@@ -125,7 +127,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _extractExeFsMenuItem = new MenuItem("ExeFS")
             {
-                TooltipText = "Extract the ExeFS section from Application's current config (including updates)."
+                TooltipText = "Extract the ExeFS section from Application's current config (including updates).",
             };
             _extractExeFsMenuItem.Activated += ExtractExeFs_Clicked;
 
@@ -134,7 +136,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _extractLogoMenuItem = new MenuItem("Logo")
             {
-                TooltipText = "Extract the Logo section from Application's current config (including updates)."
+                TooltipText = "Extract the Logo section from Application's current config (including updates).",
             };
             _extractLogoMenuItem.Activated += ExtractLogo_Clicked;
 
@@ -148,7 +150,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _manageCacheMenuItem = new MenuItem("Cache Management")
             {
-                Submenu = _manageSubMenu
+                Submenu = _manageSubMenu,
             };
 
             //
@@ -156,7 +158,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _purgePtcCacheMenuItem = new MenuItem("Queue PPTC Rebuild")
             {
-                TooltipText = "Trigger PPTC to rebuild at boot time on the next game launch."
+                TooltipText = "Trigger PPTC to rebuild at boot time on the next game launch.",
             };
             _purgePtcCacheMenuItem.Activated += PurgePtcCache_Clicked;
 
@@ -165,7 +167,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _purgeShaderCacheMenuItem = new MenuItem("Purge Shader Cache")
             {
-                TooltipText = "Delete the Application's shader cache."
+                TooltipText = "Delete the Application's shader cache.",
             };
             _purgeShaderCacheMenuItem.Activated += PurgeShaderCache_Clicked;
 
@@ -174,7 +176,7 @@ namespace Ryujinx.Ui.Widgets
             //
             _openPtcDirMenuItem = new MenuItem("Open PPTC Directory")
             {
-                TooltipText = "Open the directory which contains the Application's PPTC cache."
+                TooltipText = "Open the directory which contains the Application's PPTC cache.",
             };
             _openPtcDirMenuItem.Activated += OpenPtcDir_Clicked;
 
@@ -183,9 +185,18 @@ namespace Ryujinx.Ui.Widgets
             //
             _openShaderCacheDirMenuItem = new MenuItem("Open Shader Cache Directory")
             {
-                TooltipText = "Open the directory which contains the Application's shader cache."
+                TooltipText = "Open the directory which contains the Application's shader cache.",
             };
             _openShaderCacheDirMenuItem.Activated += OpenShaderCacheDir_Clicked;
+
+            //
+            // _createShortcutMenuItem
+            //
+            _createShortcutMenuItem = new MenuItem("Create Application Shortcut")
+            {
+                TooltipText = OperatingSystem.IsMacOS() ? "Create a shortcut in macOS's Applications folder that launches the selected Application" : "Create a Desktop Shortcut that launches the selected Application."
+            };
+            _createShortcutMenuItem.Activated += CreateShortcut_Clicked;
 
             ShowComponent();
         }
@@ -201,6 +212,8 @@ namespace Ryujinx.Ui.Widgets
             _manageSubMenu.Append(_openPtcDirMenuItem);
             _manageSubMenu.Append(_openShaderCacheDirMenuItem);
 
+            Add(_createShortcutMenuItem);
+            Add(new SeparatorMenuItem());
             Add(_openSaveUserDirMenuItem);
             Add(_openSaveDeviceDirMenuItem);
             Add(_openSaveBcatDirMenuItem);

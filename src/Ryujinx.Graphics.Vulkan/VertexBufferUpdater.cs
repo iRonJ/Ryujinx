@@ -1,36 +1,19 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using Silk.NET.Vulkan;
-using System;
-
->>>>>>> 1ec71635b (sync with main branch)
 using VkBuffer = Silk.NET.Vulkan.Buffer;
 
 namespace Ryujinx.Graphics.Vulkan
 {
     internal class VertexBufferUpdater : IDisposable
     {
-<<<<<<< HEAD
         private readonly VulkanRenderer _gd;
-=======
-        private VulkanRenderer _gd;
->>>>>>> 1ec71635b (sync with main branch)
 
         private uint _baseBinding;
         private uint _count;
 
-<<<<<<< HEAD
         private readonly NativeArray<VkBuffer> _buffers;
         private readonly NativeArray<ulong> _offsets;
         private readonly NativeArray<ulong> _sizes;
         private readonly NativeArray<ulong> _strides;
-=======
-        private NativeArray<VkBuffer> _buffers;
-        private NativeArray<ulong> _offsets;
-        private NativeArray<ulong> _sizes;
-        private NativeArray<ulong> _strides;
->>>>>>> 1ec71635b (sync with main branch)
 
         public VertexBufferUpdater(VulkanRenderer gd)
         {

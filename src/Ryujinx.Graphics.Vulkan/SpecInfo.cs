@@ -1,10 +1,5 @@
 using Silk.NET.Vulkan;
 using System;
-<<<<<<< HEAD
-=======
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Vulkan
 {
@@ -16,11 +11,7 @@ namespace Ryujinx.Graphics.Vulkan
         Int64,
         Float16,
         Float32,
-<<<<<<< HEAD
         Float64,
-=======
-        Float64
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     sealed class SpecDescription
@@ -43,17 +34,10 @@ namespace Ryujinx.Graphics.Vulkan
                 structSize += typeSize;
             }
 
-<<<<<<< HEAD
             Info = new SpecializationInfo
             {
                 DataSize = structSize,
                 MapEntryCount = (uint)count,
-=======
-            Info = new SpecializationInfo()
-            {
-                DataSize = structSize,
-                MapEntryCount = (uint)count
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -68,17 +52,10 @@ namespace Ryujinx.Graphics.Vulkan
                 structSize = Math.Max(structSize, map[i].Offset + (uint)map[i].Size);
             }
 
-<<<<<<< HEAD
             Info = new SpecializationInfo
             {
                 DataSize = structSize,
                 MapEntryCount = (uint)map.Length,
-=======
-            Info = new SpecializationInfo()
-            {
-                DataSize = structSize,
-                MapEntryCount = (uint)map.Length
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -87,11 +64,7 @@ namespace Ryujinx.Graphics.Vulkan
             SpecConstType.Int16 or SpecConstType.Float16 => 2,
             SpecConstType.Bool32 or SpecConstType.Int32 or SpecConstType.Float32 => 4,
             SpecConstType.Int64 or SpecConstType.Float64 => 8,
-<<<<<<< HEAD
             _ => throw new ArgumentOutOfRangeException(nameof(type)),
-=======
-            _ => throw new ArgumentOutOfRangeException(nameof(type))
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private SpecDescription()
@@ -124,8 +97,4 @@ namespace Ryujinx.Graphics.Vulkan
         public override bool Equals(object obj) => obj is SpecData other && Equals(other);
         public bool Equals(ref SpecData other) => _data.AsSpan().SequenceEqual(other._data);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -6,11 +6,7 @@ namespace ARMeilleure.Translation.Cache
 {
     class JitCacheInvalidation
     {
-<<<<<<< HEAD
         private static readonly int[] _invalidationCode = new int[]
-=======
-        private static int[] _invalidationCode = new int[]
->>>>>>> 1ec71635b (sync with main branch)
         {
             unchecked((int)0xd53b0022), // mrs  x2, ctr_el0
             unchecked((int)0xd3504c44), // ubfx x4, x2, #16, #4
@@ -44,25 +40,15 @@ namespace ARMeilleure.Translation.Cache
 
         private delegate void InvalidateCache(ulong start, ulong end);
 
-<<<<<<< HEAD
         private readonly InvalidateCache _invalidateCache;
         private readonly ReservedRegion _invalidateCacheCodeRegion;
-=======
-        private InvalidateCache _invalidateCache;
-        private ReservedRegion _invalidateCacheCodeRegion;
->>>>>>> 1ec71635b (sync with main branch)
 
         private readonly bool _needsInvalidation;
 
         public JitCacheInvalidation(IJitMemoryAllocator allocator)
         {
-<<<<<<< HEAD
             // On macOS and Windows, a different path is used to write to the JIT cache, which does the invalidation.
             if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
-=======
-            // On macOS, a different path is used to write to the JIT cache, which does the invalidation.
-            if (!OperatingSystem.IsMacOS() && RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 ulong size = (ulong)_invalidationCode.Length * sizeof(int);
                 ulong mask = (ulong)ReservedRegion.DefaultGranularity - 1;
@@ -90,8 +76,4 @@ namespace ARMeilleure.Translation.Cache
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

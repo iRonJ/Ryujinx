@@ -9,8 +9,4 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
             Comment = comment;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

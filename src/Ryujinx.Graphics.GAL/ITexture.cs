@@ -1,8 +1,4 @@
 using Ryujinx.Common.Memory;
-<<<<<<< HEAD
-=======
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.GAL
 {
@@ -10,10 +6,6 @@ namespace Ryujinx.Graphics.GAL
     {
         int Width { get; }
         int Height { get; }
-<<<<<<< HEAD
-=======
-        float ScaleFactor { get; }
->>>>>>> 1ec71635b (sync with main branch)
 
         void CopyTo(ITexture destination, int firstLayer, int firstLevel);
         void CopyTo(ITexture destination, int srcLayer, int dstLayer, int srcLevel, int dstLevel);
@@ -31,8 +23,4 @@ namespace Ryujinx.Graphics.GAL
         void SetStorage(BufferRange buffer);
         void Release();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

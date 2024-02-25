@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.Exceptions;
-=======
-﻿using Ryujinx.HLE.Exceptions;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Tamper.Operations;
 
 namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
@@ -68,11 +64,7 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
             // Create a loop block with the current operations and nest it in the upper
             // block of the stack.
 
-<<<<<<< HEAD
             ForBlock block = new(immediate, iterationRegister, context.CurrentOperations);
-=======
-            ForBlock block = new ForBlock(immediate, iterationRegister, context.CurrentOperations);
->>>>>>> 1ec71635b (sync with main branch)
             context.BlockStack.Pop();
             context.CurrentOperations.Add(block);
         }

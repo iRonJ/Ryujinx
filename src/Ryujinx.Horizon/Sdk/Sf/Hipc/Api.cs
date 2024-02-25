@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
-=======
-﻿using Ryujinx.Horizon.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Horizon.Sdk.Sf.Hipc
@@ -45,15 +41,8 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             {
                 return HorizonStatic.Syscall.ReplyAndReceive(out _, handles, 0, -1L);
             }
-<<<<<<< HEAD
 
             throw new NotImplementedException();
-=======
-            else
-            {
-                throw new NotImplementedException();
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static Result Reply(int sessionHandle, ReadOnlySpan<byte> messageBuffer)
@@ -73,15 +62,8 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             {
                 return HorizonStatic.Syscall.ReplyAndReceive(out _, ReadOnlySpan<int>.Empty, sessionHandle, 0);
             }
-<<<<<<< HEAD
 
             throw new NotImplementedException();
-=======
-            else
-            {
-                throw new NotImplementedException();
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static Result CreateSession(out int serverHandle, out int clientHandle)
@@ -96,8 +78,4 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             return result;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

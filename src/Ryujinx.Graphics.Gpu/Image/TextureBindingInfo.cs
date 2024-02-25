@@ -50,21 +50,12 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// <param name="flags">The texture's usage flags, indicating how it is used in the shader</param>
         public TextureBindingInfo(Target target, Format format, int binding, int cbufSlot, int handle, TextureUsageFlags flags)
         {
-<<<<<<< HEAD
             Target = target;
             Format = format;
             Binding = binding;
             CbufSlot = cbufSlot;
             Handle = handle;
             Flags = flags;
-=======
-            Target   = target;
-            Format   = format;
-            Binding  = binding;
-            CbufSlot = cbufSlot;
-            Handle   = handle;
-            Flags    = flags;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -79,8 +70,4 @@ namespace Ryujinx.Graphics.Gpu.Image
         {
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

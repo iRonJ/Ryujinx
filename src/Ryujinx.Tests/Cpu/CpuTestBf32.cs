@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #define Bf32
-=======
-﻿#define Bf32
->>>>>>> 1ec71635b (sync with main branch)
 
 using NUnit.Framework;
 using System;
@@ -107,8 +103,4 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

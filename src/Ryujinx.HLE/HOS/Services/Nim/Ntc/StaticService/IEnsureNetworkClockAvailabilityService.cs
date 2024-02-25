@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Ipc;
 using Ryujinx.HLE.HOS.Kernel.Threading;
 using Ryujinx.Horizon.Common;
@@ -12,21 +8,13 @@ namespace Ryujinx.HLE.HOS.Services.Nim.Ntc.StaticService
 {
     class IEnsureNetworkClockAvailabilityService : IpcService
     {
-<<<<<<< HEAD
         private readonly KEvent _finishNotificationEvent;
-=======
-        private KEvent     _finishNotificationEvent;
->>>>>>> 1ec71635b (sync with main branch)
         private ResultCode _taskResultCode;
 
         public IEnsureNetworkClockAvailabilityService(ServiceCtx context)
         {
             _finishNotificationEvent = new KEvent(context.Device.System.KernelContext);
-<<<<<<< HEAD
             _taskResultCode = ResultCode.Success;
-=======
-            _taskResultCode          = ResultCode.Success;
->>>>>>> 1ec71635b (sync with main branch)
 
             // NOTE: The service starts a thread that polls Nintendo NTP server and syncs the time with it.
             //       Additionnally it gets and uses some settings too:
@@ -86,8 +74,4 @@ namespace Ryujinx.HLE.HOS.Services.Nim.Ntc.StaticService
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

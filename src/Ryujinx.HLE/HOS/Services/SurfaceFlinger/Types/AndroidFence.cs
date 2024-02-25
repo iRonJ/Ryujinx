@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu;
 using Ryujinx.Graphics.Gpu.Synchronization;
 using Ryujinx.HLE.HOS.Services.Nv.Types;
@@ -20,29 +16,17 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
         private byte _fenceStorageStart;
 
-<<<<<<< HEAD
         private Span<byte> Storage => MemoryMarshal.CreateSpan(ref _fenceStorageStart, Unsafe.SizeOf<NvFence>() * 4);
 
         public Span<NvFence> NvFences => MemoryMarshal.Cast<byte, NvFence>(Storage);
-=======
-        private Span<byte> _storage => MemoryMarshal.CreateSpan(ref _fenceStorageStart, Unsafe.SizeOf<NvFence>() * 4);
-
-        public Span<NvFence> NvFences => MemoryMarshal.Cast<byte, NvFence>(_storage);
->>>>>>> 1ec71635b (sync with main branch)
 
         public static AndroidFence NoFence
         {
             get
             {
-<<<<<<< HEAD
                 AndroidFence fence = new()
                 {
                     FenceCount = 0,
-=======
-                AndroidFence fence = new AndroidFence
-                {
-                    FenceCount = 0
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 fence.NvFences[0].Id = NvFence.InvalidSyncPointId;
@@ -97,20 +81,12 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             }
         }
 
-<<<<<<< HEAD
         public readonly uint GetFlattenedSize()
-=======
-        public uint GetFlattenedSize()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (uint)Unsafe.SizeOf<AndroidFence>();
         }
 
-<<<<<<< HEAD
         public readonly uint GetFdCount()
-=======
-        public uint GetFdCount()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return 0;
         }
@@ -125,8 +101,4 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             this = parcel.ReadUnmanagedType<AndroidFence>();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

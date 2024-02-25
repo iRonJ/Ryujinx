@@ -16,10 +16,6 @@ namespace Ryujinx.Graphics.GAL
         LineStripAdjacency,
         TrianglesAdjacency,
         TriangleStripAdjacency,
-<<<<<<< HEAD
         Patches,
-=======
-        Patches
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -53,8 +53,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             ProcessVolumeRamp(outputBuffer, inputBuffer, (int)context.SampleCount);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

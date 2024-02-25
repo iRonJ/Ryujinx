@@ -5,11 +5,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetPatchParametersCommand : IGALCommand, IGALCommand<SetPatchParametersCommand>
     {
-<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.SetPatchParameters;
-=======
-        public CommandType CommandType => CommandType.SetPatchParameters;
->>>>>>> 1ec71635b (sync with main branch)
         private int _vertices;
         private Array4<float> _defaultOuterLevel;
         private Array2<float> _defaultInnerLevel;

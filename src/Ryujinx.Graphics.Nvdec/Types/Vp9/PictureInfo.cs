@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Video;
 
 namespace Ryujinx.Graphics.Nvdec.Types.Vp9
 {
     struct PictureInfo
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Array12<uint> Unknown0;
         public uint BitstreamSize;
         public uint IsEncrypted;
@@ -52,11 +44,7 @@ namespace Ryujinx.Graphics.Nvdec.Types.Vp9
         public uint UnknownFC;
 #pragma warning restore CS0649
 
-<<<<<<< HEAD
         public readonly uint BitDepth => (SurfaceParams >> 1) & 0xf;
-=======
-        public uint BitDepth => (SurfaceParams >> 1) & 0xf;
->>>>>>> 1ec71635b (sync with main branch)
 
         public Vp9PictureInfo Convert()
         {
@@ -92,11 +80,7 @@ namespace Ryujinx.Graphics.Nvdec.Types.Vp9
                 SegmentFeatureData = Seg.FeatureData,
                 ModeRefDeltaEnabled = Lf.ModeRefDeltaEnabled != 0,
                 RefDeltas = Lf.RefDeltas,
-<<<<<<< HEAD
                 ModeDeltas = Lf.ModeDeltas,
-=======
-                ModeDeltas = Lf.ModeDeltas
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

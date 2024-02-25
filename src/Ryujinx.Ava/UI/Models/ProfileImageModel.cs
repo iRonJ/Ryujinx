@@ -29,8 +29,4 @@ namespace Ryujinx.Ava.UI.Models
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

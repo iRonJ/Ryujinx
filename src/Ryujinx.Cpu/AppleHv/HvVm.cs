@@ -1,16 +1,10 @@
 using Ryujinx.Memory;
 using System;
-<<<<<<< HEAD
 using System.Runtime.Versioning;
 
 namespace Ryujinx.Cpu.AppleHv
 {
     [SupportedOSPlatform("macos")]
-=======
-
-namespace Ryujinx.Cpu.AppleHv
-{
->>>>>>> 1ec71635b (sync with main branch)
     static class HvVm
     {
         // This alignment allows us to use larger blocks on the page table.
@@ -18,11 +12,7 @@ namespace Ryujinx.Cpu.AppleHv
 
         private static int _addressSpaces;
         private static HvIpaAllocator _ipaAllocator;
-<<<<<<< HEAD
         private static readonly object _lock = new();
-=======
-        private static object _lock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         public static (ulong, HvIpaAllocator) CreateAddressSpace(MemoryBlock block)
         {
@@ -48,11 +38,7 @@ namespace Ryujinx.Cpu.AppleHv
                 baseAddress = ipaAllocator.Allocate(block.Size, AsIpaAlignment);
             }
 
-<<<<<<< HEAD
             var rwx = HvMemoryFlags.Read | HvMemoryFlags.Write | HvMemoryFlags.Exec;
-=======
-            var rwx = hv_memory_flags_t.HV_MEMORY_READ | hv_memory_flags_t.HV_MEMORY_WRITE | hv_memory_flags_t.HV_MEMORY_EXEC;
->>>>>>> 1ec71635b (sync with main branch)
 
             HvApi.hv_vm_map((ulong)block.Pointer, baseAddress, block.Size, rwx).ThrowOnError();
 
@@ -81,8 +67,4 @@ namespace Ryujinx.Cpu.AppleHv
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

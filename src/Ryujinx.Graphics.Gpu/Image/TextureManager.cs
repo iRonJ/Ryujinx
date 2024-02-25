@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
-=======
-﻿using Ryujinx.Graphics.GAL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu.Engine.Types;
 using Ryujinx.Graphics.Gpu.Shader;
 using System;
@@ -24,15 +20,10 @@ namespace Ryujinx.Graphics.Gpu.Image
 
         private readonly Texture[] _rtColors;
         private readonly ITexture[] _rtHostColors;
-<<<<<<< HEAD
         private readonly bool[] _rtColorsBound;
         private Texture _rtDepthStencil;
         private ITexture _rtHostDs;
         private bool _rtDsBound;
-=======
-        private Texture _rtDepthStencil;
-        private ITexture _rtHostDs;
->>>>>>> 1ec71635b (sync with main branch)
 
         public int ClipRegionWidth { get; private set; }
         public int ClipRegionHeight { get; private set; }
@@ -52,31 +43,17 @@ namespace Ryujinx.Graphics.Gpu.Image
             _context = context;
             _channel = channel;
 
-<<<<<<< HEAD
             TexturePoolCache texturePoolCache = new(context);
             SamplerPoolCache samplerPoolCache = new(context);
 
             _cpBindingsManager = new TextureBindingsManager(context, channel, texturePoolCache, samplerPoolCache, isCompute: true);
             _gpBindingsManager = new TextureBindingsManager(context, channel, texturePoolCache, samplerPoolCache, isCompute: false);
-=======
-            TexturePoolCache texturePoolCache = new TexturePoolCache(context);
-            SamplerPoolCache samplerPoolCache = new SamplerPoolCache(context);
-
-            float[] scales = new float[64];
-            new Span<float>(scales).Fill(1f);
-
-            _cpBindingsManager = new TextureBindingsManager(context, channel, texturePoolCache, samplerPoolCache, scales, isCompute: true);
-            _gpBindingsManager = new TextureBindingsManager(context, channel, texturePoolCache, samplerPoolCache, scales, isCompute: false);
->>>>>>> 1ec71635b (sync with main branch)
             _texturePoolCache = texturePoolCache;
             _samplerPoolCache = samplerPoolCache;
 
             _rtColors = new Texture[Constants.TotalRenderTargets];
             _rtHostColors = new ITexture[Constants.TotalRenderTargets];
-<<<<<<< HEAD
             _rtColorsBound = new bool[Constants.TotalRenderTargets];
-=======
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -162,11 +139,7 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// </summary>
         /// <param name="texture">The texture to check</param>
         /// <returns>True if the scale needs updating, false if the scale is up to date</returns>
-<<<<<<< HEAD
         private static bool ScaleNeedsUpdated(Texture texture)
-=======
-        private bool ScaleNeedsUpdated(Texture texture)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return texture != null && !(texture.ScaleMode == TextureScaleMode.Blacklisted || texture.ScaleMode == TextureScaleMode.Undesired) && texture.ScaleFactor != GraphicsConfig.ResScale;
         }
@@ -184,7 +157,6 @@ namespace Ryujinx.Graphics.Gpu.Image
 
             if (_rtColors[index] != color)
             {
-<<<<<<< HEAD
                 if (_rtColorsBound[index])
                 {
                     _rtColors[index]?.SignalModifying(false);
@@ -193,9 +165,6 @@ namespace Ryujinx.Graphics.Gpu.Image
                 {
                     _rtColorsBound[index] = true;
                 }
-=======
-                _rtColors[index]?.SignalModifying(false);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (color != null)
                 {
@@ -221,7 +190,6 @@ namespace Ryujinx.Graphics.Gpu.Image
 
             if (_rtDepthStencil != depthStencil)
             {
-<<<<<<< HEAD
                 if (_rtDsBound)
                 {
                     _rtDepthStencil?.SignalModifying(false);
@@ -230,9 +198,6 @@ namespace Ryujinx.Graphics.Gpu.Image
                 {
                     _rtDsBound = true;
                 }
-=======
-                _rtDepthStencil?.SignalModifying(false);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (depthStencil != null)
                 {
@@ -283,15 +248,11 @@ namespace Ryujinx.Graphics.Gpu.Image
 
             void ConsiderTarget(Texture target)
             {
-<<<<<<< HEAD
                 if (target == null)
                 {
                     return;
                 }
 
-=======
-                if (target == null) return;
->>>>>>> 1ec71635b (sync with main branch)
                 float scale = target.ScaleFactor;
 
                 switch (target.ScaleMode)
@@ -469,7 +430,6 @@ namespace Ryujinx.Graphics.Gpu.Image
         {
             bool anyChanged = false;
 
-<<<<<<< HEAD
             Texture dsTexture = _rtDepthStencil;
             ITexture hostDsTexture = null;
 
@@ -487,18 +447,11 @@ namespace Ryujinx.Graphics.Gpu.Image
             if (_rtHostDs != hostDsTexture)
             {
                 _rtHostDs = hostDsTexture;
-=======
-            if (_rtHostDs != _rtDepthStencil?.HostTexture)
-            {
-                _rtHostDs = _rtDepthStencil?.HostTexture;
-
->>>>>>> 1ec71635b (sync with main branch)
                 anyChanged = true;
             }
 
             for (int index = 0; index < _rtColors.Length; index++)
             {
-<<<<<<< HEAD
                 Texture texture = _rtColors[index];
                 ITexture hostTexture = null;
 
@@ -512,17 +465,10 @@ namespace Ryujinx.Graphics.Gpu.Image
                         _rtColorsBound[index] = true;
                     }
                 }
-=======
-                ITexture hostTexture = _rtColors[index]?.HostTexture;
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (_rtHostColors[index] != hostTexture)
                 {
                     _rtHostColors[index] = hostTexture;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
                     anyChanged = true;
                 }
             }
@@ -541,18 +487,13 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// </remarks>
         public void UpdateRenderTargetDepthStencil()
         {
-<<<<<<< HEAD
             new Span<ITexture>(_rtHostColors).Clear();
-=======
-            new Span<ITexture>(_rtHostColors).Fill(null);
->>>>>>> 1ec71635b (sync with main branch)
             _rtHostDs = _rtDepthStencil?.HostTexture;
 
             _context.Renderer.Pipeline.SetRenderTargets(_rtHostColors, _rtHostDs);
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Marks all currently bound render target textures as modified, and also makes them be set as modified again on next use.
         /// </summary>
         public void RefreshModifiedTextures()
@@ -578,8 +519,6 @@ namespace Ryujinx.Graphics.Gpu.Image
         }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Forces the texture and sampler pools to be re-loaded from the cache on next use.
         /// </summary>
         public void ReloadPools()
@@ -615,7 +554,6 @@ namespace Ryujinx.Graphics.Gpu.Image
 
             for (int i = 0; i < _rtColors.Length; i++)
             {
-<<<<<<< HEAD
                 if (_rtColorsBound[i])
                 {
                     _rtColors[i]?.DecrementReferenceCount();
@@ -629,13 +567,6 @@ namespace Ryujinx.Graphics.Gpu.Image
                 _rtDepthStencil?.DecrementReferenceCount();
             }
 
-=======
-                _rtColors[i]?.DecrementReferenceCount();
-                _rtColors[i] = null;
-            }
-
-            _rtDepthStencil?.DecrementReferenceCount();
->>>>>>> 1ec71635b (sync with main branch)
             _rtDepthStencil = null;
         }
     }

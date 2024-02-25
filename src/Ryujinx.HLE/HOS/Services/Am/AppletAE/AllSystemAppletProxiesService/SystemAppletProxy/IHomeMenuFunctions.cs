@@ -8,13 +8,8 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
 {
     class IHomeMenuFunctions : IpcService
     {
-<<<<<<< HEAD
         private readonly KEvent _channelEvent;
         private int _channelEventHandle;
-=======
-        private KEvent _channelEvent;
-        private int    _channelEventHandle;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IHomeMenuFunctions(Horizon system)
         {
@@ -50,8 +45,4 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -185,8 +185,4 @@ namespace Ryujinx.Graphics.Shader.Decoders
         Vshr,
         Xmad,
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

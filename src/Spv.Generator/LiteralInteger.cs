@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.IO;
 
 namespace Spv.Generator
 {
-<<<<<<< HEAD
     public class LiteralInteger : IOperand, IEquatable<LiteralInteger>
-=======
-    public class LiteralInteger : Operand, IEquatable<LiteralInteger>
->>>>>>> 1ec71635b (sync with main branch)
     {
         [ThreadStatic]
         private static GeneratorPool<LiteralInteger> _pool;
@@ -103,11 +95,7 @@ namespace Spv.Generator
             return DeterministicHashCode.Combine(Type, _data);
         }
 
-<<<<<<< HEAD
         public bool Equals(IOperand obj)
-=======
-        public bool Equals(Operand obj)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is LiteralInteger literalInteger && Equals(literalInteger);
         }

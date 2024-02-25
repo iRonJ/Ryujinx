@@ -1,23 +1,13 @@
-<<<<<<< HEAD
-=======
-﻿using ARMeilleure.Translation;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Configuration.Hid;
 using Ryujinx.Common.Logging;
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.GAL.Multithreading;
-<<<<<<< HEAD
 using Ryujinx.Graphics.Gpu;
 using Ryujinx.Graphics.OpenGL;
 using Ryujinx.HLE.HOS.Applets;
 using Ryujinx.HLE.HOS.Services.Am.AppletOE.ApplicationProxyService.ApplicationProxy.Types;
 using Ryujinx.HLE.UI;
-=======
-using Ryujinx.HLE.HOS.Applets;
-using Ryujinx.HLE.HOS.Services.Am.AppletOE.ApplicationProxyService.ApplicationProxy.Types;
-using Ryujinx.HLE.Ui;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Input;
 using Ryujinx.Input.HLE;
 using Ryujinx.SDL2.Common;
@@ -26,23 +16,15 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-<<<<<<< HEAD
 using System.Runtime.InteropServices;
 using System.Threading;
 using static SDL2.SDL;
 using AntiAliasing = Ryujinx.Common.Configuration.AntiAliasing;
 using ScalingFilter = Ryujinx.Common.Configuration.ScalingFilter;
-=======
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Threading;
-using static SDL2.SDL;
->>>>>>> 1ec71635b (sync with main branch)
 using Switch = Ryujinx.HLE.Switch;
 
 namespace Ryujinx.Headless.SDL2
 {
-<<<<<<< HEAD
     abstract partial class WindowBase : IHostUIHandler, IDisposable
     {
         protected const int DefaultWidth = 1280;
@@ -52,16 +34,6 @@ namespace Ryujinx.Headless.SDL2
         private SDL_WindowFlags FullscreenFlag = 0;
 
         private static readonly ConcurrentQueue<Action> _mainThreadActions = new();
-=======
-    abstract partial class WindowBase : IHostUiHandler, IDisposable
-    {
-        protected const int DefaultWidth = 1280;
-        protected const int DefaultHeight = 720;
-        private const SDL_WindowFlags DefaultFlags = SDL_WindowFlags.SDL_WINDOW_ALLOW_HIGHDPI | SDL_WindowFlags.SDL_WINDOW_RESIZABLE | SDL_WindowFlags.SDL_WINDOW_INPUT_FOCUS | SDL_WindowFlags.SDL_WINDOW_SHOWN;
-        private const int TargetFps = 60;
-
-        private static ConcurrentQueue<Action> MainThreadActions = new ConcurrentQueue<Action>();
->>>>>>> 1ec71635b (sync with main branch)
 
         [LibraryImport("SDL2")]
         // TODO: Remove this as soon as SDL2-CS was updated to expose this method publicly
@@ -69,11 +41,7 @@ namespace Ryujinx.Headless.SDL2
 
         public static void QueueMainThreadAction(Action action)
         {
-<<<<<<< HEAD
             _mainThreadActions.Enqueue(action);
-=======
-            MainThreadActions.Enqueue(action);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public NpadManager NpadManager { get; }
@@ -85,7 +53,6 @@ namespace Ryujinx.Headless.SDL2
 
         protected IntPtr WindowHandle { get; set; }
 
-<<<<<<< HEAD
         public IHostUITheme HostUITheme { get; }
         public int Width { get; private set; }
         public int Height { get; private set; }
@@ -102,41 +69,21 @@ namespace Ryujinx.Headless.SDL2
         private readonly InputManager _inputManager;
         private readonly IKeyboard _keyboardInterface;
         private readonly GraphicsDebugLevel _glLogLevel;
-=======
-        public IHostUiTheme HostUiTheme { get; }
-        public int Width { get; private set; }
-        public int Height { get; private set; }
-
-        protected SDL2MouseDriver MouseDriver;
-        private InputManager _inputManager;
-        private IKeyboard _keyboardInterface;
-        private GraphicsDebugLevel _glLogLevel;
->>>>>>> 1ec71635b (sync with main branch)
         private readonly Stopwatch _chrono;
         private readonly long _ticksPerFrame;
         private readonly CancellationTokenSource _gpuCancellationTokenSource;
         private readonly ManualResetEvent _exitEvent;
-<<<<<<< HEAD
         private readonly ManualResetEvent _gpuDoneEvent;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
         private long _ticks;
         private bool _isActive;
         private bool _isStopped;
         private uint _windowId;
 
-<<<<<<< HEAD
         private string _gpuDriverName;
 
         private readonly AspectRatio _aspectRatio;
         private readonly bool _enableMouse;
-=======
-        private string _gpuVendorName;
-
-        private AspectRatio _aspectRatio;
-        private bool _enableMouse;
->>>>>>> 1ec71635b (sync with main branch)
 
         public WindowBase(
             InputManager inputManager,
@@ -156,16 +103,10 @@ namespace Ryujinx.Headless.SDL2
             _ticksPerFrame = Stopwatch.Frequency / TargetFps;
             _gpuCancellationTokenSource = new CancellationTokenSource();
             _exitEvent = new ManualResetEvent(false);
-<<<<<<< HEAD
             _gpuDoneEvent = new ManualResetEvent(false);
             _aspectRatio = aspectRatio;
             _enableMouse = enableMouse;
             HostUITheme = new HeadlessHostUiTheme();
-=======
-            _aspectRatio = aspectRatio;
-            _enableMouse = enableMouse;
-            HostUiTheme = new HeadlessHostUiTheme();
->>>>>>> 1ec71635b (sync with main branch)
 
             SDL2Driver.Instance.Initialize();
         }
@@ -189,11 +130,7 @@ namespace Ryujinx.Headless.SDL2
 
         private void SetWindowIcon()
         {
-<<<<<<< HEAD
             Stream iconStream = typeof(WindowBase).Assembly.GetManifestResourceStream("Ryujinx.Headless.SDL2.Ryujinx.bmp");
-=======
-            Stream iconStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Ryujinx.Headless.SDL2.Ryujinx.bmp");
->>>>>>> 1ec71635b (sync with main branch)
             byte[] iconBytes = new byte[iconStream!.Length];
 
             if (iconStream.Read(iconBytes, 0, iconBytes.Length) != iconBytes.Length)
@@ -230,7 +167,6 @@ namespace Ryujinx.Headless.SDL2
             string titleIdSection = string.IsNullOrWhiteSpace(activeProcess.ProgramIdText) ? string.Empty : $" ({activeProcess.ProgramIdText.ToUpper()})";
             string titleArchSection = activeProcess.Is64Bit ? " (64-bit)" : " (32-bit)";
 
-<<<<<<< HEAD
             Width = DefaultWidth;
             Height = DefaultHeight;
 
@@ -249,9 +185,6 @@ namespace Ryujinx.Headless.SDL2
             }
 
             WindowHandle = SDL_CreateWindow($"Ryujinx {Program.Version}{titleNameSection}{titleVersionSection}{titleIdSection}{titleArchSection}", SDL_WINDOWPOS_CENTERED_DISPLAY(DisplayId), SDL_WINDOWPOS_CENTERED_DISPLAY(DisplayId), Width, Height, DefaultFlags | FullscreenFlag | GetWindowFlags());
-=======
-            WindowHandle = SDL_CreateWindow($"Ryujinx {Program.Version}{titleNameSection}{titleVersionSection}{titleIdSection}{titleArchSection}", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, DefaultWidth, DefaultHeight, DefaultFlags | GetWindowFlags());
->>>>>>> 1ec71635b (sync with main branch)
 
             if (WindowHandle == IntPtr.Zero)
             {
@@ -266,12 +199,6 @@ namespace Ryujinx.Headless.SDL2
 
             _windowId = SDL_GetWindowID(WindowHandle);
             SDL2Driver.Instance.RegisterWindow(_windowId, HandleWindowEvent);
-<<<<<<< HEAD
-=======
-
-            Width = DefaultWidth;
-            Height = DefaultHeight;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void HandleWindowEvent(SDL_Event evnt)
@@ -281,7 +208,6 @@ namespace Ryujinx.Headless.SDL2
                 switch (evnt.window.windowEvent)
                 {
                     case SDL_WindowEventID.SDL_WINDOWEVENT_SIZE_CHANGED:
-<<<<<<< HEAD
                         // Unlike on Windows, this event fires on macOS when triggering fullscreen mode.
                         // And promptly crashes the process because `Renderer?.window.SetSize` is undefined.
                         // As we don't need this to fire in either case we can test for fullscreen.
@@ -292,23 +218,11 @@ namespace Ryujinx.Headless.SDL2
                             Renderer?.Window.SetSize(Width, Height);
                             MouseDriver.SetClientSize(Width, Height);
                         }
-=======
-                        Width = evnt.window.data1;
-                        Height = evnt.window.data2;
-                        Renderer?.Window.SetSize(Width, Height);
-                        MouseDriver.SetClientSize(Width, Height);
->>>>>>> 1ec71635b (sync with main branch)
                         break;
 
                     case SDL_WindowEventID.SDL_WINDOWEVENT_CLOSE:
                         Exit();
                         break;
-<<<<<<< HEAD
-=======
-
-                    default:
-                        break;
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
             else
@@ -327,7 +241,6 @@ namespace Ryujinx.Headless.SDL2
 
         public abstract SDL_WindowFlags GetWindowFlags();
 
-<<<<<<< HEAD
         private string GetGpuDriverName()
         {
             return Renderer.GetHardwareInfo().GpuDriver;
@@ -342,11 +255,6 @@ namespace Ryujinx.Headless.SDL2
         {
             Renderer?.Window.SetScalingFilter((Graphics.GAL.ScalingFilter)ScalingFilter);
             Renderer?.Window.SetScalingFilterLevel(ScalingFilterLevel);
-=======
-        private string GetGpuVendorName()
-        {
-            return Renderer.GetHardwareInfo().GpuVendor;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void Render()
@@ -357,24 +265,16 @@ namespace Ryujinx.Headless.SDL2
 
             InitializeRenderer();
 
-<<<<<<< HEAD
             SetAntiAliasing();
 
             SetScalingFilter();
 
             _gpuDriverName = GetGpuDriverName();
-=======
-            _gpuVendorName = GetGpuVendorName();
->>>>>>> 1ec71635b (sync with main branch)
 
             Device.Gpu.Renderer.RunLoop(() =>
             {
                 Device.Gpu.SetGpuThread();
                 Device.Gpu.InitializeShaderCache(_gpuCancellationTokenSource.Token);
-<<<<<<< HEAD
-=======
-                Translator.IsReadyForTranslation.Set();
->>>>>>> 1ec71635b (sync with main branch)
 
                 while (_isActive)
                 {
@@ -402,11 +302,7 @@ namespace Ryujinx.Headless.SDL2
                     if (_ticks >= _ticksPerFrame)
                     {
                         string dockedMode = Device.System.State.DockedMode ? "Docked" : "Handheld";
-<<<<<<< HEAD
                         float scale = GraphicsConfig.ResScale;
-=======
-                        float scale = Graphics.Gpu.GraphicsConfig.ResScale;
->>>>>>> 1ec71635b (sync with main branch)
                         if (scale != 1)
                         {
                             dockedMode += $" ({scale}x)";
@@ -418,16 +314,11 @@ namespace Ryujinx.Headless.SDL2
                             Device.Configuration.AspectRatio.ToText(),
                             $"Game: {Device.Statistics.GetGameFrameRate():00.00} FPS ({Device.Statistics.GetGameFrameTime():00.00} ms)",
                             $"FIFO: {Device.Statistics.GetFifoPercent():0.00} %",
-<<<<<<< HEAD
                             $"GPU: {_gpuDriverName}"));
-=======
-                            $"GPU: {_gpuVendorName}"));
->>>>>>> 1ec71635b (sync with main branch)
 
                         _ticks = Math.Min(_ticks - _ticksPerFrame, _ticksPerFrame);
                     }
                 }
-<<<<<<< HEAD
 
                 // Make sure all commands in the run loop are fully executed before leaving the loop.
                 if (Device.Gpu.Renderer is ThreadedRenderer threaded)
@@ -436,8 +327,6 @@ namespace Ryujinx.Headless.SDL2
                 }
 
                 _gpuDoneEvent.Set();
-=======
->>>>>>> 1ec71635b (sync with main branch)
             });
 
             FinalizeWindowRenderer();
@@ -462,15 +351,9 @@ namespace Ryujinx.Headless.SDL2
             _exitEvent.Dispose();
         }
 
-<<<<<<< HEAD
         public static void ProcessMainThreadQueue()
         {
             while (_mainThreadActions.TryDequeue(out Action action))
-=======
-        public void ProcessMainThreadQueue()
-        {
-            while (MainThreadActions.TryDequeue(out Action action))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 action();
             }
@@ -493,11 +376,7 @@ namespace Ryujinx.Headless.SDL2
             _exitEvent.Set();
         }
 
-<<<<<<< HEAD
         private void NvidiaStutterWorkaround()
-=======
-        private void NVStutterWorkaround()
->>>>>>> 1ec71635b (sync with main branch)
         {
             while (_isActive)
             {
@@ -511,11 +390,7 @@ namespace Ryujinx.Headless.SDL2
 
                 // TODO: This should be removed when the issue with the GateThread is resolved.
 
-<<<<<<< HEAD
                 ThreadPool.QueueUserWorkItem(state => { });
-=======
-                ThreadPool.QueueUserWorkItem((state) => { });
->>>>>>> 1ec71635b (sync with main branch)
                 Thread.Sleep(300);
             }
         }
@@ -563,7 +438,6 @@ namespace Ryujinx.Headless.SDL2
 
             InitializeWindow();
 
-<<<<<<< HEAD
             Thread renderLoopThread = new(Render)
             {
                 Name = "GUI.RenderLoop",
@@ -578,45 +452,20 @@ namespace Ryujinx.Headless.SDL2
                     Name = "GUI.NvidiaStutterWorkaround",
                 };
                 nvidiaStutterWorkaround.Start();
-=======
-            Thread renderLoopThread = new Thread(Render)
-            {
-                Name = "GUI.RenderLoop"
-            };
-            renderLoopThread.Start();
-
-            Thread nvStutterWorkaround = null;
-            if (Renderer is Graphics.OpenGL.OpenGLRenderer)
-            {
-                nvStutterWorkaround = new Thread(NVStutterWorkaround)
-                {
-                    Name = "GUI.NVStutterWorkaround"
-                };
-                nvStutterWorkaround.Start();
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             MainLoop();
 
-<<<<<<< HEAD
             // NOTE: The render loop is allowed to stay alive until the renderer itself is disposed, as it may handle resource dispose.
             // We only need to wait for all commands submitted during the main gpu loop to be processed.
             _gpuDoneEvent.WaitOne();
             _gpuDoneEvent.Dispose();
             nvidiaStutterWorkaround?.Join();
-=======
-            renderLoopThread.Join();
-            nvStutterWorkaround?.Join();
->>>>>>> 1ec71635b (sync with main branch)
 
             Exit();
         }
 
-<<<<<<< HEAD
         public bool DisplayInputDialog(SoftwareKeyboardUIArgs args, out string userText)
-=======
-        public bool DisplayInputDialog(SoftwareKeyboardUiArgs args, out string userText)
->>>>>>> 1ec71635b (sync with main branch)
         {
             // SDL2 doesn't support input dialogs
             userText = "Ryujinx";
@@ -631,11 +480,7 @@ namespace Ryujinx.Headless.SDL2
             return true;
         }
 
-<<<<<<< HEAD
         public bool DisplayMessageDialog(ControllerAppletUIArgs args)
-=======
-        public bool DisplayMessageDialog(ControllerAppletUiArgs args)
->>>>>>> 1ec71635b (sync with main branch)
         {
             string playerCount = args.PlayerCountMin == args.PlayerCountMax ? $"exactly {args.PlayerCountMin}" : $"{args.PlayerCountMin}-{args.PlayerCountMax}";
 
@@ -662,21 +507,13 @@ namespace Ryujinx.Headless.SDL2
 
         public bool DisplayErrorAppletDialog(string title, string message, string[] buttonsText)
         {
-<<<<<<< HEAD
             SDL_MessageBoxData data = new()
-=======
-            SDL_MessageBoxData data = new SDL_MessageBoxData
->>>>>>> 1ec71635b (sync with main branch)
             {
                 title = title,
                 message = message,
                 buttons = new SDL_MessageBoxButtonData[buttonsText.Length],
                 numbuttons = buttonsText.Length,
-<<<<<<< HEAD
                 window = WindowHandle,
-=======
-                window = WindowHandle
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             for (int i = 0; i < buttonsText.Length; i++)
@@ -684,11 +521,7 @@ namespace Ryujinx.Headless.SDL2
                 data.buttons[i] = new SDL_MessageBoxButtonData
                 {
                     buttonid = i,
-<<<<<<< HEAD
                     text = buttonsText[i],
-=======
-                    text = buttonsText[i]
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -718,8 +551,4 @@ namespace Ryujinx.Headless.SDL2
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

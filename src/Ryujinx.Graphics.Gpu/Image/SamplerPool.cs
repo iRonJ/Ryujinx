@@ -159,8 +159,4 @@ namespace Ryujinx.Graphics.Gpu.Image
             item?.Dispose();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

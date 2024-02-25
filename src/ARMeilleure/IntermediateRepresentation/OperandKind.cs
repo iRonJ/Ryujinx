@@ -8,12 +8,6 @@ namespace ARMeilleure.IntermediateRepresentation
         LocalVariable,
         Memory,
         Register,
-<<<<<<< HEAD
         Undefined,
     }
 }
-=======
-        Undefined
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

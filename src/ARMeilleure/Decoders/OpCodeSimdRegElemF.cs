@@ -26,13 +26,9 @@ namespace ARMeilleure.Decoders
 
                     break;
 
-<<<<<<< HEAD
                 default:
                     Instruction = InstDescriptor.Undefined;
                     break;
-=======
-                default: Instruction = InstDescriptor.Undefined; break;
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
     }

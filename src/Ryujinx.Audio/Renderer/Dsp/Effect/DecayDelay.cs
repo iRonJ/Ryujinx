@@ -49,8 +49,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.Effect
             return _delayLine.Tap(sampleIndex);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

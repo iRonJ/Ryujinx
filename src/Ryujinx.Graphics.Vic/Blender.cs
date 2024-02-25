@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Vic.Image;
-=======
-﻿using Ryujinx.Graphics.Vic.Image;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Vic.Types;
 using System;
 using System.Diagnostics;

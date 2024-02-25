@@ -14,11 +14,7 @@ namespace Ryujinx.HLE.Loaders.Mods
             Normal,
             String,
             EscapeChar,
-<<<<<<< HEAD
             Comment,
-=======
-            Comment
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private readonly StreamReader _reader;
@@ -35,21 +31,13 @@ namespace Ryujinx.HLE.Loaders.Mods
             }
 
             _reader = reader;
-<<<<<<< HEAD
             BuildId = header[BidHeader.Length..].TrimEnd().TrimEnd('0');
-=======
-            BuildId = header.Substring(BidHeader.Length).TrimEnd().TrimEnd('0');
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         // Uncomments line and unescapes C style strings within
         private static string PreprocessLine(string line)
         {
-<<<<<<< HEAD
             StringBuilder str = new();
-=======
-            StringBuilder str = new StringBuilder();
->>>>>>> 1ec71635b (sync with main branch)
             Token state = Token.Normal;
 
             for (int i = 0; i < line.Length; ++i)
@@ -68,22 +56,15 @@ namespace Ryujinx.HLE.Loaders.Mods
                     case Token.String:
                         state = c switch
                         {
-<<<<<<< HEAD
                             '"' => Token.Normal,
                             '\\' => Token.EscapeChar,
                             _ => Token.String,
-=======
-                            '"'  => Token.Normal,
-                            '\\' => Token.EscapeChar,
-                            _    => Token.String
->>>>>>> 1ec71635b (sync with main branch)
                         };
                         break;
                     case Token.EscapeChar:
                         state = Token.String;
                         c = c switch
                         {
-<<<<<<< HEAD
                             'a' => '\a',
                             'b' => '\b',
                             'f' => '\f',
@@ -93,29 +74,14 @@ namespace Ryujinx.HLE.Loaders.Mods
                             'v' => '\v',
                             '\\' => '\\',
                             _ => '?',
-=======
-                            'a'  => '\a',
-                            'b'  => '\b',
-                            'f'  => '\f',
-                            'n'  => '\n',
-                            'r'  => '\r',
-                            't'  => '\t',
-                            'v'  => '\v',
-                            '\\' => '\\',
-                            _    => '?'
->>>>>>> 1ec71635b (sync with main branch)
                         };
                         break;
                 }
 
-<<<<<<< HEAD
                 if (state == Token.Comment)
                 {
                     break;
                 }
-=======
-                if (state == Token.Comment) break;
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (state < Token.EscapeChar)
                 {
@@ -149,25 +115,17 @@ namespace Ryujinx.HLE.Loaders.Mods
         // Big Endian
         static byte[] Hex2ByteArrayBE(string hexstr)
         {
-<<<<<<< HEAD
             if ((hexstr.Length & 1) == 1)
             {
                 return null;
             }
-=======
-            if ((hexstr.Length & 1) == 1) return null;
->>>>>>> 1ec71635b (sync with main branch)
 
             byte[] bytes = new byte[hexstr.Length >> 1];
 
             for (int i = 0; i < hexstr.Length; i += 2)
             {
                 int high = ParseHexByte((byte)hexstr[i]);
-<<<<<<< HEAD
                 int low = ParseHexByte((byte)hexstr[i + 1]);
-=======
-                int low  = ParseHexByte((byte)hexstr[i + 1]);
->>>>>>> 1ec71635b (sync with main branch)
 
                 bytes[i >> 1] = (byte)((high << 4) | low);
             }
@@ -195,19 +153,11 @@ namespace Ryujinx.HLE.Loaders.Mods
                 return null;
             }
 
-<<<<<<< HEAD
             MemPatch patches = new();
 
             bool enabled = false;
             bool printValues = false;
             int offsetShift = 0;
-=======
-            MemPatch patches = new MemPatch();
-
-            bool enabled     = false;
-            bool printValues = false;
-            int offset_shift = 0;
->>>>>>> 1ec71635b (sync with main branch)
 
             string line;
             int lineNum = 0;
@@ -261,11 +211,7 @@ namespace Ryujinx.HLE.Loaders.Mods
 
                     if (tokens[1] == "offset_shift")
                     {
-<<<<<<< HEAD
                         if (tokens.Length != 3 || !ParseInt(tokens[2], out offsetShift))
-=======
-                        if (tokens.Length != 3 || !ParseInt(tokens[2], out offset_shift))
->>>>>>> 1ec71635b (sync with main branch)
                         {
                             ParseWarn();
 
@@ -304,11 +250,7 @@ namespace Ryujinx.HLE.Loaders.Mods
                         continue;
                     }
 
-<<<<<<< HEAD
                     offset += offsetShift;
-=======
-                    offset += offset_shift;
->>>>>>> 1ec71635b (sync with main branch)
 
                     if (printValues)
                     {
@@ -336,8 +278,4 @@ namespace Ryujinx.HLE.Loaders.Mods
             patches.AddFrom(Parse());
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

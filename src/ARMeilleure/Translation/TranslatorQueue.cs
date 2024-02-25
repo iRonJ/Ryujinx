@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using ARMeilleure.Diagnostics;
-=======
-﻿using ARMeilleure.Diagnostics;
->>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.State;
 using System;
 using System.Collections.Generic;

@@ -7,8 +7,4 @@ namespace ARMeilleure.Translation.PTC
         event Action<PtcLoadingState, int, int> PtcStateChanged;
         void Continue();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

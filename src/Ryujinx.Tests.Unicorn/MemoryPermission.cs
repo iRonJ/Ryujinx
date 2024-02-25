@@ -11,8 +11,4 @@ namespace Ryujinx.Tests.Unicorn
         Exec = 4,
         All = 7,
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

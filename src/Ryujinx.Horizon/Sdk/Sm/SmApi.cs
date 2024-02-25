@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Sf.Cmif;
 using System;
 
 namespace Ryujinx.Horizon.Sdk.Sm
 {
-<<<<<<< HEAD
     public class SmApi : IDisposable
-=======
-    class SmApi
->>>>>>> 1ec71635b (sync with main branch)
     {
         private const string SmName = "sm:";
 
@@ -117,7 +109,6 @@ namespace Ryujinx.Horizon.Sdk.Sm
 
             return ServiceUtil.SendRequest(out _, _portHandle, 4, sendPid: true, data);
         }
-<<<<<<< HEAD
 
         public void Dispose()
         {
@@ -132,7 +123,3 @@ namespace Ryujinx.Horizon.Sdk.Sm
         }
     }
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

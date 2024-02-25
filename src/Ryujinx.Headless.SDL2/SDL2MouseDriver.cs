@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Configuration;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Input;
 using System;
 using System.Diagnostics;
@@ -19,11 +15,7 @@ namespace Ryujinx.Headless.SDL2
         private const int CursorHideIdleTime = 5; // seconds
 
         private bool _isDisposed;
-<<<<<<< HEAD
         private readonly HideCursorMode _hideCursorMode;
-=======
-        private HideCursorMode _hideCursorMode;
->>>>>>> 1ec71635b (sync with main branch)
         private bool _isHidden;
         private long _lastCursorMoveTime;
 
@@ -31,11 +23,7 @@ namespace Ryujinx.Headless.SDL2
 
         public Vector2 CurrentPosition { get; private set; }
         public Vector2 Scroll { get; private set; }
-<<<<<<< HEAD
         public Size ClientSize;
-=======
-        public Size _clientSize;
->>>>>>> 1ec71635b (sync with main branch)
 
         public SDL2MouseDriver(HideCursorMode hideCursorMode)
         {
@@ -44,15 +32,11 @@ namespace Ryujinx.Headless.SDL2
 
             if (_hideCursorMode == HideCursorMode.Always)
             {
-<<<<<<< HEAD
                 if (SDL_ShowCursor(SDL_DISABLE) != SDL_DISABLE)
                 {
                     Logger.Error?.PrintMsg(LogClass.Application, "Failed to disable the cursor.");
                 }
 
-=======
-                SDL_ShowCursor(SDL_DISABLE);
->>>>>>> 1ec71635b (sync with main branch)
                 _isHidden = true;
             }
         }
@@ -67,11 +51,7 @@ namespace Ryujinx.Headless.SDL2
 
         public void UpdatePosition()
         {
-<<<<<<< HEAD
             _ = SDL_GetMouseState(out int posX, out int posY);
-=======
-            SDL_GetMouseState(out int posX, out int posY);
->>>>>>> 1ec71635b (sync with main branch)
             Vector2 position = new(posX, posY);
 
             if (CurrentPosition != position)
@@ -96,15 +76,11 @@ namespace Ryujinx.Headless.SDL2
             {
                 if (!_isHidden)
                 {
-<<<<<<< HEAD
                     if (SDL_ShowCursor(SDL_DISABLE) != SDL_DISABLE)
                     {
                         Logger.Error?.PrintMsg(LogClass.Application, "Failed to disable the cursor.");
                     }
 
-=======
-                    SDL_ShowCursor(SDL_DISABLE);
->>>>>>> 1ec71635b (sync with main branch)
                     _isHidden = true;
                 }
             }
@@ -112,15 +88,11 @@ namespace Ryujinx.Headless.SDL2
             {
                 if (_isHidden)
                 {
-<<<<<<< HEAD
                     if (SDL_ShowCursor(SDL_ENABLE) != SDL_ENABLE)
                     {
                         Logger.Error?.PrintMsg(LogClass.Application, "Failed to enable the cursor.");
                     }
 
-=======
-                    SDL_ShowCursor(SDL_ENABLE);
->>>>>>> 1ec71635b (sync with main branch)
                     _isHidden = false;
                 }
             }
@@ -159,11 +131,7 @@ namespace Ryujinx.Headless.SDL2
 
         public void SetClientSize(int width, int height)
         {
-<<<<<<< HEAD
             ClientSize = new Size(width, height);
-=======
-            _clientSize = new Size(width, height);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public bool IsButtonPressed(MouseButton button)
@@ -173,11 +141,7 @@ namespace Ryujinx.Headless.SDL2
 
         public Size GetClientSize()
         {
-<<<<<<< HEAD
             return ClientSize;
-=======
-            return _clientSize;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public string DriverName => "SDL2";
@@ -211,8 +175,4 @@ namespace Ryujinx.Headless.SDL2
             _isDisposed = true;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

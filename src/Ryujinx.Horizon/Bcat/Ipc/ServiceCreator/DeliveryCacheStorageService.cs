@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using LibHac.Bcat;
-=======
-﻿using LibHac.Bcat;
->>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Bcat;

@@ -15,15 +15,9 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
             // When debug mode is enabled, we disable expression propagation
             // (this makes comparison with the disassembly easier).
-<<<<<<< HEAD
             if (!context.DebugMode)
             {
                 AstBlockVisitor visitor = new(mainBlock);
-=======
-            if (!context.Config.Options.Flags.HasFlag(TranslationFlags.DebugMode))
-            {
-                AstBlockVisitor visitor = new AstBlockVisitor(mainBlock);
->>>>>>> 1ec71635b (sync with main branch)
 
                 foreach (IAstNode node in visitor.Visit())
                 {
@@ -51,11 +45,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         private static bool IsWorthPropagating(IAstNode source)
         {
-<<<<<<< HEAD
             if (source is not AstOperation srcOp)
-=======
-            if (!(source is AstOperation srcOp))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return false;
             }
@@ -97,11 +87,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         private static void RemoveEmptyBlocks(AstBlock mainBlock)
         {
-<<<<<<< HEAD
             Queue<AstBlock> pending = new();
-=======
-            Queue<AstBlock> pending = new Queue<AstBlock>();
->>>>>>> 1ec71635b (sync with main branch)
 
             pending.Enqueue(mainBlock);
 
@@ -166,8 +152,4 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

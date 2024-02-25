@@ -8,20 +8,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-<<<<<<< HEAD
 using System.Text;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Sm
 {
     class IUserInterface : IpcService
     {
-<<<<<<< HEAD
         private static readonly Dictionary<string, Type> _services;
-=======
-        private static Dictionary<string, Type> _services;
->>>>>>> 1ec71635b (sync with main branch)
 
         private readonly SmRegistry _registry;
         private readonly ServerBase _commonServer;
@@ -36,11 +29,7 @@ namespace Ryujinx.HLE.HOS.Services.Sm
 
         static IUserInterface()
         {
-<<<<<<< HEAD
             _services = typeof(IUserInterface).Assembly.GetTypes()
-=======
-            _services = Assembly.GetExecutingAssembly().GetTypes()
->>>>>>> 1ec71635b (sync with main branch)
                 .SelectMany(type => type.GetCustomAttributes(typeof(ServiceAttribute), true)
                 .Select(service => (((ServiceAttribute)service).Name, type)))
                 .ToDictionary(service => service.Name, service => service.type);
@@ -80,11 +69,7 @@ namespace Ryujinx.HLE.HOS.Services.Sm
                 return ResultCode.InvalidName;
             }
 
-<<<<<<< HEAD
             KSession session = new(context.Device.System.KernelContext);
-=======
-            KSession session = new KSession(context.Device.System.KernelContext);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (_registry.TryGetService(name, out KPort port))
             {
@@ -198,11 +183,7 @@ namespace Ryujinx.HLE.HOS.Services.Sm
 
             Logger.Debug?.Print(LogClass.ServiceSm, $"Register \"{name}\".");
 
-<<<<<<< HEAD
             KPort port = new(context.Device.System.KernelContext, maxSessions, isLight, null);
-=======
-            KPort port = new KPort(context.Device.System.KernelContext, maxSessions, isLight, null);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (!_registry.TryRegister(name, port))
             {
@@ -235,16 +216,10 @@ namespace Ryujinx.HLE.HOS.Services.Sm
 
             context.RequestData.BaseStream.Seek(namePosition + 8, SeekOrigin.Begin);
 
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             bool isLight = (context.RequestData.ReadInt32() & 1) != 0;
             int maxSessions = context.RequestData.ReadInt32();
 #pragma warning restore IDE0059
-=======
-            bool isLight = (context.RequestData.ReadInt32() & 1) != 0;
-
-            int maxSessions = context.RequestData.ReadInt32();
->>>>>>> 1ec71635b (sync with main branch)
 
             if (string.IsNullOrEmpty(name))
             {
@@ -261,11 +236,7 @@ namespace Ryujinx.HLE.HOS.Services.Sm
 
         private static string ReadName(ServiceCtx context)
         {
-<<<<<<< HEAD
             StringBuilder nameBuilder = new();
-=======
-            string name = string.Empty;
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int index = 0; index < 8 &&
                 context.RequestData.BaseStream.Position <
@@ -275,19 +246,11 @@ namespace Ryujinx.HLE.HOS.Services.Sm
 
                 if (chr >= 0x20 && chr < 0x7f)
                 {
-<<<<<<< HEAD
                     nameBuilder.Append((char)chr);
                 }
             }
 
             return nameBuilder.ToString();
-=======
-                    name += (char)chr;
-                }
-            }
-
-            return name;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void DestroyAtExit()
@@ -297,8 +260,4 @@ namespace Ryujinx.HLE.HOS.Services.Sm
             base.DestroyAtExit();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

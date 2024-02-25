@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Silk.NET.Vulkan;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-<<<<<<< HEAD
 using Format = Ryujinx.Graphics.GAL.Format;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using VkBuffer = Silk.NET.Vulkan.Buffer;
 using VkFormat = Silk.NET.Vulkan.Format;
 
@@ -50,11 +43,7 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly Auto<MemoryAllocation> _allocationAuto;
         private Auto<MemoryAllocation> _foreignAllocationAuto;
 
-<<<<<<< HEAD
         private Dictionary<Format, TextureStorage> _aliasedStorages;
-=======
-        private Dictionary<GAL.Format, TextureStorage> _aliasedStorages;
->>>>>>> 1ec71635b (sync with main branch)
 
         private AccessFlags _lastModificationAccess;
         private PipelineStageFlags _lastModificationStage;
@@ -62,34 +51,19 @@ namespace Ryujinx.Graphics.Vulkan
         private PipelineStageFlags _lastReadStage;
 
         private int _viewsCount;
-<<<<<<< HEAD
         private readonly ulong _size;
 
         public VkFormat VkFormat { get; }
-=======
-        private ulong _size;
-
-        public VkFormat VkFormat { get; }
-        public float ScaleFactor { get; }
->>>>>>> 1ec71635b (sync with main branch)
 
         public unsafe TextureStorage(
             VulkanRenderer gd,
             Device device,
             TextureCreateInfo info,
-<<<<<<< HEAD
-=======
-            float scaleFactor,
->>>>>>> 1ec71635b (sync with main branch)
             Auto<MemoryAllocation> foreignAllocation = null)
         {
             _gd = gd;
             _device = device;
             _info = info;
-<<<<<<< HEAD
-=======
-            ScaleFactor = scaleFactor;
->>>>>>> 1ec71635b (sync with main branch)
 
             var format = _gd.FormatCapabilities.ConvertToVkFormat(info.Format);
             var levels = (uint)info.Levels;
@@ -122,11 +96,7 @@ namespace Ryujinx.Graphics.Vulkan
                 flags |= ImageCreateFlags.Create2DArrayCompatibleBit;
             }
 
-<<<<<<< HEAD
             var imageCreateInfo = new ImageCreateInfo
-=======
-            var imageCreateInfo = new ImageCreateInfo()
->>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.ImageCreateInfo,
                 ImageType = type,
@@ -139,11 +109,7 @@ namespace Ryujinx.Graphics.Vulkan
                 Usage = usage,
                 SharingMode = SharingMode.Exclusive,
                 InitialLayout = ImageLayout.Undefined,
-<<<<<<< HEAD
                 Flags = flags,
-=======
-                Flags = flags
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             gd.Api.CreateImage(device, imageCreateInfo, null, out _image).ThrowOnError();
@@ -182,7 +148,6 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
-<<<<<<< HEAD
         public TextureStorage CreateAliasedColorForDepthStorageUnsafe(Format format)
         {
             var colorFormat = format switch
@@ -193,25 +158,11 @@ namespace Ryujinx.Graphics.Vulkan
                 Format.D32Float => Format.R32Float,
                 Format.D32FloatS8Uint => Format.R32G32Float,
                 _ => throw new ArgumentException($"\"{format}\" is not a supported depth or stencil format."),
-=======
-        public TextureStorage CreateAliasedColorForDepthStorageUnsafe(GAL.Format format)
-        {
-            var colorFormat = format switch
-            {
-                GAL.Format.S8Uint => GAL.Format.R8Unorm,
-                GAL.Format.D16Unorm => GAL.Format.R16Unorm,
-                GAL.Format.S8UintD24Unorm => GAL.Format.R8G8B8A8Unorm,
-                GAL.Format.D32Float => GAL.Format.R32Float,
-                GAL.Format.D24UnormS8Uint => GAL.Format.R8G8B8A8Unorm,
-                GAL.Format.D32FloatS8Uint => GAL.Format.R32G32Float,
-                _ => throw new ArgumentException($"\"{format}\" is not a supported depth or stencil format.")
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             return CreateAliasedStorageUnsafe(colorFormat);
         }
 
-<<<<<<< HEAD
         public TextureStorage CreateAliasedStorageUnsafe(Format format)
         {
             if (_aliasedStorages == null || !_aliasedStorages.TryGetValue(format, out var storage))
@@ -221,17 +172,6 @@ namespace Ryujinx.Graphics.Vulkan
                 var info = NewCreateInfoWith(ref _info, format, _info.BytesPerPixel);
 
                 storage = new TextureStorage(_gd, _device, info, _allocationAuto);
-=======
-        public TextureStorage CreateAliasedStorageUnsafe(GAL.Format format)
-        {
-            if (_aliasedStorages == null || !_aliasedStorages.TryGetValue(format, out var storage))
-            {
-                _aliasedStorages ??= new Dictionary<GAL.Format, TextureStorage>();
-
-                var info = NewCreateInfoWith(ref _info, format, _info.BytesPerPixel);
-
-                storage = new TextureStorage(_gd, _device, info, ScaleFactor, _allocationAuto);
->>>>>>> 1ec71635b (sync with main branch)
 
                 _aliasedStorages.Add(format, storage);
             }
@@ -239,22 +179,14 @@ namespace Ryujinx.Graphics.Vulkan
             return storage;
         }
 
-<<<<<<< HEAD
         public static TextureCreateInfo NewCreateInfoWith(ref TextureCreateInfo info, Format format, int bytesPerPixel)
-=======
-        public static TextureCreateInfo NewCreateInfoWith(ref TextureCreateInfo info, GAL.Format format, int bytesPerPixel)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return NewCreateInfoWith(ref info, format, bytesPerPixel, info.Width, info.Height);
         }
 
         public static TextureCreateInfo NewCreateInfoWith(
             ref TextureCreateInfo info,
-<<<<<<< HEAD
             Format format,
-=======
-            GAL.Format format,
->>>>>>> 1ec71635b (sync with main branch)
             int bytesPerPixel,
             int width,
             int height)
@@ -327,11 +259,7 @@ namespace Ryujinx.Graphics.Vulkan
 
             var subresourceRange = new ImageSubresourceRange(aspectFlags, 0, (uint)_info.Levels, 0, (uint)_info.GetLayers());
 
-<<<<<<< HEAD
             var barrier = new ImageMemoryBarrier
-=======
-            var barrier = new ImageMemoryBarrier()
->>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.ImageMemoryBarrier,
                 SrcAccessMask = 0,
@@ -341,11 +269,7 @@ namespace Ryujinx.Graphics.Vulkan
                 SrcQueueFamilyIndex = Vk.QueueFamilyIgnored,
                 DstQueueFamilyIndex = Vk.QueueFamilyIgnored,
                 Image = _imageAuto.Get(cbs).Value,
-<<<<<<< HEAD
                 SubresourceRange = subresourceRange,
-=======
-                SubresourceRange = subresourceRange
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             _gd.Api.CmdPipelineBarrier(
@@ -366,11 +290,7 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
-<<<<<<< HEAD
         public static ImageUsageFlags GetImageUsage(Format format, Target target, bool supportsMsStorage)
-=======
-        public static ImageUsageFlags GetImageUsage(GAL.Format format, Target target, bool supportsMsStorage)
->>>>>>> 1ec71635b (sync with main branch)
         {
             var usage = DefaultUsageFlags;
 
@@ -513,7 +433,6 @@ namespace Ryujinx.Graphics.Vulkan
             return FormatCapabilities.IsD24S8(Info.Format) && VkFormat == VkFormat.D32SfloatS8Uint;
         }
 
-<<<<<<< HEAD
         public void QueueLoadOpBarrier(CommandBufferScoped cbs, bool depthStencil)
         {
             PipelineStageFlags srcStageFlags = _lastReadStage | _lastModificationStage;
@@ -533,35 +452,12 @@ namespace Ryujinx.Graphics.Vulkan
                     _imageAuto.Get(cbs).Value,
                     srcAccessFlags,
                     dstAccessFlags,
-=======
-        public void SetModification(AccessFlags accessFlags, PipelineStageFlags stage)
-        {
-            _lastModificationAccess = accessFlags;
-            _lastModificationStage = stage;
-        }
-
-        public void InsertReadToWriteBarrier(CommandBufferScoped cbs, AccessFlags dstAccessFlags, PipelineStageFlags dstStageFlags)
-        {
-            if (_lastReadAccess != AccessFlags.None)
-            {
-                ImageAspectFlags aspectFlags = Info.Format.ConvertAspectFlags();
-
-                TextureView.InsertImageBarrier(
-                    _gd.Api,
-                    cbs.CommandBuffer,
-                    _imageAuto.Get(cbs).Value,
-                    _lastReadAccess,
-                    dstAccessFlags,
-                    _lastReadStage,
-                    dstStageFlags,
->>>>>>> 1ec71635b (sync with main branch)
                     aspectFlags,
                     0,
                     0,
                     _info.GetLayers(),
                     _info.Levels);
 
-<<<<<<< HEAD
                 _gd.Barriers.QueueBarrier(barrier, srcStageFlags, dstStageFlags);
 
                 _lastReadStage = PipelineStageFlags.None;
@@ -578,14 +474,6 @@ namespace Ryujinx.Graphics.Vulkan
         }
 
         public void QueueWriteToReadBarrier(CommandBufferScoped cbs, AccessFlags dstAccessFlags, PipelineStageFlags dstStageFlags)
-=======
-                _lastReadAccess = AccessFlags.None;
-                _lastReadStage = PipelineStageFlags.None;
-            }
-        }
-
-        public void InsertWriteToReadBarrier(CommandBufferScoped cbs, AccessFlags dstAccessFlags, PipelineStageFlags dstStageFlags)
->>>>>>> 1ec71635b (sync with main branch)
         {
             _lastReadAccess |= dstAccessFlags;
             _lastReadStage |= dstStageFlags;
@@ -593,33 +481,18 @@ namespace Ryujinx.Graphics.Vulkan
             if (_lastModificationAccess != AccessFlags.None)
             {
                 ImageAspectFlags aspectFlags = Info.Format.ConvertAspectFlags();
-<<<<<<< HEAD
                 ImageMemoryBarrier barrier = TextureView.GetImageBarrier(
                     _imageAuto.Get(cbs).Value,
                     _lastModificationAccess,
                     dstAccessFlags,
-=======
-
-                TextureView.InsertImageBarrier(
-                    _gd.Api,
-                    cbs.CommandBuffer,
-                    _imageAuto.Get(cbs).Value,
-                    _lastModificationAccess,
-                    dstAccessFlags,
-                    _lastModificationStage,
-                    dstStageFlags,
->>>>>>> 1ec71635b (sync with main branch)
                     aspectFlags,
                     0,
                     0,
                     _info.GetLayers(),
                     _info.Levels);
 
-<<<<<<< HEAD
                 _gd.Barriers.QueueBarrier(barrier, _lastModificationStage, dstStageFlags);
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 _lastModificationAccess = AccessFlags.None;
             }
         }

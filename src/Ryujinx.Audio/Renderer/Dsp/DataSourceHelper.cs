@@ -44,15 +44,9 @@ namespace Ryujinx.Audio.Renderer.Dsp
 
         public static void ProcessWaveBuffers(IVirtualMemoryManager memoryManager, Span<float> outputBuffer, ref WaveBufferInformation info, Span<WaveBuffer> wavebuffers, ref VoiceUpdateState voiceState, uint targetSampleRate, int sampleCount)
         {
-<<<<<<< HEAD
             const int TempBufferSize = 0x3F00;
 
             Span<short> tempBuffer = stackalloc short[TempBufferSize];
-=======
-            const int tempBufferSize = 0x3F00;
-
-            Span<short> tempBuffer = stackalloc short[tempBufferSize];
->>>>>>> 1ec71635b (sync with main branch)
 
             float sampleRateRatio = (float)info.SourceSampleRate / targetSampleRate * info.Pitch;
 
@@ -66,19 +60,11 @@ namespace Ryujinx.Audio.Renderer.Dsp
 
             int totalNeededSize = (int)MathF.Truncate(fraction + sampleRateRatio * sampleCount);
 
-<<<<<<< HEAD
             if (totalNeededSize + pitchMaxLength <= TempBufferSize && totalNeededSize >= 0)
             {
                 int sourceSampleCountToProcess = sampleCount;
 
                 int maxSampleCountPerIteration = Math.Min((int)MathF.Truncate((TempBufferSize - fraction) / sampleRateRatio), sampleCount);
-=======
-            if (totalNeededSize + pitchMaxLength <= tempBufferSize && totalNeededSize >= 0)
-            {
-                int sourceSampleCountToProcess = sampleCount;
-
-                int maxSampleCountPerIteration = Math.Min((int)MathF.Truncate((tempBufferSize - fraction) / sampleRateRatio), sampleCount);
->>>>>>> 1ec71635b (sync with main branch)
 
                 bool isStarving = false;
 
@@ -90,11 +76,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
 
                     if (!info.DecodingBehaviour.HasFlag(DecodingBehaviour.SkipPitchAndSampleRateConversion))
                     {
-<<<<<<< HEAD
                         voiceState.Pitch.AsSpan()[..pitchMaxLength].CopyTo(tempBuffer);
-=======
-                        voiceState.Pitch.AsSpan().Slice(0, pitchMaxLength).CopyTo(tempBuffer);
->>>>>>> 1ec71635b (sync with main branch)
                         tempBufferIndex += pitchMaxLength;
                     }
 
@@ -125,11 +107,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
                             voiceState.LoopContext = memoryManager.Read<AdpcmLoopContext>(waveBuffer.Context);
                         }
 
-<<<<<<< HEAD
                         Span<short> tempSpan = tempBuffer[(tempBufferIndex + y)..];
-=======
-                        Span<short> tempSpan = tempBuffer.Slice(tempBufferIndex + y);
->>>>>>> 1ec71635b (sync with main branch)
 
                         int decodedSampleCount = -1;
 
@@ -190,11 +168,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
                                 decodedSampleCount = PcmHelper.Decode(tempSpan, waveBufferPcmFloat, targetSampleStartOffset, targetSampleEndOffset, info.ChannelIndex, info.ChannelCount);
                                 break;
                             default:
-<<<<<<< HEAD
                                 Logger.Error?.Print(LogClass.AudioRenderer, "Unsupported sample format " + info.SampleFormat);
-=======
-                                Logger.Error?.Print(LogClass.AudioRenderer, $"Unsupported sample format " + info.SampleFormat);
->>>>>>> 1ec71635b (sync with main branch)
                                 break;
                         }
 
@@ -246,11 +220,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
                         }
                     }
 
-<<<<<<< HEAD
                     Span<int> outputSpanInt = MemoryMarshal.Cast<float, int>(outputBuffer[i..]);
-=======
-                    Span<int> outputSpanInt = MemoryMarshal.Cast<float, int>(outputBuffer.Slice(i));
->>>>>>> 1ec71635b (sync with main branch)
 
                     if (info.DecodingBehaviour.HasFlag(DecodingBehaviour.SkipPitchAndSampleRateConversion))
                     {
@@ -261,15 +231,9 @@ namespace Ryujinx.Audio.Renderer.Dsp
                     }
                     else
                     {
-<<<<<<< HEAD
                         Span<short> tempSpan = tempBuffer[(tempBufferIndex + y)..];
 
                         tempSpan[..(sampleCountToDecode - y)].Clear();
-=======
-                        Span<short> tempSpan = tempBuffer.Slice(tempBufferIndex + y);
-
-                        tempSpan.Slice(0, sampleCountToDecode - y).Fill(0);
->>>>>>> 1ec71635b (sync with main branch)
 
                         ToFloat(outputBuffer, outputSpanInt, sampleCountToProcess);
 
@@ -499,8 +463,4 @@ namespace Ryujinx.Audio.Renderer.Dsp
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

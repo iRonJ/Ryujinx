@@ -32,8 +32,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
             return false;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

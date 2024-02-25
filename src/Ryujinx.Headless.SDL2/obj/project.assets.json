@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
+    "net8.0": {
       "CommandLineParser/2.9.1": {
         "type": "package",
         "compile": {
@@ -31,7 +31,7 @@
           }
         }
       },
-      "LibHac/0.18.0": {
+      "LibHac/0.19.0": {
         "type": "package",
         "compile": {
           "lib/net7.0/LibHac.dll": {
@@ -86,81 +86,76 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Abstractions/6.30.1": {
+      "Microsoft.IdentityModel.Abstractions/7.3.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.JsonWebTokens/6.30.1": {
+      "Microsoft.IdentityModel.JsonWebTokens/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "6.30.1",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encodings.Web": "4.7.2",
-          "System.Text.Json": "4.7.2"
+          "Microsoft.IdentityModel.Tokens": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/6.30.1": {
+      "Microsoft.IdentityModel.Logging/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "6.30.1"
+          "Microsoft.IdentityModel.Abstractions": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/6.30.1": {
+      "Microsoft.IdentityModel.Tokens/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "Microsoft.IdentityModel.Logging": "6.30.1",
-          "System.Security.Cryptography.Cng": "4.5.0"
+          "Microsoft.IdentityModel.Logging": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Tokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Tokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IO.RecyclableMemoryStream/2.3.2": {
+      "Microsoft.IO.RecyclableMemoryStream/3.0.0": {
         "type": "package",
         "compile": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         }
@@ -215,6 +210,19 @@
           }
         }
       },
+      "NetCoreServer/8.0.7": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/NetCoreServer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/NetCoreServer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "NETStandard.Library/1.6.0": {
         "type": "package",
         "dependencies": {
@@ -264,7 +272,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "OpenTK.Core/4.7.7": {
+      "OpenTK.Core/4.8.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/OpenTK.Core.dll": {
@@ -277,11 +285,11 @@
           }
         }
       },
-      "OpenTK.Graphics/4.7.7": {
+      "OpenTK.Graphics/4.8.2": {
         "type": "package",
         "dependencies": {
-          "OpenTK.Core": "[4.7.7, 4.8.0)",
-          "OpenTK.Mathematics": "[4.7.7, 4.8.0)"
+          "OpenTK.Core": "[4.8.2, 4.9.0)",
+          "OpenTK.Mathematics": "[4.8.2, 4.9.0)"
         },
         "compile": {
           "lib/netcoreapp3.1/OpenTK.Graphics.dll": {
@@ -294,7 +302,7 @@
           }
         }
       },
-      "OpenTK.Mathematics/4.7.7": {
+      "OpenTK.Mathematics/4.8.2": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "5.0.0"
@@ -310,7 +318,7 @@
           }
         }
       },
-      "OpenTK.redist.glfw/3.3.8.30": {
+      "OpenTK.redist.glfw/3.3.8.39": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -319,6 +327,10 @@
           "lib/netstandard2.0/_._": {}
         },
         "runtimeTargets": {
+          "runtimes/linux-x64/native/libglfw-wayland.so.3.3": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
           "runtimes/linux-x64/native/libglfw.so.3.3": {
             "assetType": "native",
             "rid": "linux-x64"
@@ -341,11 +353,11 @@
           }
         }
       },
-      "OpenTK.Windowing.GraphicsLibraryFramework/4.7.7": {
+      "OpenTK.Windowing.GraphicsLibraryFramework/4.8.2": {
         "type": "package",
         "dependencies": {
-          "OpenTK.Core": "[4.7.7, 4.8.0)",
-          "OpenTK.redist.glfw": "3.3.8.30"
+          "OpenTK.Core": "[4.8.2, 4.9.0)",
+          "OpenTK.redist.glfw": "3.3.8.39"
         },
         "compile": {
           "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.dll": {
@@ -410,9 +422,17 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Ryujinx.Graphics.Nvdec.Dependencies/5.0.1-build13": {
+      "Ryujinx.Graphics.Nvdec.Dependencies/5.0.3-build14": {
         "type": "package",
         "runtimeTargets": {
+          "runtimes/linux-arm64/native/libavcodec.so.59": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-arm64/native/libavutil.so.57": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
           "runtimes/linux-x64/native/libavcodec.so.59": {
             "assetType": "native",
             "rid": "linux-x64"
@@ -447,13 +467,24 @@
           }
         }
       },
-      "Ryujinx.SDL2-CS/2.26.3-build25": {
+      "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK/1.2.0": {
+        "type": "package",
+        "contentFiles": {
+          "contentFiles/cs/netstandard2.0/libMoltenVK.dylib": {
+            "buildAction": "None",
+            "codeLanguage": "cs",
+            "copyToOutput": true,
+            "outputPath": "libMoltenVK.dylib"
+          }
+        }
+      },
+      "Ryujinx.SDL2-CS/2.30.0-build32": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/SDL2-CS.dll": {}
+          "lib/net6.0/SDL2-CS.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/SDL2-CS.dll": {}
+          "lib/net6.0/SDL2-CS.dll": {}
         },
         "contentFiles": {
           "contentFiles/any/any/_._": {
@@ -463,6 +494,30 @@
           }
         },
         "runtimeTargets": {
+          "runtimes/ios/native/SDL2.xcframework/Info.plist": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/ios/native/SDL2.xcframework/ios-arm64/SDL2.framework/Info.plist": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/ios/native/SDL2.xcframework/ios-arm64/SDL2.framework/SDL2": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/ios/native/SDL2.xcframework/ios-arm64_x86_64-simulator/SDL2.framework/Info.plist": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/ios/native/SDL2.xcframework/ios-arm64_x86_64-simulator/SDL2.framework/SDL2": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/linux-arm64/native/libSDL2.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
           "runtimes/linux-x64/native/libSDL2.so": {
             "assetType": "native",
             "rid": "linux-x64"
@@ -639,15 +694,15 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "System.CodeDom/7.0.0": {
+      "System.CodeDom/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
@@ -818,23 +873,6 @@
           }
         }
       },
-      "System.IdentityModel.Tokens.Jwt/6.30.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.IdentityModel.JsonWebTokens": "6.30.1",
-          "Microsoft.IdentityModel.Tokens": "6.30.1"
-        },
-        "compile": {
-          "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.IO/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -938,15 +976,15 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
-      "System.IO.Hashing/7.0.0": {
+      "System.IO.Hashing/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.IO.Hashing.dll": {
+          "lib/net8.0/System.IO.Hashing.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.IO.Hashing.dll": {
+          "lib/net8.0/System.IO.Hashing.dll": {
             "related": ".xml"
           }
         },
@@ -1002,18 +1040,18 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Management/7.0.1": {
+      "System.Management/8.0.0": {
         "type": "package",
         "dependencies": {
-          "System.CodeDom": "7.0.0"
+          "System.CodeDom": "8.0.0"
         },
         "compile": {
-          "lib/net7.0/System.Management.dll": {
+          "lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.Management.dll": {
+          "lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
@@ -1021,7 +1059,7 @@
           "buildTransitive/net6.0/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/net7.0/System.Management.dll": {
+          "runtimes/win/lib/net8.0/System.Management.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -1405,18 +1443,30 @@
           }
         }
       },
-      "System.Security.Cryptography.Cng/4.5.0": {
+      "System.Security.Cryptography.Cng/4.2.0": {
         "type": "package",
-        "compile": {
-          "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
-            "related": ".xml"
-          }
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Text.Encoding": "4.0.11"
         },
-        "runtime": {
-          "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {}
+        "compile": {
+          "ref/netstandard1.6/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
+          "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -1783,7 +1833,7 @@
       },
       "ARMeilleure/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -1797,7 +1847,7 @@
       },
       "Ryujinx.Audio/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -1812,7 +1862,7 @@
       },
       "Ryujinx.Audio.Backends.SDL2/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Audio": "1.0.0",
           "Ryujinx.SDL2.Common": "1.0.0"
@@ -1826,11 +1876,11 @@
       },
       "Ryujinx.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
+          "Microsoft.IO.RecyclableMemoryStream": "3.0.0",
           "MsgPack.Cli": "1.0.1",
-          "System.Management": "7.0.1"
+          "System.Management": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Common.dll": {}
@@ -1841,7 +1891,7 @@
       },
       "Ryujinx.Cpu/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "ARMeilleure": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -1855,7 +1905,10 @@
       },
       "Ryujinx.Graphics.Device/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Ryujinx.Memory": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Ryujinx.Graphics.Device.dll": {}
         },
@@ -1865,7 +1918,7 @@
       },
       "Ryujinx.Graphics.GAL/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Shader": "1.0.0"
@@ -1879,7 +1932,7 @@
       },
       "Ryujinx.Graphics.Gpu/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -1897,10 +1950,9 @@
       },
       "Ryujinx.Graphics.Host1x/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0"
+          "Ryujinx.Graphics.Device": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Graphics.Host1x.dll": {}
@@ -1911,11 +1963,10 @@
       },
       "Ryujinx.Graphics.Nvdec/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0",
           "Ryujinx.Graphics.Nvdec.FFmpeg": "1.0.0",
           "Ryujinx.Graphics.Nvdec.Vp9": "1.0.0",
           "Ryujinx.Graphics.Texture": "1.0.0",
@@ -1930,7 +1981,7 @@
       },
       "Ryujinx.Graphics.Nvdec.FFmpeg/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Video": "1.0.0"
@@ -1944,7 +1995,7 @@
       },
       "Ryujinx.Graphics.Nvdec.Vp9/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Video": "1.0.0"
@@ -1958,9 +2009,9 @@
       },
       "Ryujinx.Graphics.OpenGL/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "OpenTK.Graphics": "4.7.7",
+          "OpenTK.Graphics": "4.8.2",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.GAL": "1.0.0",
           "Ryujinx.Graphics.Shader": "1.0.0"
@@ -1974,7 +2025,7 @@
       },
       "Ryujinx.Graphics.Shader/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Spv.Generator": "1.0.0"
@@ -1988,7 +2039,7 @@
       },
       "Ryujinx.Graphics.Texture/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -2001,12 +2052,10 @@
       },
       "Ryujinx.Graphics.Vic/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0",
-          "Ryujinx.Graphics.Host1x": "1.0.0",
           "Ryujinx.Graphics.Texture": "1.0.0"
         },
         "compile": {
@@ -2018,7 +2067,7 @@
       },
       "Ryujinx.Graphics.Video/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -2031,9 +2080,9 @@
       },
       "Ryujinx.Graphics.Vulkan/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "OpenTK.Windowing.GraphicsLibraryFramework": "4.7.7",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "4.8.2",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.GAL": "1.0.0",
           "Silk.NET.Vulkan": "2.16.0",
@@ -2050,12 +2099,13 @@
       },
       "Ryujinx.HLE/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "ARMeilleure": "1.0.0",
-          "Concentus": "1.1.7",
-          "LibHac": "0.18.0",
+          "LibHac": "0.19.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "7.3.0",
           "MsgPack.Cli": "1.0.1",
+          "NetCoreServer": "8.0.7",
           "Ryujinx.Audio": "1.0.0",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -2068,8 +2118,7 @@
           "Ryujinx.Horizon.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0",
           "SixLabors.ImageSharp": "1.0.4",
-          "SixLabors.ImageSharp.Drawing": "1.0.0-beta11",
-          "System.IdentityModel.Tokens.Jwt": "6.30.1"
+          "SixLabors.ImageSharp.Drawing": "1.0.0-beta11"
         },
         "compile": {
           "bin/placeholder/Ryujinx.HLE.dll": {}
@@ -2080,9 +2129,11 @@
       },
       "Ryujinx.Horizon/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "LibHac": "0.18.0",
+          "Concentus": "1.1.7",
+          "LibHac": "0.19.0",
+          "Ryujinx.Audio": "1.0.0",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Horizon.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -2096,7 +2147,7 @@
       },
       "Ryujinx.Horizon.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Memory": "1.0.0"
         },
@@ -2109,11 +2160,11 @@
       },
       "Ryujinx.Input/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.HLE": "1.0.0",
-          "System.IO.Hashing": "7.0.0"
+          "System.IO.Hashing": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Input.dll": {}
@@ -2124,7 +2175,7 @@
       },
       "Ryujinx.Input.SDL2/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Input": "1.0.0",
           "Ryujinx.SDL2.Common": "1.0.0"
@@ -2138,7 +2189,7 @@
       },
       "Ryujinx.Memory/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -2151,10 +2202,10 @@
       },
       "Ryujinx.SDL2.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
-          "Ryujinx.SDL2-CS": "2.26.3-build25"
+          "Ryujinx.SDL2-CS": "2.30.0-build32"
         },
         "compile": {
           "bin/placeholder/Ryujinx.SDL2.Common.dll": {}
@@ -2165,7 +2216,7 @@
       },
       "Spv.Generator/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
           "bin/placeholder/Spv.Generator.dll": {}
         },
@@ -2174,7 +2225,7 @@
         }
       }
     },
-    "net7.0/linux-x64": {
+    "net8.0/linux-x64": {
       "CommandLineParser/2.9.1": {
         "type": "package",
         "compile": {
@@ -2204,7 +2255,7 @@
           }
         }
       },
-      "LibHac/0.18.0": {
+      "LibHac/0.19.0": {
         "type": "package",
         "compile": {
           "lib/net7.0/LibHac.dll": {
@@ -2259,81 +2310,76 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Abstractions/6.30.1": {
+      "Microsoft.IdentityModel.Abstractions/7.3.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.JsonWebTokens/6.30.1": {
+      "Microsoft.IdentityModel.JsonWebTokens/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "6.30.1",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encodings.Web": "4.7.2",
-          "System.Text.Json": "4.7.2"
+          "Microsoft.IdentityModel.Tokens": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/6.30.1": {
+      "Microsoft.IdentityModel.Logging/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "6.30.1"
+          "Microsoft.IdentityModel.Abstractions": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/6.30.1": {
+      "Microsoft.IdentityModel.Tokens/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "Microsoft.IdentityModel.Logging": "6.30.1",
-          "System.Security.Cryptography.Cng": "4.5.0"
+          "Microsoft.IdentityModel.Logging": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Tokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Tokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IO.RecyclableMemoryStream/2.3.2": {
+      "Microsoft.IO.RecyclableMemoryStream/3.0.0": {
         "type": "package",
         "compile": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         }
@@ -2389,6 +2435,19 @@
           }
         }
       },
+      "NetCoreServer/8.0.7": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/NetCoreServer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/NetCoreServer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "NETStandard.Library/1.6.0": {
         "type": "package",
         "dependencies": {
@@ -2438,7 +2497,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "OpenTK.Core/4.7.7": {
+      "OpenTK.Core/4.8.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/OpenTK.Core.dll": {
@@ -2451,11 +2510,11 @@
           }
         }
       },
-      "OpenTK.Graphics/4.7.7": {
+      "OpenTK.Graphics/4.8.2": {
         "type": "package",
         "dependencies": {
-          "OpenTK.Core": "[4.7.7, 4.8.0)",
-          "OpenTK.Mathematics": "[4.7.7, 4.8.0)"
+          "OpenTK.Core": "[4.8.2, 4.9.0)",
+          "OpenTK.Mathematics": "[4.8.2, 4.9.0)"
         },
         "compile": {
           "lib/netcoreapp3.1/OpenTK.Graphics.dll": {
@@ -2468,7 +2527,7 @@
           }
         }
       },
-      "OpenTK.Mathematics/4.7.7": {
+      "OpenTK.Mathematics/4.8.2": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "5.0.0"
@@ -2484,7 +2543,7 @@
           }
         }
       },
-      "OpenTK.redist.glfw/3.3.8.30": {
+      "OpenTK.redist.glfw/3.3.8.39": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -2493,14 +2552,15 @@
           "lib/netstandard2.0/_._": {}
         },
         "native": {
+          "runtimes/linux-x64/native/libglfw-wayland.so.3.3": {},
           "runtimes/linux-x64/native/libglfw.so.3.3": {}
         }
       },
-      "OpenTK.Windowing.GraphicsLibraryFramework/4.7.7": {
+      "OpenTK.Windowing.GraphicsLibraryFramework/4.8.2": {
         "type": "package",
         "dependencies": {
-          "OpenTK.Core": "[4.7.7, 4.8.0)",
-          "OpenTK.redist.glfw": "3.3.8.30"
+          "OpenTK.Core": "[4.8.2, 4.9.0)",
+          "OpenTK.redist.glfw": "3.3.8.39"
         },
         "compile": {
           "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.dll": {
@@ -2927,20 +2987,31 @@
           "runtimes/unix/lib/netstandard1.5/System.Runtime.Extensions.dll": {}
         }
       },
-      "Ryujinx.Graphics.Nvdec.Dependencies/5.0.1-build13": {
+      "Ryujinx.Graphics.Nvdec.Dependencies/5.0.3-build14": {
         "type": "package",
         "native": {
           "runtimes/linux-x64/native/libavcodec.so.59": {},
           "runtimes/linux-x64/native/libavutil.so.57": {}
         }
       },
-      "Ryujinx.SDL2-CS/2.26.3-build25": {
+      "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK/1.2.0": {
+        "type": "package",
+        "contentFiles": {
+          "contentFiles/cs/netstandard2.0/libMoltenVK.dylib": {
+            "buildAction": "None",
+            "codeLanguage": "cs",
+            "copyToOutput": true,
+            "outputPath": "libMoltenVK.dylib"
+          }
+        }
+      },
+      "Ryujinx.SDL2-CS/2.30.0-build32": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/SDL2-CS.dll": {}
+          "lib/net6.0/SDL2-CS.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/SDL2-CS.dll": {}
+          "lib/net6.0/SDL2-CS.dll": {}
         },
         "native": {
           "runtimes/linux-x64/native/libSDL2.so": {}
@@ -3107,15 +3178,15 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "System.CodeDom/7.0.0": {
+      "System.CodeDom/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
@@ -3286,23 +3357,6 @@
           "runtimes/unix/lib/netstandard1.3/System.Globalization.Extensions.dll": {}
         }
       },
-      "System.IdentityModel.Tokens.Jwt/6.30.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.IdentityModel.JsonWebTokens": "6.30.1",
-          "Microsoft.IdentityModel.Tokens": "6.30.1"
-        },
-        "compile": {
-          "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.IO/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3401,15 +3455,15 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
-      "System.IO.Hashing/7.0.0": {
+      "System.IO.Hashing/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.IO.Hashing.dll": {
+          "lib/net8.0/System.IO.Hashing.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.IO.Hashing.dll": {
+          "lib/net8.0/System.IO.Hashing.dll": {
             "related": ".xml"
           }
         },
@@ -3465,18 +3519,18 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Management/7.0.1": {
+      "System.Management/8.0.0": {
         "type": "package",
         "dependencies": {
-          "System.CodeDom": "7.0.0"
+          "System.CodeDom": "8.0.0"
         },
         "compile": {
-          "lib/net7.0/System.Management.dll": {
+          "lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.Management.dll": {
+          "lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
@@ -3909,15 +3963,26 @@
           "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
         }
       },
-      "System.Security.Cryptography.Cng/4.5.0": {
+      "System.Security.Cryptography.Cng/4.2.0": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Text.Encoding": "4.0.11"
+        },
         "compile": {
-          "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
-            "related": ".xml"
-          }
+          "ref/netstandard1.6/_._": {}
         },
         "runtime": {
-          "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Csp/4.0.0": {
@@ -4308,7 +4373,7 @@
       },
       "ARMeilleure/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -4322,7 +4387,7 @@
       },
       "Ryujinx.Audio/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -4337,7 +4402,7 @@
       },
       "Ryujinx.Audio.Backends.SDL2/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Audio": "1.0.0",
           "Ryujinx.SDL2.Common": "1.0.0"
@@ -4351,11 +4416,11 @@
       },
       "Ryujinx.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
+          "Microsoft.IO.RecyclableMemoryStream": "3.0.0",
           "MsgPack.Cli": "1.0.1",
-          "System.Management": "7.0.1"
+          "System.Management": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Common.dll": {}
@@ -4366,7 +4431,7 @@
       },
       "Ryujinx.Cpu/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "ARMeilleure": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -4380,7 +4445,10 @@
       },
       "Ryujinx.Graphics.Device/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Ryujinx.Memory": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Ryujinx.Graphics.Device.dll": {}
         },
@@ -4390,7 +4458,7 @@
       },
       "Ryujinx.Graphics.GAL/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Shader": "1.0.0"
@@ -4404,7 +4472,7 @@
       },
       "Ryujinx.Graphics.Gpu/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -4422,10 +4490,9 @@
       },
       "Ryujinx.Graphics.Host1x/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0"
+          "Ryujinx.Graphics.Device": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Graphics.Host1x.dll": {}
@@ -4436,11 +4503,10 @@
       },
       "Ryujinx.Graphics.Nvdec/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0",
           "Ryujinx.Graphics.Nvdec.FFmpeg": "1.0.0",
           "Ryujinx.Graphics.Nvdec.Vp9": "1.0.0",
           "Ryujinx.Graphics.Texture": "1.0.0",
@@ -4455,7 +4521,7 @@
       },
       "Ryujinx.Graphics.Nvdec.FFmpeg/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Video": "1.0.0"
@@ -4469,7 +4535,7 @@
       },
       "Ryujinx.Graphics.Nvdec.Vp9/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Video": "1.0.0"
@@ -4483,9 +4549,9 @@
       },
       "Ryujinx.Graphics.OpenGL/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "OpenTK.Graphics": "4.7.7",
+          "OpenTK.Graphics": "4.8.2",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.GAL": "1.0.0",
           "Ryujinx.Graphics.Shader": "1.0.0"
@@ -4499,7 +4565,7 @@
       },
       "Ryujinx.Graphics.Shader/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Spv.Generator": "1.0.0"
@@ -4513,7 +4579,7 @@
       },
       "Ryujinx.Graphics.Texture/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -4526,12 +4592,10 @@
       },
       "Ryujinx.Graphics.Vic/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0",
-          "Ryujinx.Graphics.Host1x": "1.0.0",
           "Ryujinx.Graphics.Texture": "1.0.0"
         },
         "compile": {
@@ -4543,7 +4607,7 @@
       },
       "Ryujinx.Graphics.Video/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -4556,9 +4620,9 @@
       },
       "Ryujinx.Graphics.Vulkan/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "OpenTK.Windowing.GraphicsLibraryFramework": "4.7.7",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "4.8.2",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.GAL": "1.0.0",
           "Silk.NET.Vulkan": "2.16.0",
@@ -4575,12 +4639,13 @@
       },
       "Ryujinx.HLE/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "ARMeilleure": "1.0.0",
-          "Concentus": "1.1.7",
-          "LibHac": "0.18.0",
+          "LibHac": "0.19.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "7.3.0",
           "MsgPack.Cli": "1.0.1",
+          "NetCoreServer": "8.0.7",
           "Ryujinx.Audio": "1.0.0",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -4593,8 +4658,7 @@
           "Ryujinx.Horizon.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0",
           "SixLabors.ImageSharp": "1.0.4",
-          "SixLabors.ImageSharp.Drawing": "1.0.0-beta11",
-          "System.IdentityModel.Tokens.Jwt": "6.30.1"
+          "SixLabors.ImageSharp.Drawing": "1.0.0-beta11"
         },
         "compile": {
           "bin/placeholder/Ryujinx.HLE.dll": {}
@@ -4605,9 +4669,11 @@
       },
       "Ryujinx.Horizon/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "LibHac": "0.18.0",
+          "Concentus": "1.1.7",
+          "LibHac": "0.19.0",
+          "Ryujinx.Audio": "1.0.0",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Horizon.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -4621,7 +4687,7 @@
       },
       "Ryujinx.Horizon.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Memory": "1.0.0"
         },
@@ -4634,11 +4700,11 @@
       },
       "Ryujinx.Input/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.HLE": "1.0.0",
-          "System.IO.Hashing": "7.0.0"
+          "System.IO.Hashing": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Input.dll": {}
@@ -4649,7 +4715,7 @@
       },
       "Ryujinx.Input.SDL2/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Input": "1.0.0",
           "Ryujinx.SDL2.Common": "1.0.0"
@@ -4663,7 +4729,7 @@
       },
       "Ryujinx.Memory/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -4676,10 +4742,10 @@
       },
       "Ryujinx.SDL2.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
-          "Ryujinx.SDL2-CS": "2.26.3-build25"
+          "Ryujinx.SDL2-CS": "2.30.0-build32"
         },
         "compile": {
           "bin/placeholder/Ryujinx.SDL2.Common.dll": {}
@@ -4690,7 +4756,7 @@
       },
       "Spv.Generator/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
           "bin/placeholder/Spv.Generator.dll": {}
         },
@@ -4699,7 +4765,7 @@
         }
       }
     },
-    "net7.0/osx-x64": {
+    "net8.0/osx-x64": {
       "CommandLineParser/2.9.1": {
         "type": "package",
         "compile": {
@@ -4729,7 +4795,7 @@
           }
         }
       },
-      "LibHac/0.18.0": {
+      "LibHac/0.19.0": {
         "type": "package",
         "compile": {
           "lib/net7.0/LibHac.dll": {
@@ -4784,81 +4850,76 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Abstractions/6.30.1": {
+      "Microsoft.IdentityModel.Abstractions/7.3.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.JsonWebTokens/6.30.1": {
+      "Microsoft.IdentityModel.JsonWebTokens/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "6.30.1",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encodings.Web": "4.7.2",
-          "System.Text.Json": "4.7.2"
+          "Microsoft.IdentityModel.Tokens": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/6.30.1": {
+      "Microsoft.IdentityModel.Logging/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "6.30.1"
+          "Microsoft.IdentityModel.Abstractions": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/6.30.1": {
+      "Microsoft.IdentityModel.Tokens/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "Microsoft.IdentityModel.Logging": "6.30.1",
-          "System.Security.Cryptography.Cng": "4.5.0"
+          "Microsoft.IdentityModel.Logging": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Tokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Tokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IO.RecyclableMemoryStream/2.3.2": {
+      "Microsoft.IO.RecyclableMemoryStream/3.0.0": {
         "type": "package",
         "compile": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         }
@@ -4914,6 +4975,19 @@
           }
         }
       },
+      "NetCoreServer/8.0.7": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/NetCoreServer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/NetCoreServer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "NETStandard.Library/1.6.0": {
         "type": "package",
         "dependencies": {
@@ -4963,7 +5037,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "OpenTK.Core/4.7.7": {
+      "OpenTK.Core/4.8.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/OpenTK.Core.dll": {
@@ -4976,11 +5050,11 @@
           }
         }
       },
-      "OpenTK.Graphics/4.7.7": {
+      "OpenTK.Graphics/4.8.2": {
         "type": "package",
         "dependencies": {
-          "OpenTK.Core": "[4.7.7, 4.8.0)",
-          "OpenTK.Mathematics": "[4.7.7, 4.8.0)"
+          "OpenTK.Core": "[4.8.2, 4.9.0)",
+          "OpenTK.Mathematics": "[4.8.2, 4.9.0)"
         },
         "compile": {
           "lib/netcoreapp3.1/OpenTK.Graphics.dll": {
@@ -4993,7 +5067,7 @@
           }
         }
       },
-      "OpenTK.Mathematics/4.7.7": {
+      "OpenTK.Mathematics/4.8.2": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "5.0.0"
@@ -5009,7 +5083,7 @@
           }
         }
       },
-      "OpenTK.redist.glfw/3.3.8.30": {
+      "OpenTK.redist.glfw/3.3.8.39": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -5021,11 +5095,11 @@
           "runtimes/osx-x64/native/libglfw.3.dylib": {}
         }
       },
-      "OpenTK.Windowing.GraphicsLibraryFramework/4.7.7": {
+      "OpenTK.Windowing.GraphicsLibraryFramework/4.8.2": {
         "type": "package",
         "dependencies": {
-          "OpenTK.Core": "[4.7.7, 4.8.0)",
-          "OpenTK.redist.glfw": "3.3.8.30"
+          "OpenTK.Core": "[4.8.2, 4.9.0)",
+          "OpenTK.redist.glfw": "3.3.8.39"
         },
         "compile": {
           "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.dll": {
@@ -5452,20 +5526,31 @@
           "runtimes/unix/lib/netstandard1.5/System.Runtime.Extensions.dll": {}
         }
       },
-      "Ryujinx.Graphics.Nvdec.Dependencies/5.0.1-build13": {
+      "Ryujinx.Graphics.Nvdec.Dependencies/5.0.3-build14": {
         "type": "package",
         "native": {
           "runtimes/osx-x64/native/libavcodec.59.dylib": {},
           "runtimes/osx-x64/native/libavutil.57.dylib": {}
         }
       },
-      "Ryujinx.SDL2-CS/2.26.3-build25": {
+      "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK/1.2.0": {
+        "type": "package",
+        "contentFiles": {
+          "contentFiles/cs/netstandard2.0/libMoltenVK.dylib": {
+            "buildAction": "None",
+            "codeLanguage": "cs",
+            "copyToOutput": true,
+            "outputPath": "libMoltenVK.dylib"
+          }
+        }
+      },
+      "Ryujinx.SDL2-CS/2.30.0-build32": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/SDL2-CS.dll": {}
+          "lib/net6.0/SDL2-CS.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/SDL2-CS.dll": {}
+          "lib/net6.0/SDL2-CS.dll": {}
         },
         "native": {
           "runtimes/osx-x64/native/libSDL2.dylib": {}
@@ -5632,15 +5717,15 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "System.CodeDom/7.0.0": {
+      "System.CodeDom/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
@@ -5811,23 +5896,6 @@
           "runtimes/unix/lib/netstandard1.3/System.Globalization.Extensions.dll": {}
         }
       },
-      "System.IdentityModel.Tokens.Jwt/6.30.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.IdentityModel.JsonWebTokens": "6.30.1",
-          "Microsoft.IdentityModel.Tokens": "6.30.1"
-        },
-        "compile": {
-          "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.IO/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5926,15 +5994,15 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
-      "System.IO.Hashing/7.0.0": {
+      "System.IO.Hashing/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.IO.Hashing.dll": {
+          "lib/net8.0/System.IO.Hashing.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.IO.Hashing.dll": {
+          "lib/net8.0/System.IO.Hashing.dll": {
             "related": ".xml"
           }
         },
@@ -5990,18 +6058,18 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Management/7.0.1": {
+      "System.Management/8.0.0": {
         "type": "package",
         "dependencies": {
-          "System.CodeDom": "7.0.0"
+          "System.CodeDom": "8.0.0"
         },
         "compile": {
-          "lib/net7.0/System.Management.dll": {
+          "lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.Management.dll": {
+          "lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
@@ -6434,15 +6502,26 @@
           "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
         }
       },
-      "System.Security.Cryptography.Cng/4.5.0": {
+      "System.Security.Cryptography.Cng/4.2.0": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Text.Encoding": "4.0.11"
+        },
         "compile": {
-          "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
-            "related": ".xml"
-          }
+          "ref/netstandard1.6/_._": {}
         },
         "runtime": {
-          "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Csp/4.0.0": {
@@ -6833,7 +6912,7 @@
       },
       "ARMeilleure/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -6847,7 +6926,7 @@
       },
       "Ryujinx.Audio/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -6862,7 +6941,7 @@
       },
       "Ryujinx.Audio.Backends.SDL2/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Audio": "1.0.0",
           "Ryujinx.SDL2.Common": "1.0.0"
@@ -6876,11 +6955,11 @@
       },
       "Ryujinx.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
+          "Microsoft.IO.RecyclableMemoryStream": "3.0.0",
           "MsgPack.Cli": "1.0.1",
-          "System.Management": "7.0.1"
+          "System.Management": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Common.dll": {}
@@ -6891,7 +6970,7 @@
       },
       "Ryujinx.Cpu/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "ARMeilleure": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -6905,7 +6984,10 @@
       },
       "Ryujinx.Graphics.Device/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Ryujinx.Memory": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Ryujinx.Graphics.Device.dll": {}
         },
@@ -6915,7 +6997,7 @@
       },
       "Ryujinx.Graphics.GAL/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Shader": "1.0.0"
@@ -6929,7 +7011,7 @@
       },
       "Ryujinx.Graphics.Gpu/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -6947,10 +7029,9 @@
       },
       "Ryujinx.Graphics.Host1x/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0"
+          "Ryujinx.Graphics.Device": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Graphics.Host1x.dll": {}
@@ -6961,11 +7042,10 @@
       },
       "Ryujinx.Graphics.Nvdec/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0",
           "Ryujinx.Graphics.Nvdec.FFmpeg": "1.0.0",
           "Ryujinx.Graphics.Nvdec.Vp9": "1.0.0",
           "Ryujinx.Graphics.Texture": "1.0.0",
@@ -6980,7 +7060,7 @@
       },
       "Ryujinx.Graphics.Nvdec.FFmpeg/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Video": "1.0.0"
@@ -6994,7 +7074,7 @@
       },
       "Ryujinx.Graphics.Nvdec.Vp9/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Video": "1.0.0"
@@ -7008,9 +7088,9 @@
       },
       "Ryujinx.Graphics.OpenGL/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "OpenTK.Graphics": "4.7.7",
+          "OpenTK.Graphics": "4.8.2",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.GAL": "1.0.0",
           "Ryujinx.Graphics.Shader": "1.0.0"
@@ -7024,7 +7104,7 @@
       },
       "Ryujinx.Graphics.Shader/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Spv.Generator": "1.0.0"
@@ -7038,7 +7118,7 @@
       },
       "Ryujinx.Graphics.Texture/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -7051,12 +7131,10 @@
       },
       "Ryujinx.Graphics.Vic/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0",
-          "Ryujinx.Graphics.Host1x": "1.0.0",
           "Ryujinx.Graphics.Texture": "1.0.0"
         },
         "compile": {
@@ -7068,7 +7146,7 @@
       },
       "Ryujinx.Graphics.Video/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -7081,9 +7159,9 @@
       },
       "Ryujinx.Graphics.Vulkan/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "OpenTK.Windowing.GraphicsLibraryFramework": "4.7.7",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "4.8.2",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.GAL": "1.0.0",
           "Silk.NET.Vulkan": "2.16.0",
@@ -7100,12 +7178,13 @@
       },
       "Ryujinx.HLE/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "ARMeilleure": "1.0.0",
-          "Concentus": "1.1.7",
-          "LibHac": "0.18.0",
+          "LibHac": "0.19.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "7.3.0",
           "MsgPack.Cli": "1.0.1",
+          "NetCoreServer": "8.0.7",
           "Ryujinx.Audio": "1.0.0",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -7118,8 +7197,7 @@
           "Ryujinx.Horizon.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0",
           "SixLabors.ImageSharp": "1.0.4",
-          "SixLabors.ImageSharp.Drawing": "1.0.0-beta11",
-          "System.IdentityModel.Tokens.Jwt": "6.30.1"
+          "SixLabors.ImageSharp.Drawing": "1.0.0-beta11"
         },
         "compile": {
           "bin/placeholder/Ryujinx.HLE.dll": {}
@@ -7130,9 +7208,11 @@
       },
       "Ryujinx.Horizon/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "LibHac": "0.18.0",
+          "Concentus": "1.1.7",
+          "LibHac": "0.19.0",
+          "Ryujinx.Audio": "1.0.0",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Horizon.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -7146,7 +7226,7 @@
       },
       "Ryujinx.Horizon.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Memory": "1.0.0"
         },
@@ -7159,11 +7239,11 @@
       },
       "Ryujinx.Input/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.HLE": "1.0.0",
-          "System.IO.Hashing": "7.0.0"
+          "System.IO.Hashing": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Input.dll": {}
@@ -7174,7 +7254,7 @@
       },
       "Ryujinx.Input.SDL2/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Input": "1.0.0",
           "Ryujinx.SDL2.Common": "1.0.0"
@@ -7188,7 +7268,7 @@
       },
       "Ryujinx.Memory/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -7201,10 +7281,10 @@
       },
       "Ryujinx.SDL2.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
-          "Ryujinx.SDL2-CS": "2.26.3-build25"
+          "Ryujinx.SDL2-CS": "2.30.0-build32"
         },
         "compile": {
           "bin/placeholder/Ryujinx.SDL2.Common.dll": {}
@@ -7215,7 +7295,7 @@
       },
       "Spv.Generator/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
           "bin/placeholder/Spv.Generator.dll": {}
         },
@@ -7224,7 +7304,7 @@
         }
       }
     },
-    "net7.0/win10-x64": {
+    "net8.0/win-x64": {
       "CommandLineParser/2.9.1": {
         "type": "package",
         "compile": {
@@ -7254,7 +7334,7 @@
           }
         }
       },
-      "LibHac/0.18.0": {
+      "LibHac/0.19.0": {
         "type": "package",
         "compile": {
           "lib/net7.0/LibHac.dll": {
@@ -7309,81 +7389,76 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Abstractions/6.30.1": {
+      "Microsoft.IdentityModel.Abstractions/7.3.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.JsonWebTokens/6.30.1": {
+      "Microsoft.IdentityModel.JsonWebTokens/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "6.30.1",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encodings.Web": "4.7.2",
-          "System.Text.Json": "4.7.2"
+          "Microsoft.IdentityModel.Tokens": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/6.30.1": {
+      "Microsoft.IdentityModel.Logging/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "6.30.1"
+          "Microsoft.IdentityModel.Abstractions": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Logging.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/6.30.1": {
+      "Microsoft.IdentityModel.Tokens/7.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "Microsoft.IdentityModel.Logging": "6.30.1",
-          "System.Security.Cryptography.Cng": "4.5.0"
+          "Microsoft.IdentityModel.Logging": "7.3.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.IdentityModel.Tokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.IdentityModel.Tokens.dll": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.IO.RecyclableMemoryStream/2.3.2": {
+      "Microsoft.IO.RecyclableMemoryStream/3.0.0": {
         "type": "package",
         "compile": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         }
@@ -7439,6 +7514,19 @@
           }
         }
       },
+      "NetCoreServer/8.0.7": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/NetCoreServer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/NetCoreServer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "NETStandard.Library/1.6.0": {
         "type": "package",
         "dependencies": {
@@ -7488,7 +7576,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "OpenTK.Core/4.7.7": {
+      "OpenTK.Core/4.8.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/OpenTK.Core.dll": {
@@ -7501,11 +7589,11 @@
           }
         }
       },
-      "OpenTK.Graphics/4.7.7": {
+      "OpenTK.Graphics/4.8.2": {
         "type": "package",
         "dependencies": {
-          "OpenTK.Core": "[4.7.7, 4.8.0)",
-          "OpenTK.Mathematics": "[4.7.7, 4.8.0)"
+          "OpenTK.Core": "[4.8.2, 4.9.0)",
+          "OpenTK.Mathematics": "[4.8.2, 4.9.0)"
         },
         "compile": {
           "lib/netcoreapp3.1/OpenTK.Graphics.dll": {
@@ -7518,7 +7606,7 @@
           }
         }
       },
-      "OpenTK.Mathematics/4.7.7": {
+      "OpenTK.Mathematics/4.8.2": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "5.0.0"
@@ -7534,7 +7622,7 @@
           }
         }
       },
-      "OpenTK.redist.glfw/3.3.8.30": {
+      "OpenTK.redist.glfw/3.3.8.39": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -7546,11 +7634,11 @@
           "runtimes/win-x64/native/glfw3.dll": {}
         }
       },
-      "OpenTK.Windowing.GraphicsLibraryFramework/4.7.7": {
+      "OpenTK.Windowing.GraphicsLibraryFramework/4.8.2": {
         "type": "package",
         "dependencies": {
-          "OpenTK.Core": "[4.7.7, 4.8.0)",
-          "OpenTK.redist.glfw": "3.3.8.30"
+          "OpenTK.Core": "[4.8.2, 4.9.0)",
+          "OpenTK.redist.glfw": "3.3.8.39"
         },
         "compile": {
           "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.dll": {
@@ -7739,8 +7827,7 @@
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.NETCore.Targets": "1.0.1",
-          "runtime.win7-x64.runtime.native.System.IO.Compression": "4.3.0"
+          "Microsoft.NETCore.Targets": "1.0.1"
         },
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -7905,35 +7992,31 @@
           "runtimes/win/lib/netstandard1.5/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7-x64.runtime.native.System.IO.Compression/4.3.0": {
-        "type": "package",
-        "native": {
-          "runtimes/win7-x64/native/clrcompression.dll": {}
-        }
-      },
-      "runtime.win7.System.Private.Uri/4.3.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard/_._": {}
-        },
-        "runtime": {
-          "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll": {}
-        }
-      },
-      "Ryujinx.Graphics.Nvdec.Dependencies/5.0.1-build13": {
+      "Ryujinx.Graphics.Nvdec.Dependencies/5.0.3-build14": {
         "type": "package",
         "native": {
           "runtimes/win-x64/native/avcodec-59.dll": {},
           "runtimes/win-x64/native/avutil-57.dll": {}
         }
       },
-      "Ryujinx.SDL2-CS/2.26.3-build25": {
+      "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK/1.2.0": {
+        "type": "package",
+        "contentFiles": {
+          "contentFiles/cs/netstandard2.0/libMoltenVK.dylib": {
+            "buildAction": "None",
+            "codeLanguage": "cs",
+            "copyToOutput": true,
+            "outputPath": "libMoltenVK.dylib"
+          }
+        }
+      },
+      "Ryujinx.SDL2-CS/2.30.0-build32": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/SDL2-CS.dll": {}
+          "lib/net6.0/SDL2-CS.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/SDL2-CS.dll": {}
+          "lib/net6.0/SDL2-CS.dll": {}
         },
         "native": {
           "runtimes/win-x64/native/SDL2.dll": {}
@@ -8100,15 +8183,15 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "System.CodeDom/7.0.0": {
+      "System.CodeDom/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
@@ -8279,23 +8362,6 @@
           "runtimes/win/lib/netstandard1.3/System.Globalization.Extensions.dll": {}
         }
       },
-      "System.IdentityModel.Tokens.Jwt/6.30.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.IdentityModel.JsonWebTokens": "6.30.1",
-          "Microsoft.IdentityModel.Tokens": "6.30.1"
-        },
-        "compile": {
-          "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.IO/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -8394,15 +8460,15 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
-      "System.IO.Hashing/7.0.0": {
+      "System.IO.Hashing/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.IO.Hashing.dll": {
+          "lib/net8.0/System.IO.Hashing.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.IO.Hashing.dll": {
+          "lib/net8.0/System.IO.Hashing.dll": {
             "related": ".xml"
           }
         },
@@ -8458,18 +8524,18 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Management/7.0.1": {
+      "System.Management/8.0.0": {
         "type": "package",
         "dependencies": {
-          "System.CodeDom": "7.0.0"
+          "System.CodeDom": "8.0.0"
         },
         "compile": {
-          "lib/net7.0/System.Management.dll": {
+          "lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "runtimes/win/lib/net7.0/System.Management.dll": {
+          "runtimes/win/lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
@@ -8615,8 +8681,7 @@
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
-          "Microsoft.NETCore.Targets": "1.1.0",
-          "runtime.win7.System.Private.Uri": "4.3.0"
+          "Microsoft.NETCore.Targets": "1.1.0"
         },
         "compile": {
           "ref/netstandard/_._": {}
@@ -8902,15 +8967,26 @@
           "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
         }
       },
-      "System.Security.Cryptography.Cng/4.5.0": {
+      "System.Security.Cryptography.Cng/4.2.0": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Text.Encoding": "4.0.11"
+        },
         "compile": {
-          "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
-            "related": ".xml"
-          }
+          "ref/netstandard1.6/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Csp/4.0.0": {
@@ -9303,7 +9379,7 @@
       },
       "ARMeilleure/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -9317,7 +9393,7 @@
       },
       "Ryujinx.Audio/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -9332,7 +9408,7 @@
       },
       "Ryujinx.Audio.Backends.SDL2/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Audio": "1.0.0",
           "Ryujinx.SDL2.Common": "1.0.0"
@@ -9346,11 +9422,11 @@
       },
       "Ryujinx.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
+          "Microsoft.IO.RecyclableMemoryStream": "3.0.0",
           "MsgPack.Cli": "1.0.1",
-          "System.Management": "7.0.1"
+          "System.Management": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Common.dll": {}
@@ -9361,7 +9437,7 @@
       },
       "Ryujinx.Cpu/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "ARMeilleure": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -9375,7 +9451,10 @@
       },
       "Ryujinx.Graphics.Device/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Ryujinx.Memory": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Ryujinx.Graphics.Device.dll": {}
         },
@@ -9385,7 +9464,7 @@
       },
       "Ryujinx.Graphics.GAL/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Shader": "1.0.0"
@@ -9399,7 +9478,7 @@
       },
       "Ryujinx.Graphics.Gpu/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -9417,10 +9496,9 @@
       },
       "Ryujinx.Graphics.Host1x/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0"
+          "Ryujinx.Graphics.Device": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Graphics.Host1x.dll": {}
@@ -9431,11 +9509,10 @@
       },
       "Ryujinx.Graphics.Nvdec/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0",
           "Ryujinx.Graphics.Nvdec.FFmpeg": "1.0.0",
           "Ryujinx.Graphics.Nvdec.Vp9": "1.0.0",
           "Ryujinx.Graphics.Texture": "1.0.0",
@@ -9450,7 +9527,7 @@
       },
       "Ryujinx.Graphics.Nvdec.FFmpeg/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Video": "1.0.0"
@@ -9464,7 +9541,7 @@
       },
       "Ryujinx.Graphics.Nvdec.Vp9/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Video": "1.0.0"
@@ -9478,9 +9555,9 @@
       },
       "Ryujinx.Graphics.OpenGL/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "OpenTK.Graphics": "4.7.7",
+          "OpenTK.Graphics": "4.8.2",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.GAL": "1.0.0",
           "Ryujinx.Graphics.Shader": "1.0.0"
@@ -9494,7 +9571,7 @@
       },
       "Ryujinx.Graphics.Shader/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Spv.Generator": "1.0.0"
@@ -9508,7 +9585,7 @@
       },
       "Ryujinx.Graphics.Texture/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -9521,12 +9598,10 @@
       },
       "Ryujinx.Graphics.Vic/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.Device": "1.0.0",
-          "Ryujinx.Graphics.Gpu": "1.0.0",
-          "Ryujinx.Graphics.Host1x": "1.0.0",
           "Ryujinx.Graphics.Texture": "1.0.0"
         },
         "compile": {
@@ -9538,7 +9613,7 @@
       },
       "Ryujinx.Graphics.Video/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -9551,9 +9626,9 @@
       },
       "Ryujinx.Graphics.Vulkan/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "OpenTK.Windowing.GraphicsLibraryFramework": "4.7.7",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "4.8.2",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Graphics.GAL": "1.0.0",
           "Silk.NET.Vulkan": "2.16.0",
@@ -9570,12 +9645,13 @@
       },
       "Ryujinx.HLE/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "ARMeilleure": "1.0.0",
-          "Concentus": "1.1.7",
-          "LibHac": "0.18.0",
+          "LibHac": "0.19.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "7.3.0",
           "MsgPack.Cli": "1.0.1",
+          "NetCoreServer": "8.0.7",
           "Ryujinx.Audio": "1.0.0",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Cpu": "1.0.0",
@@ -9588,8 +9664,7 @@
           "Ryujinx.Horizon.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0",
           "SixLabors.ImageSharp": "1.0.4",
-          "SixLabors.ImageSharp.Drawing": "1.0.0-beta11",
-          "System.IdentityModel.Tokens.Jwt": "6.30.1"
+          "SixLabors.ImageSharp.Drawing": "1.0.0-beta11"
         },
         "compile": {
           "bin/placeholder/Ryujinx.HLE.dll": {}
@@ -9600,9 +9675,11 @@
       },
       "Ryujinx.Horizon/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "LibHac": "0.18.0",
+          "Concentus": "1.1.7",
+          "LibHac": "0.19.0",
+          "Ryujinx.Audio": "1.0.0",
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Horizon.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -9616,7 +9693,7 @@
       },
       "Ryujinx.Horizon.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Memory": "1.0.0"
         },
@@ -9629,11 +9706,11 @@
       },
       "Ryujinx.Input/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.HLE": "1.0.0",
-          "System.IO.Hashing": "7.0.0"
+          "System.IO.Hashing": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Input.dll": {}
@@ -9644,7 +9721,7 @@
       },
       "Ryujinx.Input.SDL2/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Input": "1.0.0",
           "Ryujinx.SDL2.Common": "1.0.0"
@@ -9658,7 +9735,7 @@
       },
       "Ryujinx.Memory/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -9671,10 +9748,10 @@
       },
       "Ryujinx.SDL2.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
-          "Ryujinx.SDL2-CS": "2.26.3-build25"
+          "Ryujinx.SDL2-CS": "2.30.0-build32"
         },
         "compile": {
           "bin/placeholder/Ryujinx.SDL2.Common.dll": {}
@@ -9685,7 +9762,7 @@
       },
       "Spv.Generator/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
           "bin/placeholder/Spv.Generator.dll": {}
         },
@@ -9736,16 +9813,16 @@
         "lib/portable-net45+win+wpa81+wp80/Concentus.pdb"
       ]
     },
-    "LibHac/0.18.0": {
-      "sha512": "pwQcrHbMS57oOUtOHIstJC4VmrZ1hWtDj/Dtl2UvPwL2wD8crhFex5o923yXAMAaM+WLHb+g5OJQgdYYI8WMnA==",
+    "LibHac/0.19.0": {
+      "sha512": "7uMUGFpO2V0XJowS5/NjX6qlAlO94dQhLvxNdF3VhW36BXkoHCJPxTzL9r0U4p8w0jKm+9oAUF6XriWrAbIrsw==",
       "type": "package",
-      "path": "libhac/0.18.0",
+      "path": "libhac/0.19.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net7.0/LibHac.dll",
         "lib/net7.0/LibHac.xml",
-        "libhac.0.18.0.nupkg.sha512",
+        "libhac.0.19.0.nupkg.sha512",
         "libhac.nuspec"
       ]
     },
@@ -9857,15 +9934,13 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.IdentityModel.Abstractions/6.30.1": {
-      "sha512": "1YVmnuYYz53M+KGa7HvZ+Vvqchwp97ngDk2I4QoiQi+HL7rpifvyaMyVMFhdlmoRlQcnSwJbNp7ulPctGnFfkQ==",
+    "Microsoft.IdentityModel.Abstractions/7.3.0": {
+      "sha512": "KAxbZc6Ptnut57o15cd3SFx6FLHzsWXENECtMpep2U8uKJddDo8nTs9SSDC946cwGoQ4hednKNC/x0w+SKfanA==",
       "type": "package",
-      "path": "microsoft.identitymodel.abstractions/6.30.1",
+      "path": "microsoft.identitymodel.abstractions/7.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net45/Microsoft.IdentityModel.Abstractions.dll",
-        "lib/net45/Microsoft.IdentityModel.Abstractions.xml",
         "lib/net461/Microsoft.IdentityModel.Abstractions.dll",
         "lib/net461/Microsoft.IdentityModel.Abstractions.xml",
         "lib/net462/Microsoft.IdentityModel.Abstractions.dll",
@@ -9874,21 +9949,21 @@
         "lib/net472/Microsoft.IdentityModel.Abstractions.xml",
         "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll",
         "lib/net6.0/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net8.0/Microsoft.IdentityModel.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.xml",
-        "microsoft.identitymodel.abstractions.6.30.1.nupkg.sha512",
+        "microsoft.identitymodel.abstractions.7.3.0.nupkg.sha512",
         "microsoft.identitymodel.abstractions.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.JsonWebTokens/6.30.1": {
-      "sha512": "H9o5zbuxfRKCEVULmxLCv1LTz1hmzaqG2Gk6X9Yq0QeJ1HeUQo1fwjaj+N1H55TQnZ8LNbmMdMCl/VqW3cJWvw==",
+    "Microsoft.IdentityModel.JsonWebTokens/7.3.0": {
+      "sha512": "ZZfBPOxFI6IDijGT6h0GybQ/D0/MYraMEoCc71hYezpa02EFNbodpN0EM5zwz179x8jUF8ltws0oSBybavrjVw==",
       "type": "package",
-      "path": "microsoft.identitymodel.jsonwebtokens/6.30.1",
+      "path": "microsoft.identitymodel.jsonwebtokens/7.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net45/Microsoft.IdentityModel.JsonWebTokens.dll",
-        "lib/net45/Microsoft.IdentityModel.JsonWebTokens.xml",
         "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll",
         "lib/net461/Microsoft.IdentityModel.JsonWebTokens.xml",
         "lib/net462/Microsoft.IdentityModel.JsonWebTokens.dll",
@@ -9897,21 +9972,21 @@
         "lib/net472/Microsoft.IdentityModel.JsonWebTokens.xml",
         "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll",
         "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml",
-        "microsoft.identitymodel.jsonwebtokens.6.30.1.nupkg.sha512",
+        "microsoft.identitymodel.jsonwebtokens.7.3.0.nupkg.sha512",
         "microsoft.identitymodel.jsonwebtokens.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/6.30.1": {
-      "sha512": "zE6TG08T8MPZfkXqOWegvvIhKZRiYyj2xgr4QQuWyXypSGPyZrkBwJf5IXU4T3aIKqVfALSnAYCW/IqMaCY4gA==",
+    "Microsoft.IdentityModel.Logging/7.3.0": {
+      "sha512": "d4/2rzo6jIh4X8MxCoBDoU0VRQUW7regZ/i6fuUvWTrMPYOFtulyMeJ95TkHS5UsiDEB5WCAmOi2YGp7AVPogg==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/6.30.1",
+      "path": "microsoft.identitymodel.logging/7.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net45/Microsoft.IdentityModel.Logging.dll",
-        "lib/net45/Microsoft.IdentityModel.Logging.xml",
         "lib/net461/Microsoft.IdentityModel.Logging.dll",
         "lib/net461/Microsoft.IdentityModel.Logging.xml",
         "lib/net462/Microsoft.IdentityModel.Logging.dll",
@@ -9920,21 +9995,21 @@
         "lib/net472/Microsoft.IdentityModel.Logging.xml",
         "lib/net6.0/Microsoft.IdentityModel.Logging.dll",
         "lib/net6.0/Microsoft.IdentityModel.Logging.xml",
+        "lib/net8.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/net8.0/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.6.30.1.nupkg.sha512",
+        "microsoft.identitymodel.logging.7.3.0.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/6.30.1": {
-      "sha512": "iLEwF/zEopanfMQcIcq190S/bBjSj3v6UfqN37KqRqsKB9kkm3/tYCrIQOtvLKbEe/znQXC6HoQhknDTszPz2Q==",
+    "Microsoft.IdentityModel.Tokens/7.3.0": {
+      "sha512": "WF93Qb03/zY83dlne1jOX7yVBNZREVSWCInHfw2czHaVQoUFXIIGScZ/S4iML3Nxsi2Xdw5yTRujffC508v6Ag==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/6.30.1",
+      "path": "microsoft.identitymodel.tokens/7.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net45/Microsoft.IdentityModel.Tokens.dll",
-        "lib/net45/Microsoft.IdentityModel.Tokens.xml",
         "lib/net461/Microsoft.IdentityModel.Tokens.dll",
         "lib/net461/Microsoft.IdentityModel.Tokens.xml",
         "lib/net462/Microsoft.IdentityModel.Tokens.dll",
@@ -9943,31 +10018,29 @@
         "lib/net472/Microsoft.IdentityModel.Tokens.xml",
         "lib/net6.0/Microsoft.IdentityModel.Tokens.dll",
         "lib/net6.0/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net8.0/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net8.0/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.6.30.1.nupkg.sha512",
+        "microsoft.identitymodel.tokens.7.3.0.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "Microsoft.IO.RecyclableMemoryStream/2.3.2": {
-      "sha512": "Oh1qXXFdJFcHozvb4H6XYLf2W0meZFuG0A+TfapFPj9z5fd4vxiARGEhAaLj/6XWQaMYIv4SH/9Q6H78Hw0E2Q==",
+    "Microsoft.IO.RecyclableMemoryStream/3.0.0": {
+      "sha512": "irv0HuqoH8Ig5i2fO+8dmDNdFdsrO+DoQcedwIlb810qpZHBNQHZLW7C/AHBQDgLLpw2T96vmMAy/aE4Yj55Sg==",
       "type": "package",
-      "path": "microsoft.io.recyclablememorystream/2.3.2",
+      "path": "microsoft.io.recyclablememorystream/3.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "lib/net462/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/net462/Microsoft.IO.RecyclableMemoryStream.xml",
-        "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.xml",
-        "lib/netcoreapp2.1/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/netcoreapp2.1/Microsoft.IO.RecyclableMemoryStream.xml",
+        "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.xml",
         "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.dll",
         "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.xml",
         "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.dll",
         "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.xml",
-        "microsoft.io.recyclablememorystream.2.3.2.nupkg.sha512",
+        "microsoft.io.recyclablememorystream.3.0.0.nupkg.sha512",
         "microsoft.io.recyclablememorystream.nuspec"
       ]
     },
@@ -10072,6 +10145,19 @@
         "msgpack.cli.nuspec"
       ]
     },
+    "NetCoreServer/8.0.7": {
+      "sha512": "BhNiJ6EVxKS1eKqlHINy7BruLDc+xCH59oZxu7d2Hve8CzFki69PumVlf6vyAQvIVfxbZiHw/FI3UHNnMajuVg==",
+      "type": "package",
+      "path": "netcoreserver/8.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net8.0/NetCoreServer.dll",
+        "lib/net8.0/NetCoreServer.xml",
+        "netcoreserver.8.0.7.nupkg.sha512",
+        "netcoreserver.nuspec"
+      ]
+    },
     "NETStandard.Library/1.6.0": {
       "sha512": "ypsCvIdCZ4IoYASJHt6tF2fMo7N30NLgV1EbmC+snO490OMl9FvVxmumw14rhReWU3j3g7BYudG6YCrchwHJlA==",
       "type": "package",
@@ -10085,24 +10171,24 @@
         "netstandard.library.nuspec"
       ]
     },
-    "OpenTK.Core/4.7.7": {
-      "sha512": "YlBGXGelHbXKabe2u6EOXkooK8rkFxh97VJlK3M4D0vzrZJltL5aHnB15I+W1adUJVI2P3e16qXJaGd7VsLfgA==",
+    "OpenTK.Core/4.8.2": {
+      "sha512": "BS5IM1W/BK9BtmsEnYT/RGv+KDK0Zrnw8nDDGvK45ywBjMLv+qBRB+Vkx5sQ4Jjy7btLxxqrPHmT3wt5N/PcxA==",
       "type": "package",
-      "path": "opentk.core/4.7.7",
+      "path": "opentk.core/4.8.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.1/OpenTK.Core.dll",
         "lib/netstandard2.1/OpenTK.Core.pdb",
         "lib/netstandard2.1/OpenTK.Core.xml",
-        "opentk.core.4.7.7.nupkg.sha512",
+        "opentk.core.4.8.2.nupkg.sha512",
         "opentk.core.nuspec"
       ]
     },
-    "OpenTK.Graphics/4.7.7": {
-      "sha512": "LcSkqJFlSJ4jr/tgBMmqAsLkIrDMgpKmnC8WHzQ9/KMRWbryLawez/Uj52Y7EMwRvSpm3nhs0wZb/ZepbiNhVw==",
+    "OpenTK.Graphics/4.8.2": {
+      "sha512": "qpbyWqdO+yEFVFinKwEWKgi1Jgd0fVSgHbB7d5I8ozI9RL/SKZSNmJDxLjTMSQImJtFixmATcLEWwvEceJ/JsQ==",
       "type": "package",
-      "path": "opentk.graphics/4.7.7",
+      "path": "opentk.graphics/4.8.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10112,14 +10198,14 @@
         "lib/netstandard2.1/OpenTK.Graphics.dll",
         "lib/netstandard2.1/OpenTK.Graphics.pdb",
         "lib/netstandard2.1/OpenTK.Graphics.xml",
-        "opentk.graphics.4.7.7.nupkg.sha512",
+        "opentk.graphics.4.8.2.nupkg.sha512",
         "opentk.graphics.nuspec"
       ]
     },
-    "OpenTK.Mathematics/4.7.7": {
-      "sha512": "tx6/xM8sdj7OQQp1Q8+xH25jSceU/muvlVircBPvPSPe5OdEtxgOk1OHZrSPu2c4u7u1id5lGf3dWKn8IQdU3g==",
+    "OpenTK.Mathematics/4.8.2": {
+      "sha512": "A8D3eBWi/LKndvTQQ9o9uwyQJUjGORfWCn/gOvX0jIwmTctkLGnOdw5kw4JbRnzfrhZoSIaqZ7MYWWhIkasORw==",
       "type": "package",
-      "path": "opentk.mathematics/4.7.7",
+      "path": "opentk.mathematics/4.8.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10129,22 +10215,23 @@
         "lib/netstandard2.1/OpenTK.Mathematics.dll",
         "lib/netstandard2.1/OpenTK.Mathematics.pdb",
         "lib/netstandard2.1/OpenTK.Mathematics.xml",
-        "opentk.mathematics.4.7.7.nupkg.sha512",
+        "opentk.mathematics.4.8.2.nupkg.sha512",
         "opentk.mathematics.nuspec"
       ]
     },
-    "OpenTK.redist.glfw/3.3.8.30": {
-      "sha512": "dYk7CJ+eOKHVn5IPKCBzmRDHcDy6+oy0fxPntTcl48+NTmOf15e2vKtF9BM7vQFWA8UFmT09Zk05mNHYa3zYWA==",
+    "OpenTK.redist.glfw/3.3.8.39": {
+      "sha512": "JzjaBzHTyKenUk9CXOYIqA/v7VMnjFnqmd3SKR3I1YpuOTu/H3ohyy3o+ZfMCQ6IRKs7CLfSPXMarKLvwD0WgQ==",
       "type": "package",
-      "path": "opentk.redist.glfw/3.3.8.30",
+      "path": "opentk.redist.glfw/3.3.8.39",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "COPYING.md",
         "lib/netstandard2.0/_._",
         "opentk.png",
-        "opentk.redist.glfw.3.3.8.30.nupkg.sha512",
+        "opentk.redist.glfw.3.3.8.39.nupkg.sha512",
         "opentk.redist.glfw.nuspec",
+        "runtimes/linux-x64/native/libglfw-wayland.so.3.3",
         "runtimes/linux-x64/native/libglfw.so.3.3",
         "runtimes/osx-arm64/native/libglfw.3.dylib",
         "runtimes/osx-x64/native/libglfw.3.dylib",
@@ -10152,17 +10239,17 @@
         "runtimes/win-x86/native/glfw3.dll"
       ]
     },
-    "OpenTK.Windowing.GraphicsLibraryFramework/4.7.7": {
-      "sha512": "TZXZOcnfyPU7zosW+ZPtfemqp4oSBYmQlRQRR7qtEezOBrzotO5ZmlWl0hNti3qjFmJThSxhBn+o/bF7aoBLrA==",
+    "OpenTK.Windowing.GraphicsLibraryFramework/4.8.2": {
+      "sha512": "o50PgKL8G0Pqs7Lo7hu1ru+5X5l03aht5jaeik7McXFgVaBJzMLhMhZkiferx4bbcC9Rq597BOknDwqE/bsLOw==",
       "type": "package",
-      "path": "opentk.windowing.graphicslibraryframework/4.7.7",
+      "path": "opentk.windowing.graphicslibraryframework/4.8.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.dll",
         "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.pdb",
         "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.xml",
-        "opentk.windowing.graphicslibraryframework.4.7.7.nupkg.sha512",
+        "opentk.windowing.graphicslibraryframework.4.8.2.nupkg.sha512",
         "opentk.windowing.graphicslibraryframework.nuspec"
       ]
     },
@@ -11085,44 +11172,15 @@
         "runtimes/win/lib/netstandard1.5/System.Runtime.Extensions.dll"
       ]
     },
-    "runtime.win7-x64.runtime.native.System.IO.Compression/4.3.0": {
-      "sha512": "UamDlgSO/nIzc96M+g3wbvAGbAuXjvRYR5Ttm/FVJgt2iva8ouOqSJ0j6eGI7pZDLvD/ZISl9XRZOajE/Xvizg==",
+    "Ryujinx.Graphics.Nvdec.Dependencies/5.0.3-build14": {
+      "sha512": "mLGP5REEYdV2rT+6gDh0lyfjKt6xrFiaQPTQW4EsgUhYgDBz0a7tB3REmGfLDlqFxn2kzZPwmbwvyv7hQpze2w==",
       "type": "package",
-      "path": "runtime.win7-x64.runtime.native.system.io.compression/4.3.0",
+      "path": "ryujinx.graphics.nvdec.dependencies/5.0.3-build14",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "runtime.win7-x64.runtime.native.system.io.compression.4.3.0.nupkg.sha512",
-        "runtime.win7-x64.runtime.native.system.io.compression.nuspec",
-        "runtimes/win7-x64/native/clrcompression.dll"
-      ]
-    },
-    "runtime.win7.System.Private.Uri/4.3.0": {
-      "sha512": "Q+IBgaPYicSQs2tBlmXqbS25c/JLIthWrgrpMwxKSOobW/OqIMVFruUGfuaz4QABVzV8iKdCAbN7APY7Tclbnw==",
-      "type": "package",
-      "path": "runtime.win7.system.private.uri/4.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "ref/netstandard/_._",
-        "runtime.win7.system.private.uri.4.3.0.nupkg.sha512",
-        "runtime.win7.system.private.uri.nuspec",
-        "runtimes/aot/lib/netcore50/System.Private.Uri.dll",
-        "runtimes/win/lib/netcore50/System.Private.Uri.dll",
-        "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll"
-      ]
-    },
-    "Ryujinx.Graphics.Nvdec.Dependencies/5.0.1-build13": {
-      "sha512": "ODSQ1G1dmHW2/rmRrkbfb6FgQJ3dWEaiiKx1dwJNzMfy9C03WJj/hW6UuMV5aNawrSPvXZt3DYu0FINULwHCww==",
-      "type": "package",
-      "path": "ryujinx.graphics.nvdec.dependencies/5.0.1-build13",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
+        "runtimes/linux-arm64/native/libavcodec.so.59",
+        "runtimes/linux-arm64/native/libavutil.so.57",
         "runtimes/linux-x64/native/libavcodec.so.59",
         "runtimes/linux-x64/native/libavutil.so.57",
         "runtimes/osx-arm64/native/libavcodec.59.dylib",
@@ -11131,26 +11189,44 @@
         "runtimes/osx-x64/native/libavutil.57.dylib",
         "runtimes/win-x64/native/avcodec-59.dll",
         "runtimes/win-x64/native/avutil-57.dll",
-        "ryujinx.graphics.nvdec.dependencies.5.0.1-build13.nupkg.sha512",
+        "ryujinx.graphics.nvdec.dependencies.5.0.3-build14.nupkg.sha512",
         "ryujinx.graphics.nvdec.dependencies.nuspec"
       ]
     },
-    "Ryujinx.SDL2-CS/2.26.3-build25": {
-      "sha512": "h5Z6+ZX1sJaeyq20EjdCexpufBPtTyedb0dAWPYzq7SUZHxaczAoTv0dKfMsLkplp67Hnq9B5eq6/jbMdImJ8w==",
+    "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK/1.2.0": {
+      "sha512": "3kVBXEC9SUHyYGZLmXF+uBEgPW46dzZTSVpW8T9XbBjI0YMrYu/KHMJfgorx0fu/lEN1u+cIBjWp/6aKWe7eJw==",
       "type": "package",
-      "path": "ryujinx.sdl2-cs/2.26.3-build25",
+      "path": "ryujinx.graphics.vulkan.dependencies.moltenvk/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "contentFiles/cs/netstandard2.0/libMoltenVK.dylib",
+        "ryujinx.graphics.vulkan.dependencies.moltenvk.1.2.0.nupkg.sha512",
+        "ryujinx.graphics.vulkan.dependencies.moltenvk.nuspec"
+      ]
+    },
+    "Ryujinx.SDL2-CS/2.30.0-build32": {
+      "sha512": "MMX5BS2lSxnic+H395xOiREUFqrhvOHuTpF+0ZvI3YFOxRJNov/rm7pJxzUC+QWAZyRvSLHmjYoix/7UI0Bpeg==",
+      "type": "package",
+      "path": "ryujinx.sdl2-cs/2.30.0-build32",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "content/app.config",
-        "contentFiles/any/netstandard2.0/app.config",
-        "lib/netstandard2.0/SDL2-CS.dll",
+        "contentFiles/any/net6.0/app.config",
+        "lib/net6.0/SDL2-CS.dll",
+        "runtimes/ios/native/SDL2.xcframework/Info.plist",
+        "runtimes/ios/native/SDL2.xcframework/ios-arm64/SDL2.framework/Info.plist",
+        "runtimes/ios/native/SDL2.xcframework/ios-arm64/SDL2.framework/SDL2",
+        "runtimes/ios/native/SDL2.xcframework/ios-arm64_x86_64-simulator/SDL2.framework/Info.plist",
+        "runtimes/ios/native/SDL2.xcframework/ios-arm64_x86_64-simulator/SDL2.framework/SDL2",
+        "runtimes/linux-arm64/native/libSDL2.so",
         "runtimes/linux-x64/native/libSDL2.so",
         "runtimes/osx-arm64/native/libSDL2.dylib",
         "runtimes/osx-x64/native/libSDL2.dylib",
         "runtimes/win-arm64/native/SDL2.dll",
         "runtimes/win-x64/native/SDL2.dll",
-        "ryujinx.sdl2-cs.2.26.3-build25.nupkg.sha512",
+        "ryujinx.sdl2-cs.2.30.0-build32.nupkg.sha512",
         "ryujinx.sdl2-cs.nuspec"
       ]
     },
@@ -11405,10 +11481,10 @@
         "version.txt"
       ]
     },
-    "System.CodeDom/7.0.0": {
-      "sha512": "GLltyqEsE5/3IE+zYRP5sNa1l44qKl9v+bfdMcwg+M9qnQf47wK3H0SUR/T+3N4JEQXF3vV4CSuuo0rsg+nq2A==",
+    "System.CodeDom/8.0.0": {
+      "sha512": "WTlRjL6KWIMr/pAaq3rYqh0TJlzpouaQ/W1eelssHgtlwHAH25jXTkUphTYx9HaIIf7XA6qs/0+YhtLEQRkJ+Q==",
       "type": "package",
-      "path": "system.codedom/7.0.0",
+      "path": "system.codedom/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11425,9 +11501,11 @@
         "lib/net6.0/System.CodeDom.xml",
         "lib/net7.0/System.CodeDom.dll",
         "lib/net7.0/System.CodeDom.xml",
+        "lib/net8.0/System.CodeDom.dll",
+        "lib/net8.0/System.CodeDom.xml",
         "lib/netstandard2.0/System.CodeDom.dll",
         "lib/netstandard2.0/System.CodeDom.xml",
-        "system.codedom.7.0.0.nupkg.sha512",
+        "system.codedom.8.0.0.nupkg.sha512",
         "system.codedom.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -11989,29 +12067,6 @@
         "system.globalization.extensions.nuspec"
       ]
     },
-    "System.IdentityModel.Tokens.Jwt/6.30.1": {
-      "sha512": "THhcemCnzUJnrCojmNmafJGluAmfumVFT18oSPa+epEfVuiXXdmitu7UvmayMq6FrBJKrZzHdVfh7CXg+uvBPQ==",
-      "type": "package",
-      "path": "system.identitymodel.tokens.jwt/6.30.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/System.IdentityModel.Tokens.Jwt.dll",
-        "lib/net45/System.IdentityModel.Tokens.Jwt.xml",
-        "lib/net461/System.IdentityModel.Tokens.Jwt.dll",
-        "lib/net461/System.IdentityModel.Tokens.Jwt.xml",
-        "lib/net462/System.IdentityModel.Tokens.Jwt.dll",
-        "lib/net462/System.IdentityModel.Tokens.Jwt.xml",
-        "lib/net472/System.IdentityModel.Tokens.Jwt.dll",
-        "lib/net472/System.IdentityModel.Tokens.Jwt.xml",
-        "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll",
-        "lib/net6.0/System.IdentityModel.Tokens.Jwt.xml",
-        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll",
-        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
-        "system.identitymodel.tokens.jwt.6.30.1.nupkg.sha512",
-        "system.identitymodel.tokens.jwt.nuspec"
-      ]
-    },
     "System.IO/4.3.0": {
       "sha512": "3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
       "type": "package",
@@ -12280,15 +12335,16 @@
         "system.io.filesystem.primitives.nuspec"
       ]
     },
-    "System.IO.Hashing/7.0.0": {
-      "sha512": "sDnWM0N3AMCa86LrKTWeF3BZLD2sgWyYUc7HL6z4+xyDZNQRwzmxbo4qP2rX2MqC+Sy1/gOSRDah5ltxY5jPxw==",
+    "System.IO.Hashing/8.0.0": {
+      "sha512": "ne1843evDugl0md7Fjzy6QjJrzsjh46ZKbhf8GwBXb5f/gw97J4bxMs0NQKifDuThh/f0bZ0e62NPl1jzTuRqA==",
       "type": "package",
-      "path": "system.io.hashing/7.0.0",
+      "path": "system.io.hashing/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
+        "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/System.IO.Hashing.targets",
         "buildTransitive/net462/_._",
@@ -12300,9 +12356,11 @@
         "lib/net6.0/System.IO.Hashing.xml",
         "lib/net7.0/System.IO.Hashing.dll",
         "lib/net7.0/System.IO.Hashing.xml",
+        "lib/net8.0/System.IO.Hashing.dll",
+        "lib/net8.0/System.IO.Hashing.xml",
         "lib/netstandard2.0/System.IO.Hashing.dll",
         "lib/netstandard2.0/System.IO.Hashing.xml",
-        "system.io.hashing.7.0.0.nupkg.sha512",
+        "system.io.hashing.8.0.0.nupkg.sha512",
         "system.io.hashing.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -12463,15 +12521,16 @@
         "system.linq.expressions.nuspec"
       ]
     },
-    "System.Management/7.0.1": {
-      "sha512": "pHg4hGr/dn5wYdJ+kolMY4gkCIzFDRj/HFqoPq7e5h7OGii6BCBmS2/+ysC2SSoB5WvIDS29DMM5DowxxSY/oA==",
+    "System.Management/8.0.0": {
+      "sha512": "jrK22i5LRzxZCfGb+tGmke2VH7oE0DvcDlJ1HAKYU8cPmD8XnpUT0bYn2Gy98GEhGjtfbR/sxKTVb+dE770pfA==",
       "type": "package",
-      "path": "system.management/7.0.1",
+      "path": "system.management/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
+        "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.Management.targets",
@@ -12480,13 +12539,17 @@
         "lib/net6.0/System.Management.xml",
         "lib/net7.0/System.Management.dll",
         "lib/net7.0/System.Management.xml",
+        "lib/net8.0/System.Management.dll",
+        "lib/net8.0/System.Management.xml",
         "lib/netstandard2.0/System.Management.dll",
         "lib/netstandard2.0/System.Management.xml",
         "runtimes/win/lib/net6.0/System.Management.dll",
         "runtimes/win/lib/net6.0/System.Management.xml",
         "runtimes/win/lib/net7.0/System.Management.dll",
         "runtimes/win/lib/net7.0/System.Management.xml",
-        "system.management.7.0.1.nupkg.sha512",
+        "runtimes/win/lib/net8.0/System.Management.dll",
+        "runtimes/win/lib/net8.0/System.Management.xml",
+        "system.management.8.0.0.nupkg.sha512",
         "system.management.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -13814,67 +13877,32 @@
         "system.security.cryptography.algorithms.nuspec"
       ]
     },
-    "System.Security.Cryptography.Cng/4.5.0": {
-      "sha512": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
+    "System.Security.Cryptography.Cng/4.2.0": {
+      "sha512": "cUJ2h+ZvONDe28Szw3st5dOHdjndhJzQ2WObDEXAWRPEQBtVItVoxbXM/OEsTthl3cNn2dk2k0I3y45igCQcLw==",
       "type": "package",
-      "path": "system.security.cryptography.cng/4.5.0",
+      "path": "system.security.cryptography.cng/4.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
         "lib/net46/System.Security.Cryptography.Cng.dll",
         "lib/net461/System.Security.Cryptography.Cng.dll",
-        "lib/net462/System.Security.Cryptography.Cng.dll",
-        "lib/net47/System.Security.Cryptography.Cng.dll",
-        "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
-        "lib/netstandard1.3/System.Security.Cryptography.Cng.dll",
-        "lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
-        "lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
-        "lib/netstandard2.0/System.Security.Cryptography.Cng.dll",
-        "lib/uap10.0.16299/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
+        "lib/net463/System.Security.Cryptography.Cng.dll",
         "ref/net46/System.Security.Cryptography.Cng.dll",
         "ref/net461/System.Security.Cryptography.Cng.dll",
-        "ref/net461/System.Security.Cryptography.Cng.xml",
-        "ref/net462/System.Security.Cryptography.Cng.dll",
-        "ref/net462/System.Security.Cryptography.Cng.xml",
-        "ref/net47/System.Security.Cryptography.Cng.dll",
-        "ref/net47/System.Security.Cryptography.Cng.xml",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.xml",
-        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
-        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.xml",
+        "ref/net463/System.Security.Cryptography.Cng.dll",
         "ref/netstandard1.3/System.Security.Cryptography.Cng.dll",
         "ref/netstandard1.4/System.Security.Cryptography.Cng.dll",
         "ref/netstandard1.6/System.Security.Cryptography.Cng.dll",
-        "ref/netstandard2.0/System.Security.Cryptography.Cng.dll",
-        "ref/netstandard2.0/System.Security.Cryptography.Cng.xml",
-        "ref/uap10.0.16299/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/net46/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/net461/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/net462/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/net47/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net463/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/uap10.0.16299/_._",
-        "system.security.cryptography.cng.4.5.0.nupkg.sha512",
-        "system.security.cryptography.cng.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "system.security.cryptography.cng.4.2.0.nupkg.sha512",
+        "system.security.cryptography.cng.nuspec"
       ]
     },
     "System.Security.Cryptography.Csp/4.0.0": {
@@ -14992,16 +15020,17 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0": [
+    "net8.0": [
       "ARMeilleure >= 1.0.0",
       "CommandLineParser >= 2.9.1",
-      "OpenTK.Core >= 4.7.7",
+      "OpenTK.Core >= 4.8.2",
       "Ryujinx.Audio.Backends.SDL2 >= 1.0.0",
       "Ryujinx.Common >= 1.0.0",
       "Ryujinx.Graphics.Gpu >= 1.0.0",
-      "Ryujinx.Graphics.Nvdec.Dependencies >= 5.0.1-build13",
+      "Ryujinx.Graphics.Nvdec.Dependencies >= 5.0.3-build14",
       "Ryujinx.Graphics.OpenGL >= 1.0.0",
       "Ryujinx.Graphics.Vulkan >= 1.0.0",
+      "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK >= 1.2.0",
       "Ryujinx.HLE >= 1.0.0",
       "Ryujinx.Input >= 1.0.0",
       "Ryujinx.Input.SDL2 >= 1.0.0"
@@ -15025,14 +15054,14 @@
         "/Users/ronj/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net8.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {
             "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/ARMeilleure/ARMeilleure.csproj": {
               "projectPath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/ARMeilleure/ARMeilleure.csproj"
@@ -15071,8 +15100,8 @@
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "CommandLineParser": {
             "target": "Package",
@@ -15081,48 +15110,55 @@
           },
           "OpenTK.Core": {
             "target": "Package",
-            "version": "[4.7.7, )",
+            "version": "[4.8.2, )",
             "versionCentrallyManaged": true
           },
           "Ryujinx.Graphics.Nvdec.Dependencies": {
             "target": "Package",
-            "version": "[5.0.1-build13, )",
+            "version": "[5.0.3-build14, )",
+            "versionCentrallyManaged": true
+          },
+          "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK": {
+            "target": "Package",
+            "version": "[1.2.0, )",
             "versionCentrallyManaged": true
           }
         },
         "centralPackageVersions": {
-          "Avalonia": "[0.10.19, )",
-          "Avalonia.Controls.DataGrid": "[0.10.19, )",
-          "Avalonia.Desktop": "[0.10.19, )",
-          "Avalonia.Diagnostics": "[0.10.19, )",
-          "Avalonia.Markup.Xaml.Loader": "[0.10.19, )",
-          "Avalonia.Svg": "[0.10.18, )",
-          "Avalonia.Svg.Skia": "[0.10.18, )",
+          "Avalonia": "[11.0.7, )",
+          "Avalonia.Controls.DataGrid": "[11.0.7, )",
+          "Avalonia.Desktop": "[11.0.7, )",
+          "Avalonia.Diagnostics": "[11.0.7, )",
+          "Avalonia.Markup.Xaml.Loader": "[11.0.7, )",
+          "Avalonia.Svg": "[11.0.0.13, )",
+          "Avalonia.Svg.Skia": "[11.0.0.13, )",
           "CommandLineParser": "[2.9.1, )",
           "Concentus": "[1.1.7, )",
-          "DiscordRichPresence": "[1.1.3.18, )",
-          "DynamicData": "[7.13.8, )",
-          "FluentAvaloniaUI": "[1.4.5, )",
+          "DiscordRichPresence": "[1.2.1.24, )",
+          "DynamicData": "[8.3.27, )",
+          "FluentAvaloniaUI": "[2.0.5, )",
           "GtkSharp.Dependencies": "[1.1.1, )",
           "GtkSharp.Dependencies.osx": "[0.0.5, )",
-          "jp2masa.Avalonia.Flexbox": "[0.2.0, )",
-          "LibHac": "[0.18.0, )",
+          "LibHac": "[0.19.0, )",
           "Microsoft.CodeAnalysis.Analyzers": "[3.3.4, )",
-          "Microsoft.CodeAnalysis.CSharp": "[4.5.0, )",
-          "Microsoft.IO.RecyclableMemoryStream": "[2.3.2, )",
-          "Microsoft.NET.Test.Sdk": "[17.5.0, )",
+          "Microsoft.CodeAnalysis.CSharp": "[4.8.0, )",
+          "Microsoft.IdentityModel.JsonWebTokens": "[7.3.0, )",
+          "Microsoft.IO.RecyclableMemoryStream": "[3.0.0, )",
+          "Microsoft.NET.Test.Sdk": "[17.9.0, )",
           "MsgPack.Cli": "[1.0.1, )",
+          "NetCoreServer": "[8.0.7, )",
           "NUnit": "[3.13.3, )",
           "NUnit3TestAdapter": "[4.1.0, )",
-          "OpenTK.Core": "[4.7.7, )",
-          "OpenTK.Graphics": "[4.7.7, )",
-          "OpenTK.OpenAL": "[4.7.7, )",
-          "OpenTK.Windowing.GraphicsLibraryFramework": "[4.7.7, )",
+          "OpenTK.Audio.OpenAL": "[4.8.2, )",
+          "OpenTK.Core": "[4.8.2, )",
+          "OpenTK.Graphics": "[4.8.2, )",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "[4.8.2, )",
           "Ryujinx.Audio.OpenAL.Dependencies": "[1.21.0.1, )",
-          "Ryujinx.Graphics.Nvdec.Dependencies": "[5.0.1-build13, )",
+          "Ryujinx.Graphics.Nvdec.Dependencies": "[5.0.3-build14, )",
           "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK": "[1.2.0, )",
           "Ryujinx.GtkSharp": "[3.24.24.59-ryujinx, )",
-          "Ryujinx.SDL2-CS": "[2.26.3-build25, )",
+          "Ryujinx.SDL2-CS": "[2.30.0-build32, )",
+          "securifybv.ShellLink": "[0.1.0, )",
           "shaderc.net": "[0.1.0, )",
           "SharpZipLib": "[1.4.2, )",
           "Silk.NET.Vulkan": "[2.16.0, )",
@@ -15130,13 +15166,11 @@
           "Silk.NET.Vulkan.Extensions.KHR": "[2.16.0, )",
           "SixLabors.ImageSharp": "[1.0.4, )",
           "SixLabors.ImageSharp.Drawing": "[1.0.0-beta11, )",
-          "SPB": "[0.0.4-build28, )",
-          "System.Drawing.Common": "[7.0.0, )",
-          "System.IdentityModel.Tokens.Jwt": "[6.30.1, )",
-          "System.IO.Hashing": "[7.0.0, )",
-          "System.Management": "[7.0.1, )",
-          "UnicornEngine.Unicorn": "[2.0.2-rc1-fb78016, )",
-          "XamlNameReferenceGenerator": "[1.6.1, )"
+          "SPB": "[0.0.4-build32, )",
+          "System.Drawing.Common": "[8.0.2, )",
+          "System.IO.Hashing": "[8.0.0, )",
+          "System.Management": "[8.0.0, )",
+          "UnicornEngine.Unicorn": "[2.0.2-rc1-fb78016, )"
         },
         "imports": [
           "net461",
@@ -15152,39 +15186,39 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[8.0.2, 8.0.2]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[8.0.2, 8.0.2]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[8.0.2, 8.0.2]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.linux-x64",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[8.0.2, 8.0.2]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.osx-x64",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[8.0.2, 8.0.2]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[8.0.2, 8.0.2]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.linux-x64",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[8.0.2, 8.0.2]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.osx-x64",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[8.0.2, 8.0.2]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[7.0.5, 7.0.5]"
+            "version": "[8.0.2, 8.0.2]"
           }
         ],
         "frameworkReferences": {
@@ -15192,7 +15226,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
@@ -15202,7 +15236,7 @@
       "osx-x64": {
         "#import": []
       },
-      "win10-x64": {
+      "win-x64": {
         "#import": []
       }
     }

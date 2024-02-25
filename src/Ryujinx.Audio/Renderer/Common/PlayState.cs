@@ -18,12 +18,6 @@ namespace Ryujinx.Audio.Renderer.Common
         /// <summary>
         /// The user request the voice to be paused.
         /// </summary>
-<<<<<<< HEAD
         Pause,
     }
 }
-=======
-        Pause
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

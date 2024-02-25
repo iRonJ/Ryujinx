@@ -27,17 +27,9 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
         public AstAssignment(IAstNode destination, IAstNode source)
         {
             Destination = destination;
-<<<<<<< HEAD
             Source = source;
-=======
-            Source      = source;
->>>>>>> 1ec71635b (sync with main branch)
 
             AddDef(destination, this);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -7,10 +7,6 @@ namespace Ryujinx.Graphics.Gpu.Image
     {
         None = 1,
         Nearest,
-<<<<<<< HEAD
         Linear,
-=======
-        Linear
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

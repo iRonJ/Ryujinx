@@ -1,20 +1,12 @@
 using Ryujinx.Common.Logging;
 using System;
 using System.IO;
-<<<<<<< HEAD
-=======
-using System.Text;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.Loaders.Mods
 {
     class IpsPatcher
     {
-<<<<<<< HEAD
         readonly MemPatch _patches;
-=======
-        MemPatch _patches;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IpsPatcher(BinaryReader reader)
         {
@@ -27,7 +19,6 @@ namespace Ryujinx.HLE.Loaders.Mods
 
         private static MemPatch ParseIps(BinaryReader reader)
         {
-<<<<<<< HEAD
             ReadOnlySpan<byte> ipsHeaderMagic = "PATCH"u8;
             ReadOnlySpan<byte> ipsTailMagic = "EOF"u8;
             ReadOnlySpan<byte> ips32HeaderMagic = "IPS32"u8;
@@ -37,17 +28,6 @@ namespace Ryujinx.HLE.Loaders.Mods
             var header = reader.ReadBytes(ipsHeaderMagic.Length).AsSpan();
 
             if (header.Length != ipsHeaderMagic.Length)
-=======
-            ReadOnlySpan<byte> IpsHeaderMagic   = "PATCH"u8;
-            ReadOnlySpan<byte> IpsTailMagic     = "EOF"u8;
-            ReadOnlySpan<byte> Ips32HeaderMagic = "IPS32"u8;
-            ReadOnlySpan<byte> Ips32TailMagic   = "EEOF"u8;
-
-            MemPatch patches = new MemPatch();
-            var header = reader.ReadBytes(IpsHeaderMagic.Length).AsSpan();
-
-            if (header.Length != IpsHeaderMagic.Length)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return null;
             }
@@ -55,7 +35,6 @@ namespace Ryujinx.HLE.Loaders.Mods
             bool is32;
             ReadOnlySpan<byte> tailSpan;
 
-<<<<<<< HEAD
             if (header.SequenceEqual(ipsHeaderMagic))
             {
                 is32 = false;
@@ -65,17 +44,6 @@ namespace Ryujinx.HLE.Loaders.Mods
             {
                 is32 = true;
                 tailSpan = ips32TailMagic;
-=======
-            if (header.SequenceEqual(IpsHeaderMagic))
-            {
-                is32 = false;
-                tailSpan = IpsTailMagic;
-            }
-            else if (header.SequenceEqual(Ips32HeaderMagic))
-            {
-                is32 = true;
-                tailSpan = Ips32TailMagic;
->>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -145,8 +113,4 @@ namespace Ryujinx.HLE.Loaders.Mods
             patches.AddFrom(_patches);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

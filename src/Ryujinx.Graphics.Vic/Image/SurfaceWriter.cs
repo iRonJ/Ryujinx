@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Texture;
 using Ryujinx.Graphics.Vic.Types;
 using System;
@@ -640,11 +636,7 @@ namespace Ryujinx.Graphics.Vic.Image
         {
             if (linear)
             {
-<<<<<<< HEAD
                 rm.MemoryManager.Write(ExtendOffset(offset), src);
-=======
-                rm.Gmm.WriteMapped(ExtendOffset(offset), src);
->>>>>>> 1ec71635b (sync with main branch)
                 return;
             }
 
@@ -667,11 +659,7 @@ namespace Ryujinx.Graphics.Vic.Image
 
             LayoutConverter.ConvertLinearToBlockLinear(dst, width, height, dstStride, bytesPerPixel, gobBlocksInY, src);
 
-<<<<<<< HEAD
             rm.MemoryManager.Write(ExtendOffset(offset), dst);
-=======
-            rm.Gmm.WriteMapped(ExtendOffset(offset), dst);
->>>>>>> 1ec71635b (sync with main branch)
 
             rm.BufferPool.Return(dstIndex);
         }

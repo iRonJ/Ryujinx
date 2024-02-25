@@ -21,10 +21,7 @@ namespace Ryujinx.Ava.UI.Helpers
             if (value is byte[] buffer && targetType == typeof(IImage))
             {
                 MemoryStream mem = new(buffer);
-<<<<<<< HEAD
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 return new Bitmap(mem);
             }
 
@@ -36,8 +33,4 @@ namespace Ryujinx.Ava.UI.Helpers
             throw new NotSupportedException();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

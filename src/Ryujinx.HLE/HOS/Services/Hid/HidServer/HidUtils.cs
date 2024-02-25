@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid.HidServer
 {
@@ -11,10 +7,7 @@ namespace Ryujinx.HLE.HOS.Services.Hid.HidServer
         public static PlayerIndex GetIndexFromNpadIdType(NpadIdType npadIdType)
         => npadIdType switch
         {
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
             NpadIdType.Player1  => PlayerIndex.Player1,
             NpadIdType.Player2  => PlayerIndex.Player2,
             NpadIdType.Player3  => PlayerIndex.Player3,
@@ -25,21 +18,14 @@ namespace Ryujinx.HLE.HOS.Services.Hid.HidServer
             NpadIdType.Player8  => PlayerIndex.Player8,
             NpadIdType.Handheld => PlayerIndex.Handheld,
             NpadIdType.Unknown  => PlayerIndex.Unknown,
-<<<<<<< HEAD
             _                   => throw new ArgumentOutOfRangeException(nameof(npadIdType)),
 #pragma warning restore IDE0055
-=======
-            _                   => throw new ArgumentOutOfRangeException(nameof(npadIdType))
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         public static NpadIdType GetNpadIdTypeFromIndex(PlayerIndex index)
         => index switch
         {
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
             PlayerIndex.Player1  => NpadIdType.Player1,
             PlayerIndex.Player2  => NpadIdType.Player2,
             PlayerIndex.Player3  => NpadIdType.Player3,
@@ -50,12 +36,8 @@ namespace Ryujinx.HLE.HOS.Services.Hid.HidServer
             PlayerIndex.Player8  => NpadIdType.Player8,
             PlayerIndex.Handheld => NpadIdType.Handheld,
             PlayerIndex.Unknown  => NpadIdType.Unknown,
-<<<<<<< HEAD
             _                    => throw new ArgumentOutOfRangeException(nameof(index)),
 #pragma warning restore IDE0055
-=======
-            _                    => throw new ArgumentOutOfRangeException(nameof(index))
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         public static bool IsValidNpadIdType(NpadIdType npadIdType)
@@ -65,8 +47,4 @@ namespace Ryujinx.HLE.HOS.Services.Hid.HidServer
                 npadIdType == NpadIdType.Unknown;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

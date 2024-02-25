@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct CopyBufferCommand : IGALCommand, IGALCommand<CopyBufferCommand>
     {
         public readonly CommandType CommandType => CommandType.CopyBuffer;
-=======
-﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
-{
-    struct CopyBufferCommand : IGALCommand, IGALCommand<CopyBufferCommand>
-    {
-        public CommandType CommandType => CommandType.CopyBuffer;
->>>>>>> 1ec71635b (sync with main branch)
         private BufferHandle _source;
         private BufferHandle _destination;
         private int _srcOffset;

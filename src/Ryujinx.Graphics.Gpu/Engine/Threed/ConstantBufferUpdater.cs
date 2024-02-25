@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.Graphics.Gpu.Engine.Threed
@@ -23,11 +19,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         private ulong _ubFollowUpAddress = 0;
         private ulong _ubByteCount = 0;
         private int _ubIndex = 0;
-<<<<<<< HEAD
         private readonly int[] _ubData = new int[UniformDataCacheSize];
-=======
-        private int[] _ubData = new int[UniformDataCacheSize];
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Creates a new instance of the constant buffer updater.

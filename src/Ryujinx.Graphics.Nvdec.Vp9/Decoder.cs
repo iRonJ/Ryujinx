@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Nvdec.Vp9.Common;
 using Ryujinx.Graphics.Nvdec.Vp9.Types;
 using Ryujinx.Graphics.Video;
 using System;
-<<<<<<< HEAD
-=======
-using Vp9MvRef = Ryujinx.Graphics.Video.Vp9MvRef;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Nvdec.Vp9
 {
@@ -18,11 +10,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
     {
         public bool IsHardwareAccelerated => false;
 
-<<<<<<< HEAD
         private readonly MemoryAllocator _allocator = new();
-=======
-        private readonly MemoryAllocator _allocator = new MemoryAllocator();
->>>>>>> 1ec71635b (sync with main branch)
 
         public ISurface CreateSurface(int width, int height) => new Surface(width, height);
 
@@ -31,11 +19,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             Constants.EightTapSmooth,
             Constants.EightTap,
             Constants.EightTapSharp,
-<<<<<<< HEAD
             Constants.Bilinear,
-=======
-            Constants.Bilinear
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         public unsafe bool Decode(
@@ -45,7 +29,6 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             ReadOnlySpan<Vp9MvRef> mvsIn,
             Span<Vp9MvRef> mvsOut)
         {
-<<<<<<< HEAD
             Vp9Common cm = new()
             {
                 FrameType = pictureInfo.IsKeyFrame ? FrameType.KeyFrame : FrameType.InterFrame,
@@ -65,26 +48,6 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                 UvAcDeltaQ = pictureInfo.UvAcDeltaQ,
                 UvDcDeltaQ = pictureInfo.UvDcDeltaQ,
             };
-=======
-            Vp9Common cm = new Vp9Common();
-
-            cm.FrameType = pictureInfo.IsKeyFrame ? FrameType.KeyFrame : FrameType.InterFrame;
-            cm.IntraOnly = pictureInfo.IntraOnly;
-
-            cm.Width = output.Width;
-            cm.Height = output.Height;
-            cm.SubsamplingX = 1;
-            cm.SubsamplingY = 1;
-
-            cm.UsePrevFrameMvs = pictureInfo.UsePrevInFindMvRefs;
-
-            cm.RefFrameSignBias = pictureInfo.RefFrameSignBias;
-
-            cm.BaseQindex = pictureInfo.BaseQIndex;
-            cm.YDcDeltaQ = pictureInfo.YDcDeltaQ;
-            cm.UvAcDeltaQ = pictureInfo.UvAcDeltaQ;
-            cm.UvDcDeltaQ = pictureInfo.UvDcDeltaQ;
->>>>>>> 1ec71635b (sync with main branch)
 
             cm.Mb.Lossless = pictureInfo.Lossless;
             cm.Mb.Bd = 8;

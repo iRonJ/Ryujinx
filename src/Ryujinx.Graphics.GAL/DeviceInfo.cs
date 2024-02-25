@@ -15,8 +15,4 @@ namespace Ryujinx.Graphics.GAL
             IsDiscrete = isDiscrete;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

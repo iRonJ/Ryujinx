@@ -1,7 +1,7 @@
-﻿using Ryujinx.Common.Utilities;
+using Ryujinx.Common.Utilities;
 using System.Text.Json.Serialization;
 
-namespace Ryujinx.Ui.Common.Configuration.System
+namespace Ryujinx.UI.Common.Configuration.System
 {
     [JsonConverter(typeof(TypedStringEnumConverter<Language>))]
     public enum Language
@@ -23,6 +23,6 @@ namespace Ryujinx.Ui.Common.Configuration.System
         LatinAmericanSpanish,
         SimplifiedChinese,
         TraditionalChinese,
-        BrazilianPortuguese
+        BrazilianPortuguese,
     }
 }

@@ -126,8 +126,4 @@ namespace Ryujinx.Graphics.Gpu.Image
             _pools.Clear();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

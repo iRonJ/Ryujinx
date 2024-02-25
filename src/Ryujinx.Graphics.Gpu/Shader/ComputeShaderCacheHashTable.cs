@@ -50,14 +50,9 @@ namespace Ryujinx.Graphics.Gpu.Shader
             out byte[] cachedGuestCode)
         {
             program = null;
-<<<<<<< HEAD
             ShaderCodeAccessor codeAccessor = new(channel.MemoryManager, gpuVa);
             bool hasSpecList = _cache.TryFindItem(codeAccessor, out var specList, out cachedGuestCode);
 
-=======
-            ShaderCodeAccessor codeAccessor = new ShaderCodeAccessor(channel.MemoryManager, gpuVa);
-            bool hasSpecList = _cache.TryFindItem(codeAccessor, out var specList, out cachedGuestCode);
->>>>>>> 1ec71635b (sync with main branch)
             return hasSpecList && specList.TryFindForCompute(channel, poolState, computeState, out program);
         }
 
@@ -73,8 +68,4 @@ namespace Ryujinx.Graphics.Gpu.Shader
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Collections;
-=======
-﻿using Ryujinx.Common.Collections;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using Ryujinx.Graphics.Gpu.Memory;
 using System;
@@ -24,17 +20,10 @@ namespace Ryujinx.HLE.HOS.Services.Nv
 
         // Key   --> Start Address of Region
         // Value --> End Address of Region
-<<<<<<< HEAD
         private readonly TreeDictionary<ulong, ulong> _tree = new();
 
         private readonly Dictionary<ulong, LinkedListNode<ulong>> _dictionary = new();
         private readonly LinkedList<ulong> _list = new();
-=======
-        private readonly TreeDictionary<ulong, ulong> _tree = new TreeDictionary<ulong, ulong>();
-
-        private readonly Dictionary<ulong, LinkedListNode<ulong>> _dictionary = new Dictionary<ulong, LinkedListNode<ulong>>();
-        private readonly LinkedList<ulong> _list = new LinkedList<ulong>();
->>>>>>> 1ec71635b (sync with main branch)
 
         public NvMemoryAllocator()
         {

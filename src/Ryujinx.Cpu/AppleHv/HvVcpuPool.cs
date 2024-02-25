@@ -1,16 +1,10 @@
 using System;
-<<<<<<< HEAD
 using System.Runtime.Versioning;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 
 namespace Ryujinx.Cpu.AppleHv
 {
-<<<<<<< HEAD
     [SupportedOSPlatform("macos")]
-=======
->>>>>>> 1ec71635b (sync with main branch)
     class HvVcpuPool
     {
         // Since there's a limit on the number of VCPUs we can create,
@@ -25,17 +19,10 @@ namespace Ryujinx.Cpu.AppleHv
 
         private const int MaxActiveVcpus = 4;
 
-<<<<<<< HEAD
         public static readonly HvVcpuPool Instance = new();
 
         private int _totalVcpus;
         private readonly int _maxVcpus;
-=======
-        public static readonly HvVcpuPool Instance = new HvVcpuPool();
-
-        private int _totalVcpus;
-        private int _maxVcpus;
->>>>>>> 1ec71635b (sync with main branch)
 
         public HvVcpuPool()
         {
@@ -84,7 +71,6 @@ namespace Ryujinx.Cpu.AppleHv
             bool isEphemeral = newCount > _maxVcpus - MaxActiveVcpus;
 
             // Create VCPU.
-<<<<<<< HEAD
             HvVcpuExit* exitInfo = null;
             HvApi.hv_vcpu_create(out ulong vcpuHandle, ref exitInfo, IntPtr.Zero).ThrowOnError();
 
@@ -98,19 +84,6 @@ namespace Ryujinx.Cpu.AppleHv
             HvVcpu vcpu = new(vcpuHandle, exitInfo, shadowContext, nativeContext, isEphemeral);
 
             vcpu.EnableAndUpdateVTimer();
-=======
-            hv_vcpu_exit_t* exitInfo = null;
-            HvApi.hv_vcpu_create(out ulong vcpuHandle, ref exitInfo, IntPtr.Zero).ThrowOnError();
-
-            // Enable FP and SIMD instructions.
-            HvApi.hv_vcpu_set_sys_reg(vcpuHandle, hv_sys_reg_t.HV_SYS_REG_CPACR_EL1, 0b11 << 20).ThrowOnError();
-
-            addressSpace.InitializeMmu(vcpuHandle);
-
-            HvExecutionContextVcpu nativeContext = new HvExecutionContextVcpu(vcpuHandle);
-
-            HvVcpu vcpu = new HvVcpu(vcpuHandle, exitInfo, shadowContext, nativeContext, isEphemeral);
->>>>>>> 1ec71635b (sync with main branch)
 
             return vcpu;
         }
@@ -131,8 +104,4 @@ namespace Ryujinx.Cpu.AppleHv
             Interlocked.Decrement(ref _totalVcpus);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

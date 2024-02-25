@@ -52,11 +52,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// <returns>Span of varying locations</returns>
         public ReadOnlySpan<byte> AsSpan()
         {
-<<<<<<< HEAD
             return MemoryMarshal.Cast<uint, byte>(VaryingLocations.AsSpan())[..Math.Min(128, VaryingCount)];
-=======
-            return MemoryMarshal.Cast<uint, byte>(VaryingLocations.AsSpan()).Slice(0, Math.Min(128, VaryingCount));
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types
 {
@@ -29,12 +25,6 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types
         LarkNesLeft,
         LarkNesRight,
         Lucia,
-<<<<<<< HEAD
         Verification,
     }
 }
-=======
-        Verification
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

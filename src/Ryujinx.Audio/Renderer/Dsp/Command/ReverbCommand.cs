@@ -1,9 +1,6 @@
 using Ryujinx.Audio.Renderer.Dsp.State;
 using Ryujinx.Audio.Renderer.Parameter.Effect;
-<<<<<<< HEAD
 using Ryujinx.Audio.Renderer.Server.Effect;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -12,7 +9,6 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
 {
     public class ReverbCommand : ICommand
     {
-<<<<<<< HEAD
         private static readonly int[] _outputEarlyIndicesTableMono = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         private static readonly int[] _targetEarlyDelayLineIndicesTableMono = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         private static readonly int[] _outputIndicesTableMono = new int[4] { 0, 0, 0, 0 };
@@ -32,27 +28,6 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
         private static readonly int[] _targetEarlyDelayLineIndicesTableSurround = new int[20] { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
         private static readonly int[] _outputIndicesTableSurround = new int[Constants.ChannelCountMax] { 0, 1, 2, 3, 4, 5 };
         private static readonly int[] _targetOutputFeedbackIndicesTableSurround = new int[Constants.ChannelCountMax] { 0, 1, 2, 3, -1, 3 };
-=======
-        private static readonly int[] OutputEarlyIndicesTableMono = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        private static readonly int[] TargetEarlyDelayLineIndicesTableMono = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        private static readonly int[] OutputIndicesTableMono = new int[4] { 0, 0, 0, 0 };
-        private static readonly int[] TargetOutputFeedbackIndicesTableMono = new int[4] { 0, 1, 2, 3 };
-
-        private static readonly int[] OutputEarlyIndicesTableStereo = new int[10] { 0, 0, 1, 1, 0, 1, 0, 0, 1, 1 };
-        private static readonly int[] TargetEarlyDelayLineIndicesTableStereo = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        private static readonly int[] OutputIndicesTableStereo = new int[4] { 0, 0, 1, 1 };
-        private static readonly int[] TargetOutputFeedbackIndicesTableStereo = new int[4] { 2, 0, 3, 1 };
-
-        private static readonly int[] OutputEarlyIndicesTableQuadraphonic = new int[10] { 0, 0, 1, 1, 0, 1, 2, 2, 3, 3 };
-        private static readonly int[] TargetEarlyDelayLineIndicesTableQuadraphonic = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        private static readonly int[] OutputIndicesTableQuadraphonic = new int[4] { 0, 1, 2, 3 };
-        private static readonly int[] TargetOutputFeedbackIndicesTableQuadraphonic = new int[4] { 0, 1, 2, 3 };
-
-        private static readonly int[] OutputEarlyIndicesTableSurround = new int[20] { 0, 5, 0, 5, 1, 5, 1, 5, 4, 5, 4, 5, 2, 5, 2, 5, 3, 5, 3, 5 };
-        private static readonly int[] TargetEarlyDelayLineIndicesTableSurround = new int[20] { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
-        private static readonly int[] OutputIndicesTableSurround = new int[Constants.ChannelCountMax] { 0, 1, 2, 3, 4, 5 };
-        private static readonly int[] TargetOutputFeedbackIndicesTableSurround = new int[Constants.ChannelCountMax] { 0, 1, 2, 3, -1, 3 };
->>>>>>> 1ec71635b (sync with main branch)
 
         public bool Enabled { get; set; }
 
@@ -104,7 +79,6 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ProcessReverbMono(ref ReverbState state, ReadOnlySpan<IntPtr> outputBuffers, ReadOnlySpan<IntPtr> inputBuffers, uint sampleCount)
         {
-<<<<<<< HEAD
             ProcessReverbGeneric(
                 ref state,
                 outputBuffers,
@@ -114,22 +88,11 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
                 _targetEarlyDelayLineIndicesTableMono,
                 _targetOutputFeedbackIndicesTableMono,
                 _outputIndicesTableMono);
-=======
-            ProcessReverbGeneric(ref state,
-                     outputBuffers,
-                     inputBuffers,
-                     sampleCount,
-                     OutputEarlyIndicesTableMono,
-                     TargetEarlyDelayLineIndicesTableMono,
-                     TargetOutputFeedbackIndicesTableMono,
-                     OutputIndicesTableMono);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ProcessReverbStereo(ref ReverbState state, ReadOnlySpan<IntPtr> outputBuffers, ReadOnlySpan<IntPtr> inputBuffers, uint sampleCount)
         {
-<<<<<<< HEAD
             ProcessReverbGeneric(
                 ref state,
                 outputBuffers,
@@ -139,22 +102,11 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
                 _targetEarlyDelayLineIndicesTableStereo,
                 _targetOutputFeedbackIndicesTableStereo,
                 _outputIndicesTableStereo);
-=======
-            ProcessReverbGeneric(ref state,
-                     outputBuffers,
-                     inputBuffers,
-                     sampleCount,
-                     OutputEarlyIndicesTableStereo,
-                     TargetEarlyDelayLineIndicesTableStereo,
-                     TargetOutputFeedbackIndicesTableStereo,
-                     OutputIndicesTableStereo);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ProcessReverbQuadraphonic(ref ReverbState state, ReadOnlySpan<IntPtr> outputBuffers, ReadOnlySpan<IntPtr> inputBuffers, uint sampleCount)
         {
-<<<<<<< HEAD
             ProcessReverbGeneric(
                 ref state,
                 outputBuffers,
@@ -164,22 +116,11 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
                 _targetEarlyDelayLineIndicesTableQuadraphonic,
                 _targetOutputFeedbackIndicesTableQuadraphonic,
                 _outputIndicesTableQuadraphonic);
-=======
-            ProcessReverbGeneric(ref state,
-                     outputBuffers,
-                     inputBuffers,
-                     sampleCount,
-                     OutputEarlyIndicesTableQuadraphonic,
-                     TargetEarlyDelayLineIndicesTableQuadraphonic,
-                     TargetOutputFeedbackIndicesTableQuadraphonic,
-                     OutputIndicesTableQuadraphonic);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ProcessReverbSurround(ref ReverbState state, ReadOnlySpan<IntPtr> outputBuffers, ReadOnlySpan<IntPtr> inputBuffers, uint sampleCount)
         {
-<<<<<<< HEAD
             ProcessReverbGeneric(
                 ref state,
                 outputBuffers,
@@ -189,16 +130,6 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
                 _targetEarlyDelayLineIndicesTableSurround,
                 _targetOutputFeedbackIndicesTableSurround,
                 _outputIndicesTableSurround);
-=======
-            ProcessReverbGeneric(ref state,
-                     outputBuffers,
-                     inputBuffers,
-                     sampleCount,
-                     OutputEarlyIndicesTableSurround,
-                     TargetEarlyDelayLineIndicesTableSurround,
-                     TargetOutputFeedbackIndicesTableSurround,
-                     OutputIndicesTableSurround);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private unsafe void ProcessReverbGeneric(ref ReverbState state, ReadOnlySpan<IntPtr> outputBuffers, ReadOnlySpan<IntPtr> inputBuffers, uint sampleCount, ReadOnlySpan<int> outputEarlyIndicesTable, ReadOnlySpan<int> targetEarlyDelayLineIndicesTable, ReadOnlySpan<int> targetOutputFeedbackIndicesTable, ReadOnlySpan<int> outputIndicesTable)
@@ -217,11 +148,7 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
 
             for (int sampleIndex = 0; sampleIndex < sampleCount; sampleIndex++)
             {
-<<<<<<< HEAD
                 outputValues.Clear();
-=======
-                outputValues.Fill(0);
->>>>>>> 1ec71635b (sync with main branch)
 
                 for (int i = 0; i < targetEarlyDelayLineIndicesTable.Length; i++)
                 {
@@ -341,19 +268,11 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
 
             if (IsEffectEnabled)
             {
-<<<<<<< HEAD
                 if (Parameter.Status == UsageState.Invalid)
                 {
                     state = new ReverbState(ref _parameter, WorkBuffer, IsLongSizePreDelaySupported);
                 }
                 else if (Parameter.Status == UsageState.New)
-=======
-                if (Parameter.Status == Server.Effect.UsageState.Invalid)
-                {
-                    state = new ReverbState(ref _parameter, WorkBuffer, IsLongSizePreDelaySupported);
-                }
-                else if (Parameter.Status == Server.Effect.UsageState.New)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     state.UpdateParameter(ref _parameter);
                 }
@@ -362,8 +281,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             ProcessReverb(context, ref state);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

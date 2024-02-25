@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.Gpu.Engine.Types;
 using Ryujinx.Graphics.Gpu.Shader;
@@ -222,16 +218,12 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         {
             bool changed = false;
             ref Array32<AttributeType> attributeTypes = ref _graphics.AttributeTypes;
-<<<<<<< HEAD
             bool mayConvertVtgToCompute = ShaderCache.MayConvertVtgToCompute(ref _context.Capabilities);
             bool supportsScaledFormats = _context.Capabilities.SupportsScaledVertexFormats && !mayConvertVtgToCompute;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int location = 0; location < state.Length; location++)
             {
                 VertexAttribType type = state[location].UnpackType();
-<<<<<<< HEAD
                 VertexAttribSize size = state[location].UnpackSize();
 
                 AttributeType value;
@@ -268,15 +260,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
                         value |= AttributeType.PackedRgb10A2Signed;
                     }
                 }
-=======
-
-                AttributeType value = type switch
-                {
-                    VertexAttribType.Sint => AttributeType.Sint,
-                    VertexAttribType.Uint => AttributeType.Uint,
-                    _ => AttributeType.Float
-                };
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (attributeTypes[location] != value)
                 {
@@ -390,7 +373,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
                 Signal();
             }
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Sets the Y negate enabled state.
@@ -405,7 +387,5 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
                 Signal();
             }
         }
-=======
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -7,26 +7,16 @@ using System;
 
 namespace Ryujinx.Ava.UI.Models
 {
-<<<<<<< HEAD
     internal class InputConfiguration<TKey, TStick> : BaseModel
-=======
-    internal class InputConfiguration<Key, Stick> : BaseModel
->>>>>>> 1ec71635b (sync with main branch)
     {
         private float _deadzoneRight;
         private float _triggerThreshold;
         private float _deadzoneLeft;
         private double _gyroDeadzone;
         private int _sensitivity;
-<<<<<<< HEAD
         private bool _enableMotion;
         private float _weakRumble;
         private float _strongRumble;
-=======
-        private bool enableMotion;
-        private float weakRumble;
-        private float strongRumble;
->>>>>>> 1ec71635b (sync with main branch)
         private float _rangeLeft;
         private float _rangeRight;
 
@@ -47,7 +37,6 @@ namespace Ryujinx.Ava.UI.Models
         /// </summary>
         public PlayerIndex PlayerIndex { get; set; }
 
-<<<<<<< HEAD
         public TStick LeftJoystick { get; set; }
         public bool LeftInvertStickX { get; set; }
         public bool LeftInvertStickY { get; set; }
@@ -59,19 +48,6 @@ namespace Ryujinx.Ava.UI.Models
         public bool RightInvertStickY { get; set; }
         public bool LeftRotate90 { get; set; }
         public TKey RightControllerStickButton { get; set; }
-=======
-        public Stick LeftJoystick { get; set; }
-        public bool LeftInvertStickX { get; set; }
-        public bool LeftInvertStickY { get; set; }
-        public bool RightRotate90 { get; set; }
-        public Key LeftControllerStickButton { get; set; }
-
-        public Stick RightJoystick { get; set; }
-        public bool RightInvertStickX { get; set; }
-        public bool RightInvertStickY { get; set; }
-        public bool LeftRotate90 { get; set; }
-        public Key RightControllerStickButton { get; set; }
->>>>>>> 1ec71635b (sync with main branch)
 
         public float DeadzoneLeft
         {
@@ -130,7 +106,6 @@ namespace Ryujinx.Ava.UI.Models
 
         public MotionInputBackendType MotionBackend { get; set; }
 
-<<<<<<< HEAD
         public TKey ButtonMinus { get; set; }
         public TKey ButtonL { get; set; }
         public TKey ButtonZl { get; set; }
@@ -162,40 +137,6 @@ namespace Ryujinx.Ava.UI.Models
         public TKey RightStickLeft { get; set; }
         public TKey RightStickRight { get; set; }
         public TKey RightKeyboardStickButton { get; set; }
-=======
-        public Key ButtonMinus { get; set; }
-        public Key ButtonL { get; set; }
-        public Key ButtonZl { get; set; }
-        public Key LeftButtonSl { get; set; }
-        public Key LeftButtonSr { get; set; }
-        public Key DpadUp { get; set; }
-        public Key DpadDown { get; set; }
-        public Key DpadLeft { get; set; }
-        public Key DpadRight { get; set; }
-
-        public Key ButtonPlus { get; set; }
-        public Key ButtonR { get; set; }
-        public Key ButtonZr { get; set; }
-        public Key RightButtonSl { get; set; }
-        public Key RightButtonSr { get; set; }
-        public Key ButtonX { get; set; }
-        public Key ButtonB { get; set; }
-        public Key ButtonY { get; set; }
-        public Key ButtonA { get; set; }
-
-
-        public Key LeftStickUp { get; set; }
-        public Key LeftStickDown { get; set; }
-        public Key LeftStickLeft { get; set; }
-        public Key LeftStickRight { get; set; }
-        public Key LeftKeyboardStickButton { get; set; }
-
-        public Key RightStickUp { get; set; }
-        public Key RightStickDown { get; set; }
-        public Key RightStickLeft { get; set; }
-        public Key RightStickRight { get; set; }
-        public Key RightKeyboardStickButton { get; set; }
->>>>>>> 1ec71635b (sync with main branch)
 
         public int Sensitivity
         {
@@ -221,15 +162,9 @@ namespace Ryujinx.Ava.UI.Models
 
         public bool EnableMotion
         {
-<<<<<<< HEAD
             get => _enableMotion; set
             {
                 _enableMotion = value;
-=======
-            get => enableMotion; set
-            {
-                enableMotion = value;
->>>>>>> 1ec71635b (sync with main branch)
 
                 OnPropertyChanged();
             }
@@ -245,30 +180,18 @@ namespace Ryujinx.Ava.UI.Models
         public bool EnableRumble { get; set; }
         public float WeakRumble
         {
-<<<<<<< HEAD
             get => _weakRumble; set
             {
                 _weakRumble = value;
-=======
-            get => weakRumble; set
-            {
-                weakRumble = value;
->>>>>>> 1ec71635b (sync with main branch)
 
                 OnPropertyChanged();
             }
         }
         public float StrongRumble
         {
-<<<<<<< HEAD
             get => _strongRumble; set
             {
                 _strongRumble = value;
-=======
-            get => strongRumble; set
-            {
-                strongRumble = value;
->>>>>>> 1ec71635b (sync with main branch)
 
                 OnPropertyChanged();
             }
@@ -285,7 +208,6 @@ namespace Ryujinx.Ava.UI.Models
 
                 if (config is StandardKeyboardInputConfig keyboardConfig)
                 {
-<<<<<<< HEAD
                     LeftStickUp = (TKey)(object)keyboardConfig.LeftJoyconStick.StickUp;
                     LeftStickDown = (TKey)(object)keyboardConfig.LeftJoyconStick.StickDown;
                     LeftStickLeft = (TKey)(object)keyboardConfig.LeftJoyconStick.StickLeft;
@@ -351,73 +273,6 @@ namespace Ryujinx.Ava.UI.Models
                     LeftButtonSr = (TKey)(object)controllerConfig.LeftJoycon.ButtonSr;
                     ButtonZl = (TKey)(object)controllerConfig.LeftJoycon.ButtonZl;
                     ButtonL = (TKey)(object)controllerConfig.LeftJoycon.ButtonL;
-=======
-                    LeftStickUp = (Key)(object)keyboardConfig.LeftJoyconStick.StickUp;
-                    LeftStickDown = (Key)(object)keyboardConfig.LeftJoyconStick.StickDown;
-                    LeftStickLeft = (Key)(object)keyboardConfig.LeftJoyconStick.StickLeft;
-                    LeftStickRight = (Key)(object)keyboardConfig.LeftJoyconStick.StickRight;
-                    LeftKeyboardStickButton = (Key)(object)keyboardConfig.LeftJoyconStick.StickButton;
-
-                    RightStickUp = (Key)(object)keyboardConfig.RightJoyconStick.StickUp;
-                    RightStickDown = (Key)(object)keyboardConfig.RightJoyconStick.StickDown;
-                    RightStickLeft = (Key)(object)keyboardConfig.RightJoyconStick.StickLeft;
-                    RightStickRight = (Key)(object)keyboardConfig.RightJoyconStick.StickRight;
-                    RightKeyboardStickButton = (Key)(object)keyboardConfig.RightJoyconStick.StickButton;
-
-                    ButtonA = (Key)(object)keyboardConfig.RightJoycon.ButtonA;
-                    ButtonB = (Key)(object)keyboardConfig.RightJoycon.ButtonB;
-                    ButtonX = (Key)(object)keyboardConfig.RightJoycon.ButtonX;
-                    ButtonY = (Key)(object)keyboardConfig.RightJoycon.ButtonY;
-                    ButtonR = (Key)(object)keyboardConfig.RightJoycon.ButtonR;
-                    RightButtonSl = (Key)(object)keyboardConfig.RightJoycon.ButtonSl;
-                    RightButtonSr = (Key)(object)keyboardConfig.RightJoycon.ButtonSr;
-                    ButtonZr = (Key)(object)keyboardConfig.RightJoycon.ButtonZr;
-                    ButtonPlus = (Key)(object)keyboardConfig.RightJoycon.ButtonPlus;
-
-                    DpadUp = (Key)(object)keyboardConfig.LeftJoycon.DpadUp;
-                    DpadDown = (Key)(object)keyboardConfig.LeftJoycon.DpadDown;
-                    DpadLeft = (Key)(object)keyboardConfig.LeftJoycon.DpadLeft;
-                    DpadRight = (Key)(object)keyboardConfig.LeftJoycon.DpadRight;
-                    ButtonMinus = (Key)(object)keyboardConfig.LeftJoycon.ButtonMinus;
-                    LeftButtonSl = (Key)(object)keyboardConfig.LeftJoycon.ButtonSl;
-                    LeftButtonSr = (Key)(object)keyboardConfig.LeftJoycon.ButtonSr;
-                    ButtonZl = (Key)(object)keyboardConfig.LeftJoycon.ButtonZl;
-                    ButtonL = (Key)(object)keyboardConfig.LeftJoycon.ButtonL;
-                }
-                else if (config is StandardControllerInputConfig controllerConfig)
-                {
-                    LeftJoystick = (Stick)(object)controllerConfig.LeftJoyconStick.Joystick;
-                    LeftInvertStickX = controllerConfig.LeftJoyconStick.InvertStickX;
-                    LeftInvertStickY = controllerConfig.LeftJoyconStick.InvertStickY;
-                    LeftRotate90 = controllerConfig.LeftJoyconStick.Rotate90CW;
-                    LeftControllerStickButton = (Key)(object)controllerConfig.LeftJoyconStick.StickButton;
-
-                    RightJoystick = (Stick)(object)controllerConfig.RightJoyconStick.Joystick;
-                    RightInvertStickX = controllerConfig.RightJoyconStick.InvertStickX;
-                    RightInvertStickY = controllerConfig.RightJoyconStick.InvertStickY;
-                    RightRotate90 = controllerConfig.RightJoyconStick.Rotate90CW;
-                    RightControllerStickButton = (Key)(object)controllerConfig.RightJoyconStick.StickButton;
-
-                    ButtonA = (Key)(object)controllerConfig.RightJoycon.ButtonA;
-                    ButtonB = (Key)(object)controllerConfig.RightJoycon.ButtonB;
-                    ButtonX = (Key)(object)controllerConfig.RightJoycon.ButtonX;
-                    ButtonY = (Key)(object)controllerConfig.RightJoycon.ButtonY;
-                    ButtonR = (Key)(object)controllerConfig.RightJoycon.ButtonR;
-                    RightButtonSl = (Key)(object)controllerConfig.RightJoycon.ButtonSl;
-                    RightButtonSr = (Key)(object)controllerConfig.RightJoycon.ButtonSr;
-                    ButtonZr = (Key)(object)controllerConfig.RightJoycon.ButtonZr;
-                    ButtonPlus = (Key)(object)controllerConfig.RightJoycon.ButtonPlus;
-
-                    DpadUp = (Key)(object)controllerConfig.LeftJoycon.DpadUp;
-                    DpadDown = (Key)(object)controllerConfig.LeftJoycon.DpadDown;
-                    DpadLeft = (Key)(object)controllerConfig.LeftJoycon.DpadLeft;
-                    DpadRight = (Key)(object)controllerConfig.LeftJoycon.DpadRight;
-                    ButtonMinus = (Key)(object)controllerConfig.LeftJoycon.ButtonMinus;
-                    LeftButtonSl = (Key)(object)controllerConfig.LeftJoycon.ButtonSl;
-                    LeftButtonSr = (Key)(object)controllerConfig.LeftJoycon.ButtonSr;
-                    ButtonZl = (Key)(object)controllerConfig.LeftJoycon.ButtonZl;
-                    ButtonL = (Key)(object)controllerConfig.LeftJoycon.ButtonL;
->>>>>>> 1ec71635b (sync with main branch)
 
                     DeadzoneLeft = controllerConfig.DeadzoneLeft;
                     DeadzoneRight = controllerConfig.DeadzoneRight;
@@ -461,17 +316,12 @@ namespace Ryujinx.Ava.UI.Models
         {
             if (Backend == InputBackendType.WindowKeyboard)
             {
-<<<<<<< HEAD
                 return new StandardKeyboardInputConfig
-=======
-                return new StandardKeyboardInputConfig()
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     Id = Id,
                     Backend = Backend,
                     PlayerIndex = PlayerIndex,
                     ControllerType = ControllerType,
-<<<<<<< HEAD
                     LeftJoycon = new LeftJoyconCommonConfig<Key>
                     {
                         DpadUp = (Key)(object)DpadUp,
@@ -520,65 +370,12 @@ namespace Ryujinx.Ava.UI.Models
             if (Backend == InputBackendType.GamepadSDL2)
             {
                 var config = new StandardControllerInputConfig
-=======
-                    LeftJoycon = new LeftJoyconCommonConfig<Ryujinx.Common.Configuration.Hid.Key>()
-                    {
-                        DpadUp = (Ryujinx.Common.Configuration.Hid.Key)(object)DpadUp,
-                        DpadDown = (Ryujinx.Common.Configuration.Hid.Key)(object)DpadDown,
-                        DpadLeft = (Ryujinx.Common.Configuration.Hid.Key)(object)DpadLeft,
-                        DpadRight = (Ryujinx.Common.Configuration.Hid.Key)(object)DpadRight,
-                        ButtonL = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonL,
-                        ButtonZl = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonZl,
-                        ButtonSl = (Ryujinx.Common.Configuration.Hid.Key)(object)LeftButtonSl,
-                        ButtonSr = (Ryujinx.Common.Configuration.Hid.Key)(object)LeftButtonSr,
-                        ButtonMinus = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonMinus
-                    },
-                    RightJoycon = new RightJoyconCommonConfig<Ryujinx.Common.Configuration.Hid.Key>()
-                    {
-                        ButtonA = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonA,
-                        ButtonB = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonB,
-                        ButtonX = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonX,
-                        ButtonY = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonY,
-                        ButtonPlus = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonPlus,
-                        ButtonSl = (Ryujinx.Common.Configuration.Hid.Key)(object)RightButtonSl,
-                        ButtonSr = (Ryujinx.Common.Configuration.Hid.Key)(object)RightButtonSr,
-                        ButtonR = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonR,
-                        ButtonZr = (Ryujinx.Common.Configuration.Hid.Key)(object)ButtonZr
-                    },
-                    LeftJoyconStick = new JoyconConfigKeyboardStick<Ryujinx.Common.Configuration.Hid.Key>()
-                    {
-                        StickUp = (Ryujinx.Common.Configuration.Hid.Key)(object)LeftStickUp,
-                        StickDown = (Ryujinx.Common.Configuration.Hid.Key)(object)LeftStickDown,
-                        StickRight = (Ryujinx.Common.Configuration.Hid.Key)(object)LeftStickRight,
-                        StickLeft = (Ryujinx.Common.Configuration.Hid.Key)(object)LeftStickLeft,
-                        StickButton = (Ryujinx.Common.Configuration.Hid.Key)(object)LeftKeyboardStickButton
-                    },
-                    RightJoyconStick = new JoyconConfigKeyboardStick<Ryujinx.Common.Configuration.Hid.Key>()
-                    {
-                        StickUp = (Ryujinx.Common.Configuration.Hid.Key)(object)RightStickUp,
-                        StickDown = (Ryujinx.Common.Configuration.Hid.Key)(object)RightStickDown,
-                        StickLeft = (Ryujinx.Common.Configuration.Hid.Key)(object)RightStickLeft,
-                        StickRight = (Ryujinx.Common.Configuration.Hid.Key)(object)RightStickRight,
-                        StickButton = (Ryujinx.Common.Configuration.Hid.Key)(object)RightKeyboardStickButton
-                    },
-                    Version = InputConfig.CurrentVersion
-                };
-
-            }
-            else if (Backend == InputBackendType.GamepadSDL2)
-            {
-                var config = new StandardControllerInputConfig()
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     Id = Id,
                     Backend = Backend,
                     PlayerIndex = PlayerIndex,
                     ControllerType = ControllerType,
-<<<<<<< HEAD
                     LeftJoycon = new LeftJoyconCommonConfig<GamepadInputId>
-=======
-                    LeftJoycon = new LeftJoyconCommonConfig<GamepadInputId>()
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         DpadUp = (GamepadInputId)(object)DpadUp,
                         DpadDown = (GamepadInputId)(object)DpadDown,
@@ -590,11 +387,7 @@ namespace Ryujinx.Ava.UI.Models
                         ButtonSr = (GamepadInputId)(object)LeftButtonSr,
                         ButtonMinus = (GamepadInputId)(object)ButtonMinus,
                     },
-<<<<<<< HEAD
                     RightJoycon = new RightJoyconCommonConfig<GamepadInputId>
-=======
-                    RightJoycon = new RightJoyconCommonConfig<GamepadInputId>()
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         ButtonA = (GamepadInputId)(object)ButtonA,
                         ButtonB = (GamepadInputId)(object)ButtonB,
@@ -606,11 +399,7 @@ namespace Ryujinx.Ava.UI.Models
                         ButtonR = (GamepadInputId)(object)ButtonR,
                         ButtonZr = (GamepadInputId)(object)ButtonZr,
                     },
-<<<<<<< HEAD
                     LeftJoyconStick = new JoyconConfigControllerStick<GamepadInputId, StickInputId>
-=======
-                    LeftJoyconStick = new JoyconConfigControllerStick<GamepadInputId, StickInputId>()
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         Joystick = (StickInputId)(object)LeftJoystick,
                         InvertStickX = LeftInvertStickX,
@@ -618,11 +407,7 @@ namespace Ryujinx.Ava.UI.Models
                         Rotate90CW = LeftRotate90,
                         StickButton = (GamepadInputId)(object)LeftControllerStickButton,
                     },
-<<<<<<< HEAD
                     RightJoyconStick = new JoyconConfigControllerStick<GamepadInputId, StickInputId>
-=======
-                    RightJoyconStick = new JoyconConfigControllerStick<GamepadInputId, StickInputId>()
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         Joystick = (StickInputId)(object)RightJoystick,
                         InvertStickX = RightInvertStickX,
@@ -630,19 +415,11 @@ namespace Ryujinx.Ava.UI.Models
                         Rotate90CW = RightRotate90,
                         StickButton = (GamepadInputId)(object)RightControllerStickButton,
                     },
-<<<<<<< HEAD
                     Rumble = new RumbleConfigController
                     {
                         EnableRumble = EnableRumble,
                         WeakRumble = WeakRumble,
                         StrongRumble = StrongRumble,
-=======
-                    Rumble = new RumbleConfigController()
-                    {
-                        EnableRumble = EnableRumble,
-                        WeakRumble = WeakRumble,
-                        StrongRumble = StrongRumble
->>>>>>> 1ec71635b (sync with main branch)
                     },
                     Version = InputConfig.CurrentVersion,
                     DeadzoneLeft = DeadzoneLeft,
@@ -651,7 +428,6 @@ namespace Ryujinx.Ava.UI.Models
                     RangeRight = RangeRight,
                     TriggerThreshold = TriggerThreshold,
                     Motion = EnableCemuHookMotion
-<<<<<<< HEAD
                         ? new CemuHookMotionConfigController
                         {
                             DsuServerHost = DsuServerHost,
@@ -665,21 +441,6 @@ namespace Ryujinx.Ava.UI.Models
                         {
                             MotionBackend = MotionInputBackendType.GamepadDriver,
                         },
-=======
-                           ? new CemuHookMotionConfigController()
-                           {
-                               DsuServerHost = DsuServerHost,
-                               DsuServerPort = DsuServerPort,
-                               Slot = Slot,
-                               AltSlot = AltSlot,
-                               MirrorInput = MirrorInput,
-                               MotionBackend = MotionInputBackendType.CemuHook
-                           }
-                           : new StandardMotionConfigController()
-                           {
-                               MotionBackend = MotionInputBackendType.GamepadDriver
-                           }
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 config.Motion.Sensitivity = Sensitivity;
@@ -692,8 +453,4 @@ namespace Ryujinx.Ava.UI.Models
             return null;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

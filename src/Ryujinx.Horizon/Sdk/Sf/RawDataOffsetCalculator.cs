@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Horizon.Sdk.Sf
 {
@@ -16,7 +12,6 @@ namespace Ryujinx.Horizon.Sdk.Sf
             {
                 int argsCount = args.Length;
 
-<<<<<<< HEAD
                 int[] sizes = new int[argsCount];
                 int[] aligns = new int[argsCount];
                 int[] map = new int[argsCount];
@@ -26,17 +21,6 @@ namespace Ryujinx.Horizon.Sdk.Sf
                     sizes[i] = args[i].ArgSize;
                     aligns[i] = args[i].ArgAlignment;
                     map[i] = i;
-=======
-                int[] sizes  = new int[argsCount];
-                int[] aligns = new int[argsCount];
-                int[] map    = new int[argsCount];
-
-                for (int i = 0; i < argsCount; i++)
-                {
-                    sizes[i]  = args[i].ArgSize;
-                    aligns[i] = args[i].ArgAlignment;
-                    map[i]    = i;
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 for (int i = 1; i < argsCount; i++)
@@ -51,15 +35,9 @@ namespace Ryujinx.Horizon.Sdk.Sf
 
                 foreach (int i in map)
                 {
-<<<<<<< HEAD
                     offset = BitUtils.AlignUp(offset, aligns[i]);
                     offsets[i] = offset;
                     offset += sizes[i];
-=======
-                    offset     = BitUtils.AlignUp(offset, aligns[i]);
-                    offsets[i] = offset;
-                    offset    += sizes[i];
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 offsets[argsCount] = offset;
@@ -68,8 +46,4 @@ namespace Ryujinx.Horizon.Sdk.Sf
             return offsets;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

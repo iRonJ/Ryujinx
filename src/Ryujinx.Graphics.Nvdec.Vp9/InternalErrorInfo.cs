@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.Nvdec.Vp9
-=======
-﻿namespace Ryujinx.Graphics.Nvdec.Vp9
->>>>>>> 1ec71635b (sync with main branch)
 {
     internal struct InternalErrorInfo
     {

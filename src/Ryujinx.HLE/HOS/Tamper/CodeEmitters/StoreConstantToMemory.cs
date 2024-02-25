@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.Exceptions;
-=======
-﻿using Ryujinx.HLE.Exceptions;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Tamper.Operations;
 
 namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
@@ -36,11 +32,7 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
             byte incrementAddressRegister = instruction[IncrementAddressRegisterIndex];
             byte useOffsetRegister = instruction[UseOffsetRegisterIndex];
             ulong immediate = InstructionHelper.GetImmediate(instruction, ValueImmediateIndex, ValueImmediateSize);
-<<<<<<< HEAD
             Value<ulong> storeValue = new(immediate);
-=======
-            Value<ulong> storeValue = new Value<ulong>(immediate);
->>>>>>> 1ec71635b (sync with main branch)
 
             Pointer destinationMemory;
 

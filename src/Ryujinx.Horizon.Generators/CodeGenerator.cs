@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Text;
-=======
-﻿using System.Text;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Horizon.Generators
 {
@@ -44,11 +40,7 @@ namespace Ryujinx.Horizon.Generators
         {
             if (_currentIndentCount - 1 >= 0)
             {
-<<<<<<< HEAD
                 _currentIndentCount--;
-=======
-                _currentIndentCount--;   
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 

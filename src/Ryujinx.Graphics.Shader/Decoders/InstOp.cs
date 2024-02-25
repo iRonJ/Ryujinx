@@ -24,8 +24,4 @@ namespace Ryujinx.Graphics.Shader.Decoders
             return (ulong)((long)Address + (((int)(RawOpCode >> 20) << 8) >> 8) + 8);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

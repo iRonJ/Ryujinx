@@ -52,8 +52,4 @@ namespace Ryujinx.Audio.Integration
             return channelCount != Constants.ChannelCountMax;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Threading;
 
@@ -19,11 +15,7 @@ namespace Ryujinx.Horizon.Sdk.OsTypes
                 InitiallySignaled = signaled,
                 ClearMode = clearMode,
                 State = InitializationState.Initialized,
-<<<<<<< HEAD
                 Lock = new object(),
-=======
-                Lock = new object()
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 

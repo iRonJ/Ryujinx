@@ -11,11 +11,7 @@ namespace Ryujinx.Ava.UI.Models
         private string _name = String.Empty;
         private UserId _userId;
 
-<<<<<<< HEAD
         public static uint MaxProfileNameLength => 0x20;
-=======
-        public uint MaxProfileNameLength => 0x20;
->>>>>>> 1ec71635b (sync with main branch)
 
         public byte[] Image
         {
@@ -62,8 +58,4 @@ namespace Ryujinx.Ava.UI.Models
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

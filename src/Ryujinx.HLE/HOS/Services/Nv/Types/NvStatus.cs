@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Runtime.InteropServices;
-=======
-﻿using System.Runtime.InteropServices;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Nv.Types
 {
@@ -16,8 +12,4 @@ namespace Ryujinx.HLE.HOS.Services.Nv.Types
         public long Padding1;
         public long Padding2;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

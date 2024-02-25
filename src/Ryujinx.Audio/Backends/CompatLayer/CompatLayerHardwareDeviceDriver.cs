@@ -6,17 +6,12 @@ using Ryujinx.Common.Logging;
 using Ryujinx.Memory;
 using System;
 using System.Threading;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Audio.Integration.IHardwareDeviceDriver;
 
 namespace Ryujinx.Audio.Backends.CompatLayer
 {
     public class CompatLayerHardwareDeviceDriver : IHardwareDeviceDriver
     {
-<<<<<<< HEAD
         private readonly IHardwareDeviceDriver _realDriver;
 
         public static bool IsSupported => true;
@@ -27,12 +22,6 @@ namespace Ryujinx.Audio.Backends.CompatLayer
             set => _realDriver.Volume = value;
         }
 
-=======
-        private IHardwareDeviceDriver _realDriver;
-
-        public static bool IsSupported => true;
-
->>>>>>> 1ec71635b (sync with main branch)
         public CompatLayerHardwareDeviceDriver(IHardwareDeviceDriver realDevice)
         {
             _realDriver = realDevice;
@@ -40,10 +29,7 @@ namespace Ryujinx.Audio.Backends.CompatLayer
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             _realDriver.Dispose();
         }
 
@@ -69,11 +55,7 @@ namespace Ryujinx.Audio.Backends.CompatLayer
                 6 => SelectHardwareChannelCount(2),
                 2 => SelectHardwareChannelCount(1),
                 1 => throw new ArgumentException("No valid channel configuration found!"),
-<<<<<<< HEAD
                 _ => throw new ArgumentException($"Invalid targetChannelCount {targetChannelCount}"),
-=======
-                _ => throw new ArgumentException($"Invalid targetChannelCount {targetChannelCount}")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -114,11 +96,7 @@ namespace Ryujinx.Audio.Backends.CompatLayer
             throw new ArgumentException("No valid sample format configuration found!");
         }
 
-<<<<<<< HEAD
         public IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount)
-=======
-        public IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount, float volume)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (channelCount == 0)
             {
@@ -130,22 +108,13 @@ namespace Ryujinx.Audio.Backends.CompatLayer
                 sampleRate = Constants.TargetSampleRate;
             }
 
-<<<<<<< HEAD
-=======
-            volume = Math.Clamp(volume, 0, 1);
-
->>>>>>> 1ec71635b (sync with main branch)
             if (!_realDriver.SupportsDirection(direction))
             {
                 if (direction == Direction.Input)
                 {
                     Logger.Warning?.Print(LogClass.Audio, "The selected audio backend doesn't support audio input, fallback to dummy...");
 
-<<<<<<< HEAD
                     return new DummyHardwareDeviceSessionInput(this, memoryManager);
-=======
-                    return new DummyHardwareDeviceSessionInput(this, memoryManager, sampleFormat, sampleRate, channelCount);
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 throw new NotImplementedException();
@@ -154,11 +123,7 @@ namespace Ryujinx.Audio.Backends.CompatLayer
             SampleFormat hardwareSampleFormat = SelectHardwareSampleFormat(sampleFormat);
             uint hardwareChannelCount = SelectHardwareChannelCount(channelCount);
 
-<<<<<<< HEAD
             IHardwareDeviceSession realSession = _realDriver.OpenDeviceSession(direction, memoryManager, hardwareSampleFormat, sampleRate, hardwareChannelCount);
-=======
-            IHardwareDeviceSession realSession = _realDriver.OpenDeviceSession(direction, memoryManager, hardwareSampleFormat, sampleRate, hardwareChannelCount, volume);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (hardwareChannelCount == channelCount && hardwareSampleFormat == sampleFormat)
             {
@@ -177,20 +142,12 @@ namespace Ryujinx.Audio.Backends.CompatLayer
 
             if (direction == Direction.Input)
             {
-<<<<<<< HEAD
                 Logger.Warning?.Print(LogClass.Audio, "The selected audio backend doesn't support the requested audio input configuration, fallback to dummy...");
-=======
-                Logger.Warning?.Print(LogClass.Audio, $"The selected audio backend doesn't support the requested audio input configuration, fallback to dummy...");
->>>>>>> 1ec71635b (sync with main branch)
 
                 // TODO: We currently don't support audio input upsampling/downsampling, implement this.
                 realSession.Dispose();
 
-<<<<<<< HEAD
                 return new DummyHardwareDeviceSessionInput(this, memoryManager);
-=======
-                return new DummyHardwareDeviceSessionInput(this, memoryManager, sampleFormat, sampleRate, channelCount);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             // It must be a HardwareDeviceSessionOutputBase.
@@ -230,8 +187,4 @@ namespace Ryujinx.Audio.Backends.CompatLayer
             return direction == Direction.Input || direction == Direction.Output;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

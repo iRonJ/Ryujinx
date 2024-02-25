@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Input
-=======
-﻿namespace Ryujinx.Input
->>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Represent a button from a gamepad.
@@ -56,10 +52,6 @@ namespace Ryujinx.Input
         SingleLeftTrigger1,
         SingleRightTrigger1,
 
-<<<<<<< HEAD
         Count,
-=======
-        Count
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

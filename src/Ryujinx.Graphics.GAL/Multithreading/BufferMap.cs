@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -19,15 +15,9 @@ namespace Ryujinx.Graphics.GAL.Multithreading
     {
         private ulong _bufferHandle = 0;
 
-<<<<<<< HEAD
         private readonly Dictionary<BufferHandle, BufferHandle> _bufferMap = new();
         private readonly HashSet<BufferHandle> _inFlight = new();
         private readonly AutoResetEvent _inFlightChanged = new(false);
-=======
-        private Dictionary<BufferHandle, BufferHandle> _bufferMap = new Dictionary<BufferHandle, BufferHandle>();
-        private HashSet<BufferHandle> _inFlight = new HashSet<BufferHandle>();
-        private AutoResetEvent _inFlightChanged = new AutoResetEvent(false);
->>>>>>> 1ec71635b (sync with main branch)
 
         internal BufferHandle CreateBufferHandle()
         {
@@ -69,23 +59,12 @@ namespace Ryujinx.Graphics.GAL.Multithreading
         internal BufferHandle MapBuffer(BufferHandle handle)
         {
             // Maps a threaded buffer to a backend one.
-<<<<<<< HEAD
             // Threaded buffers are returned on creation as the buffer
             // isn't actually created until the queue runs the command.
 
             lock (_bufferMap)
             {
                 if (!_bufferMap.TryGetValue(handle, out BufferHandle result))
-=======
-            // Threaded buffers are returned on creation as the buffer 
-            // isn't actually created until the queue runs the command.
-
-            BufferHandle result;
-
-            lock (_bufferMap)
-            {
-                if (!_bufferMap.TryGetValue(handle, out result))
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     result = BufferHandle.Null;
                 }
@@ -98,18 +77,10 @@ namespace Ryujinx.Graphics.GAL.Multithreading
         {
             // Blocks until the handle is available.
 
-<<<<<<< HEAD
 
             lock (_bufferMap)
             {
                 if (_bufferMap.TryGetValue(handle, out BufferHandle result))
-=======
-            BufferHandle result;
-
-            lock (_bufferMap)
-            {
-                if (_bufferMap.TryGetValue(handle, out result))
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     return result;
                 }
@@ -142,11 +113,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading
 
         internal BufferRange MapBufferRange(BufferRange range)
         {
-<<<<<<< HEAD
             return new BufferRange(MapBuffer(range.Handle), range.Offset, range.Size, range.Write);
-=======
-            return new BufferRange(MapBuffer(range.Handle), range.Offset, range.Size);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         internal Span<BufferRange> MapBufferRanges(Span<BufferRange> ranges)
@@ -158,23 +125,13 @@ namespace Ryujinx.Graphics.GAL.Multithreading
                 for (int i = 0; i < ranges.Length; i++)
                 {
                     ref BufferRange range = ref ranges[i];
-<<<<<<< HEAD
 
                     if (!_bufferMap.TryGetValue(range.Handle, out BufferHandle result))
-=======
-                    BufferHandle result;
-
-                    if (!_bufferMap.TryGetValue(range.Handle, out result))
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         result = BufferHandle.Null;
                     }
 
-<<<<<<< HEAD
                     range = new BufferRange(result, range.Offset, range.Size, range.Write);
-=======
-                    range = new BufferRange(result, range.Offset, range.Size);
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -191,23 +148,13 @@ namespace Ryujinx.Graphics.GAL.Multithreading
                 {
                     ref BufferAssignment assignment = ref ranges[i];
                     BufferRange range = assignment.Range;
-<<<<<<< HEAD
 
                     if (!_bufferMap.TryGetValue(range.Handle, out BufferHandle result))
-=======
-                    BufferHandle result;
-
-                    if (!_bufferMap.TryGetValue(range.Handle, out result))
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         result = BufferHandle.Null;
                     }
 
-<<<<<<< HEAD
                     assignment = new BufferAssignment(ranges[i].Binding, new BufferRange(result, range.Offset, range.Size, range.Write));
-=======
-                    assignment = new BufferAssignment(ranges[i].Binding, new BufferRange(result, range.Offset, range.Size));
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -223,23 +170,13 @@ namespace Ryujinx.Graphics.GAL.Multithreading
                 for (int i = 0; i < ranges.Length; i++)
                 {
                     BufferRange range = ranges[i].Buffer;
-<<<<<<< HEAD
 
                     if (!_bufferMap.TryGetValue(range.Handle, out BufferHandle result))
-=======
-                    BufferHandle result;
-
-                    if (!_bufferMap.TryGetValue(range.Handle, out result))
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         result = BufferHandle.Null;
                     }
 
-<<<<<<< HEAD
                     range = new BufferRange(result, range.Offset, range.Size, range.Write);
-=======
-                    range = new BufferRange(result, range.Offset, range.Size);
->>>>>>> 1ec71635b (sync with main branch)
 
                     ranges[i] = new VertexBufferDescriptor(range, ranges[i].Stride, ranges[i].Divisor);
                 }

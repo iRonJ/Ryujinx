@@ -1,9 +1,6 @@
 using Ryujinx.Audio.Renderer.Dsp.State;
 using Ryujinx.Audio.Renderer.Parameter.Effect;
-<<<<<<< HEAD
 using Ryujinx.Audio.Renderer.Server.Effect;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Diagnostics;
 
@@ -54,7 +51,6 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
 
             if (IsEffectEnabled)
             {
-<<<<<<< HEAD
                 if (Parameter.Status == UsageState.Invalid)
                 {
                     state = new LimiterState(ref _parameter, WorkBuffer);
@@ -62,15 +58,6 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
                 else if (Parameter.Status == UsageState.New)
                 {
                     LimiterState.UpdateParameter(ref _parameter);
-=======
-                if (Parameter.Status == Server.Effect.UsageState.Invalid)
-                {
-                    state = new LimiterState(ref _parameter, WorkBuffer);
-                }
-                else if (Parameter.Status == Server.Effect.UsageState.New)
-                {
-                    state.UpdateParameter(ref _parameter);
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -155,8 +142,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

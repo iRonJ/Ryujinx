@@ -53,8 +53,4 @@ namespace Ryujinx.Audio.Renderer.Server.Sink
             return ref _sinks[id];
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

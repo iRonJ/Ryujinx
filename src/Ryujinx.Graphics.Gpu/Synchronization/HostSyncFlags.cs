@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Gpu.Synchronization
 {
@@ -29,10 +25,6 @@ namespace Ryujinx.Graphics.Gpu.Synchronization
         /// </summary>
         Force = 1 << 2,
 
-<<<<<<< HEAD
         StrictSyncpoint = Strict | Syncpoint,
-=======
-        StrictSyncpoint = Strict | Syncpoint
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

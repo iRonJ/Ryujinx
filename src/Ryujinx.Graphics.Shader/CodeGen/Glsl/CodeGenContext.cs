@@ -12,16 +12,12 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
 
         public StructuredProgramInfo Info { get; }
 
-<<<<<<< HEAD
         public AttributeUsage AttributeUsage { get; }
         public ShaderDefinitions Definitions { get; }
         public ShaderProperties Properties { get; }
         public HostCapabilities HostCapabilities { get; }
         public ILogger Logger { get; }
         public TargetApi TargetApi { get; }
-=======
-        public ShaderConfig Config { get; }
->>>>>>> 1ec71635b (sync with main branch)
 
         public OperandManager OperandManager { get; }
 
@@ -31,7 +27,6 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
 
         private string _indentation;
 
-<<<<<<< HEAD
         public CodeGenContext(StructuredProgramInfo info, CodeGenParameters parameters)
         {
             Info = info;
@@ -41,12 +36,6 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
             HostCapabilities = parameters.HostCapabilities;
             Logger = parameters.Logger;
             TargetApi = parameters.TargetApi;
-=======
-        public CodeGenContext(StructuredProgramInfo info, ShaderConfig config)
-        {
-            Info = info;
-            Config = config;
->>>>>>> 1ec71635b (sync with main branch)
 
             OperandManager = new OperandManager();
 
@@ -103,7 +92,6 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
 
         private static string GetIndentation(int level)
         {
-<<<<<<< HEAD
             StringBuilder indentationBuilder = new();
 
             for (int index = 0; index < level; index++)
@@ -115,16 +103,3 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
         }
     }
 }
-=======
-            string indentation = string.Empty;
-
-            for (int index = 0; index < level; index++)
-            {
-                indentation += Tab;
-            }
-
-            return indentation;
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

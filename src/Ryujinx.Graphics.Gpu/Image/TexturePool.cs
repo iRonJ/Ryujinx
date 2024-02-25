@@ -18,11 +18,7 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// <summary>
         /// A request to dereference a texture from a pool.
         /// </summary>
-<<<<<<< HEAD
         private readonly struct DereferenceRequest
-=======
-        private struct DereferenceRequest
->>>>>>> 1ec71635b (sync with main branch)
         {
             /// <summary>
             /// Whether the dereference is due to a mapping change or not.
@@ -75,11 +71,7 @@ namespace Ryujinx.Graphics.Gpu.Image
         }
 
         private readonly GpuChannel _channel;
-<<<<<<< HEAD
         private readonly ConcurrentQueue<DereferenceRequest> _dereferenceQueue = new();
-=======
-        private readonly ConcurrentQueue<DereferenceRequest> _dereferenceQueue = new ConcurrentQueue<DereferenceRequest>();
->>>>>>> 1ec71635b (sync with main branch)
         private TextureDescriptor _defaultDescriptor;
 
         /// <summary>
@@ -387,17 +379,10 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// <param name="descriptor">The texture descriptor</param>
         /// <param name="layerSize">Layer size for textures using a sub-range of mipmap levels, otherwise 0</param>
         /// <returns>The texture information</returns>
-<<<<<<< HEAD
         private static TextureInfo GetInfo(in TextureDescriptor descriptor, out int layerSize)
         {
             int depthOrLayers = descriptor.UnpackDepth();
             int levels = descriptor.UnpackLevels();
-=======
-        private TextureInfo GetInfo(in TextureDescriptor descriptor, out int layerSize)
-        {
-            int depthOrLayers = descriptor.UnpackDepth();
-            int levels        = descriptor.UnpackLevels();
->>>>>>> 1ec71635b (sync with main branch)
 
             TextureMsaaMode msaaMode = descriptor.UnpackTextureMsaaMode();
 
@@ -439,21 +424,13 @@ namespace Ryujinx.Graphics.Gpu.Image
             }
 
             uint format = descriptor.UnpackFormat();
-<<<<<<< HEAD
             bool srgb = descriptor.UnpackSrgb();
-=======
-            bool srgb   = descriptor.UnpackSrgb();
->>>>>>> 1ec71635b (sync with main branch)
 
             ulong gpuVa = descriptor.UnpackAddress();
 
             if (!FormatTable.TryGetTextureFormat(format, srgb, out FormatInfo formatInfo))
             {
-<<<<<<< HEAD
                 if (gpuVa != 0 && format != 0)
-=======
-                if (gpuVa != 0 && (int)format > 0)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     Logger.Error?.Print(LogClass.Gpu, $"Invalid texture format 0x{format:X} (sRGB: {srgb}).");
                 }
@@ -474,11 +451,7 @@ namespace Ryujinx.Graphics.Gpu.Image
             // Linear textures don't support mipmaps, so we don't handle this case here.
             if ((minLod != 0 || maxLod + 1 != levels) && target != Target.TextureBuffer && !isLinear)
             {
-<<<<<<< HEAD
                 int depth = TextureInfo.GetDepth(target, depthOrLayers);
-=======
-                int depth  = TextureInfo.GetDepth(target, depthOrLayers);
->>>>>>> 1ec71635b (sync with main branch)
                 int layers = TextureInfo.GetLayers(target, depthOrLayers);
 
                 SizeInfo sizeInfo = SizeCalculator.GetBlockLinearTextureSize(
@@ -503,11 +476,7 @@ namespace Ryujinx.Graphics.Gpu.Image
                     // address if there is a overlapping texture on the cache that can contain the new texture.
                     gpuVa += (ulong)sizeInfo.GetMipOffset(minLod);
 
-<<<<<<< HEAD
                     width = Math.Max(1, width >> minLod);
-=======
-                    width  = Math.Max(1, width  >> minLod);
->>>>>>> 1ec71635b (sync with main branch)
                     height = Math.Max(1, height >> minLod);
 
                     if (target == Target.Texture3D)
@@ -515,11 +484,7 @@ namespace Ryujinx.Graphics.Gpu.Image
                         depthOrLayers = Math.Max(1, depthOrLayers >> minLod);
                     }
 
-<<<<<<< HEAD
                     (gobBlocksInY, gobBlocksInZ) = SizeCalculator.GetMipGobBlockSizes(height, depth, formatInfo.BlockHeight, gobBlocksInY, gobBlocksInZ, minLod);
-=======
-                    (gobBlocksInY, gobBlocksInZ) = SizeCalculator.GetMipGobBlockSizes(height, depth, formatInfo.BlockHeight, gobBlocksInY, gobBlocksInZ);
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 levels = (maxLod - minLod) + 1;
@@ -643,8 +608,4 @@ namespace Ryujinx.Graphics.Gpu.Image
             base.Dispose();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

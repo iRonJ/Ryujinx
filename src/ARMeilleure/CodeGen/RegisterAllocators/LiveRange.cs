@@ -71,8 +71,4 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
             return $"[{Start}, {End})";
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

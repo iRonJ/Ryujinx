@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Avalonia;
-=======
-﻿using Avalonia;
->>>>>>> 1ec71635b (sync with main branch)
 using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
 using Avalonia.Threading;
@@ -16,20 +12,12 @@ namespace Ryujinx.Ava.UI.Helpers
 {
     public static class NotificationHelper
     {
-<<<<<<< HEAD
         private const int MaxNotifications = 4;
-=======
-        private const int MaxNotifications      = 4;
->>>>>>> 1ec71635b (sync with main branch)
         private const int NotificationDelayInMs = 5000;
 
         private static WindowNotificationManager _notificationManager;
 
-<<<<<<< HEAD
         private static readonly BlockingCollection<Notification> _notifications = new();
-=======
-        private static readonly BlockingCollection<Notification> _notifications        = new();
->>>>>>> 1ec71635b (sync with main branch)
 
         public static void SetNotificationManager(Window host)
         {
@@ -37,11 +25,7 @@ namespace Ryujinx.Ava.UI.Helpers
             {
                 Position = NotificationPosition.BottomRight,
                 MaxItems = MaxNotifications,
-<<<<<<< HEAD
                 Margin = new Thickness(0, 0, 15, 40),
-=======
-                Margin   = new Thickness(0, 0, 15, 40)
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             var maybeAsyncWorkQueue = new Lazy<AsyncWorkQueue<Notification>>(
@@ -83,8 +67,4 @@ namespace Ryujinx.Ava.UI.Helpers
             Show(LocaleManager.Instance[LocaleKeys.DialogErrorTitle], $"{LocaleManager.Instance[LocaleKeys.DialogErrorMessage]}\n\n{message}", NotificationType.Error);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

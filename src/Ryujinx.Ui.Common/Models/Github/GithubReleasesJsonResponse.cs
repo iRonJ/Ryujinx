@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace Ryujinx.Ui.Common.Models.Github
+namespace Ryujinx.UI.Common.Models.Github
 {
     public class GithubReleasesJsonResponse
     {

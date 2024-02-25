@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct DrawIndirectCountCommand : IGALCommand, IGALCommand<DrawIndirectCountCommand>
     {
         public readonly CommandType CommandType => CommandType.DrawIndirectCount;
-=======
-﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
-{
-    struct DrawIndirectCountCommand : IGALCommand, IGALCommand<DrawIndirectCountCommand>
-    {
-        public CommandType CommandType => CommandType.DrawIndirectCount;
->>>>>>> 1ec71635b (sync with main branch)
         private BufferRange _indirectBuffer;
         private BufferRange _parameterBuffer;
         private int _maxDrawCount;

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Audio.Backends.Common;
-=======
-﻿using Ryujinx.Audio.Backends.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Audio.Backends.SoundIo.Native;
 using Ryujinx.Audio.Common;
 using Ryujinx.Memory;
@@ -16,7 +12,6 @@ namespace Ryujinx.Audio.Backends.SoundIo
 {
     class SoundIoHardwareDeviceSession : HardwareDeviceSessionOutputBase
     {
-<<<<<<< HEAD
         private readonly SoundIoHardwareDeviceDriver _driver;
         private readonly ConcurrentQueue<SoundIoAudioBuffer> _queuedBuffers;
         private SoundIoOutStreamContext _outputStream;
@@ -27,30 +22,14 @@ namespace Ryujinx.Audio.Backends.SoundIo
         private int _disposeState;
 
         public SoundIoHardwareDeviceSession(SoundIoHardwareDeviceDriver driver, IVirtualMemoryManager memoryManager, SampleFormat requestedSampleFormat, uint requestedSampleRate, uint requestedChannelCount) : base(memoryManager, requestedSampleFormat, requestedSampleRate, requestedChannelCount)
-=======
-        private SoundIoHardwareDeviceDriver _driver;
-        private ConcurrentQueue<SoundIoAudioBuffer> _queuedBuffers;
-        private SoundIoOutStreamContext _outputStream;
-        private DynamicRingBuffer _ringBuffer;
-        private ulong _playedSampleCount;
-        private ManualResetEvent _updateRequiredEvent;
-        private int _disposeState;
-
-        public SoundIoHardwareDeviceSession(SoundIoHardwareDeviceDriver driver, IVirtualMemoryManager memoryManager, SampleFormat requestedSampleFormat, uint requestedSampleRate, uint requestedChannelCount, float requestedVolume) : base(memoryManager, requestedSampleFormat, requestedSampleRate, requestedChannelCount)
->>>>>>> 1ec71635b (sync with main branch)
         {
             _driver = driver;
             _updateRequiredEvent = _driver.GetUpdateRequiredEvent();
             _queuedBuffers = new ConcurrentQueue<SoundIoAudioBuffer>();
             _ringBuffer = new DynamicRingBuffer();
-<<<<<<< HEAD
             _volume = 1f;
 
             SetupOutputStream(driver.Volume);
-=======
-
-            SetupOutputStream(requestedVolume);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void SetupOutputStream(float requestedVolume)
@@ -70,22 +49,14 @@ namespace Ryujinx.Audio.Backends.SoundIo
 
         public override float GetVolume()
         {
-<<<<<<< HEAD
             return _volume;
-=======
-            return _outputStream.Volume;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void PrepareToClose() { }
 
         public override void QueueBuffer(AudioBuffer buffer)
         {
-<<<<<<< HEAD
             SoundIoAudioBuffer driverBuffer = new(buffer.DataPointer, GetSampleCount(buffer));
-=======
-            SoundIoAudioBuffer driverBuffer = new SoundIoAudioBuffer(buffer.DataPointer, GetSampleCount(buffer));
->>>>>>> 1ec71635b (sync with main branch)
 
             _ringBuffer.Write(buffer.Data, 0, buffer.Data.Length);
 
@@ -94,7 +65,6 @@ namespace Ryujinx.Audio.Backends.SoundIo
 
         public override void SetVolume(float volume)
         {
-<<<<<<< HEAD
             _volume = volume;
 
             _outputStream.SetVolume(_driver.Volume * volume);
@@ -103,9 +73,6 @@ namespace Ryujinx.Audio.Backends.SoundIo
         public void UpdateMasterVolume(float newVolume)
         {
             _outputStream.SetVolume(newVolume * _volume);
-=======
-            _outputStream.SetVolume(volume);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void Start()
@@ -123,11 +90,7 @@ namespace Ryujinx.Audio.Backends.SoundIo
             _driver.FlushContextEvents();
         }
 
-<<<<<<< HEAD
         public override void UnregisterBuffer(AudioBuffer buffer) { }
-=======
-        public override void UnregisterBuffer(AudioBuffer buffer) {}
->>>>>>> 1ec71635b (sync with main branch)
 
         public override bool WasBufferFullyConsumed(AudioBuffer buffer)
         {

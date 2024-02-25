@@ -15,11 +15,7 @@ namespace Ryujinx.Cpu
             public MemoryBlock Memory { get; private set; }
             public ulong Size { get; }
 
-<<<<<<< HEAD
             private readonly struct Range : IComparable<Range>
-=======
-            private struct Range : IComparable<Range>
->>>>>>> 1ec71635b (sync with main branch)
             {
                 public ulong Offset { get; }
                 public ulong Size { get; }
@@ -44,11 +40,7 @@ namespace Ryujinx.Cpu
                 Size = size;
                 _freeRanges = new List<Range>
                 {
-<<<<<<< HEAD
                     new Range(0, size),
-=======
-                    new Range(0, size)
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -172,11 +164,7 @@ namespace Ryujinx.Cpu
     {
         private const ulong InvalidOffset = ulong.MaxValue;
 
-<<<<<<< HEAD
         public readonly struct Allocation
-=======
-        public struct Allocation
->>>>>>> 1ec71635b (sync with main branch)
         {
             public T Block { get; }
             public ulong Offset { get; }
@@ -277,8 +265,4 @@ namespace Ryujinx.Cpu
             _blocks.Clear();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

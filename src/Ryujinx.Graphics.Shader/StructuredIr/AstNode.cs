@@ -8,8 +8,4 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         public LinkedListNode<IAstNode> LLNode { get; set; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

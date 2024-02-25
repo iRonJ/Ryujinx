@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu.Memory;
 using Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostAsGpu.Types;
 using Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel;
@@ -19,11 +15,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostAsGpu
         private const uint SmallPageSize = 0x1000;
         private const uint BigPageSize = 0x10000;
 
-<<<<<<< HEAD
         private static readonly uint[] _pageSizes = { SmallPageSize, BigPageSize };
-=======
-        private static readonly uint[] _pageSizes = new uint[] { SmallPageSize, BigPageSize };
->>>>>>> 1ec71635b (sync with main branch)
 
         private const ulong SmallRegionLimit = 0x400000000UL; // 16 GiB
         private const ulong DefaultUserSize = 1UL << 37;
@@ -40,16 +32,9 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostAsGpu
             }
         }
 
-<<<<<<< HEAD
         private static readonly VmRegion[] _vmRegions = {
             new VmRegion((ulong)BigPageSize << 16, SmallRegionLimit),
             new VmRegion(SmallRegionLimit, DefaultUserSize),
-=======
-        private static readonly VmRegion[] _vmRegions = new VmRegion[]
-        {
-            new VmRegion((ulong)BigPageSize << 16, SmallRegionLimit),
-            new VmRegion(SmallRegionLimit, DefaultUserSize)
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private readonly AddressSpaceContext _asContext;
@@ -281,11 +266,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostAsGpu
 
             if (size == 0)
             {
-<<<<<<< HEAD
                 size = map.Size;
-=======
-                size = (uint)map.Size;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             NvInternalResult result = NvInternalResult.Success;

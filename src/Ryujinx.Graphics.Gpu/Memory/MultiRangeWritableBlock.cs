@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Memory;
-=======
-﻿using Ryujinx.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Memory.Range;
 using System;
 

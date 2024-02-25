@@ -5,11 +5,7 @@ namespace Ryujinx.Input.Assigner
     /// </summary>
     public class KeyboardKeyAssigner : IButtonAssigner
     {
-<<<<<<< HEAD
         private readonly IKeyboard _keyboard;
-=======
-        private IKeyboard _keyboard;
->>>>>>> 1ec71635b (sync with main branch)
 
         private KeyboardStateSnapshot _keyboardState;
 
@@ -51,8 +47,4 @@ namespace Ryujinx.Input.Assigner
             return !ShouldCancel() ? keyPressed : "";
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

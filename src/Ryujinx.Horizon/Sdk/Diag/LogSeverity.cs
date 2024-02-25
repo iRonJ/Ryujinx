@@ -6,12 +6,6 @@ namespace Ryujinx.Horizon.Sdk.Diag
         Info = 1,
         Warn = 2,
         Error = 3,
-<<<<<<< HEAD
         Fatal = 4,
     }
 }
-=======
-        Fatal = 4
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

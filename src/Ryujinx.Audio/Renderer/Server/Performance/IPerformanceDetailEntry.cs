@@ -49,8 +49,4 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
         /// <param name="detailType">The type to use.</param>
         void SetDetailType(PerformanceDetailType detailType);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

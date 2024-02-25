@@ -31,11 +31,7 @@ namespace Ryujinx.Graphics.Texture
 
             int wAligned = BitUtils.AlignUp(width, alignment);
 
-<<<<<<< HEAD
             BlockLinearLayout layoutConverter = new(wAligned, height, gobBlocksInY, 1, bytesPerPixel);
-=======
-            BlockLinearLayout layoutConverter = new BlockLinearLayout(wAligned, height, gobBlocksInY, 1, bytesPerPixel);
->>>>>>> 1ec71635b (sync with main branch)
 
             unsafe bool Convert<T>(Span<byte> output, ReadOnlySpan<byte> data) where T : unmanaged
             {
@@ -93,11 +89,7 @@ namespace Ryujinx.Graphics.Texture
                 8 => Convert<ulong>(dst, data),
                 12 => Convert<Bpp12Pixel>(dst, data),
                 16 => Convert<Vector128<byte>>(dst, data),
-<<<<<<< HEAD
                 _ => throw new NotSupportedException($"Unable to convert ${bytesPerPixel} bpp pixel format."),
-=======
-                _ => throw new NotSupportedException($"Unable to convert ${bytesPerPixel} bpp pixel format.")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -134,24 +126,14 @@ namespace Ryujinx.Graphics.Texture
             int mipGobBlocksInY = gobBlocksInY;
             int mipGobBlocksInZ = gobBlocksInZ;
 
-<<<<<<< HEAD
             int gobWidth = (GobStride / bytesPerPixel) * gobBlocksInTileX;
-=======
-            int gobWidth  = (GobStride / bytesPerPixel) * gobBlocksInTileX;
->>>>>>> 1ec71635b (sync with main branch)
             int gobHeight = gobBlocksInY * GobHeight;
 
             for (int level = 0; level < levels; level++)
             {
-<<<<<<< HEAD
                 int w = Math.Max(1, width >> level);
                 int h = Math.Max(1, height >> level);
                 int d = Math.Max(1, depth >> level);
-=======
-                int w = Math.Max(1, width  >> level);
-                int h = Math.Max(1, height >> level);
-                int d = Math.Max(1, depth  >> level);
->>>>>>> 1ec71635b (sync with main branch)
 
                 w = BitUtils.DivRoundUp(w, blockWidth);
                 h = BitUtils.DivRoundUp(h, blockHeight);
@@ -161,11 +143,7 @@ namespace Ryujinx.Graphics.Texture
                     mipGobBlocksInY >>= 1;
                 }
 
-<<<<<<< HEAD
                 if (level > 0 && d <= (mipGobBlocksInZ >> 1) && mipGobBlocksInZ != 1)
-=======
-                while (d <= (mipGobBlocksInZ >> 1) && mipGobBlocksInZ != 1)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     mipGobBlocksInZ >>= 1;
                 }
@@ -188,11 +166,7 @@ namespace Ryujinx.Graphics.Texture
 
                 int wAligned = BitUtils.AlignUp(w, alignment);
 
-<<<<<<< HEAD
                 BlockLinearLayout layoutConverter = new(
-=======
-                BlockLinearLayout layoutConverter = new BlockLinearLayout(
->>>>>>> 1ec71635b (sync with main branch)
                     wAligned,
                     h,
                     mipGobBlocksInY,
@@ -266,11 +240,7 @@ namespace Ryujinx.Graphics.Texture
                     8 => Convert<ulong>(output, data),
                     12 => Convert<Bpp12Pixel>(output, data),
                     16 => Convert<Vector128<byte>>(output, data),
-<<<<<<< HEAD
                     _ => throw new NotSupportedException($"Unable to convert ${bytesPerPixel} bpp pixel format."),
-=======
-                    _ => throw new NotSupportedException($"Unable to convert ${bytesPerPixel} bpp pixel format.")
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
             return output;
@@ -286,11 +256,7 @@ namespace Ryujinx.Graphics.Texture
             int bytesPerPixel,
             ReadOnlySpan<byte> data)
         {
-<<<<<<< HEAD
             int w = BitUtils.DivRoundUp(width, blockWidth);
-=======
-            int w = BitUtils.DivRoundUp(width,  blockWidth);
->>>>>>> 1ec71635b (sync with main branch)
             int h = BitUtils.DivRoundUp(height, blockHeight);
 
             int outStride = BitUtils.AlignUp(w * bytesPerPixel, HostStrideAlignment);
@@ -335,11 +301,7 @@ namespace Ryujinx.Graphics.Texture
 
             int wAligned = BitUtils.AlignUp(width, alignment);
 
-<<<<<<< HEAD
             BlockLinearLayout layoutConverter = new(wAligned, height, gobBlocksInY, 1, bytesPerPixel);
-=======
-            BlockLinearLayout layoutConverter = new BlockLinearLayout(wAligned, height, gobBlocksInY, 1, bytesPerPixel);
->>>>>>> 1ec71635b (sync with main branch)
 
             unsafe bool Convert<T>(Span<byte> output, ReadOnlySpan<byte> data) where T : unmanaged
             {
@@ -397,11 +359,7 @@ namespace Ryujinx.Graphics.Texture
                 8 => Convert<ulong>(dst, data),
                 12 => Convert<Bpp12Pixel>(dst, data),
                 16 => Convert<Vector128<byte>>(dst, data),
-<<<<<<< HEAD
                 _ => throw new NotSupportedException($"Unable to convert ${bytesPerPixel} bpp pixel format."),
-=======
-                _ => throw new NotSupportedException($"Unable to convert ${bytesPerPixel} bpp pixel format.")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -432,24 +390,14 @@ namespace Ryujinx.Graphics.Texture
             int mipGobBlocksInY = gobBlocksInY;
             int mipGobBlocksInZ = gobBlocksInZ;
 
-<<<<<<< HEAD
             int gobWidth = (GobStride / bytesPerPixel) * gobBlocksInTileX;
-=======
-            int gobWidth  = (GobStride / bytesPerPixel) * gobBlocksInTileX;
->>>>>>> 1ec71635b (sync with main branch)
             int gobHeight = gobBlocksInY * GobHeight;
 
             for (int level = 0; level < levels; level++)
             {
-<<<<<<< HEAD
                 int w = Math.Max(1, width >> level);
                 int h = Math.Max(1, height >> level);
                 int d = Math.Max(1, depth >> level);
-=======
-                int w = Math.Max(1, width  >> level);
-                int h = Math.Max(1, height >> level);
-                int d = Math.Max(1, depth  >> level);
->>>>>>> 1ec71635b (sync with main branch)
 
                 w = BitUtils.DivRoundUp(w, blockWidth);
                 h = BitUtils.DivRoundUp(h, blockHeight);
@@ -459,11 +407,7 @@ namespace Ryujinx.Graphics.Texture
                     mipGobBlocksInY >>= 1;
                 }
 
-<<<<<<< HEAD
                 if (level > 0 && d <= (mipGobBlocksInZ >> 1) && mipGobBlocksInZ != 1)
-=======
-                while (d <= (mipGobBlocksInZ >> 1) && mipGobBlocksInZ != 1)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     mipGobBlocksInZ >>= 1;
                 }
@@ -486,11 +430,7 @@ namespace Ryujinx.Graphics.Texture
 
                 int wAligned = BitUtils.AlignUp(w, alignment);
 
-<<<<<<< HEAD
                 BlockLinearLayout layoutConverter = new(
-=======
-                BlockLinearLayout layoutConverter = new BlockLinearLayout(
->>>>>>> 1ec71635b (sync with main branch)
                     wAligned,
                     h,
                     mipGobBlocksInY,
@@ -564,11 +504,7 @@ namespace Ryujinx.Graphics.Texture
                     8 => Convert<ulong>(output, data),
                     12 => Convert<Bpp12Pixel>(output, data),
                     16 => Convert<Vector128<byte>>(output, data),
-<<<<<<< HEAD
                     _ => throw new NotSupportedException($"Unable to convert ${bytesPerPixel} bpp pixel format."),
-=======
-                    _ => throw new NotSupportedException($"Unable to convert ${bytesPerPixel} bpp pixel format.")
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -585,11 +521,7 @@ namespace Ryujinx.Graphics.Texture
             int bytesPerPixel,
             ReadOnlySpan<byte> data)
         {
-<<<<<<< HEAD
             int w = BitUtils.DivRoundUp(width, blockWidth);
-=======
-            int w = BitUtils.DivRoundUp(width,  blockWidth);
->>>>>>> 1ec71635b (sync with main branch)
             int h = BitUtils.DivRoundUp(height, blockHeight);
 
             int inStride = BitUtils.AlignUp(w * bytesPerPixel, HostStrideAlignment);
@@ -641,15 +573,9 @@ namespace Ryujinx.Graphics.Texture
 
             for (int level = 0; level < levels; level++)
             {
-<<<<<<< HEAD
                 int w = Math.Max(1, width >> level);
                 int h = Math.Max(1, height >> level);
                 int d = Math.Max(1, depth >> level);
-=======
-                int w = Math.Max(1, width  >> level);
-                int h = Math.Max(1, height >> level);
-                int d = Math.Max(1, depth  >> level);
->>>>>>> 1ec71635b (sync with main branch)
 
                 w = BitUtils.DivRoundUp(w, blockWidth);
                 h = BitUtils.DivRoundUp(h, blockHeight);
@@ -662,8 +588,4 @@ namespace Ryujinx.Graphics.Texture
             return layerSize * layers;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

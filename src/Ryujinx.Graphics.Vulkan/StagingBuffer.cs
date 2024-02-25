@@ -1,16 +1,12 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
 using Ryujinx.Common.Logging;
 using Ryujinx.Graphics.GAL;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Ryujinx.Graphics.Vulkan
 {
-<<<<<<< HEAD
     readonly struct StagingBufferReserved
     {
         public readonly BufferHolder Buffer;
@@ -28,23 +24,15 @@ namespace Ryujinx.Graphics.Vulkan
     class StagingBuffer : IDisposable
     {
         private const int BufferSize = 32 * 1024 * 1024;
-=======
-    class StagingBuffer : IDisposable
-    {
-        private const int BufferSize = 16 * 1024 * 1024;
->>>>>>> 1ec71635b (sync with main branch)
 
         private int _freeOffset;
         private int _freeSize;
 
         private readonly VulkanRenderer _gd;
         private readonly BufferHolder _buffer;
-<<<<<<< HEAD
         private readonly int _resourceAlignment;
 
         public readonly BufferHandle Handle;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
         private readonly struct PendingCopy
         {
@@ -64,7 +52,6 @@ namespace Ryujinx.Graphics.Vulkan
         public StagingBuffer(VulkanRenderer gd, BufferManager bufferManager)
         {
             _gd = gd;
-<<<<<<< HEAD
             Handle = bufferManager.CreateWithHandle(gd, BufferSize, out _buffer);
             _pendingCopies = new Queue<PendingCopy>();
             _freeSize = BufferSize;
@@ -72,14 +59,6 @@ namespace Ryujinx.Graphics.Vulkan
         }
 
         public void PushData(CommandBufferPool cbp, CommandBufferScoped? cbs, Action endRenderPass, BufferHolder dst, int dstOffset, ReadOnlySpan<byte> data)
-=======
-            _buffer = bufferManager.Create(gd, BufferSize);
-            _pendingCopies = new Queue<PendingCopy>();
-            _freeSize = BufferSize;
-        }
-
-        public unsafe void PushData(CommandBufferPool cbp, CommandBufferScoped? cbs, Action endRenderPass, BufferHolder dst, int dstOffset, ReadOnlySpan<byte> data)
->>>>>>> 1ec71635b (sync with main branch)
         {
             bool isRender = cbs != null;
             CommandBufferScoped scoped = cbs ?? cbp.Rent();
@@ -114,17 +93,10 @@ namespace Ryujinx.Graphics.Vulkan
 
                 int chunkSize = Math.Min(_freeSize, data.Length);
 
-<<<<<<< HEAD
                 PushDataImpl(scoped, dst, dstOffset, data[..chunkSize]);
 
                 dstOffset += chunkSize;
                 data = data[chunkSize..];
-=======
-                PushDataImpl(scoped, dst, dstOffset, data.Slice(0, chunkSize));
-
-                dstOffset += chunkSize;
-                data = data.Slice(chunkSize);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (!isRender)
@@ -142,13 +114,8 @@ namespace Ryujinx.Graphics.Vulkan
             int capacity = BufferSize - offset;
             if (capacity < data.Length)
             {
-<<<<<<< HEAD
                 _buffer.SetDataUnchecked(offset, data[..capacity]);
                 _buffer.SetDataUnchecked(0, data[capacity..]);
-=======
-                _buffer.SetDataUnchecked(offset, data.Slice(0, capacity));
-                _buffer.SetDataUnchecked(0, data.Slice(capacity));
->>>>>>> 1ec71635b (sync with main branch)
 
                 BufferHolder.Copy(_gd, cbs, srcBuffer, dstBuffer, offset, dstOffset, capacity);
                 BufferHolder.Copy(_gd, cbs, srcBuffer, dstBuffer, 0, dstOffset + capacity, data.Length - capacity);
@@ -167,11 +134,7 @@ namespace Ryujinx.Graphics.Vulkan
             _pendingCopies.Enqueue(new PendingCopy(cbs.GetFence(), data.Length));
         }
 
-<<<<<<< HEAD
         public bool TryPushData(CommandBufferScoped cbs, Action endRenderPass, BufferHolder dst, int dstOffset, ReadOnlySpan<byte> data)
-=======
-        public unsafe bool TryPushData(CommandBufferScoped cbs, Action endRenderPass, BufferHolder dst, int dstOffset, ReadOnlySpan<byte> data)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (data.Length > BufferSize)
             {
@@ -188,18 +151,13 @@ namespace Ryujinx.Graphics.Vulkan
                 }
             }
 
-<<<<<<< HEAD
             endRenderPass?.Invoke();
-=======
-            endRenderPass();
->>>>>>> 1ec71635b (sync with main branch)
 
             PushDataImpl(cbs, dst, dstOffset, data);
 
             return true;
         }
 
-<<<<<<< HEAD
         private StagingBufferReserved ReserveDataImpl(CommandBufferScoped cbs, int size, int alignment)
         {
             // Assumes the caller has already determined that there is enough space.
@@ -282,8 +240,6 @@ namespace Ryujinx.Graphics.Vulkan
             return TryReserveData(cbs, size, _resourceAlignment);
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         private bool WaitFreeCompleted(CommandBufferPool cbp)
         {
             if (_pendingCopies.TryPeek(out var pc))
@@ -307,11 +263,7 @@ namespace Ryujinx.Graphics.Vulkan
             return true;
         }
 
-<<<<<<< HEAD
         public void FreeCompleted()
-=======
-        private void FreeCompleted()
->>>>>>> 1ec71635b (sync with main branch)
         {
             FenceHolder signalledFence = null;
             while (_pendingCopies.TryPeek(out var pc) && (pc.Fence == signalledFence || pc.Fence.IsSignaled()))
@@ -328,11 +280,7 @@ namespace Ryujinx.Graphics.Vulkan
         {
             if (disposing)
             {
-<<<<<<< HEAD
                 _gd.BufferManager.Delete(Handle);
-=======
-                _buffer.Dispose();
->>>>>>> 1ec71635b (sync with main branch)
 
                 while (_pendingCopies.TryDequeue(out var pc))
                 {

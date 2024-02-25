@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL
-=======
-﻿namespace Ryujinx.Graphics.GAL
->>>>>>> 1ec71635b (sync with main branch)
 {
     public enum LogicalOp
     {
@@ -21,10 +17,6 @@ namespace Ryujinx.Graphics.GAL
         CopyInverted = 0x150C,
         OrInverted = 0x150D,
         Nand = 0x150E,
-<<<<<<< HEAD
         Set = 0x150F,
-=======
-        Set = 0x150F
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

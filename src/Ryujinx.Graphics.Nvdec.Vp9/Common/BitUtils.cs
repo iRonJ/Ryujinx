@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -24,11 +20,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Common
             {
                 10 => (ushort)Math.Clamp(val, 0, 1023),
                 12 => (ushort)Math.Clamp(val, 0, 4095),
-<<<<<<< HEAD
                 _ => (ushort)Math.Clamp(val, 0, 255),
-=======
-                _ => (ushort)Math.Clamp(val, 0, 255)
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -54,10 +46,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Common
         private static int GetMsb(uint n)
         {
             Debug.Assert(n != 0);
-<<<<<<< HEAD
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
             return 31 ^ BitOperations.LeadingZeroCount(n);
         }
 

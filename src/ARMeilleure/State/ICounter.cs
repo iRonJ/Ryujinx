@@ -15,8 +15,4 @@ namespace ARMeilleure.State
         /// </summary>
         ulong Counter { get; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

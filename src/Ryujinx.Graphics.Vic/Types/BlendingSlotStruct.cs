@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
 
 namespace Ryujinx.Graphics.Vic.Types
@@ -7,16 +6,6 @@ namespace Ryujinx.Graphics.Vic.Types
     {
         private readonly long _word0;
         private readonly long _word1;
-=======
-﻿using Ryujinx.Common.Utilities;
-
-namespace Ryujinx.Graphics.Vic.Types
-{
-    struct BlendingSlotStruct
-    {
-        private long _word0;
-        private long _word1;
->>>>>>> 1ec71635b (sync with main branch)
 
         public int AlphaK1 => (int)_word0.Extract(0, 10);
         public int AlphaK2 => (int)_word0.Extract(16, 10);

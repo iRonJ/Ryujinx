@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Input
-=======
-﻿namespace Ryujinx.Input
->>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Represent a key from a keyboard.
@@ -141,12 +137,6 @@ namespace Ryujinx.Input
         BackSlash,
         Unbound,
 
-<<<<<<< HEAD
         Count,
     }
 }
-=======
-        Count
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

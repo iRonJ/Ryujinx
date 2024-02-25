@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services
-=======
-﻿namespace Ryujinx.HLE.HOS.Services
->>>>>>> 1ec71635b (sync with main branch)
 {
     class DummyService : IpcService
     {
@@ -13,8 +9,4 @@ namespace Ryujinx.HLE.HOS.Services
             ServiceName = serviceName;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

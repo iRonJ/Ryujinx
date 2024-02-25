@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 // This file was auto-generated from NVIDIA official Maxwell definitions.
 
 using Ryujinx.Common.Memory;
-=======
-﻿// This file was auto-generated from NVIDIA official Maxwell definitions.
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
 {
@@ -117,7 +113,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
     /// </summary>
     unsafe struct InlineToMemoryClassState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
         public uint SetObject;
         public readonly int SetObjectClassId => (int)(SetObject & 0xFFFF);
@@ -136,26 +131,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
         public uint SetGlobalRenderEnableB;
         public uint SetGlobalRenderEnableC;
         public readonly int SetGlobalRenderEnableCMode => (int)(SetGlobalRenderEnableC & 0x7);
-=======
-#pragma warning disable CS0649
-        public uint SetObject;
-        public int SetObjectClassId => (int)((SetObject >> 0) & 0xFFFF);
-        public int SetObjectEngineId => (int)((SetObject >> 16) & 0x1F);
-        public fixed uint Reserved04[63];
-        public uint NoOperation;
-        public uint SetNotifyA;
-        public int SetNotifyAAddressUpper => (int)((SetNotifyA >> 0) & 0xFF);
-        public uint SetNotifyB;
-        public uint Notify;
-        public NotifyType NotifyType => (NotifyType)(Notify);
-        public uint WaitForIdle;
-        public fixed uint Reserved114[7];
-        public uint SetGlobalRenderEnableA;
-        public int SetGlobalRenderEnableAOffsetUpper => (int)((SetGlobalRenderEnableA >> 0) & 0xFF);
-        public uint SetGlobalRenderEnableB;
-        public uint SetGlobalRenderEnableC;
-        public int SetGlobalRenderEnableCMode => (int)((SetGlobalRenderEnableC >> 0) & 0x7);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SendGoIdle;
         public uint PmTrigger;
         public uint PmTriggerWfi;
@@ -166,7 +141,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
         public uint LineLengthIn;
         public uint LineCount;
         public uint OffsetOutUpper;
-<<<<<<< HEAD
         public readonly int OffsetOutUpperValue => (int)(OffsetOutUpper & 0xFF);
         public uint OffsetOut;
         public uint PitchOut;
@@ -174,21 +148,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
         public readonly SetDstBlockSizeWidth SetDstBlockSizeWidth => (SetDstBlockSizeWidth)(SetDstBlockSize & 0xF);
         public readonly SetDstBlockSizeHeight SetDstBlockSizeHeight => (SetDstBlockSizeHeight)((SetDstBlockSize >> 4) & 0xF);
         public readonly SetDstBlockSizeDepth SetDstBlockSizeDepth => (SetDstBlockSizeDepth)((SetDstBlockSize >> 8) & 0xF);
-=======
-        public int OffsetOutUpperValue => (int)((OffsetOutUpper >> 0) & 0xFF);
-        public uint OffsetOut;
-        public uint PitchOut;
-        public uint SetDstBlockSize;
-        public SetDstBlockSizeWidth SetDstBlockSizeWidth => (SetDstBlockSizeWidth)((SetDstBlockSize >> 0) & 0xF);
-        public SetDstBlockSizeHeight SetDstBlockSizeHeight => (SetDstBlockSizeHeight)((SetDstBlockSize >> 4) & 0xF);
-        public SetDstBlockSizeDepth SetDstBlockSizeDepth => (SetDstBlockSizeDepth)((SetDstBlockSize >> 8) & 0xF);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetDstWidth;
         public uint SetDstHeight;
         public uint SetDstDepth;
         public uint SetDstLayer;
         public uint SetDstOriginBytesX;
-<<<<<<< HEAD
         public readonly int SetDstOriginBytesXV => (int)(SetDstOriginBytesX & 0xFFFFF);
         public uint SetDstOriginSamplesY;
         public readonly int SetDstOriginSamplesYV => (int)(SetDstOriginSamplesY & 0xFFFF);
@@ -205,24 +169,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
         public fixed uint Reserved1B8[9];
         public uint SetI2mSemaphoreA;
         public readonly int SetI2mSemaphoreAOffsetUpper => (int)(SetI2mSemaphoreA & 0xFF);
-=======
-        public int SetDstOriginBytesXV => (int)((SetDstOriginBytesX >> 0) & 0xFFFFF);
-        public uint SetDstOriginSamplesY;
-        public int SetDstOriginSamplesYV => (int)((SetDstOriginSamplesY >> 0) & 0xFFFF);
-        public uint LaunchDma;
-        public LaunchDmaDstMemoryLayout LaunchDmaDstMemoryLayout => (LaunchDmaDstMemoryLayout)((LaunchDma >> 0) & 0x1);
-        public LaunchDmaCompletionType LaunchDmaCompletionType => (LaunchDmaCompletionType)((LaunchDma >> 4) & 0x3);
-        public LaunchDmaInterruptType LaunchDmaInterruptType => (LaunchDmaInterruptType)((LaunchDma >> 8) & 0x3);
-        public LaunchDmaSemaphoreStructSize LaunchDmaSemaphoreStructSize => (LaunchDmaSemaphoreStructSize)((LaunchDma >> 12) & 0x1);
-        public bool LaunchDmaReductionEnable => (LaunchDma & 0x2) != 0;
-        public LaunchDmaReductionOp LaunchDmaReductionOp => (LaunchDmaReductionOp)((LaunchDma >> 13) & 0x7);
-        public LaunchDmaReductionFormat LaunchDmaReductionFormat => (LaunchDmaReductionFormat)((LaunchDma >> 2) & 0x3);
-        public bool LaunchDmaSysmembarDisable => (LaunchDma & 0x40) != 0;
-        public uint LoadInlineData;
-        public fixed uint Reserved1B8[9];
-        public uint SetI2mSemaphoreA;
-        public int SetI2mSemaphoreAOffsetUpper => (int)((SetI2mSemaphoreA >> 0) & 0xFF);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetI2mSemaphoreB;
         public uint SetI2mSemaphoreC;
         public fixed uint Reserved1E8[2];
@@ -231,11 +177,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
         public uint SetI2mSpareNoop02;
         public uint SetI2mSpareNoop03;
         public fixed uint Reserved200[3200];
-<<<<<<< HEAD
         public Array256<uint> SetMmeShadowScratch;
-=======
-        public MmeShadowScratch SetMmeShadowScratch;
->>>>>>> 1ec71635b (sync with main branch)
 #pragma warning restore CS0649
     }
 }

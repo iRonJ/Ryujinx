@@ -12,10 +12,6 @@ namespace ARMeilleure.State
         VFlag = 28,
         CFlag = 29,
         ZFlag = 30,
-<<<<<<< HEAD
         NFlag = 31,
-=======
-        NFlag = 31
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

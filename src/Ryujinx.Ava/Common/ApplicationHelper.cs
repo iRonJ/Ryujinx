@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 using Avalonia.Controls.Notifications;
 using Avalonia.Platform.Storage;
-=======
-using Avalonia.Controls;
-using Avalonia.Controls.Notifications;
->>>>>>> 1ec71635b (sync with main branch)
 using Avalonia.Threading;
 using LibHac;
 using LibHac.Account;
@@ -20,30 +15,17 @@ using LibHac.Tools.FsSystem.NcaUtils;
 using Ryujinx.Ava.Common.Locale;
 using Ryujinx.Ava.UI.Controls;
 using Ryujinx.Ava.UI.Helpers;
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.FileSystem;
 using Ryujinx.HLE.HOS.Services.Account.Acc;
 using Ryujinx.UI.App.Common;
 using Ryujinx.UI.Common.Helper;
-=======
-using Ryujinx.Ava.UI.Windows;
-using Ryujinx.Common.Logging;
-using Ryujinx.HLE.FileSystem;
-using Ryujinx.HLE.HOS;
-using Ryujinx.HLE.HOS.Services.Account.Acc;
-using Ryujinx.Ui.App.Common;
-using Ryujinx.Ui.Common.Helper;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Buffers;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using ApplicationId = LibHac.Ncm.ApplicationId;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using Path = System.IO.Path;
 
 namespace Ryujinx.Ava.Common
@@ -53,17 +35,9 @@ namespace Ryujinx.Ava.Common
         private static HorizonClient _horizonClient;
         private static AccountManager _accountManager;
         private static VirtualFileSystem _virtualFileSystem;
-<<<<<<< HEAD
 
         public static void Initialize(VirtualFileSystem virtualFileSystem, AccountManager accountManager, HorizonClient horizonClient)
         {
-=======
-        private static StyleableWindow _owner;
-
-        public static void Initialize(VirtualFileSystem virtualFileSystem, AccountManager accountManager, HorizonClient horizonClient, StyleableWindow owner)
-        {
-            _owner = owner;
->>>>>>> 1ec71635b (sync with main branch)
             _virtualFileSystem = virtualFileSystem;
             _horizonClient = horizonClient;
             _accountManager = accountManager;
@@ -80,11 +54,7 @@ namespace Ryujinx.Ava.Common
 
                 Logger.Info?.Print(LogClass.Application, $"Creating save directory for Title: {titleName} [{titleId:x16}]");
 
-<<<<<<< HEAD
                 if (controlHolder.ByteSpan.IsZeros())
-=======
-                if (Utilities.IsZeros(controlHolder.ByteSpan))
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     // If the current application doesn't have a loaded control property, create a dummy one
                     // and set the savedata sizes so a user savedata will be created.
@@ -99,11 +69,7 @@ namespace Ryujinx.Ava.Common
 
                 Uid user = new((ulong)_accountManager.LastOpenedUser.UserId.High, (ulong)_accountManager.LastOpenedUser.UserId.Low);
 
-<<<<<<< HEAD
                 result = _horizonClient.Fs.EnsureApplicationSaveData(out _, new ApplicationId(titleId), in control, in user);
-=======
-                result = _horizonClient.Fs.EnsureApplicationSaveData(out _, new LibHac.Ncm.ApplicationId(titleId), in control, in user);
->>>>>>> 1ec71635b (sync with main branch)
                 if (result.IsFailure())
                 {
                     Dispatcher.UIThread.InvokeAsync(async () =>
@@ -145,11 +111,7 @@ namespace Ryujinx.Ava.Common
 
         public static void OpenSaveDir(ulong saveDataId)
         {
-<<<<<<< HEAD
             string saveRootPath = Path.Combine(VirtualFileSystem.GetNandPath(), $"user/save/{saveDataId:x16}");
-=======
-            string saveRootPath = Path.Combine(_virtualFileSystem.GetNandPath(), $"user/save/{saveDataId:x16}");
->>>>>>> 1ec71635b (sync with main branch)
 
             if (!Directory.Exists(saveRootPath))
             {
@@ -178,7 +140,6 @@ namespace Ryujinx.Ava.Common
             }
         }
 
-<<<<<<< HEAD
         public static async Task ExtractSection(IStorageProvider storageProvider, NcaSectionType ncaSectionType, string titleFilePath, string titleName, int programIndex = 0)
         {
             var result = await storageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
@@ -194,24 +155,12 @@ namespace Ryujinx.Ava.Common
 
             var destination = result[0].Path.LocalPath;
             var cancellationToken = new CancellationTokenSource();
-=======
-        public static async Task ExtractSection(NcaSectionType ncaSectionType, string titleFilePath, string titleName, int programIndex = 0)
-        {
-            OpenFolderDialog folderDialog = new()
-            {
-                Title = LocaleManager.Instance[LocaleKeys.FolderDialogExtractTitle]
-            };
-
-            string destination       = await folderDialog.ShowAsync(_owner);
-            var    cancellationToken = new CancellationTokenSource();
->>>>>>> 1ec71635b (sync with main branch)
 
             UpdateWaitWindow waitingDialog = new(
                 LocaleManager.Instance[LocaleKeys.DialogNcaExtractionTitle],
                 LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.DialogNcaExtractionMessage, ncaSectionType, Path.GetFileName(titleFilePath)),
                 cancellationToken);
 
-<<<<<<< HEAD
             Thread extractorThread = new(() =>
             {
                 Dispatcher.UIThread.Post(waitingDialog.Show);
@@ -353,149 +302,6 @@ namespace Ryujinx.Ava.Common
                 IsBackground = true,
             };
             extractorThread.Start();
-=======
-            if (!string.IsNullOrWhiteSpace(destination))
-            {
-                Thread extractorThread = new(() =>
-                {
-                    Dispatcher.UIThread.Post(waitingDialog.Show);
-
-                    using FileStream file = new(titleFilePath, FileMode.Open, FileAccess.Read);
-
-                    Nca mainNca  = null;
-                    Nca patchNca = null;
-
-                    string extension = Path.GetExtension(titleFilePath).ToLower();
-                    if (extension == ".nsp" || extension == ".pfs0" || extension == ".xci")
-                    {
-                        PartitionFileSystem pfs;
-
-                        if (extension == ".xci")
-                        {
-                            pfs = new Xci(_virtualFileSystem.KeySet, file.AsStorage()).OpenPartition(XciPartitionType.Secure);
-                        }
-                        else
-                        {
-                            pfs = new PartitionFileSystem(file.AsStorage());
-                        }
-
-                        foreach (DirectoryEntryEx fileEntry in pfs.EnumerateEntries("/", "*.nca"))
-                        {
-                            using var ncaFile = new UniqueRef<IFile>();
-
-                            pfs.OpenFile(ref ncaFile.Ref, fileEntry.FullPath.ToU8Span(), OpenMode.Read).ThrowIfFailure();
-
-                            Nca nca = new(_virtualFileSystem.KeySet, ncaFile.Get.AsStorage());
-                            if (nca.Header.ContentType == NcaContentType.Program)
-                            {
-                                int dataIndex = Nca.GetSectionIndexFromType(NcaSectionType.Data, NcaContentType.Program);
-                                if (nca.SectionExists(NcaSectionType.Data) && nca.Header.GetFsHeader(dataIndex).IsPatchSection())
-                                {
-                                    patchNca = nca;
-                                }
-                                else
-                                {
-                                    mainNca = nca;
-                                }
-                            }
-                        }
-                    }
-                    else if (extension == ".nca")
-                    {
-                        mainNca = new Nca(_virtualFileSystem.KeySet, file.AsStorage());
-                    }
-
-                    if (mainNca == null)
-                    {
-                        Logger.Error?.Print(LogClass.Application, "Extraction failure. The main NCA was not present in the selected file");
-
-                        Dispatcher.UIThread.InvokeAsync(async () =>
-                        {
-                            waitingDialog.Close();
-
-                            await ContentDialogHelper.CreateErrorDialog(LocaleManager.Instance[LocaleKeys.DialogNcaExtractionMainNcaNotFoundErrorMessage]);
-                        });
-
-                        return;
-                    }
-
-                    (Nca updatePatchNca, _) = ApplicationLibrary.GetGameUpdateData(_virtualFileSystem, mainNca.Header.TitleId.ToString("x16"), programIndex, out _);
-                    if (updatePatchNca != null)
-                    {
-                        patchNca = updatePatchNca;
-                    }
-
-                    int index = Nca.GetSectionIndexFromType(ncaSectionType, mainNca.Header.ContentType);
-
-                    try
-                    {
-                        bool sectionExistsInPatch = false;
-                        if (patchNca != null)
-                        {
-                            sectionExistsInPatch = patchNca.CanOpenSection(index);
-                        }
-
-                        IFileSystem ncaFileSystem = sectionExistsInPatch ? mainNca.OpenFileSystemWithPatch(patchNca, index, IntegrityCheckLevel.ErrorOnInvalid)
-                                                                         : mainNca.OpenFileSystem(index, IntegrityCheckLevel.ErrorOnInvalid);
-
-                        FileSystemClient fsClient = _horizonClient.Fs;
-
-                        string source = DateTime.Now.ToFileTime().ToString()[10..];
-                        string output = DateTime.Now.ToFileTime().ToString()[10..];
-
-                        using var uniqueSourceFs = new UniqueRef<IFileSystem>(ncaFileSystem);
-                        using var uniqueOutputFs = new UniqueRef<IFileSystem>(new LocalFileSystem(destination));
-
-                        fsClient.Register(source.ToU8Span(), ref uniqueSourceFs.Ref);
-                        fsClient.Register(output.ToU8Span(), ref uniqueOutputFs.Ref);
-
-                        (Result? resultCode, bool canceled) = CopyDirectory(fsClient, $"{source}:/", $"{output}:/", cancellationToken.Token);
-
-                        if (!canceled)
-                        {
-                            if (resultCode.Value.IsFailure())
-                            {
-                                Logger.Error?.Print(LogClass.Application, $"LibHac returned error code: {resultCode.Value.ErrorCode}");
-
-                                Dispatcher.UIThread.InvokeAsync(async () =>
-                                {
-                                    waitingDialog.Close();
-
-                                    await ContentDialogHelper.CreateErrorDialog(LocaleManager.Instance[LocaleKeys.DialogNcaExtractionCheckLogErrorMessage]);
-                                });
-                            }
-                            else if (resultCode.Value.IsSuccess())
-                            {
-                                Dispatcher.UIThread.Post(waitingDialog.Close);
-
-                                NotificationHelper.Show(
-                                    LocaleManager.Instance[LocaleKeys.DialogNcaExtractionTitle],
-                                    $"{titleName}\n\n{LocaleManager.Instance[LocaleKeys.DialogNcaExtractionSuccessMessage]}",
-                                    NotificationType.Information);
-                            }
-                        }
-
-                        fsClient.Unmount(source.ToU8Span());
-                        fsClient.Unmount(output.ToU8Span());
-                    }
-                    catch (ArgumentException ex)
-                    {
-                        Logger.Error?.Print(LogClass.Application, $"{ex.Message}");
-
-                        Dispatcher.UIThread.InvokeAsync(async () =>
-                        {
-                            waitingDialog.Close();
-
-                            await ContentDialogHelper.CreateErrorDialog(ex.Message);
-                        });
-                    }
-                });
-
-                extractorThread.Name = "GUI.NcaSectionExtractorThread";
-                extractorThread.IsBackground = true;
-                extractorThread.Start();
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static (Result? result, bool canceled) CopyDirectory(FileSystemClient fs, string sourcePath, string destPath, CancellationToken token)
@@ -610,8 +416,4 @@ namespace Ryujinx.Ava.Common
             return Result.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

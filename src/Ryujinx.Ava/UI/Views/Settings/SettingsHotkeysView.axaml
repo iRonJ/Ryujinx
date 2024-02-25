@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿<UserControl
-=======
-﻿<UserControl 
->>>>>>> 1ec71635b (sync with main branch)
     x:Class="Ryujinx.Ava.UI.Views.Settings.SettingsHotkeysView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -12,10 +8,6 @@
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     xmlns:helpers="clr-namespace:Ryujinx.Ava.UI.Helpers"
     mc:Ignorable="d"
-<<<<<<< HEAD
-=======
-    x:CompileBindings="True"
->>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModels:SettingsViewModel"
     Focusable="True">
     <Design.DataContext>
@@ -24,11 +16,7 @@
     <UserControl.Resources>
         <helpers:KeyValueConverter x:Key="Key" />
     </UserControl.Resources>
-<<<<<<< HEAD
     <ScrollViewer
-=======
-    <ScrollViewer 
->>>>>>> 1ec71635b (sync with main branch)
         Name="HotkeysPage"
         HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch"
@@ -57,11 +45,7 @@
                     <TextBlock VerticalAlignment="Center" Text="{locale:Locale SettingsTabHotkeysShowUiHotkey}" Width="230" />
                     <ToggleButton Width="90" Height="27" Checked="Button_Checked" Unchecked="Button_Unchecked">
                         <TextBlock
-<<<<<<< HEAD
                             Text="{Binding KeyboardHotkeys.ShowUI, Mode=TwoWay, Converter={StaticResource Key}}"
-=======
-                            Text="{Binding KeyboardHotkeys.ShowUi, Mode=TwoWay, Converter={StaticResource Key}}"
->>>>>>> 1ec71635b (sync with main branch)
                             TextAlignment="Center" />
                     </ToggleButton>
                 </StackPanel>

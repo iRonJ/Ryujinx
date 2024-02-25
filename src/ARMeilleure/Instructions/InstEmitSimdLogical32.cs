@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using ARMeilleure.Decoders;
-=======
-﻿using ARMeilleure.Decoders;
->>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
 
@@ -56,7 +52,6 @@ namespace ARMeilleure.Instructions
             // Replicate fields to fill the 64-bits, if size is < 64-bits.
             switch (op.Size)
             {
-<<<<<<< HEAD
                 case 0:
                     immediate *= 0x0101010101010101L;
                     break;
@@ -66,11 +61,6 @@ namespace ARMeilleure.Instructions
                 case 2:
                     immediate *= 0x0000000100000001L;
                     break;
-=======
-                case 0: immediate *= 0x0101010101010101L; break;
-                case 1: immediate *= 0x0001000100010001L; break;
-                case 2: immediate *= 0x0000000100000001L; break;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             Operand imm = Const(immediate);
@@ -215,7 +205,6 @@ namespace ARMeilleure.Instructions
             // Replicate fields to fill the 64-bits, if size is < 64-bits.
             switch (op.Size)
             {
-<<<<<<< HEAD
                 case 0:
                     immediate *= 0x0101010101010101L;
                     break;
@@ -225,11 +214,6 @@ namespace ARMeilleure.Instructions
                 case 2:
                     immediate *= 0x0000000100000001L;
                     break;
-=======
-                case 0: immediate *= 0x0101010101010101L; break;
-                case 1: immediate *= 0x0001000100010001L; break;
-                case 2: immediate *= 0x0000000100000001L; break;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             Operand imm = Const(immediate);

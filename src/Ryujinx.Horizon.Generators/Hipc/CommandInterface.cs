@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-=======
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 
 namespace Ryujinx.Horizon.Generators.Hipc

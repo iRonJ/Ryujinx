@@ -1,17 +1,12 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
 using Ryujinx.Common.Logging;
 
 namespace Ryujinx.HLE.HOS.Services.Hid
-=======
-﻿namespace Ryujinx.HLE.HOS.Services.Hid
->>>>>>> 1ec71635b (sync with main branch)
 {
     [Service("hidbus")]
     class IHidbusServer : IpcService
     {
         public IHidbusServer(ServiceCtx context) { }
-<<<<<<< HEAD
 
         [CommandCmif(1)]
         // GetBusHandle(nn::hid::NpadIdType, nn::hidbus::BusType, nn::applet::AppletResourceUserId) -> (bool HasHandle, nn::hidbus::BusHandle)
@@ -34,7 +29,3 @@ namespace Ryujinx.HLE.HOS.Services.Hid
         }
     }
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

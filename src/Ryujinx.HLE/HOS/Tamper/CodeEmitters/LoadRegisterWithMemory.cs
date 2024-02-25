@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.Exceptions;
-=======
-﻿using Ryujinx.HLE.Exceptions;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
 {

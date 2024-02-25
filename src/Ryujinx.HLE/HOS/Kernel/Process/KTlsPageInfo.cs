@@ -74,8 +74,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             _isSlotFree[(address - PageVirtualAddress) / TlsEntrySize] = true;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

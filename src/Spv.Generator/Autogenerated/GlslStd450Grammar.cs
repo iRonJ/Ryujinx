@@ -26,11 +26,6 @@
 // IN THE MATERIALS.
 #endregion
 
-<<<<<<< HEAD
-=======
-using static Spv.Specification;
-
->>>>>>> 1ec71635b (sync with main branch)
 namespace Spv.Generator
 {
     public partial class Module
@@ -39,730 +34,406 @@ namespace Spv.Generator
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 1, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslRoundEven(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 2, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslTrunc(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 3, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFAbs(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 4, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslSAbs(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 5, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFSign(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 6, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslSSign(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 7, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFloor(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 8, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslCeil(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 9, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFract(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 10, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslRadians(Instruction resultType, Instruction degrees)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 11, degrees);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslDegrees(Instruction resultType, Instruction radians)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 12, radians);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslSin(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 13, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslCos(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 14, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslTan(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 15, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslAsin(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 16, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslAcos(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 17, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslAtan(Instruction resultType, Instruction y_over_x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 18, y_over_x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslSinh(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 19, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslCosh(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 20, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslTanh(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 21, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslAsinh(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 22, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslAcosh(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 23, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslAtanh(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 24, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslAtan2(Instruction resultType, Instruction y, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 25, y, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslPow(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 26, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslExp(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 27, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslLog(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 28, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslExp2(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 29, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslLog2(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 30, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslSqrt(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 31, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslInverseSqrt(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 32, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslDeterminant(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 33, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslMatrixInverse(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 34, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslModf(Instruction resultType, Instruction x, Instruction i)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 35, x, i);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslModfStruct(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 36, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFMin(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 37, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslUMin(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 38, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslSMin(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 39, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFMax(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 40, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslUMax(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 41, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslSMax(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 42, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFClamp(Instruction resultType, Instruction x, Instruction minVal, Instruction maxVal)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 43, x, minVal, maxVal);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslUClamp(Instruction resultType, Instruction x, Instruction minVal, Instruction maxVal)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 44, x, minVal, maxVal);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslSClamp(Instruction resultType, Instruction x, Instruction minVal, Instruction maxVal)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 45, x, minVal, maxVal);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFMix(Instruction resultType, Instruction x, Instruction y, Instruction a)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 46, x, y, a);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslIMix(Instruction resultType, Instruction x, Instruction y, Instruction a)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 47, x, y, a);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslStep(Instruction resultType, Instruction edge, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 48, edge, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslSmoothStep(Instruction resultType, Instruction edge0, Instruction edge1, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 49, edge0, edge1, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFma(Instruction resultType, Instruction a, Instruction b, Instruction c)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 50, a, b, c);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFrexp(Instruction resultType, Instruction x, Instruction exp)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 51, x, exp);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFrexpStruct(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 52, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslLdexp(Instruction resultType, Instruction x, Instruction exp)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 53, x, exp);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslPackSnorm4x8(Instruction resultType, Instruction v)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 54, v);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslPackUnorm4x8(Instruction resultType, Instruction v)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 55, v);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslPackSnorm2x16(Instruction resultType, Instruction v)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 56, v);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslPackUnorm2x16(Instruction resultType, Instruction v)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 57, v);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslPackHalf2x16(Instruction resultType, Instruction v)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 58, v);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslPackDouble2x32(Instruction resultType, Instruction v)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 59, v);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslUnpackSnorm2x16(Instruction resultType, Instruction p)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 60, p);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslUnpackUnorm2x16(Instruction resultType, Instruction p)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 61, p);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslUnpackHalf2x16(Instruction resultType, Instruction v)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 62, v);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslUnpackSnorm4x8(Instruction resultType, Instruction p)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 63, p);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslUnpackUnorm4x8(Instruction resultType, Instruction p)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 64, p);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslUnpackDouble2x32(Instruction resultType, Instruction v)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 65, v);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslLength(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 66, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslDistance(Instruction resultType, Instruction p0, Instruction p1)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 67, p0, p1);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslCross(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 68, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslNormalize(Instruction resultType, Instruction x)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 69, x);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFaceForward(Instruction resultType, Instruction n, Instruction i, Instruction nref)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 70, n, i, nref);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslReflect(Instruction resultType, Instruction i, Instruction n)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 71, i, n);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslRefract(Instruction resultType, Instruction i, Instruction n, Instruction eta)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 72, i, n, eta);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFindILsb(Instruction resultType, Instruction value)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 73, value);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFindSMsb(Instruction resultType, Instruction value)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 74, value);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslFindUMsb(Instruction resultType, Instruction value)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 75, value);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslInterpolateAtCentroid(Instruction resultType, Instruction interpolant)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 76, interpolant);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslInterpolateAtSample(Instruction resultType, Instruction interpolant, Instruction sample)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 77, interpolant, sample);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslInterpolateAtOffset(Instruction resultType, Instruction interpolant, Instruction offset)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 78, interpolant, offset);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslNMin(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 79, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslNMax(Instruction resultType, Instruction x, Instruction y)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 80, x, y);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public Instruction GlslNClamp(Instruction resultType, Instruction x, Instruction minVal, Instruction maxVal)
         {
             return ExtInst(resultType, AddExtInstImport("GLSL.std.450"), 81, x, minVal, maxVal);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -226,12 +226,6 @@ namespace ARMeilleure.CodeGen.X86
         Xorpd,
         Xorps,
 
-<<<<<<< HEAD
         Count,
     }
 }
-=======
-        Count
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

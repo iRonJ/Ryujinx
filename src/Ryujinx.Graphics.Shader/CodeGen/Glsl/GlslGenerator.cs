@@ -11,15 +11,9 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
     {
         private const string MainFunctionName = "main";
 
-<<<<<<< HEAD
         public static string Generate(StructuredProgramInfo info, CodeGenParameters parameters)
         {
             CodeGenContext context = new(info, parameters);
-=======
-        public static string Generate(StructuredProgramInfo info, ShaderConfig config)
-        {
-            CodeGenContext context = new CodeGenContext(info, config);
->>>>>>> 1ec71635b (sync with main branch)
 
             Declarations.Declare(context, info);
 
@@ -34,30 +28,18 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
 
                 for (int i = 1; i < info.Functions.Count; i++)
                 {
-<<<<<<< HEAD
                     PrintFunction(context, info.Functions[i]);
-=======
-                    PrintFunction(context, info, info.Functions[i]);
->>>>>>> 1ec71635b (sync with main branch)
 
                     context.AppendLine();
                 }
             }
 
-<<<<<<< HEAD
             PrintFunction(context, info.Functions[0], MainFunctionName);
-=======
-            PrintFunction(context, info, info.Functions[0], MainFunctionName);
->>>>>>> 1ec71635b (sync with main branch)
 
             return context.GetCode();
         }
 
-<<<<<<< HEAD
         private static void PrintFunction(CodeGenContext context, StructuredFunction function, string funcName = null)
-=======
-        private static void PrintFunction(CodeGenContext context, StructuredProgramInfo info, StructuredFunction function, string funcName = null)
->>>>>>> 1ec71635b (sync with main branch)
         {
             context.CurrentFunction = function;
 
@@ -66,11 +48,7 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
 
             Declarations.DeclareLocals(context, function);
 
-<<<<<<< HEAD
             PrintBlock(context, function.MainBlock, funcName == MainFunctionName);
-=======
-            PrintBlock(context, function.MainBlock);
->>>>>>> 1ec71635b (sync with main branch)
 
             context.LeaveScope();
         }
@@ -94,15 +72,9 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
             return $"{Declarations.GetVarTypeName(context, function.ReturnType)} {funcName ?? function.Name}({string.Join(", ", args)})";
         }
 
-<<<<<<< HEAD
         private static void PrintBlock(CodeGenContext context, AstBlock block, bool isMainFunction)
         {
             AstBlockVisitor visitor = new(block);
-=======
-        private static void PrintBlock(CodeGenContext context, AstBlock block)
-        {
-            AstBlockVisitor visitor = new AstBlockVisitor(block);
->>>>>>> 1ec71635b (sync with main branch)
 
             visitor.BlockEntered += (sender, e) =>
             {
@@ -124,12 +96,8 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
                         context.AppendLine($"if ({GetCondExpr(context, e.Block.Condition)})");
                         break;
 
-<<<<<<< HEAD
                     default:
                         throw new InvalidOperationException($"Found unexpected block type \"{e.Block.Type}\".");
-=======
-                    default: throw new InvalidOperationException($"Found unexpected block type \"{e.Block.Type}\".");
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 context.EnterScope();
@@ -145,17 +113,13 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
                 }
             };
 
-<<<<<<< HEAD
             bool supportsBarrierDivergence = context.HostCapabilities.SupportsShaderBarrierDivergence;
             bool mayHaveReturned = false;
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
             foreach (IAstNode node in visitor.Visit())
             {
                 if (node is AstOperation operation)
                 {
-<<<<<<< HEAD
                     if (!supportsBarrierDivergence)
                     {
                         if (operation.Inst == IntermediateRepresentation.Instruction.Barrier)
@@ -175,8 +139,6 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
                         }
                     }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     string expr = InstGen.GetExpression(context, operation);
 
                     if (expr != null)
@@ -212,8 +174,4 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
             return ReinterpretCast(context, cond, srcType, AggregateType.Bool);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -4,8 +4,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
     {
         void TimeUp();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

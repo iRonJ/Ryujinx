@@ -8,11 +8,7 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
         {
             Invalid,
             Start,
-<<<<<<< HEAD
             End,
-=======
-            End
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public bool Enabled { get; set; }
@@ -48,8 +44,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,21 +1,13 @@
 {
   "Language": "Deutsch",
-<<<<<<< HEAD
   "MenuBarFileOpenApplet": "Öffne Anwendung",
   "MenuBarFileOpenAppletOpenMiiAppletToolTip": "Öffnet das Mii-Editor-Applet im Standalone-Modus",
-=======
-  "MenuBarFileOpenApplet": "Applet öffnen",
-  "MenuBarFileOpenAppletOpenMiiAppletToolTip": "Öffnet das Mii Editor Applet im Standalone Modus",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabInputDirectMouseAccess": "Direkter Mauszugriff",
   "SettingsTabSystemMemoryManagerMode": "Speichermanagermodus:",
   "SettingsTabSystemMemoryManagerModeSoftware": "Software",
   "SettingsTabSystemMemoryManagerModeHost": "Host (schnell)",
   "SettingsTabSystemMemoryManagerModeHostUnchecked": "Host ungeprüft (am schnellsten, unsicher)",
-<<<<<<< HEAD
   "SettingsTabSystemUseHypervisor": "Hypervisor verwenden",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "MenuBarFile": "_Datei",
   "MenuBarFileOpenFromFile": "_Datei öffnen",
   "MenuBarFileOpenUnpacked": "_Entpacktes Spiel öffnen",
@@ -27,7 +19,6 @@
   "MenuBarOptionsStartGamesInFullscreen": "Spiele im Vollbildmodus starten",
   "MenuBarOptionsStopEmulation": "Emulation beenden",
   "MenuBarOptionsSettings": "_Einstellungen",
-<<<<<<< HEAD
   "MenuBarOptionsManageUserProfiles": "_Benutzerprofile verwalten",
   "MenuBarActions": "_Aktionen",
   "MenuBarOptionsSimulateWakeUpMessage": "Aufwachnachricht simulieren",
@@ -39,16 +30,6 @@
   "MenuBarToolsManageFileTypes": "Dateitypen verwalten",
   "MenuBarToolsInstallFileTypes": "Dateitypen installieren",
   "MenuBarToolsUninstallFileTypes": "Dateitypen deinstallieren",
-=======
-  "MenuBarOptionsManageUserProfiles": "_Profilverwaltung",
-  "MenuBarActions": "_Aktionen",
-  "MenuBarOptionsSimulateWakeUpMessage": "Aufwachnachricht",
-  "MenuBarActionsScanAmiibo": "Scanne ein Amiibo",
-  "MenuBarTools": "_Werkzeuge",
-  "MenuBarToolsInstallFirmware": "Firmware installieren",
-  "MenuBarFileToolsInstallFirmwareFromFile": "Installiere Firmware von einer XCI oder einer ZIP Datei",
-  "MenuBarFileToolsInstallFirmwareFromDirectory": "Installiere Firmware aus einem Verzeichnis",
->>>>>>> 1ec71635b (sync with main branch)
   "MenuBarHelp": "Hilfe",
   "MenuBarHelpCheckForUpdates": "Nach Updates suchen",
   "MenuBarHelpAbout": "Über Ryujinx",
@@ -68,13 +49,8 @@
   "GameListContextMenuOpenDeviceSaveDirectory": "Benutzer-Geräte-Verzeichnis öffnen",
   "GameListContextMenuOpenDeviceSaveDirectoryToolTip": "Öffnet das Verzeichnis, welches den Geräte-Spielstände beinhaltet",
   "GameListContextMenuOpenBcatSaveDirectory": "Benutzer-BCAT-Vezeichnis öffnen",
-<<<<<<< HEAD
   "GameListContextMenuOpenBcatSaveDirectoryToolTip": "Öffnet das Verzeichnis, welches den BCAT-Cache des Spiels beinhaltet",
   "GameListContextMenuManageTitleUpdates": "Verwalte Spiel-Updates",
-=======
-  "GameListContextMenuOpenBcatSaveDirectoryToolTip": "Öffnet das Verzeichnis, welches den BCAT Cache des Spiels beinhaltet",
-  "GameListContextMenuManageTitleUpdates": "Verwalten von Spiel Updates",
->>>>>>> 1ec71635b (sync with main branch)
   "GameListContextMenuManageTitleUpdatesToolTip": "Öffnet den Spiel-Update-Manager",
   "GameListContextMenuManageDlc": "Verwalten von DLC",
   "GameListContextMenuManageDlcToolTip": "Öffnet den DLC-Manager",
@@ -84,17 +60,10 @@
   "GameListContextMenuCacheManagementPurgePptc": "PPTC als ungültig markieren",
   "GameListContextMenuCacheManagementPurgePptcToolTip": "Markiert den PPTC als ungültig, sodass dieser beim nächsten Spielstart neu erstellt wird",
   "GameListContextMenuCacheManagementPurgeShaderCache": "Shader Cache löschen",
-<<<<<<< HEAD
   "GameListContextMenuCacheManagementPurgeShaderCacheToolTip": "Löscht den Shader-Cache der Anwendung",
   "GameListContextMenuCacheManagementOpenPptcDirectory": "PPTC-Verzeichnis öffnen",
   "GameListContextMenuCacheManagementOpenPptcDirectoryToolTip": "Öffnet das Verzeichnis, das den PPTC-Cache der Anwendung beinhaltet",
   "GameListContextMenuCacheManagementOpenShaderCacheDirectory": "Shader-Cache-Verzeichnis öffnen",
-=======
-  "GameListContextMenuCacheManagementPurgeShaderCacheToolTip": "Löscht den Shader Cache der Anwendung",
-  "GameListContextMenuCacheManagementOpenPptcDirectory": "PPTC Verzeichnis öffnen",
-  "GameListContextMenuCacheManagementOpenPptcDirectoryToolTip": "Öffnet das Verzeichnis, das den PPTC Cache der Anwendung beinhaltet",
-  "GameListContextMenuCacheManagementOpenShaderCacheDirectory": "Shader Cache Verzeichnis öffnen",
->>>>>>> 1ec71635b (sync with main branch)
   "GameListContextMenuCacheManagementOpenShaderCacheDirectoryToolTip": "Öffnet das Verzeichnis, das den Shader Cache der Anwendung beinhaltet",
   "GameListContextMenuExtractData": "Daten extrahieren",
   "GameListContextMenuExtractDataExeFS": "ExeFS",
@@ -105,7 +74,6 @@
   "GameListContextMenuExtractDataLogoToolTip": "Extrahiert das Logo aus der aktuellen Anwendungskonfiguration (einschließlich Updates)",
   "StatusBarGamesLoaded": "{0}/{1} Spiele geladen",
   "StatusBarSystemVersion": "Systemversion: {0}",
-<<<<<<< HEAD
   "LinuxVmMaxMapCountDialogTitle": "Niedriges Limit für Speicherzuordnungen erkannt",
   "LinuxVmMaxMapCountDialogTextPrimary": "Möchtest Du den Wert von vm.max_map_count auf {0} erhöhen",
   "LinuxVmMaxMapCountDialogTextSecondary": "Einige Spiele könnten versuchen, mehr Speicherzuordnungen zu erstellen, als derzeit erlaubt. Ryujinx wird abstürzen, sobald dieses Limit überschritten wird.",
@@ -123,15 +91,6 @@
   "SettingsTabGeneralHideCursorNever": "Niemals",
   "SettingsTabGeneralHideCursorOnIdle": "Mauszeiger bei Inaktivität ausblenden",
   "SettingsTabGeneralHideCursorAlways": "Immer",
-=======
-  "Settings": "Einstellungen",
-  "SettingsTabGeneral": "Allgemein",
-  "SettingsTabGeneralGeneral": "Allgemein",
-  "SettingsTabGeneralEnableDiscordRichPresence": "Aktiviere Discord Rich Presence",
-  "SettingsTabGeneralCheckUpdatesOnLaunch": "Beim Start nach Updates suchen",
-  "SettingsTabGeneralShowConfirmExitDialog": "Zeige den \"Beenden bestätigen\" Dialog",
-  "SettingsTabGeneralHideCursorOnIdle": "Mauszeiger bei Inaktivität ausblenden",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabGeneralGameDirectories": "Spielverzeichnisse",
   "SettingsTabGeneralAdd": "Hinzufügen",
   "SettingsTabGeneralRemove": "Entfernen",
@@ -163,17 +122,10 @@
   "SettingsTabSystemSystemLanguageLatinAmericanSpanish": "Lateinamerikanisches Spanisch",
   "SettingsTabSystemSystemLanguageSimplifiedChinese": "Vereinfachtes Chinesisch",
   "SettingsTabSystemSystemLanguageTraditionalChinese": "Traditionelles Chinesisch",
-<<<<<<< HEAD
   "SettingsTabSystemSystemTimeZone": "System-Zeitzone:",
   "SettingsTabSystemSystemTime": "Systemzeit:",
   "SettingsTabSystemEnableVsync": "VSync",
   "SettingsTabSystemEnablePptc": "PPTC (Profiled Persistent Translation Cache)",
-=======
-  "SettingsTabSystemSystemTimeZone": "System Zeitzone:",
-  "SettingsTabSystemSystemTime": "System Zeit:",
-  "SettingsTabSystemEnableVsync": "VSync",
-  "SettingsTabSystemEnablePptc": "PPTC Cache (Profiled Persistent Translation Cache)",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabSystemEnableFsIntegrityChecks": "FS Integritätsprüfung",
   "SettingsTabSystemAudioBackend": "Audio-Backend:",
   "SettingsTabSystemAudioBackendDummy": "Ohne Funktion",
@@ -186,11 +138,7 @@
   "SettingsTabSystemIgnoreMissingServices": "Ignoriere fehlende Dienste",
   "SettingsTabGraphics": "Grafik",
   "SettingsTabGraphicsAPI": "Grafik-API",
-<<<<<<< HEAD
   "SettingsTabGraphicsEnableShaderCache": "Shader-Cache aktivieren",
-=======
-  "SettingsTabGraphicsEnableShaderCache": "Shader Cache",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabGraphicsAnisotropicFiltering": "Anisotrope Filterung:",
   "SettingsTabGraphicsAnisotropicFilteringAuto": "Auto",
   "SettingsTabGraphicsAnisotropicFiltering2x": "2x",
@@ -209,21 +157,12 @@
   "SettingsTabGraphicsAspectRatio16x10": "16:10",
   "SettingsTabGraphicsAspectRatio21x9": "21:9",
   "SettingsTabGraphicsAspectRatio32x9": "32:9",
-<<<<<<< HEAD
   "SettingsTabGraphicsAspectRatioStretch": "An Fenster anpassen",
   "SettingsTabGraphicsDeveloperOptions": "Optionen für Entwickler",
   "SettingsTabGraphicsShaderDumpPath": "Grafik-Shader-Dump-Pfad:",
   "SettingsTabLogging": "Logs",
   "SettingsTabLoggingLogging": "Logs",
   "SettingsTabLoggingEnableLoggingToFile": "Protokollierung in Datei aktivieren",
-=======
-  "SettingsTabGraphicsAspectRatioStretch": "Dehnen, um sich an das Fenster anzupassen",
-  "SettingsTabGraphicsDeveloperOptions": "Optionen für Entwickler",
-  "SettingsTabGraphicsShaderDumpPath": "Grafik-Shader Dump Pfad:",
-  "SettingsTabLogging": "Logs",
-  "SettingsTabLoggingLogging": "Logs",
-  "SettingsTabLoggingEnableLoggingToFile": "Aktiviere Erstellung von Log-Datei",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabLoggingEnableStubLogs": "Aktiviere Stub-Logs",
   "SettingsTabLoggingEnableInfoLogs": "Aktiviere Info-Logs",
   "SettingsTabLoggingEnableWarningLogs": "Aktiviere Warn-Logs",
@@ -232,25 +171,16 @@
   "SettingsTabLoggingEnableGuestLogs": "Aktiviere Gast-Logs",
   "SettingsTabLoggingEnableFsAccessLogs": "Aktiviere Fs Zugriff-Logs",
   "SettingsTabLoggingFsGlobalAccessLogMode": "Fs Globaler Zugriff-Log-Modus:",
-<<<<<<< HEAD
   "SettingsTabLoggingDeveloperOptions": "Entwickleroptionen",
   "SettingsTabLoggingDeveloperOptionsNote": "ACHTUNG: Wird die Leistung reduzieren",
   "SettingsTabLoggingGraphicsBackendLogLevel": "Protokollstufe des Grafik-Backends:",
-=======
-  "SettingsTabLoggingDeveloperOptions": "Entwickleroptionen (WARNUNG: Beeinträchtigt die Leistung)",
-  "SettingsTabLoggingGraphicsBackendLogLevel": "Graphics Backend Log Level:",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabLoggingGraphicsBackendLogLevelNone": "Keine",
   "SettingsTabLoggingGraphicsBackendLogLevelError": "Fehler",
   "SettingsTabLoggingGraphicsBackendLogLevelPerformance": "Verlangsamungen",
   "SettingsTabLoggingGraphicsBackendLogLevelAll": "Alle",
   "SettingsTabLoggingEnableDebugLogs": "Aktiviere Debug-Log",
   "SettingsTabInput": "Eingabe",
-<<<<<<< HEAD
   "SettingsTabInputEnableDockedMode": "Angedockter Modus",
-=======
-  "SettingsTabInputEnableDockedMode": "Docked Modus",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabInputDirectKeyboardAccess": "Direkter Tastaturzugriff",
   "SettingsButtonSave": "Speichern",
   "SettingsButtonClose": "Schließen",
@@ -270,21 +200,12 @@
   "ControllerSettingsInputDevice": "Eingabegerät",
   "ControllerSettingsRefresh": "Aktualisieren",
   "ControllerSettingsDeviceDisabled": "Deaktiviert",
-<<<<<<< HEAD
   "ControllerSettingsControllerType": "Controller-Typ",
   "ControllerSettingsControllerTypeHandheld": "Handheld",
   "ControllerSettingsControllerTypeProController": "Pro Controller",
   "ControllerSettingsControllerTypeJoyConPair": "Joy-Con-Paar",
   "ControllerSettingsControllerTypeJoyConLeft": "Linker Joy-Con",
   "ControllerSettingsControllerTypeJoyConRight": "Rechter Joy-Con",
-=======
-  "ControllerSettingsControllerType": "Controller Typ",
-  "ControllerSettingsControllerTypeHandheld": "Handheld",
-  "ControllerSettingsControllerTypeProController": "Pro Controller",
-  "ControllerSettingsControllerTypeJoyConPair": "Joy-Con Paar",
-  "ControllerSettingsControllerTypeJoyConLeft": "Joy-Con Links",
-  "ControllerSettingsControllerTypeJoyConRight": "Joy-Con Rechts",
->>>>>>> 1ec71635b (sync with main branch)
   "ControllerSettingsProfile": "Profil",
   "ControllerSettingsProfileDefault": "Standard",
   "ControllerSettingsLoad": "Laden",
@@ -302,7 +223,6 @@
   "ControllerSettingsDPadDown": "Runter",
   "ControllerSettingsDPadLeft": "Links",
   "ControllerSettingsDPadRight": "Rechts",
-<<<<<<< HEAD
   "ControllerSettingsStickButton": "Button",
   "ControllerSettingsStickUp": "Hoch",
   "ControllerSettingsStickDown": "Runter",
@@ -314,28 +234,6 @@
   "ControllerSettingsStickDeadzone": "Deadzone:",
   "ControllerSettingsLStick": "Linker Analogstick",
   "ControllerSettingsRStick": "Rechter Analogstick",
-=======
-  "ControllerSettingsLStick": "Linker Analogstick",
-  "ControllerSettingsLStickButton": "L3",
-  "ControllerSettingsLStickUp": "Hoch",
-  "ControllerSettingsLStickDown": "Runter",
-  "ControllerSettingsLStickLeft": "Links",
-  "ControllerSettingsLStickRight": "Rechts",
-  "ControllerSettingsLStickStick": "Analogstick",
-  "ControllerSettingsLStickInvertXAxis": "X-Achse invertieren",
-  "ControllerSettingsLStickInvertYAxis": "Y-Achse invertieren",
-  "ControllerSettingsLStickDeadzone": "Deadzone:",
-  "ControllerSettingsRStick": "Rechter Analogstick",
-  "ControllerSettingsRStickButton": "R3",
-  "ControllerSettingsRStickUp": "Hoch",
-  "ControllerSettingsRStickDown": "Runter",
-  "ControllerSettingsRStickLeft": "Links",
-  "ControllerSettingsRStickRight": "Rechts",
-  "ControllerSettingsRStickStick": "Analogstick",
-  "ControllerSettingsRStickInvertXAxis": "X-Achse invertieren",
-  "ControllerSettingsRStickInvertYAxis": "Y-Achse invertieren",
-  "ControllerSettingsRStickDeadzone": "Deadzone:",
->>>>>>> 1ec71635b (sync with main branch)
   "ControllerSettingsTriggersLeft": "Linker Trigger",
   "ControllerSettingsTriggersRight": "Rechter Trigger",
   "ControllerSettingsTriggersButtonsLeft": "Linke Schultertaste",
@@ -355,21 +253,12 @@
   "ControllerSettingsTriggerThreshold": "Empfindlichkeit:",
   "ControllerSettingsMotion": "Bewegung",
   "ControllerSettingsMotionUseCemuhookCompatibleMotion": "CemuHook kompatible Bewegungssteuerung",
-<<<<<<< HEAD
   "ControllerSettingsMotionControllerSlot": "Controller-Slot:",
   "ControllerSettingsMotionMirrorInput": "Eingabe spiegeln",
   "ControllerSettingsMotionRightJoyConSlot": "Rechter Joy-Con-Slot:",
   "ControllerSettingsMotionServerHost": "Server Host:",
   "ControllerSettingsMotionGyroSensitivity": "Gyro-Empfindlichkeit:",
   "ControllerSettingsMotionGyroDeadzone": "Gyro-Deadzone:",
-=======
-  "ControllerSettingsMotionControllerSlot": "Kontroller Slot:",
-  "ControllerSettingsMotionMirrorInput": "Spiegele Eingabe",
-  "ControllerSettingsMotionRightJoyConSlot": "Rechter Joy-Con Slot:",
-  "ControllerSettingsMotionServerHost": "Server Host:",
-  "ControllerSettingsMotionGyroSensitivity": "Gyro Empfindlichkeit:",
-  "ControllerSettingsMotionGyroDeadzone": "Gyro Deadzone:",
->>>>>>> 1ec71635b (sync with main branch)
   "ControllerSettingsSave": "Speichern",
   "ControllerSettingsClose": "Schließen",
   "UserProfilesSelectedUserProfile": "Ausgewähltes Profil:",
@@ -379,44 +268,28 @@
   "UserProfilesAddNewProfile": "Neues Profil",
   "UserProfilesDelete": "Löschen",
   "UserProfilesClose": "Schließen",
-<<<<<<< HEAD
   "ProfileNameSelectionWatermark": "Wähle einen Spitznamen",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "ProfileImageSelectionTitle": "Auswahl des Profilbildes",
   "ProfileImageSelectionHeader": "Wähle ein Profilbild aus",
   "ProfileImageSelectionNote": "Es kann ein eigenes Profilbild importiert werden oder ein Avatar aus der System-Firmware",
   "ProfileImageSelectionImportImage": "Bilddatei importieren",
-<<<<<<< HEAD
   "ProfileImageSelectionSelectAvatar": "Firmware-Avatar auswählen",
   "InputDialogTitle": "Eingabe-Dialog",
-=======
-  "ProfileImageSelectionSelectAvatar": "Firmware Avatar auswählen",
-  "InputDialogTitle": "Eingabe Dialog",
->>>>>>> 1ec71635b (sync with main branch)
   "InputDialogOk": "OK",
   "InputDialogCancel": "Abbrechen",
   "InputDialogAddNewProfileTitle": "Wähle den Profilnamen",
   "InputDialogAddNewProfileHeader": "Bitte gebe einen Profilnamen ein",
   "InputDialogAddNewProfileSubtext": "(Maximale Länge: {0})",
   "AvatarChoose": "Bestätigen",
-<<<<<<< HEAD
   "AvatarSetBackgroundColor": "Hintergrundfarbe auswählen",
-=======
-  "AvatarSetBackgroundColor": "Hintergrundfarbe einstellen",
->>>>>>> 1ec71635b (sync with main branch)
   "AvatarClose": "Schließen",
   "ControllerSettingsLoadProfileToolTip": "Lädt ein Profil",
   "ControllerSettingsAddProfileToolTip": "Fügt ein Profil hinzu",
   "ControllerSettingsRemoveProfileToolTip": "Entfernt ein Profil",
   "ControllerSettingsSaveProfileToolTip": "Speichert ein Profil",
   "MenuBarFileToolsTakeScreenshot": "Screenshot aufnehmen",
-<<<<<<< HEAD
   "MenuBarFileToolsHideUi": "Oberfläche ausblenden",
   "GameListContextMenuRunApplication": "Anwendung ausführen",
-=======
-  "MenuBarFileToolsHideUi": "Hide UI",
->>>>>>> 1ec71635b (sync with main branch)
   "GameListContextMenuToggleFavorite": "Als Favoriten hinzufügen/entfernen",
   "GameListContextMenuToggleFavoriteToolTip": "Aktiviert den Favoriten-Status des Spiels",
   "SettingsTabGeneralTheme": "Design",
@@ -431,11 +304,7 @@
   "ControllerSettingsRumbleStrongMultiplier": "Starker Vibrations-Multiplikator",
   "ControllerSettingsRumbleWeakMultiplier": "Schwacher Vibrations-Multiplikator",
   "DialogMessageSaveNotAvailableMessage": "Es existieren keine Speicherdaten für {0} [{1:x16}]",
-<<<<<<< HEAD
   "DialogMessageSaveNotAvailableCreateSaveMessage": "Sollen Speicherdaten für dieses Spiel erstellt werden?",
-=======
-  "DialogMessageSaveNotAvailableCreateSaveMessage": "Soll Ryujinx Speicherdaten für dieses Spiel erstellen?",
->>>>>>> 1ec71635b (sync with main branch)
   "DialogConfirmationTitle": "Ryujinx - Bestätigung",
   "DialogUpdaterTitle": "Ryujinx - Updater",
   "DialogErrorTitle": "Ryujinx - Fehler",
@@ -445,43 +314,26 @@
   "DialogExitMessage": "Ryujinx wirklich schließen?",
   "DialogExitSubMessage": "Alle nicht gespeicherten Daten gehen verloren!",
   "DialogMessageCreateSaveErrorMessage": "Es ist ein Fehler bei der Erstellung der angegebenen Speicherdaten aufgetreten: {0}",
-<<<<<<< HEAD
   "DialogMessageFindSaveErrorMessage": "Es ist ein Fehler beim Suchen der angegebenen Speicherdaten aufgetreten: {0}",
-=======
-  "DialogMessageFindSaveErrorMessage": "Es ist ein Fehler beim Auffinden der angegebenen Speicherdaten aufgetreten: {0}",
->>>>>>> 1ec71635b (sync with main branch)
   "FolderDialogExtractTitle": "Wähle den Ordner, in welchen die Dateien entpackt werden sollen",
   "DialogNcaExtractionMessage": "Extrahiert {0} abschnitt von {1}...",
   "DialogNcaExtractionTitle": "Ryujinx - NCA-Abschnitt-Extraktor",
   "DialogNcaExtractionMainNcaNotFoundErrorMessage": "Extraktion fehlgeschlagen. Der Hauptheader der NCA war in der ausgewählten Datei nicht vorhanden.",
   "DialogNcaExtractionCheckLogErrorMessage": "Extraktion fehlgeschlagen. Überprüfe die Logs für weitere Informationen.",
   "DialogNcaExtractionSuccessMessage": "Extraktion erfolgreich abgeschlossen.",
-<<<<<<< HEAD
   "DialogUpdaterConvertFailedMessage": "Die Konvertierung der aktuellen Ryujinx-Version ist fehlgeschlagen.",
   "DialogUpdaterCancelUpdateMessage": "Download wird abgebrochen!",
   "DialogUpdaterAlreadyOnLatestVersionMessage": "Es wird bereits die aktuellste Version von Ryujinx benutzt",
   "DialogUpdaterFailedToGetVersionMessage": "Beim Versuch, Veröffentlichungs-Info von GitHub Release zu erhalten, ist ein Fehler aufgetreten. Dies kann aufgrund einer neuen Veröffentlichung, die gerade von GitHub Actions kompiliert wird, verursacht werden.",
   "DialogUpdaterConvertFailedGithubMessage": "Fehler beim Konvertieren der erhaltenen Ryujinx-Version von GitHub Release.",
   "DialogUpdaterDownloadingMessage": "Update wird heruntergeladen...",
-=======
-  "DialogUpdaterConvertFailedMessage": "Die Konvertierung der aktuellen Ryujinx Version ist fehlgeschlagen.",
-  "DialogUpdaterCancelUpdateMessage": "Download wird abgebrochen!",
-  "DialogUpdaterAlreadyOnLatestVersionMessage": "Es wird bereits die aktuellste Version von Ryujinx benutzt",
-  "DialogUpdaterFailedToGetVersionMessage": "An error has occurred when trying to get release information from GitHub Release. This can be caused if a new release is being compiled by GitHub Actions. Try again in a few minutes.",
-  "DialogUpdaterConvertFailedGithubMessage": "Failed to convert the received Ryujinx version from Github Release.",
-  "DialogUpdaterDownloadingMessage": "Update wird Heruntergeladen...",
->>>>>>> 1ec71635b (sync with main branch)
   "DialogUpdaterExtractionMessage": "Update wird entpackt...",
   "DialogUpdaterRenamingMessage": "Update wird umbenannt...",
   "DialogUpdaterAddingFilesMessage": "Update wird hinzugefügt...",
   "DialogUpdaterCompleteMessage": "Update abgeschlossen!",
   "DialogUpdaterRestartMessage": "Ryujinx jetzt neu starten?",
   "DialogUpdaterArchNotSupportedMessage": "Eine nicht unterstützte Systemarchitektur wird benutzt!",
-<<<<<<< HEAD
   "DialogUpdaterArchNotSupportedSubMessage": "Nur 64-Bit-Systeme werden unterstützt!",
-=======
-  "DialogUpdaterArchNotSupportedSubMessage": "Nur x64 Systeme werden unterstützt!",
->>>>>>> 1ec71635b (sync with main branch)
   "DialogUpdaterNoInternetMessage": "Es besteht keine Verbindung mit dem Internet!",
   "DialogUpdaterNoInternetSubMessage": "Bitte vergewissern, dass eine funktionierende Internetverbindung existiert!",
   "DialogUpdaterDirtyBuildMessage": "Inoffizielle Versionen von Ryujinx können nicht aktualisiert werden",
@@ -493,13 +345,10 @@
   "DialogFirmwareInstallEmbeddedSuccessMessage": "Es wurde keine installierte Firmware gefunden, aber Ryujinx konnte die Firmware {0} aus dem bereitgestellten Spiel installieren.\nRyujinx wird nun gestartet.",
   "DialogFirmwareNoFirmwareInstalledMessage": "Keine Firmware installiert",
   "DialogFirmwareInstalledMessage": "Firmware {0} wurde installiert",
-<<<<<<< HEAD
   "DialogInstallFileTypesSuccessMessage": "Dateitypen erfolgreich installiert!",
   "DialogInstallFileTypesErrorMessage": "Dateitypen konnten nicht installiert werden.",
   "DialogUninstallFileTypesSuccessMessage": "Dateitypen erfolgreich deinstalliert!",
   "DialogUninstallFileTypesErrorMessage": "Deinstallation der Dateitypen fehlgeschlagen.",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DialogOpenSettingsWindowLabel": "Fenster-Einstellungen öffnen",
   "DialogControllerAppletTitle": "Controller-Applet",
   "DialogMessageDialogErrorExceptionMessage": "Fehler bei der Anzeige des Meldungs-Dialogs: {0}",
@@ -508,11 +357,7 @@
   "DialogUserErrorDialogMessage": "{0}: {1}",
   "DialogUserErrorDialogInfoMessage": "\nWeitere Informationen zur Behebung dieses Fehlers können in unserem Setup-Guide gefunden werden.",
   "DialogUserErrorDialogTitle": "Ryujinx Fehler ({0})",
-<<<<<<< HEAD
   "DialogAmiiboApiTitle": "Amiibo-API",
-=======
-  "DialogAmiiboApiTitle": "Amiibo API",
->>>>>>> 1ec71635b (sync with main branch)
   "DialogAmiiboApiFailFetchMessage": "Beim Abrufen von Informationen aus der API ist ein Fehler aufgetreten.",
   "DialogAmiiboApiConnectErrorMessage": "Verbindung zum Amiibo API Server kann nicht hergestellt werden. Der Dienst ist möglicherweise nicht verfügbar oder es existiert keine Internetverbindung.",
   "DialogProfileInvalidProfileErrorMessage": "Das Profil {0} ist mit dem aktuellen Eingabekonfigurationssystem nicht kompatibel.",
@@ -535,12 +380,9 @@
   "DialogFirmwareInstallerFirmwareInstallSuccessMessage": "Systemversion {0} wurde erfolgreich installiert.",
   "DialogUserProfileDeletionWarningMessage": "Es können keine anderen Profile geöffnet werden, wenn das ausgewählte Profil gelöscht wird.",
   "DialogUserProfileDeletionConfirmMessage": "Möchtest du das ausgewählte Profil löschen?",
-<<<<<<< HEAD
   "DialogUserProfileUnsavedChangesTitle": "Warnung - Nicht gespeicherte Änderungen",
   "DialogUserProfileUnsavedChangesMessage": "Sie haben Änderungen an diesem Nutzerprofil vorgenommen, die nicht gespeichert wurden.",
   "DialogUserProfileUnsavedChangesSubMessage": "Möchten Sie Ihre Änderungen wirklich verwerfen?",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DialogControllerSettingsModifiedConfirmMessage": "Die aktuellen Controller-Einstellungen wurden aktualisiert.",
   "DialogControllerSettingsModifiedConfirmSubMessage": "Controller-Einstellungen speichern?",
   "DialogLoadNcaErrorMessage": "{0}. Fehlerhafte Datei: {1}",
@@ -589,10 +431,7 @@
   "DlcManagerEnableAllButton": "Alle aktivieren",
   "DlcManagerDisableAllButton": "Alle deaktivieren",
   "MenuBarOptionsChangeLanguage": "Sprache ändern",
-<<<<<<< HEAD
   "MenuBarShowFileTypes": "Dateitypen anzeigen",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "CommonSort": "Sortieren",
   "CommonShowNames": "Spiel-Namen anzeigen",
   "CommonFavorite": "Favoriten",
@@ -622,10 +461,7 @@
   "MemoryManagerSoftwareTooltip": "Verwendung einer Software-Seitentabelle für die Adressumsetzung. Höchste Genauigkeit, aber langsamste Leistung.",
   "MemoryManagerHostTooltip": "Direkte Zuordnung von Speicher im Host-Adressraum. Viel schnellere JIT-Kompilierung und Ausführung.",
   "MemoryManagerUnsafeTooltip": "Direkte Zuordnung des Speichers, aber keine Maskierung der Adresse innerhalb des Gastadressraums vor dem Zugriff. Schneller, aber auf Kosten der Sicherheit. Die Gastanwendung kann von überall in Ryujinx auf den Speicher zugreifen, daher sollte in diesem Modus nur Programme ausgeführt werden denen vertraut wird.",
-<<<<<<< HEAD
   "UseHypervisorTooltip": "Verwende Hypervisor anstelle von JIT. Verbessert die Leistung stark, falls vorhanden, kann jedoch in seinem aktuellen Zustand instabil sein.",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DRamTooltip": "Erhöht den Arbeitsspeicher des emulierten Systems von 4 GiB auf 6 GiB.\n\nDies ist nur für Texturenpakete mit höherer Auflösung oder Mods mit 4K-Auflösung nützlich. Diese Option verbessert NICHT die Leistung.\n\nIm Zweifelsfall AUS lassen.",
   "IgnoreMissingServicesTooltip": "Durch diese Option werden nicht implementierte Dienste der Switch-Firmware ignoriert. Dies kann dabei helfen, Abstürze beim Starten bestimmter Spiele zu umgehen.\n\nIm Zweifelsfall AUS lassen.",
   "GraphicsBackendThreadingTooltip": "Führt Grafik-Backend Befehle auf einem zweiten Thread aus.\n\nDies beschleunigt die Shader-Kompilierung, reduziert Stottern und verbessert die Leistung auf GPU-Treibern ohne eigene Multithreading-Unterstützung. Geringfügig bessere Leistung bei Treibern mit Multithreading.\n\nIm Zweifelsfall auf AUTO stellen.",
@@ -708,12 +544,9 @@
   "SwkbdMinCharacters": "Muss mindestens {0} Zeichen lang sein",
   "SwkbdMinRangeCharacters": "Muss {0}-{1} Zeichen lang sein",
   "SoftwareKeyboard": "Software-Tastatur",
-<<<<<<< HEAD
   "SoftwareKeyboardModeNumbersOnly": "Nur Zahlen",
   "SoftwareKeyboardModeAlphabet": "Keine CJK-Zeichen",
   "SoftwareKeyboardModeASCII": "Nur ASCII-Text",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DialogControllerAppletMessagePlayerRange": "Die Anwendung benötigt {0} Spieler mit:\n\nTYPEN: {1}\n\nSPIELER: {2}\n\n{3}Bitte öffne die Einstellungen und rekonfiguriere die Controller Einstellungen oder drücke auf schließen.",
   "DialogControllerAppletMessage": "Die Anwendung benötigt genau {0} Speieler mit:\n\nTYPEN: {1}\n\nSPIELER: {2}\n\n{3}Bitte öffne die Einstellungen und rekonfiguriere die Controller Einstellungen oder drücke auf schließen.",
   "DialogControllerAppletDockModeSet": "Der 'Docked Modus' ist ausgewählt. Handheld ist ebenfalls ungültig.\n\n",
@@ -759,10 +592,7 @@
   "DlcWindowTitle": "Spiel-DLC verwalten",
   "UpdateWindowTitle": "Spiel-Updates verwalten",
   "CheatWindowHeading": "Cheats verfügbar für {0} [{1}]",
-<<<<<<< HEAD
   "BuildId": "BuildId:",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DlcWindowHeading": "DLC verfügbar für {0} [{1}]",
   "UserProfilesEditProfile": "Profil bearbeiten",
   "Cancel": "Abbrechen",
@@ -789,13 +619,9 @@
   "SettingsTabHotkeysVolumeUpHotkey": "Lautstärke erhöhen:",
   "SettingsTabHotkeysVolumeDownHotkey": "Lautstärke verringern:",
   "SettingsEnableMacroHLE": "HLE Makros aktivieren",
-<<<<<<< HEAD
   "SettingsEnableMacroHLETooltip": "High-Level-Emulation von GPU-Makrocode.\n\nVerbessert die Leistung, kann aber in einigen Spielen zu Grafikfehlern führen.\n\nBei Unsicherheit AKTIVIEREN.",
   "SettingsEnableColorSpacePassthrough": "Farbraum Passthrough",
   "SettingsEnableColorSpacePassthroughTooltip": "Weist das Vulkan-Backend an, Farbinformationen ohne Angabe eines Farbraums weiterzuleiten. Für Benutzer mit Wide-Gamut-Displays kann dies zu lebendigeren Farben führen, allerdings auf Kosten der Farbkorrektheit.",
-=======
-  "SettingsEnableMacroHLETooltip": "High-level emulation of GPU Macro code.\n\nImproves performance, but may cause graphical glitches in some games.\n\nLeave ON if unsure.",
->>>>>>> 1ec71635b (sync with main branch)
   "VolumeShort": "Vol",
   "UserProfilesManageSaves": "Speicherstände verwalten",
   "DeleteUserSave": "Möchtest du den Spielerstand für dieses Spiel löschen?",
@@ -807,7 +633,6 @@
   "Search": "Suche",
   "UserProfilesRecoverLostAccounts": "Konto wiederherstellen",
   "Recover": "Wiederherstellen",
-<<<<<<< HEAD
   "UserProfilesRecoverHeading": "Speicherstände wurden für die folgenden Konten gefunden",
   "UserProfilesRecoverEmptyList": "Keine Profile zum Wiederherstellen",
   "GraphicsAATooltip": "Wendet Anti-Aliasing auf das Spiel-Rendering an",
@@ -829,7 +654,3 @@
   "AboutChangelogButton": "Changelog in GitHub öffnen",
   "AboutChangelogButtonTooltipMessage": "Klicke hier, um das Changelog für diese Version in Ihrem Standardbrowser zu öffnen."
 }
-=======
-  "UserProfilesRecoverHeading": "Speicherstände wurden für die folgenden Konten gefunden"
-}
->>>>>>> 1ec71635b (sync with main branch)

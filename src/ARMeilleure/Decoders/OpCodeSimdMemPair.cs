@@ -13,8 +13,4 @@ namespace ARMeilleure.Decoders
             DecodeImm(opCode);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

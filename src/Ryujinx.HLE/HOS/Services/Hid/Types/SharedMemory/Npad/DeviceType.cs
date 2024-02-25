@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
 {
     [Flags]
-<<<<<<< HEAD
     enum DeviceType
-=======
-    enum DeviceType : int
->>>>>>> 1ec71635b (sync with main branch)
     {
         None = 0,
 
@@ -32,10 +24,6 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
         HandheldLarkNesRight = 1 << 14,
         Lucia = 1 << 15,
 
-<<<<<<< HEAD
         System = 1 << 31,
-=======
-        System = 1 << 31
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -1,8 +1,4 @@
 using OpenTK.Graphics.OpenGL;
-<<<<<<< HEAD
-=======
-using Ryujinx.Graphics.GAL;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -84,12 +80,6 @@ void main()
 
         public void CopyIncompatibleFormats(ITextureInfo src, ITextureInfo dst, int srcLayer, int dstLayer, int srcLevel, int dstLevel, int depth, int levels)
         {
-<<<<<<< HEAD
-=======
-            TextureCreateInfo srcInfo = src.Info;
-            TextureCreateInfo dstInfo = dst.Info;
-
->>>>>>> 1ec71635b (sync with main branch)
             int srcBpp = src.Info.BytesPerPixel;
             int dstBpp = dst.Info.BytesPerPixel;
 
@@ -143,11 +133,7 @@ void main()
                     1 => SizedInternalFormat.R8ui,
                     2 => SizedInternalFormat.Rg8ui,
                     4 => SizedInternalFormat.Rgba8ui,
-<<<<<<< HEAD
                     _ => throw new ArgumentException($"Invalid components count {componentsCount}."),
-=======
-                    _ => throw new ArgumentException($"Invalid components count {componentsCount}.")
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
             else if (componentSize == 2)
@@ -157,11 +143,7 @@ void main()
                     1 => SizedInternalFormat.R16ui,
                     2 => SizedInternalFormat.Rg16ui,
                     4 => SizedInternalFormat.Rgba16ui,
-<<<<<<< HEAD
                     _ => throw new ArgumentException($"Invalid components count {componentsCount}."),
-=======
-                    _ => throw new ArgumentException($"Invalid components count {componentsCount}.")
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
             else if (componentSize == 4)
@@ -171,11 +153,7 @@ void main()
                     1 => SizedInternalFormat.R32ui,
                     2 => SizedInternalFormat.Rg32ui,
                     4 => SizedInternalFormat.Rgba32ui,
-<<<<<<< HEAD
                     _ => throw new ArgumentException($"Invalid components count {componentsCount}."),
-=======
-                    _ => throw new ArgumentException($"Invalid components count {componentsCount}.")
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
             else
@@ -194,11 +172,7 @@ void main()
             return GetShader(ComputeShaderWidening, _wideningProgramHandles, componentSize, srcComponentsCount, dstComponentsCount);
         }
 
-<<<<<<< HEAD
         private static int GetShader(
-=======
-        private int GetShader(
->>>>>>> 1ec71635b (sync with main branch)
             string code,
             Dictionary<int, int> programHandles,
             int componentSize,

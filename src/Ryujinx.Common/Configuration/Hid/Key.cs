@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
-=======
-﻿using Ryujinx.Common.Utilities;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Text.Json.Serialization;
 
 namespace Ryujinx.Common.Configuration.Hid
@@ -142,12 +138,6 @@ namespace Ryujinx.Common.Configuration.Hid
         BackSlash,
         Unbound,
 
-<<<<<<< HEAD
         Count,
     }
 }
-=======
-        Count
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

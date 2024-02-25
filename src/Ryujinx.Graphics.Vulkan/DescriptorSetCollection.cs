@@ -8,11 +8,7 @@ namespace Ryujinx.Graphics.Vulkan
     {
         private DescriptorSetManager.DescriptorPoolHolder _holder;
         private readonly DescriptorSet[] _descriptorSets;
-<<<<<<< HEAD
         public readonly int SetsCount => _descriptorSets.Length;
-=======
-        public int SetsCount => _descriptorSets.Length;
->>>>>>> 1ec71635b (sync with main branch)
 
         public DescriptorSetCollection(DescriptorSetManager.DescriptorPoolHolder holder, DescriptorSet[] descriptorSets)
         {
@@ -20,7 +16,6 @@ namespace Ryujinx.Graphics.Vulkan
             _descriptorSets = descriptorSets;
         }
 
-<<<<<<< HEAD
         public void InitializeBuffers(int setIndex, int baseBinding, int count, DescriptorType type, VkBuffer dummyBuffer)
         {
             Span<DescriptorBufferInfo> infos = stackalloc DescriptorBufferInfo[count];
@@ -29,16 +24,6 @@ namespace Ryujinx.Graphics.Vulkan
             {
                 Buffer = dummyBuffer,
                 Range = Vk.WholeSize,
-=======
-        public void InitializeBuffers(int setIndex, int baseBinding, int countPerUnit, DescriptorType type, VkBuffer dummyBuffer)
-        {
-            Span<DescriptorBufferInfo> infos = stackalloc DescriptorBufferInfo[countPerUnit];
-
-            infos.Fill(new DescriptorBufferInfo()
-            {
-                Buffer = dummyBuffer,
-                Range = Vk.WholeSize
->>>>>>> 1ec71635b (sync with main branch)
             });
 
             UpdateBuffers(setIndex, baseBinding, infos, type);
@@ -55,11 +40,7 @@ namespace Ryujinx.Graphics.Vulkan
                     DstBinding = (uint)bindingIndex,
                     DescriptorType = type,
                     DescriptorCount = 1,
-<<<<<<< HEAD
                     PBufferInfo = &bufferInfo,
-=======
-                    PBufferInfo = &bufferInfo
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 _holder.Api.UpdateDescriptorSets(_holder.Device, 1, writeDescriptorSet, 0, null);
@@ -82,35 +63,7 @@ namespace Ryujinx.Graphics.Vulkan
                     DstBinding = (uint)baseBinding,
                     DescriptorType = type,
                     DescriptorCount = (uint)bufferInfo.Length,
-<<<<<<< HEAD
                     PBufferInfo = pBufferInfo,
-=======
-                    PBufferInfo = pBufferInfo
-                };
-
-                _holder.Api.UpdateDescriptorSets(_holder.Device, 1, writeDescriptorSet, 0, null);
-            }
-        }
-
-        public unsafe void UpdateStorageBuffers(int setIndex, int baseBinding, ReadOnlySpan<DescriptorBufferInfo> bufferInfo)
-        {
-            if (bufferInfo.Length == 0)
-            {
-                return;
-            }
-
-            fixed (DescriptorBufferInfo* pBufferInfo = bufferInfo)
-            {
-                var writeDescriptorSet = new WriteDescriptorSet
-                {
-                    SType = StructureType.WriteDescriptorSet,
-                    DstSet = _descriptorSets[setIndex],
-                    DstBinding = (uint)(baseBinding & ~(Constants.MaxStorageBuffersPerStage - 1)),
-                    DstArrayElement = (uint)(baseBinding & (Constants.MaxStorageBuffersPerStage - 1)),
-                    DescriptorType = DescriptorType.StorageBuffer,
-                    DescriptorCount = (uint)bufferInfo.Length,
-                    PBufferInfo = pBufferInfo
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 _holder.Api.UpdateDescriptorSets(_holder.Device, 1, writeDescriptorSet, 0, null);
@@ -128,11 +81,7 @@ namespace Ryujinx.Graphics.Vulkan
                     DstBinding = (uint)bindingIndex,
                     DescriptorType = type,
                     DescriptorCount = 1,
-<<<<<<< HEAD
                     PImageInfo = &imageInfo,
-=======
-                    PImageInfo = &imageInfo
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 _holder.Api.UpdateDescriptorSets(_holder.Device, 1, writeDescriptorSet, 0, null);
@@ -155,11 +104,7 @@ namespace Ryujinx.Graphics.Vulkan
                     DstBinding = (uint)baseBinding,
                     DescriptorType = type,
                     DescriptorCount = (uint)imageInfo.Length,
-<<<<<<< HEAD
                     PImageInfo = pImageInfo,
-=======
-                    PImageInfo = pImageInfo
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 _holder.Api.UpdateDescriptorSets(_holder.Device, 1, writeDescriptorSet, 0, null);
@@ -196,11 +141,7 @@ namespace Ryujinx.Graphics.Vulkan
                             DstBinding = (uint)(baseBinding + i),
                             DescriptorType = DescriptorType.CombinedImageSampler,
                             DescriptorCount = (uint)count,
-<<<<<<< HEAD
                             PImageInfo = pImageInfo,
-=======
-                            PImageInfo = pImageInfo
->>>>>>> 1ec71635b (sync with main branch)
                         };
 
                         _holder.Api.UpdateDescriptorSets(_holder.Device, 1, writeDescriptorSet, 0, null);
@@ -222,11 +163,7 @@ namespace Ryujinx.Graphics.Vulkan
                     DstBinding = (uint)bindingIndex,
                     DescriptorType = type,
                     DescriptorCount = 1,
-<<<<<<< HEAD
                     PTexelBufferView = &texelBufferView,
-=======
-                    PTexelBufferView = &texelBufferView
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 _holder.Api.UpdateDescriptorSets(_holder.Device, 1, writeDescriptorSet, 0, null);
@@ -260,11 +197,7 @@ namespace Ryujinx.Graphics.Vulkan
                             DstBinding = (uint)baseBinding + i,
                             DescriptorType = type,
                             DescriptorCount = count,
-<<<<<<< HEAD
                             PTexelBufferView = pTexelBufferView + i,
-=======
-                            PTexelBufferView = pTexelBufferView + i
->>>>>>> 1ec71635b (sync with main branch)
                         };
 
                         _holder.Api.UpdateDescriptorSets(_holder.Device, 1, writeDescriptorSet, 0, null);
@@ -275,11 +208,7 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
-<<<<<<< HEAD
         public readonly DescriptorSet[] GetSets()
-=======
-        public DescriptorSet[] GetSets()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return _descriptorSets;
         }

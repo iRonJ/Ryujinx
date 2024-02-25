@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Silk.NET.Vulkan;
 using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Linq;
 using Format = Ryujinx.Graphics.GAL.Format;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using VkBuffer = Silk.NET.Vulkan.Buffer;
 using VkFormat = Silk.NET.Vulkan.Format;
 
@@ -24,7 +17,6 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly Device _device;
 
         private readonly Auto<DisposableImageView> _imageView;
-<<<<<<< HEAD
         private readonly Auto<DisposableImageView> _imageViewDraw;
         private readonly Auto<DisposableImageView> _imageViewIdentity;
         private readonly Auto<DisposableImageView> _imageView2dArray;
@@ -33,13 +25,6 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly TextureCreateInfo _info;
 
         private HashTableSlim<RenderPassCacheKey, RenderPassHolder> _renderPasses;
-=======
-        private readonly Auto<DisposableImageView> _imageViewIdentity;
-        private readonly Auto<DisposableImageView> _imageView2dArray;
-        private Dictionary<GAL.Format, TextureView> _selfManagedViews;
-
-        private TextureCreateInfo _info;
->>>>>>> 1ec71635b (sync with main branch)
 
         public TextureCreateInfo Info => _info;
 
@@ -50,10 +35,6 @@ namespace Ryujinx.Graphics.Vulkan
         public int Layers => Info.GetDepthOrLayers();
         public int FirstLayer { get; }
         public int FirstLevel { get; }
-<<<<<<< HEAD
-=======
-        public float ScaleFactor => Storage.ScaleFactor;
->>>>>>> 1ec71635b (sync with main branch)
         public VkFormat VkFormat { get; }
         public bool Valid { get; private set; }
 
@@ -90,7 +71,6 @@ namespace Ryujinx.Graphics.Vulkan
             var swizzleB = info.SwizzleB.Convert();
             var swizzleA = info.SwizzleA.Convert();
 
-<<<<<<< HEAD
             if (info.Format == Format.R5G5B5A1Unorm ||
                 info.Format == Format.R5G5B5X1Unorm ||
                 info.Format == Format.R5G6B5Unorm)
@@ -98,18 +78,6 @@ namespace Ryujinx.Graphics.Vulkan
                 (swizzleB, swizzleR) = (swizzleR, swizzleB);
             }
             else if (VkFormat == VkFormat.R4G4B4A4UnormPack16 || info.Format == Format.A1B5G5R5Unorm)
-=======
-            if (info.Format == GAL.Format.R5G5B5A1Unorm ||
-                info.Format == GAL.Format.R5G5B5X1Unorm ||
-                info.Format == GAL.Format.R5G6B5Unorm)
-            {
-                var temp = swizzleR;
-
-                swizzleR = swizzleB;
-                swizzleB = temp;
-            }
-            else if (VkFormat == VkFormat.R4G4B4A4UnormPack16 || info.Format == GAL.Format.A1B5G5R5Unorm)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 var tempB = swizzleB;
                 var tempA = swizzleA;
@@ -130,7 +98,6 @@ namespace Ryujinx.Graphics.Vulkan
 
             unsafe Auto<DisposableImageView> CreateImageView(ComponentMapping cm, ImageSubresourceRange sr, ImageViewType viewType, ImageUsageFlags usageFlags)
             {
-<<<<<<< HEAD
                 var usage = new ImageViewUsageCreateInfo
                 {
                     SType = StructureType.ImageViewUsageCreateInfo,
@@ -138,15 +105,6 @@ namespace Ryujinx.Graphics.Vulkan
                 };
 
                 var imageCreateInfo = new ImageViewCreateInfo
-=======
-                var usage = new ImageViewUsageCreateInfo()
-                {
-                    SType = StructureType.ImageViewUsageCreateInfo,
-                    Usage = usageFlags
-                };
-
-                var imageCreateInfo = new ImageViewCreateInfo()
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     SType = StructureType.ImageViewCreateInfo,
                     Image = storage.GetImageForViewCreation(),
@@ -154,18 +112,13 @@ namespace Ryujinx.Graphics.Vulkan
                     Format = format,
                     Components = cm,
                     SubresourceRange = sr,
-<<<<<<< HEAD
                     PNext = &usage,
-=======
-                    PNext = &usage
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 gd.Api.CreateImageView(device, imageCreateInfo, null, out var imageView).ThrowOnError();
                 return new Auto<DisposableImageView>(new DisposableImageView(gd.Api, device, imageView), null, storage.GetImage());
             }
 
-<<<<<<< HEAD
             ImageUsageFlags shaderUsage = ImageUsageFlags.SampledBit;
 
             if (info.Format.IsImageCompatible())
@@ -174,9 +127,6 @@ namespace Ryujinx.Graphics.Vulkan
             }
 
             _imageView = CreateImageView(componentMapping, subresourceRange, type, shaderUsage);
-=======
-            _imageView = CreateImageView(componentMapping, subresourceRange, type, ImageUsageFlags.SampledBit);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Framebuffer attachments and storage images requires a identity component mapping.
             var identityComponentMapping = new ComponentMapping(
@@ -185,12 +135,8 @@ namespace Ryujinx.Graphics.Vulkan
                 ComponentSwizzle.B,
                 ComponentSwizzle.A);
 
-<<<<<<< HEAD
             _imageViewDraw = CreateImageView(identityComponentMapping, subresourceRangeDepth, type, usage);
             _imageViewIdentity = aspectFlagsDepth == aspectFlags ? _imageViewDraw : CreateImageView(identityComponentMapping, subresourceRange, type, usage);
-=======
-            _imageViewIdentity = CreateImageView(identityComponentMapping, subresourceRangeDepth, type, usage);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Framebuffer attachments also require 3D textures to be bound as 2D array.
             if (info.Target == Target.Texture3D)
@@ -215,7 +161,6 @@ namespace Ryujinx.Graphics.Vulkan
             Valid = true;
         }
 
-<<<<<<< HEAD
         /// <summary>
         /// Create a texture view for an existing swapchain image view.
         /// Does not set storage, so only appropriate for swapchain use.
@@ -236,8 +181,6 @@ namespace Ryujinx.Graphics.Vulkan
             Valid = true;
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public Auto<DisposableImage> GetImage()
         {
             return Storage.GetImage();
@@ -255,11 +198,7 @@ namespace Ryujinx.Graphics.Vulkan
 
         public Auto<DisposableImageView> GetImageViewForAttachment()
         {
-<<<<<<< HEAD
             return _imageView2dArray ?? _imageViewDraw;
-=======
-            return _imageView2dArray ?? _imageViewIdentity;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void CopyTo(ITexture destination, int firstLayer, int firstLevel)
@@ -295,7 +234,6 @@ namespace Ryujinx.Graphics.Vulkan
                 int levels = Math.Min(Info.Levels, dst.Info.Levels - firstLevel);
                 _gd.HelperShader.CopyIncompatibleFormats(_gd, cbs, src, dst, 0, firstLayer, 0, firstLevel, layers, levels);
             }
-<<<<<<< HEAD
             else if (src.Info.Format.IsDepthOrStencil() != dst.Info.Format.IsDepthOrStencil())
             {
                 int layers = Math.Min(Info.GetLayers(), dst.Info.GetLayers() - firstLayer);
@@ -303,8 +241,6 @@ namespace Ryujinx.Graphics.Vulkan
 
                 _gd.HelperShader.CopyColor(_gd, cbs, src, dst, 0, firstLayer, 0, FirstLevel, layers, levels);
             }
-=======
->>>>>>> 1ec71635b (sync with main branch)
             else
             {
                 TextureCopy.Copy(
@@ -354,13 +290,10 @@ namespace Ryujinx.Graphics.Vulkan
             {
                 _gd.HelperShader.CopyIncompatibleFormats(_gd, cbs, src, dst, srcLayer, dstLayer, srcLevel, dstLevel, 1, 1);
             }
-<<<<<<< HEAD
             else if (src.Info.Format.IsDepthOrStencil() != dst.Info.Format.IsDepthOrStencil())
             {
                 _gd.HelperShader.CopyColor(_gd, cbs, src, dst, srcLayer, dstLayer, srcLevel, dstLevel, 1, 1);
             }
-=======
->>>>>>> 1ec71635b (sync with main branch)
             else
             {
                 TextureCopy.Copy(
@@ -459,14 +392,9 @@ namespace Ryujinx.Graphics.Vulkan
 
                     return;
                 }
-<<<<<<< HEAD
 
                 if (_gd.FormatCapabilities.OptimalFormatSupports(FormatFeatureFlags.BlitSrcBit, srcFormat) &&
                     _gd.FormatCapabilities.OptimalFormatSupports(FormatFeatureFlags.BlitDstBit, dstFormat))
-=======
-                else if (_gd.FormatCapabilities.OptimalFormatSupports(FormatFeatureFlags.BlitSrcBit, srcFormat) &&
-                         _gd.FormatCapabilities.OptimalFormatSupports(FormatFeatureFlags.BlitDstBit, dstFormat))
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     TextureCopy.Blit(
                         _gd.Api,
@@ -491,11 +419,7 @@ namespace Ryujinx.Graphics.Vulkan
 
             bool isDepthOrStencil = dst.Info.Format.IsDepthOrStencil();
 
-<<<<<<< HEAD
             if (!VulkanConfiguration.UseUnsafeBlit || (_gd.Vendor != Vendor.Nvidia && _gd.Vendor != Vendor.Intel))
-=======
-            if (VulkanConfiguration.UseSlowSafeBlitOnAmd && (_gd.Vendor == Vendor.Amd || _gd.IsMoltenVk))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 _gd.HelperShader.Blit(
                     _gd,
@@ -545,7 +469,6 @@ namespace Ryujinx.Graphics.Vulkan
                 ImageAspectFlags.ColorBit);
         }
 
-<<<<<<< HEAD
         public static unsafe void InsertMemoryBarrier(
             Vk api,
             CommandBuffer commandBuffer,
@@ -598,8 +521,6 @@ namespace Ryujinx.Graphics.Vulkan
             };
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public static unsafe void InsertImageBarrier(
             Vk api,
             CommandBuffer commandBuffer,
@@ -614,7 +535,6 @@ namespace Ryujinx.Graphics.Vulkan
             int layers,
             int levels)
         {
-<<<<<<< HEAD
             ImageMemoryBarrier memoryBarrier = GetImageBarrier(
                 image,
                 srcAccessMask,
@@ -624,20 +544,6 @@ namespace Ryujinx.Graphics.Vulkan
                 firstLevel,
                 layers,
                 levels);
-=======
-            ImageMemoryBarrier memoryBarrier = new ImageMemoryBarrier()
-            {
-                SType = StructureType.ImageMemoryBarrier,
-                SrcAccessMask = srcAccessMask,
-                DstAccessMask = dstAccessMask,
-                SrcQueueFamilyIndex = Vk.QueueFamilyIgnored,
-                DstQueueFamilyIndex = Vk.QueueFamilyIgnored,
-                Image = image,
-                OldLayout = ImageLayout.General,
-                NewLayout = ImageLayout.General,
-                SubresourceRange = new ImageSubresourceRange(aspectFlags, (uint)firstLevel, (uint)levels, (uint)firstLayer, (uint)layers)
-            };
->>>>>>> 1ec71635b (sync with main branch)
 
             api.CmdPipelineBarrier(
                 commandBuffer,
@@ -652,11 +558,7 @@ namespace Ryujinx.Graphics.Vulkan
                 memoryBarrier);
         }
 
-<<<<<<< HEAD
         public TextureView GetView(Format format)
-=======
-        public TextureView GetView(GAL.Format format)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (format == Info.Format)
             {
@@ -685,11 +587,7 @@ namespace Ryujinx.Graphics.Vulkan
                 Info.SwizzleB,
                 Info.SwizzleA), 0, 0);
 
-<<<<<<< HEAD
             (_selfManagedViews ??= new Dictionary<Format, TextureView>()).Add(format, view);
-=======
-            (_selfManagedViews ??= new Dictionary<GAL.Format, TextureView>()).Add(format, view);
->>>>>>> 1ec71635b (sync with main branch)
 
             return view;
         }
@@ -733,15 +631,8 @@ namespace Ryujinx.Graphics.Vulkan
 
                 return PinnedSpan<byte>.UnsafeFromSpan(GetData(_gd.CommandBufferPool, resources.GetFlushBuffer()));
             }
-<<<<<<< HEAD
 
             return PinnedSpan<byte>.UnsafeFromSpan(GetData(resources.GetPool(), resources.GetFlushBuffer()));
-=======
-            else
-            {
-                return PinnedSpan<byte>.UnsafeFromSpan(GetData(resources.GetPool(), resources.GetFlushBuffer()));
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public PinnedSpan<byte> GetData(int layer, int level)
@@ -754,15 +645,8 @@ namespace Ryujinx.Graphics.Vulkan
 
                 return PinnedSpan<byte>.UnsafeFromSpan(GetData(_gd.CommandBufferPool, resources.GetFlushBuffer(), layer, level));
             }
-<<<<<<< HEAD
 
             return PinnedSpan<byte>.UnsafeFromSpan(GetData(resources.GetPool(), resources.GetFlushBuffer(), layer, level));
-=======
-            else
-            {
-                return PinnedSpan<byte>.UnsafeFromSpan(GetData(resources.GetPool(), resources.GetFlushBuffer(), layer, level));
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void CopyTo(BufferRange range, int layer, int level, int stride)
@@ -886,19 +770,11 @@ namespace Ryujinx.Graphics.Vulkan
             return length;
         }
 
-<<<<<<< HEAD
         private Format GetCompatibleGalFormat(Format format)
         {
             if (NeedsD24S8Conversion())
             {
                 return Format.D32FloatS8Uint;
-=======
-        private GAL.Format GetCompatibleGalFormat(GAL.Format format)
-        {
-            if (NeedsD24S8Conversion())
-            {
-                return GAL.Format.D32FloatS8Uint;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return format;
@@ -984,13 +860,9 @@ namespace Ryujinx.Graphics.Vulkan
 
             for (int level = 0; level < levels; level++)
             {
-<<<<<<< HEAD
                 int mipSize = GetBufferDataLength(is3D && !singleSlice
                     ? Info.GetMipSize(dstLevel + level)
                     : Info.GetMipSize2D(dstLevel + level) * dstLayers);
-=======
-                int mipSize = GetBufferDataLength(Info.GetMipSize2D(dstLevel + level) * dstLayers);
->>>>>>> 1ec71635b (sync with main branch)
 
                 int endOffset = offset + mipSize;
 
@@ -1113,7 +985,6 @@ namespace Ryujinx.Graphics.Vulkan
             throw new NotImplementedException();
         }
 
-<<<<<<< HEAD
         public (Auto<DisposableRenderPass> renderPass, Auto<DisposableFramebuffer> framebuffer) GetPassAndFramebuffer(
             VulkanRenderer gd,
             Device device,
@@ -1142,8 +1013,6 @@ namespace Ryujinx.Graphics.Vulkan
             _renderPasses.Remove(ref key);
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
@@ -1153,7 +1022,6 @@ namespace Ryujinx.Graphics.Vulkan
                 if (_gd.Textures.Remove(this))
                 {
                     _imageView.Dispose();
-<<<<<<< HEAD
                     _imageView2dArray?.Dispose();
 
                     if (_imageViewIdentity != _imageView)
@@ -1177,12 +1045,6 @@ namespace Ryujinx.Graphics.Vulkan
                             pass.Dispose();
                         }
                     }
-=======
-                    _imageViewIdentity.Dispose();
-                    _imageView2dArray?.Dispose();
-
-                    Storage.DecrementViewsCount();
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
         }

@@ -1,22 +1,13 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Shader.Instructions;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.StructuredIr;
-=======
-﻿using Ryujinx.Graphics.Shader.Instructions;
-using Ryujinx.Graphics.Shader.IntermediateRepresentation;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 
 namespace Ryujinx.Graphics.Shader.Translation.Optimizations
 {
     class BindlessElimination
     {
-<<<<<<< HEAD
         public static void RunPass(BasicBlock block, ResourceManager resourceManager, IGpuAccessor gpuAccessor)
-=======
-        public static void RunPass(BasicBlock block, ShaderConfig config)
->>>>>>> 1ec71635b (sync with main branch)
         {
             // We can turn a bindless into regular access by recognizing the pattern
             // produced by the compiler for separate texture and sampler.
@@ -26,11 +17,7 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             // - Both sources of the OR operation comes from a constant buffer.
             for (LinkedListNode<INode> node = block.Operations.First; node != null; node = node.Next)
             {
-<<<<<<< HEAD
                 if (node.Value is not TextureOperation texOp)
-=======
-                if (!(node.Value is TextureOperation texOp))
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     continue;
                 }
@@ -40,7 +27,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                     continue;
                 }
 
-<<<<<<< HEAD
                 if (texOp.Inst == Instruction.TextureSample || texOp.Inst.IsTextureQuery())
                 {
                     Operand bindlessHandle = texOp.GetSource(0);
@@ -53,13 +39,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                     }
 
                     bindlessHandle = Utils.FindLastOperation(bindlessHandle, block);
-=======
-                if (texOp.Inst == Instruction.Lod ||
-                    texOp.Inst == Instruction.TextureSample ||
-                    texOp.Inst == Instruction.TextureSize)
-                {
-                    Operand bindlessHandle = Utils.FindLastOperation(texOp.GetSource(0), block);
->>>>>>> 1ec71635b (sync with main branch)
 
                     // Some instructions do not encode an accurate sampler type:
                     // - Most instructions uses the same type for 1D and Buffer.
@@ -68,7 +47,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                     // as long bindless elimination is successful and we know where the texture descriptor is located.
                     bool rewriteSamplerType =
                         texOp.Type == SamplerType.TextureBuffer ||
-<<<<<<< HEAD
                         texOp.Inst == Instruction.TextureQuerySamples ||
                         texOp.Inst == Instruction.TextureQuerySize;
 
@@ -87,17 +65,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                     }
 
                     if (!TryGetOperation(bindlessHandle.AsgOp, out Operation handleCombineOp))
-=======
-                        texOp.Inst == Instruction.TextureSize;
-
-                    if (bindlessHandle.Type == OperandType.ConstantBuffer)
-                    {
-                        SetHandle(config, texOp, bindlessHandle.GetCbufOffset(), bindlessHandle.GetCbufSlot(), rewriteSamplerType, isImage: false);
-                        continue;
-                    }
-
-                    if (!(bindlessHandle.AsgOp is Operation handleCombineOp))
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         continue;
                     }
@@ -116,13 +83,7 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                     // and having a "canonical" representation simplifies some checks below.
                     if (src0.Type == OperandType.Constant && src1.Type != OperandType.Constant)
                     {
-<<<<<<< HEAD
                         (src0, src1) = (src1, src0);
-=======
-                        Operand temp = src1;
-                        src1 = src0;
-                        src0 = temp;
->>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     TextureHandleType handleType = TextureHandleType.SeparateSamplerHandle;
@@ -196,12 +157,8 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                     if (handleType == TextureHandleType.SeparateConstantSamplerHandle)
                     {
                         SetHandle(
-<<<<<<< HEAD
                             resourceManager,
                             gpuAccessor,
-=======
-                            config,
->>>>>>> 1ec71635b (sync with main branch)
                             texOp,
                             TextureHandle.PackOffsets(src0.GetCbufOffset(), ((src1.Value >> 20) & 0xfff), handleType),
                             TextureHandle.PackSlots(src0.GetCbufSlot(), 0),
@@ -211,12 +168,8 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                     else if (src1.Type == OperandType.ConstantBuffer)
                     {
                         SetHandle(
-<<<<<<< HEAD
                             resourceManager,
                             gpuAccessor,
-=======
-                            config,
->>>>>>> 1ec71635b (sync with main branch)
                             texOp,
                             TextureHandle.PackOffsets(src0.GetCbufOffset(), src1.GetCbufOffset(), handleType),
                             TextureHandle.PackSlots(src0.GetCbufSlot(), src1.GetCbufSlot()),
@@ -239,35 +192,22 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                         {
                             if (texOp.Inst == Instruction.ImageAtomic)
                             {
-<<<<<<< HEAD
                                 texOp.Format = ShaderProperties.GetTextureFormatAtomic(gpuAccessor, cbufOffset, cbufSlot);
                             }
                             else
                             {
                                 texOp.Format = ShaderProperties.GetTextureFormat(gpuAccessor, cbufOffset, cbufSlot);
-=======
-                                texOp.Format = config.GetTextureFormatAtomic(cbufOffset, cbufSlot);
-                            }
-                            else
-                            {
-                                texOp.Format = config.GetTextureFormat(cbufOffset, cbufSlot);
->>>>>>> 1ec71635b (sync with main branch)
                             }
                         }
 
                         bool rewriteSamplerType = texOp.Type == SamplerType.TextureBuffer;
 
-<<<<<<< HEAD
                         SetHandle(resourceManager, gpuAccessor, texOp, cbufOffset, cbufSlot, rewriteSamplerType, isImage: true);
-=======
-                        SetHandle(config, texOp, cbufOffset, cbufSlot, rewriteSamplerType, isImage: true);
->>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
             }
         }
 
-<<<<<<< HEAD
         private static bool TryGetOperation(INode asgOp, out Operation outOperation)
         {
             if (asgOp is PhiNode phi)
@@ -326,11 +266,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
         {
             // Assume it was already checked that the operation is bitwise AND.
 
-=======
-        private static Operand GetSourceForMaskedHandle(Operation asgOp, uint mask)
-        {
-            // Assume it was already checked that the operation is bitwise AND.
->>>>>>> 1ec71635b (sync with main branch)
             Operand src0 = asgOp.GetSource(0);
             Operand src1 = asgOp.GetSource(1);
 
@@ -339,10 +274,7 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                 // We can't check if the mask matches here as both operands are from a constant buffer.
                 // Be optimistic and assume it matches. Avoid constant buffer 1 as official drivers
                 // uses this one to store compiler constants.
-<<<<<<< HEAD
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 return src0.GetCbufSlot() == 1 ? src1 : src0;
             }
             else if (src0.Type == OperandType.ConstantBuffer && src1.Type == OperandType.Constant)
@@ -363,7 +295,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             return null;
         }
 
-<<<<<<< HEAD
         private static void SetHandle(
             ResourceManager resourceManager,
             IGpuAccessor gpuAccessor,
@@ -376,15 +307,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             if (rewriteSamplerType)
             {
                 SamplerType newType = gpuAccessor.QuerySamplerType(cbufOffset, cbufSlot);
-=======
-        private static void SetHandle(ShaderConfig config, TextureOperation texOp, int cbufOffset, int cbufSlot, bool rewriteSamplerType, bool isImage)
-        {
-            texOp.SetHandle(cbufOffset, cbufSlot);
-
-            if (rewriteSamplerType)
-            {
-                SamplerType newType = config.GpuAccessor.QuerySamplerType(cbufOffset, cbufSlot);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (texOp.Inst.IsTextureQuery())
                 {
@@ -392,11 +314,7 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                 }
                 else if (texOp.Type == SamplerType.TextureBuffer && newType == SamplerType.Texture1D)
                 {
-<<<<<<< HEAD
                     int coordsCount = 2;
-=======
-                    int coordsCount = 1;
->>>>>>> 1ec71635b (sync with main branch)
 
                     if (InstEmit.Sample1DAs2D)
                     {
@@ -417,7 +335,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                 }
             }
 
-<<<<<<< HEAD
             int binding = resourceManager.GetTextureOrImageBinding(
                 texOp.Inst,
                 texOp.Type,
@@ -427,9 +344,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                 cbufOffset);
 
             texOp.SetBinding(binding);
-=======
-            config.SetUsedTexture(texOp.Inst, texOp.Type, texOp.Format, texOp.Flags, cbufSlot, cbufOffset);
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

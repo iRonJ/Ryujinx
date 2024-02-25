@@ -6,10 +6,6 @@ namespace ARMeilleure.State
         Zero,
         Infinity,
         QNaN,
-<<<<<<< HEAD
         SNaN,
-=======
-        SNaN
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -126,11 +126,7 @@ namespace Ryujinx.Audio.Renderer.Server.Voice
                 _sortedVoices.Span[i] = i;
             }
 
-<<<<<<< HEAD
             int[] sortedVoicesTemp = _sortedVoices[..(int)GetCount()].ToArray();
-=======
-            int[] sortedVoicesTemp = _sortedVoices.Slice(0, (int)GetCount()).ToArray();
->>>>>>> 1ec71635b (sync with main branch)
 
             Array.Sort(sortedVoicesTemp, (a, b) =>
             {
@@ -150,8 +146,4 @@ namespace Ryujinx.Audio.Renderer.Server.Voice
             sortedVoicesTemp.AsSpan().CopyTo(_sortedVoices.Span);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

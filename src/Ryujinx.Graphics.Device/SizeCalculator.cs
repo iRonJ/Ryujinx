@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Reflection;
 
 namespace Ryujinx.Graphics.Device
@@ -60,11 +56,7 @@ namespace Ryujinx.Graphics.Device
                 TypeCode.Double => sizeof(double),
                 TypeCode.Decimal => sizeof(decimal),
                 TypeCode.Boolean => sizeof(bool),
-<<<<<<< HEAD
                 _ => throw new ArgumentException($"Length for type \"{type.Name}\" is unknown."),
-=======
-                _ => throw new ArgumentException($"Length for type \"{type.Name}\" is unknown.")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

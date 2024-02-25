@@ -12,11 +12,7 @@ namespace ARMeilleure.Decoders
             {
                 case 1:
                     Index = (opCode >> 20) & 3 |
-<<<<<<< HEAD
                             (opCode >> 9) & 4;
-=======
-                            (opCode >>  9) & 4;
->>>>>>> 1ec71635b (sync with main branch)
 
                     Rm &= 0xf;
 
@@ -28,7 +24,6 @@ namespace ARMeilleure.Decoders
 
                     break;
 
-<<<<<<< HEAD
                 default:
                     Instruction = InstDescriptor.Undefined;
                     break;
@@ -36,10 +31,3 @@ namespace ARMeilleure.Decoders
         }
     }
 }
-=======
-                default: Instruction = InstDescriptor.Undefined; break;
-            }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

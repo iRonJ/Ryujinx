@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Silk.NET.Vulkan;
-=======
-﻿using Silk.NET.Vulkan;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Graphics.Vulkan

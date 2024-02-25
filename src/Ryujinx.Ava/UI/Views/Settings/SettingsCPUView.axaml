@@ -7,10 +7,6 @@
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     mc:Ignorable="d"
-<<<<<<< HEAD
-=======
-    x:CompileBindings="True"
->>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModels:SettingsViewModel">
     <Design.DataContext>
         <viewModels:SettingsViewModel />

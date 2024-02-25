@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #define AluRs32
-=======
-﻿#define AluRs32
->>>>>>> 1ec71635b (sync with main branch)
 
 using NUnit.Framework;
 
@@ -13,11 +9,7 @@ namespace Ryujinx.Tests.Cpu
     {
 #if AluRs32
 
-<<<<<<< HEAD
         #region "ValueSource (Opcodes)"
-=======
-#region "ValueSource (Opcodes)"
->>>>>>> 1ec71635b (sync with main branch)
         private static uint[] _Add_Adds_Rsb_Rsbs_()
         {
             return new[]
@@ -25,11 +17,7 @@ namespace Ryujinx.Tests.Cpu
                 0xe0800000u, // ADD R0, R0, R0, LSL #0
                 0xe0900000u, // ADDS R0, R0, R0, LSL #0
                 0xe0600000u, // RSB R0, R0, R0, LSL #0
-<<<<<<< HEAD
                 0xe0700000u, // RSBS R0, R0, R0, LSL #0
-=======
-                0xe0700000u  // RSBS R0, R0, R0, LSL #0
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -42,7 +30,6 @@ namespace Ryujinx.Tests.Cpu
                 0xe0e00000u, // RSC R0, R0, R0
                 0xe0f00000u, // RSCS R0, R0, R0
                 0xe0c00000u, // SBC R0, R0, R0
-<<<<<<< HEAD
                 0xe0d00000u, // SBCS R0, R0, R0
             };
         }
@@ -51,16 +38,6 @@ namespace Ryujinx.Tests.Cpu
 
         [Test, Pairwise]
         public void Adc_Adcs_Rsc_Rscs_Sbc_Sbcs([ValueSource(nameof(_Adc_Adcs_Rsc_Rscs_Sbc_Sbcs_))] uint opcode,
-=======
-                0xe0d00000u  // SBCS R0, R0, R0
-            };
-        }
-#endregion
-
-
-        [Test, Pairwise]
-        public void Adc_Adcs_Rsc_Rscs_Sbc_Sbcs([ValueSource("_Adc_Adcs_Rsc_Rscs_Sbc_Sbcs_")] uint opcode,
->>>>>>> 1ec71635b (sync with main branch)
                                                [Values(0u, 13u)] uint rd,
                                                [Values(1u, 13u)] uint rn,
                                                [Values(2u, 13u)] uint rm,
@@ -80,11 +57,7 @@ namespace Ryujinx.Tests.Cpu
         }
 
         [Test, Pairwise]
-<<<<<<< HEAD
         public void Add_Adds_Rsb_Rsbs([ValueSource(nameof(_Add_Adds_Rsb_Rsbs_))] uint opcode,
-=======
-        public void Add_Adds_Rsb_Rsbs([ValueSource("_Add_Adds_Rsb_Rsbs_")] uint opcode,
->>>>>>> 1ec71635b (sync with main branch)
                                       [Values(0u, 13u)] uint rd,
                                       [Values(1u, 13u)] uint rn,
                                       [Values(2u, 13u)] uint rm,
@@ -106,8 +79,4 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

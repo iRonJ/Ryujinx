@@ -11,11 +11,7 @@ namespace Ryujinx.Audio.Renderer.Utils
         /// <summary>
         /// The backing storage of the <see cref="BitArray"/>.
         /// </summary>
-<<<<<<< HEAD
         private readonly Memory<byte> _storage;
-=======
-        private Memory<byte> _storage;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Create a new <see cref="BitArray"/> from <see cref="Memory{T}"/>.
@@ -101,14 +97,7 @@ namespace Ryujinx.Audio.Renderer.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Reset()
         {
-<<<<<<< HEAD
             _storage.Span.Clear();
         }
     }
 }
-=======
-            _storage.Span.Fill(0);
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

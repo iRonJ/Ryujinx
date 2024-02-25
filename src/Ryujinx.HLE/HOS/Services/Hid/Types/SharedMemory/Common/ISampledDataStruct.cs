@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Buffers.Binary;
 using System.Runtime.InteropServices;
 
@@ -15,15 +11,9 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common
     ///   - use <c>StructLayoutAttribute</c> (and related attributes) to explicity control how the struct is laid out in memory.
     ///   - ensure that the method <c>ISampledDataStruct.GetSamplingNumberFieldOffset()</c> correctly returns the offset, in bytes,
     ///     to the ulong "Sampling Number" field within the struct. Most types have it as the first field, so the default offset is 0.
-<<<<<<< HEAD
     ///
     /// Example:
     ///
-=======
-    /// 
-    /// Example:
-    /// 
->>>>>>> 1ec71635b (sync with main branch)
     /// <c>
     ///         [StructLayout(LayoutKind.Sequential, Pack = 8)]
     ///         struct DebugPadState : ISampledDataStruct
@@ -55,11 +45,7 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common
 
             if (fieldOffset > 0)
             {
-<<<<<<< HEAD
                 byteSpan = byteSpan[fieldOffset..];
-=======
-                byteSpan = byteSpan.Slice(fieldOffset);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             ulong value = BinaryPrimitives.ReadUInt64LittleEndian(byteSpan);
@@ -72,11 +58,7 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common
             return sampledDataStruct switch
             {
                 Npad.SixAxisSensorState _ => sizeof(ulong),
-<<<<<<< HEAD
                 _ => 0,
-=======
-                _ => 0
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

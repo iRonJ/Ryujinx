@@ -19,12 +19,6 @@ namespace Ryujinx.Audio.Renderer.Server.Types
         /// <remarks>
         /// Only supports <see cref="AudioRendererExecutionMode.Manual"/>.
         /// </remarks>
-<<<<<<< HEAD
         Cpu,
     }
 }
-=======
-        Cpu
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

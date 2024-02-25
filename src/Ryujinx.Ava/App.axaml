@@ -3,7 +3,6 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sty="using:FluentAvalonia.Styling">
-<<<<<<< HEAD
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,9 +13,5 @@
     <Application.Styles>
         <sty:FluentAvaloniaTheme PreferSystemTheme="False" />
         <StyleInclude Source="/Assets/Styles/Styles.xaml"/>
-=======
-    <Application.Styles>
-        <sty:FluentAvaloniaTheme PreferSystemTheme="False" />
->>>>>>> 1ec71635b (sync with main branch)
     </Application.Styles>
 </Application>

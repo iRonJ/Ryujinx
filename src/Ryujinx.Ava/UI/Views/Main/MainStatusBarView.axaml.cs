@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -7,15 +6,6 @@ using Ryujinx.Ava.UI.Windows;
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Logging;
 using Ryujinx.UI.Common.Configuration;
-=======
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Input;
-using Ryujinx.Ava.UI.Windows;
-using Ryujinx.Common.Configuration;
-using Ryujinx.Common.Logging;
-using Ryujinx.Ui.Common.Configuration;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Ava.UI.Views.Main
@@ -53,7 +43,6 @@ namespace Ryujinx.Ava.UI.Views.Main
             ConfigurationState.Instance.System.EnableDockedMode.Value = !ConfigurationState.Instance.System.EnableDockedMode.Value;
         }
 
-<<<<<<< HEAD
         private void AspectRatioStatus_OnClick(object sender, RoutedEventArgs e)
         {
             AspectRatio aspectRatio = ConfigurationState.Instance.Graphics.AspectRatio.Value;
@@ -81,13 +70,3 @@ namespace Ryujinx.Ava.UI.Views.Main
         }
     }
 }
-=======
-        private void AspectRatioStatus_PointerReleased(object sender, PointerReleasedEventArgs e)
-        {
-            AspectRatio aspectRatio = ConfigurationState.Instance.Graphics.AspectRatio.Value;
-
-            ConfigurationState.Instance.Graphics.AspectRatio.Value = (int)aspectRatio + 1 > Enum.GetNames(typeof(AspectRatio)).Length - 1 ? AspectRatio.Fixed4x3 : aspectRatio + 1;
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

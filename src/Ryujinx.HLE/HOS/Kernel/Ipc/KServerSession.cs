@@ -10,33 +10,18 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 {
     class KServerSession : KSynchronizationObject
     {
-<<<<<<< HEAD
         private static readonly MemoryState[] _ipcMemoryStates = {
             MemoryState.IpcBuffer3,
             MemoryState.IpcBuffer0,
             MemoryState.IpcBuffer1,
             (MemoryState)0xfffce5d4, //This is invalid, shouldn't be accessed.
-=======
-        private static readonly MemoryState[] IpcMemoryStates = new MemoryState[]
-        {
-            MemoryState.IpcBuffer3,
-            MemoryState.IpcBuffer0,
-            MemoryState.IpcBuffer1,
-            (MemoryState)0xfffce5d4 //This is invalid, shouldn't be accessed.
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private readonly struct Message
         {
-<<<<<<< HEAD
             public ulong Address { get; }
             public ulong Size { get; }
             public bool IsCustom { get; }
-=======
-            public ulong Address  { get; }
-            public ulong Size     { get; }
-            public bool  IsCustom { get; }
->>>>>>> 1ec71635b (sync with main branch)
 
             public Message(KThread thread, ulong customCmdBuffAddress, ulong customCmdBuffSize)
             {
@@ -45,32 +30,20 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 if (IsCustom)
                 {
                     Address = customCmdBuffAddress;
-<<<<<<< HEAD
                     Size = customCmdBuffSize;
-=======
-                    Size    = customCmdBuffSize;
->>>>>>> 1ec71635b (sync with main branch)
                 }
                 else
                 {
                     Address = thread.TlsAddress;
-<<<<<<< HEAD
                     Size = 0x100;
-=======
-                    Size    = 0x100;
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
             public Message(KSessionRequest request) : this(
                 request.ClientThread,
                 request.CustomCmdBuffAddr,
-<<<<<<< HEAD
                 request.CustomCmdBuffSize)
             { }
-=======
-                request.CustomCmdBuffSize) { }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private readonly struct MessageHeader
@@ -79,30 +52,18 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             public uint Word1 { get; }
             public uint Word2 { get; }
 
-<<<<<<< HEAD
             public uint PointerBuffersCount { get; }
             public uint SendBuffersCount { get; }
             public uint ReceiveBuffersCount { get; }
-=======
-            public uint PointerBuffersCount  { get; }
-            public uint SendBuffersCount     { get; }
-            public uint ReceiveBuffersCount  { get; }
->>>>>>> 1ec71635b (sync with main branch)
             public uint ExchangeBuffersCount { get; }
 
             public uint RawDataSizeInWords { get; }
 
             public uint ReceiveListType { get; }
 
-<<<<<<< HEAD
             public uint MessageSizeInWords { get; }
             public uint ReceiveListOffsetInWords { get; }
             public uint ReceiveListOffset { get; }
-=======
-            public uint MessageSizeInWords       { get; }
-            public uint ReceiveListOffsetInWords { get; }
-            public uint ReceiveListOffset        { get; }
->>>>>>> 1ec71635b (sync with main branch)
 
             public bool HasHandles { get; }
 
@@ -140,7 +101,6 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                     MoveHandlesCount = 0;
                 }
 
-<<<<<<< HEAD
                 PointerBuffersCount = (word0 >> 16) & 0xf;
                 SendBuffersCount = (word0 >> 20) & 0xf;
                 ReceiveBuffersCount = (word0 >> 24) & 0xf;
@@ -149,16 +109,6 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 uint pointerDescSizeInWords = PointerBuffersCount * 2;
                 uint sendDescSizeInWords = SendBuffersCount * 3;
                 uint receiveDescSizeInWords = ReceiveBuffersCount * 3;
-=======
-                PointerBuffersCount  = (word0 >> 16) & 0xf;
-                SendBuffersCount     = (word0 >> 20) & 0xf;
-                ReceiveBuffersCount  = (word0 >> 24) & 0xf;
-                ExchangeBuffersCount =  word0 >> 28;
-
-                uint pointerDescSizeInWords  = PointerBuffersCount  * 2;
-                uint sendDescSizeInWords     = SendBuffersCount     * 3;
-                uint receiveDescSizeInWords  = ReceiveBuffersCount  * 3;
->>>>>>> 1ec71635b (sync with main branch)
                 uint exchangeDescSizeInWords = ExchangeBuffersCount * 3;
 
                 RawDataSizeInWords = word1 & 0x3ff;
@@ -169,21 +119,12 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 
                 uint paddingSizeInWords = HasHandles ? 3u : 2u;
 
-<<<<<<< HEAD
                 MessageSizeInWords = pointerDescSizeInWords +
                                      sendDescSizeInWords +
                                      receiveDescSizeInWords +
                                      exchangeDescSizeInWords +
                                      RawDataSizeInWords +
                                      paddingSizeInWords +
-=======
-                MessageSizeInWords = pointerDescSizeInWords  +
-                                     sendDescSizeInWords     +
-                                     receiveDescSizeInWords  +
-                                     exchangeDescSizeInWords +
-                                     RawDataSizeInWords      +
-                                     paddingSizeInWords      +
->>>>>>> 1ec71635b (sync with main branch)
                                      handleDescSizeInWords;
 
                 if (ReceiveListOffsetInWords == 0)
@@ -199,43 +140,25 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         {
             public uint ReceiveIndex { get; }
 
-<<<<<<< HEAD
             public uint BufferSize { get; }
-=======
-            public uint  BufferSize    { get; }
->>>>>>> 1ec71635b (sync with main branch)
             public ulong BufferAddress { get; set; }
 
             public PointerBufferDesc(ulong dword)
             {
                 ReceiveIndex = (uint)dword & 0xf;
-<<<<<<< HEAD
                 BufferSize = (uint)dword >> 16;
 
                 BufferAddress = (dword >> 2) & 0x70;
-=======
-                BufferSize   = (uint)dword >> 16;
-
-                BufferAddress  = (dword >> 2)  & 0x70;
->>>>>>> 1ec71635b (sync with main branch)
                 BufferAddress |= (dword >> 12) & 0xf;
 
                 BufferAddress = (BufferAddress << 32) | (dword >> 32);
             }
 
-<<<<<<< HEAD
             public readonly ulong Pack()
             {
                 ulong dword = (ReceiveIndex & 0xf) | ((BufferSize & 0xffff) << 16);
 
                 dword |= BufferAddress << 32;
-=======
-            public ulong Pack()
-            {
-                ulong dword = (ReceiveIndex & 0xf) | ((BufferSize & 0xffff) << 16);
-
-                dword |=  BufferAddress << 32;
->>>>>>> 1ec71635b (sync with main branch)
                 dword |= (BufferAddress >> 20) & 0xf000;
                 dword |= (BufferAddress >> 30) & 0xffc0;
 
@@ -243,15 +166,9 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             }
         }
 
-<<<<<<< HEAD
         private readonly KSession _parent;
 
         private readonly LinkedList<KSessionRequest> _requests;
-=======
-        private KSession _parent;
-
-        private LinkedList<KSessionRequest> _requests;
->>>>>>> 1ec71635b (sync with main branch)
 
         private KSessionRequest _activeRequest;
 
@@ -291,11 +208,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 
         public Result Receive(ulong customCmdBuffAddr = 0, ulong customCmdBuffSize = 0)
         {
-<<<<<<< HEAD
             KThread serverThread = KernelStatic.GetCurrentThread();
-=======
-            KThread  serverThread  = KernelStatic.GetCurrentThread();
->>>>>>> 1ec71635b (sync with main branch)
             KProcess serverProcess = serverThread.Owner;
 
             KernelContext.CriticalSection.Enter();
@@ -321,11 +234,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 return KernelResult.PortRemoteClosed;
             }
 
-<<<<<<< HEAD
             KThread clientThread = request.ClientThread;
-=======
-            KThread  clientThread  = request.ClientThread;
->>>>>>> 1ec71635b (sync with main branch)
             KProcess clientProcess = clientThread.Owner;
 
             KernelContext.CriticalSection.Leave();
@@ -334,13 +243,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 
             request.ServerProcess = serverProcess;
 
-<<<<<<< HEAD
             Message clientMsg = new(request);
             Message serverMsg = new(serverThread, customCmdBuffAddr, customCmdBuffSize);
-=======
-            Message clientMsg = new Message(request);
-            Message serverMsg = new Message(serverThread, customCmdBuffAddr, customCmdBuffSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             MessageHeader clientHeader = GetClientMessageHeader(clientProcess, clientMsg);
             MessageHeader serverHeader = GetServerMessageHeader(serverMsg);
@@ -495,11 +399,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             {
                 ulong pointerDesc = clientProcess.CpuMemory.Read<ulong>(clientMsg.Address + offset * 4);
 
-<<<<<<< HEAD
                 PointerBufferDesc descriptor = new(pointerDesc);
-=======
-                PointerBufferDesc descriptor = new PointerBufferDesc(pointerDesc);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (descriptor.BufferSize != 0)
                 {
@@ -509,11 +409,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                         serverHeader.ReceiveListType,
                         clientHeader.MessageSizeInWords,
                         receiveList,
-<<<<<<< HEAD
                         ref recvListDstOffset,
-=======
-                        ref       recvListDstOffset,
->>>>>>> 1ec71635b (sync with main branch)
                         out ulong recvListBufferAddress);
 
                     if (clientResult != Result.Success)
@@ -554,11 +450,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 
             // Copy send, receive and exchange buffers.
             uint totalBuffersCount =
-<<<<<<< HEAD
                 clientHeader.SendBuffersCount +
-=======
-                clientHeader.SendBuffersCount    +
->>>>>>> 1ec71635b (sync with main branch)
                 clientHeader.ReceiveBuffersCount +
                 clientHeader.ExchangeBuffersCount;
 
@@ -570,19 +462,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 uint descWord1 = clientProcess.CpuMemory.Read<uint>(clientDescAddress + 4);
                 uint descWord2 = clientProcess.CpuMemory.Read<uint>(clientDescAddress + 8);
 
-<<<<<<< HEAD
                 bool isSendDesc = index < clientHeader.SendBuffersCount;
                 bool isExchangeDesc = index >= clientHeader.SendBuffersCount + clientHeader.ReceiveBuffersCount;
 
                 bool notReceiveDesc = isSendDesc || isExchangeDesc;
                 bool isReceiveDesc = !notReceiveDesc;
-=======
-                bool isSendDesc     = index <  clientHeader.SendBuffersCount;
-                bool isExchangeDesc = index >= clientHeader.SendBuffersCount + clientHeader.ReceiveBuffersCount;
-
-                bool notReceiveDesc = isSendDesc || isExchangeDesc;
-                bool isReceiveDesc  = !notReceiveDesc;
->>>>>>> 1ec71635b (sync with main branch)
 
                 KMemoryPermission permission = index >= clientHeader.SendBuffersCount
                     ? KMemoryPermission.ReadAndWrite
@@ -598,20 +482,12 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 {
                     ulong bufferAddress;
 
-<<<<<<< HEAD
                     bufferAddress = descWord2 >> 28;
-=======
-                    bufferAddress  =   descWord2 >> 28;
->>>>>>> 1ec71635b (sync with main branch)
                     bufferAddress |= ((descWord2 >> 2) & 7) << 4;
 
                     bufferAddress = (bufferAddress << 32) | descWord1;
 
-<<<<<<< HEAD
                     MemoryState state = _ipcMemoryStates[(descWord2 + 1) & 3];
-=======
-                    MemoryState state = IpcMemoryStates[(descWord2 + 1) & 3];
->>>>>>> 1ec71635b (sync with main branch)
 
                     clientResult = serverProcess.MemoryManager.MapBufferFromClientProcess(
                         bufferSize,
@@ -657,11 +533,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 descWord2 |= sizeHigh4 << 24;
 
                 descWord2 |= (uint)(dstAddress >> 34) & 0x3ffffffc;
-<<<<<<< HEAD
                 descWord2 |= (uint)(dstAddress >> 4) & 0xf0000000;
-=======
-                descWord2 |= (uint)(dstAddress >> 4)  & 0xf0000000;
->>>>>>> 1ec71635b (sync with main branch)
 
                 ulong serverDescAddress = serverMsg.Address + offset * 4;
 
@@ -714,11 +586,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 
         public Result Reply(ulong customCmdBuffAddr = 0, ulong customCmdBuffSize = 0)
         {
-<<<<<<< HEAD
             KThread serverThread = KernelStatic.GetCurrentThread();
-=======
-            KThread  serverThread  = KernelStatic.GetCurrentThread();
->>>>>>> 1ec71635b (sync with main branch)
             KProcess serverProcess = serverThread.Owner;
 
             KernelContext.CriticalSection.Enter();
@@ -741,19 +609,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 
             KernelContext.CriticalSection.Leave();
 
-<<<<<<< HEAD
             KThread clientThread = request.ClientThread;
             KProcess clientProcess = clientThread.Owner;
 
             Message clientMsg = new(request);
             Message serverMsg = new(serverThread, customCmdBuffAddr, customCmdBuffSize);
-=======
-            KThread  clientThread  = request.ClientThread;
-            KProcess clientProcess = clientThread.Owner;
-
-            Message clientMsg = new Message(request);
-            Message serverMsg = new Message(serverThread, customCmdBuffAddr, customCmdBuffSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             MessageHeader clientHeader = GetClientMessageHeader(clientProcess, clientMsg);
             MessageHeader serverHeader = GetServerMessageHeader(serverMsg);
@@ -804,13 +664,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 return KernelResult.CmdBufferTooSmall;
             }
 
-<<<<<<< HEAD
             if (serverHeader.SendBuffersCount != 0 ||
                 serverHeader.ReceiveBuffersCount != 0 ||
-=======
-            if (serverHeader.SendBuffersCount     != 0 ||
-                serverHeader.ReceiveBuffersCount  != 0 ||
->>>>>>> 1ec71635b (sync with main branch)
                 serverHeader.ExchangeBuffersCount != 0)
             {
                 CleanUpForError();
@@ -906,11 +761,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             {
                 ulong pointerDesc = serverProcess.CpuMemory.Read<ulong>(serverMsg.Address + offset * 4);
 
-<<<<<<< HEAD
                 PointerBufferDesc descriptor = new(pointerDesc);
-=======
-                PointerBufferDesc descriptor = new PointerBufferDesc(pointerDesc);
->>>>>>> 1ec71635b (sync with main branch)
 
                 ulong recvListBufferAddress = 0;
 
@@ -966,11 +817,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 
             // Set send, receive and exchange buffer descriptors to zero.
             uint totalBuffersCount =
-<<<<<<< HEAD
                 serverHeader.SendBuffersCount +
-=======
-                serverHeader.SendBuffersCount    +
->>>>>>> 1ec71635b (sync with main branch)
                 serverHeader.ReceiveBuffersCount +
                 serverHeader.ExchangeBuffersCount;
 
@@ -1021,11 +868,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return serverResult;
         }
 
-<<<<<<< HEAD
         private static MessageHeader GetClientMessageHeader(KProcess clientProcess, Message clientMsg)
-=======
-        private MessageHeader GetClientMessageHeader(KProcess clientProcess, Message clientMsg)
->>>>>>> 1ec71635b (sync with main branch)
         {
             uint word0 = clientProcess.CpuMemory.Read<uint>(clientMsg.Address + 0);
             uint word1 = clientProcess.CpuMemory.Read<uint>(clientMsg.Address + 4);
@@ -1034,11 +877,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return new MessageHeader(word0, word1, word2);
         }
 
-<<<<<<< HEAD
         private static MessageHeader GetServerMessageHeader(Message serverMsg)
-=======
-        private MessageHeader GetServerMessageHeader(Message serverMsg)
->>>>>>> 1ec71635b (sync with main branch)
         {
             KProcess currentProcess = KernelStatic.GetCurrentProcess();
 
@@ -1049,11 +888,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return new MessageHeader(word0, word1, word2);
         }
 
-<<<<<<< HEAD
         private static Result GetCopyObjectHandle(KThread srcThread, KProcess dstProcess, int srcHandle, out int dstHandle)
-=======
-        private Result GetCopyObjectHandle(KThread srcThread, KProcess dstProcess, int srcHandle, out int dstHandle)
->>>>>>> 1ec71635b (sync with main branch)
         {
             dstHandle = 0;
 
@@ -1084,11 +919,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             }
         }
 
-<<<<<<< HEAD
         private static Result GetMoveObjectHandle(KProcess srcProcess, KProcess dstProcess, int srcHandle, out int dstHandle)
-=======
-        private Result GetMoveObjectHandle(KProcess srcProcess, KProcess dstProcess, int srcHandle, out int dstHandle)
->>>>>>> 1ec71635b (sync with main branch)
         {
             dstHandle = 0;
 
@@ -1108,11 +939,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             }
         }
 
-<<<<<<< HEAD
         private static ulong[] GetReceiveList(KProcess ownerProcess, Message message, uint recvListType, uint recvListOffset)
-=======
-        private ulong[] GetReceiveList(KProcess ownerProcess, Message message, uint recvListType, uint recvListOffset)
->>>>>>> 1ec71635b (sync with main branch)
         {
             int recvListSize = 0;
 
@@ -1137,7 +964,6 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return receiveList;
         }
 
-<<<<<<< HEAD
         private static Result GetReceiveListAddress(
             PointerBufferDesc descriptor,
             Message message,
@@ -1149,18 +975,6 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         {
             ulong recvListBufferAddress;
             address = 0;
-=======
-        private Result GetReceiveListAddress(
-            PointerBufferDesc descriptor,
-            Message           message,
-            uint              recvListType,
-            uint              messageSizeInWords,
-            ulong[]           receiveList,
-            ref uint          dstOffset,
-            out ulong         address)
-        {
-            ulong recvListBufferAddress = address = 0;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (recvListType == 0)
             {
@@ -1174,11 +988,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 if (recvListType == 1)
                 {
                     recvListBaseAddr = message.Address + messageSizeInWords * 4;
-<<<<<<< HEAD
                     recvListEndAddr = message.Address + message.Size;
-=======
-                    recvListEndAddr  = message.Address + message.Size;
->>>>>>> 1ec71635b (sync with main branch)
                 }
                 else /* if (recvListType == 2) */
                 {
@@ -1203,11 +1013,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 dstOffset = (uint)endAddress - (uint)recvListBaseAddr;
 
                 if (recvListBufferAddress + descriptor.BufferSize <= recvListBufferAddress ||
-<<<<<<< HEAD
                     recvListBufferAddress + descriptor.BufferSize > recvListEndAddr)
-=======
-                    recvListBufferAddress + descriptor.BufferSize >  recvListEndAddr)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     return KernelResult.OutOfResource;
                 }
@@ -1236,11 +1042,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return Result.Success;
         }
 
-<<<<<<< HEAD
         private static void CloseAllHandles(Message message, MessageHeader header, KProcess process)
-=======
-        private void CloseAllHandles(Message message, MessageHeader header, KProcess process)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (header.HasHandles)
             {
@@ -1401,11 +1203,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             }
         }
 
-<<<<<<< HEAD
         private static void SendResultToAsyncRequestClient(KSessionRequest request, Result result)
-=======
-        private void SendResultToAsyncRequestClient(KSessionRequest request, Result result)
->>>>>>> 1ec71635b (sync with main branch)
         {
             KProcess clientProcess = request.ClientThread.Owner;
 
@@ -1435,27 +1233,15 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             KernelContext.CriticalSection.Leave();
         }
 
-<<<<<<< HEAD
         private static void WakeAndSetResult(KThread thread, Result result, KSynchronizationObject signaledObj = null)
         {
             if ((thread.SchedFlags & ThreadSchedState.LowMask) == ThreadSchedState.Paused)
             {
                 thread.SignaledObj = signaledObj;
-=======
-        private void WakeAndSetResult(KThread thread, Result result, KSynchronizationObject signaledObj = null)
-        {
-            if ((thread.SchedFlags & ThreadSchedState.LowMask) == ThreadSchedState.Paused)
-            {
-                thread.SignaledObj   = signaledObj;
->>>>>>> 1ec71635b (sync with main branch)
                 thread.ObjSyncResult = result;
 
                 thread.Reschedule(ThreadSchedState.Running);
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

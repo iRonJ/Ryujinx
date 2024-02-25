@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
-=======
-﻿using Ryujinx.Horizon.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 
@@ -16,11 +12,7 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
         public ServiceDispatchTable(string objectName, IReadOnlyDictionary<int, CommandHandler> entries)
         {
             _objectName = objectName;
-<<<<<<< HEAD
             _entries = entries;
-=======
-            _entries    = entries;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override Result ProcessMessage(ref ServiceDispatchContext context, ReadOnlySpan<byte> inRawData)
@@ -38,8 +30,4 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
             return new ServiceDispatchTable(instance.GetType().Name, instance.GetCommandHandlers());
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

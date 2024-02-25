@@ -7,13 +7,8 @@ namespace Ryujinx.HLE.HOS.Services.Hid.HidServer
 {
     class IAppletResource : IpcService
     {
-<<<<<<< HEAD
         private readonly KSharedMemory _hidSharedMem;
         private int _hidSharedMemHandle;
-=======
-        private KSharedMemory _hidSharedMem;
-        private int           _hidSharedMemHandle;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IAppletResource(KSharedMemory hidSharedMem)
         {
@@ -37,8 +32,4 @@ namespace Ryujinx.HLE.HOS.Services.Hid.HidServer
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -30,11 +30,7 @@ namespace ARMeilleure.CodeGen.X86
             Assembler = new Assembler(_stream, relocatable);
 
             CallArgsRegionSize = GetCallArgsRegionSize(allocResult, maxCallArgs, out int xmmSaveRegionSize);
-<<<<<<< HEAD
             XmmSaveRegionSize = xmmSaveRegionSize;
-=======
-            XmmSaveRegionSize  = xmmSaveRegionSize;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static int GetCallArgsRegionSize(AllocationResult allocResult, int maxCallArgs, out int xmmSaveRegionSize)
@@ -106,8 +102,4 @@ namespace ARMeilleure.CodeGen.X86
             return label;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

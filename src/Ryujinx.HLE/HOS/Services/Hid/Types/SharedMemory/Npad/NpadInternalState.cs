@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common;
-=======
-﻿using Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
@@ -27,13 +23,9 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
         public RingLifo<SixAxisSensorState> JoyLeftSixAxisSensor;
         public RingLifo<SixAxisSensorState> JoyRightSixAxisSensor;
         public DeviceType DeviceType;
-<<<<<<< HEAD
 #pragma warning disable IDE0051 // Remove unused private member
         private readonly uint _reserved1;
 #pragma warning restore IDE0051
-=======
-        private uint _reserved1;
->>>>>>> 1ec71635b (sync with main branch)
         public NpadSystemProperties SystemProperties;
         public NpadSystemButtonProperties SystemButtonProperties;
         public NpadBatteryLevel BatteryLevelJoyDual;
@@ -41,13 +33,9 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
         public NpadBatteryLevel BatteryLevelJoyRight;
         public uint AppletFooterUiAttributes;
         public AppletFooterUiType AppletFooterUiType;
-<<<<<<< HEAD
 #pragma warning disable IDE0051 // Remove unused private member
         private readonly Reserved2Struct _reserved2;
 #pragma warning restore IDE0051
-=======
-        private Reserved2Struct _reserved2;
->>>>>>> 1ec71635b (sync with main branch)
         public RingLifo<NpadGcTriggerState> GcTrigger;
         public NpadLarkType LarkTypeLeftAndMain;
         public NpadLarkType LarkTypeRight;
@@ -55,11 +43,7 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
         public uint Unknown43EC;
 
         [StructLayout(LayoutKind.Sequential, Size = 123, Pack = 1)]
-<<<<<<< HEAD
         private struct Reserved2Struct { }
-=======
-        private struct Reserved2Struct {}
->>>>>>> 1ec71635b (sync with main branch)
 
         public static NpadInternalState Create()
         {
@@ -82,8 +66,4 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
             };
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

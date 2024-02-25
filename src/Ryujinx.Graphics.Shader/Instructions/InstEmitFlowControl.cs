@@ -3,11 +3,6 @@ using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
 using System.Collections.Generic;
 using System.Linq;
-<<<<<<< HEAD
-=======
-
-using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 
 namespace Ryujinx.Graphics.Shader.Instructions
@@ -16,22 +11,14 @@ namespace Ryujinx.Graphics.Shader.Instructions
     {
         public static void Bra(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstBra>();
-=======
-            InstBra op = context.GetOp<InstBra>();
->>>>>>> 1ec71635b (sync with main branch)
 
             EmitBranch(context, context.CurrBlock.Successors[^1].Address);
         }
 
         public static void Brk(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstBrk>();
-=======
-            InstBrk op = context.GetOp<InstBrk>();
->>>>>>> 1ec71635b (sync with main branch)
 
             EmitBrkContSync(context);
         }
@@ -44,11 +31,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
             if (context.CurrBlock.Successors.Count <= startIndex)
             {
-<<<<<<< HEAD
                 context.TranslatorContext.GpuAccessor.Log($"Failed to find targets for BRX instruction at 0x{currOp.Address:X}.");
-=======
-                context.Config.GpuAccessor.Log($"Failed to find targets for BRX instruction at 0x{currOp.Address:X}.");
->>>>>>> 1ec71635b (sync with main branch)
                 return;
             }
 
@@ -138,11 +121,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
         public static void Cal(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstCal>();
-=======
-            InstCal op = context.GetOp<InstCal>();
->>>>>>> 1ec71635b (sync with main branch)
 
             DecodedFunction function = context.Program.GetFunctionByAddress(context.CurrOp.GetAbsoluteAddress());
 
@@ -166,11 +145,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
         public static void Cont(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstCont>();
-=======
-            InstCont op = context.GetOp<InstCont>();
->>>>>>> 1ec71635b (sync with main branch)
 
             EmitBrkContSync(context);
         }
@@ -181,24 +156,16 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
             if (context.IsNonMain)
             {
-<<<<<<< HEAD
                 context.TranslatorContext.GpuAccessor.Log("Invalid exit on non-main function.");
-=======
-                context.Config.GpuAccessor.Log("Invalid exit on non-main function.");
->>>>>>> 1ec71635b (sync with main branch)
                 return;
             }
 
             if (op.Ccc == Ccc.T)
             {
-<<<<<<< HEAD
                 if (context.PrepareForReturn())
                 {
                     context.Return();
                 }
-=======
-                context.Return();
->>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -209,16 +176,12 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 {
                     Operand lblSkip = Label();
                     context.BranchIfFalse(lblSkip, cond);
-<<<<<<< HEAD
 
                     if (context.PrepareForReturn())
                     {
                         context.Return();
                     }
 
-=======
-                    context.Return();
->>>>>>> 1ec71635b (sync with main branch)
                     context.MarkLabel(lblSkip);
                 }
             }
@@ -226,44 +189,28 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
         public static void Kil(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstKil>();
-=======
-            InstKil op = context.GetOp<InstKil>();
->>>>>>> 1ec71635b (sync with main branch)
 
             context.Discard();
         }
 
         public static void Pbk(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstPbk>();
-=======
-            InstPbk op = context.GetOp<InstPbk>();
->>>>>>> 1ec71635b (sync with main branch)
 
             EmitPbkPcntSsy(context);
         }
 
         public static void Pcnt(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstPcnt>();
-=======
-            InstPcnt op = context.GetOp<InstPcnt>();
->>>>>>> 1ec71635b (sync with main branch)
 
             EmitPbkPcntSsy(context);
         }
 
         public static void Ret(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstRet>();
-=======
-            InstRet op = context.GetOp<InstRet>();
->>>>>>> 1ec71635b (sync with main branch)
 
             if (context.IsNonMain)
             {
@@ -271,32 +218,20 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
             else
             {
-<<<<<<< HEAD
                 context.TranslatorContext.GpuAccessor.Log("Invalid return on main function.");
-=======
-                context.Config.GpuAccessor.Log("Invalid return on main function.");
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
         public static void Ssy(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstSsy>();
-=======
-            InstSsy op = context.GetOp<InstSsy>();
->>>>>>> 1ec71635b (sync with main branch)
 
             EmitPbkPcntSsy(context);
         }
 
         public static void Sync(EmitterContext context)
         {
-<<<<<<< HEAD
             context.GetOp<InstSync>();
-=======
-            InstSync op = context.GetOp<InstSync>();
->>>>>>> 1ec71635b (sync with main branch)
 
             EmitBrkContSync(context);
         }
@@ -344,11 +279,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
         private static void EmitBranch(EmitterContext context, ulong address)
         {
             InstOp op = context.CurrOp;
-<<<<<<< HEAD
             InstConditional opCond = new(op.RawOpCode);
-=======
-            InstConditional opCond = new InstConditional(op.RawOpCode);
->>>>>>> 1ec71635b (sync with main branch)
 
             // If we're branching to the next instruction, then the branch
             // is useless and we can ignore it.
@@ -394,8 +325,4 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

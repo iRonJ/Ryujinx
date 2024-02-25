@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Tamper.Conditions;
-=======
-﻿using Ryujinx.HLE.HOS.Tamper.Conditions;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
 {
@@ -41,11 +37,7 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
 
             int valueSize = operationWidth <= 4 ? ValueImmediateSize4 : ValueImmediateSize8;
             ulong value = InstructionHelper.GetImmediate(instruction, ValueImmediateIndex, valueSize);
-<<<<<<< HEAD
             Value<ulong> compareToValue = new(value);
-=======
-            Value<ulong> compareToValue = new Value<ulong>(value);
->>>>>>> 1ec71635b (sync with main branch)
 
             return InstructionHelper.CreateCondition(comparison, operationWidth, sourceMemory, compareToValue);
         }

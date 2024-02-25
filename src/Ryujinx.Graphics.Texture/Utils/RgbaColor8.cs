@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.X86;
@@ -58,38 +54,22 @@ namespace Ryujinx.Graphics.Texture.Utils
             return Unsafe.As<RgbaColor8, uint>(ref this);
         }
 
-<<<<<<< HEAD
         public readonly override int GetHashCode()
-=======
-        public override int GetHashCode()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return HashCode.Combine(R, G, B, A);
         }
 
-<<<<<<< HEAD
         public readonly override bool Equals(object obj)
-=======
-        public override bool Equals(object obj)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is RgbaColor8 other && Equals(other);
         }
 
-<<<<<<< HEAD
         public readonly bool Equals(RgbaColor8 other)
-=======
-        public bool Equals(RgbaColor8 other)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return R == other.R && G == other.G && B == other.B && A == other.A;
         }
 
-<<<<<<< HEAD
         public readonly byte GetComponent(int index)
-=======
-        public byte GetComponent(int index)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return index switch
             {
@@ -97,11 +77,7 @@ namespace Ryujinx.Graphics.Texture.Utils
                 1 => G,
                 2 => B,
                 3 => A,
-<<<<<<< HEAD
                 _ => throw new ArgumentOutOfRangeException(nameof(index)),
-=======
-                _ => throw new ArgumentOutOfRangeException(nameof(index))
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
-=======
-﻿namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
->>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Identifies the text entry mode.
@@ -17,10 +13,6 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
         /// <summary>
         /// Displays the text entry area as a multi-line field.
         /// </summary>
-<<<<<<< HEAD
         MultiLine,
-=======
-        MultiLine
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

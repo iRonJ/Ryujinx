@@ -13,22 +13,13 @@ namespace ARMeilleure.State
         // _e0 & _e1 could be marked as readonly, however they are not readonly because we modify them through the Unsafe
         // APIs. This also means that one should be careful when changing the layout of this struct.
 
-<<<<<<< HEAD
         private readonly ulong _e0;
         private readonly ulong _e1;
-=======
-        private ulong _e0;
-        private ulong _e1;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Gets a new <see cref="V128"/> with all bits set to zero.
         /// </summary>
-<<<<<<< HEAD
         public static V128 Zero => new(0, 0);
-=======
-        public static V128 Zero => new V128(0, 0);
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Initializes a new instance of the <see cref="V128"/> struct with the specified <see cref="double"/> value
@@ -64,15 +55,9 @@ namespace ARMeilleure.State
         /// <param name="e3">Element 3</param>
         public V128(float e0, float e1, float e2, float e3)
         {
-<<<<<<< HEAD
             _e0 = (ulong)(uint)BitConverter.SingleToInt32Bits(e0) << 0;
             _e0 |= (ulong)(uint)BitConverter.SingleToInt32Bits(e1) << 32;
             _e1 = (ulong)(uint)BitConverter.SingleToInt32Bits(e2) << 0;
-=======
-            _e0  = (ulong)(uint)BitConverter.SingleToInt32Bits(e0) << 0;
-            _e0 |= (ulong)(uint)BitConverter.SingleToInt32Bits(e1) << 32;
-            _e1  = (ulong)(uint)BitConverter.SingleToInt32Bits(e2) << 0;
->>>>>>> 1ec71635b (sync with main branch)
             _e1 |= (ulong)(uint)BitConverter.SingleToInt32Bits(e3) << 32;
         }
 
@@ -113,15 +98,9 @@ namespace ARMeilleure.State
         /// <param name="e3">Element 3</param>
         public V128(uint e0, uint e1, uint e2, uint e3)
         {
-<<<<<<< HEAD
             _e0 = (ulong)e0 << 0;
             _e0 |= (ulong)e1 << 32;
             _e1 = (ulong)e2 << 0;
-=======
-            _e0  = (ulong)e0 << 0;
-            _e0 |= (ulong)e1 << 32;
-            _e1  = (ulong)e2 << 0;
->>>>>>> 1ec71635b (sync with main branch)
             _e1 |= (ulong)e3 << 32;
         }
 
@@ -158,13 +137,9 @@ namespace ARMeilleure.State
         public T Extract<T>(int index) where T : unmanaged
         {
             if ((uint)index >= GetElementCount<T>())
-<<<<<<< HEAD
             {
                 ThrowIndexOutOfRange();
             }
-=======
-                ThrowIndexOutOfRange();
->>>>>>> 1ec71635b (sync with main branch)
 
             // Performs:
             //  return *((*T)this + index);
@@ -183,13 +158,9 @@ namespace ARMeilleure.State
         public void Insert<T>(int index, T value) where T : unmanaged
         {
             if ((uint)index >= GetElementCount<T>())
-<<<<<<< HEAD
             {
                 ThrowIndexOutOfRange();
             }
-=======
-                ThrowIndexOutOfRange();
->>>>>>> 1ec71635b (sync with main branch)
 
             // Performs:
             //  *((*T)this + index) = value;
@@ -200,7 +171,6 @@ namespace ARMeilleure.State
         /// Returns a new <see cref="byte"/> array which represents the <see cref="V128"/>.
         /// </summary>
         /// <returns>A new <see cref="byte"/> array which represents the <see cref="V128"/></returns>
-<<<<<<< HEAD
         public readonly byte[] ToArray()
         {
             byte[] data = new byte[16];
@@ -208,15 +178,6 @@ namespace ARMeilleure.State
 
             BitConverter.TryWriteBytes(span, _e0);
             BitConverter.TryWriteBytes(span[8..], _e1);
-=======
-        public byte[] ToArray()
-        {
-            byte[]     data = new byte[16];
-            Span<byte> span = data;
-
-            BitConverter.TryWriteBytes(span, _e0);
-            BitConverter.TryWriteBytes(span.Slice(8), _e1);
->>>>>>> 1ec71635b (sync with main branch)
 
             return data;
         }
@@ -268,11 +229,7 @@ namespace ARMeilleure.State
         /// </summary>
         /// <param name="x">Target <see cref="V128"/></param>
         /// <returns>Result of not operation</returns>
-<<<<<<< HEAD
         public static V128 operator ~(V128 x) => new(~x._e0, ~x._e1);
-=======
-        public static V128 operator ~(V128 x) => new V128(~x._e0, ~x._e1);
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Performs a bitwise and on the specified <see cref="V128"/> instances.
@@ -280,11 +237,7 @@ namespace ARMeilleure.State
         /// <param name="x">First instance</param>
         /// <param name="y">Second instance</param>
         /// <returns>Result of and operation</returns>
-<<<<<<< HEAD
         public static V128 operator &(V128 x, V128 y) => new(x._e0 & y._e0, x._e1 & y._e1);
-=======
-        public static V128 operator &(V128 x, V128 y) => new V128(x._e0 & y._e0, x._e1 & y._e1);
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Performs a bitwise or on the specified <see cref="V128"/> instances.
@@ -292,11 +245,7 @@ namespace ARMeilleure.State
         /// <param name="x">First instance</param>
         /// <param name="y">Second instance</param>
         /// <returns>Result of or operation</returns>
-<<<<<<< HEAD
         public static V128 operator |(V128 x, V128 y) => new(x._e0 | y._e0, x._e1 | y._e1);
-=======
-        public static V128 operator |(V128 x, V128 y) => new V128(x._e0 | y._e0, x._e1 | y._e1);
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Performs a bitwise exlusive or on the specified <see cref="V128"/> instances.
@@ -304,11 +253,7 @@ namespace ARMeilleure.State
         /// <param name="x">First instance</param>
         /// <param name="y">Second instance</param>
         /// <returns>Result of exclusive or operation</returns>
-<<<<<<< HEAD
         public static V128 operator ^(V128 x, V128 y) => new(x._e0 ^ y._e0, x._e1 ^ y._e1);
-=======
-        public static V128 operator ^(V128 x, V128 y) => new V128(x._e0 ^ y._e0, x._e1 ^ y._e1);
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Determines if the specified <see cref="V128"/> instances are equal.
@@ -331,11 +276,7 @@ namespace ARMeilleure.State
         /// </summary>
         /// <param name="other">Other <see cref="V128"/> instance</param>
         /// <returns>true if equal; otherwise false</returns>
-<<<<<<< HEAD
         public readonly bool Equals(V128 other)
-=======
-        public bool Equals(V128 other)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return other._e0 == _e0 && other._e1 == _e1;
         }
@@ -345,40 +286,24 @@ namespace ARMeilleure.State
         /// </summary>
         /// <param name="obj">Other <see cref="object"/> instance</param>
         /// <returns>true if equal; otherwise false</returns>
-<<<<<<< HEAD
         public readonly override bool Equals(object obj)
-=======
-        public override bool Equals(object obj)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is V128 vector && Equals(vector);
         }
 
         /// <inheritdoc/>
-<<<<<<< HEAD
         public readonly override int GetHashCode()
-=======
-        public override int GetHashCode()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return HashCode.Combine(_e0, _e1);
         }
 
         /// <inheritdoc/>
-<<<<<<< HEAD
         public readonly override string ToString()
-=======
-        public override string ToString()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return $"0x{_e1:X16}{_e0:X16}";
         }
 
-<<<<<<< HEAD
         private static uint GetElementCount<T>() where T : unmanaged
-=======
-        private uint GetElementCount<T>() where T : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (uint)(Unsafe.SizeOf<V128>() / Unsafe.SizeOf<T>());
         }
@@ -388,8 +313,4 @@ namespace ARMeilleure.State
             throw new ArgumentOutOfRangeException("index");
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

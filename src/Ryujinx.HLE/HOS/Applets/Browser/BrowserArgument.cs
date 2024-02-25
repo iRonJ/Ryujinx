@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Account.Acc;
-=======
-﻿using Ryujinx.HLE.HOS.Services.Account.Acc;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -12,7 +8,6 @@ namespace Ryujinx.HLE.HOS.Applets.Browser
 {
     class BrowserArgument
     {
-<<<<<<< HEAD
         public WebArgTLVType Type { get; }
         public byte[] Value { get; }
 
@@ -23,18 +18,6 @@ namespace Ryujinx.HLE.HOS.Applets.Browser
         }
 
         private static readonly Dictionary<WebArgTLVType, Type> _typeRegistry = new()
-=======
-        public WebArgTLVType Type  { get; }
-        public byte[]        Value { get; }
-
-        public BrowserArgument(WebArgTLVType type, byte[] value)
-        {
-            Type  = type;
-            Value = value;
-        }
-
-        private static readonly Dictionary<WebArgTLVType, Type> _typeRegistry = new Dictionary<WebArgTLVType, Type>
->>>>>>> 1ec71635b (sync with main branch)
         {
             { WebArgTLVType.InitialURL,                     typeof(string) },
             { WebArgTLVType.CallbackUrl,                    typeof(string) },
@@ -81,19 +64,11 @@ namespace Ryujinx.HLE.HOS.Applets.Browser
 
         public static (ShimKind, List<BrowserArgument>) ParseArguments(ReadOnlySpan<byte> data)
         {
-<<<<<<< HEAD
             List<BrowserArgument> browserArguments = new();
 
             WebArgHeader header = IApplet.ReadStruct<WebArgHeader>(data[..8]);
 
             ReadOnlySpan<byte> rawTLVs = data[8..];
-=======
-            List<BrowserArgument> browserArguments = new List<BrowserArgument>();
-
-            WebArgHeader header = IApplet.ReadStruct<WebArgHeader>(data.Slice(0, 8));
-
-            ReadOnlySpan<byte> rawTLVs = data.Slice(8);
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < header.Count; i++)
             {
@@ -102,11 +77,7 @@ namespace Ryujinx.HLE.HOS.Applets.Browser
 
                 browserArguments.Add(new BrowserArgument((WebArgTLVType)tlv.Type, tlvData.ToArray()));
 
-<<<<<<< HEAD
                 rawTLVs = rawTLVs[(Unsafe.SizeOf<WebArgTLV>() + tlv.Size)..];
-=======
-                rawTLVs = rawTLVs.Slice(Unsafe.SizeOf<WebArgTLV>() + tlv.Size);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return (header.ShimKind, browserArguments);

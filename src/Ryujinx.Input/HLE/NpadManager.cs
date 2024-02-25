@@ -5,41 +5,26 @@ using Ryujinx.HLE.HOS.Services.Hid;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-<<<<<<< HEAD
 using System.Linq;
 using System.Runtime.CompilerServices;
 using CemuHookClient = Ryujinx.Input.Motion.CemuHook.Client;
 using ControllerType = Ryujinx.Common.Configuration.Hid.ControllerType;
 using PlayerIndex = Ryujinx.HLE.HOS.Services.Hid.PlayerIndex;
-=======
-using System.Runtime.CompilerServices;
-using CemuHookClient = Ryujinx.Input.Motion.CemuHook.Client;
->>>>>>> 1ec71635b (sync with main branch)
 using Switch = Ryujinx.HLE.Switch;
 
 namespace Ryujinx.Input.HLE
 {
     public class NpadManager : IDisposable
     {
-<<<<<<< HEAD
         private readonly CemuHookClient _cemuHookClient;
 
         private readonly object _lock = new();
-=======
-        private CemuHookClient _cemuHookClient;
-
-        private object _lock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         private bool _blockInputUpdates;
 
         private const int MaxControllers = 9;
 
-<<<<<<< HEAD
         private readonly NpadController[] _controllers;
-=======
-        private NpadController[] _controllers;
->>>>>>> 1ec71635b (sync with main branch)
 
         private readonly IGamepadDriver _keyboardDriver;
         private readonly IGamepadDriver _gamepadDriver;
@@ -69,11 +54,7 @@ namespace Ryujinx.Input.HLE
         {
             lock (_lock)
             {
-<<<<<<< HEAD
                 List<InputConfig> validInputs = new();
-=======
-                List<InputConfig> validInputs = new List<InputConfig>();
->>>>>>> 1ec71635b (sync with main branch)
                 foreach (var inputConfigEntry in _inputConfig)
                 {
                     if (_controllers[(int)inputConfigEntry.PlayerIndex] != null)
@@ -89,7 +70,6 @@ namespace Ryujinx.Input.HLE
         private void HandleOnGamepadDisconnected(string obj)
         {
             // Force input reload
-<<<<<<< HEAD
             lock (_lock)
             {
                 // Forcibly disconnect any controllers with this ID.
@@ -104,9 +84,6 @@ namespace Ryujinx.Input.HLE
 
                 ReloadConfiguration(_inputConfig, _enableKeyboard, _enableMouse);
             }
-=======
-            ReloadConfiguration(_inputConfig, _enableKeyboard, _enableMouse);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void HandleOnGamepadConnected(string id)
@@ -135,22 +112,14 @@ namespace Ryujinx.Input.HLE
             {
                 return controller.UpdateDriverConfiguration(targetDriver, config);
             }
-<<<<<<< HEAD
 
             return controller.GamepadDriver != null;
-=======
-            else
-            {
-                return controller.GamepadDriver != null;
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void ReloadConfiguration(List<InputConfig> inputConfig, bool enableKeyboard, bool enableMouse)
         {
             lock (_lock)
             {
-<<<<<<< HEAD
                 NpadController[] oldControllers = _controllers.ToArray();
 
                 List<InputConfig> validInputs = new();
@@ -170,42 +139,21 @@ namespace Ryujinx.Input.HLE
                     {
                         controller = new(_cemuHookClient);
                     }
-=======
-                for (int i = 0; i < _controllers.Length; i++)
-                {
-                    _controllers[i]?.Dispose();
-                    _controllers[i] = null;
-                }
-
-                List<InputConfig> validInputs = new List<InputConfig>();
-
-                foreach (InputConfig inputConfigEntry in inputConfig)
-                {
-                    NpadController controller = new NpadController(_cemuHookClient);
->>>>>>> 1ec71635b (sync with main branch)
 
                     bool isValid = DriverConfigurationUpdate(ref controller, inputConfigEntry);
 
                     if (!isValid)
                     {
-<<<<<<< HEAD
                         _controllers[index] = null;
-=======
->>>>>>> 1ec71635b (sync with main branch)
                         controller.Dispose();
                     }
                     else
                     {
-<<<<<<< HEAD
                         _controllers[index] = controller;
-=======
-                        _controllers[(int)inputConfigEntry.PlayerIndex] = controller;
->>>>>>> 1ec71635b (sync with main branch)
                         validInputs.Add(inputConfigEntry);
                     }
                 }
 
-<<<<<<< HEAD
                 for (int i = 0; i < oldControllers.Length; i++)
                 {
                     // Disconnect any controllers that weren't reused by the new configuration.
@@ -217,11 +165,6 @@ namespace Ryujinx.Input.HLE
                 _inputConfig = inputConfig;
                 _enableKeyboard = enableKeyboard;
                 _enableMouse = enableMouse;
-=======
-                _inputConfig    = inputConfig;
-                _enableKeyboard = enableKeyboard;
-                _enableMouse    = enableMouse;
->>>>>>> 1ec71635b (sync with main branch)
 
                 _device.Hid.RefreshInputConfig(validInputs);
             }
@@ -255,13 +198,8 @@ namespace Ryujinx.Input.HLE
         {
             lock (_lock)
             {
-<<<<<<< HEAD
                 List<GamepadInput> hleInputStates = new();
                 List<SixAxisInput> hleMotionStates = new(NpadDevices.MaxControllers);
-=======
-                List<GamepadInput> hleInputStates = new List<GamepadInput>();
-                List<SixAxisInput> hleMotionStates = new List<SixAxisInput>(NpadDevices.MaxControllers);
->>>>>>> 1ec71635b (sync with main branch)
 
                 KeyboardInput? hleKeyboardInput = null;
 
@@ -271,11 +209,7 @@ namespace Ryujinx.Input.HLE
                     (SixAxisInput, SixAxisInput) motionState = default;
 
                     NpadController controller = _controllers[(int)inputConfig.PlayerIndex];
-<<<<<<< HEAD
                     PlayerIndex playerIndex = (PlayerIndex)inputConfig.PlayerIndex;
-=======
-                    Ryujinx.HLE.HOS.Services.Hid.PlayerIndex playerIndex = (Ryujinx.HLE.HOS.Services.Hid.PlayerIndex)inputConfig.PlayerIndex;
->>>>>>> 1ec71635b (sync with main branch)
 
                     bool isJoyconPair = false;
 
@@ -292,11 +226,7 @@ namespace Ryujinx.Input.HLE
 
                         inputState.Buttons |= _device.Hid.UpdateStickButtons(inputState.LStick, inputState.RStick);
 
-<<<<<<< HEAD
                         isJoyconPair = inputConfig.ControllerType == ControllerType.JoyconPair;
-=======
-                        isJoyconPair = inputConfig.ControllerType == Common.Configuration.Hid.ControllerType.JoyconPair;
->>>>>>> 1ec71635b (sync with main branch)
 
                         var altMotionState = isJoyconPair ? controller.GetHLEMotionState(true) : default;
 
@@ -372,11 +302,7 @@ namespace Ryujinx.Input.HLE
 
                     _device.Hid.Mouse.Update((int)position.X, (int)position.Y, buttons, (int)mouseInput.Scroll.X, (int)mouseInput.Scroll.Y, true);
                 }
-<<<<<<< HEAD
                 else
-=======
-                else 
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     _device.Hid.Mouse.Update(0, 0);
                 }
@@ -389,11 +315,7 @@ namespace Ryujinx.Input.HLE
         {
             lock (_lock)
             {
-<<<<<<< HEAD
                 return _inputConfig.Find(x => x.PlayerIndex == (Common.Configuration.Hid.PlayerIndex)index);
-=======
-                return _inputConfig.Find(x => x.PlayerIndex == (Ryujinx.Common.Configuration.Hid.PlayerIndex)index);
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -423,10 +345,7 @@ namespace Ryujinx.Input.HLE
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
     }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.HOS.Services.Account.Acc;
 using System.Collections.Generic;
@@ -12,11 +8,7 @@ namespace Ryujinx.HLE.HOS.Services.Olsc
     [Service("olsc:u")] // 10.0.0+
     class IOlscServiceForApplication : IpcService
     {
-<<<<<<< HEAD
         private bool _initialized;
-=======
-        private bool                     _initialized;
->>>>>>> 1ec71635b (sync with main branch)
         private Dictionary<UserId, bool> _saveDataBackupSettingDatabase;
 
         public IOlscServiceForApplication(ServiceCtx context) { }
@@ -73,13 +65,8 @@ namespace Ryujinx.HLE.HOS.Services.Olsc
         // SetSaveDataBackupSettingEnabled(nn::account::Uid, bool)
         public ResultCode SetSaveDataBackupSettingEnabled(ServiceCtx context)
         {
-<<<<<<< HEAD
             bool saveDataBackupSettingEnabled = context.RequestData.ReadUInt64() != 0;
             UserId userId = context.RequestData.ReadStruct<UserId>();
-=======
-            bool   saveDataBackupSettingEnabled = context.RequestData.ReadUInt64() != 0;
-            UserId userId                       = context.RequestData.ReadStruct<UserId>();
->>>>>>> 1ec71635b (sync with main branch)
 
             if (!_initialized)
             {
@@ -100,8 +87,4 @@ namespace Ryujinx.HLE.HOS.Services.Olsc
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

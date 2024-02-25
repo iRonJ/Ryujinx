@@ -164,11 +164,7 @@ namespace Ryujinx.Audio
         /// <summary>
         /// The default coefficients used for standard 5.1 surround to stereo downmixing.
         /// </summary>
-<<<<<<< HEAD
         public static readonly float[] DefaultSurroundToStereoCoefficients = new float[4]
-=======
-        public static float[] DefaultSurroundToStereoCoefficients = new float[4]
->>>>>>> 1ec71635b (sync with main branch)
         {
             1.0f,
             0.707f,
@@ -176,8 +172,4 @@ namespace Ryujinx.Audio
             0.707f,
         };
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

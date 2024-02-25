@@ -1,11 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-<<<<<<< HEAD
     <TargetFramework>net8.0</TargetFramework>
-=======
-    <TargetFramework>net7.0</TargetFramework>
->>>>>>> 1ec71635b (sync with main branch)
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
 

@@ -106,8 +106,4 @@ namespace Ryujinx.Audio.Renderer.Server.Sink
             base.CleanUp();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

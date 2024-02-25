@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Nim.ShopServiceAccessServerInterface.ShopServiceAccessServer;
 
 namespace Ryujinx.HLE.HOS.Services.Nim.ShopServiceAccessServerInterface
@@ -22,8 +18,4 @@ namespace Ryujinx.HLE.HOS.Services.Nim.ShopServiceAccessServerInterface
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

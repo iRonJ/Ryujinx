@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Text;
 
 namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl.Types
@@ -15,7 +11,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl.Types
 
         public static GetConfigurationArguments FromSpan(Span<byte> span)
         {
-<<<<<<< HEAD
             string domain = Encoding.ASCII.GetString(span[..0x41]);
             string parameter = Encoding.ASCII.GetString(span.Slice(0x41, 0x41));
 
@@ -24,16 +19,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl.Types
                 Domain = domain[..domain.IndexOf('\0')],
                 Parameter = parameter[..parameter.IndexOf('\0')],
                 Configuration = span.Slice(0x82, 0x101).ToArray(),
-=======
-            string domain    = Encoding.ASCII.GetString(span.Slice(0, 0x41));
-            string parameter = Encoding.ASCII.GetString(span.Slice(0x41, 0x41));
-
-            GetConfigurationArguments result = new GetConfigurationArguments
-            {
-                Domain        = domain.Substring(0, domain.IndexOf('\0')),
-                Parameter     = parameter.Substring(0, parameter.IndexOf('\0')),
-                Configuration = span.Slice(0x82, 0x101).ToArray()
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             return result;
@@ -41,11 +26,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl.Types
 
         public void CopyTo(Span<byte> span)
         {
-<<<<<<< HEAD
             Encoding.ASCII.GetBytes(Domain + '\0').CopyTo(span[..0x41]);
-=======
-            Encoding.ASCII.GetBytes(Domain + '\0').CopyTo(span.Slice(0, 0x41));
->>>>>>> 1ec71635b (sync with main branch)
             Encoding.ASCII.GetBytes(Parameter + '\0').CopyTo(span.Slice(0x41, 0x41));
             Configuration.CopyTo(span.Slice(0x82, 0x101));
         }

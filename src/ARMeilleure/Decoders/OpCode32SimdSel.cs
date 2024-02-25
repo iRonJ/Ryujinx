@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace ARMeilleure.Decoders
-=======
-﻿namespace ARMeilleure.Decoders
->>>>>>> 1ec71635b (sync with main branch)
 {
     class OpCode32SimdSel : OpCode32SimdRegS
     {
@@ -17,19 +13,11 @@ namespace ARMeilleure.Decoders
         }
     }
 
-<<<<<<< HEAD
     enum OpCode32SimdSelMode
-=======
-    enum OpCode32SimdSelMode : int
->>>>>>> 1ec71635b (sync with main branch)
     {
         Eq = 0,
         Vs,
         Ge,
-<<<<<<< HEAD
         Gt,
-=======
-        Gt
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

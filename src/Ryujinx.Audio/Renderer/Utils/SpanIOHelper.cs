@@ -22,21 +22,12 @@ namespace Ryujinx.Audio.Renderer.Utils
 
             if (size > backingMemory.Length)
             {
-<<<<<<< HEAD
                 throw new ArgumentOutOfRangeException(nameof(backingMemory), backingMemory.Length, null);
             }
 
             MemoryMarshal.Write(backingMemory.Span[..size], in data);
 
             backingMemory = backingMemory[size..];
-=======
-                throw new ArgumentOutOfRangeException();
-            }
-
-            MemoryMarshal.Write<T>(backingMemory.Span.Slice(0, size), ref data);
-
-            backingMemory = backingMemory.Slice(size);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -51,21 +42,12 @@ namespace Ryujinx.Audio.Renderer.Utils
 
             if (size > backingMemory.Length)
             {
-<<<<<<< HEAD
                 throw new ArgumentOutOfRangeException(nameof(backingMemory), backingMemory.Length, null);
             }
 
             MemoryMarshal.Write(backingMemory[..size], in data);
 
             backingMemory = backingMemory[size..];
-=======
-                throw new ArgumentOutOfRangeException();
-            }
-
-            MemoryMarshal.Write<T>(backingMemory.Slice(0, size), ref data);
-
-            backingMemory = backingMemory.Slice(size);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -80,21 +62,12 @@ namespace Ryujinx.Audio.Renderer.Utils
 
             if (size > backingMemory.Length)
             {
-<<<<<<< HEAD
                 throw new ArgumentOutOfRangeException(nameof(backingMemory), backingMemory.Length, null);
             }
 
             Span<T> result = MemoryMarshal.Cast<byte, T>(backingMemory.Span[..size]);
 
             backingMemory = backingMemory[size..];
-=======
-                throw new ArgumentOutOfRangeException();
-            }
-
-            Span<T> result = MemoryMarshal.Cast<byte, T>(backingMemory.Span.Slice(0, size));
-
-            backingMemory = backingMemory.Slice(size);
->>>>>>> 1ec71635b (sync with main branch)
 
             return result;
         }
@@ -111,21 +84,12 @@ namespace Ryujinx.Audio.Renderer.Utils
 
             if (size > backingMemory.Length)
             {
-<<<<<<< HEAD
                 throw new ArgumentOutOfRangeException(nameof(backingMemory), backingMemory.Length, null);
             }
 
             Span<T> result = MemoryMarshal.Cast<byte, T>(backingMemory[..size]);
 
             backingMemory = backingMemory[size..];
-=======
-                throw new ArgumentOutOfRangeException();
-            }
-
-            Span<T> result = MemoryMarshal.Cast<byte, T>(backingMemory.Slice(0, size));
-
-            backingMemory = backingMemory.Slice(size);
->>>>>>> 1ec71635b (sync with main branch)
 
             return result;
         }
@@ -142,21 +106,12 @@ namespace Ryujinx.Audio.Renderer.Utils
 
             if (size > backingMemory.Length)
             {
-<<<<<<< HEAD
                 throw new ArgumentOutOfRangeException(nameof(backingMemory), backingMemory.Length, null);
             }
 
             T result = MemoryMarshal.Read<T>(backingMemory.Span[..size]);
 
             backingMemory = backingMemory[size..];
-=======
-                throw new ArgumentOutOfRangeException();
-            }
-
-            T result = MemoryMarshal.Read<T>(backingMemory.Span.Slice(0, size));
-
-            backingMemory = backingMemory.Slice(size);
->>>>>>> 1ec71635b (sync with main branch)
 
             return result;
         }
@@ -173,21 +128,12 @@ namespace Ryujinx.Audio.Renderer.Utils
 
             if (size > backingMemory.Length)
             {
-<<<<<<< HEAD
                 throw new ArgumentOutOfRangeException(nameof(backingMemory), backingMemory.Length, null);
             }
 
             T result = MemoryMarshal.Read<T>(backingMemory[..size]);
 
             backingMemory = backingMemory[size..];
-=======
-                throw new ArgumentOutOfRangeException();
-            }
-
-            T result = MemoryMarshal.Read<T>(backingMemory.Slice(0, size));
-
-            backingMemory = backingMemory.Slice(size);
->>>>>>> 1ec71635b (sync with main branch)
 
             return result;
         }
@@ -222,8 +168,4 @@ namespace Ryujinx.Audio.Renderer.Utils
             return ref GetMemory(memory, id, count).Span[0];
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -12,11 +12,7 @@ namespace Ryujinx.Graphics.Vulkan
         Broadcom,
         Qualcomm,
         Apple,
-<<<<<<< HEAD
         Unknown,
-=======
-        Unknown
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     static partial class VendorUtils
@@ -24,12 +20,9 @@ namespace Ryujinx.Graphics.Vulkan
         [GeneratedRegex("Radeon (((HD|R(5|7|9|X)) )?((M?[2-6]\\d{2}(\\D|$))|([7-8]\\d{3}(\\D|$))|Fury|Nano))|(Pro Duo)")]
         public static partial Regex AmdGcnRegex();
 
-<<<<<<< HEAD
         [GeneratedRegex("NVIDIA GeForce (R|G)?TX? (\\d{3}\\d?)M?")]
         public static partial Regex NvidiaConsumerClassRegex();
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public static Vendor FromId(uint id)
         {
             return id switch
@@ -42,11 +35,7 @@ namespace Ryujinx.Graphics.Vulkan
                 0x14E4 => Vendor.Broadcom,
                 0x8086 => Vendor.Intel,
                 0x5143 => Vendor.Qualcomm,
-<<<<<<< HEAD
                 _ => Vendor.Unknown,
-=======
-                _ => Vendor.Unknown
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -69,11 +58,7 @@ namespace Ryujinx.Graphics.Vulkan
                 0x10004 => "Codeplay Software Ltd.",
                 0x10005 => "Mesa",
                 0x10006 => "PoCL",
-<<<<<<< HEAD
                 _ => $"0x{id:X}",
-=======
-                _ => $"0x{id:X}"
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

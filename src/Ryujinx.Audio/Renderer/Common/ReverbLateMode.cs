@@ -33,12 +33,6 @@ namespace Ryujinx.Audio.Renderer.Common
         /// <summary>
         /// Max delay. (used for delay line limits)
         /// </summary>
-<<<<<<< HEAD
         Limit = NoDelay,
     }
 }
-=======
-        Limit = NoDelay
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Audio.Backends.SDL2
-=======
-﻿namespace Ryujinx.Audio.Backends.SDL2
->>>>>>> 1ec71635b (sync with main branch)
 {
     class SDL2AudioBuffer
     {

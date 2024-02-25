@@ -3,19 +3,11 @@ using Ryujinx.Common.Logging;
 using Ryujinx.Common.Memory;
 using Ryujinx.HLE.HOS.Applets;
 using Ryujinx.HLE.HOS.Ipc;
-<<<<<<< HEAD
-=======
-using Ryujinx.HLE.HOS.Kernel.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.SurfaceFlinger;
 using Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService;
 using Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService.Types;
 using Ryujinx.HLE.HOS.Services.Vi.Types;
-<<<<<<< HEAD
 using Ryujinx.HLE.UI;
-=======
-using Ryujinx.HLE.Ui;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Common;
 using System;
 using System.Collections.Generic;
@@ -34,29 +26,19 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
             public int RetrievedEventsCount;
         }
 
-<<<<<<< HEAD
         private readonly List<DisplayInfo> _displayInfo;
-=======
-        private readonly List<DisplayInfo>               _displayInfo;
->>>>>>> 1ec71635b (sync with main branch)
         private readonly Dictionary<ulong, DisplayState> _openDisplays;
 
         private int _vsyncEventHandle;
 
         public IApplicationDisplayService(ViServiceType serviceType)
         {
-<<<<<<< HEAD
             _serviceType = serviceType;
             _displayInfo = new List<DisplayInfo>();
-=======
-            _serviceType  = serviceType;
-            _displayInfo  = new List<DisplayInfo>();
->>>>>>> 1ec71635b (sync with main branch)
             _openDisplays = new Dictionary<ulong, DisplayState>();
 
             void AddDisplayInfo(string name, bool layerLimitEnabled, ulong layerLimitMax, ulong width, ulong height)
             {
-<<<<<<< HEAD
                 DisplayInfo displayInfo = new()
                 {
                     Name = new Array64<byte>(),
@@ -65,16 +47,6 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
                     LayerLimitMax = layerLimitMax,
                     Width = width,
                     Height = height,
-=======
-                DisplayInfo displayInfo = new DisplayInfo()
-                {
-                    Name              = new Array64<byte>(),
-                    LayerLimitEnabled = layerLimitEnabled,
-                    Padding           = new Array7<byte>(),
-                    LayerLimitMax     = layerLimitMax,
-                    Width             = width,
-                    Height            = height
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 Encoding.ASCII.GetBytes(name).AsSpan().CopyTo(displayInfo.Name.AsSpan());
@@ -82,19 +54,11 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
                 _displayInfo.Add(displayInfo);
             }
 
-<<<<<<< HEAD
             AddDisplayInfo("Default", true, 1, 1920, 1080);
             AddDisplayInfo("External", true, 1, 1920, 1080);
             AddDisplayInfo("Edid", true, 1, 0, 0);
             AddDisplayInfo("Internal", true, 1, 1920, 1080);
             AddDisplayInfo("Null", false, 0, 1920, 1080);
-=======
-            AddDisplayInfo("Default",  true,  1, 1920, 1080);
-            AddDisplayInfo("External", true,  1, 1920, 1080);
-            AddDisplayInfo("Edid",     true,  1, 0,    0);
-            AddDisplayInfo("Internal", true,  1, 1920, 1080);
-            AddDisplayInfo("Null",     false, 0, 1920, 1080);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CommandCmif(100)]
@@ -178,11 +142,7 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
         // OpenDisplay(nn::vi::DisplayName) -> u64 display_id
         public ResultCode OpenDisplay(ServiceCtx context)
         {
-<<<<<<< HEAD
             StringBuilder nameBuilder = new();
-=======
-            string name = "";
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int index = 0; index < 8 && context.RequestData.BaseStream.Position < context.RequestData.BaseStream.Length; index++)
             {
@@ -190,19 +150,11 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
 
                 if (chr >= 0x20 && chr < 0x7f)
                 {
-<<<<<<< HEAD
                     nameBuilder.Append((char)chr);
                 }
             }
 
             return OpenDisplayImpl(context, nameBuilder.ToString());
-=======
-                    name += (char)chr;
-                }
-            }
-
-            return OpenDisplayImpl(context, name);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CommandCmif(1011)]
@@ -279,7 +231,6 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
         public ResultCode OpenLayer(ServiceCtx context)
         {
             // TODO: support multi display.
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             byte[] displayName = context.RequestData.ReadBytes(0x40);
 #pragma warning restore IDE0059
@@ -288,12 +239,6 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             long userId = context.RequestData.ReadInt64();
 #pragma warning restore IDE0059
-=======
-            byte[] displayName = context.RequestData.ReadBytes(0x40);
-
-            long  layerId   = context.RequestData.ReadInt64();
-            long  userId    = context.RequestData.ReadInt64();
->>>>>>> 1ec71635b (sync with main branch)
             ulong parcelPtr = context.Request.ReceiveBuff[0].Position;
 
             ResultCode result = context.Device.System.SurfaceFlinger.OpenLayer(context.Request.HandleDesc.PId, layerId, out IBinder producer);
@@ -305,11 +250,7 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
 
             context.Device.System.SurfaceFlinger.SetRenderLayer(layerId);
 
-<<<<<<< HEAD
             Parcel parcel = new(0x28, 0x4);
-=======
-            Parcel parcel = new Parcel(0x28, 0x4);
->>>>>>> 1ec71635b (sync with main branch)
 
             parcel.WriteObject(producer, "dispdrv\0");
 
@@ -335,15 +276,10 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
         // CreateStrayLayer(u32, u64) -> (u64, u64, buffer<bytes, 6>)
         public ResultCode CreateStrayLayer(ServiceCtx context)
         {
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             long layerFlags = context.RequestData.ReadInt64();
             long displayId = context.RequestData.ReadInt64();
 #pragma warning restore IDE0059
-=======
-            long layerFlags = context.RequestData.ReadInt64();
-            long displayId  = context.RequestData.ReadInt64();
->>>>>>> 1ec71635b (sync with main branch)
 
             ulong parcelPtr = context.Request.ReceiveBuff[0].Position;
 
@@ -352,11 +288,7 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
 
             context.Device.System.SurfaceFlinger.SetRenderLayer(layerId);
 
-<<<<<<< HEAD
             Parcel parcel = new(0x28, 0x4);
-=======
-            Parcel parcel = new Parcel(0x28, 0x4);
->>>>>>> 1ec71635b (sync with main branch)
 
             parcel.WriteObject(producer, "dispdrv\0");
 
@@ -400,17 +332,10 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
 
             DestinationScalingMode? convertedScalingMode = scalingMode switch
             {
-<<<<<<< HEAD
                 SourceScalingMode.None => DestinationScalingMode.None,
                 SourceScalingMode.Freeze => DestinationScalingMode.Freeze,
                 SourceScalingMode.ScaleAndCrop => DestinationScalingMode.ScaleAndCrop,
                 SourceScalingMode.ScaleToWindow => DestinationScalingMode.ScaleToWindow,
-=======
-                SourceScalingMode.None                => DestinationScalingMode.None,
-                SourceScalingMode.Freeze              => DestinationScalingMode.Freeze,
-                SourceScalingMode.ScaleAndCrop        => DestinationScalingMode.ScaleAndCrop,
-                SourceScalingMode.ScaleToWindow       => DestinationScalingMode.ScaleToWindow,
->>>>>>> 1ec71635b (sync with main branch)
                 SourceScalingMode.PreserveAspectRatio => DestinationScalingMode.PreserveAspectRatio,
                 _ => null,
             };
@@ -434,7 +359,6 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
 
         private ulong GetA8B8G8R8LayerSize(int width, int height, out int pitch, out int alignment)
         {
-<<<<<<< HEAD
             const int DefaultAlignment = 0x1000;
             const ulong DefaultSize = 0x20000;
 
@@ -445,18 +369,6 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
             ulong requiredMemorySize = (ulong)BitUtils.AlignUp(memorySize, alignment);
 
             return (requiredMemorySize + DefaultSize - 1) / DefaultSize * DefaultSize;
-=======
-            const int   defaultAlignment = 0x1000;
-            const ulong defaultSize      = 0x20000;
-
-            alignment = defaultAlignment;
-            pitch     = BitUtils.AlignUp(BitUtils.DivRoundUp(width * 32, 8), 64);
-
-            int   memorySize         = pitch * BitUtils.AlignUp(height, 64);
-            ulong requiredMemorySize = (ulong)BitUtils.AlignUp(memorySize, alignment);
-
-            return (requiredMemorySize + defaultSize - 1) / defaultSize * defaultSize;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CommandCmif(2450)]
@@ -466,30 +378,18 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
             // The size of the layer buffer should be an aligned multiple of width * height
             // because it was created using GetIndirectLayerImageRequiredMemoryInfo as a guide.
 
-<<<<<<< HEAD
             long layerWidth = context.RequestData.ReadInt64();
             long layerHeight = context.RequestData.ReadInt64();
             long layerHandle = context.RequestData.ReadInt64();
             ulong layerBuffPosition = context.Request.ReceiveBuff[0].Position;
             ulong layerBuffSize = context.Request.ReceiveBuff[0].Size;
-=======
-            long  layerWidth        = context.RequestData.ReadInt64();
-            long  layerHeight       = context.RequestData.ReadInt64();
-            long  layerHandle       = context.RequestData.ReadInt64();
-            ulong layerBuffPosition = context.Request.ReceiveBuff[0].Position;
-            ulong layerBuffSize     = context.Request.ReceiveBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             // Get the pitch of the layer that is necessary to render correctly.
             ulong size = GetA8B8G8R8LayerSize((int)layerWidth, (int)layerHeight, out int pitch, out _);
 
             Debug.Assert(layerBuffSize == size);
 
-<<<<<<< HEAD
             RenderingSurfaceInfo surfaceInfo = new(ColorFormat.A8B8G8R8, (uint)layerWidth, (uint)layerHeight, (uint)pitch, (uint)layerBuffSize);
-=======
-            RenderingSurfaceInfo surfaceInfo = new RenderingSurfaceInfo(ColorFormat.A8B8G8R8, (uint)layerWidth, (uint)layerHeight, (uint)pitch, (uint)layerBuffSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Get the applet associated with the handle.
             object appletObject = context.Device.System.AppletState.IndirectLayerHandles.GetData((int)layerHandle);
@@ -530,11 +430,7 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
             }
             */
 
-<<<<<<< HEAD
             int width = (int)context.RequestData.ReadUInt64();
-=======
-            int width  = (int)context.RequestData.ReadUInt64();
->>>>>>> 1ec71635b (sync with main branch)
             int height = (int)context.RequestData.ReadUInt64();
 
             if (height < 0 || width < 0)
@@ -554,11 +450,7 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
                 // NOTE: The official service setup a A8B8G8R8 texture with a linear layout and then query its size.
                 //       As we don't need this texture on the emulator, we can just simplify this logic and directly
                 //       do a linear layout size calculation. (stride * height * bytePerPixel)
-<<<<<<< HEAD
                 ulong size = GetA8B8G8R8LayerSize(width, height, out _, out int alignment);
-=======
-                ulong size = GetA8B8G8R8LayerSize(width, height, out int pitch, out int alignment);
->>>>>>> 1ec71635b (sync with main branch)
 
                 context.ResponseData.Write(size);
                 context.ResponseData.Write(alignment);
@@ -597,8 +489,4 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

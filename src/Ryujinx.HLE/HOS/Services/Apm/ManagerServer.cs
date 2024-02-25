@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Apm
-=======
-﻿namespace Ryujinx.HLE.HOS.Services.Apm
->>>>>>> 1ec71635b (sync with main branch)
 {
     [Service("apm")]
     [Service("apm:am")] // 8.0.0+
@@ -32,8 +28,4 @@ namespace Ryujinx.HLE.HOS.Services.Apm
             return _context.Device.System.PerformanceState.CpuOverclockEnabled;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

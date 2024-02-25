@@ -5,7 +5,6 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
     class ShaderProperties
     {
         private readonly Dictionary<int, BufferDefinition> _constantBuffers;
-<<<<<<< HEAD
         private readonly Dictionary<int, BufferDefinition> _storageBuffers;
         private readonly Dictionary<int, TextureDefinition> _textures;
         private readonly Dictionary<int, TextureDefinition> _images;
@@ -18,15 +17,10 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
         public IReadOnlyDictionary<int, TextureDefinition> Images => _images;
         public IReadOnlyDictionary<int, MemoryDefinition> LocalMemories => _localMemories;
         public IReadOnlyDictionary<int, MemoryDefinition> SharedMemories => _sharedMemories;
-=======
-
-        public IReadOnlyDictionary<int, BufferDefinition> ConstantBuffers => _constantBuffers;
->>>>>>> 1ec71635b (sync with main branch)
 
         public ShaderProperties()
         {
             _constantBuffers = new Dictionary<int, BufferDefinition>();
-<<<<<<< HEAD
             _storageBuffers = new Dictionary<int, BufferDefinition>();
             _textures = new Dictionary<int, TextureDefinition>();
             _images = new Dictionary<int, TextureDefinition>();
@@ -114,13 +108,3 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
         }
     }
 }
-=======
-        }
-
-        public void AddConstantBuffer(int binding, BufferDefinition definition)
-        {
-            _constantBuffers[binding] = definition;
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

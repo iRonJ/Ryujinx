@@ -13,8 +13,4 @@ namespace Ryujinx.Ava.UI.Models
         public string Location { get; set; }
         public string Abbreviation { get; set; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

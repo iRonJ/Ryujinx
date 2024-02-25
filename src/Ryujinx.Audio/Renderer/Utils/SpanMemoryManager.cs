@@ -19,11 +19,7 @@ namespace Ryujinx.Audio.Renderer.Utils
             }
         }
 
-<<<<<<< HEAD
         public override Span<T> GetSpan() => new(_pointer, _length);
-=======
-        public override Span<T> GetSpan() => new Span<T>(_pointer, _length);
->>>>>>> 1ec71635b (sync with main branch)
 
         public override MemoryHandle Pin(int elementIndex = 0)
         {
@@ -44,8 +40,4 @@ namespace Ryujinx.Audio.Renderer.Utils
             return new SpanMemoryManager<T>(MemoryMarshal.Cast<TFrom, T>(memory.Span)).Memory;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

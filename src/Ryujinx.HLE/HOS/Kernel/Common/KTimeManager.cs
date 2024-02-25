@@ -1,8 +1,5 @@
 using Ryujinx.Common;
-<<<<<<< HEAD
 using Ryujinx.Common.PreciseSleep;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -27,11 +24,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
 
         private readonly KernelContext _context;
         private readonly List<WaitingObject> _waitingObjects;
-<<<<<<< HEAD
         private IPreciseSleepEvent _waitEvent;
-=======
-        private AutoResetEvent _waitEvent;
->>>>>>> 1ec71635b (sync with main branch)
         private bool _keepRunning;
         private long _enforceWakeupFromSpinWait;
 
@@ -44,15 +37,9 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
             _waitingObjects = new List<WaitingObject>();
             _keepRunning = true;
 
-<<<<<<< HEAD
             Thread work = new(WaitAndCheckScheduledObjects)
             {
                 Name = "HLE.TimeManager",
-=======
-            Thread work = new Thread(WaitAndCheckScheduledObjects)
-            {
-                Name = "HLE.TimeManager"
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             work.Start();
@@ -68,11 +55,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
                 timePoint = long.MaxValue;
             }
 
-<<<<<<< HEAD
             timePoint = _waitEvent.AdjustTimePoint(timePoint, timeout);
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
             lock (_context.CriticalSection.Lock)
             {
                 _waitingObjects.Add(new WaitingObject(schedulerObj, timePoint));
@@ -83,11 +67,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
                 }
             }
 
-<<<<<<< HEAD
             _waitEvent.Signal();
-=======
-            _waitEvent.Set();
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void UnscheduleFutureInvocation(IKFutureSchedulerObject schedulerObj)
@@ -106,16 +86,9 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
 
         private void WaitAndCheckScheduledObjects()
         {
-<<<<<<< HEAD
             WaitingObject next;
 
             using (_waitEvent = PreciseSleepHelper.CreateEvent())
-=======
-            SpinWait spinWait = new SpinWait();
-            WaitingObject next;
-
-            using (_waitEvent = new AutoResetEvent(false))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 while (_keepRunning)
                 {
@@ -132,36 +105,9 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
 
                         if (next.TimePoint > timePoint)
                         {
-<<<<<<< HEAD
                             if (!_waitEvent.SleepUntil(next.TimePoint))
                             {
                                 PreciseSleepHelper.SpinWaitUntilTimePoint(next.TimePoint, ref _enforceWakeupFromSpinWait);
-=======
-                            long ms = Math.Min((next.TimePoint - timePoint) / PerformanceCounter.TicksPerMillisecond, int.MaxValue);
-
-                            if (ms > 0)
-                            {
-                                _waitEvent.WaitOne((int)ms);
-                            }
-                            else
-                            {
-                                while (Interlocked.Read(ref _enforceWakeupFromSpinWait) != 1 && PerformanceCounter.ElapsedTicks < next.TimePoint)
-                                {
-                                    // Our time is close - don't let SpinWait go off and potentially Thread.Sleep().
-                                    if (spinWait.NextSpinWillYield)
-                                    {
-                                        Thread.Yield();
-
-                                        spinWait.Reset();
-                                    }
-                                    else
-                                    {
-                                        spinWait.SpinOnce();
-                                    }
-                                }
-
-                                spinWait.Reset();
->>>>>>> 1ec71635b (sync with main branch)
                             }
                         }
 
@@ -180,11 +126,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
                     }
                     else
                     {
-<<<<<<< HEAD
                         _waitEvent.Sleep();
-=======
-                        _waitEvent.WaitOne();
->>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
             }
@@ -251,14 +193,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
         public void Dispose()
         {
             _keepRunning = false;
-<<<<<<< HEAD
             _waitEvent?.Signal();
         }
     }
 }
-=======
-            _waitEvent?.Set();
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Cpu;
-=======
-﻿using Ryujinx.Cpu;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Common;
 using System.Threading;
 

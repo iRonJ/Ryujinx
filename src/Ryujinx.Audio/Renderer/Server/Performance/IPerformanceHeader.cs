@@ -77,8 +77,4 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
         /// <param name="entryDetailCount">The total count of detailed entries in this frame.</param>
         void SetEntryDetailCount(int entryDetailCount);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -33,16 +33,8 @@ namespace ARMeilleure.Decoders
             }
             else
             {
-<<<<<<< HEAD
                 throw new ArgumentException($"Invalid data operation: {DataOp}", nameof(opCode));
             }
         }
     }
 }
-=======
-                throw new ArgumentException(nameof(opCode));
-            }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

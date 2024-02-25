@@ -1,8 +1,0 @@
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Kernel.Generators/bin/Release/netstandard2.0/Ryujinx.Horizon.Kernel.Generators.deps.json
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Kernel.Generators/bin/Release/netstandard2.0/Ryujinx.Horizon.Kernel.Generators.dll
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Kernel.Generators/obj/Release/netstandard2.0/Ryujinx.Horizon.Kernel.Generators.csproj.AssemblyReference.cache
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Kernel.Generators/obj/Release/netstandard2.0/Ryujinx.Horizon.Kernel.Generators.GeneratedMSBuildEditorConfig.editorconfig
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Kernel.Generators/obj/Release/netstandard2.0/Ryujinx.Horizon.Kernel.Generators.AssemblyInfoInputs.cache
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Kernel.Generators/obj/Release/netstandard2.0/Ryujinx.Horizon.Kernel.Generators.AssemblyInfo.cs
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Kernel.Generators/obj/Release/netstandard2.0/Ryujinx.Horizon.Kernel.Generators.csproj.CoreCompileInputs.cache
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Kernel.Generators/obj/Release/netstandard2.0/Ryujinx.Horizon.Kernel.Generators.dll

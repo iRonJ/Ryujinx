@@ -8,7 +8,6 @@ namespace Ryujinx.Graphics.Gpu.Image
     [Flags]
     enum TextureSearchFlags
     {
-<<<<<<< HEAD
         None = 0,
         ForSampler = 1 << 1,
         ForCopy = 1 << 2,
@@ -18,13 +17,3 @@ namespace Ryujinx.Graphics.Gpu.Image
         DiscardData = 1 << 6,
     }
 }
-=======
-        None        = 0,
-        ForSampler  = 1 << 1,
-        ForCopy     = 1 << 2,
-        DepthAlias  = 1 << 3,
-        WithUpscale = 1 << 4,
-        NoCreate    = 1 << 5
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

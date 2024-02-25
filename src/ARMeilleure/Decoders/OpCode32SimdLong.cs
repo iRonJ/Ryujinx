@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace ARMeilleure.Decoders
-=======
-﻿namespace ARMeilleure.Decoders
->>>>>>> 1ec71635b (sync with main branch)
 {
     class OpCode32SimdLong : OpCode32SimdBase
     {
@@ -18,7 +14,6 @@ namespace ARMeilleure.Decoders
             // The value must be a power of 2, otherwise it is the encoding of another instruction.
             switch (imm3h)
             {
-<<<<<<< HEAD
                 case 1:
                     Size = 0;
                     break;
@@ -28,11 +23,6 @@ namespace ARMeilleure.Decoders
                 case 4:
                     Size = 2;
                     break;
-=======
-                case 1: Size = 0; break;
-                case 2: Size = 1; break;
-                case 4: Size = 2; break;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             U = ((opCode >> (isThumb ? 28 : 24)) & 0x1) != 0;

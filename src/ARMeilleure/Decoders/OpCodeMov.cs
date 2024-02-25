@@ -22,15 +22,9 @@ namespace ARMeilleure.Decoders
                 return;
             }
 
-<<<<<<< HEAD
             Rd = (opCode >> 0) & 0x1f;
             Immediate = (opCode >> 5) & 0xffff;
             Bit = (opCode >> 21) & 0x3;
-=======
-            Rd        = (opCode >>  0) & 0x1f;
-            Immediate = (opCode >>  5) & 0xffff;
-            Bit       = (opCode >> 21) & 0x3;
->>>>>>> 1ec71635b (sync with main branch)
 
             Bit <<= 4;
 
@@ -41,8 +35,4 @@ namespace ARMeilleure.Decoders
                 : RegisterSize.Int32;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

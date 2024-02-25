@@ -62,11 +62,7 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
 
         public Operation(Instruction inst, int index, Operand[] dests, Operand[] sources) : this(sources)
         {
-<<<<<<< HEAD
             Inst = inst;
-=======
-            Inst  = inst;
->>>>>>> 1ec71635b (sync with main branch)
             Index = index;
 
             if (dests != null)
@@ -259,7 +255,6 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
 
             _sources = new Operand[] { source };
         }
-<<<<<<< HEAD
 
         public void TurnDoubleIntoFloat()
         {
@@ -292,7 +287,3 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         }
     }
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

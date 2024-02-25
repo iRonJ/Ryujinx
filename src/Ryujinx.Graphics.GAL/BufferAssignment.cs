@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL
-=======
-﻿namespace Ryujinx.Graphics.GAL
->>>>>>> 1ec71635b (sync with main branch)
 {
     public readonly struct BufferAssignment
     {
@@ -15,8 +11,4 @@ namespace Ryujinx.Graphics.GAL
             Range = range;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

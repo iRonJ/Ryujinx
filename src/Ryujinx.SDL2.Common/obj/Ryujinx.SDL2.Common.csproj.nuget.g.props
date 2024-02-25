@@ -13,9 +13,9 @@
     <SourceRoot Include="/Users/ronj/.nuget/packages/" />
   </ItemGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Content Include="$(NuGetPackageRoot)ryujinx.sdl2-cs/2.26.3-build25/contentFiles/any/netstandard2.0/app.config" Condition="Exists('$(NuGetPackageRoot)ryujinx.sdl2-cs/2.26.3-build25/contentFiles/any/netstandard2.0/app.config')">
+    <Content Include="$(NuGetPackageRoot)ryujinx.sdl2-cs/2.30.0-build32/contentFiles/any/net6.0/app.config" Condition="Exists('$(NuGetPackageRoot)ryujinx.sdl2-cs/2.30.0-build32/contentFiles/any/net6.0/app.config')">
       <NuGetPackageId>Ryujinx.SDL2-CS</NuGetPackageId>
-      <NuGetPackageVersion>2.26.3-build25</NuGetPackageVersion>
+      <NuGetPackageVersion>2.30.0-build32</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
       <Pack>false</Pack>
       <Private>False</Private>

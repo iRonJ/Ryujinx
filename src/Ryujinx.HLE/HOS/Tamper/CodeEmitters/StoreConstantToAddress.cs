@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
-=======
-﻿namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
->>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Code type 0 allows writing a static value to a memory address.
@@ -37,11 +33,7 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
 
             int valueImmediateSize = operationWidth <= 4 ? ValueImmediateSize8 : ValueImmediateSize16;
             ulong valueImmediate = InstructionHelper.GetImmediate(instruction, ValueImmediateIndex, valueImmediateSize);
-<<<<<<< HEAD
             Value<ulong> storeValue = new(valueImmediate);
-=======
-            Value<ulong> storeValue = new Value<ulong>(valueImmediate);
->>>>>>> 1ec71635b (sync with main branch)
 
             InstructionHelper.EmitMov(operationWidth, context, dstMem, storeValue);
         }

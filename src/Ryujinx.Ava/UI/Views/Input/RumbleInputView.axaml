@@ -1,10 +1,7 @@
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-<<<<<<< HEAD
     xmlns:controls="clr-namespace:Ryujinx.Ava.UI.Controls"
-=======
->>>>>>> 1ec71635b (sync with main branch)
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
@@ -12,10 +9,6 @@
     mc:Ignorable="d"
     x:Class="Ryujinx.Ava.UI.Views.Input.RumbleInputView"
     x:DataType="viewModels:RumbleInputViewModel"
-<<<<<<< HEAD
-=======
-    x:CompileBindings="True"
->>>>>>> 1ec71635b (sync with main branch)
     Focusable="True">
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -29,19 +22,12 @@
                     TextWrapping="WrapWithOverflow"
                     HorizontalAlignment="Center"
                     Text="{locale:Locale ControllerSettingsRumbleStrongMultiplier}" />
-<<<<<<< HEAD
                 <controls:SliderScroll
-=======
-                <Slider
->>>>>>> 1ec71635b (sync with main branch)
                     Margin="0,-5,0,-5"
                     Width="200"
                     TickFrequency="0.01"
                     IsSnapToTickEnabled="True"
-<<<<<<< HEAD
                     SmallChange="0.01"
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     Maximum="10"
                     Minimum="0"
                     Value="{Binding StrongRumble, Mode=TwoWay}" />
@@ -56,21 +42,14 @@
                     TextWrapping="WrapWithOverflow"
                     HorizontalAlignment="Center"
                     Text="{locale:Locale ControllerSettingsRumbleWeakMultiplier}" />
-<<<<<<< HEAD
                 <controls:SliderScroll
-=======
-                <Slider
->>>>>>> 1ec71635b (sync with main branch)
                     Margin="0,-5,0,-5"
                     Width="200"
                     MaxWidth="200"
                     Maximum="10"
                     TickFrequency="0.01"
                     IsSnapToTickEnabled="True"
-<<<<<<< HEAD
                     SmallChange="0.01"
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     Minimum="0"
                     Value="{Binding WeakRumble, Mode=TwoWay}" />
                 <TextBlock
@@ -80,8 +59,4 @@
             </StackPanel>
         </StackPanel>
     </Grid>
-<<<<<<< HEAD
 </UserControl>
-=======
-</UserControl>
->>>>>>> 1ec71635b (sync with main branch)

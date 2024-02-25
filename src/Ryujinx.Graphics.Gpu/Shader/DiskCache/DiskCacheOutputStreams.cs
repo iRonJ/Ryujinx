@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.IO;
 
 namespace Ryujinx.Graphics.Gpu.Shader.DiskCache

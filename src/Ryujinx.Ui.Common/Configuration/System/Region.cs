@@ -1,7 +1,7 @@
-﻿using Ryujinx.Common.Utilities;
+using Ryujinx.Common.Utilities;
 using System.Text.Json.Serialization;
 
-namespace Ryujinx.Ui.Common.Configuration.System
+namespace Ryujinx.UI.Common.Configuration.System
 {
     [JsonConverter(typeof(TypedStringEnumConverter<Region>))]
     public enum Region
@@ -12,6 +12,6 @@ namespace Ryujinx.Ui.Common.Configuration.System
         Australia,
         China,
         Korea,
-        Taiwan
+        Taiwan,
     }
 }

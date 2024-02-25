@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Caps.Types;
 
 namespace Ryujinx.HLE.HOS.Services.Caps
@@ -24,7 +20,6 @@ namespace Ryujinx.HLE.HOS.Services.Caps
         public ResultCode SaveScreenShotEx0(ServiceCtx context)
         {
             // TODO: Use the ScreenShotAttribute.
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ScreenShotAttribute screenShotAttribute = context.RequestData.ReadStruct<ScreenShotAttribute>();
 
@@ -37,16 +32,6 @@ namespace Ryujinx.HLE.HOS.Services.Caps
 
             ulong screenshotDataPosition = context.Request.SendBuff[0].Position;
             ulong screenshotDataSize = context.Request.SendBuff[0].Size;
-=======
-            ScreenShotAttribute screenShotAttribute = context.RequestData.ReadStruct<ScreenShotAttribute>();
-
-            uint  unknown              = context.RequestData.ReadUInt32();
-            ulong appletResourceUserId = context.RequestData.ReadUInt64();
-            ulong pidPlaceholder       = context.RequestData.ReadUInt64();
-
-            ulong screenshotDataPosition = context.Request.SendBuff[0].Position;
-            ulong screenshotDataSize     = context.Request.SendBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             byte[] screenshotData = context.Memory.GetSpan(screenshotDataPosition, (int)screenshotDataSize, true).ToArray();
 
@@ -62,7 +47,6 @@ namespace Ryujinx.HLE.HOS.Services.Caps
         public ResultCode SaveScreenShotEx1(ServiceCtx context)
         {
             // TODO: Use the ScreenShotAttribute.
-<<<<<<< HEAD
             _ = context.RequestData.ReadStruct<ScreenShotAttribute>();
 
             _ = context.RequestData.ReadUInt32();
@@ -79,22 +63,6 @@ namespace Ryujinx.HLE.HOS.Services.Caps
 
             // TODO: Parse the application data: At 0x00 it's UserData (Size of 0x400), at 0x404 it's a uint UserDataSize (Always empty for now).
             _ = context.Memory.GetSpan(applicationDataPosition, (int)applicationDataSize).ToArray();
-=======
-            ScreenShotAttribute screenShotAttribute = context.RequestData.ReadStruct<ScreenShotAttribute>();
-
-            uint  unknown              = context.RequestData.ReadUInt32();
-            ulong appletResourceUserId = context.RequestData.ReadUInt64();
-            ulong pidPlaceholder       = context.RequestData.ReadUInt64();
-
-            ulong applicationDataPosition = context.Request.SendBuff[0].Position;
-            ulong applicationDataSize     = context.Request.SendBuff[0].Size;
-
-            ulong screenshotDataPosition = context.Request.SendBuff[1].Position;
-            ulong screenshotDataSize     = context.Request.SendBuff[1].Size;
-
-            // TODO: Parse the application data: At 0x00 it's UserData (Size of 0x400), at 0x404 it's a uint UserDataSize (Always empty for now).
-            byte[] applicationData = context.Memory.GetSpan(applicationDataPosition, (int)applicationDataSize).ToArray();
->>>>>>> 1ec71635b (sync with main branch)
 
             byte[] screenshotData = context.Memory.GetSpan(screenshotDataPosition, (int)screenshotDataSize, true).ToArray();
 
@@ -110,7 +78,6 @@ namespace Ryujinx.HLE.HOS.Services.Caps
         public ResultCode SaveScreenShotEx2(ServiceCtx context)
         {
             // TODO: Use the ScreenShotAttribute.
-<<<<<<< HEAD
             _ = context.RequestData.ReadStruct<ScreenShotAttribute>();
 
             _ = context.RequestData.ReadUInt32();
@@ -125,21 +92,6 @@ namespace Ryujinx.HLE.HOS.Services.Caps
 
             // TODO: Parse the UserIdList.
             _ = context.Memory.GetSpan(userIdListPosition, (int)userIdListSize).ToArray();
-=======
-            ScreenShotAttribute screenShotAttribute = context.RequestData.ReadStruct<ScreenShotAttribute>();
-
-            uint  unknown              = context.RequestData.ReadUInt32();
-            ulong appletResourceUserId = context.RequestData.ReadUInt64();
-
-            ulong userIdListPosition = context.Request.SendBuff[0].Position;
-            ulong userIdListSize     = context.Request.SendBuff[0].Size;
-
-            ulong screenshotDataPosition = context.Request.SendBuff[1].Position;
-            ulong screenshotDataSize     = context.Request.SendBuff[1].Size;
-
-            // TODO: Parse the UserIdList.
-            byte[] userIdList = context.Memory.GetSpan(userIdListPosition, (int)userIdListSize).ToArray();
->>>>>>> 1ec71635b (sync with main branch)
 
             byte[] screenshotData = context.Memory.GetSpan(screenshotDataPosition, (int)screenshotDataSize, true).ToArray();
 
@@ -150,8 +102,4 @@ namespace Ryujinx.HLE.HOS.Services.Caps
             return resultCode;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

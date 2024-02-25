@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Shader.StructuredIr;
 using System;
 using System.Collections.Generic;
@@ -12,7 +9,6 @@ namespace Ryujinx.Graphics.Shader.Translation
 {
     class ResourceManager
     {
-<<<<<<< HEAD
         // Those values are used if the shader as local or shared memory access,
         // but for some reason the supplied size was 0.
         private const int DefaultLocalMemorySize = 128;
@@ -149,30 +145,6 @@ namespace Ryujinx.Graphics.Shader.Translation
         private int AddMemoryDefinition(string name, AggregateType type, int arrayLength = 1)
         {
             return Properties.AddLocalMemory(new MemoryDefinition(name, type, arrayLength));
-=======
-        private static readonly string[] _stagePrefixes = new string[] { "cp", "vp", "tcp", "tep", "gp", "fp" };
-
-        private readonly IGpuAccessor _gpuAccessor;
-        private readonly ShaderProperties _properties;
-        private readonly string _stagePrefix;
-
-        private readonly int[] _cbSlotToBindingMap;
-
-        private readonly HashSet<int> _usedConstantBufferBindings;
-
-        public ResourceManager(ShaderStage stage, IGpuAccessor gpuAccessor, ShaderProperties properties)
-        {
-            _gpuAccessor = gpuAccessor;
-            _properties = properties;
-            _stagePrefix = GetShaderStagePrefix(stage);
-
-            _cbSlotToBindingMap = new int[18];
-            _cbSlotToBindingMap.AsSpan().Fill(-1);
-
-            _usedConstantBufferBindings = new HashSet<int>();
-
-            properties.AddConstantBuffer(0, new BufferDefinition(BufferLayout.Std140, 0, 0, "support_buffer", SupportBuffer.GetStructureType()));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public int GetConstantBufferBinding(int slot)
@@ -189,7 +161,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             return binding;
         }
 
-<<<<<<< HEAD
         public bool TryGetStorageBufferBinding(int sbCbSlot, int sbCbOffset, bool write, out int binding)
         {
             if (!TryGetSbSlot((byte)sbCbSlot, (ushort)sbCbOffset, out int slot))
@@ -236,8 +207,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             return true;
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public bool TryGetConstantBufferSlot(int binding, out int slot)
         {
             for (slot = 0; slot < _cbSlotToBindingMap.Length; slot++)
@@ -252,7 +221,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             return false;
         }
 
-<<<<<<< HEAD
         public int GetTextureOrImageBinding(
             Instruction inst,
             SamplerType type,
@@ -445,8 +413,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             }
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public void SetUsedConstantBufferBinding(int binding)
         {
             _usedConstantBufferBindings.Add(binding);
@@ -476,7 +442,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             return descriptors;
         }
 
-<<<<<<< HEAD
         public BufferDescriptor[] GetStorageBufferDescriptors()
         {
             var descriptors = new BufferDescriptor[_sbSlots.Count];
@@ -584,36 +549,12 @@ namespace Ryujinx.Graphics.Shader.Translation
             });
 
             Properties.AddOrUpdateStorageBuffer(new(BufferLayout.Std430, 1, binding, name, type));
-=======
-        private void AddNewConstantBuffer(int binding, string name)
-        {
-            StructureType type = new StructureType(new[]
-            {
-                new StructureField(AggregateType.Array | AggregateType.Vector4 | AggregateType.FP32, "data", Constants.ConstantBufferSize / 16)
-            });
-
-            _properties.AddConstantBuffer(binding, new BufferDefinition(BufferLayout.Std140, 0, binding, name, type));
-        }
-
-        public void InheritFrom(ResourceManager other)
-        {
-            for (int i = 0; i < other._cbSlotToBindingMap.Length; i++)
-            {
-                int binding = other._cbSlotToBindingMap[i];
-
-                if (binding >= 0)
-                {
-                    _cbSlotToBindingMap[i] = binding;
-                }
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static string GetShaderStagePrefix(ShaderStage stage)
         {
             uint index = (uint)stage;
 
-<<<<<<< HEAD
             return index >= _stagePrefixes.Length ? "invalid" : _stagePrefixes[index];
         }
 
@@ -628,14 +569,3 @@ namespace Ryujinx.Graphics.Shader.Translation
         }
     }
 }
-=======
-            if (index >= _stagePrefixes.Length)
-            {
-                return "invalid";
-            }
-
-            return _stagePrefixes[index];
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using LibHac;
-=======
-﻿using LibHac;
->>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using LibHac.Common.Keys;
 using LibHac.Fs;
@@ -29,15 +25,10 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
 
             try
             {
-<<<<<<< HEAD
                 LocalStorage storage = new(pfsPath, FileAccess.Read, FileMode.Open);
                 var pfs = new PartitionFileSystem();
                 using SharedRef<LibHac.Fs.Fsa.IFileSystem> nsp = new(pfs);
                 pfs.Initialize(storage).ThrowIfFailure();
-=======
-                LocalStorage storage = new LocalStorage(pfsPath, FileAccess.Read, FileMode.Open);
-                using SharedRef<LibHac.Fs.Fsa.IFileSystem> nsp = new(new PartitionFileSystem(storage));
->>>>>>> 1ec71635b (sync with main branch)
 
                 ImportTitleKeysFromNsp(nsp.Get, context.Device.System.KeySet);
 
@@ -59,11 +50,7 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
 
             try
             {
-<<<<<<< HEAD
                 Nca nca = new(context.Device.System.KeySet, ncaStorage);
-=======
-                Nca nca = new Nca(context.Device.System.KeySet, ncaStorage);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (!nca.SectionExists(NcaSectionType.Data))
                 {
@@ -98,23 +85,15 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
 
             if (archivePath.Extension == ".nsp" && File.Exists(archivePath.FullName))
             {
-<<<<<<< HEAD
                 FileStream pfsFile = new(
-=======
-                FileStream pfsFile = new FileStream(
->>>>>>> 1ec71635b (sync with main branch)
                     archivePath.FullName.TrimEnd(Path.DirectorySeparatorChar),
                     FileMode.Open,
                     FileAccess.Read);
 
                 try
                 {
-<<<<<<< HEAD
                     PartitionFileSystem nsp = new();
                     nsp.Initialize(pfsFile.AsStorage()).ThrowIfFailure();
-=======
-                    PartitionFileSystem nsp = new PartitionFileSystem(pfsFile.AsStorage());
->>>>>>> 1ec71635b (sync with main branch)
 
                     ImportTitleKeysFromNsp(nsp, context.Device.System.KeySet);
 
@@ -149,11 +128,7 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
 
                 if (result.IsSuccess())
                 {
-<<<<<<< HEAD
                     Ticket ticket = new(ticketFile.Get.AsStream());
-=======
-                    Ticket ticket = new Ticket(ticketFile.Get.AsStream());
->>>>>>> 1ec71635b (sync with main branch)
                     var titleKey = ticket.GetTitleKey(keySet);
 
                     if (titleKey != null)

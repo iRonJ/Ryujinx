@@ -5,10 +5,7 @@ using Ryujinx.HLE.HOS.Services.Settings.Types;
 using Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService;
 using Ryujinx.HLE.HOS.SystemState;
 using Ryujinx.Horizon.Common;
-<<<<<<< HEAD
 using Ryujinx.Horizon.Sdk.Lbl;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.SystemAppletProxy
@@ -17,7 +14,6 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
     {
         private readonly ServiceCtx _context;
 
-<<<<<<< HEAD
         private readonly Apm.ManagerServer _apmManagerServer;
         private readonly Apm.SystemManagerServer _apmSystemManagerServer;
 
@@ -30,35 +26,14 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
         private int _displayResolutionChangedEventHandle;
 
         private readonly KEvent _acquiredSleepLockEvent;
-=======
-        private Apm.ManagerServer       _apmManagerServer;
-        private Apm.SystemManagerServer _apmSystemManagerServer;
-        private Lbl.LblControllerServer _lblControllerServer;
-
-        private bool _vrModeEnabled;
-#pragma warning disable CS0414
-        private bool _lcdBacklighOffEnabled;
-        private bool _requestExitToLibraryAppletAtExecuteNextProgramEnabled;
-#pragma warning restore CS0414
-        private int  _messageEventHandle;
-        private int  _displayResolutionChangedEventHandle;
-
-        private KEvent _acquiredSleepLockEvent;
->>>>>>> 1ec71635b (sync with main branch)
         private int _acquiredSleepLockEventHandle;
 
         public ICommonStateGetter(ServiceCtx context)
         {
             _context = context;
 
-<<<<<<< HEAD
             _apmManagerServer = new Apm.ManagerServer(context);
             _apmSystemManagerServer = new Apm.SystemManagerServer(context);
-=======
-            _apmManagerServer       = new Apm.ManagerServer(context);
-            _apmSystemManagerServer = new Apm.SystemManagerServer(context);
-            _lblControllerServer    = new Lbl.LblControllerServer(context);
->>>>>>> 1ec71635b (sync with main branch)
 
             _acquiredSleepLockEvent = new KEvent(context.Device.System.KernelContext);
         }
@@ -239,7 +214,6 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
 
             _vrModeEnabled = vrModeEnabled;
 
-<<<<<<< HEAD
             using var lblApi = new LblApi();
 
             if (vrModeEnabled)
@@ -249,15 +223,6 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
             else
             {
                 lblApi.DisableVrMode().AbortOnFailure();
-=======
-            if (vrModeEnabled)
-            {
-                _lblControllerServer.EnableVrMode();
-            }
-            else
-            {
-                _lblControllerServer.DisableVrMode();
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             // TODO: It signals an internal event of ICommonStateGetter. We have to determine where this event is used.
@@ -367,8 +332,4 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

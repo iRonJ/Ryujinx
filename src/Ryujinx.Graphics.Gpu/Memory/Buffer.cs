@@ -5,11 +5,8 @@ using Ryujinx.Memory.Tracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-<<<<<<< HEAD
 using System.Runtime.CompilerServices;
 using System.Threading;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Gpu.Memory
 {
@@ -49,14 +46,11 @@ namespace Ryujinx.Graphics.Gpu.Memory
         public int UnmappedSequence { get; private set; }
 
         /// <summary>
-<<<<<<< HEAD
         /// Indicates if the buffer can be used in a sparse buffer mapping.
         /// </summary>
         public bool SparseCompatible { get; }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Ranges of the buffer that have been modified on the GPU.
         /// Ranges defined here cannot be updated from CPU until a CPU waiting sync point is reached.
         /// Then, write tracking will signal, wait for GPU sync (generated at the syncpoint) and flush these regions.
@@ -73,18 +67,12 @@ namespace Ryujinx.Graphics.Gpu.Memory
         private readonly Action<ulong, ulong> _loadDelegate;
         private readonly Action<ulong, ulong> _modifiedDelegate;
 
-<<<<<<< HEAD
         private HashSet<MultiRangeBuffer> _virtualDependencies;
         private readonly ReaderWriterLockSlim _virtualDependenciesLock;
 
         private int _sequenceNumber;
 
         private readonly bool _useGranular;
-=======
-        private int _sequenceNumber;
-
-        private bool _useGranular;
->>>>>>> 1ec71635b (sync with main branch)
         private bool _syncActionRegistered;
 
         private int _referenceCount = 1;
@@ -99,7 +87,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
         /// <param name="physicalMemory">Physical memory where the buffer is mapped</param>
         /// <param name="address">Start address of the buffer</param>
         /// <param name="size">Size of the buffer in bytes</param>
-<<<<<<< HEAD
         /// <param name="sparseCompatible">Indicates if the buffer can be used in a sparse buffer mapping</param>
         /// <param name="baseBuffers">Buffers which this buffer contains, and will inherit tracking handles from</param>
         public Buffer(
@@ -119,17 +106,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
             BufferAccess access = sparseCompatible ? BufferAccess.SparseCompatible : BufferAccess.Default;
 
             Handle = context.Renderer.CreateBuffer((int)size, access, baseBuffers?.MaxBy(x => x.Size).Handle ?? BufferHandle.Null);
-=======
-        /// <param name="baseBuffers">Buffers which this buffer contains, and will inherit tracking handles from</param>
-        public Buffer(GpuContext context, PhysicalMemory physicalMemory, ulong address, ulong size, IEnumerable<Buffer> baseBuffers = null)
-        {
-            _context        = context;
-            _physicalMemory = physicalMemory;
-            Address         = address;
-            Size            = size;
-
-            Handle = context.Renderer.CreateBuffer((int)size, baseBuffers?.MaxBy(x => x.Size).Handle ?? BufferHandle.Null);
->>>>>>> 1ec71635b (sync with main branch)
 
             _useGranular = size > GranularBufferThreshold;
 
@@ -181,25 +157,17 @@ namespace Ryujinx.Graphics.Gpu.Memory
             _externalFlushDelegate = new RegionSignal(ExternalFlush);
             _loadDelegate = new Action<ulong, ulong>(LoadRegion);
             _modifiedDelegate = new Action<ulong, ulong>(RegionModified);
-<<<<<<< HEAD
 
             _virtualDependenciesLock = new ReaderWriterLockSlim();
         }
 
         /// <summary>
         /// Gets a sub-range from the buffer, from a start address til a page boundary after the given size.
-=======
-        }
-
-        /// <summary>
-        /// Gets a sub-range from the buffer, from a start address till the end of the buffer.
->>>>>>> 1ec71635b (sync with main branch)
         /// </summary>
         /// <remarks>
         /// This can be used to bind and use sub-ranges of the buffer on the host API.
         /// </remarks>
         /// <param name="address">Start address of the sub-range, must be greater than or equal to the buffer address</param>
-<<<<<<< HEAD
         /// <param name="size">Size in bytes of the sub-range, must be less than or equal to the buffer size</param>
         /// <param name="write">Whether the buffer will be written to by this use</param>
         /// <returns>The buffer sub-range</returns>
@@ -209,14 +177,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
             ulong offset = address - Address;
 
             return new BufferRange(Handle, (int)offset, (int)(end - offset), write);
-=======
-        /// <returns>The buffer sub-range</returns>
-        public BufferRange GetRange(ulong address)
-        {
-            ulong offset = address - Address;
-
-            return new BufferRange(Handle, (int)offset, (int)(Size - offset));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -227,7 +187,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
         /// </remarks>
         /// <param name="address">Start address of the sub-range, must be greater than or equal to the buffer address</param>
         /// <param name="size">Size in bytes of the sub-range, must be less than or equal to the buffer size</param>
-<<<<<<< HEAD
         /// <param name="write">Whether the buffer will be written to by this use</param>
         /// <returns>The buffer sub-range</returns>
         public BufferRange GetRange(ulong address, ulong size, bool write)
@@ -235,14 +194,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
             int offset = (int)(address - Address);
 
             return new BufferRange(Handle, offset, (int)size, write);
-=======
-        /// <returns>The buffer sub-range</returns>
-        public BufferRange GetRange(ulong address, ulong size)
-        {
-            int offset = (int)(address - Address);
-
-            return new BufferRange(Handle, offset, (int)size);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -276,10 +227,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
         /// </remarks>
         /// <param name="address">Start address of the range to synchronize</param>
         /// <param name="size">Size in bytes of the range to synchronize</param>
-<<<<<<< HEAD
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public void SynchronizeMemory(ulong address, ulong size)
         {
             if (_useGranular)
@@ -299,10 +247,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
                     else
                     {
                         _context.Renderer.SetBufferData(Handle, 0, _physicalMemory.GetSpan(Address, (int)Size));
-<<<<<<< HEAD
                         CopyToDependantVirtualBuffers();
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     _sequenceNumber = _context.SequenceNumber;
@@ -335,14 +280,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
         /// </summary>
         private void EnsureRangeList()
         {
-<<<<<<< HEAD
             _modifiedRanges ??= new BufferModifiedRangeList(_context, this, Flush);
-=======
-            if (_modifiedRanges == null)
-            {
-                _modifiedRanges = new BufferModifiedRangeList(_context, this, Flush);
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -413,11 +351,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
                     _syncActionRegistered = true;
                 }
 
-<<<<<<< HEAD
                 void registerRangeAction(ulong address, ulong size)
-=======
-                Action<ulong, ulong> registerRangeAction = (ulong address, ulong size) =>
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     if (_useGranular)
                     {
@@ -427,11 +361,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
                     {
                         _memoryTracking.RegisterAction(_externalFlushDelegate);
                     }
-<<<<<<< HEAD
                 }
-=======
-                };
->>>>>>> 1ec71635b (sync with main branch)
 
                 EnsureRangeList();
 
@@ -539,11 +469,8 @@ namespace Ryujinx.Graphics.Gpu.Memory
             int offset = (int)(mAddress - Address);
 
             _context.Renderer.SetBufferData(Handle, offset, _physicalMemory.GetSpan(mAddress, (int)mSize));
-<<<<<<< HEAD
 
             CopyToDependantVirtualBuffers(mAddress, mSize);
-=======
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -604,10 +531,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
         /// <param name="dstOffset">The offset of the destination buffer to copy into</param>
         public void CopyTo(Buffer destination, int dstOffset)
         {
-<<<<<<< HEAD
             CopyFromDependantVirtualBuffers();
-=======
->>>>>>> 1ec71635b (sync with main branch)
             _context.Renderer.Pipeline.CopyBuffer(Handle, destination.Handle, 0, dstOffset, (int)Size);
         }
 
@@ -624,11 +548,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
             using PinnedSpan<byte> data = _context.Renderer.GetBufferData(Handle, offset, (int)size);
 
             // TODO: When write tracking shaders, they will need to be aware of changes in overlapping buffers.
-<<<<<<< HEAD
             _physicalMemory.WriteUntracked(address, CopyFromDependantVirtualBuffers(data.Get(), address, size));
-=======
-            _physicalMemory.WriteUntracked(address, data.Get());
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -710,7 +630,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Adds a virtual buffer dependency, indicating that a virtual buffer depends on data from this buffer.
         /// </summary>
         /// <param name="virtualBuffer">Dependant virtual buffer</param>
@@ -912,8 +831,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
         }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Increments the buffer reference count.
         /// </summary>
         public void IncrementReferenceCount()
@@ -955,8 +872,4 @@ namespace Ryujinx.Graphics.Gpu.Memory
             DecrementReferenceCount();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,11 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Ryujinx.Common.Configuration;
-<<<<<<< HEAD
 using Ryujinx.UI.Common.Configuration;
-=======
-using Ryujinx.Ui.Common.Configuration;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Ava.UI.Renderer
@@ -15,11 +11,7 @@ namespace Ryujinx.Ava.UI.Renderer
         public readonly EmbeddedWindow EmbeddedWindow;
 
         public event EventHandler<EventArgs> WindowCreated;
-<<<<<<< HEAD
         public event Action<object, Size> BoundsChanged;
-=======
-        public event Action<object, Size>    SizeChanged;
->>>>>>> 1ec71635b (sync with main branch)
 
         public RendererHost()
         {
@@ -40,11 +32,7 @@ namespace Ryujinx.Ava.UI.Renderer
         private void Initialize()
         {
             EmbeddedWindow.WindowCreated += CurrentWindow_WindowCreated;
-<<<<<<< HEAD
             EmbeddedWindow.BoundsChanged += CurrentWindow_BoundsChanged;
-=======
-            EmbeddedWindow.SizeChanged   += CurrentWindow_SizeChanged;
->>>>>>> 1ec71635b (sync with main branch)
 
             Content = EmbeddedWindow;
         }
@@ -54,11 +42,7 @@ namespace Ryujinx.Ava.UI.Renderer
             if (EmbeddedWindow != null)
             {
                 EmbeddedWindow.WindowCreated -= CurrentWindow_WindowCreated;
-<<<<<<< HEAD
                 EmbeddedWindow.BoundsChanged -= CurrentWindow_BoundsChanged;
-=======
-                EmbeddedWindow.SizeChanged   -= CurrentWindow_SizeChanged;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             GC.SuppressFinalize(this);
@@ -71,15 +55,9 @@ namespace Ryujinx.Ava.UI.Renderer
             Dispose();
         }
 
-<<<<<<< HEAD
         private void CurrentWindow_BoundsChanged(object sender, Size e)
         {
             BoundsChanged?.Invoke(sender, e);
-=======
-        private void CurrentWindow_SizeChanged(object sender, Size e)
-        {
-            SizeChanged?.Invoke(sender, e);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void CurrentWindow_WindowCreated(object sender, IntPtr e)
@@ -87,8 +65,4 @@ namespace Ryujinx.Ava.UI.Renderer
             WindowCreated?.Invoke(this, EventArgs.Empty);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

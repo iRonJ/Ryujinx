@@ -38,8 +38,4 @@ namespace ARMeilleure.Instructions
             SetIntOrZR(context, op.Rd, Const(op.GetOperandType(), op.Immediate));
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

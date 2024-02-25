@@ -180,11 +180,7 @@ namespace ARMeilleure.Translation
                 }
 
                 previous = current;
-<<<<<<< HEAD
                 current = current.ImmediateDominator;
-=======
-                current  = current.ImmediateDominator;
->>>>>>> 1ec71635b (sync with main branch)
             }
             while (previous != current);
 
@@ -290,8 +286,4 @@ namespace ARMeilleure.Translation
             return key;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

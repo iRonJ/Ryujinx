@@ -1,19 +1,10 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Model;
-=======
-﻿using Ryujinx.Graphics.GAL.Multithreading.Model;
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands.Buffer
 {
     struct BufferGetDataCommand : IGALCommand, IGALCommand<BufferGetDataCommand>
     {
-<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.BufferGetData;
-=======
-        public CommandType CommandType => CommandType.BufferGetData;
->>>>>>> 1ec71635b (sync with main branch)
         private BufferHandle _buffer;
         private int _offset;
         private int _size;

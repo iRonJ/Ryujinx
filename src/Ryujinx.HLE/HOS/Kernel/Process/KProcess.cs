@@ -27,13 +27,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
         public KPageTableBase MemoryManager { get; private set; }
 
-<<<<<<< HEAD
         private readonly SortedDictionary<ulong, KTlsPageInfo> _fullTlsPages;
         private readonly SortedDictionary<ulong, KTlsPageInfo> _freeTlsPages;
-=======
-        private SortedDictionary<ulong, KTlsPageInfo> _fullTlsPages;
-        private SortedDictionary<ulong, KTlsPageInfo> _freeTlsPages;
->>>>>>> 1ec71635b (sync with main branch)
 
         public int DefaultCpuCore { get; set; }
 
@@ -45,13 +40,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
         public ProcessState State { get; private set; }
 
-<<<<<<< HEAD
         private readonly object _processLock = new();
         private readonly object _threadingLock = new();
-=======
-        private object _processLock;
-        private object _threadingLock;
->>>>>>> 1ec71635b (sync with main branch)
 
         public KAddressArbiter AddressArbiter { get; private set; }
 
@@ -76,29 +66,17 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
         public bool IsApplication { get; private set; }
         public ulong Pid { get; private set; }
 
-<<<<<<< HEAD
-=======
-        private long _creationTimestamp;
->>>>>>> 1ec71635b (sync with main branch)
         private ulong _entrypoint;
         private ThreadStart _customThreadStart;
         private ulong _imageSize;
         private ulong _mainThreadStackSize;
         private ulong _memoryUsageCapacity;
-<<<<<<< HEAD
-=======
-        private int _version;
->>>>>>> 1ec71635b (sync with main branch)
 
         public KHandleTable HandleTable { get; private set; }
 
         public ulong UserExceptionContextAddress { get; private set; }
 
-<<<<<<< HEAD
         private readonly LinkedList<KThread> _threads;
-=======
-        private LinkedList<KThread> _threads;
->>>>>>> 1ec71635b (sync with main branch)
 
         public bool IsPaused { get; private set; }
 
@@ -114,12 +92,6 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
         public KProcess(KernelContext context, bool allowCodeMemoryForJit = false) : base(context)
         {
-<<<<<<< HEAD
-=======
-            _processLock = new object();
-            _threadingLock = new object();
-
->>>>>>> 1ec71635b (sync with main branch)
             AddressArbiter = new KAddressArbiter(context);
 
             _fullTlsPages = new SortedDictionary<ulong, KTlsPageInfo>();
@@ -133,11 +105,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             PinnedThreads = new KThread[KScheduler.CpuCoresCount];
 
             // TODO: Remove once we no longer need to initialize it externally.
-<<<<<<< HEAD
             HandleTable = new KHandleTable();
-=======
-            HandleTable = new KHandleTable(context);
->>>>>>> 1ec71635b (sync with main branch)
 
             _threads = new LinkedList<KThread>();
 
@@ -377,14 +345,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
             State = ProcessState.Created;
 
-<<<<<<< HEAD
             Flags = creationInfo.Flags;
-=======
-            _creationTimestamp = PerformanceCounter.ElapsedMilliseconds;
-
-            Flags = creationInfo.Flags;
-            _version = creationInfo.Version;
->>>>>>> 1ec71635b (sync with main branch)
             TitleId = creationInfo.TitleId;
             _entrypoint = creationInfo.CodeAddress;
             _imageSize = (ulong)creationInfo.CodePagesCount * KPageTableBase.PageSize;
@@ -404,13 +365,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
                                            MemoryManager.AliasRegionEnd -
                                            MemoryManager.AliasRegionStart;
                     break;
-<<<<<<< HEAD
                 default:
                     throw new InvalidOperationException($"Invalid MMU flags value 0x{Flags:x2}.");
-=======
-
-                default: throw new InvalidOperationException($"Invalid MMU flags value 0x{Flags:x2}.");
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             GenerateRandomEntropy();
@@ -515,14 +471,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
             Result result = Result.Success;
 
-<<<<<<< HEAD
 
             if (_fullTlsPages.TryGetValue(tlsPageAddr, out KTlsPageInfo pageInfo))
-=======
-            KTlsPageInfo pageInfo;
-
-            if (_fullTlsPages.TryGetValue(tlsPageAddr, out pageInfo))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 // TLS page was full, free slot and move to free pages tree.
                 _fullTlsPages.Remove(tlsPageAddr);
@@ -569,18 +519,12 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             return result;
         }
 
-<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
-=======
->>>>>>> 1ec71635b (sync with main branch)
         private void GenerateRandomEntropy()
         {
             // TODO.
         }
-<<<<<<< HEAD
 #pragma warning restore CA1822
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
         public Result Start(int mainThreadPriority, ulong stackSize)
         {
@@ -601,11 +545,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
                 if (_mainThreadStackSize != 0)
                 {
-<<<<<<< HEAD
                     throw new InvalidOperationException("Trying to start a process with an invalid state!");
-=======
-                    throw new InvalidOperationException("Trying to start a process with a invalid state!");
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 ulong stackSizeRounded = BitUtils.AlignUp<ulong>(stackSize, KPageTableBase.PageSize);
@@ -704,11 +644,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
                     return result;
                 }
 
-<<<<<<< HEAD
                 HandleTable = new KHandleTable();
-=======
-                HandleTable = new KHandleTable(KernelContext);
->>>>>>> 1ec71635b (sync with main branch)
 
                 result = HandleTable.Initialize(Capabilities.HandleTableSize);
 
@@ -1078,34 +1014,19 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             }
         }
 
-<<<<<<< HEAD
         private static void SignalExitToDebugTerminated()
-=======
-        private void SignalExitToDebugTerminated()
->>>>>>> 1ec71635b (sync with main branch)
         {
             // TODO: Debug events.
         }
 
-<<<<<<< HEAD
         private static void SignalExitToDebugExited()
-=======
-        private void SignalExitToDebugExited()
->>>>>>> 1ec71635b (sync with main branch)
         {
             // TODO: Debug events.
         }
 
         private void SignalExit()
         {
-<<<<<<< HEAD
             ResourceLimit?.Release(LimitableResource.Memory, GetMemoryUsage());
-=======
-            if (ResourceLimit != null)
-            {
-                ResourceLimit.Release(LimitableResource.Memory, GetMemoryUsage());
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             KernelContext.CriticalSection.Enter();
 
@@ -1147,22 +1068,14 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
                 ProcessCreationFlags.AddressSpace64BitDeprecated => 36,
                 ProcessCreationFlags.AddressSpace32BitWithoutAlias => 32,
                 ProcessCreationFlags.AddressSpace64Bit => 39,
-<<<<<<< HEAD
                 _ => 39,
-=======
-                _ => 39
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             bool for64Bit = flags.HasFlag(ProcessCreationFlags.Is64Bit);
 
             Context = _contextFactory.Create(KernelContext, Pid, 1UL << addrSpaceBits, InvalidAccessHandler, for64Bit);
 
-<<<<<<< HEAD
             MemoryManager = new KPageTable(KernelContext, CpuMemory, Context.AddressSpaceSize);
-=======
-            MemoryManager = new KPageTable(KernelContext, CpuMemory);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private bool InvalidAccessHandler(ulong va)
@@ -1264,18 +1177,10 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             }
         }
 
-<<<<<<< HEAD
         public static bool IsExceptionUserThread(KThread thread)
-=======
-        public bool IsExceptionUserThread(KThread thread)
->>>>>>> 1ec71635b (sync with main branch)
         {
             // TODO
             return false;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

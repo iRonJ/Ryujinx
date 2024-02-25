@@ -1,5 +1,4 @@
 using Ryujinx.Common.Logging;
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
 using Ryujinx.Graphics.Device;
 using Ryujinx.Graphics.GAL;
@@ -7,11 +6,6 @@ using Ryujinx.Graphics.Gpu.Engine.GPFifo;
 using Ryujinx.Graphics.Gpu.Engine.Threed;
 using Ryujinx.Graphics.Gpu.Engine.Types;
 using Ryujinx.Memory.Range;
-=======
-using Ryujinx.Graphics.Device;
-using Ryujinx.Graphics.GAL;
-using Ryujinx.Graphics.Gpu.Engine.GPFifo;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 
@@ -25,7 +19,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         private const int ColorLayerCountOffset = 0x818;
         private const int ColorStructSize = 0x40;
         private const int ZetaLayerCountOffset = 0x1230;
-<<<<<<< HEAD
         private const int UniformBufferBindVertexOffset = 0x2410;
         private const int FirstVertexOffset = 0x1434;
 
@@ -38,12 +31,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         private const int UpdateConstantBufferSizesBase = 0x34bc;
         private const int UpdateConstantBufferAddressCbu = 0x3460;
 
-=======
-
-        private const int IndirectDataEntrySize = 0x10;
-        private const int IndirectIndexedDataEntrySize = 0x14;
-
->>>>>>> 1ec71635b (sync with main branch)
         private readonly GPFifoProcessor _processor;
         private readonly MacroHLEFunctionName _functionName;
 
@@ -75,12 +62,9 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         {
             switch (_functionName)
             {
-<<<<<<< HEAD
                 case MacroHLEFunctionName.BindShaderProgram:
                     BindShaderProgram(state, arg0);
                     break;
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 case MacroHLEFunctionName.ClearColor:
                     ClearColor(state, arg0);
                     break;
@@ -90,12 +74,9 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
                 case MacroHLEFunctionName.DrawArraysInstanced:
                     DrawArraysInstanced(state, arg0);
                     break;
-<<<<<<< HEAD
                 case MacroHLEFunctionName.DrawElements:
                     DrawElements(state, arg0);
                     break;
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 case MacroHLEFunctionName.DrawElementsInstanced:
                     DrawElementsInstanced(state, arg0);
                     break;
@@ -105,7 +86,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
                 case MacroHLEFunctionName.MultiDrawElementsIndirectCount:
                     MultiDrawElementsIndirectCount(state, arg0);
                     break;
-<<<<<<< HEAD
                 case MacroHLEFunctionName.UpdateBlendState:
                     UpdateBlendState(state, arg0);
                     break;
@@ -121,8 +101,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
                 case MacroHLEFunctionName.UpdateUniformBufferStateCbuV2:
                     UpdateUniformBufferStateCbuV2(state, arg0);
                     break;
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 default:
                     throw new NotImplementedException(_functionName.ToString());
             }
@@ -132,7 +110,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Binds a shader program with the index in arg0.
         /// </summary>
         /// <param name="state">GPU state at the time of the call</param>
@@ -276,8 +253,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Clears one bound color target.
         /// </summary>
         /// <param name="state">GPU state at the time of the call</param>
@@ -336,7 +311,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         /// </summary>
         /// <param name="state">GPU state at the time of the call</param>
         /// <param name="arg0">First argument of the call</param>
-<<<<<<< HEAD
         private void DrawElements(IDeviceState state, int arg0)
         {
             var topology = (PrimitiveTopology)arg0;
@@ -367,8 +341,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         /// </summary>
         /// <param name="state">GPU state at the time of the call</param>
         /// <param name="arg0">First argument of the call</param>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         private void DrawElementsInstanced(IDeviceState state, int arg0)
         {
             var topology = (PrimitiveTopology)arg0;
@@ -421,21 +393,12 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
 
                 _processor.ThreedClass.DrawIndirect(
                     topology,
-<<<<<<< HEAD
                     new MultiRange(indirectBufferAddress, IndirectIndexedDataEntrySize),
                     default,
                     1,
                     IndirectIndexedDataEntrySize,
                     indexCount,
                     IndirectDrawType.DrawIndexedIndirect);
-=======
-                    indirectBufferAddress,
-                    0,
-                    1,
-                    IndirectIndexedDataEntrySize,
-                    indexCount,
-                    Threed.IndirectDrawType.DrawIndexedIndirect);
->>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -505,18 +468,12 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
             for (int i = 0; i < maxDrawCount; i++)
             {
                 var count = FetchParam();
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 var instanceCount = FetchParam();
                 var firstIndex = FetchParam();
                 var firstVertex = FetchParam();
                 var firstInstance = FetchParam();
-<<<<<<< HEAD
 #pragma warning restore IDE0059
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (i == 0)
                 {
@@ -538,7 +495,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
 
             ulong indirectBufferSize = (ulong)maxDrawCount * (ulong)stride;
 
-<<<<<<< HEAD
             MultiRange indirectBufferRange = bufferCache.TranslateAndCreateMultiBuffers(_processor.MemoryManager, indirectBufferGpuVa, indirectBufferSize);
             MultiRange parameterBufferRange = bufferCache.TranslateAndCreateMultiBuffers(_processor.MemoryManager, parameterBufferGpuVa, 4);
 
@@ -546,15 +502,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
                 topology,
                 indirectBufferRange,
                 parameterBufferRange,
-=======
-            ulong indirectBufferAddress = bufferCache.TranslateAndCreateBuffer(_processor.MemoryManager, indirectBufferGpuVa, indirectBufferSize);
-            ulong parameterBufferAddress = bufferCache.TranslateAndCreateBuffer(_processor.MemoryManager, parameterBufferGpuVa, 4);
-
-            _processor.ThreedClass.DrawIndirect(
-                topology,
-                indirectBufferAddress,
-                parameterBufferAddress,
->>>>>>> 1ec71635b (sync with main branch)
                 maxDrawCount,
                 stride,
                 indexCount,

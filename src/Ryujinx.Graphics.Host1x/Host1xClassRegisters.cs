@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Host1x
 {
     struct Host1xClassRegisters
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public uint IncrSyncpt;
         public uint IncrSyncptCntrl;
         public uint IncrSyncptError;

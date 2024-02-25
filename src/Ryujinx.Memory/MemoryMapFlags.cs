@@ -18,10 +18,6 @@ namespace Ryujinx.Memory
         /// and allocate its own private storage for the mapping.
         /// This allows some mappings that would otherwise fail due to host platform restrictions to succeed.
         /// </summary>
-<<<<<<< HEAD
         Private = 1 << 0,
-=======
-        Private = 1 << 0
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

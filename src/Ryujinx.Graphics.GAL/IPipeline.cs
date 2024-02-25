@@ -58,11 +58,7 @@ namespace Ryujinx.Graphics.GAL
 
         void SetIndexBuffer(BufferRange buffer, IndexType type);
 
-<<<<<<< HEAD
         void SetImage(ShaderStage stage, int binding, ITexture texture, Format imageFormat);
-=======
-        void SetImage(int binding, ITexture texture, Format imageFormat);
->>>>>>> 1ec71635b (sync with main branch)
 
         void SetLineParameters(float width, bool smooth);
 
@@ -83,10 +79,6 @@ namespace Ryujinx.Graphics.GAL
 
         void SetRasterizerDiscard(bool discard);
 
-<<<<<<< HEAD
-=======
-        void SetRenderTargetScale(float scale);
->>>>>>> 1ec71635b (sync with main branch)
         void SetRenderTargetColorMasks(ReadOnlySpan<uint> componentMask);
         void SetRenderTargets(ITexture[] colors, ITexture depthStencil);
 
@@ -106,11 +98,7 @@ namespace Ryujinx.Graphics.GAL
         void SetVertexAttribs(ReadOnlySpan<VertexAttribDescriptor> vertexAttribs);
         void SetVertexBuffers(ReadOnlySpan<VertexBufferDescriptor> vertexBuffers);
 
-<<<<<<< HEAD
         void SetViewports(ReadOnlySpan<Viewport> viewports);
-=======
-        void SetViewports(ReadOnlySpan<Viewport> viewports, bool disableTransform);
->>>>>>> 1ec71635b (sync with main branch)
 
         void TextureBarrier();
         void TextureBarrierTiled();
@@ -118,10 +106,5 @@ namespace Ryujinx.Graphics.GAL
         bool TryHostConditionalRendering(ICounterEvent value, ulong compare, bool isEqual);
         bool TryHostConditionalRendering(ICounterEvent value, ICounterEvent compare, bool isEqual);
         void EndHostConditionalRendering();
-<<<<<<< HEAD
-=======
-
-        void UpdateRenderScale(ReadOnlySpan<float> scales, int totalCount, int fragmentCount);
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

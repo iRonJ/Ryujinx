@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Memory.Range
-=======
-﻿namespace Ryujinx.Memory.Range
->>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Range of memory that can be split in two.

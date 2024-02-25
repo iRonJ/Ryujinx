@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Shader.Translation;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +12,6 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly List<DecodedFunction> _functionsWithId;
         public int FunctionsWithIdCount => _functionsWithId.Count;
 
-<<<<<<< HEAD
         public AttributeUsage AttributeUsage { get; }
         public FeatureFlags UsedFeatures { get; }
         public byte ClipDistancesWritten { get; }
@@ -36,13 +32,6 @@ namespace Ryujinx.Graphics.Shader.Decoders
             UsedFeatures = usedFeatures;
             ClipDistancesWritten = clipDistancesWritten;
             Cb1DataSize = cb1DataSize;
-=======
-        public DecodedProgram(DecodedFunction mainFunction, IReadOnlyDictionary<ulong, DecodedFunction> functions)
-        {
-            MainFunction = mainFunction;
-            _functions = functions;
-            _functionsWithId = new List<DecodedFunction>();
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public DecodedFunction GetFunctionByAddress(ulong address)
@@ -71,14 +60,11 @@ namespace Ryujinx.Graphics.Shader.Decoders
             _functionsWithId.Add(function);
         }
 
-<<<<<<< HEAD
         public IoUsage GetIoUsage()
         {
             return new IoUsage(UsedFeatures, ClipDistancesWritten, AttributeUsage.UsedOutputAttributes);
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public IEnumerator<DecodedFunction> GetEnumerator()
         {
             return _functions.Values.GetEnumerator();
@@ -89,8 +75,4 @@ namespace Ryujinx.Graphics.Shader.Decoders
             return GetEnumerator();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -18,8 +18,4 @@ namespace ARMeilleure.Decoders
             Extend64 = false;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

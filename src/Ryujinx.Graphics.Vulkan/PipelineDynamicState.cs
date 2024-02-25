@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Silk.NET.Vulkan;
 
 namespace Ryujinx.Graphics.Vulkan
@@ -36,11 +32,7 @@ namespace Ryujinx.Graphics.Vulkan
             Scissor = 1 << 2,
             Stencil = 1 << 3,
             Viewport = 1 << 4,
-<<<<<<< HEAD
             All = Blend | DepthBias | Scissor | Stencil | Viewport,
-=======
-            All = Blend | DepthBias | Scissor | Stencil | Viewport
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private DirtyFlags _dirty;
@@ -147,18 +139,13 @@ namespace Ryujinx.Graphics.Vulkan
             api.CmdSetBlendConstants(commandBuffer, _blendConstants.AsSpan());
         }
 
-<<<<<<< HEAD
         private readonly void RecordDepthBias(Vk api, CommandBuffer commandBuffer)
-=======
-        private void RecordDepthBias(Vk api, CommandBuffer commandBuffer)
->>>>>>> 1ec71635b (sync with main branch)
         {
             api.CmdSetDepthBias(commandBuffer, _depthBiasConstantFactor, _depthBiasClamp, _depthBiasSlopeFactor);
         }
 
         private void RecordScissor(Vk api, CommandBuffer commandBuffer)
         {
-<<<<<<< HEAD
             if (ScissorsCount != 0)
             {
                 api.CmdSetScissor(commandBuffer, 0, (uint)ScissorsCount, _scissors.AsSpan());
@@ -166,12 +153,6 @@ namespace Ryujinx.Graphics.Vulkan
         }
 
         private readonly void RecordStencilMasks(Vk api, CommandBuffer commandBuffer)
-=======
-            api.CmdSetScissor(commandBuffer, 0, (uint)ScissorsCount, _scissors.AsSpan());
-        }
-
-        private void RecordStencilMasks(Vk api, CommandBuffer commandBuffer)
->>>>>>> 1ec71635b (sync with main branch)
         {
             api.CmdSetStencilCompareMask(commandBuffer, StencilFaceFlags.FaceBackBit, _backCompareMask);
             api.CmdSetStencilWriteMask(commandBuffer, StencilFaceFlags.FaceBackBit, _backWriteMask);

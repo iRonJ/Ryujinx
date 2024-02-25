@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
 using Ryujinx.Graphics.Device;
-=======
-﻿using Ryujinx.Graphics.Device;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.Gpu.Engine.GPFifo;
 using Ryujinx.Graphics.Gpu.Engine.InlineToMemory;
 using Ryujinx.Graphics.Gpu.Engine.Threed.Blender;
-<<<<<<< HEAD
 using Ryujinx.Graphics.Gpu.Engine.Types;
 using Ryujinx.Graphics.Gpu.Synchronization;
 using Ryujinx.Memory.Range;
@@ -16,23 +11,13 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
-=======
-using Ryujinx.Graphics.Gpu.Synchronization;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Gpu.Engine.Threed
 {
     /// <summary>
     /// Represents a 3D engine class.
     /// </summary>
-<<<<<<< HEAD
     class ThreedClass : IDeviceState, IDisposable
-=======
-    class ThreedClass : IDeviceState
->>>>>>> 1ec71635b (sync with main branch)
     {
         private readonly GpuContext _context;
         private readonly GPFifoClass _fifoClass;
@@ -45,11 +30,8 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         private readonly ConstantBufferUpdater _cbUpdater;
         private readonly StateUpdater _stateUpdater;
 
-<<<<<<< HEAD
         private SetMmeShadowRamControlMode ShadowMode => _state.State.SetMmeShadowRamControlMode;
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// <summary>
         /// Creates a new instance of the 3D engine class.
         /// </summary>
@@ -95,11 +77,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
                 { nameof(ThreedClassState.UniformBufferBindTessControl), new RwCallback(ConstantBufferBindTessControl, null) },
                 { nameof(ThreedClassState.UniformBufferBindTessEvaluation), new RwCallback(ConstantBufferBindTessEvaluation, null) },
                 { nameof(ThreedClassState.UniformBufferBindGeometry), new RwCallback(ConstantBufferBindGeometry, null) },
-<<<<<<< HEAD
                 { nameof(ThreedClassState.UniformBufferBindFragment), new RwCallback(ConstantBufferBindFragment, null) },
-=======
-                { nameof(ThreedClassState.UniformBufferBindFragment), new RwCallback(ConstantBufferBindFragment, null) }
->>>>>>> 1ec71635b (sync with main branch)
             });
 
             _i2mClass = new InlineToMemoryClass(context, channel, initializeState: false);
@@ -207,7 +185,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Marks the specified register range for a group index as dirty, forcing the associated state to update on the next draw.
         /// </summary>
         /// <param name="groupIndex">Index of the group to dirty</param>
@@ -217,8 +194,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Forces the shaders to be rebound on the next draw.
         /// </summary>
         public void ForceShaderUpdate()
@@ -247,11 +222,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// </summary>
         public void PerformDeferredDraws()
         {
-<<<<<<< HEAD
             _drawManager.PerformDeferredDraws(this);
-=======
-            _drawManager.PerformDeferredDraws();
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -264,7 +235,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Test if two 32 byte structs are equal. 
         /// </summary>
         /// <typeparam name="T">Type of the 32-byte struct</typeparam>
@@ -465,8 +435,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Launches the Inline-to-Memory DMA copy operation.
         /// </summary>
         /// <param name="argument">Method call argument</param>
@@ -649,11 +617,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// <param name="argument">Method call argument</param>
         private void DrawBegin(int argument)
         {
-<<<<<<< HEAD
             _drawManager.DrawBegin(this, argument);
-=======
-            _drawManager.DrawBegin(argument);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -840,38 +804,22 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Performs a indirect draw, with parameters from a GPU buffer.
         /// </summary>
         /// <param name="topology">Primitive topology</param>
-<<<<<<< HEAD
         /// <param name="indirectBufferRange">Memory range of the buffer with the draw parameters, such as count, first index, etc</param>
         /// <param name="parameterBufferRange">Memory range of the buffer with the draw count</param>
         /// <param name="maxDrawCount">Maximum number of draws that can be made</param>
         /// <param name="stride">Distance in bytes between each entry on the data pointed to by <paramref name="indirectBufferRange"/></param>
-=======
-        /// <param name="indirectBufferAddress">Address of the buffer with the draw parameters, such as count, first index, etc</param>
-        /// <param name="parameterBufferAddress">Address of the buffer with the draw count</param>
-        /// <param name="maxDrawCount">Maximum number of draws that can be made</param>
-        /// <param name="stride">Distance in bytes between each entry on the data pointed to by <paramref name="indirectBufferAddress"/></param>
->>>>>>> 1ec71635b (sync with main branch)
         /// <param name="indexCount">Maximum number of indices that the draw can consume</param>
         /// <param name="drawType">Type of the indirect draw, which can be indexed or non-indexed, with or without a draw count</param>
         public void DrawIndirect(
             PrimitiveTopology topology,
-<<<<<<< HEAD
             MultiRange indirectBufferRange,
             MultiRange parameterBufferRange,
-=======
-            ulong indirectBufferAddress,
-            ulong parameterBufferAddress,
->>>>>>> 1ec71635b (sync with main branch)
             int maxDrawCount,
             int stride,
             int indexCount,
             IndirectDrawType drawType)
         {
-<<<<<<< HEAD
             _drawManager.DrawIndirect(this, topology, indirectBufferRange, parameterBufferRange, maxDrawCount, stride, indexCount, drawType);
-=======
-            _drawManager.DrawIndirect(this, topology, indirectBufferAddress, parameterBufferAddress, maxDrawCount, stride, indexCount, drawType);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -884,7 +832,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         {
             _drawManager.Clear(this, argument, layerCount);
         }
-<<<<<<< HEAD
 
         protected virtual void Dispose(bool disposing)
         {
@@ -899,7 +846,5 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-=======
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Mii.StaticService;
 using Ryujinx.HLE.HOS.Services.Mii.Types;
 
@@ -12,7 +8,6 @@ namespace Ryujinx.HLE.HOS.Services.Mii
     [Service("mii:u", false)]
     class IStaticService : IpcService
     {
-<<<<<<< HEAD
         private readonly DatabaseImpl _databaseImpl;
 
         private readonly bool _isSystem;
@@ -20,15 +15,6 @@ namespace Ryujinx.HLE.HOS.Services.Mii
         public IStaticService(ServiceCtx context, bool isSystem)
         {
             _isSystem = isSystem;
-=======
-        private DatabaseImpl _databaseImpl;
-
-        private bool _isSystem;
-
-        public IStaticService(ServiceCtx context, bool isSystem)
-        {
-            _isSystem     = isSystem;
->>>>>>> 1ec71635b (sync with main branch)
             _databaseImpl = DatabaseImpl.Instance;
         }
 
@@ -43,8 +29,4 @@ namespace Ryujinx.HLE.HOS.Services.Mii
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

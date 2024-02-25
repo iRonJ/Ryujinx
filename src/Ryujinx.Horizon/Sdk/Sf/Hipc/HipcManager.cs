@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
-=======
-﻿using Ryujinx.Horizon.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Sdk.Sf.Cmif;
 using System;
 
@@ -116,8 +112,4 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             return Result.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

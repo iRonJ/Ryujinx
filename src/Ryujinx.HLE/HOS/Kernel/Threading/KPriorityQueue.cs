@@ -68,11 +68,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
                     _prioMask &= ~(1L << _prio);
                 }
 
-<<<<<<< HEAD
                 public readonly KThread Current => _node?.Value;
-=======
-                public KThread Current => _node?.Value;
->>>>>>> 1ec71635b (sync with main branch)
 
                 public bool MoveNext()
                 {
@@ -287,8 +283,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
             return _scheduledThreadsPerPrioPerCore[prio][core];
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

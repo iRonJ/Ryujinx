@@ -18,11 +18,7 @@ namespace Ryujinx.HLE.HOS.SystemState
 
         public AppletStateMgr(Horizon system)
         {
-<<<<<<< HEAD
             Messages = new ConcurrentQueue<AppletMessage>();
-=======
-            Messages     = new ConcurrentQueue<AppletMessage>();
->>>>>>> 1ec71635b (sync with main branch)
             MessageEvent = new KEvent(system.KernelContext);
 
             AppletResourceUserIds = new IdDictionary();
@@ -43,8 +39,4 @@ namespace Ryujinx.HLE.HOS.SystemState
             MessageEvent.ReadableEvent.Signal();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

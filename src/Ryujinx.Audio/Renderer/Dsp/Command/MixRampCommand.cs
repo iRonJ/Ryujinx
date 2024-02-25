@@ -65,8 +65,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             State.Span[0].LastSamples[LastSampleIndex] = ProcessMixRamp(outputBuffer, inputBuffer, (int)context.SampleCount);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

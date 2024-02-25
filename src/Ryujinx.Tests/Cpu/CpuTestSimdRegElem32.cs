@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #define SimdRegElem32
-=======
-﻿#define SimdRegElem32
->>>>>>> 1ec71635b (sync with main branch)
 
 using ARMeilleure.State;
 using NUnit.Framework;

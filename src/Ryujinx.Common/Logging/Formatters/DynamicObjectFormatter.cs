@@ -1,25 +1,13 @@
-<<<<<<< HEAD
 #nullable enable
-=======
-﻿#nullable enable
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Reflection;
 using System.Text;
 
-<<<<<<< HEAD
 namespace Ryujinx.Common.Logging.Formatters
 {
     internal static class DynamicObjectFormatter
     {
         private static readonly ObjectPool<StringBuilder> _stringBuilderPool = SharedPools.Default<StringBuilder>();
-=======
-namespace Ryujinx.Common.Logging
-{
-    internal class DynamicObjectFormatter
-    {
-        private static readonly ObjectPool<StringBuilder> StringBuilderPool = SharedPools.Default<StringBuilder>();
->>>>>>> 1ec71635b (sync with main branch)
 
         public static string? Format(object? dynamicObject)
         {
@@ -28,13 +16,8 @@ namespace Ryujinx.Common.Logging
                 return null;
             }
 
-<<<<<<< HEAD
             StringBuilder sb = _stringBuilderPool.Allocate();
 
-=======
-            StringBuilder sb = StringBuilderPool.Allocate();
-            
->>>>>>> 1ec71635b (sync with main branch)
             try
             {
                 Format(sb, dynamicObject);
@@ -43,11 +26,7 @@ namespace Ryujinx.Common.Logging
             }
             finally
             {
-<<<<<<< HEAD
                 _stringBuilderPool.Release(sb);
-=======
-                StringBuilderPool.Release(sb);
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -69,11 +48,7 @@ namespace Ryujinx.Common.Logging
 
                 if (typeof(Array).IsAssignableFrom(prop.PropertyType))
                 {
-<<<<<<< HEAD
                     Array? array = (Array?)prop.GetValue(dynamicObject);
-=======
-                    Array? array = (Array?) prop.GetValue(dynamicObject);
->>>>>>> 1ec71635b (sync with main branch)
 
                     if (array is not null)
                     {
@@ -106,8 +81,4 @@ namespace Ryujinx.Common.Logging
             sb.Append('}');
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

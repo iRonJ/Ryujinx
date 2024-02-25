@@ -12,7 +12,6 @@ namespace Ryujinx.Audio.Renderer.Server
     /// </summary>
     public class CommandProcessingTimeEstimatorVersion3 : ICommandProcessingTimeEstimator
     {
-<<<<<<< HEAD
         protected uint SampleCount;
         protected uint BufferCount;
 
@@ -20,28 +19,13 @@ namespace Ryujinx.Audio.Renderer.Server
         {
             SampleCount = sampleCount;
             BufferCount = bufferCount;
-=======
-        protected uint _sampleCount;
-        protected uint _bufferCount;
-
-        public CommandProcessingTimeEstimatorVersion3(uint sampleCount, uint bufferCount)
-        {
-            _sampleCount = sampleCount;
-            _bufferCount = bufferCount;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public uint Estimate(PerformanceCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)498.17f;
             }
@@ -51,42 +35,24 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(ClearMixBufferCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
->>>>>>> 1ec71635b (sync with main branch)
 
             float costPerBuffer = 440.68f;
             float baseCost = 0;
 
-<<<<<<< HEAD
             if (SampleCount == 160)
-=======
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 costPerBuffer = 266.65f;
             }
 
-<<<<<<< HEAD
             return (uint)(baseCost + costPerBuffer * BufferCount);
-=======
-            return (uint)(baseCost + costPerBuffer * _bufferCount);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public uint Estimate(BiquadFilterCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)4173.2f;
             }
@@ -98,15 +64,9 @@ namespace Ryujinx.Audio.Renderer.Server
         {
             float costPerSample = 6.4434f;
 
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 costPerSample = 6.708f;
             }
@@ -121,24 +81,14 @@ namespace Ryujinx.Audio.Renderer.Server
                 }
             }
 
-<<<<<<< HEAD
             return (uint)(SampleCount * costPerSample * volumeCount);
-=======
-            return (uint)(_sampleCount * costPerSample * volumeCount);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public uint Estimate(MixRampCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)1968.7f;
             }
@@ -153,15 +103,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(VolumeRampCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)1425.3f;
             }
@@ -171,71 +115,41 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(PcmInt16DataSourceCommandVersion1 command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
->>>>>>> 1ec71635b (sync with main branch)
 
             float costPerSample = 710.143f;
             float baseCost = 7853.286f;
 
-<<<<<<< HEAD
             if (SampleCount == 160)
-=======
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 costPerSample = 427.52f;
                 baseCost = 6329.442f;
             }
 
-<<<<<<< HEAD
             return (uint)(baseCost + (costPerSample * (((command.SampleRate / 200.0f) / SampleCount) * (command.Pitch * 0.000030518f))));
-=======
-            return (uint)(baseCost + (costPerSample * (((command.SampleRate / 200.0f) / _sampleCount) * (command.Pitch * 0.000030518f))));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public uint Estimate(AdpcmDataSourceCommandVersion1 command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
->>>>>>> 1ec71635b (sync with main branch)
 
             float costPerSample = 3564.1f;
             float baseCost = 9736.702f;
 
-<<<<<<< HEAD
             if (SampleCount == 160)
-=======
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 costPerSample = 2125.6f;
                 baseCost = 7913.808f;
             }
 
-<<<<<<< HEAD
             return (uint)(baseCost + (costPerSample * (((command.SampleRate / 200.0f) / SampleCount) * (command.Pitch * 0.000030518f))));
-=======
-            return (uint)(baseCost + (costPerSample * (((command.SampleRate / 200.0f) / _sampleCount) * (command.Pitch * 0.000030518f))));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public uint Estimate(DepopForMixBuffersCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)739.64f;
             }
@@ -245,15 +159,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(CopyMixBufferCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)842.59f;
             }
@@ -263,15 +171,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(MixCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)1402.8f;
             }
@@ -281,7 +183,6 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public virtual uint Estimate(DelayCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
@@ -306,49 +207,10 @@ namespace Ryujinx.Audio.Renderer.Server
                     6 => (uint)1001.55f,
                     _ => throw new NotImplementedException($"{command.Parameter.ChannelCount}"),
                 };
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
-            {
-                if (command.Enabled)
-                {
-                    switch (command.Parameter.ChannelCount)
-                    {
-                        case 1:
-                            return (uint)8929.04f;
-                        case 2:
-                            return (uint)25500.75f;
-                        case 4:
-                            return (uint)47759.62f;
-                        case 6:
-                            return (uint)82203.07f;
-                        default:
-                            throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                    }
-                }
-                else
-                {
-                    switch (command.Parameter.ChannelCount)
-                    {
-                        case 1:
-                            return (uint)1295.20f;
-                        case 2:
-                            return (uint)1213.60f;
-                        case 4:
-                            return (uint)942.03f;
-                        case 6:
-                            return (uint)1001.55f;
-                        default:
-                            throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                    }
-                }
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (command.Enabled)
             {
-<<<<<<< HEAD
                 return command.Parameter.ChannelCount switch
                 {
                     1 => (uint)11941.05f,
@@ -367,43 +229,10 @@ namespace Ryujinx.Audio.Renderer.Server
                 6 => (uint)875.43f,
                 _ => throw new NotImplementedException($"{command.Parameter.ChannelCount}"),
             };
-=======
-                switch (command.Parameter.ChannelCount)
-                {
-                    case 1:
-                        return (uint)11941.05f;
-                    case 2:
-                        return (uint)37197.37f;
-                    case 4:
-                        return (uint)69749.84f;
-                    case 6:
-                        return (uint)120042.40f;
-                    default:
-                        throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                }
-            }
-            else
-            {
-                switch (command.Parameter.ChannelCount)
-                {
-                    case 1:
-                        return (uint)997.67f;
-                    case 2:
-                        return (uint)977.63f;
-                    case 4:
-                        return (uint)792.30f;
-                    case 6:
-                        return (uint)875.43f;
-                    default:
-                        throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                }
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public virtual uint Estimate(ReverbCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
@@ -428,49 +257,10 @@ namespace Ryujinx.Audio.Renderer.Server
                     6 => (uint)706.0f,
                     _ => throw new NotImplementedException($"{command.Parameter.ChannelCount}"),
                 };
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
-            {
-                if (command.Enabled)
-                {
-                    switch (command.Parameter.ChannelCount)
-                    {
-                        case 1:
-                            return (uint)81475.05f;
-                        case 2:
-                            return (uint)84975.0f;
-                        case 4:
-                            return (uint)91625.15f;
-                        case 6:
-                            return (uint)95332.27f;
-                        default:
-                            throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                    }
-                }
-                else
-                {
-                    switch (command.Parameter.ChannelCount)
-                    {
-                        case 1:
-                            return (uint)536.30f;
-                        case 2:
-                            return (uint)588.70f;
-                        case 4:
-                            return (uint)643.70f;
-                        case 6:
-                            return (uint)706.0f;
-                        default:
-                            throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                    }
-                }
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (command.Enabled)
             {
-<<<<<<< HEAD
                 return command.Parameter.ChannelCount switch
                 {
                     1 => (uint)120174.47f,
@@ -489,43 +279,10 @@ namespace Ryujinx.Audio.Renderer.Server
                 6 => (uint)778.07f,
                 _ => throw new NotImplementedException($"{command.Parameter.ChannelCount}"),
             };
-=======
-                switch (command.Parameter.ChannelCount)
-                {
-                    case 1:
-                        return (uint)120174.47f;
-                    case 2:
-                        return (uint)25262.22f;
-                    case 4:
-                        return (uint)135751.23f;
-                    case 6:
-                        return (uint)141129.23f;
-                    default:
-                        throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                }
-            }
-            else
-            {
-                switch (command.Parameter.ChannelCount)
-                {
-                    case 1:
-                        return (uint)617.64f;
-                    case 2:
-                        return (uint)659.54f;
-                    case 4:
-                        return (uint)711.43f;
-                    case 6:
-                        return (uint)778.07f;
-                    default:
-                        throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                }
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public virtual uint Estimate(Reverb3dCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
@@ -550,49 +307,10 @@ namespace Ryujinx.Audio.Renderer.Server
                     6 => (uint)867.43f,
                     _ => throw new NotImplementedException($"{command.Parameter.ChannelCount}"),
                 };
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
-            {
-                if (command.Enabled)
-                {
-                    switch (command.Parameter.ChannelCount)
-                    {
-                        case 1:
-                            return (uint)116754.0f;
-                        case 2:
-                            return (uint)125912.05f;
-                        case 4:
-                            return (uint)146336.03f;
-                        case 6:
-                            return (uint)165812.66f;
-                        default:
-                            throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                    }
-                }
-                else
-                {
-                    switch (command.Parameter.ChannelCount)
-                    {
-                        case 1:
-                            return (uint)734.0f;
-                        case 2:
-                            return (uint)766.62f;
-                        case 4:
-                            return (uint)797.46f;
-                        case 6:
-                            return (uint)867.43f;
-                        default:
-                            throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                    }
-                }
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (command.Enabled)
             {
-<<<<<<< HEAD
                 return command.Parameter.ChannelCount switch
                 {
                     1 => (uint)170292.34f,
@@ -611,51 +329,13 @@ namespace Ryujinx.Audio.Renderer.Server
                 6 => (uint)682.47f,
                 _ => throw new NotImplementedException($"{command.Parameter.ChannelCount}"),
             };
-=======
-                switch (command.Parameter.ChannelCount)
-                {
-                    case 1:
-                        return (uint)170292.34f;
-                    case 2:
-                        return (uint)183875.63f;
-                    case 4:
-                        return (uint)214696.19f;
-                    case 6:
-                        return (uint)243846.77f;
-                    default:
-                        throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                }
-            }
-            else
-            {
-                switch (command.Parameter.ChannelCount)
-                {
-                    case 1:
-                        return (uint)508.47f;
-                    case 2:
-                        return (uint)582.45f;
-                    case 4:
-                        return (uint)626.42f;
-                    case 6:
-                        return (uint)682.47f;
-                    default:
-                        throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                }
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public uint Estimate(AuxiliaryBufferCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 if (command.Enabled)
                 {
@@ -675,15 +355,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(VolumeCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)1311.1f;
             }
@@ -693,20 +367,12 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(CircularBufferSinkCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
->>>>>>> 1ec71635b (sync with main branch)
 
             float costPerBuffer = 770.26f;
             float baseCost = 0f;
 
-<<<<<<< HEAD
             if (SampleCount == 160)
-=======
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 costPerBuffer = 531.07f;
             }
@@ -716,15 +382,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(DownMixSurroundToStereoCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)9949.7f;
             }
@@ -734,15 +394,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(UpsampleCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)312990.0f;
             }
@@ -752,20 +406,12 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(DeviceSinkCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
->>>>>>> 1ec71635b (sync with main branch)
             Debug.Assert(command.InputCount == 2 || command.InputCount == 6);
 
             if (command.InputCount == 2)
             {
-<<<<<<< HEAD
                 if (SampleCount == 160)
-=======
-                if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     return (uint)8980.0f;
                 }
@@ -773,11 +419,7 @@ namespace Ryujinx.Audio.Renderer.Server
                 return (uint)9221.9f;
             }
 
-<<<<<<< HEAD
             if (SampleCount == 160)
-=======
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)9177.9f;
             }
@@ -787,47 +429,27 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public uint Estimate(PcmFloatDataSourceCommandVersion1 command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
->>>>>>> 1ec71635b (sync with main branch)
 
             float costPerSample = 3490.9f;
             float baseCost = 10090.9f;
 
-<<<<<<< HEAD
             if (SampleCount == 160)
-=======
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 costPerSample = 2310.4f;
                 baseCost = 7845.25f;
             }
 
-<<<<<<< HEAD
             return (uint)(baseCost + (costPerSample * (((command.SampleRate / 200.0f) / SampleCount) * (command.Pitch * 0.000030518f))));
-=======
-            return (uint)(baseCost + (costPerSample * (((command.SampleRate / 200.0f) / _sampleCount) * (command.Pitch * 0.000030518f))));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public uint Estimate(DataSourceVersion2Command command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             (float baseCost, float costPerSample) = GetCostByFormat(SampleCount, command.SampleFormat, command.SrcQuality);
 
             return (uint)(baseCost + (costPerSample * (((command.SampleRate / 200.0f) / SampleCount) * (command.Pitch * 0.000030518f) - 1.0f)));
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            (float baseCost, float costPerSample) = GetCostByFormat(_sampleCount, command.SampleFormat, command.SrcQuality);
-
-            return (uint)(baseCost + (costPerSample * (((command.SampleRate / 200.0f) / _sampleCount) * (command.Pitch * 0.000030518f) - 1.0f)));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static (float, float) GetCostByFormat(uint sampleCount, SampleFormat format, SampleRateConversionQuality quality)
@@ -924,7 +546,6 @@ namespace Ryujinx.Audio.Renderer.Server
 
         private uint EstimateLimiterCommandCommon(LimiterParameter parameter, bool enabled)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
@@ -949,49 +570,10 @@ namespace Ryujinx.Audio.Renderer.Server
                     6 => (uint)1016.8f,
                     _ => throw new NotImplementedException($"{parameter.ChannelCount}"),
                 };
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
-            {
-                if (enabled)
-                {
-                    switch (parameter.ChannelCount)
-                    {
-                        case 1:
-                            return (uint)21392.0f;
-                        case 2:
-                            return (uint)26829.0f;
-                        case 4:
-                            return (uint)32405.0f;
-                        case 6:
-                            return (uint)52219.0f;
-                        default:
-                            throw new NotImplementedException($"{parameter.ChannelCount}");
-                    }
-                }
-                else
-                {
-                    switch (parameter.ChannelCount)
-                    {
-                        case 1:
-                            return (uint)897.0f;
-                        case 2:
-                            return (uint)931.55f;
-                        case 4:
-                            return (uint)975.39f;
-                        case 6:
-                            return (uint)1016.8f;
-                        default:
-                            throw new NotImplementedException($"{parameter.ChannelCount}");
-                    }
-                }
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (enabled)
             {
-<<<<<<< HEAD
                 return parameter.ChannelCount switch
                 {
                     1 => (uint)30556.0f,
@@ -1010,65 +592,24 @@ namespace Ryujinx.Audio.Renderer.Server
                 6 => (uint)992.26f,
                 _ => throw new NotImplementedException($"{parameter.ChannelCount}"),
             };
-=======
-                switch (parameter.ChannelCount)
-                {
-                    case 1:
-                        return (uint)30556.0f;
-                    case 2:
-                        return (uint)39011.0f;
-                    case 4:
-                        return (uint)48270.0f;
-                    case 6:
-                        return (uint)76712.0f;
-                    default:
-                        throw new NotImplementedException($"{parameter.ChannelCount}");
-                }
-            }
-            else
-            {
-                switch (parameter.ChannelCount)
-                {
-                    case 1:
-                        return (uint)874.43f;
-                    case 2:
-                        return (uint)921.55f;
-                    case 4:
-                        return (uint)945.26f;
-                    case 6:
-                        return (uint)992.26f;
-                    default:
-                        throw new NotImplementedException($"{parameter.ChannelCount}");
-                }
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public uint Estimate(LimiterCommandVersion1 command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
->>>>>>> 1ec71635b (sync with main branch)
 
             return EstimateLimiterCommandCommon(command.Parameter, command.IsEffectEnabled);
         }
 
         public uint Estimate(LimiterCommandVersion2 command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (!command.Parameter.StatisticsEnabled || !command.IsEffectEnabled)
             {
                 return EstimateLimiterCommandCommon(command.Parameter, command.IsEffectEnabled);
             }
 
-<<<<<<< HEAD
             if (SampleCount == 160)
             {
                 return command.Parameter.ChannelCount switch
@@ -1089,38 +630,6 @@ namespace Ryujinx.Audio.Renderer.Server
                 6 => (uint)85527.0f,
                 _ => throw new NotImplementedException($"{command.Parameter.ChannelCount}"),
             };
-=======
-            if (_sampleCount == 160)
-            {
-                switch (command.Parameter.ChannelCount)
-                {
-                    case 1:
-                        return (uint)23309.0f;
-                    case 2:
-                        return (uint)29954.0f;
-                    case 4:
-                        return (uint)35807.0f;
-                    case 6:
-                        return (uint)58340.0f;
-                    default:
-                        throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-                }
-            }
-
-            switch (command.Parameter.ChannelCount)
-            {
-                case 1:
-                    return (uint)33526.0f;
-                case 2:
-                    return (uint)43549.0f;
-                case 4:
-                    return (uint)52190.0f;
-                case 6:
-                    return (uint)85527.0f;
-                default:
-                    throw new NotImplementedException($"{command.Parameter.ChannelCount}");
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public virtual uint Estimate(GroupedBiquadFilterCommand command)
@@ -1138,8 +647,4 @@ namespace Ryujinx.Audio.Renderer.Server
             return 0;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

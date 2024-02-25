@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.Vulkan
-=======
-﻿namespace Ryujinx.Graphics.Vulkan
->>>>>>> 1ec71635b (sync with main branch)
 {
     readonly struct BitMap
     {
@@ -135,11 +131,7 @@ namespace Ryujinx.Graphics.Vulkan
         public void Clear(int bit)
         {
             int wordIndex = bit >> IntShift;
-<<<<<<< HEAD
             int wordBit = bit & IntMask;
-=======
-            int wordBit   = bit & IntMask;
->>>>>>> 1ec71635b (sync with main branch)
 
             long wordMask = 1L << wordBit;
 
@@ -162,8 +154,4 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

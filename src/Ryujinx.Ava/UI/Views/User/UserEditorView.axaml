@@ -13,10 +13,6 @@
     Padding="0"
     mc:Ignorable="d"
     Focusable="True"
-<<<<<<< HEAD
-=======
-    x:CompileBindings="True"
->>>>>>> 1ec71635b (sync with main branch)
     x:DataType="models:TempProfile">
     <UserControl.Resources>
         <helpers:BitmapArrayValueConverter x:Key="ByteImage" />

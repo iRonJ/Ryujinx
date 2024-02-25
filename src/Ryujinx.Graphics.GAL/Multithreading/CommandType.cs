@@ -1,18 +1,11 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading
-=======
-﻿namespace Ryujinx.Graphics.GAL.Multithreading
->>>>>>> 1ec71635b (sync with main branch)
 {
     enum CommandType : byte
     {
         Action,
         CreateBuffer,
         CreateBufferAccess,
-<<<<<<< HEAD
         CreateBufferSparse,
-=======
->>>>>>> 1ec71635b (sync with main branch)
         CreateHostBuffer,
         CreateProgram,
         CreateSampler,
@@ -95,10 +88,6 @@ namespace Ryujinx.Graphics.GAL.Multithreading
         SetProgram,
         SetRasterizerDiscard,
         SetRenderTargetColorMasks,
-<<<<<<< HEAD
-=======
-        SetRenderTargetScale,
->>>>>>> 1ec71635b (sync with main branch)
         SetRenderTargets,
         SetScissor,
         SetStencilTest,
@@ -111,9 +100,5 @@ namespace Ryujinx.Graphics.GAL.Multithreading
         TextureBarrierTiled,
         TryHostConditionalRendering,
         TryHostConditionalRenderingFlush,
-<<<<<<< HEAD
-=======
-        UpdateRenderScale
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

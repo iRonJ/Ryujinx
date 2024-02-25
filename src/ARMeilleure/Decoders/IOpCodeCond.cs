@@ -4,8 +4,4 @@ namespace ARMeilleure.Decoders
     {
         Condition Cond { get; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

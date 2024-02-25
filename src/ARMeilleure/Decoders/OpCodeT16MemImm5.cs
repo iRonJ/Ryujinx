@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using ARMeilleure.Instructions;
-=======
-﻿using ARMeilleure.Instructions;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace ARMeilleure.Decoders
@@ -40,7 +36,6 @@ namespace ARMeilleure.Decoders
                     break;
             }
 
-<<<<<<< HEAD
             Immediate = inst.Name switch
             {
                 InstName.Str or InstName.Ldr => ((opCode >> 6) & 0x1f) << 2,
@@ -48,25 +43,6 @@ namespace ARMeilleure.Decoders
                 InstName.Strh or InstName.Ldrh => ((opCode >> 6) & 0x1f) << 1,
                 _ => throw new InvalidOperationException(),
             };
-=======
-            switch (inst.Name)
-            {
-                case InstName.Str:
-                case InstName.Ldr:
-                    Immediate = ((opCode >> 6) & 0x1f) << 2;
-                    break;
-                case InstName.Strb:
-                case InstName.Ldrb:
-                    Immediate = ((opCode >> 6) & 0x1f);
-                    break;
-                case InstName.Strh:
-                case InstName.Ldrh:
-                    Immediate = ((opCode >> 6) & 0x1f) << 1;
-                    break;
-                default:
-                    throw new InvalidOperationException();
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

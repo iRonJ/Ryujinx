@@ -1,23 +1,26 @@
-﻿using Ryujinx.Common;
+using Ryujinx.Common;
+using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Logging;
+using Ryujinx.Common.Logging.Targets;
 using System;
+using System.IO;
 
-namespace Ryujinx.Ui.Common.Configuration
+namespace Ryujinx.UI.Common.Configuration
 {
     public static class LoggerModule
     {
         public static void Initialize()
         {
-            ConfigurationState.Instance.Logger.EnableDebug.Event       += ReloadEnableDebug;
-            ConfigurationState.Instance.Logger.EnableStub.Event        += ReloadEnableStub;
-            ConfigurationState.Instance.Logger.EnableInfo.Event        += ReloadEnableInfo;
-            ConfigurationState.Instance.Logger.EnableWarn.Event        += ReloadEnableWarning;
-            ConfigurationState.Instance.Logger.EnableError.Event       += ReloadEnableError;
-            ConfigurationState.Instance.Logger.EnableTrace.Event       += ReloadEnableTrace;
-            ConfigurationState.Instance.Logger.EnableGuest.Event       += ReloadEnableGuest;
+            ConfigurationState.Instance.Logger.EnableDebug.Event += ReloadEnableDebug;
+            ConfigurationState.Instance.Logger.EnableStub.Event += ReloadEnableStub;
+            ConfigurationState.Instance.Logger.EnableInfo.Event += ReloadEnableInfo;
+            ConfigurationState.Instance.Logger.EnableWarn.Event += ReloadEnableWarning;
+            ConfigurationState.Instance.Logger.EnableError.Event += ReloadEnableError;
+            ConfigurationState.Instance.Logger.EnableTrace.Event += ReloadEnableTrace;
+            ConfigurationState.Instance.Logger.EnableGuest.Event += ReloadEnableGuest;
             ConfigurationState.Instance.Logger.EnableFsAccessLog.Event += ReloadEnableFsAccessLog;
-            ConfigurationState.Instance.Logger.FilteredClasses.Event   += ReloadFilteredClasses;
-            ConfigurationState.Instance.Logger.EnableFileLog.Event     += ReloadFileLogger;
+            ConfigurationState.Instance.Logger.FilteredClasses.Event += ReloadFilteredClasses;
+            ConfigurationState.Instance.Logger.EnableFileLog.Event += ReloadFileLogger;
         }
 
         private static void ReloadEnableDebug(object sender, ReactiveEventArgs<bool> e)
@@ -79,8 +82,24 @@ namespace Ryujinx.Ui.Common.Configuration
         {
             if (e.NewValue)
             {
+                string logDir = AppDataManager.LogsDirPath;
+                FileStream logFile = null;
+
+                if (!string.IsNullOrEmpty(logDir))
+                {
+                    logFile = FileLogTarget.PrepareLogFile(logDir);
+                }
+
+                if (logFile == null)
+                {
+                    Logger.Error?.Print(LogClass.Application, "No writable log directory available. Make sure either the Logs directory, Application Data, or the Ryujinx directory is writable.");
+                    Logger.RemoveTarget("file");
+
+                    return;
+                }
+
                 Logger.AddTarget(new AsyncLogTargetWrapper(
-                    new FileLogTarget(ReleaseInformation.GetBaseApplicationDirectory(), "file"),
+                    new FileLogTarget("file", logFile),
                     1000,
                     AsyncLogTargetOverflowAction.Block
                 ));

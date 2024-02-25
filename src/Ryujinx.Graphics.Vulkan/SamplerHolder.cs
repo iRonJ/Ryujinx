@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
 using Silk.NET.Vulkan;
 using SamplerCreateInfo = Ryujinx.Graphics.GAL.SamplerCreateInfo;
-=======
-﻿using Ryujinx.Graphics.GAL;
-using Silk.NET.Vulkan;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Vulkan
 {
@@ -14,21 +9,13 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly VulkanRenderer _gd;
         private readonly Auto<DisposableSampler> _sampler;
 
-<<<<<<< HEAD
         public unsafe SamplerHolder(VulkanRenderer gd, Device device, SamplerCreateInfo info)
-=======
-        public unsafe SamplerHolder(VulkanRenderer gd, Device device, GAL.SamplerCreateInfo info)
->>>>>>> 1ec71635b (sync with main branch)
         {
             _gd = gd;
 
             gd.Samplers.Add(this);
 
-<<<<<<< HEAD
             (Filter minFilter, SamplerMipmapMode mipFilter) = info.MinFilter.Convert();
-=======
-            (Filter minFilter, SamplerMipmapMode mipFilter) = EnumConversion.Convert(info.MinFilter);
->>>>>>> 1ec71635b (sync with main branch)
 
             float minLod = info.MinLod;
             float maxLod = info.MaxLod;
@@ -41,11 +28,7 @@ namespace Ryujinx.Graphics.Vulkan
 
             var borderColor = GetConstrainedBorderColor(info.BorderColor, out var cantConstrain);
 
-<<<<<<< HEAD
             var samplerCreateInfo = new Silk.NET.Vulkan.SamplerCreateInfo
-=======
-            var samplerCreateInfo = new Silk.NET.Vulkan.SamplerCreateInfo()
->>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.SamplerCreateInfo,
                 MagFilter = info.MagFilter.Convert(),
@@ -62,11 +45,7 @@ namespace Ryujinx.Graphics.Vulkan
                 MinLod = minLod,
                 MaxLod = maxLod,
                 BorderColor = borderColor,
-<<<<<<< HEAD
                 UnnormalizedCoordinates = false, // TODO: Use unnormalized coordinates.
-=======
-                UnnormalizedCoordinates = false // TODO: Use unnormalized coordinates.
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             SamplerCustomBorderColorCreateInfoEXT customBorderColor;
@@ -79,17 +58,10 @@ namespace Ryujinx.Graphics.Vulkan
                     info.BorderColor.Blue,
                     info.BorderColor.Alpha);
 
-<<<<<<< HEAD
                 customBorderColor = new SamplerCustomBorderColorCreateInfoEXT
                 {
                     SType = StructureType.SamplerCustomBorderColorCreateInfoExt,
                     CustomBorderColor = color,
-=======
-                customBorderColor = new SamplerCustomBorderColorCreateInfoEXT()
-                {
-                    SType = StructureType.SamplerCustomBorderColorCreateInfoExt,
-                    CustomBorderColor = color
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 samplerCreateInfo.PNext = &customBorderColor;
@@ -115,12 +87,8 @@ namespace Ryujinx.Graphics.Vulkan
                     cantConstrain = false;
                     return BorderColor.FloatOpaqueBlack;
                 }
-<<<<<<< HEAD
 
                 if (a == 0f)
-=======
-                else if (a == 0f)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     cantConstrain = false;
                     return BorderColor.FloatTransparentBlack;

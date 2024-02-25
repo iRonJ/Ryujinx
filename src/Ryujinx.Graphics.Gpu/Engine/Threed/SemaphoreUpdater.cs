@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
-=======
-﻿using Ryujinx.Graphics.GAL;
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Gpu.Engine.Threed
 {
@@ -19,11 +14,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         {
             Release = 0,
             Acquire = 1,
-<<<<<<< HEAD
             Counter = 2,
-=======
-            Counter = 2
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -45,11 +36,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
             ClipperInputPrimitives = 0x1c,
             ClipperOutputPrimitives = 0x1d,
             FragmentShaderInvocations = 0x1e,
-<<<<<<< HEAD
             PrimitivesGenerated = 0x1f,
-=======
-            PrimitivesGenerated = 0x1f
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -76,11 +63,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
             TransformFeedbackOffset = 0x1a,
             TessControlShaderInvocations = 0x1b,
             TessEvaluationShaderInvocations = 0x1d,
-<<<<<<< HEAD
             TessEvaluationShaderPrimitives = 0x1f,
-=======
-            TessEvaluationShaderPrimitives = 0x1f
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private readonly GpuContext _context;
@@ -133,17 +116,12 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
 
             switch (op)
             {
-<<<<<<< HEAD
                 case SemaphoreOperation.Release:
                     ReleaseSemaphore();
                     break;
                 case SemaphoreOperation.Counter:
                     ReportCounter(type);
                     break;
-=======
-                case SemaphoreOperation.Release: ReleaseSemaphore(); break;
-                case SemaphoreOperation.Counter: ReportCounter(type); break;
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -181,17 +159,10 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
 
             void resultHandler(object evt, ulong result)
             {
-<<<<<<< HEAD
                 CounterData counterData = new()
                 {
                     Counter = result,
                     Timestamp = ticks,
-=======
-                CounterData counterData = new CounterData
-                {
-                    Counter = result,
-                    Timestamp = ticks
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 if (counter?.Invalid != true)
@@ -206,7 +177,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
                     resultHandler(null, (ulong)_state.State.SemaphorePayload);
                     break;
                 case ReportCounterType.SamplesPassed:
-<<<<<<< HEAD
                     float scale = _channel.TextureManager.RenderTargetScale;
                     float divisor = scale * scale;
                     counter = _context.Renderer.ReportCounter(CounterType.SamplesPassed, resultHandler, divisor, false);
@@ -216,15 +186,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
                     break;
                 case ReportCounterType.TransformFeedbackPrimitivesWritten:
                     counter = _context.Renderer.ReportCounter(CounterType.TransformFeedbackPrimitivesWritten, resultHandler, 1f, false);
-=======
-                    counter = _context.Renderer.ReportCounter(CounterType.SamplesPassed, resultHandler, false);
-                    break;
-                case ReportCounterType.PrimitivesGenerated:
-                    counter = _context.Renderer.ReportCounter(CounterType.PrimitivesGenerated, resultHandler, false);
-                    break;
-                case ReportCounterType.TransformFeedbackPrimitivesWritten:
-                    counter = _context.Renderer.ReportCounter(CounterType.TransformFeedbackPrimitivesWritten, resultHandler, false);
->>>>>>> 1ec71635b (sync with main branch)
                     break;
             }
 

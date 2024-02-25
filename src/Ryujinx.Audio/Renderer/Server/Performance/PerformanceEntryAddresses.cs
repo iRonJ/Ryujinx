@@ -53,8 +53,4 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
             BaseMemory.Span[(int)ProcessingTimeOffset / 4] = (int)(endTimeNano / 1000) - BaseMemory.Span[(int)StartTimeOffset / 4];
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

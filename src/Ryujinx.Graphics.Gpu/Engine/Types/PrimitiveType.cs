@@ -21,11 +21,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Types
         LineStripAdjacency,
         TrianglesAdjacency,
         TriangleStripAdjacency,
-<<<<<<< HEAD
         Patches,
-=======
-        Patches
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -43,11 +39,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Types
         LineStripAdjacency = 11,
         TrianglesAdjacency = 12,
         TriangleStripAdjacency = 13,
-<<<<<<< HEAD
         Patches = 14,
-=======
-        Patches = 14
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class PrimitiveTypeConverter
@@ -61,10 +53,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Types
         {
             return type switch
             {
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 PrimitiveType.Points                 => PrimitiveTopology.Points,
                 PrimitiveType.Lines                  => PrimitiveTopology.Lines,
                 PrimitiveType.LineLoop               => PrimitiveTopology.LineLoop,
@@ -80,12 +69,8 @@ namespace Ryujinx.Graphics.Gpu.Engine.Types
                 PrimitiveType.TrianglesAdjacency     => PrimitiveTopology.TrianglesAdjacency,
                 PrimitiveType.TriangleStripAdjacency => PrimitiveTopology.TriangleStripAdjacency,
                 PrimitiveType.Patches                => PrimitiveTopology.Patches,
-<<<<<<< HEAD
                 _                                    => PrimitiveTopology.Triangles,
 #pragma warning restore IDE0055
-=======
-                _                                    => PrimitiveTopology.Triangles
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -98,10 +83,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Types
         {
             return type switch
             {
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 PrimitiveTypeOverride.Points                 => PrimitiveTopology.Points,
                 PrimitiveTypeOverride.Lines                  => PrimitiveTopology.Lines,
                 PrimitiveTypeOverride.LineStrip              => PrimitiveTopology.LineStrip,
@@ -113,17 +95,9 @@ namespace Ryujinx.Graphics.Gpu.Engine.Types
                 PrimitiveTypeOverride.TrianglesAdjacency     => PrimitiveTopology.TrianglesAdjacency,
                 PrimitiveTypeOverride.TriangleStripAdjacency => PrimitiveTopology.TriangleStripAdjacency,
                 PrimitiveTypeOverride.Patches                => PrimitiveTopology.Patches,
-<<<<<<< HEAD
                 _                                            => PrimitiveTopology.Triangles,
 #pragma warning restore IDE0055
             };
         }
     }
 }
-=======
-                _                                            => PrimitiveTopology.Triangles
-            };
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

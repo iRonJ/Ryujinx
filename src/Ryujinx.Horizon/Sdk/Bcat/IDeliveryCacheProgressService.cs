@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Bcat.Ipc.Types;
-=======
-﻿using Ryujinx.Horizon.Bcat.Ipc.Types;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Sf;
 

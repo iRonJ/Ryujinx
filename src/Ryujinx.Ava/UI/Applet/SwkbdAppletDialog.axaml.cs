@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-=======
-using Avalonia;
->>>>>>> 1ec71635b (sync with main branch)
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
-<<<<<<< HEAD
 using FluentAvalonia.UI.Controls;
 using Ryujinx.Ava.Common.Locale;
 using Ryujinx.Ava.UI.Helpers;
@@ -14,33 +9,17 @@ using Ryujinx.HLE.HOS.Applets;
 using Ryujinx.HLE.HOS.Applets.SoftwareKeyboard;
 using System;
 using System.Linq;
-=======
-using FluentAvalonia.Core;
-using FluentAvalonia.UI.Controls;
-using Ryujinx.Ava.Common.Locale;
-using Ryujinx.Ava.UI.Helpers;
-using Ryujinx.Ava.UI.Windows;
-using Ryujinx.HLE.HOS.Applets;
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Threading.Tasks;
 
 namespace Ryujinx.Ava.UI.Controls
 {
     internal partial class SwkbdAppletDialog : UserControl
     {
-<<<<<<< HEAD
         private Predicate<int> _checkLength = _ => true;
         private Predicate<string> _checkInput = _ => true;
         private int _inputMax;
         private int _inputMin;
         private readonly string _placeholder;
-=======
-        private Predicate<int> _checkLength;
-        private int _inputMax;
-        private int _inputMin;
-        private string _placeholder;
->>>>>>> 1ec71635b (sync with main branch)
 
         private ContentDialog _host;
 
@@ -56,11 +35,6 @@ namespace Ryujinx.Ava.UI.Controls
             Input.Watermark = _placeholder;
 
             Input.AddHandler(TextInputEvent, Message_TextInput, RoutingStrategies.Tunnel, true);
-<<<<<<< HEAD
-=======
-
-            SetInputLengthValidation(0, int.MaxValue); // Disable by default.
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public SwkbdAppletDialog()
@@ -80,7 +54,6 @@ namespace Ryujinx.Ava.UI.Controls
         public string MainText { get; set; } = "";
         public string SecondaryText { get; set; } = "";
 
-<<<<<<< HEAD
         public static async Task<(UserResult Result, string Input)> ShowInputDialog(string title, SoftwareKeyboardUIArgs args)
         {
             ContentDialog contentDialog = new();
@@ -88,23 +61,11 @@ namespace Ryujinx.Ava.UI.Controls
             UserResult result = UserResult.Cancel;
 
             SwkbdAppletDialog content = new(args.HeaderText, args.SubtitleText, args.GuideText, args.InitialText);
-=======
-        public static async Task<(UserResult Result, string Input)> ShowInputDialog(StyleableWindow window, string title, SoftwareKeyboardUiArgs args)
-        {
-            ContentDialog contentDialog = new ContentDialog();
-
-            UserResult result = UserResult.Cancel;
-
-            SwkbdAppletDialog content = new SwkbdAppletDialog(args.HeaderText, args.SubtitleText, args.GuideText, args.InitialText);
->>>>>>> 1ec71635b (sync with main branch)
 
             string input = string.Empty;
 
             content.SetInputLengthValidation(args.StringLengthMin, args.StringLengthMax);
-<<<<<<< HEAD
             content.SetInputValidation(args.KeyboardMode);
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             content._host = contentDialog;
             contentDialog.Title = title;
@@ -114,40 +75,28 @@ namespace Ryujinx.Ava.UI.Controls
             contentDialog.CloseButtonText = LocaleManager.Instance[LocaleKeys.InputDialogCancel];
             contentDialog.Content = content;
 
-<<<<<<< HEAD
             void Handler(ContentDialog sender, ContentDialogClosedEventArgs eventArgs)
-=======
-            TypedEventHandler<ContentDialog, ContentDialogClosedEventArgs> handler = (sender, eventArgs) =>
->>>>>>> 1ec71635b (sync with main branch)
             {
                 if (eventArgs.Result == ContentDialogResult.Primary)
                 {
                     result = UserResult.Ok;
                     input = content.Input.Text;
                 }
-<<<<<<< HEAD
             }
 
             contentDialog.Closed += Handler;
-=======
-            };
-            contentDialog.Closed += handler;
->>>>>>> 1ec71635b (sync with main branch)
 
             await ContentDialogHelper.ShowAsync(contentDialog);
 
             return (result, input);
         }
 
-<<<<<<< HEAD
         private void ApplyValidationInfo(string text)
         {
             Error.IsVisible = !string.IsNullOrEmpty(text);
             Error.Text = text;
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public void SetInputLengthValidation(int min, int max)
         {
             _inputMin = Math.Min(min, max);
@@ -156,11 +105,8 @@ namespace Ryujinx.Ava.UI.Controls
             Error.IsVisible = false;
             Error.FontStyle = FontStyle.Italic;
 
-<<<<<<< HEAD
             string validationInfoText = "";
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
             if (_inputMin <= 0 && _inputMax == int.MaxValue) // Disable.
             {
                 Error.IsVisible = false;
@@ -169,30 +115,17 @@ namespace Ryujinx.Ava.UI.Controls
             }
             else if (_inputMin > 0 && _inputMax == int.MaxValue)
             {
-<<<<<<< HEAD
                 validationInfoText = LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.SwkbdMinCharacters, _inputMin);
-=======
-                Error.IsVisible = true;
-
-                Error.Text = LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.SwkbdMinCharacters, _inputMin);
->>>>>>> 1ec71635b (sync with main branch)
 
                 _checkLength = length => _inputMin <= length;
             }
             else
             {
-<<<<<<< HEAD
                 validationInfoText = LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.SwkbdMinRangeCharacters, _inputMin, _inputMax);
-=======
-                Error.IsVisible = true;
-
-                Error.Text = LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.SwkbdMinRangeCharacters, _inputMin, _inputMax);
->>>>>>> 1ec71635b (sync with main branch)
 
                 _checkLength = length => _inputMin <= length && length <= _inputMax;
             }
 
-<<<<<<< HEAD
             ApplyValidationInfo(validationInfoText);
             Message_TextInput(this, new TextInputEventArgs());
         }
@@ -224,8 +157,6 @@ namespace Ryujinx.Ava.UI.Controls
             }
 
             ApplyValidationInfo(validationInfoText);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Message_TextInput(this, new TextInputEventArgs());
         }
 
@@ -233,11 +164,7 @@ namespace Ryujinx.Ava.UI.Controls
         {
             if (_host != null)
             {
-<<<<<<< HEAD
                 _host.IsPrimaryButtonEnabled = _checkLength(Message.Length) && _checkInput(Message);
-=======
-                _host.IsPrimaryButtonEnabled = _checkLength(Message.Length);
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -249,16 +176,8 @@ namespace Ryujinx.Ava.UI.Controls
             }
             else
             {
-<<<<<<< HEAD
                 _host.IsPrimaryButtonEnabled = _checkLength(Message.Length) && _checkInput(Message);
             }
         }
     }
 }
-=======
-                _host.IsPrimaryButtonEnabled = _checkLength(Message.Length);
-            }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

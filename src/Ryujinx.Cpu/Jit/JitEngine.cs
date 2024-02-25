@@ -17,8 +17,4 @@ namespace Ryujinx.Cpu.Jit
             return new JitCpuContext(_tickSource, memoryManager, for64Bit);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

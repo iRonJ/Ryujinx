@@ -1,9 +1,9 @@
-﻿using Ryujinx.Common.Logging;
+using Ryujinx.Common.Logging;
 using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-namespace Ryujinx.Ui.Common.Helper
+namespace Ryujinx.UI.Common.Helper
 {
     public static partial class ConsoleHelper
     {

@@ -58,7 +58,6 @@ namespace Ryujinx.Graphics.Vulkan
 
         public bool IsDeviceExtensionPresent(string extension) => DeviceExtensions.Contains(extension);
 
-<<<<<<< HEAD
         public unsafe bool TryGetPhysicalDeviceDriverPropertiesKHR(Vk api, out PhysicalDeviceDriverPropertiesKHR res)
         {
             if (!IsDeviceExtensionPresent("VK_KHR_driver_properties"))
@@ -86,8 +85,6 @@ namespace Ryujinx.Graphics.Vulkan
             return true;
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public DeviceInfo ToDeviceInfo()
         {
             return new DeviceInfo(

@@ -46,8 +46,4 @@ namespace Ryujinx.Audio.Renderer.Server.Effect
             UpdateUsageStateForCommandGeneration();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

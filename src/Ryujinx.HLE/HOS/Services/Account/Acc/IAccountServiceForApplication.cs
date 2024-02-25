@@ -7,11 +7,7 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
     [Service("acc:u0", AccountServiceFlag.Application)] // Max Sessions: 4
     class IAccountServiceForApplication : IpcService
     {
-<<<<<<< HEAD
         private readonly ApplicationServiceServer _applicationServiceServer;
-=======
-        private ApplicationServiceServer _applicationServiceServer;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IAccountServiceForApplication(ServiceCtx context, AccountServiceFlag serviceFlag)
         {
@@ -201,8 +197,4 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

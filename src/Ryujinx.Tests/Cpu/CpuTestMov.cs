@@ -8,11 +8,7 @@ namespace Ryujinx.Tests.Cpu
     public sealed class CpuTestMov : CpuTest
     {
 #if Mov
-<<<<<<< HEAD
         private const int RndCnt = 2;
-=======
-        private const int RndCnt    = 2;
->>>>>>> 1ec71635b (sync with main branch)
 
         [Test, Pairwise, Description("MOVK <Xd>, #<imm>{, LSL #<shift>}")]
         public void Movk_64bit([Values(0u, 31u)] uint rd,
@@ -113,8 +109,4 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Time.TimeZone;
-=======
-﻿using Ryujinx.HLE.HOS.Services.Time.TimeZone;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.InteropServices;
 
@@ -11,7 +7,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
     [StructLayout(LayoutKind.Sequential, Size = 0xD0)]
     struct ClockSnapshot
     {
-<<<<<<< HEAD
         public SystemClockContext UserContext;
         public SystemClockContext NetworkContext;
         public long UserTime;
@@ -21,30 +16,14 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
         public CalendarAdditionalInfo UserCalendarAdditionalTime;
         public CalendarAdditionalInfo NetworkCalendarAdditionalTime;
         public SteadyClockTimePoint SteadyClockTimePoint;
-=======
-        public SystemClockContext     UserContext;
-        public SystemClockContext     NetworkContext;
-        public long                   UserTime;
-        public long                   NetworkTime;
-        public CalendarTime           UserCalendarTime;
-        public CalendarTime           NetworkCalendarTime;
-        public CalendarAdditionalInfo UserCalendarAdditionalTime;
-        public CalendarAdditionalInfo NetworkCalendarAdditionalTime;
-        public SteadyClockTimePoint   SteadyClockTimePoint;
->>>>>>> 1ec71635b (sync with main branch)
 
         private LocationNameStorageHolder _locationName;
 
         public Span<byte> LocationName => MemoryMarshal.Cast<LocationNameStorageHolder, byte>(MemoryMarshal.CreateSpan(ref _locationName, LocationNameStorageHolder.Size));
 
         [MarshalAs(UnmanagedType.I1)]
-<<<<<<< HEAD
         public bool IsAutomaticCorrectionEnabled;
         public byte Type;
-=======
-        public bool   IsAutomaticCorrectionEnabled;
-        public byte   Type;
->>>>>>> 1ec71635b (sync with main branch)
         public ushort Unknown;
 
 
@@ -68,8 +47,4 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
             return ResultCode.TimeMismatch;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

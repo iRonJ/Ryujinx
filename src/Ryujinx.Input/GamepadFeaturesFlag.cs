@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Input
 {
@@ -27,10 +23,6 @@ namespace Ryujinx.Input
         /// Motion
         /// <remarks>Also named sixaxis</remarks>
         /// </summary>
-<<<<<<< HEAD
         Motion,
-=======
-        Motion
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

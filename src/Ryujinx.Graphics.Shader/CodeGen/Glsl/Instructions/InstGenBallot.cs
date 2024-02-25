@@ -13,7 +13,6 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             AggregateType dstType = GetSrcVarType(operation.Inst, 0);
 
             string arg = GetSoureExpr(context, operation.GetSource(0), dstType);
-<<<<<<< HEAD
             char component = "xyzw"[operation.Index];
 
             if (context.HostCapabilities.SupportsShaderBallot)
@@ -27,17 +26,3 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
         }
     }
 }
-=======
-
-            if (context.Config.GpuAccessor.QueryHostSupportsShaderBallot())
-            {
-                return $"unpackUint2x32(ballotARB({arg})).x";
-            }
-            else
-            {
-                return $"subgroupBallot({arg}).x";
-            }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

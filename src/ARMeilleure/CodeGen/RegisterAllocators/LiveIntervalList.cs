@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace ARMeilleure.CodeGen.RegisterAllocators
 {
@@ -12,13 +8,8 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
         private int _count;
         private int _capacity;
 
-<<<<<<< HEAD
         public readonly int Count => _count;
         public readonly Span<LiveInterval> Span => new(_items, _count);
-=======
-        public int Count => _count;
-        public Span<LiveInterval> Span => new(_items, _count);
->>>>>>> 1ec71635b (sync with main branch)
 
         public void Add(LiveInterval interval)
         {
@@ -46,8 +37,4 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
             _count++;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

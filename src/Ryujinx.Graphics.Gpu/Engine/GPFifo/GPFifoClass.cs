@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Device;
-=======
-﻿using Ryujinx.Graphics.Device;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu.Engine.MME;
 using Ryujinx.Graphics.Gpu.Synchronization;
 using System;
@@ -20,10 +16,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
         private readonly GPFifoProcessor _parent;
         private readonly DeviceState<GPFifoClassState> _state;
 
-<<<<<<< HEAD
-=======
-        private int _previousSubChannel;
->>>>>>> 1ec71635b (sync with main branch)
         private bool _createSyncPending;
 
         private const int MacrosCount = 0x80;
@@ -52,11 +44,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
                 { nameof(GPFifoClassState.SetReference), new RwCallback(SetReference, null) },
                 { nameof(GPFifoClassState.LoadMmeInstructionRam), new RwCallback(LoadMmeInstructionRam, null) },
                 { nameof(GPFifoClassState.LoadMmeStartAddressRam), new RwCallback(LoadMmeStartAddressRam, null) },
-<<<<<<< HEAD
                 { nameof(GPFifoClassState.SetMmeShadowRamControl), new RwCallback(SetMmeShadowRamControl, null) },
-=======
-                { nameof(GPFifoClassState.SetMmeShadowRamControl), new RwCallback(SetMmeShadowRamControl, null) }
->>>>>>> 1ec71635b (sync with main branch)
             });
 
             _macros = new Macro[MacrosCount];

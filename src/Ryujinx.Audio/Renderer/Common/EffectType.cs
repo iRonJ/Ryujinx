@@ -55,8 +55,4 @@ namespace Ryujinx.Audio.Renderer.Common
         /// </summary>
         Compressor,
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

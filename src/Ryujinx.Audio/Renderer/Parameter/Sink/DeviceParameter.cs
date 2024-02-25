@@ -19,11 +19,7 @@ namespace Ryujinx.Audio.Renderer.Parameter.Sink
         /// <summary>
         /// Reserved/padding.
         /// </summary>
-<<<<<<< HEAD
         private readonly byte _padding;
-=======
-        private byte _padding;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The total count of channels to output to the device.
@@ -38,11 +34,7 @@ namespace Ryujinx.Audio.Renderer.Parameter.Sink
         /// <summary>
         /// Reserved/padding.
         /// </summary>
-<<<<<<< HEAD
         private readonly byte _reserved;
-=======
-        private byte _reserved;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Set to true if the user controls Surround to Stereo downmixing coefficients.
@@ -63,8 +55,4 @@ namespace Ryujinx.Audio.Renderer.Parameter.Sink
         /// </summary>
         public Span<byte> DeviceName => SpanHelpers.AsSpan<DeviceNameStruct, byte>(ref _deviceName);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

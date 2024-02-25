@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService
 {
     class AndroidSurfaceComposerClient
-=======
-﻿namespace Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService
-{
-    static class AndroidSurfaceComposerClient
->>>>>>> 1ec71635b (sync with main branch)
     {
         // NOTE: This is android::SurfaceComposerClient::getDisplayInfo.
         public static (ulong, ulong) GetDisplayInfo(ServiceCtx context, ulong displayId = 0)
@@ -22,8 +16,4 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

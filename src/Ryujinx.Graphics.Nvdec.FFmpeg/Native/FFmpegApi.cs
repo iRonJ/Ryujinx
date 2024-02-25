@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -14,17 +10,10 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
         public const string AvCodecLibraryName = "avcodec";
         public const string AvUtilLibraryName = "avutil";
 
-<<<<<<< HEAD
         private static readonly Dictionary<string, (int, int)> _librariesWhitelist = new()
         {
             { AvCodecLibraryName, (58, 59) },
             { AvUtilLibraryName, (56, 57) },
-=======
-        private static readonly Dictionary<string, (int, int)> _librariesWhitelist = new Dictionary<string, (int, int)>
-        {
-            { AvCodecLibraryName, (58, 59) },
-            { AvUtilLibraryName, (56, 57) }
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private static string FormatLibraryNameForCurrentOs(string libraryName, int version)
@@ -72,14 +61,8 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
         {
             NativeLibrary.SetDllImportResolver(typeof(FFmpegApi).Assembly, (name, assembly, path) =>
             {
-<<<<<<< HEAD
 
                 if (name == AvUtilLibraryName && TryLoadWhitelistedLibrary(AvUtilLibraryName, assembly, path, out nint handle))
-=======
-                IntPtr handle;
-
-                if (name == AvUtilLibraryName && TryLoadWhitelistedLibrary(AvUtilLibraryName, assembly, path, out handle))
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     return handle;
                 }
@@ -122,11 +105,7 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
         internal static unsafe partial AVCodecContext* avcodec_alloc_context3(AVCodec* codec);
 
         [LibraryImport(AvCodecLibraryName)]
-<<<<<<< HEAD
         internal static unsafe partial int avcodec_open2(AVCodecContext* avctx, AVCodec* codec, void** options);
-=======
-        internal static unsafe partial int avcodec_open2(AVCodecContext* avctx, AVCodec* codec, void **options);
->>>>>>> 1ec71635b (sync with main branch)
 
         [LibraryImport(AvCodecLibraryName)]
         internal static unsafe partial int avcodec_close(AVCodecContext* avctx);

@@ -66,22 +66,11 @@ namespace Ryujinx.Audio.Backends.Common
                 return false;
             }
 
-<<<<<<< HEAD
             buffer.Data ??= samples;
-=======
-            if (buffer.Data == null)
-            {
-                buffer.Data = samples;
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             return true;
         }
 
         public virtual void UnregisterBuffer(AudioBuffer buffer) { }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

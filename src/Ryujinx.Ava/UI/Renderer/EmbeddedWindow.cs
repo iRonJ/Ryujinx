@@ -3,13 +3,8 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Platform;
 using Ryujinx.Common.Configuration;
-<<<<<<< HEAD
 using Ryujinx.UI.Common.Configuration;
 using Ryujinx.UI.Common.Helper;
-=======
-using Ryujinx.Ui.Common.Configuration;
-using Ryujinx.Ui.Common.Helper;
->>>>>>> 1ec71635b (sync with main branch)
 using SPB.Graphics;
 using SPB.Platform;
 using SPB.Platform.GLX;
@@ -26,34 +21,20 @@ namespace Ryujinx.Ava.UI.Renderer
     public class EmbeddedWindow : NativeControlHost
     {
         private WindowProc _wndProcDelegate;
-<<<<<<< HEAD
         private string _className;
-=======
-        private string     _className;
->>>>>>> 1ec71635b (sync with main branch)
 
         protected GLXWindow X11Window { get; set; }
 
         protected IntPtr WindowHandle { get; set; }
-<<<<<<< HEAD
         protected IntPtr X11Display { get; set; }
         protected IntPtr NsView { get; set; }
         protected IntPtr MetalLayer { get; set; }
-=======
-        protected IntPtr X11Display   { get; set; }
-        protected IntPtr NsView       { get; set; }
-        protected IntPtr MetalLayer   { get; set; }
->>>>>>> 1ec71635b (sync with main branch)
 
         public delegate void UpdateBoundsCallbackDelegate(Rect rect);
         private UpdateBoundsCallbackDelegate _updateBoundsCallback;
 
         public event EventHandler<IntPtr> WindowCreated;
-<<<<<<< HEAD
         public event EventHandler<Size> BoundsChanged;
-=======
-        public event EventHandler<Size>   SizeChanged;
->>>>>>> 1ec71635b (sync with main branch)
 
         public EmbeddedWindow()
         {
@@ -69,15 +50,9 @@ namespace Ryujinx.Ava.UI.Renderer
         protected virtual void OnWindowDestroying()
         {
             WindowHandle = IntPtr.Zero;
-<<<<<<< HEAD
             X11Display = IntPtr.Zero;
             NsView = IntPtr.Zero;
             MetalLayer = IntPtr.Zero;
-=======
-            X11Display   = IntPtr.Zero;
-            NsView       = IntPtr.Zero;
-            MetalLayer   = IntPtr.Zero;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void OnNativeEmbeddedWindowCreated(object sender, EventArgs e)
@@ -92,11 +67,7 @@ namespace Ryujinx.Ava.UI.Renderer
 
         private void StateChanged(Rect rect)
         {
-<<<<<<< HEAD
             BoundsChanged?.Invoke(this, rect.Size);
-=======
-            SizeChanged?.Invoke(this, rect.Size);
->>>>>>> 1ec71635b (sync with main branch)
             _updateBoundsCallback?.Invoke(rect);
         }
 
@@ -106,7 +77,6 @@ namespace Ryujinx.Ava.UI.Renderer
             {
                 return CreateLinux(control);
             }
-<<<<<<< HEAD
 
             if (OperatingSystem.IsWindows())
             {
@@ -114,13 +84,6 @@ namespace Ryujinx.Ava.UI.Renderer
             }
 
             if (OperatingSystem.IsMacOS())
-=======
-            else if (OperatingSystem.IsWindows())
-            {
-                return CreateWin32(control);
-            }
-            else if (OperatingSystem.IsMacOS())
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return CreateMacOS();
             }
@@ -162,19 +125,11 @@ namespace Ryujinx.Ava.UI.Renderer
             }
             else
             {
-<<<<<<< HEAD
                 X11Window = PlatformHelper.CreateOpenGLWindow(new FramebufferFormat(new ColorFormat(8, 8, 8, 0), 16, 0, ColorFormat.Zero, 0, 2, false), 0, 0, 100, 100) as GLXWindow;
             }
 
             WindowHandle = X11Window.WindowHandle.RawHandle;
             X11Display = X11Window.DisplayHandle.RawHandle;
-=======
-                X11Window = PlatformHelper.CreateOpenGLWindow(FramebufferFormat.Default, 0, 0, 100, 100) as GLXWindow;
-            }
-
-            WindowHandle = X11Window.WindowHandle.RawHandle;
-            X11Display   = X11Window.DisplayHandle.RawHandle;
->>>>>>> 1ec71635b (sync with main branch)
 
             return new PlatformHandle(WindowHandle, "X11");
         }
@@ -188,7 +143,6 @@ namespace Ryujinx.Ava.UI.Renderer
             {
                 if (VisualRoot != null)
                 {
-<<<<<<< HEAD
                     if (msg == WindowsMessages.Lbuttondown ||
                         msg == WindowsMessages.Rbuttondown ||
                         msg == WindowsMessages.Lbuttonup ||
@@ -207,34 +161,11 @@ namespace Ryujinx.Ava.UI.Renderer
                                     bool isLeft = msg == WindowsMessages.Lbuttondown;
                                     RawInputModifiers pointerPointModifier = isLeft ? RawInputModifiers.LeftMouseButton : RawInputModifiers.RightMouseButton;
                                     PointerPointProperties properties = new(pointerPointModifier, isLeft ? PointerUpdateKind.LeftButtonPressed : PointerUpdateKind.RightButtonPressed);
-=======
-                    if (msg == WindowsMessages.LBUTTONDOWN ||
-                        msg == WindowsMessages.RBUTTONDOWN ||
-                        msg == WindowsMessages.LBUTTONUP   ||
-                        msg == WindowsMessages.RBUTTONUP   ||
-                        msg == WindowsMessages.MOUSEMOVE)
-                    {
-                        Point   rootVisualPosition = this.TranslatePoint(new Point((long)lParam & 0xFFFF, (long)lParam >> 16 & 0xFFFF), VisualRoot).Value;
-                        Pointer pointer            = new(0, PointerType.Mouse, true);
-
-                        switch (msg)
-                        {
-                            case WindowsMessages.LBUTTONDOWN:
-                            case WindowsMessages.RBUTTONDOWN:
-                                {
-                                    bool                   isLeft               = msg == WindowsMessages.LBUTTONDOWN;
-                                    RawInputModifiers      pointerPointModifier = isLeft ? RawInputModifiers.LeftMouseButton : RawInputModifiers.RightMouseButton;
-                                    PointerPointProperties properties           = new(pointerPointModifier, isLeft ? PointerUpdateKind.LeftButtonPressed : PointerUpdateKind.RightButtonPressed);
->>>>>>> 1ec71635b (sync with main branch)
 
                                     var evnt = new PointerPressedEventArgs(
                                         this,
                                         pointer,
-<<<<<<< HEAD
                                         this,
-=======
-                                        VisualRoot,
->>>>>>> 1ec71635b (sync with main branch)
                                         rootVisualPosition,
                                         (ulong)Environment.TickCount64,
                                         properties,
@@ -244,30 +175,17 @@ namespace Ryujinx.Ava.UI.Renderer
 
                                     break;
                                 }
-<<<<<<< HEAD
                             case WindowsMessages.Lbuttonup:
                             case WindowsMessages.Rbuttonup:
                                 {
                                     bool isLeft = msg == WindowsMessages.Lbuttonup;
                                     RawInputModifiers pointerPointModifier = isLeft ? RawInputModifiers.LeftMouseButton : RawInputModifiers.RightMouseButton;
                                     PointerPointProperties properties = new(pointerPointModifier, isLeft ? PointerUpdateKind.LeftButtonReleased : PointerUpdateKind.RightButtonReleased);
-=======
-                            case WindowsMessages.LBUTTONUP:
-                            case WindowsMessages.RBUTTONUP:
-                                {
-                                    bool                   isLeft               = msg == WindowsMessages.LBUTTONUP;
-                                    RawInputModifiers      pointerPointModifier = isLeft ? RawInputModifiers.LeftMouseButton : RawInputModifiers.RightMouseButton;
-                                    PointerPointProperties properties           = new(pointerPointModifier, isLeft ? PointerUpdateKind.LeftButtonReleased : PointerUpdateKind.RightButtonReleased);
->>>>>>> 1ec71635b (sync with main branch)
 
                                     var evnt = new PointerReleasedEventArgs(
                                         this,
                                         pointer,
-<<<<<<< HEAD
                                         this,
-=======
-                                        VisualRoot,
->>>>>>> 1ec71635b (sync with main branch)
                                         rootVisualPosition,
                                         (ulong)Environment.TickCount64,
                                         properties,
@@ -278,21 +196,13 @@ namespace Ryujinx.Ava.UI.Renderer
 
                                     break;
                                 }
-<<<<<<< HEAD
                             case WindowsMessages.Mousemove:
-=======
-                            case WindowsMessages.MOUSEMOVE:
->>>>>>> 1ec71635b (sync with main branch)
                                 {
                                     var evnt = new PointerEventArgs(
                                         PointerMovedEvent,
                                         this,
                                         pointer,
-<<<<<<< HEAD
                                         this,
-=======
-                                        VisualRoot,
->>>>>>> 1ec71635b (sync with main branch)
                                         rootVisualPosition,
                                         (ulong)Environment.TickCount64,
                                         new PointerPointProperties(RawInputModifiers.None, PointerUpdateKind.Other),
@@ -303,17 +213,13 @@ namespace Ryujinx.Ava.UI.Renderer
                                     break;
                                 }
                         }
-<<<<<<< HEAD
 #pragma warning restore CS0618
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
 
                 return DefWindowProc(hWnd, msg, wParam, lParam);
             };
 
-<<<<<<< HEAD
             WndClassEx wndClassEx = new()
             {
                 cbSize = Marshal.SizeOf<WndClassEx>(),
@@ -322,25 +228,11 @@ namespace Ryujinx.Ava.UI.Renderer
                 style = ClassStyles.CsOwndc,
                 lpszClassName = Marshal.StringToHGlobalUni(_className),
                 hCursor = CreateArrowCursor(),
-=======
-            WNDCLASSEX wndClassEx = new()
-            {
-                cbSize        = Marshal.SizeOf<WNDCLASSEX>(),
-                hInstance     = GetModuleHandle(null),
-                lpfnWndProc   = Marshal.GetFunctionPointerForDelegate(_wndProcDelegate),
-                style         = ClassStyles.CS_OWNDC,
-                lpszClassName = Marshal.StringToHGlobalUni(_className),
-                hCursor       = CreateArrowCursor()
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             RegisterClassEx(ref wndClassEx);
 
-<<<<<<< HEAD
             WindowHandle = CreateWindowEx(0, _className, "NativeWindow", WindowStyles.WsChild, 0, 0, 640, 480, control.Handle, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
-=======
-            WindowHandle = CreateWindowEx(0, _className, "NativeWindow", WindowStyles.WS_CHILD, 0, 0, 640, 480, control.Handle, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
->>>>>>> 1ec71635b (sync with main branch)
 
             Marshal.FreeHGlobal(wndClassEx.lpszClassName);
 
@@ -351,7 +243,6 @@ namespace Ryujinx.Ava.UI.Renderer
         IPlatformHandle CreateMacOS()
         {
             // Create a new CAMetalLayer.
-<<<<<<< HEAD
             ObjectiveC.Object layerObject = new("CAMetalLayer");
             ObjectiveC.Object metalLayer = layerObject.GetFromMessage("alloc");
             metalLayer.SendMessage("init");
@@ -365,38 +256,15 @@ namespace Ryujinx.Ava.UI.Renderer
             child.SendMessage("setWantsLayer:", 1);
             child.SendMessage("setLayer:", metalLayer);
             metalLayer.SendMessage("setContentsScale:", Program.DesktopScaleFactor);
-=======
-            IntPtr layerClass = ObjectiveC.objc_getClass("CAMetalLayer");
-            IntPtr metalLayer = ObjectiveC.IntPtr_objc_msgSend(layerClass, "alloc");
-            ObjectiveC.objc_msgSend(metalLayer, "init");
-
-            // Create a child NSView to render into.
-            IntPtr nsViewClass = ObjectiveC.objc_getClass("NSView");
-            IntPtr child = ObjectiveC.IntPtr_objc_msgSend(nsViewClass, "alloc");
-            ObjectiveC.objc_msgSend(child, "init", new ObjectiveC.NSRect(0, 0, 0, 0));
-
-            // Make its renderer our metal layer.
-            ObjectiveC.objc_msgSend(child, "setWantsLayer:", 1);
-            ObjectiveC.objc_msgSend(child, "setLayer:", metalLayer);
-            ObjectiveC.objc_msgSend(metalLayer, "setContentsScale:", Program.DesktopScaleFactor);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Ensure the scale factor is up to date.
             _updateBoundsCallback = rect =>
             {
-<<<<<<< HEAD
                 metalLayer.SendMessage("setContentsScale:", Program.DesktopScaleFactor);
             };
 
             IntPtr nsView = child.ObjPtr;
             MetalLayer = metalLayer.ObjPtr;
-=======
-                ObjectiveC.objc_msgSend(metalLayer, "setContentsScale:", Program.DesktopScaleFactor);
-            };
-
-            IntPtr nsView = child;
-            MetalLayer = metalLayer;
->>>>>>> 1ec71635b (sync with main branch)
             NsView = nsView;
 
             return new PlatformHandle(nsView, "NSView");
@@ -416,19 +284,11 @@ namespace Ryujinx.Ava.UI.Renderer
         }
 
         [SupportedOSPlatform("macos")]
-<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
-=======
->>>>>>> 1ec71635b (sync with main branch)
         void DestroyMacOS()
         {
             // TODO
         }
-<<<<<<< HEAD
 #pragma warning restore CA1822
     }
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

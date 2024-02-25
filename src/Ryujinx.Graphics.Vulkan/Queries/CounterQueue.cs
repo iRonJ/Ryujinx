@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
-=======
-﻿using Ryujinx.Graphics.GAL;
->>>>>>> 1ec71635b (sync with main branch)
 using Silk.NET.Vulkan;
 using System;
 using System.Collections.Generic;
@@ -22,17 +18,12 @@ namespace Ryujinx.Graphics.Vulkan.Queries
         public CounterType Type { get; }
         public bool Disposed { get; private set; }
 
-<<<<<<< HEAD
         private readonly Queue<CounterQueueEvent> _events = new();
-=======
-        private Queue<CounterQueueEvent> _events = new Queue<CounterQueueEvent>();
->>>>>>> 1ec71635b (sync with main branch)
         private CounterQueueEvent _current;
 
         private ulong _accumulatedCounter;
         private int _waiterCount;
 
-<<<<<<< HEAD
         private readonly object _lock = new();
 
         private readonly Queue<BufferedQuery> _queryPool;
@@ -41,16 +32,6 @@ namespace Ryujinx.Graphics.Vulkan.Queries
         private readonly AutoResetEvent _eventConsumed = new(false);
 
         private readonly Thread _consumerThread;
-=======
-        private object _lock = new object();
-
-        private Queue<BufferedQuery> _queryPool;
-        private AutoResetEvent _queuedEvent = new AutoResetEvent(false);
-        private AutoResetEvent _wakeSignal = new AutoResetEvent(false);
-        private AutoResetEvent _eventConsumed = new AutoResetEvent(false);
-
-        private Thread _consumerThread;
->>>>>>> 1ec71635b (sync with main branch)
 
         public int ResetSequence { get; private set; }
 
@@ -86,7 +67,6 @@ namespace Ryujinx.Graphics.Vulkan.Queries
             lock (_queryPool)
             {
                 count = Math.Min(count, _queryPool.Count);
-<<<<<<< HEAD
 
                 if (count > 0)
                 {
@@ -99,11 +79,6 @@ namespace Ryujinx.Graphics.Vulkan.Queries
                             break;
                         }
                     }
-=======
-                for (int i = 0; i < count; i++)
-                {
-                    _queryPool.ElementAt(i).PoolReset(cmd, ResetSequence);
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
         }
@@ -150,15 +125,8 @@ namespace Ryujinx.Graphics.Vulkan.Queries
                     BufferedQuery result = _queryPool.Dequeue();
                     return result;
                 }
-<<<<<<< HEAD
 
                 return new BufferedQuery(_gd, _device, _pipeline, Type, _gd.IsAmdWindows);
-=======
-                else
-                {
-                    return new BufferedQuery(_gd, _device, _pipeline, Type, _gd.IsAmdWindows);
-                }
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -171,11 +139,7 @@ namespace Ryujinx.Graphics.Vulkan.Queries
             }
         }
 
-<<<<<<< HEAD
         public CounterQueueEvent QueueReport(EventHandler<ulong> resultHandler, float divisor, ulong lastDrawIndex, bool hostReserved)
-=======
-        public CounterQueueEvent QueueReport(EventHandler<ulong> resultHandler, ulong lastDrawIndex, bool hostReserved)
->>>>>>> 1ec71635b (sync with main branch)
         {
             CounterQueueEvent result;
             ulong draws = lastDrawIndex - _current.DrawIndex;
@@ -191,11 +155,7 @@ namespace Ryujinx.Graphics.Vulkan.Queries
                     _current.ReserveForHostAccess();
                 }
 
-<<<<<<< HEAD
                 _current.Complete(draws > 0 && Type != CounterType.TransformFeedbackPrimitivesWritten, divisor);
-=======
-                _current.Complete(draws > 0 && Type != CounterType.TransformFeedbackPrimitivesWritten, _pipeline.GetCounterDivisor(Type));
->>>>>>> 1ec71635b (sync with main branch)
                 _events.Enqueue(_current);
 
                 _current.OnResult += resultHandler;

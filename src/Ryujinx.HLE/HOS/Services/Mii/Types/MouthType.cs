@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Mii.Types
-=======
-﻿namespace Ryujinx.HLE.HOS.Services.Mii.Types
->>>>>>> 1ec71635b (sync with main branch)
 {
     enum MouthType : byte
     {
@@ -43,12 +39,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         SmileDownLine,
         Kiss,
 
-<<<<<<< HEAD
         Min = Neutral,
         Max = Kiss,
-=======
-        Min = 0,
-        Max = 35
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

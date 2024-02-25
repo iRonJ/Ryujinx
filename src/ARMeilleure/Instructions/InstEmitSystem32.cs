@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 using ARMeilleure.Decoders;
-=======
-﻿using ARMeilleure.Decoders;
->>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation;
 using System;
 using System.Reflection;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
 
@@ -41,12 +33,8 @@ namespace ARMeilleure.Instructions
                     switch (op.Opc2)
                     {
                         case 2:
-<<<<<<< HEAD
                             EmitSetTpidrEl0(context);
                             return;
-=======
-                            EmitSetTpidrEl0(context); return;
->>>>>>> 1ec71635b (sync with main branch)
 
                         default:
                             throw new NotImplementedException($"Unknown MRC Opc2 0x{op.Opc2:X} at 0x{op.Address:X} (0x{op.RawOpCode:X}).");
@@ -95,7 +83,6 @@ namespace ARMeilleure.Instructions
                         throw new NotImplementedException($"Unknown MRC CRm 0x{op.CRm:X} at 0x{op.Address:X} (0x{op.RawOpCode:X}).");
                     }
 
-<<<<<<< HEAD
                     result = op.Opc2 switch
                     {
                         2 => EmitGetTpidrEl0(context),
@@ -103,19 +90,6 @@ namespace ARMeilleure.Instructions
                         _ => throw new NotImplementedException(
                             $"Unknown MRC Opc2 0x{op.Opc2:X} at 0x{op.Address:X} (0x{op.RawOpCode:X})."),
                     };
-=======
-                    switch (op.Opc2)
-                    {
-                        case 2:
-                            result = EmitGetTpidrEl0(context); break;
-
-                        case 3:
-                            result = EmitGetTpidrroEl0(context); break;
-
-                        default:
-                            throw new NotImplementedException($"Unknown MRC Opc2 0x{op.Opc2:X} at 0x{op.Address:X} (0x{op.RawOpCode:X}).");
-                    }
->>>>>>> 1ec71635b (sync with main branch)
 
                     break;
 
@@ -148,7 +122,6 @@ namespace ARMeilleure.Instructions
             }
 
             int opc = op.MrrcOp;
-<<<<<<< HEAD
             MethodInfo info = op.CRm switch
             {
                 // Timer.
@@ -159,29 +132,6 @@ namespace ARMeilleure.Instructions
                 },
                 _ => throw new NotImplementedException($"Unknown MRRC 0x{op.RawOpCode:X} at 0x{op.Address:X}."),
             };
-=======
-
-            MethodInfo info;
-
-            switch (op.CRm)
-            {
-                case 14: // Timer.
-                    switch (opc)
-                    {
-                        case 0:
-                            info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.GetCntpctEl0)); break;
-
-                        default:
-                            throw new NotImplementedException($"Unknown MRRC Opc1 0x{opc:X} at 0x{op.Address:X} (0x{op.RawOpCode:X}).");
-                    }
-
-                    break;
-
-                default:
-                    throw new NotImplementedException($"Unknown MRRC 0x{op.RawOpCode:X} at 0x{op.Address:X}.");
-            }
-
->>>>>>> 1ec71635b (sync with main branch)
             Operand result = context.Call(info);
 
             SetIntA32(context, op.Rt, context.ConvertI64ToI32(result));
@@ -270,12 +220,8 @@ namespace ARMeilleure.Instructions
                 case 0b0000: // FPSID
                     throw new NotImplementedException("Supervisor Only");
                 case 0b0001: // FPSCR
-<<<<<<< HEAD
                     EmitGetFpscr(context);
                     return;
-=======
-                    EmitGetFpscr(context); return;
->>>>>>> 1ec71635b (sync with main branch)
                 case 0b0101: // MVFR2
                     throw new NotImplementedException("MVFR2");
                 case 0b0110: // MVFR1
@@ -298,12 +244,8 @@ namespace ARMeilleure.Instructions
                 case 0b0000: // FPSID
                     throw new NotImplementedException("Supervisor Only");
                 case 0b0001: // FPSCR
-<<<<<<< HEAD
                     EmitSetFpscr(context);
                     return;
-=======
-                    EmitSetFpscr(context); return;
->>>>>>> 1ec71635b (sync with main branch)
                 case 0b0101: // MVFR2
                     throw new NotImplementedException("MVFR2");
                 case 0b0110: // MVFR1

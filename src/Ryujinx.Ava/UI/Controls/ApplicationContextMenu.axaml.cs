@@ -10,24 +10,14 @@ using Ryujinx.Ava.UI.Helpers;
 using Ryujinx.Ava.UI.ViewModels;
 using Ryujinx.Ava.UI.Windows;
 using Ryujinx.Common.Configuration;
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS;
 using Ryujinx.UI.App.Common;
 using Ryujinx.UI.Common.Helper;
-=======
-using Ryujinx.Ui.App.Common;
-using Ryujinx.HLE.HOS;
-using Ryujinx.Ui.Common.Helper;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using Path = System.IO.Path;
-<<<<<<< HEAD
-=======
-using UserId = LibHac.Fs.UserId;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.Controls
 {
@@ -51,11 +41,7 @@ namespace Ryujinx.Ava.UI.Controls
             {
                 viewModel.SelectedApplication.Favorite = !viewModel.SelectedApplication.Favorite;
 
-<<<<<<< HEAD
                 ApplicationLibrary.LoadAndSaveMetaData(viewModel.SelectedApplication.TitleId, appMetadata =>
-=======
-                viewModel.ApplicationLibrary.LoadAndSaveMetaData(viewModel.SelectedApplication.TitleId, appMetadata =>
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     appMetadata.Favorite = viewModel.SelectedApplication.Favorite;
                 });
@@ -66,15 +52,9 @@ namespace Ryujinx.Ava.UI.Controls
 
         public void OpenUserSaveDirectory_Click(object sender, RoutedEventArgs args)
         {
-<<<<<<< HEAD
             if (sender is MenuItem { DataContext: MainWindowViewModel viewModel })
             {
                 OpenSaveDirectory(viewModel, SaveDataType.Account, new UserId((ulong)viewModel.AccountManager.LastOpenedUser.UserId.High, (ulong)viewModel.AccountManager.LastOpenedUser.UserId.Low));
-=======
-            if ((sender as MenuItem)?.DataContext is MainWindowViewModel viewModel)
-            {
-                OpenSaveDirectory(viewModel, SaveDataType.Account, userId: new UserId((ulong)viewModel.AccountManager.LastOpenedUser.UserId.High, (ulong)viewModel.AccountManager.LastOpenedUser.UserId.Low));
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -82,22 +62,14 @@ namespace Ryujinx.Ava.UI.Controls
         {
             var viewModel = (sender as MenuItem)?.DataContext as MainWindowViewModel;
 
-<<<<<<< HEAD
             OpenSaveDirectory(viewModel, SaveDataType.Device, default);
-=======
-            OpenSaveDirectory(viewModel, SaveDataType.Device, userId: default);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void OpenBcatSaveDirectory_Click(object sender, RoutedEventArgs args)
         {
             var viewModel = (sender as MenuItem)?.DataContext as MainWindowViewModel;
 
-<<<<<<< HEAD
             OpenSaveDirectory(viewModel, SaveDataType.Bcat, default);
-=======
-            OpenSaveDirectory(viewModel, SaveDataType.Bcat, userId: default);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void OpenSaveDirectory(MainWindowViewModel viewModel, SaveDataType saveDataType, UserId userId)
@@ -161,11 +133,7 @@ namespace Ryujinx.Ava.UI.Controls
             if (viewModel?.SelectedApplication != null)
             {
                 string modsBasePath = ModLoader.GetModsBasePath();
-<<<<<<< HEAD
                 string titleModsPath = ModLoader.GetApplicationDir(modsBasePath, viewModel.SelectedApplication.TitleId);
-=======
-                string titleModsPath = ModLoader.GetTitleDir(modsBasePath, viewModel.SelectedApplication.TitleId);
->>>>>>> 1ec71635b (sync with main branch)
 
                 OpenHelper.OpenFolder(titleModsPath);
             }
@@ -178,17 +146,12 @@ namespace Ryujinx.Ava.UI.Controls
             if (viewModel?.SelectedApplication != null)
             {
                 string sdModsBasePath = ModLoader.GetSdModsBasePath();
-<<<<<<< HEAD
                 string titleModsPath = ModLoader.GetApplicationDir(sdModsBasePath, viewModel.SelectedApplication.TitleId);
-=======
-                string titleModsPath = ModLoader.GetTitleDir(sdModsBasePath, viewModel.SelectedApplication.TitleId);
->>>>>>> 1ec71635b (sync with main branch)
 
                 OpenHelper.OpenFolder(titleModsPath);
             }
         }
 
-<<<<<<< HEAD
         public async void OpenModManager_Click(object sender, RoutedEventArgs args)
         {
             var viewModel = (sender as MenuItem)?.DataContext as MainWindowViewModel;
@@ -199,28 +162,18 @@ namespace Ryujinx.Ava.UI.Controls
             }
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public async void PurgePtcCache_Click(object sender, RoutedEventArgs args)
         {
             var viewModel = (sender as MenuItem)?.DataContext as MainWindowViewModel;
 
             if (viewModel?.SelectedApplication != null)
             {
-<<<<<<< HEAD
                 UserResult result = await ContentDialogHelper.CreateConfirmationDialog(
                     LocaleManager.Instance[LocaleKeys.DialogWarning],
                     LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.DialogPPTCDeletionMessage, viewModel.SelectedApplication.TitleName),
                     LocaleManager.Instance[LocaleKeys.InputDialogYes],
                     LocaleManager.Instance[LocaleKeys.InputDialogNo],
                     LocaleManager.Instance[LocaleKeys.RyujinxConfirm]);
-=======
-                UserResult result = await ContentDialogHelper.CreateConfirmationDialog(LocaleManager.Instance[LocaleKeys.DialogWarning],
-                                                                                       LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.DialogPPTCDeletionMessage, viewModel.SelectedApplication.TitleName),
-                                                                                       LocaleManager.Instance[LocaleKeys.InputDialogYes],
-                                                                                       LocaleManager.Instance[LocaleKeys.InputDialogNo],
-                                                                                       LocaleManager.Instance[LocaleKeys.RyujinxConfirm]);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (result == UserResult.Yes)
                 {
@@ -263,20 +216,12 @@ namespace Ryujinx.Ava.UI.Controls
 
             if (viewModel?.SelectedApplication != null)
             {
-<<<<<<< HEAD
                 UserResult result = await ContentDialogHelper.CreateConfirmationDialog(
                     LocaleManager.Instance[LocaleKeys.DialogWarning],
                     LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.DialogShaderDeletionMessage, viewModel.SelectedApplication.TitleName),
                     LocaleManager.Instance[LocaleKeys.InputDialogYes],
                     LocaleManager.Instance[LocaleKeys.InputDialogNo],
                     LocaleManager.Instance[LocaleKeys.RyujinxConfirm]);
-=======
-                UserResult result = await ContentDialogHelper.CreateConfirmationDialog(LocaleManager.Instance[LocaleKeys.DialogWarning],
-                                                                                       LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.DialogShaderDeletionMessage, viewModel.SelectedApplication.TitleName),
-                                                                                       LocaleManager.Instance[LocaleKeys.InputDialogYes],
-                                                                                       LocaleManager.Instance[LocaleKeys.InputDialogNo],
-                                                                                       LocaleManager.Instance[LocaleKeys.RyujinxConfirm]);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (result == UserResult.Yes)
                 {
@@ -366,15 +311,11 @@ namespace Ryujinx.Ava.UI.Controls
 
             if (viewModel?.SelectedApplication != null)
             {
-<<<<<<< HEAD
                 await ApplicationHelper.ExtractSection(
                     viewModel.StorageProvider,
                     NcaSectionType.Code,
                     viewModel.SelectedApplication.Path,
                     viewModel.SelectedApplication.TitleName);
-=======
-                await ApplicationHelper.ExtractSection(NcaSectionType.Code, viewModel.SelectedApplication.Path, viewModel.SelectedApplication.TitleName);
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -384,15 +325,11 @@ namespace Ryujinx.Ava.UI.Controls
 
             if (viewModel?.SelectedApplication != null)
             {
-<<<<<<< HEAD
                 await ApplicationHelper.ExtractSection(
                     viewModel.StorageProvider,
                     NcaSectionType.Data,
                     viewModel.SelectedApplication.Path,
                     viewModel.SelectedApplication.TitleName);
-=======
-                await ApplicationHelper.ExtractSection(NcaSectionType.Data, viewModel.SelectedApplication.Path, viewModel.SelectedApplication.TitleName);
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -402,7 +339,6 @@ namespace Ryujinx.Ava.UI.Controls
 
             if (viewModel?.SelectedApplication != null)
             {
-<<<<<<< HEAD
                 await ApplicationHelper.ExtractSection(
                     viewModel.StorageProvider,
                     NcaSectionType.Logo,
@@ -433,10 +369,3 @@ namespace Ryujinx.Ava.UI.Controls
         }
     }
 }
-=======
-                await ApplicationHelper.ExtractSection(NcaSectionType.Logo, viewModel.SelectedApplication.Path, viewModel.SelectedApplication.TitleName);
-            }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -4,7 +4,6 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class BracedRangeExpression : BaseNode
     {
-<<<<<<< HEAD
         private readonly BaseNode _firstNode;
         private readonly BaseNode _lastNode;
         private readonly BaseNode _expression;
@@ -13,16 +12,6 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
         {
             _firstNode = firstNode;
             _lastNode = lastNode;
-=======
-        private BaseNode _firstNode;
-        private BaseNode _lastNode;
-        private BaseNode _expression;
-
-        public BracedRangeExpression(BaseNode firstNode, BaseNode lastNode, BaseNode expression) : base(NodeType.BracedRangeExpression)
-        {
-            _firstNode  = firstNode;
-            _lastNode   = lastNode;
->>>>>>> 1ec71635b (sync with main branch)
             _expression = expression;
         }
 

@@ -28,8 +28,4 @@ namespace Ryujinx.Memory.Range
         /// <returns>True if overlapping, false otherwise</returns>
         bool OverlapsWith(ulong address, ulong size);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -20,19 +20,11 @@ namespace ARMeilleure.Decoders
 
         public static Block[] Decode(IMemoryManager memory, ulong address, ExecutionMode mode, bool highCq, DecoderMode dMode)
         {
-<<<<<<< HEAD
             List<Block> blocks = new();
 
             Queue<Block> workQueue = new();
 
             Dictionary<ulong, Block> visited = new();
-=======
-            List<Block> blocks = new List<Block>();
-
-            Queue<Block> workQueue = new Queue<Block>();
-
-            Dictionary<ulong, Block> visited = new Dictionary<ulong, Block>();
->>>>>>> 1ec71635b (sync with main branch)
 
             Debug.Assert(MaxInstsPerFunctionLowCq <= MaxInstsPerFunction);
 
@@ -46,13 +38,9 @@ namespace ARMeilleure.Decoders
                 {
                     block = new Block(blkAddress);
 
-<<<<<<< HEAD
                     if ((dMode != DecoderMode.MultipleBlocks && visited.Count >= 1) ||
                         opsCount > instructionLimit ||
                         (visited.Count > 0 && !memory.IsMapped(blkAddress)))
-=======
-                    if ((dMode != DecoderMode.MultipleBlocks && visited.Count >= 1) || opsCount > instructionLimit || !memory.IsMapped(blkAddress))
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         block.Exit = true;
                         block.EndAddress = blkAddress;
@@ -177,11 +165,7 @@ namespace ARMeilleure.Decoders
         {
             index = 0;
 
-<<<<<<< HEAD
             int left = 0;
-=======
-            int left  = 0;
->>>>>>> 1ec71635b (sync with main branch)
             int right = blocks.Count - 1;
 
             while (left <= right)
@@ -214,15 +198,9 @@ namespace ARMeilleure.Decoders
 
         private static void FillBlock(
             IMemoryManager memory,
-<<<<<<< HEAD
             ExecutionMode mode,
             Block block,
             ulong limitAddress)
-=======
-            ExecutionMode  mode,
-            Block          block,
-            ulong          limitAddress)
->>>>>>> 1ec71635b (sync with main branch)
         {
             ulong address = block.Address;
             int itBlockSize = 0;
@@ -265,20 +243,12 @@ namespace ARMeilleure.Decoders
         private static bool IsUnconditionalBranch(OpCode opCode)
         {
             return opCode is OpCodeBImmAl ||
-<<<<<<< HEAD
                    opCode is OpCodeBReg || IsAarch32UnconditionalBranch(opCode);
-=======
-                   opCode is OpCodeBReg   || IsAarch32UnconditionalBranch(opCode);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static bool IsAarch32UnconditionalBranch(OpCode opCode)
         {
-<<<<<<< HEAD
             if (opCode is not OpCode32 op)
-=======
-            if (!(opCode is OpCode32 op))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return false;
             }
@@ -322,15 +292,9 @@ namespace ARMeilleure.Decoders
 
                 if (opCode is IOpCode32Mem opMem)
                 {
-<<<<<<< HEAD
                     rt = opMem.Rt;
                     rn = opMem.Rn;
                     wBack = opMem.WBack;
-=======
-                    rt     = opMem.Rt;
-                    rn     = opMem.Rn;
-                    wBack  = opMem.WBack;
->>>>>>> 1ec71635b (sync with main branch)
                     isLoad = opMem.IsLoad;
 
                     // For the dual load, we also need to take into account the
@@ -342,21 +306,12 @@ namespace ARMeilleure.Decoders
                 }
                 else if (opCode is IOpCode32MemMult opMemMult)
                 {
-<<<<<<< HEAD
                     const int PCMask = 1 << RegisterAlias.Aarch32Pc;
 
                     rt = (opMemMult.RegisterMask & PCMask) != 0 ? RegisterAlias.Aarch32Pc : 0;
                     rn = opMemMult.Rn;
                     wBack = opMemMult.PostOffset != 0;
                     isLoad = opMemMult.IsLoad;
-=======
-                    const int pcMask = 1 << RegisterAlias.Aarch32Pc;
-
-                    rt     = (opMemMult.RegisterMask & pcMask) != 0 ? RegisterAlias.Aarch32Pc : 0;
-                    rn     =  opMemMult.Rn;
-                    wBack  =  opMemMult.PostOffset != 0;
-                    isLoad =  opMemMult.IsLoad;
->>>>>>> 1ec71635b (sync with main branch)
                 }
                 else
                 {
@@ -435,8 +390,4 @@ namespace ARMeilleure.Decoders
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -18,11 +18,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
             Start,
             Stop,
             RenderStart,
-<<<<<<< HEAD
             RenderEnd,
-=======
-            RenderEnd
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private class RendererSession
@@ -40,11 +36,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
 
         private long _lastTime;
         private long _playbackEnds;
-<<<<<<< HEAD
         private readonly ManualResetEvent _event;
-=======
-        private ManualResetEvent _event;
->>>>>>> 1ec71635b (sync with main branch)
 
         private ManualResetEvent _pauseEvent;
 
@@ -62,23 +54,12 @@ namespace Ryujinx.Audio.Renderer.Dsp
             {
                 return 6;
             }
-<<<<<<< HEAD
 
             // NOTE: We default to stereo as this will get downmixed to mono by the compat layer if it's not compatible.
             return 2;
         }
 
         public void Start(IHardwareDeviceDriver deviceDriver)
-=======
-            else
-            {
-                // NOTE: We default to stereo as this will get downmixed to mono by the compat layer if it's not compatible.
-                return 2;
-            }
-        }
-
-        public void Start(IHardwareDeviceDriver deviceDriver, float volume)
->>>>>>> 1ec71635b (sync with main branch)
         {
             OutputDevices = new IHardwareDevice[Constants.AudioRendererSessionCountMax];
 
@@ -87,11 +68,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
             for (int i = 0; i < OutputDevices.Length; i++)
             {
                 // TODO: Don't hardcode sample rate.
-<<<<<<< HEAD
                 OutputDevices[i] = new HardwareDeviceImpl(deviceDriver, channelCount, Constants.TargetSampleRate);
-=======
-                OutputDevices[i] = new HardwareDeviceImpl(deviceDriver, channelCount, Constants.TargetSampleRate, volume);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             _mailbox = new Mailbox<MailboxMessage>();
@@ -131,11 +108,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
             {
                 CommandList = commands,
                 RenderingLimit = renderingLimit,
-<<<<<<< HEAD
                 AppletResourceId = appletResourceId,
-=======
-                AppletResourceId = appletResourceId
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -196,11 +169,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
         {
             _workerThread = new Thread(Work)
             {
-<<<<<<< HEAD
                 Name = "AudioProcessor.Worker",
-=======
-                Name = "AudioProcessor.Worker"
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             _workerThread.Start();
@@ -260,41 +229,9 @@ namespace Ryujinx.Audio.Renderer.Dsp
             _mailbox.SendResponse(MailboxMessage.Stop);
         }
 
-<<<<<<< HEAD
         public void Dispose()
         {
             GC.SuppressFinalize(this);
-=======
-        public float GetVolume()
-        {
-            if (OutputDevices != null)
-            {
-                foreach (IHardwareDevice outputDevice in OutputDevices)
-                {
-                    if (outputDevice != null)
-                    {
-                        return outputDevice.GetVolume();
-                    }
-                }
-            }
-
-            return 0f;
-        }
-
-        public void SetVolume(float volume)
-        {
-            if (OutputDevices != null)
-            {
-                foreach (IHardwareDevice outputDevice in OutputDevices)
-                {
-                    outputDevice?.SetVolume(volume);
-                }
-            }
-        }
-
-        public void Dispose()
-        {
->>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
 
@@ -303,15 +240,8 @@ namespace Ryujinx.Audio.Renderer.Dsp
             if (disposing)
             {
                 _event.Dispose();
-<<<<<<< HEAD
                 _mailbox?.Dispose();
             }
         }
     }
 }
-=======
-            }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

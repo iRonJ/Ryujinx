@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
-=======
-﻿using Ryujinx.Common.Utilities;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.InteropServices;
 
@@ -13,7 +9,6 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
     {
         public const int Size = 0x44;
 
-<<<<<<< HEAD
         public CoreData CoreData;
         private CreateId _createId;
         public ushort DataCrc;
@@ -24,18 +19,6 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         public readonly CreateId CreateId => _createId;
 
         public readonly ResultCode InvalidData => ResultCode.InvalidStoreData;
-=======
-        public  CoreData CoreData;
-        private CreateId _createId;
-        public  ushort   DataCrc;
-        public  ushort   DeviceCrc;
-
-        public byte Type => CoreData.Type;
-
-        public CreateId CreateId => _createId;
-
-        public ResultCode InvalidData => ResultCode.InvalidStoreData;
->>>>>>> 1ec71635b (sync with main branch)
 
         private void UpdateDataCrc()
         {
@@ -79,11 +62,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         private ushort CalculateDataCrc()
         {
-<<<<<<< HEAD
             return Helper.CalculateCrc16(AsSpanWithoutCrcs(), 0, true);
-=======
-            return Helper.CalculateCrc16(AsSpanWithoutDeviceCrc(), 0, true);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private ushort CalculateDeviceCrc()
@@ -92,11 +71,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
             ushort deviceIdCrc16 = Helper.CalculateCrc16(SpanHelpers.AsByteSpan(ref deviceId), 0, false);
 
-<<<<<<< HEAD
             return Helper.CalculateCrc16(AsSpanWithoutDeviceCrc(), deviceIdCrc16, true);
-=======
-            return Helper.CalculateCrc16(AsSpan(), deviceIdCrc16, true);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private ReadOnlySpan<byte> AsSpan()
@@ -106,44 +81,28 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         private ReadOnlySpan<byte> AsSpanWithoutDeviceCrc()
         {
-<<<<<<< HEAD
             return AsSpan()[..(Size - 2)];
         }
 
         private ReadOnlySpan<byte> AsSpanWithoutCrcs()
         {
             return AsSpan()[..(Size - 4)];
-=======
-            return AsSpan().Slice(0, Size - 2);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static StoreData BuildDefault(UtilityImpl utilImpl, uint index)
         {
-<<<<<<< HEAD
             StoreData result = new()
             {
                 _createId = utilImpl.MakeCreateId(),
             };
 
             CoreData coreData = new();
-=======
-            StoreData result = new StoreData
-            {
-                _createId = utilImpl.MakeCreateId()
-            };
-
-            CoreData coreData = new CoreData();
->>>>>>> 1ec71635b (sync with main branch)
 
             DefaultMii template = DefaultMii.GetDefaultMii(index);
 
             coreData.SetDefault();
 
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
             coreData.Nickname        = template.Nickname;
             coreData.FontRegion      = (FontRegion)template.FontRegion;
             coreData.FavoriteColor   = (byte)template.FavoriteColor;
@@ -194,10 +153,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             coreData.MoleScale       = (byte)template.MoleScale;
             coreData.MoleX           = (byte)template.MoleX;
             coreData.MoleY           = (byte)template.MoleY;
-<<<<<<< HEAD
 #pragma warning restore IDE0055
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             result.CoreData = coreData;
 
@@ -213,17 +169,10 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         public static StoreData BuildFromCoreData(UtilityImpl utilImpl, CoreData coreData)
         {
-<<<<<<< HEAD
             StoreData result = new()
             {
                 CoreData = coreData,
                 _createId = utilImpl.MakeCreateId(),
-=======
-            StoreData result = new StoreData
-            {
-                CoreData  = coreData,
-                _createId = utilImpl.MakeCreateId()
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             result.UpdateCrc();
@@ -236,11 +185,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             this = storeData;
         }
 
-<<<<<<< HEAD
         public readonly void SetSource(Source source)
-=======
-        public void SetSource(Source source)
->>>>>>> 1ec71635b (sync with main branch)
         {
             // Only implemented for Element variants.
         }
@@ -255,20 +200,12 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             return !x.Equals(y);
         }
 
-<<<<<<< HEAD
         public readonly override bool Equals(object obj)
-=======
-        public override bool Equals(object obj)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is StoreData storeData && Equals(storeData);
         }
 
-<<<<<<< HEAD
         public readonly bool Equals(StoreData cmpObj)
-=======
-        public bool Equals(StoreData cmpObj)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (!cmpObj.IsValid())
             {
@@ -285,15 +222,9 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             return result;
         }
 
-<<<<<<< HEAD
         public readonly override int GetHashCode()
         {
             HashCode hashCode = new();
-=======
-        public override int GetHashCode()
-        {
-            HashCode hashCode = new HashCode();
->>>>>>> 1ec71635b (sync with main branch)
 
             hashCode.Add(CreateId);
             hashCode.Add(CoreData);

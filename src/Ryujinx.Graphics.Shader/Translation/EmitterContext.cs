@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 
 namespace Ryujinx.Graphics.Shader.Translation
@@ -15,14 +11,10 @@ namespace Ryujinx.Graphics.Shader.Translation
     class EmitterContext
     {
         public DecodedProgram Program { get; }
-<<<<<<< HEAD
         public TranslatorContext TranslatorContext { get; }
         public ResourceManager ResourceManager { get; }
 
         public bool VertexAsCompute { get; }
-=======
-        public ShaderConfig Config { get; }
->>>>>>> 1ec71635b (sync with main branch)
 
         public bool IsNonMain { get; }
 
@@ -65,7 +57,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             _labels = new Dictionary<ulong, BlockLabel>();
         }
 
-<<<<<<< HEAD
         public EmitterContext(
             TranslatorContext translatorContext,
             ResourceManager resourceManager,
@@ -77,12 +68,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             ResourceManager = resourceManager;
             Program = program;
             VertexAsCompute = vertexAsCompute;
-=======
-        public EmitterContext(DecodedProgram program, ShaderConfig config, bool isNonMain) : this()
-        {
-            Program = program;
-            Config = config;
->>>>>>> 1ec71635b (sync with main branch)
             IsNonMain = isNonMain;
 
             EmitStart();
@@ -90,7 +75,6 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         private void EmitStart()
         {
-<<<<<<< HEAD
             if (TranslatorContext.Options.Flags.HasFlag(TranslationFlags.VertexA))
             {
                 return;
@@ -172,14 +156,6 @@ namespace Ryujinx.Graphics.Shader.Translation
                     this.Store(StorageKind.LocalMemory, ResourceManager.LocalGeometryOutputVertexCountMemoryId, Const(0));
                     this.Store(StorageKind.LocalMemory, ResourceManager.LocalGeometryOutputIndexCountMemoryId, Const(0));
                 }
-=======
-            if (Config.Stage == ShaderStage.Vertex &&
-                Config.Options.TargetApi == TargetApi.Vulkan &&
-                (Config.Options.Flags & TranslationFlags.VertexA) == 0)
-            {
-                // Vulkan requires the point size to be always written on the shader if the primitive topology is points.
-                this.Store(StorageKind.Output, IoVariable.PointSize, null, ConstF(Config.GpuAccessor.QueryPointSize()));
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -192,11 +168,7 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         public Operand Add(Instruction inst, Operand dest = null, params Operand[] sources)
         {
-<<<<<<< HEAD
             Operation operation = new(inst, dest, sources);
-=======
-            Operation operation = new Operation(inst, dest, sources);
->>>>>>> 1ec71635b (sync with main branch)
 
             _operations.Add(operation);
 
@@ -205,11 +177,7 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         public Operand Add(Instruction inst, StorageKind storageKind, Operand dest = null, params Operand[] sources)
         {
-<<<<<<< HEAD
             Operation operation = new(inst, storageKind, dest, sources);
-=======
-            Operation operation = new Operation(inst, storageKind, dest, sources);
->>>>>>> 1ec71635b (sync with main branch)
 
             _operations.Add(operation);
 
@@ -220,11 +188,7 @@ namespace Ryujinx.Graphics.Shader.Translation
         {
             Operand[] dests = new[] { dest.Item1, dest.Item2 };
 
-<<<<<<< HEAD
             Operation operation = new(inst, 0, dests, sources);
-=======
-            Operation operation = new Operation(inst, 0, dests, sources);
->>>>>>> 1ec71635b (sync with main branch)
 
             Add(operation);
 
@@ -236,82 +200,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             _operations.Add(operation);
         }
 
-<<<<<<< HEAD
-=======
-        public TextureOperation CreateTextureOperation(
-            Instruction inst,
-            SamplerType type,
-            TextureFlags flags,
-            int handle,
-            int compIndex,
-            Operand[] dests,
-            params Operand[] sources)
-        {
-            return CreateTextureOperation(inst, type, TextureFormat.Unknown, flags, handle, compIndex, dests, sources);
-        }
-
-        public TextureOperation CreateTextureOperation(
-            Instruction inst,
-            SamplerType type,
-            TextureFormat format,
-            TextureFlags flags,
-            int handle,
-            int compIndex,
-            Operand[] dests,
-            params Operand[] sources)
-        {
-            if (!flags.HasFlag(TextureFlags.Bindless))
-            {
-                Config.SetUsedTexture(inst, type, format, flags, TextureOperation.DefaultCbufSlot, handle);
-            }
-
-            return new TextureOperation(inst, type, format, flags, handle, compIndex, dests, sources);
-        }
-
-        public void FlagAttributeRead(int attribute)
-        {
-            if (Config.Stage == ShaderStage.Vertex && attribute == AttributeConsts.InstanceId)
-            {
-                Config.SetUsedFeature(FeatureFlags.InstanceId);
-            }
-            else if (Config.Stage == ShaderStage.Fragment)
-            {
-                switch (attribute)
-                {
-                    case AttributeConsts.PositionX:
-                    case AttributeConsts.PositionY:
-                        Config.SetUsedFeature(FeatureFlags.FragCoordXY);
-                        break;
-                }
-            }
-        }
-
-        public void FlagAttributeWritten(int attribute)
-        {
-            if (Config.Stage == ShaderStage.Vertex)
-            {
-                switch (attribute)
-                {
-                    case AttributeConsts.ClipDistance0:
-                    case AttributeConsts.ClipDistance1:
-                    case AttributeConsts.ClipDistance2:
-                    case AttributeConsts.ClipDistance3:
-                    case AttributeConsts.ClipDistance4:
-                    case AttributeConsts.ClipDistance5:
-                    case AttributeConsts.ClipDistance6:
-                    case AttributeConsts.ClipDistance7:
-                        Config.SetClipDistanceWritten((attribute - AttributeConsts.ClipDistance0) / 4);
-                        break;
-                }
-            }
-
-            if (Config.Stage != ShaderStage.Fragment && attribute == AttributeConsts.Layer)
-            {
-                Config.SetUsedFeature(FeatureFlags.RtLayer);
-            }
-        }
-
->>>>>>> 1ec71635b (sync with main branch)
         public void MarkLabel(Operand label)
         {
             Add(Instruction.MarkLabel, label);
@@ -357,7 +245,6 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         public void PrepareForVertexReturn()
         {
-<<<<<<< HEAD
             // TODO: Support transform feedback emulation on stages other than vertex.
             // Those stages might produce more primitives, so it needs a way to "compact" the output after it is written.
 
@@ -405,9 +292,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             }
 
             if (TranslatorContext.Definitions.ViewportTransformDisable)
-=======
-            if (Config.GpuAccessor.QueryViewportTransformDisable())
->>>>>>> 1ec71635b (sync with main branch)
             {
                 Operand x = this.Load(StorageKind.Output, IoVariable.Position, null, Const(0));
                 Operand y = this.Load(StorageKind.Output, IoVariable.Position, null, Const(1));
@@ -419,11 +303,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                 this.Store(StorageKind.Output, IoVariable.Position, null, Const(1), this.FPFusedMultiplyAdd(y, yScale, negativeOne));
             }
 
-<<<<<<< HEAD
             if (TranslatorContext.Definitions.DepthMode && !TranslatorContext.GpuAccessor.QueryHostSupportsDepthClipControl())
-=======
-            if (Config.Options.TargetApi == TargetApi.Vulkan && Config.GpuAccessor.QueryTransformDepthMinusOneToOne())
->>>>>>> 1ec71635b (sync with main branch)
             {
                 Operand z = this.Load(StorageKind.Output, IoVariable.Position, null, Const(2));
                 Operand w = this.Load(StorageKind.Output, IoVariable.Position, null, Const(3));
@@ -431,30 +311,11 @@ namespace Ryujinx.Graphics.Shader.Translation
 
                 this.Store(StorageKind.Output, IoVariable.Position, null, Const(2), this.FPFusedMultiplyAdd(z, ConstF(0.5f), halfW));
             }
-<<<<<<< HEAD
-=======
-
-            if (Config.Stage != ShaderStage.Geometry && Config.HasLayerInputAttribute)
-            {
-                Config.SetUsedFeature(FeatureFlags.RtLayer);
-
-                int attrVecIndex = Config.GpLayerInputAttribute >> 2;
-                int attrComponentIndex = Config.GpLayerInputAttribute & 3;
-
-                Operand layer = this.Load(StorageKind.Output, IoVariable.UserDefined, null, Const(attrVecIndex), Const(attrComponentIndex));
-
-                this.Store(StorageKind.Output, IoVariable.Layer, null, layer);
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void PrepareForVertexReturn(out Operand oldXLocal, out Operand oldYLocal, out Operand oldZLocal)
         {
-<<<<<<< HEAD
             if (TranslatorContext.Definitions.ViewportTransformDisable)
-=======
-            if (Config.GpuAccessor.QueryViewportTransformDisable())
->>>>>>> 1ec71635b (sync with main branch)
             {
                 oldXLocal = Local();
                 this.Copy(oldXLocal, this.Load(StorageKind.Output, IoVariable.Position, null, Const(0)));
@@ -467,11 +328,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                 oldYLocal = null;
             }
 
-<<<<<<< HEAD
             if (TranslatorContext.Definitions.DepthMode && !TranslatorContext.GpuAccessor.QueryHostSupportsDepthClipControl())
-=======
-            if (Config.Options.TargetApi == TargetApi.Vulkan && Config.GpuAccessor.QueryTransformDepthMinusOneToOne())
->>>>>>> 1ec71635b (sync with main branch)
             {
                 oldZLocal = Local();
                 this.Copy(oldZLocal, this.Load(StorageKind.Output, IoVariable.Position, null, Const(2)));
@@ -484,7 +341,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             PrepareForVertexReturn();
         }
 
-<<<<<<< HEAD
         public bool PrepareForReturn()
         {
             if (IsNonMain)
@@ -499,22 +355,6 @@ namespace Ryujinx.Graphics.Shader.Translation
                 PrepareForVertexReturn();
             }
             else if (TranslatorContext.Definitions.Stage == ShaderStage.Geometry)
-=======
-        public void PrepareForReturn()
-        {
-            if (IsNonMain)
-            {
-                return;
-            }
-
-            if (Config.LastInVertexPipeline &&
-                (Config.Stage == ShaderStage.Vertex || Config.Stage == ShaderStage.TessellationEvaluation) &&
-                (Config.Options.Flags & TranslationFlags.VertexA) == 0)
-            {
-                PrepareForVertexReturn();
-            }
-            else if (Config.Stage == ShaderStage.Geometry)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 void WritePositionOutput(int primIndex)
                 {
@@ -542,7 +382,6 @@ namespace Ryujinx.Graphics.Shader.Translation
                     this.Store(StorageKind.Output, IoVariable.UserDefined, null, Const(index), Const(3), w);
                 }
 
-<<<<<<< HEAD
                 if (TranslatorContext.Definitions.GpPassthrough && !TranslatorContext.GpuAccessor.QueryHostSupportsGeometryShaderPassthrough())
                 {
                     int inputStart, inputEnd, inputStep;
@@ -573,25 +412,10 @@ namespace Ryujinx.Graphics.Shader.Translation
                         WritePositionOutput(primIndex);
 
                         int passthroughAttributes = TranslatorContext.AttributeUsage.PassthroughAttributes;
-=======
-                if (Config.GpPassthrough && !Config.GpuAccessor.QueryHostSupportsGeometryShaderPassthrough())
-                {
-                    int inputVertices = Config.GpuAccessor.QueryPrimitiveTopology().ToInputVertices();
-
-                    for (int primIndex = 0; primIndex < inputVertices; primIndex++)
-                    {
-                        WritePositionOutput(primIndex);
-
-                        int passthroughAttributes = Config.PassthroughAttributes;
->>>>>>> 1ec71635b (sync with main branch)
                         while (passthroughAttributes != 0)
                         {
                             int index = BitOperations.TrailingZeroCount(passthroughAttributes);
                             WriteUserDefinedOutput(index, primIndex);
-<<<<<<< HEAD
-=======
-                            Config.SetOutputUserAttribute(index);
->>>>>>> 1ec71635b (sync with main branch)
                             passthroughAttributes &= ~(1 << index);
                         }
 
@@ -601,7 +425,6 @@ namespace Ryujinx.Graphics.Shader.Translation
                     this.EndPrimitive();
                 }
             }
-<<<<<<< HEAD
             else if (TranslatorContext.Definitions.Stage == ShaderStage.Fragment)
             {
                 GenerateAlphaToCoverageDitherDiscard();
@@ -611,40 +434,19 @@ namespace Ryujinx.Graphics.Shader.Translation
                 if (TranslatorContext.Definitions.OmapDepth)
                 {
                     Operand src = Register(TranslatorContext.GetDepthRegister(), RegisterType.Gpr);
-=======
-            else if (Config.Stage == ShaderStage.Fragment)
-            {
-                GenerateAlphaToCoverageDitherDiscard();
-
-                bool supportsBgra = Config.GpuAccessor.QueryHostSupportsBgraFormat();
-
-                if (Config.OmapDepth)
-                {
-                    Operand src = Register(Config.GetDepthRegister(), RegisterType.Gpr);
->>>>>>> 1ec71635b (sync with main branch)
 
                     this.Store(StorageKind.Output, IoVariable.FragmentOutputDepth, null, src);
                 }
 
-<<<<<<< HEAD
                 AlphaTestOp alphaTestOp = TranslatorContext.Definitions.AlphaTestCompare;
 
                 if (alphaTestOp != AlphaTestOp.Always)
-=======
-                AlphaTestOp alphaTestOp = Config.GpuAccessor.QueryAlphaTestCompare();
-
-                if (alphaTestOp != AlphaTestOp.Always && (Config.OmapTargets & 8) != 0)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     if (alphaTestOp == AlphaTestOp.Never)
                     {
                         this.Discard();
                     }
-<<<<<<< HEAD
                     else if ((TranslatorContext.Definitions.OmapTargets & 8) != 0)
-=======
-                    else
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         Instruction comparator = alphaTestOp switch
                         {
@@ -654,21 +456,13 @@ namespace Ryujinx.Graphics.Shader.Translation
                             AlphaTestOp.Less => Instruction.CompareLess,
                             AlphaTestOp.LessOrEqual => Instruction.CompareLessOrEqual,
                             AlphaTestOp.NotEqual => Instruction.CompareNotEqual,
-<<<<<<< HEAD
                             _ => 0,
-=======
-                            _ => 0
->>>>>>> 1ec71635b (sync with main branch)
                         };
 
                         Debug.Assert(comparator != 0, $"Invalid alpha test operation \"{alphaTestOp}\".");
 
                         Operand alpha = Register(3, RegisterType.Gpr);
-<<<<<<< HEAD
                         Operand alphaRef = ConstF(TranslatorContext.Definitions.AlphaTestReference);
-=======
-                        Operand alphaRef = ConstF(Config.GpuAccessor.QueryAlphaTestReference());
->>>>>>> 1ec71635b (sync with main branch)
                         Operand alphaPass = Add(Instruction.FP32 | comparator, Local(), alpha, alphaRef);
                         Operand alphaPassLabel = Label();
 
@@ -678,26 +472,19 @@ namespace Ryujinx.Graphics.Shader.Translation
                     }
                 }
 
-<<<<<<< HEAD
                 // We don't need to output anything if alpha test always fails.
                 if (alphaTestOp == AlphaTestOp.Never)
                 {
                     return false;
                 }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 int regIndexBase = 0;
 
                 for (int rtIndex = 0; rtIndex < 8; rtIndex++)
                 {
                     for (int component = 0; component < 4; component++)
                     {
-<<<<<<< HEAD
                         bool componentEnabled = (TranslatorContext.Definitions.OmapTargets & (1 << (rtIndex * 4 + component))) != 0;
-=======
-                        bool componentEnabled = (Config.OmapTargets & (1 << (rtIndex * 4 + component))) != 0;
->>>>>>> 1ec71635b (sync with main branch)
                         if (!componentEnabled)
                         {
                             continue;
@@ -730,21 +517,13 @@ namespace Ryujinx.Graphics.Shader.Translation
                         }
                     }
 
-<<<<<<< HEAD
                     bool targetEnabled = (TranslatorContext.Definitions.OmapTargets & (0xf << (rtIndex * 4))) != 0;
                     if (targetEnabled)
                     {
-=======
-                    bool targetEnabled = (Config.OmapTargets & (0xf << (rtIndex * 4))) != 0;
-                    if (targetEnabled)
-                    {
-                        Config.SetOutputUserAttribute(rtIndex);
->>>>>>> 1ec71635b (sync with main branch)
                         regIndexBase += 4;
                     }
                 }
             }
-<<<<<<< HEAD
 
             if (VertexAsCompute)
             {
@@ -806,18 +585,12 @@ namespace Ryujinx.Graphics.Shader.Translation
             }
 
             return true;
-=======
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void GenerateAlphaToCoverageDitherDiscard()
         {
             // If the feature is disabled, or alpha is not written, then we're done.
-<<<<<<< HEAD
             if (!TranslatorContext.Definitions.AlphaToCoverageDitherEnable || (TranslatorContext.Definitions.OmapTargets & 8) == 0)
-=======
-            if (!Config.GpuAccessor.QueryAlphaToCoverageDitherEnable() || (Config.OmapTargets & 8) == 0)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return;
             }
@@ -851,8 +624,4 @@ namespace Ryujinx.Graphics.Shader.Translation
             return _operations.ToArray();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

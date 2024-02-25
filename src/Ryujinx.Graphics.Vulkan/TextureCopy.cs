@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Silk.NET.Vulkan;
 using System;
@@ -84,20 +80,12 @@ namespace Ryujinx.Graphics.Vulkan
                 (srcOffsets.Element0, srcOffsets.Element1) = ExtentsToOffset3D(srcRegion, srcInfo.Width, srcInfo.Height, level);
                 (dstOffsets.Element0, dstOffsets.Element1) = ExtentsToOffset3D(dstRegion, dstInfo.Width, dstInfo.Height, level);
 
-<<<<<<< HEAD
                 var region = new ImageBlit
-=======
-                var region = new ImageBlit()
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     SrcSubresource = srcSl,
                     SrcOffsets = srcOffsets,
                     DstSubresource = dstSl,
-<<<<<<< HEAD
                     DstOffsets = dstOffsets,
-=======
-                    DstOffsets = dstOffsets
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 api.CmdBlitImage(commandBuffer, srcImage, ImageLayout.General, dstImage, ImageLayout.General, 1, region, filter);
@@ -231,30 +219,18 @@ namespace Ryujinx.Graphics.Vulkan
 
             int dstZ;
             int dstLayer;
-<<<<<<< HEAD
-=======
-            int dstDepth;
->>>>>>> 1ec71635b (sync with main branch)
             int dstLayers;
 
             if (dstInfo.Target == Target.Texture3D)
             {
                 dstZ = dstDepthOrLayer;
                 dstLayer = 0;
-<<<<<<< HEAD
-=======
-                dstDepth = depthOrLayers;
->>>>>>> 1ec71635b (sync with main branch)
                 dstLayers = 1;
             }
             else
             {
                 dstZ = 0;
                 dstLayer = dstDepthOrLayer;
-<<<<<<< HEAD
-=======
-                dstDepth = 1;
->>>>>>> 1ec71635b (sync with main branch)
                 dstLayers = depthOrLayers;
             }
 
@@ -387,35 +363,20 @@ namespace Ryujinx.Graphics.Vulkan
             var dsAttachmentReference = new AttachmentReference2(StructureType.AttachmentReference2, null, 0, ImageLayout.General);
             var dsResolveAttachmentReference = new AttachmentReference2(StructureType.AttachmentReference2, null, 1, ImageLayout.General);
 
-<<<<<<< HEAD
             var subpassDsResolve = new SubpassDescriptionDepthStencilResolve
-=======
-            var subpassDsResolve = new SubpassDescriptionDepthStencilResolve()
->>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.SubpassDescriptionDepthStencilResolve,
                 PDepthStencilResolveAttachment = &dsResolveAttachmentReference,
                 DepthResolveMode = ResolveModeFlags.SampleZeroBit,
-<<<<<<< HEAD
                 StencilResolveMode = ResolveModeFlags.SampleZeroBit,
             };
 
             var subpass = new SubpassDescription2
-=======
-                StencilResolveMode = ResolveModeFlags.SampleZeroBit
-            };
-
-            var subpass = new SubpassDescription2()
->>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.SubpassDescription2,
                 PipelineBindPoint = PipelineBindPoint.Graphics,
                 PDepthStencilAttachment = &dsAttachmentReference,
-<<<<<<< HEAD
                 PNext = &subpassDsResolve,
-=======
-                PNext = &subpassDsResolve
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             AttachmentDescription2[] attachmentDescs = new AttachmentDescription2[2];
@@ -450,11 +411,7 @@ namespace Ryujinx.Graphics.Vulkan
 
             fixed (AttachmentDescription2* pAttachmentDescs = attachmentDescs)
             {
-<<<<<<< HEAD
                 var renderPassCreateInfo = new RenderPassCreateInfo2
-=======
-                var renderPassCreateInfo = new RenderPassCreateInfo2()
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     SType = StructureType.RenderPassCreateInfo2,
                     PAttachments = pAttachmentDescs,
@@ -462,11 +419,7 @@ namespace Ryujinx.Graphics.Vulkan
                     PSubpasses = &subpass,
                     SubpassCount = 1,
                     PDependencies = &subpassDependency,
-<<<<<<< HEAD
                     DependencyCount = 1,
-=======
-                    DependencyCount = 1
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 gd.Api.CreateRenderPass2(device, renderPassCreateInfo, null, out var renderPass).ThrowOnError();
@@ -481,11 +434,7 @@ namespace Ryujinx.Graphics.Vulkan
                 attachments[0] = srcView.Get(cbs).Value;
                 attachments[1] = dstView.Get(cbs).Value;
 
-<<<<<<< HEAD
                 var framebufferCreateInfo = new FramebufferCreateInfo
-=======
-                var framebufferCreateInfo = new FramebufferCreateInfo()
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     SType = StructureType.FramebufferCreateInfo,
                     RenderPass = rp.Get(cbs).Value,
@@ -493,39 +442,23 @@ namespace Ryujinx.Graphics.Vulkan
                     PAttachments = attachments,
                     Width = (uint)src.Width,
                     Height = (uint)src.Height,
-<<<<<<< HEAD
                     Layers = (uint)src.Layers,
                 };
 
                 gd.Api.CreateFramebuffer(device, framebufferCreateInfo, null, out var framebuffer).ThrowOnError();
                 using var fb = new Auto<DisposableFramebuffer>(new DisposableFramebuffer(gd.Api, device, framebuffer), null, srcView, dstView);
-=======
-                    Layers = (uint)src.Layers
-                };
-
-                gd.Api.CreateFramebuffer(device, framebufferCreateInfo, null, out var framebuffer).ThrowOnError();
-                using var fb = new Auto<DisposableFramebuffer>(new DisposableFramebuffer(gd.Api, device, framebuffer), null, new[] { srcView, dstView });
->>>>>>> 1ec71635b (sync with main branch)
 
                 var renderArea = new Rect2D(null, new Extent2D((uint)src.Info.Width, (uint)src.Info.Height));
                 var clearValue = new ClearValue();
 
-<<<<<<< HEAD
                 var renderPassBeginInfo = new RenderPassBeginInfo
-=======
-                var renderPassBeginInfo = new RenderPassBeginInfo()
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     SType = StructureType.RenderPassBeginInfo,
                     RenderPass = rp.Get(cbs).Value,
                     Framebuffer = fb.Get(cbs).Value,
                     RenderArea = renderArea,
                     PClearValues = &clearValue,
-<<<<<<< HEAD
                     ClearValueCount = 1,
-=======
-                    ClearValueCount = 1
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 // The resolve operation happens at the end of the subpass, so let's just do a begin/end

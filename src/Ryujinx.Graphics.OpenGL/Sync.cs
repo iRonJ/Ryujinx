@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using OpenTK.Graphics.OpenGL;
-=======
-﻿using OpenTK.Graphics.OpenGL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using System;
 using System.Collections.Generic;
@@ -19,7 +15,6 @@ namespace Ryujinx.Graphics.OpenGL
         }
 
         private ulong _firstHandle = 0;
-<<<<<<< HEAD
         private static ClientWaitSyncFlags SyncFlags => HwCapabilities.RequiresSyncFlush ? ClientWaitSyncFlags.None : ClientWaitSyncFlags.SyncFlushCommandsBit;
 
         private readonly List<SyncHandle> _handles = new();
@@ -30,18 +25,6 @@ namespace Ryujinx.Graphics.OpenGL
             {
                 ID = id,
                 Handle = GL.FenceSync(SyncCondition.SyncGpuCommandsComplete, WaitSyncFlags.None),
-=======
-        private ClientWaitSyncFlags _syncFlags => HwCapabilities.RequiresSyncFlush ? ClientWaitSyncFlags.None : ClientWaitSyncFlags.SyncFlushCommandsBit;
-
-        private List<SyncHandle> _handles = new List<SyncHandle>();
-
-        public void Create(ulong id)
-        {
-            SyncHandle handle = new SyncHandle
-            {
-                ID = id,
-                Handle = GL.FenceSync(SyncCondition.SyncGpuCommandsComplete, WaitSyncFlags.None)
->>>>>>> 1ec71635b (sync with main branch)
             };
 
 
@@ -74,11 +57,7 @@ namespace Ryujinx.Graphics.OpenGL
 
                         if (handle.ID > lastHandle)
                         {
-<<<<<<< HEAD
                             WaitSyncStatus syncResult = GL.ClientWaitSync(handle.Handle, SyncFlags, 0);
-=======
-                            WaitSyncStatus syncResult = GL.ClientWaitSync(handle.Handle, _syncFlags, 0);
->>>>>>> 1ec71635b (sync with main branch)
 
                             if (syncResult == WaitSyncStatus.AlreadySignaled)
                             {
@@ -122,13 +101,8 @@ namespace Ryujinx.Graphics.OpenGL
                         return;
                     }
 
-<<<<<<< HEAD
                     WaitSyncStatus syncResult = GL.ClientWaitSync(result.Handle, SyncFlags, 1000000000);
 
-=======
-                    WaitSyncStatus syncResult = GL.ClientWaitSync(result.Handle, _syncFlags, 1000000000);
-                    
->>>>>>> 1ec71635b (sync with main branch)
                     if (syncResult == WaitSyncStatus.TimeoutExpired)
                     {
                         Logger.Error?.PrintMsg(LogClass.Gpu, $"GL Sync Object {result.ID} failed to signal within 1000ms. Continuing...");
@@ -149,18 +123,12 @@ namespace Ryujinx.Graphics.OpenGL
                     first = _handles.FirstOrDefault();
                 }
 
-<<<<<<< HEAD
                 if (first == null)
                 {
                     break;
                 }
 
                 WaitSyncStatus syncResult = GL.ClientWaitSync(first.Handle, SyncFlags, 0);
-=======
-                if (first == null) break;
-
-                WaitSyncStatus syncResult = GL.ClientWaitSync(first.Handle, _syncFlags, 0);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (syncResult == WaitSyncStatus.AlreadySignaled)
                 {
@@ -175,12 +143,8 @@ namespace Ryujinx.Graphics.OpenGL
                             first.Handle = IntPtr.Zero;
                         }
                     }
-<<<<<<< HEAD
                 }
                 else
-=======
-                } else
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     // This sync handle and any following have not been reached yet.
                     break;

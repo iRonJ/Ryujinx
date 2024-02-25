@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
-=======
-﻿namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
->>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Possible states for the software keyboard when running in inline mode.
@@ -32,10 +28,6 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
         /// <summary>
         /// software keyboard is transitioning to a hidden state because the user pressed either OK or Cancel.
         /// </summary>
-<<<<<<< HEAD
         Disappearing = 0x4,
-=======
-        Disappearing = 0x4
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-=======
-﻿using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace ARMeilleure.Diagnostics
 {
@@ -40,13 +34,7 @@ namespace ARMeilleure.Diagnostics
 
         public static string Get(ulong address)
         {
-<<<<<<< HEAD
             if (_symbols.TryGetValue(address, out string result))
-=======
-            string result;
-
-            if (_symbols.TryGetValue(address, out result))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return result;
             }
@@ -60,7 +48,6 @@ namespace ARMeilleure.Diagnostics
                         ulong diff = address - symbol.Start;
                         ulong rem = diff % symbol.ElementSize;
 
-<<<<<<< HEAD
                         StringBuilder resultBuilder = new();
                         resultBuilder.Append($"{symbol.Name}_{diff / symbol.ElementSize}");
 
@@ -70,15 +57,6 @@ namespace ARMeilleure.Diagnostics
                         }
 
                         result = resultBuilder.ToString();
-=======
-                        result = symbol.Name + "_" + diff / symbol.ElementSize;
-
-                        if (rem != 0)
-                        {
-                            result += "+" + rem;
-                        }
-
->>>>>>> 1ec71635b (sync with main branch)
                         _symbols.TryAdd(address, result);
 
                         return result;

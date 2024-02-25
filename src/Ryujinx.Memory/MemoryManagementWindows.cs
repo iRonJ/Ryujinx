@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 using Ryujinx.Memory.WindowsShared;
 using System;
 using System.Runtime.InteropServices;
-=======
-﻿using Ryujinx.Memory.WindowsShared;
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.Versioning;
 
 namespace Ryujinx.Memory
@@ -15,11 +10,7 @@ namespace Ryujinx.Memory
     {
         public const int PageSize = 0x1000;
 
-<<<<<<< HEAD
         private static readonly PlaceholderManager _placeholders = new();
-=======
-        private static readonly PlaceholderManager _placeholders = new PlaceholderManager();
->>>>>>> 1ec71635b (sync with main branch)
 
         public static IntPtr Allocate(IntPtr size)
         {
@@ -46,11 +37,7 @@ namespace Ryujinx.Memory
 
             if (ptr == IntPtr.Zero)
             {
-<<<<<<< HEAD
                 throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
-=======
-                throw new OutOfMemoryException();
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return ptr;
@@ -62,17 +49,12 @@ namespace Ryujinx.Memory
 
             if (ptr == IntPtr.Zero)
             {
-<<<<<<< HEAD
                 throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
-=======
-                throw new OutOfMemoryException();
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return ptr;
         }
 
-<<<<<<< HEAD
         public static void Commit(IntPtr location, IntPtr size)
         {
             if (WindowsApi.VirtualAlloc(location, size, AllocationType.Commit, MemoryProtection.ReadWrite) == IntPtr.Zero)
@@ -87,16 +69,6 @@ namespace Ryujinx.Memory
             {
                 throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
             }
-=======
-        public static bool Commit(IntPtr location, IntPtr size)
-        {
-            return WindowsApi.VirtualAlloc(location, size, AllocationType.Commit, MemoryProtection.ReadWrite) != IntPtr.Zero;
-        }
-
-        public static bool Decommit(IntPtr location, IntPtr size)
-        {
-            return WindowsApi.VirtualFree(location, size, AllocationType.Decommit);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void MapView(IntPtr sharedMemory, ulong srcOffset, IntPtr location, IntPtr size, MemoryBlock owner)
@@ -142,11 +114,7 @@ namespace Ryujinx.Memory
 
             if (handle == IntPtr.Zero)
             {
-<<<<<<< HEAD
                 throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
-=======
-                throw new OutOfMemoryException();
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return handle;
@@ -166,11 +134,7 @@ namespace Ryujinx.Memory
 
             if (ptr == IntPtr.Zero)
             {
-<<<<<<< HEAD
                 throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
-=======
-                throw new OutOfMemoryException();
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return ptr;
@@ -184,8 +148,4 @@ namespace Ryujinx.Memory
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

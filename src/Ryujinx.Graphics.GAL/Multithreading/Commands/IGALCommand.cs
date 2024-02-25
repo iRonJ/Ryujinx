@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
-=======
-﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
->>>>>>> 1ec71635b (sync with main branch)
 {
     interface IGALCommand
     {

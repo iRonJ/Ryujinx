@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.IO;
-=======
-﻿using System.IO;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
@@ -11,11 +7,7 @@ namespace Ryujinx.Common.Utilities
 {
     public class JsonHelper
     {
-<<<<<<< HEAD
         private static readonly JsonNamingPolicy _snakeCasePolicy = new SnakeCaseNamingPolicy();
-=======
-        private static readonly JsonNamingPolicy SnakeCasePolicy = new SnakeCaseNamingPolicy();
->>>>>>> 1ec71635b (sync with main branch)
         private const int DefaultFileWriteBufferSize = 4096;
 
         /// <summary>
@@ -29,19 +21,11 @@ namespace Ryujinx.Common.Utilities
         {
             JsonSerializerOptions options = new()
             {
-<<<<<<< HEAD
                 DictionaryKeyPolicy = _snakeCasePolicy,
                 PropertyNamingPolicy = _snakeCasePolicy,
                 WriteIndented = indented,
                 AllowTrailingCommas = true,
                 ReadCommentHandling = JsonCommentHandling.Skip,
-=======
-                DictionaryKeyPolicy  = SnakeCasePolicy,
-                PropertyNamingPolicy = SnakeCasePolicy,
-                WriteIndented        = indented,
-                AllowTrailingCommas  = true,
-                ReadCommentHandling  = JsonCommentHandling.Skip
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             return options;
@@ -111,8 +95,4 @@ namespace Ryujinx.Common.Utilities
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

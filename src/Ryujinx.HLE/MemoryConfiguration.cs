@@ -5,31 +5,19 @@ namespace Ryujinx.HLE
 {
     public enum MemoryConfiguration
     {
-<<<<<<< HEAD
         MemoryConfiguration4GiB = 0,
         MemoryConfiguration4GiBAppletDev = 1,
         MemoryConfiguration4GiBSystemDev = 2,
         MemoryConfiguration6GiB = 3,
         MemoryConfiguration6GiBAppletDev = 4,
         MemoryConfiguration8GiB = 5,
-=======
-        MemoryConfiguration4GiB          = 0,
-        MemoryConfiguration4GiBAppletDev = 1,
-        MemoryConfiguration4GiBSystemDev = 2,
-        MemoryConfiguration6GiB          = 3,
-        MemoryConfiguration6GiBAppletDev = 4,
-        MemoryConfiguration8GiB          = 5
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class MemoryConfigurationExtensions
     {
         private const ulong GiB = 1024 * 1024 * 1024;
 
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public static MemoryArrange ToKernelMemoryArrange(this MemoryConfiguration configuration)
         {
             return configuration switch
@@ -40,11 +28,7 @@ namespace Ryujinx.HLE
                 MemoryConfiguration.MemoryConfiguration6GiB          => MemoryArrange.MemoryArrange6GiB,
                 MemoryConfiguration.MemoryConfiguration6GiBAppletDev => MemoryArrange.MemoryArrange6GiBAppletDev,
                 MemoryConfiguration.MemoryConfiguration8GiB          => MemoryArrange.MemoryArrange8GiB,
-<<<<<<< HEAD
                 _ => throw new AggregateException($"Invalid memory configuration \"{configuration}\"."),
-=======
-                _ => throw new AggregateException($"Invalid memory configuration \"{configuration}\".")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -58,11 +42,7 @@ namespace Ryujinx.HLE
                 MemoryConfiguration.MemoryConfiguration6GiB or
                 MemoryConfiguration.MemoryConfiguration6GiBAppletDev => MemorySize.MemorySize6GiB,
                 MemoryConfiguration.MemoryConfiguration8GiB          => MemorySize.MemorySize8GiB,
-<<<<<<< HEAD
                 _ => throw new AggregateException($"Invalid memory configuration \"{configuration}\"."),
-=======
-                _ => throw new AggregateException($"Invalid memory configuration \"{configuration}\".")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -76,17 +56,9 @@ namespace Ryujinx.HLE
                 MemoryConfiguration.MemoryConfiguration6GiB or
                 MemoryConfiguration.MemoryConfiguration6GiBAppletDev => 6 * GiB,
                 MemoryConfiguration.MemoryConfiguration8GiB          => 8 * GiB,
-<<<<<<< HEAD
                 _ => throw new AggregateException($"Invalid memory configuration \"{configuration}\"."),
             };
         }
 #pragma warning restore IDE0055
     }
 }
-=======
-                _ => throw new AggregateException($"Invalid memory configuration \"{configuration}\".")
-            };
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

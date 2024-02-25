@@ -4,8 +4,4 @@ namespace ARMeilleure.Decoders
     {
         int Immediate { get; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

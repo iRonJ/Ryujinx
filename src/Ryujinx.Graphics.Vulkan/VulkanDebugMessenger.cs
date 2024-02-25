@@ -10,21 +10,6 @@ namespace Ryujinx.Graphics.Vulkan
 {
     class VulkanDebugMessenger : IDisposable
     {
-<<<<<<< HEAD
-=======
-        private static string[] _excludedMessages = new string[]
-        {
-            // NOTE: Done on purpose right now.
-            "UNASSIGNED-CoreValidation-Shader-OutputNotConsumed",
-            // TODO: Figure out if fixable
-            "VUID-vkCmdDrawIndexed-None-04584",
-            // TODO: Might be worth looking into making this happy to possibly optimize copies.
-            "UNASSIGNED-CoreValidation-DrawState-InvalidImageLayout",
-            // TODO: Fix this, it's causing too much noise right now.
-            "VUID-VkSubpassDependency-srcSubpass-00867"
-        };
-
->>>>>>> 1ec71635b (sync with main branch)
         private readonly Vk _api;
         private readonly Instance _instance;
         private readonly GraphicsDebugLevel _logLevel;
@@ -51,11 +36,7 @@ namespace Ryujinx.Graphics.Vulkan
         private Result TryInitialize(out DebugUtilsMessengerEXT? debugUtilsMessengerHandle)
         {
             debugUtilsMessengerHandle = null;
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 1ec71635b (sync with main branch)
             if (_debugUtils != null && _logLevel != GraphicsDebugLevel.None)
             {
                 var messageType = _logLevel switch
@@ -66,11 +47,7 @@ namespace Ryujinx.Graphics.Vulkan
                     GraphicsDebugLevel.All => DebugUtilsMessageTypeFlagsEXT.GeneralBitExt |
                                               DebugUtilsMessageTypeFlagsEXT.ValidationBitExt |
                                               DebugUtilsMessageTypeFlagsEXT.PerformanceBitExt,
-<<<<<<< HEAD
                     _ => throw new ArgumentException($"Invalid log level \"{_logLevel}\"."),
-=======
-                    _ => throw new ArgumentException($"Invalid log level \"{_logLevel}\".")
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 var messageSeverity = _logLevel switch
@@ -82,7 +59,6 @@ namespace Ryujinx.Graphics.Vulkan
                                               DebugUtilsMessageSeverityFlagsEXT.WarningBitExt |
                                               DebugUtilsMessageSeverityFlagsEXT.VerboseBitExt |
                                               DebugUtilsMessageSeverityFlagsEXT.ErrorBitExt,
-<<<<<<< HEAD
                     _ => throw new ArgumentException($"Invalid log level \"{_logLevel}\"."),
                 };
 
@@ -91,16 +67,6 @@ namespace Ryujinx.Graphics.Vulkan
                     SType = StructureType.DebugUtilsMessengerCreateInfoExt,
                     MessageType = messageType,
                     MessageSeverity = messageSeverity,
-=======
-                    _ => throw new ArgumentException($"Invalid log level \"{_logLevel}\".")
-                };
-
-                var debugUtilsMessengerCreateInfo = new DebugUtilsMessengerCreateInfoEXT()
-                {
-                    SType = StructureType.DebugUtilsMessengerCreateInfoExt,
-                    MessageType = messageType,
-                    MessageSeverity = messageSeverity
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 unsafe
@@ -131,17 +97,6 @@ namespace Ryujinx.Graphics.Vulkan
         {
             var msg = Marshal.PtrToStringAnsi((IntPtr)pCallbackData->PMessage);
 
-<<<<<<< HEAD
-=======
-            foreach (string excludedMessagePart in _excludedMessages)
-            {
-                if (msg.Contains(excludedMessagePart))
-                {
-                    return 0;
-                }
-            }
-
->>>>>>> 1ec71635b (sync with main branch)
             if (messageSeverity.HasFlag(DebugUtilsMessageSeverityFlagsEXT.ErrorBitExt))
             {
                 Logger.Error?.Print(LogClass.Gpu, msg);

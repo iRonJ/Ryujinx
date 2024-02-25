@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using ARMeilleure.Common;
-=======
-﻿using ARMeilleure.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.Intrinsics;
 
 namespace ARMeilleure.Decoders
@@ -39,8 +35,4 @@ namespace ARMeilleure.Decoders
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

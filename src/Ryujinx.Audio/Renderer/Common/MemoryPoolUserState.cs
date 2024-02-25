@@ -38,12 +38,6 @@ namespace Ryujinx.Audio.Renderer.Common
         /// <summary>
         /// The memory pool is released. (client side only)
         /// </summary>
-<<<<<<< HEAD
         Released = 6,
     }
 }
-=======
-        Released = 6
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

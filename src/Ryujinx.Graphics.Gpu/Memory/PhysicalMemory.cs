@@ -1,8 +1,5 @@
 using Ryujinx.Cpu;
-<<<<<<< HEAD
 using Ryujinx.Graphics.Device;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu.Image;
 using Ryujinx.Graphics.Gpu.Shader;
 using Ryujinx.Memory;
@@ -10,13 +7,8 @@ using Ryujinx.Memory.Range;
 using Ryujinx.Memory.Tracking;
 using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Linq;
 using System.Runtime.InteropServices;
-=======
-using System.Runtime.InteropServices;
-using System.Linq;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 
 namespace Ryujinx.Graphics.Gpu.Memory
@@ -28,11 +20,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
     class PhysicalMemory : IDisposable
     {
         private readonly GpuContext _context;
-<<<<<<< HEAD
         private readonly IVirtualMemoryManagerTracked _cpuMemory;
-=======
-        private IVirtualMemoryManagerTracked _cpuMemory;
->>>>>>> 1ec71635b (sync with main branch)
         private int _referenceCount;
 
         /// <summary>
@@ -96,7 +84,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Creates a new device memory manager.
         /// </summary>
         /// <returns>The memory manager</returns>
@@ -106,8 +93,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
         }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Gets a host pointer for a given range of application memory.
         /// If the memory region is not a single contiguous block, this method returns 0.
         /// </summary>
@@ -262,7 +247,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Writes data to the application process, triggering a precise memory tracking event.
         /// </summary>
         /// <param name="address">Address to write into</param>
@@ -275,8 +259,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
         }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Writes data to the application process.
         /// </summary>
         /// <param name="address">Address to write into</param>
@@ -478,8 +460,4 @@ namespace Ryujinx.Graphics.Gpu.Memory
             DecrementReferenceCount();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

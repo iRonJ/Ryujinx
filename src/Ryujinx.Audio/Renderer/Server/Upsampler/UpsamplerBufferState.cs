@@ -11,8 +11,4 @@ namespace Ryujinx.Audio.Renderer.Server.Upsampler
         public bool Initialized;
         public int Phase;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

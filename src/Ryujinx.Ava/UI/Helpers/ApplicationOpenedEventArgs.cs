@@ -1,9 +1,5 @@
 using Avalonia.Interactivity;
-<<<<<<< HEAD
 using Ryujinx.UI.App.Common;
-=======
-using Ryujinx.Ui.App.Common;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.Helpers
 {
@@ -17,8 +13,4 @@ namespace Ryujinx.Ava.UI.Helpers
             RoutedEvent = routedEvent;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

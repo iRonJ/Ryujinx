@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
-=======
-﻿using Ryujinx.Horizon.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
 using System;
 using System.Runtime.CompilerServices;
@@ -23,10 +19,6 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
 
         private int InObjectsCount => _inObjectIds.Length;
         private int OutObjectsCount => _implMetadata.OutObjectsCount;
-<<<<<<< HEAD
-=======
-        private int ImplOutHeadersSize => _implMetadata.OutHeadersSize;
->>>>>>> 1ec71635b (sync with main branch)
         private int ImplOutDataTotalSize => _implMetadata.OutDataSize + _implMetadata.OutHeadersSize;
 
         public DomainServiceObjectProcessor(ServerDomainBase domain, int[] inObjectIds)

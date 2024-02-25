@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.ComponentModel;
-=======
-﻿using System.ComponentModel;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
@@ -34,11 +30,7 @@ namespace Ryujinx.Common.Configuration.Hid
         ///  Player's Index for the controller
         /// </summary>
         public PlayerIndex PlayerIndex { get; set; }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -46,8 +38,4 @@ namespace Ryujinx.Common.Configuration.Hid
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

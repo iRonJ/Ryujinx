@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 using System;
 using System.Runtime.CompilerServices;
-=======
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 
 namespace Ryujinx.Memory
@@ -37,11 +31,7 @@ namespace Ryujinx.Memory
         /// </summary>
         /// <param name="size">Size of the memory block in bytes</param>
         /// <param name="flags">Flags that controls memory block memory allocation</param>
-<<<<<<< HEAD
         /// <exception cref="SystemException">Throw when there's an error while allocating the requested size</exception>
-=======
-        /// <exception cref="OutOfMemoryException">Throw when there's no enough memory to allocate the requested size</exception>
->>>>>>> 1ec71635b (sync with main branch)
         /// <exception cref="PlatformNotSupportedException">Throw when the current platform is not supported</exception>
         public MemoryBlock(ulong size, MemoryAllocationFlags flags = MemoryAllocationFlags.None)
         {
@@ -76,11 +66,7 @@ namespace Ryujinx.Memory
         /// </summary>
         /// <param name="size">Size of the memory block in bytes</param>
         /// <param name="sharedMemory">Shared memory to use as backing storage for this block</param>
-<<<<<<< HEAD
         /// <exception cref="SystemException">Throw when there's an error while mapping the shared memory</exception>
-=======
-        /// <exception cref="OutOfMemoryException">Throw when there's no enough address space left to map the shared memory</exception>
->>>>>>> 1ec71635b (sync with main branch)
         /// <exception cref="PlatformNotSupportedException">Throw when the current platform is not supported</exception>
         private MemoryBlock(ulong size, IntPtr sharedMemory)
         {
@@ -96,11 +82,7 @@ namespace Ryujinx.Memory
         /// </summary>
         /// <returns>A new memory block that shares storage with this one</returns>
         /// <exception cref="NotSupportedException">Throw when the current memory block does not support mirroring</exception>
-<<<<<<< HEAD
         /// <exception cref="SystemException">Throw when there's an error while mapping the shared memory</exception>
-=======
-        /// <exception cref="OutOfMemoryException">Throw when there's no enough address space left to map the shared memory</exception>
->>>>>>> 1ec71635b (sync with main branch)
         /// <exception cref="PlatformNotSupportedException">Throw when the current platform is not supported</exception>
         public MemoryBlock CreateMirror()
         {
@@ -118,21 +100,12 @@ namespace Ryujinx.Memory
         /// </summary>
         /// <param name="offset">Starting offset of the range to be committed</param>
         /// <param name="size">Size of the range to be committed</param>
-<<<<<<< HEAD
         /// <exception cref="SystemException">Throw when the operation was not successful</exception>
         /// <exception cref="ObjectDisposedException">Throw when the memory block has already been disposed</exception>
         /// <exception cref="InvalidMemoryRegionException">Throw when either <paramref name="offset"/> or <paramref name="size"/> are out of range</exception>
         public void Commit(ulong offset, ulong size)
         {
             MemoryManagement.Commit(GetPointerInternal(offset, size), size, _forJit);
-=======
-        /// <returns>True if the operation was successful, false otherwise</returns>
-        /// <exception cref="ObjectDisposedException">Throw when the memory block has already been disposed</exception>
-        /// <exception cref="InvalidMemoryRegionException">Throw when either <paramref name="offset"/> or <paramref name="size"/> are out of range</exception>
-        public bool Commit(ulong offset, ulong size)
-        {
-            return MemoryManagement.Commit(GetPointerInternal(offset, size), size, _forJit);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -141,21 +114,12 @@ namespace Ryujinx.Memory
         /// </summary>
         /// <param name="offset">Starting offset of the range to be decommitted</param>
         /// <param name="size">Size of the range to be decommitted</param>
-<<<<<<< HEAD
         /// <exception cref="SystemException">Throw when the operation was not successful</exception>
         /// <exception cref="ObjectDisposedException">Throw when the memory block has already been disposed</exception>
         /// <exception cref="InvalidMemoryRegionException">Throw when either <paramref name="offset"/> or <paramref name="size"/> are out of range</exception>
         public void Decommit(ulong offset, ulong size)
         {
             MemoryManagement.Decommit(GetPointerInternal(offset, size), size);
-=======
-        /// <returns>True if the operation was successful, false otherwise</returns>
-        /// <exception cref="ObjectDisposedException">Throw when the memory block has already been disposed</exception>
-        /// <exception cref="InvalidMemoryRegionException">Throw when either <paramref name="offset"/> or <paramref name="size"/> are out of range</exception>
-        public bool Decommit(ulong offset, ulong size)
-        {
-            return MemoryManagement.Decommit(GetPointerInternal(offset, size), size);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -400,15 +364,9 @@ namespace Ryujinx.Memory
         /// <param name="pointer">Native pointer</param>
         /// <param name="offset">Offset to add</param>
         /// <returns>Native pointer with the added offset</returns>
-<<<<<<< HEAD
         private static IntPtr PtrAddr(IntPtr pointer, ulong offset)
         {
             return new IntPtr(pointer.ToInt64() + (long)offset);
-=======
-        private IntPtr PtrAddr(IntPtr pointer, ulong offset)
-        {
-            return (IntPtr)(pointer.ToInt64() + (long)offset);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -481,8 +439,4 @@ namespace Ryujinx.Memory
 
         private static void ThrowInvalidMemoryRegionException() => throw new InvalidMemoryRegionException();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

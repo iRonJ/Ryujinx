@@ -10,10 +10,6 @@ namespace ARMeilleure.State
         Z = 1u << 30,
         N = 1u << 31,
 
-<<<<<<< HEAD
         Mask = N | Z | C | V | FPSR.Mask | FPCR.Mask, // 0xFFC09F9Fu
-=======
-        Mask = N | Z | C | V | FPSR.Mask | FPCR.Mask // 0xFFC09F9Fu
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

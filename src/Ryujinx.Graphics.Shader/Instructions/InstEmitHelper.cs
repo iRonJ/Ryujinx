@@ -3,10 +3,6 @@ using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
 using System;
 using System.Runtime.CompilerServices;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 
 namespace Ryujinx.Graphics.Shader.Instructions
@@ -114,11 +110,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
             return new Operand[]
             {
                 ConstF((float)Unsafe.As<ushort, Half>(ref low)),
-<<<<<<< HEAD
                 ConstF((float)Unsafe.As<ushort, Half>(ref high)),
-=======
-                ConstF((float)Unsafe.As<ushort, Half>(ref high))
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -130,11 +122,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
             return new Operand[]
             {
                 ConstF((float)Unsafe.As<ushort, Half>(ref low)),
-<<<<<<< HEAD
                 ConstF((float)Unsafe.As<ushort, Half>(ref high)),
-=======
-                ConstF((float)Unsafe.As<ushort, Half>(ref high))
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -150,7 +138,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
         public static Operand[] GetHalfUnpacked(EmitterContext context, Operand src, HalfSwizzle swizzle)
         {
-<<<<<<< HEAD
             return swizzle switch
             {
                 HalfSwizzle.F16 => new Operand[]
@@ -171,42 +158,12 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     },
                 _ => throw new ArgumentException($"Invalid swizzle \"{swizzle}\"."),
             };
-=======
-            switch (swizzle)
-            {
-                case HalfSwizzle.F16:
-                    return new Operand[]
-                    {
-                        context.UnpackHalf2x16Low (src),
-                        context.UnpackHalf2x16High(src)
-                    };
-
-                case HalfSwizzle.F32: return new Operand[] { src, src };
-
-                case HalfSwizzle.H0H0:
-                    return new Operand[]
-                    {
-                        context.UnpackHalf2x16Low(src),
-                        context.UnpackHalf2x16Low(src)
-                    };
-
-                case HalfSwizzle.H1H1:
-                    return new Operand[]
-                    {
-                        context.UnpackHalf2x16High(src),
-                        context.UnpackHalf2x16High(src)
-                    };
-            }
-
-            throw new ArgumentException($"Invalid swizzle \"{swizzle}\".");
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static Operand GetHalfPacked(EmitterContext context, OFmt swizzle, Operand[] results, int rd)
         {
             switch (swizzle)
             {
-<<<<<<< HEAD
                 case OFmt.F16:
                     return context.PackHalf2x16(results[0], results[1]);
 
@@ -226,25 +183,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
                         return context.PackHalf2x16(h0, results[1]);
                     }
-=======
-                case OFmt.F16: return context.PackHalf2x16(results[0], results[1]);
-
-                case OFmt.F32: return results[0];
-
-                case OFmt.MrgH0:
-                {
-                    Operand h1 = GetHalfDest(context, rd, isHigh: true);
-
-                    return context.PackHalf2x16(results[0], h1);
-                }
-
-                case OFmt.MrgH1:
-                {
-                    Operand h0 = GetHalfDest(context, rd, isHigh: false);
-
-                    return context.PackHalf2x16(h0, results[1]);
-                }
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             throw new ArgumentException($"Invalid swizzle \"{swizzle}\".");
@@ -319,8 +257,4 @@ namespace Ryujinx.Graphics.Shader.Instructions
             return context.BitwiseAnd(src, Const(mask));
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

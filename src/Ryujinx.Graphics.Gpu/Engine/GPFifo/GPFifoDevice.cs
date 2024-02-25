@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Gpu.Memory;
-=======
-﻿using Ryujinx.Graphics.Gpu.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
@@ -22,11 +18,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
         private enum CommandBufferType
         {
             Prefetch,
-<<<<<<< HEAD
             NoPrefetch,
-=======
-            NoPrefetch
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -65,11 +57,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
             /// <param name="memoryManager">The memory manager used to fetch the data</param>
             /// <param name="flush">If true, flushes potential GPU written data before reading the command buffer</param>
             /// <returns>The fetched data</returns>
-<<<<<<< HEAD
             private readonly ReadOnlySpan<int> GetWords(MemoryManager memoryManager, bool flush)
-=======
-            private ReadOnlySpan<int> GetWords(MemoryManager memoryManager, bool flush)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return MemoryMarshal.Cast<byte, int>(memoryManager.GetSpan(EntryAddress, (int)EntryCount * 4, flush));
             }
@@ -89,11 +77,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
             /// <param name="memoryManager">The memory manager used to fetch the data</param>
             /// <param name="flush">If true, flushes potential GPU written data before reading the command buffer</param>
             /// <returns>The command buffer words</returns>
-<<<<<<< HEAD
             public readonly ReadOnlySpan<int> Fetch(MemoryManager memoryManager, bool flush)
-=======
-            public ReadOnlySpan<int> Fetch(MemoryManager memoryManager, bool flush)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return Words ?? GetWords(memoryManager, flush);
             }
@@ -101,10 +85,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
 
         private readonly ConcurrentQueue<CommandBuffer> _commandBufferQueue;
 
-<<<<<<< HEAD
-=======
-        private CommandBuffer _currentCommandBuffer;
->>>>>>> 1ec71635b (sync with main branch)
         private GPFifoProcessor _prevChannelProcessor;
 
         private readonly bool _ibEnable;
@@ -148,11 +128,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
                 Type = CommandBufferType.Prefetch,
                 Words = commandBuffer,
                 EntryAddress = ulong.MaxValue,
-<<<<<<< HEAD
                 EntryCount = (uint)commandBuffer.Length,
-=======
-                EntryCount = (uint)commandBuffer.Length
->>>>>>> 1ec71635b (sync with main branch)
             });
         }
 
@@ -179,11 +155,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
                 Type = type,
                 Words = null,
                 EntryAddress = startAddress,
-<<<<<<< HEAD
                 EntryCount = (uint)entry.Entry1Length,
-=======
-                EntryCount = (uint)entry.Entry1Length
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -244,10 +216,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.GPFifo
                     flushCommandBuffer = false;
                 }
 
-<<<<<<< HEAD
-=======
-                _currentCommandBuffer = entry;
->>>>>>> 1ec71635b (sync with main branch)
                 ReadOnlySpan<int> words = entry.Fetch(entry.Processor.MemoryManager, flushCommandBuffer);
 
                 // If we are changing the current channel,

@@ -1,7 +1,7 @@
-﻿using System;
-using static Ryujinx.Ui.Common.Configuration.ConfigurationState.UiSection;
+using System;
+using static Ryujinx.UI.Common.Configuration.ConfigurationState.UISection;
 
-namespace Ryujinx.Ui.Common
+namespace Ryujinx.UI.Common
 {
     public static class FileTypesExtensions
     {
@@ -19,7 +19,7 @@ namespace Ryujinx.Ui.Common
             FileTypes.NCA => config.NCA.Value,
             FileTypes.NRO => config.NRO.Value,
             FileTypes.NSO => config.NSO.Value,
-            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null),
         };
     }
 }

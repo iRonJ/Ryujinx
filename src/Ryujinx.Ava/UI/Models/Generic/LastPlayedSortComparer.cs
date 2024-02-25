@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.UI.App.Common;
-=======
-using Ryujinx.Ui.App.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 
@@ -17,7 +13,6 @@ namespace Ryujinx.Ava.UI.Models.Generic
 
         public int Compare(ApplicationData x, ApplicationData y)
         {
-<<<<<<< HEAD
             DateTime aValue = DateTime.UnixEpoch, bValue = DateTime.UnixEpoch;
 
             if (x?.LastPlayed != null)
@@ -34,22 +29,3 @@ namespace Ryujinx.Ava.UI.Models.Generic
         }
     }
 }
-=======
-            var aValue = x.LastPlayed;
-            var bValue = y.LastPlayed;
-
-            if (!aValue.HasValue)
-            {
-                aValue = DateTime.UnixEpoch;
-            }
-
-            if (!bValue.HasValue)
-            {
-                bValue = DateTime.UnixEpoch;
-            }
-
-            return (IsAscending ? 1 : -1) * DateTime.Compare(bValue.Value, aValue.Value);
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

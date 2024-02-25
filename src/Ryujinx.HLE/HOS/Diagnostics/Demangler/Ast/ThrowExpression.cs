@@ -4,11 +4,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class ThrowExpression : BaseNode
     {
-<<<<<<< HEAD
         private readonly BaseNode _expression;
-=======
-        private BaseNode _expression;
->>>>>>> 1ec71635b (sync with main branch)
 
         public ThrowExpression(BaseNode expression) : base(NodeType.ThrowExpression)
         {
@@ -21,8 +17,4 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             _expression.Print(writer);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

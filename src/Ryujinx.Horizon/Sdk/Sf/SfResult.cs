@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
-=======
-﻿using Ryujinx.Horizon.Common;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Horizon.Sdk.Sf
 {
@@ -10,10 +6,7 @@ namespace Ryujinx.Horizon.Sdk.Sf
     {
         public const int ModuleId = 10;
 
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public static Result NotSupported           => new(ModuleId, 1);
         public static Result InvalidHeaderSize      => new(ModuleId, 202);
         public static Result InvalidInHeader        => new(ModuleId, 211);
@@ -31,11 +24,6 @@ namespace Ryujinx.Horizon.Sdk.Sf
         public static bool RequestContextChanged(Result result) => result.InRange(800, 899);
         public static bool Invalidated(Result result)           => result.InRange(801, 809);
         public static bool RequestDeferred(Result result)       => result.InRange(811, 819);
-<<<<<<< HEAD
 #pragma warning restore IDE0055
     }
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

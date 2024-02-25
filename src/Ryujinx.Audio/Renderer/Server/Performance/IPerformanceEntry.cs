@@ -43,8 +43,4 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
         /// <param name="type">The type to use.</param>
         void SetEntryType(PerformanceEntryType type);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

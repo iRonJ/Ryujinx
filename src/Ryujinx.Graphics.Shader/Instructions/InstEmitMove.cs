@@ -76,11 +76,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
             switch (op.SReg)
             {
                 case SReg.LaneId:
-<<<<<<< HEAD
                     src = EmitLoadSubgroupLaneId(context);
-=======
-                    src = context.Load(StorageKind.Input, IoVariable.SubgroupLaneId);
->>>>>>> 1ec71635b (sync with main branch)
                     break;
 
                 case SReg.InvocationId:
@@ -92,41 +88,24 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     break;
 
                 case SReg.ThreadKill:
-<<<<<<< HEAD
                     src = context.TranslatorContext.Definitions.Stage == ShaderStage.Fragment ? context.Load(StorageKind.Input, IoVariable.ThreadKill) : Const(0);
                     break;
 
                 case SReg.InvocationInfo:
                     if (context.TranslatorContext.Definitions.Stage != ShaderStage.Compute && context.TranslatorContext.Definitions.Stage != ShaderStage.Fragment)
-=======
-                    src = context.Config.Stage == ShaderStage.Fragment ? context.Load(StorageKind.Input, IoVariable.ThreadKill) : Const(0);
-                    break;
-
-                case SReg.InvocationInfo:
-                    if (context.Config.Stage != ShaderStage.Compute && context.Config.Stage != ShaderStage.Fragment)
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         // Note: Lowest 8-bits seems to contain some primitive index,
                         // but it seems to be NVIDIA implementation specific as it's only used
                         // to calculate ISBE offsets, so we can just keep it as zero.
 
-<<<<<<< HEAD
                         if (context.TranslatorContext.Definitions.Stage == ShaderStage.TessellationControl ||
                             context.TranslatorContext.Definitions.Stage == ShaderStage.TessellationEvaluation)
-=======
-                        if (context.Config.Stage == ShaderStage.TessellationControl ||
-                            context.Config.Stage == ShaderStage.TessellationEvaluation)
->>>>>>> 1ec71635b (sync with main branch)
                         {
                             src = context.ShiftLeft(context.Load(StorageKind.Input, IoVariable.PatchVertices), Const(16));
                         }
                         else
                         {
-<<<<<<< HEAD
                             src = Const(context.TranslatorContext.Definitions.InputTopology.ToInputVertices() << 16);
-=======
-                            src = Const(context.Config.GpuAccessor.QueryPrimitiveTopology().ToInputVertices() << 16);
->>>>>>> 1ec71635b (sync with main branch)
                         }
                     }
                     else
@@ -167,7 +146,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     break;
 
                 case SReg.EqMask:
-<<<<<<< HEAD
                     src = EmitLoadSubgroupMask(context, IoVariable.SubgroupEqMask);
                     break;
                 case SReg.LtMask:
@@ -181,21 +159,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     break;
                 case SReg.GeMask:
                     src = EmitLoadSubgroupMask(context, IoVariable.SubgroupGeMask);
-=======
-                    src = context.Load(StorageKind.Input, IoVariable.SubgroupEqMask, null, Const(0));
-                    break;
-                case SReg.LtMask:
-                    src = context.Load(StorageKind.Input, IoVariable.SubgroupLtMask, null, Const(0));
-                    break;
-                case SReg.LeMask:
-                    src = context.Load(StorageKind.Input, IoVariable.SubgroupLeMask, null, Const(0));
-                    break;
-                case SReg.GtMask:
-                    src = context.Load(StorageKind.Input, IoVariable.SubgroupGtMask, null, Const(0));
-                    break;
-                case SReg.GeMask:
-                    src = context.Load(StorageKind.Input, IoVariable.SubgroupGeMask, null, Const(0));
->>>>>>> 1ec71635b (sync with main branch)
                     break;
 
                 default:
@@ -206,7 +169,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
             context.Copy(GetDest(op.Dest), src);
         }
 
-<<<<<<< HEAD
         private static Operand EmitLoadSubgroupLaneId(EmitterContext context)
         {
             if (context.TranslatorContext.GpuAccessor.QueryHostSubgroupSize() <= 32)
@@ -253,8 +215,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public static void SelR(EmitterContext context)
         {
             InstSelR op = context.GetOp<InstSelR>();
@@ -298,11 +258,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
             int count = ccpr ? RegisterConsts.FlagsCount : RegisterConsts.PredsCount;
             RegisterType type = ccpr ? RegisterType.Flag : RegisterType.Predicate;
             int shift = (int)byteSel * 8;
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 1ec71635b (sync with main branch)
             for (int bit = 0; bit < count; bit++)
             {
                 Operand flag = Register(bit, type);
@@ -318,8 +274,4 @@ namespace Ryujinx.Graphics.Shader.Instructions
             context.Copy(GetDest(rd), res);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

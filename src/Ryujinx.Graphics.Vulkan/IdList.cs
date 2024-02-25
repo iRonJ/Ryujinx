@@ -85,17 +85,9 @@ namespace Ryujinx.Graphics.Vulkan
                     value = _list[id];
                     return value != null;
                 }
-<<<<<<< HEAD
 
                 value = null;
                 return false;
-=======
-                else
-                {
-                    value = null;
-                    return false;
-                }
->>>>>>> 1ec71635b (sync with main branch)
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -126,8 +118,4 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

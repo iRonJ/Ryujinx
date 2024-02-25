@@ -1,12 +1,12 @@
-﻿using Gtk;
-using Ryujinx.HLE.Ui;
+using Gtk;
+using Ryujinx.HLE.UI;
 using System.Diagnostics;
 
-namespace Ryujinx.Ui.Applet
+namespace Ryujinx.UI.Applet
 {
-    internal class GtkHostUiTheme : IHostUiTheme
+    internal class GtkHostUITheme : IHostUITheme
     {
-        private const int RenderSurfaceWidth  = 32;
+        private const int RenderSurfaceWidth = 32;
         private const int RenderSurfaceHeight = 32;
 
         public string FontFamily { get; private set; }
@@ -17,9 +17,9 @@ namespace Ryujinx.Ui.Applet
         public ThemeColor SelectionBackgroundColor { get; }
         public ThemeColor SelectionForegroundColor { get; }
 
-        public GtkHostUiTheme(Window parent)
+        public GtkHostUITheme(Window parent)
         {
-            Entry entry = new Entry();
+            Entry entry = new();
             entry.SetStateFlags(StateFlags.Selected, true);
 
             // Get the font and some colors directly from GTK.
@@ -30,10 +30,10 @@ namespace Ryujinx.Ui.Applet
             var defaultForegroundColor = entry.StyleContext.GetColor(StateFlags.Normal);
             var selectedForegroundColor = entry.StyleContext.GetColor(StateFlags.Selected);
 
-            DefaultForegroundColor   = new ThemeColor((float) defaultForegroundColor.Alpha, (float) defaultForegroundColor.Red, (float) defaultForegroundColor.Green, (float) defaultForegroundColor.Blue);
+            DefaultForegroundColor = new ThemeColor((float)defaultForegroundColor.Alpha, (float)defaultForegroundColor.Red, (float)defaultForegroundColor.Green, (float)defaultForegroundColor.Blue);
             SelectionForegroundColor = new ThemeColor((float)selectedForegroundColor.Alpha, (float)selectedForegroundColor.Red, (float)selectedForegroundColor.Green, (float)selectedForegroundColor.Blue);
 
-            ListBoxRow row = new ListBoxRow();
+            ListBoxRow row = new();
             row.SetStateFlags(StateFlags.Selected, true);
 
             // Request the main thread to render some UI elements to an image to get an approximation for the color.
@@ -67,7 +67,7 @@ namespace Ryujinx.Ui.Applet
             SelectionBackgroundColor = DefaultBorderColor;
         }
 
-        private ThemeColor ToThemeColor(byte[] data)
+        private static ThemeColor ToThemeColor(byte[] data)
         {
             Debug.Assert(data.Length == 4 * RenderSurfaceWidth * RenderSurfaceHeight);
 

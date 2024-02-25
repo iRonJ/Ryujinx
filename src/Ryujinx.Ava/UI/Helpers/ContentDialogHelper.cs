@@ -1,19 +1,12 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
-<<<<<<< HEAD
 using Avalonia.Layout;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using Avalonia.Media;
 using Avalonia.Threading;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Controls;
 using Ryujinx.Ava.Common.Locale;
-<<<<<<< HEAD
-=======
-using Ryujinx.Ava.UI.Controls;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Ava.UI.Windows;
 using Ryujinx.Common.Logging;
 using System;
@@ -25,14 +18,9 @@ namespace Ryujinx.Ava.UI.Helpers
     public static class ContentDialogHelper
     {
         private static bool _isChoiceDialogOpen;
-<<<<<<< HEAD
         private static ContentDialogOverlayWindow _contentDialogOverlayWindow;
 
         private async static Task<UserResult> ShowContentDialog(
-=======
-
-        public async static Task<UserResult> ShowContentDialog(
->>>>>>> 1ec71635b (sync with main branch)
              string title,
              object content,
              string primaryButton,
@@ -46,7 +34,6 @@ namespace Ryujinx.Ava.UI.Helpers
 
             ContentDialog contentDialog = new()
             {
-<<<<<<< HEAD
                 Title = title,
                 PrimaryButtonText = primaryButton,
                 SecondaryButtonText = secondaryButton,
@@ -58,20 +45,6 @@ namespace Ryujinx.Ava.UI.Helpers
                 }),
             };
 
-=======
-                Title               = title,
-                PrimaryButtonText   = primaryButton,
-                SecondaryButtonText = secondaryButton,
-                CloseButtonText     = closeButton,
-                Content             = content
-            };
-
-            contentDialog.PrimaryButtonCommand = MiniCommand.Create(() =>
-            {
-                result = primaryButtonResult;
-            });
-
->>>>>>> 1ec71635b (sync with main branch)
             contentDialog.SecondaryButtonCommand = MiniCommand.Create(() =>
             {
                 result = UserResult.No;
@@ -94,11 +67,7 @@ namespace Ryujinx.Ava.UI.Helpers
             return result;
         }
 
-<<<<<<< HEAD
         public async static Task<UserResult> ShowTextDialog(
-=======
-        private async static Task<UserResult> ShowTextDialog(
->>>>>>> 1ec71635b (sync with main branch)
             string title,
             string primaryText,
             string secondaryText,
@@ -128,10 +97,6 @@ namespace Ryujinx.Ava.UI.Helpers
             Func<Window, Task> doWhileDeferred = null)
         {
             bool startedDeferring = false;
-<<<<<<< HEAD
-=======
-            UserResult result = UserResult.None;
->>>>>>> 1ec71635b (sync with main branch)
 
             return await ShowTextDialog(
                 title,
@@ -158,11 +123,6 @@ namespace Ryujinx.Ava.UI.Helpers
 
                 var deferral = args.GetDeferral();
 
-<<<<<<< HEAD
-=======
-                result = primaryButton == LocaleManager.Instance[LocaleKeys.InputDialogYes] ? UserResult.Yes : UserResult.Ok;
-
->>>>>>> 1ec71635b (sync with main branch)
                 sender.PrimaryButtonClick -= DeferClose;
 
                 _ = Task.Run(() =>
@@ -188,32 +148,18 @@ namespace Ryujinx.Ava.UI.Helpers
         {
             Grid content = new()
             {
-<<<<<<< HEAD
                 RowDefinitions = new RowDefinitions { new(), new() },
                 ColumnDefinitions = new ColumnDefinitions { new(GridLength.Auto), new() },
 
                 MinHeight = 80,
-=======
-                RowDefinitions    = new RowDefinitions()    { new RowDefinition(), new RowDefinition() },
-                ColumnDefinitions = new ColumnDefinitions() { new ColumnDefinition(GridLength.Auto), new ColumnDefinition() },
-
-                MinHeight = 80
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             SymbolIcon icon = new()
             {
-<<<<<<< HEAD
                 Symbol = (Symbol)symbol,
                 Margin = new Thickness(10),
                 FontSize = 40,
                 VerticalAlignment = VerticalAlignment.Center,
-=======
-                Symbol            = (Symbol)symbol,
-                Margin            = new Thickness(10),
-                FontSize          = 40,
-                VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             Grid.SetColumn(icon, 0);
@@ -222,32 +168,18 @@ namespace Ryujinx.Ava.UI.Helpers
 
             TextBlock primaryLabel = new()
             {
-<<<<<<< HEAD
                 Text = primaryText,
                 Margin = new Thickness(5),
                 TextWrapping = TextWrapping.Wrap,
                 MaxWidth = 450,
-=======
-                Text         = primaryText,
-                Margin       = new Thickness(5),
-                TextWrapping = TextWrapping.Wrap,
-                MaxWidth     = 450
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             TextBlock secondaryLabel = new()
             {
-<<<<<<< HEAD
                 Text = secondaryText,
                 Margin = new Thickness(5),
                 TextWrapping = TextWrapping.Wrap,
                 MaxWidth = 450,
-=======
-                Text         = secondaryText,
-                Margin       = new Thickness(5),
-                TextWrapping = TextWrapping.Wrap,
-                MaxWidth     = 450
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             Grid.SetColumn(primaryLabel, 1);
@@ -379,7 +311,6 @@ namespace Ryujinx.Ava.UI.Helpers
         public static async Task<ContentDialogResult> ShowAsync(ContentDialog contentDialog)
         {
             ContentDialogResult result;
-<<<<<<< HEAD
             bool isTopDialog = true;
 
             Window parent = GetMainWindow();
@@ -399,28 +330,12 @@ namespace Ryujinx.Ava.UI.Helpers
                     Width = parent.Bounds.Width,
                     Position = parent.PointToScreen(new Point()),
                     ShowInTaskbar = false,
-=======
-
-            ContentDialogOverlayWindow contentDialogOverlayWindow = null;
-
-            Window parent = GetMainWindow();
-
-            if (parent != null && parent.IsActive && parent is MainWindow window && window.ViewModel.IsGameRunning)
-            {
-                contentDialogOverlayWindow = new()
-                {
-                    Height        = parent.Bounds.Height,
-                    Width         = parent.Bounds.Width,
-                    Position      = parent.PointToScreen(new Point()),
-                    ShowInTaskbar = false
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 parent.PositionChanged += OverlayOnPositionChanged;
 
                 void OverlayOnPositionChanged(object sender, PixelPointEventArgs e)
                 {
-<<<<<<< HEAD
                     if (_contentDialogOverlayWindow is null)
                     {
                         return;
@@ -434,16 +349,6 @@ namespace Ryujinx.Ava.UI.Helpers
                 bool opened = false;
 
                 _contentDialogOverlayWindow.Opened += OverlayOnActivated;
-=======
-                    contentDialogOverlayWindow.Position = parent.PointToScreen(new Point());
-                }
-
-                contentDialogOverlayWindow.ContentDialog = contentDialog;
-
-                bool opened = false;
-
-                contentDialogOverlayWindow.Opened += OverlayOnActivated;
->>>>>>> 1ec71635b (sync with main branch)
 
                 async void OverlayOnActivated(object sender, EventArgs e)
                 {
@@ -454,20 +359,12 @@ namespace Ryujinx.Ava.UI.Helpers
 
                     opened = true;
 
-<<<<<<< HEAD
                     _contentDialogOverlayWindow.Position = parent.PointToScreen(new Point());
-=======
-                    contentDialogOverlayWindow.Position = parent.PointToScreen(new Point());
->>>>>>> 1ec71635b (sync with main branch)
 
                     result = await ShowDialog();
                 }
 
-<<<<<<< HEAD
                 result = await _contentDialogOverlayWindow.ShowDialog<ContentDialogResult>(parent);
-=======
-                result = await contentDialogOverlayWindow.ShowDialog<ContentDialogResult>(parent);
->>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -476,7 +373,6 @@ namespace Ryujinx.Ava.UI.Helpers
 
             async Task<ContentDialogResult> ShowDialog()
             {
-<<<<<<< HEAD
                 if (_contentDialogOverlayWindow is not null)
                 {
                     result = await contentDialog.ShowAsync(_contentDialogOverlayWindow);
@@ -488,40 +384,21 @@ namespace Ryujinx.Ava.UI.Helpers
                     result = ContentDialogResult.None;
 
                     Logger.Warning?.Print(LogClass.UI, "Content dialog overlay failed to populate. Default value has been returned.");
-=======
-                if (contentDialogOverlayWindow is not null)
-                {
-                    result = await contentDialog.ShowAsync(contentDialogOverlayWindow);
-
-                    contentDialogOverlayWindow!.Close();
-                }
-                else
-                {
-                    result = await contentDialog.ShowAsync();
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 return result;
             }
 
-<<<<<<< HEAD
             if (isTopDialog && _contentDialogOverlayWindow is not null)
             {
                 _contentDialogOverlayWindow.Content = null;
                 _contentDialogOverlayWindow.Close();
                 _contentDialogOverlayWindow = null;
-=======
-            if (contentDialogOverlayWindow is not null)
-            {
-                contentDialogOverlayWindow.Content = null;
-                contentDialogOverlayWindow.Close();
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return result;
         }
 
-<<<<<<< HEAD
         public static Task ShowWindowAsync(Window dialogWindow, Window mainWindow = null)
         {
             mainWindow ??= GetMainWindow();
@@ -536,15 +413,6 @@ namespace Ryujinx.Ava.UI.Helpers
                 foreach (Window item in al.Windows)
                 {
                     if (item is MainWindow window)
-=======
-        private static Window GetMainWindow()
-        {
-            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime al)
-            {
-                foreach (Window item in al.Windows)
-                {
-                    if (item.IsActive && item is MainWindow window)
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         return window;
                     }
@@ -554,8 +422,4 @@ namespace Ryujinx.Ava.UI.Helpers
             return null;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -10,12 +10,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// <summary>Shader cache is written to disk</summary>
         Packaging,
         /// <summary>Shader cache finished loading</summary>
-<<<<<<< HEAD
         Loaded,
     }
 }
-=======
-        Loaded
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

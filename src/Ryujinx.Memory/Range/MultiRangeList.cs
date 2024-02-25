@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Collections;
-=======
-﻿using Ryujinx.Common.Collections;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections;
 using System.Collections.Generic;
 

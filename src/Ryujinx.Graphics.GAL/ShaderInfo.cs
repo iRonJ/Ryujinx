@@ -23,8 +23,4 @@ namespace Ryujinx.Graphics.GAL
             FromCache = fromCache;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

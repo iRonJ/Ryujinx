@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
-=======
-﻿namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
->>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Possible requests to the software keyboard when running in inline mode.
@@ -47,10 +43,6 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
         /// <summary>
         /// [8.0.0+] Request the keyboard applet to use the MovedCursorV2 response when notifying changes in cursor position.
         /// </summary>
-<<<<<<< HEAD
         UseMovedCursorV2 = 0xE,
-=======
-        UseMovedCursorV2 = 0xE
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

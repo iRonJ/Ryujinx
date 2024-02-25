@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System.Diagnostics;
 using System.Text;
 
@@ -11,19 +10,6 @@ namespace Ryujinx.Common.Logging.Formatters
         public string Format(LogEventArgs args)
         {
             StringBuilder sb = _stringBuilderPool.Allocate();
-=======
-﻿using System.Text;
-
-namespace Ryujinx.Common.Logging
-{
-    internal class DefaultLogFormatter : ILogFormatter
-    {
-        private static readonly ObjectPool<StringBuilder> StringBuilderPool = SharedPools.Default<StringBuilder>();
-
-        public string Format(LogEventArgs args)
-        {
-            StringBuilder sb = StringBuilderPool.Allocate();
->>>>>>> 1ec71635b (sync with main branch)
 
             try
             {
@@ -42,7 +28,6 @@ namespace Ryujinx.Common.Logging
 
                 if (args.Data is not null)
                 {
-<<<<<<< HEAD
                     if (args.Data is StackTrace trace)
                     {
                         sb.Append('\n');
@@ -51,8 +36,6 @@ namespace Ryujinx.Common.Logging
                         return sb.ToString();
                     }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     sb.Append(' ');
                     DynamicObjectFormatter.Format(sb, args.Data);
                 }
@@ -61,11 +44,7 @@ namespace Ryujinx.Common.Logging
             }
             finally
             {
-<<<<<<< HEAD
                 _stringBuilderPool.Release(sb);
-=======
-                StringBuilderPool.Release(sb);
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
     }

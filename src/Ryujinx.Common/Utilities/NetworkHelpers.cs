@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 using System.Buffers.Binary;
 using System.Net;
 using System.Net.NetworkInformation;
-=======
-﻿using System.Net.NetworkInformation;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Common.Utilities
 {
@@ -36,11 +32,7 @@ namespace Ryujinx.Common.Utilities
                 return (null, null);
             }
 
-<<<<<<< HEAD
             IPInterfaceProperties targetProperties = null;
-=======
-            IPInterfaceProperties       targetProperties  = null;
->>>>>>> 1ec71635b (sync with main branch)
             UnicastIPAddressInformation targetAddressInfo = null;
 
             NetworkInterface[] interfaces = NetworkInterface.GetAllNetworkInterfaces();
@@ -72,7 +64,6 @@ namespace Ryujinx.Common.Utilities
 
             return (targetProperties, targetAddressInfo);
         }
-<<<<<<< HEAD
 
         public static uint ConvertIpv4Address(IPAddress ipAddress)
         {
@@ -90,7 +81,3 @@ namespace Ryujinx.Common.Utilities
         }
     }
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

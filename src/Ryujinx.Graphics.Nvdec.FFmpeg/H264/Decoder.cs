@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Nvdec.FFmpeg.Native;
-=======
-﻿using Ryujinx.Graphics.Nvdec.FFmpeg.Native;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Video;
 using System;
 
@@ -16,11 +12,7 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg.H264
 
         private readonly byte[] _workBuffer = new byte[WorkBufferSize];
 
-<<<<<<< HEAD
         private FFmpegContext _context = new(AVCodecID.AV_CODEC_ID_H264);
-=======
-        private FFmpegContext _context = new FFmpegContext(AVCodecID.AV_CODEC_ID_H264);
->>>>>>> 1ec71635b (sync with main branch)
 
         private int _oldOutputWidth;
         private int _oldOutputHeight;
@@ -54,11 +46,7 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg.H264
             byte[] output = new byte[data.Length + prep.Length];
 
             prep.CopyTo(output);
-<<<<<<< HEAD
             data.CopyTo(new Span<byte>(output)[prep.Length..]);
-=======
-            data.CopyTo(new Span<byte>(output).Slice(prep.Length));
->>>>>>> 1ec71635b (sync with main branch)
 
             return output;
         }

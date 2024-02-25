@@ -25,16 +25,8 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 OperandType.Argument => AggregateType.S32,
                 OperandType.Constant => AggregateType.S32,
                 OperandType.Undefined => AggregateType.S32,
-<<<<<<< HEAD
                 _ => throw new ArgumentException($"Invalid operand type \"{type}\"."),
             };
         }
     }
 }
-=======
-                _ => throw new ArgumentException($"Invalid operand type \"{type}\".")
-            };
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

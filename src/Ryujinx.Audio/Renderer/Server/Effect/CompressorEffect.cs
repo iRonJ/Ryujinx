@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Audio.Renderer.Common;
-=======
-﻿using Ryujinx.Audio.Renderer.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Audio.Renderer.Dsp.State;
 using Ryujinx.Audio.Renderer.Parameter;
 using Ryujinx.Audio.Renderer.Parameter.Effect;

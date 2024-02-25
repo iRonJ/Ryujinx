@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.Graphics.Gpu.Shader.HashTable
@@ -25,11 +21,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
         /// <returns>Hash of the given data</returns>
         public static uint CalcHash(ReadOnlySpan<byte> data)
         {
-<<<<<<< HEAD
             HashState state = new();
-=======
-            HashState state = new HashState();
->>>>>>> 1ec71635b (sync with main branch)
 
             state.Initialize();
             state.Continue(data);
@@ -58,11 +50,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
         {
             ulong h = _hash;
 
-<<<<<<< HEAD
             ReadOnlySpan<ulong> dataAsUlong = MemoryMarshal.Cast<byte, ulong>(data[_start..]);
-=======
-            ReadOnlySpan<ulong> dataAsUlong = MemoryMarshal.Cast<byte, ulong>(data.Slice(_start));
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < dataAsUlong.Length; i++)
             {
@@ -87,11 +75,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
         /// </remarks>
         /// <param name="data">Data to be hashed</param>
         /// <returns>Hash of all the data hashed with this <see cref="HashState"/></returns>
-<<<<<<< HEAD
         public readonly uint Finalize(ReadOnlySpan<byte> data)
-=======
-        public uint Finalize(ReadOnlySpan<byte> data)
->>>>>>> 1ec71635b (sync with main branch)
         {
             ulong h = _hash;
 

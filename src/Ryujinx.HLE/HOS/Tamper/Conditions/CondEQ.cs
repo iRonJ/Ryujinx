@@ -4,13 +4,8 @@ namespace Ryujinx.HLE.HOS.Tamper.Conditions
 {
     class CondEQ<T> : ICondition where T : unmanaged
     {
-<<<<<<< HEAD
         private readonly IOperand _lhs;
         private readonly IOperand _rhs;
-=======
-        private IOperand _lhs;
-        private IOperand _rhs;
->>>>>>> 1ec71635b (sync with main branch)
 
         public CondEQ(IOperand lhs, IOperand rhs)
         {

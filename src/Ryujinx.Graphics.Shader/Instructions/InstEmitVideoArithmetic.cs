@@ -1,10 +1,6 @@
 using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 
@@ -80,11 +76,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
             {
                 VideoScale.Shr7 => 7,
                 VideoScale.Shr15 => 15,
-<<<<<<< HEAD
                 _ => 0,
-=======
-                _ => 0
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             if (shift != 0)
@@ -122,8 +114,4 @@ namespace Ryujinx.Graphics.Shader.Instructions
             // TODO: CC.
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

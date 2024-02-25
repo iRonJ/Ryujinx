@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Horizon.Common
 {
@@ -17,7 +13,6 @@ namespace Ryujinx.Horizon.Common
 
         public int ErrorCode { get; }
 
-<<<<<<< HEAD
         public readonly bool IsSuccess => ErrorCode == 0;
         public readonly bool IsFailure => ErrorCode != 0;
 
@@ -25,15 +20,6 @@ namespace Ryujinx.Horizon.Common
         public readonly int Description => (ErrorCode >> ModuleBits) & (DescriptionMax - 1);
 
         public readonly string PrintableResult => $"{2000 + Module:D4}-{Description:D4}";
-=======
-        public bool IsSuccess => ErrorCode == 0;
-        public bool IsFailure => ErrorCode != 0;
-
-        public int Module => ErrorCode & (ModuleMax - 1);
-        public int Description => (ErrorCode >> ModuleBits) & (DescriptionMax - 1);
-
-        public string PrintableResult => $"{2000 + Module:D4}-{Description:D4}";
->>>>>>> 1ec71635b (sync with main branch)
 
         public Result(int module, int description)
         {
@@ -50,34 +36,22 @@ namespace Ryujinx.Horizon.Common
             ErrorCode = module | (description << ModuleBits);
         }
 
-<<<<<<< HEAD
         public Result(int errorCode)
         {
             ErrorCode = errorCode;
         }
 
         public readonly override bool Equals(object obj)
-=======
-        public override bool Equals(object obj)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is Result result && result.Equals(this);
         }
 
-<<<<<<< HEAD
         public readonly bool Equals(Result other)
-=======
-        public bool Equals(Result other)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return other.ErrorCode == ErrorCode;
         }
 
-<<<<<<< HEAD
         public readonly override int GetHashCode()
-=======
-        public override int GetHashCode()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return ErrorCode;
         }
@@ -92,11 +66,7 @@ namespace Ryujinx.Horizon.Common
             return !lhs.Equals(rhs);
         }
 
-<<<<<<< HEAD
         public readonly bool InRange(int minInclusive, int maxInclusive)
-=======
-        public bool InRange(int minInclusive, int maxInclusive)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (uint)(Description - minInclusive) <= (uint)(maxInclusive - minInclusive);
         }
@@ -140,11 +110,7 @@ namespace Ryujinx.Horizon.Common
             throw new InvalidResultException(this);
         }
 
-<<<<<<< HEAD
         public readonly override string ToString()
-=======
-        public override string ToString()
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (ResultNames.TryGet(ErrorCode, out string name))
             {
@@ -154,8 +120,4 @@ namespace Ryujinx.Horizon.Common
             return PrintableResult;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

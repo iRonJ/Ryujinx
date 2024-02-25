@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Input.Motion;
-=======
-﻿using Ryujinx.Input.Motion;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Numerics;
 
@@ -10,33 +6,19 @@ namespace Ryujinx.Input
 {
     public class MotionInput
     {
-<<<<<<< HEAD
         public ulong TimeStamp { get; set; }
         public Vector3 Accelerometer { get; set; }
         public Vector3 Gyroscrope { get; set; }
         public Vector3 Rotation { get; set; }
-=======
-        public ulong   TimeStamp     { get; set; }
-        public Vector3 Accelerometer { get; set; }
-        public Vector3 Gyroscrope    { get; set; }
-        public Vector3 Rotation      { get; set; }
->>>>>>> 1ec71635b (sync with main branch)
 
         private readonly MotionSensorFilter _filter;
 
         public MotionInput()
         {
-<<<<<<< HEAD
             TimeStamp = 0;
             Accelerometer = new Vector3();
             Gyroscrope = new Vector3();
             Rotation = new Vector3();
-=======
-            TimeStamp     = 0;
-            Accelerometer = new Vector3();
-            Gyroscrope    = new Vector3();
-            Rotation      = new Vector3();
->>>>>>> 1ec71635b (sync with main branch)
 
             // TODO: RE the correct filter.
             _filter = new MotionSensorFilter(0f);
@@ -80,8 +62,4 @@ namespace Ryujinx.Input
             return degree * (MathF.PI / 180);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

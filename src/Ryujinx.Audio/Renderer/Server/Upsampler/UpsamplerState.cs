@@ -20,20 +20,12 @@ namespace Ryujinx.Audio.Renderer.Server.Upsampler
         /// <summary>
         /// The index of the <see cref="UpsamplerState"/>. (used to free it)
         /// </summary>
-<<<<<<< HEAD
         private readonly int _index;
-=======
-        private int _index;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The <see cref="UpsamplerManager"/>.
         /// </summary>
-<<<<<<< HEAD
         private readonly UpsamplerManager _manager;
-=======
-        private UpsamplerManager _manager;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The source sample count.
@@ -73,8 +65,4 @@ namespace Ryujinx.Audio.Renderer.Server.Upsampler
             _manager.Free(_index);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

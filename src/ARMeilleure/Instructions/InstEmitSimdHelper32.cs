@@ -4,10 +4,6 @@ using ARMeilleure.Translation;
 using System;
 using System.Diagnostics;
 using System.Reflection;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
@@ -22,7 +18,6 @@ namespace ARMeilleure.Instructions
     {
         public static (int, int) GetQuadwordAndSubindex(int index, RegisterSize size)
         {
-<<<<<<< HEAD
             return size switch
             {
                 RegisterSize.Simd128 => (index >> 1, 0),
@@ -30,20 +25,6 @@ namespace ARMeilleure.Instructions
                 RegisterSize.Int32 => (index >> 2, index & 3),
                 _ => throw new ArgumentException("Unrecognized Vector Register Size."),
             };
-=======
-            switch (size)
-            {
-                case RegisterSize.Simd128:
-                    return (index >> 1, 0);
-                case RegisterSize.Simd64:
-                case RegisterSize.Int64:
-                    return (index >> 1, index & 1);
-                case RegisterSize.Int32:
-                    return (index >> 2, index & 3);
-            }
-
-            throw new ArgumentException("Unrecognized Vector Register Size.");
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static Operand ExtractScalar(ArmEmitterContext context, OperandType type, int reg)
@@ -340,11 +321,7 @@ namespace ARMeilleure.Instructions
             for (int index = 0; index < elems; index++)
             {
                 Operand ne = EmitVectorExtract32(context, op.Qn, op.In + index, op.Size + 1, signed);
-<<<<<<< HEAD
                 Operand me = EmitVectorExtract32(context, op.Qm, op.Im + index, op.Size, signed);
-=======
-                Operand me = EmitVectorExtract32(context, op.Qm, op.Im + index, op.Size,     signed);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (op.Size == 2)
                 {
@@ -397,13 +374,8 @@ namespace ARMeilleure.Instructions
             for (int index = 0; index < elems; index++)
             {
                 Operand de = EmitVectorExtract32(context, op.Qd, op.Id + index, op.Size + 1, signed);
-<<<<<<< HEAD
                 Operand ne = EmitVectorExtract32(context, op.Qn, op.In + index, op.Size, signed);
                 Operand me = EmitVectorExtract32(context, op.Qm, op.Im + index, op.Size, signed);
-=======
-                Operand ne = EmitVectorExtract32(context, op.Qn, op.In + index, op.Size,     signed);
-                Operand me = EmitVectorExtract32(context, op.Qm, op.Im + index, op.Size,     signed);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (op.Size == 2)
                 {
@@ -701,7 +673,6 @@ namespace ARMeilleure.Instructions
             context.Copy(GetVecA32(op.Qd), res);
         }
 
-<<<<<<< HEAD
         public static void EmitVectorPairwiseTernaryLongOpI32(ArmEmitterContext context, Func3I emit, bool signed)
         {
             OpCode32Simd op = (OpCode32Simd)context.CurrOp;
@@ -731,8 +702,6 @@ namespace ARMeilleure.Instructions
             context.Copy(GetVecA32(op.Qd), res);
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         // Narrow
 
         public static void EmitVectorUnaryNarrowOp32(ArmEmitterContext context, Func1I emit, bool signed = false)
@@ -832,14 +801,10 @@ namespace ARMeilleure.Instructions
         {
             // Index into 0, 0 into index. This swap happens at the start of an A32 scalar op if required.
             int index = reg & (doubleWidth ? 1 : 3);
-<<<<<<< HEAD
             if (index == 0)
             {
                 return target;
             }
-=======
-            if (index == 0) return target;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (doubleWidth)
             {
@@ -1035,11 +1000,7 @@ namespace ARMeilleure.Instructions
 
             Intrinsic inst = (op.Size & 1) != 0 ? inst64 : inst32;
 
-<<<<<<< HEAD
             EmitScalarBinaryOpSimd32(context, (n, m) => context.AddIntrinsic(inst, n, m));
-=======
-            EmitScalarBinaryOpSimd32(context, (n, m) =>  context.AddIntrinsic(inst, n, m));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void EmitScalarTernaryOpSimd32(ArmEmitterContext context, Func3I scalarFunc)
@@ -1260,11 +1221,7 @@ namespace ARMeilleure.Instructions
                 : typeof(SoftFloat64).GetMethod(name);
 
             Array.Resize(ref callArgs, callArgs.Length + 1);
-<<<<<<< HEAD
             callArgs[^1] = Const(1);
-=======
-            callArgs[callArgs.Length - 1] = Const(1);
->>>>>>> 1ec71635b (sync with main branch)
 
             context.ExitArmFpMode();
             context.StoreToContext();
@@ -1314,34 +1271,24 @@ namespace ARMeilleure.Instructions
             {
                 switch (size)
                 {
-<<<<<<< HEAD
                     case 0:
                         res = context.SignExtend8(OperandType.I32, res);
                         break;
                     case 1:
                         res = context.SignExtend16(OperandType.I32, res);
                         break;
-=======
-                    case 0: res = context.SignExtend8(OperandType.I32, res); break;
-                    case 1: res = context.SignExtend16(OperandType.I32, res); break;
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
             else
             {
                 switch (size)
                 {
-<<<<<<< HEAD
                     case 0:
                         res = context.ZeroExtend8(OperandType.I32, res);
                         break;
                     case 1:
                         res = context.ZeroExtend16(OperandType.I32, res);
                         break;
-=======
-                    case 0: res = context.ZeroExtend8(OperandType.I32, res); break;
-                    case 1: res = context.ZeroExtend16(OperandType.I32, res); break;
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 

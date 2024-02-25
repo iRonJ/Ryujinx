@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Gpu.Synchronization;
 using Ryujinx.Memory.Tracking;
 using System;
 using System.Collections.Generic;
-=======
-﻿using Ryujinx.Graphics.Gpu.Synchronization;
-using Ryujinx.Memory.Tracking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 
 namespace Ryujinx.Graphics.Gpu.Image
@@ -29,17 +21,10 @@ namespace Ryujinx.Graphics.Gpu.Image
         private const int FlushBalanceMax = 60;
         private const int FlushBalanceMin = -10;
 
-<<<<<<< HEAD
         private readonly TextureGroup _group;
         private int _bindCount;
         private readonly int _firstLevel;
         private readonly int _firstLayer;
-=======
-        private TextureGroup _group;
-        private int _bindCount;
-        private int _firstLevel;
-        private int _firstLayer;
->>>>>>> 1ec71635b (sync with main branch)
 
         // Sync state for texture flush.
 
@@ -167,7 +152,6 @@ namespace Ryujinx.Graphics.Gpu.Image
                 // Linear textures are presumed to be used for readback initially.
                 _flushBalance = FlushBalanceThreshold + FlushBalanceIncrement;
             }
-<<<<<<< HEAD
 
             foreach (RegionHandle handle in handles)
             {
@@ -212,8 +196,6 @@ namespace Ryujinx.Graphics.Gpu.Image
                     handle.Reprotect();
                 }
             }
-=======
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -493,10 +475,6 @@ namespace Ryujinx.Graphics.Gpu.Image
         public void DeferCopy(TextureGroupHandle copyFrom)
         {
             Modified = false;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
             DeferredCopy = copyFrom;
 
             _group.Storage.SignalGroupDirty();
@@ -527,13 +505,8 @@ namespace Ryujinx.Graphics.Gpu.Image
             _group.HasCopyDependencies = true;
             other._group.HasCopyDependencies = true;
 
-<<<<<<< HEAD
             TextureDependency dependency = new(this);
             TextureDependency otherDependency = new(other);
-=======
-            TextureDependency dependency = new TextureDependency(this);
-            TextureDependency otherDependency = new TextureDependency(other);
->>>>>>> 1ec71635b (sync with main branch)
 
             dependency.Other = otherDependency;
             otherDependency.Other = dependency;
@@ -558,11 +531,7 @@ namespace Ryujinx.Graphics.Gpu.Image
                 {
                     existing.Other.Handle.CreateCopyDependency(this);
 
-<<<<<<< HEAD
                     if (copyToOther && Modified)
-=======
-                    if (copyToOther)
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         existing.Other.Handle.DeferCopy(this);
                     }
@@ -585,11 +554,7 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// <returns>True if at least one of the handles is dirty</returns>
         private bool CheckDirty()
         {
-<<<<<<< HEAD
             return Array.Exists(Handles, handle => handle.Dirty);
-=======
-            return Handles.Any(handle => handle.Dirty);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -610,17 +575,10 @@ namespace Ryujinx.Graphics.Gpu.Image
                 if (fromHandle != null)
                 {
                     // Only copy if the copy texture is still modified.
-<<<<<<< HEAD
                     // DeferredCopy will be set to null if new data is written from CPU (see the DirtyAction method).
                     // It will also set as unmodified if a copy is deferred to it.
 
                     shouldCopy = true;
-=======
-                    // It will be set as unmodified if new data is written from CPU, as the data previously in the texture will flush.
-                    // It will also set as unmodified if a copy is deferred to it.
-
-                    shouldCopy = fromHandle.Modified;
->>>>>>> 1ec71635b (sync with main branch)
 
                     if (fromHandle._bindCount == 0)
                     {

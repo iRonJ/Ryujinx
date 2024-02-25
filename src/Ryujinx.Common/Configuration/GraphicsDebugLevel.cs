@@ -9,10 +9,6 @@ namespace Ryujinx.Common.Configuration
         None,
         Error,
         Slowdowns,
-<<<<<<< HEAD
         All,
-=======
-        All
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

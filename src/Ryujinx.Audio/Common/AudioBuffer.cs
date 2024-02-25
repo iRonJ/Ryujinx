@@ -34,8 +34,4 @@ namespace Ryujinx.Audio.Common
         /// </summary>
         public byte[] Data;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

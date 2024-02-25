@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 using OpenTK.Graphics.OpenGL;
-=======
-﻿using OpenTK.Graphics.OpenGL;
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.OpenGL.Effects
 {

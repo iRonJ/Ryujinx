@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace ARMeilleure.CodeGen.Linking
-=======
-﻿namespace ARMeilleure.CodeGen.Linking
->>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Types of <see cref="Symbol"/>.
@@ -27,10 +23,6 @@ namespace ARMeilleure.CodeGen.Linking
         /// <summary>
         /// Refers to a special symbol which is handled by <see cref="Translation.PTC.Ptc.PatchCode"/>.
         /// </summary>
-<<<<<<< HEAD
         Special,
-=======
-        Special
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

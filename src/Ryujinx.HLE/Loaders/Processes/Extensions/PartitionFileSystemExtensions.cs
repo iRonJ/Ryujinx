@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using LibHac.Common;
-=======
-﻿using LibHac.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Fs;
 using LibHac.Fs.Fsa;
 using LibHac.FsSystem;
@@ -21,7 +17,6 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
 {
     public static class PartitionFileSystemExtensions
     {
-<<<<<<< HEAD
         private static readonly DownloadableContentJsonSerializerContext _contentSerializerContext = new(JsonHelper.GetDefaultSerializerOptions());
         private static readonly TitleUpdateMetadataJsonSerializerContext _titleSerializerContext = new(JsonHelper.GetDefaultSerializerOptions());
 
@@ -30,23 +25,12 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
             where TFormat : IPartitionFileSystemFormat
             where THeader : unmanaged, IPartitionFileSystemHeader
             where TEntry : unmanaged, IPartitionFileSystemEntry
-=======
-        private static readonly DownloadableContentJsonSerializerContext ContentSerializerContext = new(JsonHelper.GetDefaultSerializerOptions());
-        private static readonly TitleUpdateMetadataJsonSerializerContext TitleSerializerContext = new(JsonHelper.GetDefaultSerializerOptions());
-
-        internal static (bool, ProcessResult) TryLoad(this PartitionFileSystem partitionFileSystem, Switch device, string path, out string errorMessage)
->>>>>>> 1ec71635b (sync with main branch)
         {
             errorMessage = null;
 
             // Load required NCAs.
-<<<<<<< HEAD
             Nca mainNca = null;
             Nca patchNca = null;
-=======
-            Nca mainNca    = null;
-            Nca patchNca   = null;
->>>>>>> 1ec71635b (sync with main branch)
             Nca controlNca = null;
 
             try
@@ -108,18 +92,11 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
                     string titleUpdateMetadataPath = System.IO.Path.Combine(AppDataManager.GamesDirPath, titleIdBase.ToString("x16"), "updates.json");
                     if (File.Exists(titleUpdateMetadataPath))
                     {
-<<<<<<< HEAD
                         string updatePath = JsonHelper.DeserializeFromFile(titleUpdateMetadataPath, _titleSerializerContext.TitleUpdateMetadata).Selected;
                         if (File.Exists(updatePath))
                         {
                             PartitionFileSystem updatePartitionFileSystem = new();
                             updatePartitionFileSystem.Initialize(new FileStream(updatePath, FileMode.Open, FileAccess.Read).AsStorage()).ThrowIfFailure();
-=======
-                        string updatePath = JsonHelper.DeserializeFromFile(titleUpdateMetadataPath, TitleSerializerContext.TitleUpdateMetadata).Selected;
-                        if (File.Exists(updatePath))
-                        {
-                            PartitionFileSystem updatePartitionFileSystem = new(new FileStream(updatePath, FileMode.Open, FileAccess.Read).AsStorage());
->>>>>>> 1ec71635b (sync with main branch)
 
                             device.Configuration.VirtualFileSystem.ImportTickets(updatePartitionFileSystem);
 
@@ -170,11 +147,7 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
                 string addOnContentMetadataPath = System.IO.Path.Combine(AppDataManager.GamesDirPath, mainNca.Header.TitleId.ToString("x16"), "dlc.json");
                 if (File.Exists(addOnContentMetadataPath))
                 {
-<<<<<<< HEAD
                     List<DownloadableContentContainer> dlcContainerList = JsonHelper.DeserializeFromFile(addOnContentMetadataPath, _contentSerializerContext.ListDownloadableContentContainer);
-=======
-                    List<DownloadableContentContainer> dlcContainerList = JsonHelper.DeserializeFromFile(addOnContentMetadataPath, ContentSerializerContext.ListDownloadableContentContainer);
->>>>>>> 1ec71635b (sync with main branch)
 
                     foreach (DownloadableContentContainer downloadableContentContainer in dlcContainerList)
                     {
@@ -209,8 +182,4 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
             return new Nca(device.Configuration.VirtualFileSystem.KeySet, ncaFile.Release().AsStorage());
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Buffers;
 
 namespace Ryujinx.Common.Memory
@@ -12,11 +8,7 @@ namespace Ryujinx.Common.Memory
     /// </summary>
     public sealed partial class ByteMemoryPool
     {
-<<<<<<< HEAD
         private static readonly ByteMemoryPool _shared = new();
-=======
-        private static readonly ByteMemoryPool _shared = new ByteMemoryPool();
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Constructs a <see cref="ByteMemoryPool"/> instance. Private to force access through
@@ -35,11 +27,7 @@ namespace Ryujinx.Common.Memory
         /// <summary>
         /// Returns the maximum buffer size supported by this pool.
         /// </summary>
-<<<<<<< HEAD
         public static int MaxBufferSize => Array.MaxLength;
-=======
-        public int MaxBufferSize => Array.MaxLength;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Rents a byte memory buffer from <see cref="ArrayPool{Byte}.Shared"/>.
@@ -48,11 +36,7 @@ namespace Ryujinx.Common.Memory
         /// <param name="length">The buffer's required length in bytes</param>
         /// <returns>A <see cref="IMemoryOwner{Byte}"/> wrapping the rented memory</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-<<<<<<< HEAD
         public static IMemoryOwner<byte> Rent(long length)
-=======
-        public IMemoryOwner<byte> Rent(long length)
->>>>>>> 1ec71635b (sync with main branch)
             => RentImpl(checked((int)length));
 
         /// <summary>
@@ -62,11 +46,7 @@ namespace Ryujinx.Common.Memory
         /// <param name="length">The buffer's required length in bytes</param>
         /// <returns>A <see cref="IMemoryOwner{Byte}"/> wrapping the rented memory</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-<<<<<<< HEAD
         public static IMemoryOwner<byte> Rent(ulong length)
-=======
-        public IMemoryOwner<byte> Rent(ulong length)
->>>>>>> 1ec71635b (sync with main branch)
             => RentImpl(checked((int)length));
 
         /// <summary>
@@ -76,11 +56,7 @@ namespace Ryujinx.Common.Memory
         /// <param name="length">The buffer's required length in bytes</param>
         /// <returns>A <see cref="IMemoryOwner{Byte}"/> wrapping the rented memory</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-<<<<<<< HEAD
         public static IMemoryOwner<byte> Rent(int length)
-=======
-        public IMemoryOwner<byte> Rent(int length)
->>>>>>> 1ec71635b (sync with main branch)
             => RentImpl(length);
 
         /// <summary>
@@ -90,11 +66,7 @@ namespace Ryujinx.Common.Memory
         /// <param name="length">The buffer's required length in bytes</param>
         /// <returns>A <see cref="IMemoryOwner{Byte}"/> wrapping the rented memory</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-<<<<<<< HEAD
         public static IMemoryOwner<byte> RentCleared(long length)
-=======
-        public IMemoryOwner<byte> RentCleared(long length)
->>>>>>> 1ec71635b (sync with main branch)
             => RentCleared(checked((int)length));
 
         /// <summary>
@@ -104,11 +76,7 @@ namespace Ryujinx.Common.Memory
         /// <param name="length">The buffer's required length in bytes</param>
         /// <returns>A <see cref="IMemoryOwner{Byte}"/> wrapping the rented memory</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-<<<<<<< HEAD
         public static IMemoryOwner<byte> RentCleared(ulong length)
-=======
-        public IMemoryOwner<byte> RentCleared(ulong length)
->>>>>>> 1ec71635b (sync with main branch)
             => RentCleared(checked((int)length));
 
         /// <summary>
@@ -118,21 +86,12 @@ namespace Ryujinx.Common.Memory
         /// <param name="length">The buffer's required length in bytes</param>
         /// <returns>A <see cref="IMemoryOwner{Byte}"/> wrapping the rented memory</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-<<<<<<< HEAD
         public static IMemoryOwner<byte> RentCleared(int length)
         {
             var buffer = RentImpl(length);
 
             buffer.Memory.Span.Clear();
 
-=======
-        public IMemoryOwner<byte> RentCleared(int length)
-        {
-            var buffer = RentImpl(length);
-            
-            buffer.Memory.Span.Clear();
-            
->>>>>>> 1ec71635b (sync with main branch)
             return buffer;
         }
 

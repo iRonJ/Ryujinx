@@ -23,8 +23,4 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// </summary>
         public Span<byte> SpecificData => SpanHelpers.AsSpan<SpecificDataStruct, byte>(ref _specificDataStart);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

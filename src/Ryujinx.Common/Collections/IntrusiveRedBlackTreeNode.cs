@@ -13,8 +13,4 @@ namespace Ryujinx.Common.Collections
         public T Predecessor => IntrusiveRedBlackTreeImpl<T>.PredecessorOf((T)this);
         public T Successor => IntrusiveRedBlackTreeImpl<T>.SuccessorOf((T)this);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

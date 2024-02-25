@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Diagnostics.Tracing;
-=======
-﻿using System.Diagnostics.Tracing;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 
 namespace ARMeilleure.Diagnostics
@@ -23,31 +19,19 @@ namespace ARMeilleure.Diagnostics
         {
             _rejitQueueCounter = new PollingCounter("rejit-queue-length", this, () => _rejitQueue)
             {
-<<<<<<< HEAD
                 DisplayName = "Rejit Queue Length",
-=======
-                DisplayName = "Rejit Queue Length"
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             _funcTabSizeCounter = new PollingCounter("addr-tab-alloc", this, () => _funcTabSize / 1024d / 1024d)
             {
                 DisplayName = "AddressTable Total Bytes Allocated",
-<<<<<<< HEAD
                 DisplayUnits = "MiB",
-=======
-                DisplayUnits = "MiB"
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             _funcTabLeafSizeCounter = new PollingCounter("addr-tab-leaf-alloc", this, () => _funcTabLeafSize / 1024d / 1024d)
             {
                 DisplayName = "AddressTable Total Leaf Bytes Allocated",
-<<<<<<< HEAD
                 DisplayUnits = "MiB",
-=======
-                DisplayUnits = "MiB"
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 

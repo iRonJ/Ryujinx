@@ -29,8 +29,4 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

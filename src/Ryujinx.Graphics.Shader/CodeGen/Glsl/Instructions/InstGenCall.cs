@@ -26,8 +26,4 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             return $"{function.Name}({string.Join(", ", args)})";
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

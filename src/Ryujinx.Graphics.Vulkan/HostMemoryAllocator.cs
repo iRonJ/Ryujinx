@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Collections;
 using Ryujinx.Common.Logging;
 using Silk.NET.Vulkan;
@@ -14,11 +10,7 @@ namespace Ryujinx.Graphics.Vulkan
 {
     internal class HostMemoryAllocator
     {
-<<<<<<< HEAD
         private readonly struct HostMemoryAllocation
-=======
-        private struct HostMemoryAllocation
->>>>>>> 1ec71635b (sync with main branch)
         {
             public readonly Auto<MemoryAllocation> Allocation;
             public readonly IntPtr Pointer;
@@ -41,13 +33,8 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly Device _device;
         private readonly object _lock = new();
 
-<<<<<<< HEAD
         private readonly List<HostMemoryAllocation> _allocations;
         private readonly IntervalTree<ulong, HostMemoryAllocation> _allocationTree;
-=======
-        private List<HostMemoryAllocation> _allocations;
-        private IntervalTree<ulong, HostMemoryAllocation> _allocationTree;
->>>>>>> 1ec71635b (sync with main branch)
 
         public HostMemoryAllocator(MemoryAllocator allocator, Vk api, ExtExternalMemoryHost hostMemoryApi, Device device)
         {
@@ -113,7 +100,6 @@ namespace Ryujinx.Graphics.Vulkan
                     return false;
                 }
 
-<<<<<<< HEAD
                 ImportMemoryHostPointerInfoEXT importInfo = new()
                 {
                     SType = StructureType.ImportMemoryHostPointerInfoExt,
@@ -122,25 +108,11 @@ namespace Ryujinx.Graphics.Vulkan
                 };
 
                 var memoryAllocateInfo = new MemoryAllocateInfo
-=======
-                ImportMemoryHostPointerInfoEXT importInfo = new ImportMemoryHostPointerInfoEXT()
-                {
-                    SType = StructureType.ImportMemoryHostPointerInfoExt,
-                    HandleType = ExternalMemoryHandleTypeFlags.HostAllocationBitExt,
-                    PHostPointer = (void*)pageAlignedPointer
-                };
-
-                var memoryAllocateInfo = new MemoryAllocateInfo()
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     SType = StructureType.MemoryAllocateInfo,
                     AllocationSize = pageAlignedSize,
                     MemoryTypeIndex = (uint)memoryTypeIndex,
-<<<<<<< HEAD
                     PNext = &importInfo,
-=======
-                    PNext = &importInfo
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 Result result = _api.AllocateMemory(_device, memoryAllocateInfo, null, out var deviceMemory);

@@ -64,20 +64,12 @@ namespace ARMeilleure.Instructions
         #region "System registers"
         public static ulong GetCtrEl0()
         {
-<<<<<<< HEAD
             return GetContext().CtrEl0;
-=======
-            return (ulong)GetContext().CtrEl0;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static ulong GetDczidEl0()
         {
-<<<<<<< HEAD
             return GetContext().DczidEl0;
-=======
-            return (ulong)GetContext().DczidEl0;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static ulong GetCntfrqEl0()
@@ -200,8 +192,4 @@ namespace ARMeilleure.Instructions
             return Context.Memory;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

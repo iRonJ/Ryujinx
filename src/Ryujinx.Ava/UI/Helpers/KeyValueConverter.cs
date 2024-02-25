@@ -43,8 +43,4 @@ namespace Ryujinx.Ava.UI.Helpers
             return key;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

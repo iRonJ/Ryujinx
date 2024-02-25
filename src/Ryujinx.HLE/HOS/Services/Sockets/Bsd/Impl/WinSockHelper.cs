@@ -1,9 +1,5 @@
 using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Net.Sockets;
 
@@ -92,11 +88,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             // WSAEFAULT
             { WsaError.WSAEFAULT,          LinuxError.EFAULT },
             // NOERROR
-<<<<<<< HEAD
             { 0, 0 },
-=======
-            { 0, 0 }
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private static readonly Dictionary<int, LinuxError> _errorMapMacOs = new()
@@ -144,11 +136,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             { 59, LinuxError.ETOOMANYREFS },
             { 92, LinuxError.EILSEQ },
             { 89, LinuxError.ECANCELED },
-<<<<<<< HEAD
             { 84, LinuxError.EOVERFLOW },
-=======
-            { 84, LinuxError.EOVERFLOW }
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private static readonly Dictionary<BsdSocketOption, SocketOptionName> _soSocketOptionMap = new()
@@ -169,11 +157,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             { BsdSocketOption.SoSndTimeo,    SocketOptionName.SendTimeout },
             { BsdSocketOption.SoRcvTimeo,    SocketOptionName.ReceiveTimeout },
             { BsdSocketOption.SoError,       SocketOptionName.Error },
-<<<<<<< HEAD
             { BsdSocketOption.SoType,        SocketOptionName.Type },
-=======
-            { BsdSocketOption.SoType,        SocketOptionName.Type }
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private static readonly Dictionary<BsdSocketOption, SocketOptionName> _ipSocketOptionMap = new()
@@ -188,11 +172,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             { BsdSocketOption.IpDropMembership,       SocketOptionName.DropMembership },
             { BsdSocketOption.IpDontFrag,             SocketOptionName.DontFragment },
             { BsdSocketOption.IpAddSourceMembership,  SocketOptionName.AddSourceMembership },
-<<<<<<< HEAD
             { BsdSocketOption.IpDropSourceMembership, SocketOptionName.DropSourceMembership },
-=======
-            { BsdSocketOption.IpDropSourceMembership, SocketOptionName.DropSourceMembership }
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private static readonly Dictionary<BsdSocketOption, SocketOptionName> _tcpSocketOptionMap = new()
@@ -200,7 +180,6 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             { BsdSocketOption.TcpNoDelay,   SocketOptionName.NoDelay },
             { BsdSocketOption.TcpKeepIdle,  SocketOptionName.TcpKeepAliveTime },
             { BsdSocketOption.TcpKeepIntvl, SocketOptionName.TcpKeepAliveInterval },
-<<<<<<< HEAD
             { BsdSocketOption.TcpKeepCnt,   SocketOptionName.TcpKeepAliveRetryCount },
         };
 
@@ -300,9 +279,6 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             { BsdSocketOption.TcpKeepIdle,   OptionDir.GetSet },
             { BsdSocketOption.TcpKeepIntvl,  OptionDir.GetSet },
             { BsdSocketOption.TcpKeepCnt,    OptionDir.GetSet },
-=======
-            { BsdSocketOption.TcpKeepCnt,   SocketOptionName.TcpKeepAliveRetryCount }
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         public static LinuxError ConvertError(WsaError errorCode)
@@ -332,11 +308,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
                 SocketOptionLevel.Socket => _soSocketOptionMap,
                 SocketOptionLevel.IP => _ipSocketOptionMap,
                 SocketOptionLevel.Tcp => _tcpSocketOptionMap,
-<<<<<<< HEAD
                 _ => null,
-=======
-                _ => null
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             if (table == null)
@@ -347,7 +319,6 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
 
             return table.TryGetValue(option, out name);
         }
-<<<<<<< HEAD
 
         public static LinuxError ValidateSocketOption(BsdSocketOption option, SocketOptionLevel level, bool write)
         {
@@ -374,7 +345,3 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
         }
     }
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

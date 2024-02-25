@@ -9,26 +9,15 @@ namespace Ryujinx.Horizon
     {
         private const ulong InvalidAddress = ulong.MaxValue;
 
-<<<<<<< HEAD
         private readonly struct Range : IComparable<Range>
         {
             public ulong Offset { get; }
             public ulong Size { get; }
-=======
-        private struct Range : IComparable<Range>
-        {
-            public ulong Offset { get; }
-            public ulong Size   { get; }
->>>>>>> 1ec71635b (sync with main branch)
 
             public Range(ulong offset, ulong size)
             {
                 Offset = offset;
-<<<<<<< HEAD
                 Size = size;
-=======
-                Size   = size;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             public int CompareTo(Range other)
@@ -42,11 +31,7 @@ namespace Ryujinx.Horizon
 
         public HeapAllocator()
         {
-<<<<<<< HEAD
             _freeRanges = new List<Range>();
-=======
-            _freeRanges      = new List<Range>();
->>>>>>> 1ec71635b (sync with main branch)
             _currentHeapSize = 0;
         }
 
@@ -85,13 +70,8 @@ namespace Ryujinx.Horizon
                 var range = _freeRanges[i];
 
                 ulong alignedOffset = BitUtils.AlignUp(range.Offset, alignment);
-<<<<<<< HEAD
                 ulong sizeDelta = alignedOffset - range.Offset;
                 ulong usableSize = range.Size - sizeDelta;
-=======
-                ulong sizeDelta     = alignedOffset - range.Offset;
-                ulong usableSize    = range.Size - sizeDelta;
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (sizeDelta < range.Size && usableSize >= size)
                 {
@@ -102,11 +82,7 @@ namespace Ryujinx.Horizon
                         InsertFreeRange(range.Offset, sizeDelta);
                     }
 
-<<<<<<< HEAD
                     ulong endOffset = range.Offset + range.Size;
-=======
-                    ulong endOffset     = range.Offset + range.Size;
->>>>>>> 1ec71635b (sync with main branch)
                     ulong remainingSize = endOffset - (alignedOffset + size);
                     if (remainingSize != 0)
                     {
@@ -164,8 +140,4 @@ namespace Ryujinx.Horizon
             _freeRanges.Insert(index, range);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

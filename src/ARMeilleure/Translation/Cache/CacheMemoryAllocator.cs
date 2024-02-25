@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
@@ -27,11 +23,7 @@ namespace ARMeilleure.Translation.Cache
             }
         }
 
-<<<<<<< HEAD
         private readonly List<MemoryBlock> _blocks = new();
-=======
-        private readonly List<MemoryBlock> _blocks = new List<MemoryBlock>();
->>>>>>> 1ec71635b (sync with main branch)
 
         public CacheMemoryAllocator(int capacity)
         {

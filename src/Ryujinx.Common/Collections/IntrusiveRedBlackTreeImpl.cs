@@ -10,11 +10,7 @@ namespace Ryujinx.Common.Collections
     {
         protected const bool Black = true;
         protected const bool Red = false;
-<<<<<<< HEAD
         protected T Root;
-=======
-        protected T Root = null;
->>>>>>> 1ec71635b (sync with main branch)
 
         internal T RootNode => Root;
 

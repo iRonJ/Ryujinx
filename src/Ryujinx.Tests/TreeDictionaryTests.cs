@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using NUnit.Framework;
-=======
-﻿using NUnit.Framework;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Collections;
 using System;
 using System.Collections.Generic;
@@ -14,11 +10,7 @@ namespace Ryujinx.Tests.Collections
         [Test]
         public void EnsureAddIntegrity()
         {
-<<<<<<< HEAD
             TreeDictionary<int, int> dictionary = new();
-=======
-            TreeDictionary<int, int> dictionary = new TreeDictionary<int, int>();
->>>>>>> 1ec71635b (sync with main branch)
 
             Assert.AreEqual(dictionary.Count, 0);
 
@@ -43,11 +35,7 @@ namespace Ryujinx.Tests.Collections
              *              5    11
              *  
              */
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 1ec71635b (sync with main branch)
             Assert.AreEqual(list.Count, dictionary.Count);
             Assert.AreEqual(list[0].Key, 2);
             Assert.AreEqual(list[1].Key, 1);
@@ -61,11 +49,7 @@ namespace Ryujinx.Tests.Collections
         [Test]
         public void EnsureRemoveIntegrity()
         {
-<<<<<<< HEAD
             TreeDictionary<int, int> dictionary = new();
-=======
-            TreeDictionary<int, int> dictionary = new TreeDictionary<int, int>();
->>>>>>> 1ec71635b (sync with main branch)
 
             Assert.AreEqual(dictionary.Count, 0);
 
@@ -181,11 +165,7 @@ namespace Ryujinx.Tests.Collections
         [Test]
         public void EnsureOverwriteIntegrity()
         {
-<<<<<<< HEAD
             TreeDictionary<int, int> dictionary = new();
-=======
-            TreeDictionary<int, int> dictionary = new TreeDictionary<int, int>();
->>>>>>> 1ec71635b (sync with main branch)
 
             Assert.AreEqual(dictionary.Count, 0);
 

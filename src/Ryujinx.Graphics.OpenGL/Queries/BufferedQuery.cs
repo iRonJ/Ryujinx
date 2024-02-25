@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using OpenTK.Graphics.OpenGL;
-=======
-﻿using OpenTK.Graphics.OpenGL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using System;
 using System.Runtime.InteropServices;
@@ -18,15 +14,9 @@ namespace Ryujinx.Graphics.OpenGL.Queries
 
         public int Query { get; }
 
-<<<<<<< HEAD
         private readonly int _buffer;
         private readonly IntPtr _bufferMap;
         private readonly QueryTarget _type;
-=======
-        private int _buffer;
-        private IntPtr _bufferMap;
-        private QueryTarget _type;
->>>>>>> 1ec71635b (sync with main branch)
 
         public BufferedQuery(QueryTarget type)
         {
@@ -74,11 +64,7 @@ namespace Ryujinx.Graphics.OpenGL.Queries
             }
         }
 
-<<<<<<< HEAD
         private static bool WaitingForValue(long data)
-=======
-        private bool WaitingForValue(long data)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return data == DefaultValue ||
                 ((ulong)data & HighMask) == (unchecked((ulong)DefaultValue) & HighMask);

@@ -3,32 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace Ryujinx.Graphics.Vulkan.MoltenVK
 {
-<<<<<<< HEAD
     enum MVKConfigLogLevel
-=======
-    enum MVKConfigLogLevel : int
->>>>>>> 1ec71635b (sync with main branch)
     {
         None = 0,
         Error = 1,
         Warning = 2,
         Info = 3,
-<<<<<<< HEAD
         Debug = 4,
     }
 
     enum MVKConfigTraceVulkanCalls
-=======
-        Debug = 4
-    }
-
-    enum MVKConfigTraceVulkanCalls : int
->>>>>>> 1ec71635b (sync with main branch)
     {
         None = 0,
         Enter = 1,
         EnterExit = 2,
-<<<<<<< HEAD
         Duration = 3,
     }
 
@@ -41,45 +29,20 @@ namespace Ryujinx.Graphics.Vulkan.MoltenVK
 
     [Flags]
     enum MVKConfigAdvertiseExtensions
-=======
-        Duration = 3
-    }
-
-    enum MVKConfigAutoGPUCaptureScope : int
-    {
-        None = 0,
-        Device = 1,
-        Frame = 2
-    }
-
-    [Flags]
-    enum MVKConfigAdvertiseExtensions : int
->>>>>>> 1ec71635b (sync with main branch)
     {
         All = 0x00000001,
         MoltenVK = 0x00000002,
         WSI = 0x00000004,
-<<<<<<< HEAD
         Portability = 0x00000008,
     }
 
     enum MVKVkSemaphoreSupportStyle
-=======
-        Portability = 0x00000008
-    }
-
-    enum MVKVkSemaphoreSupportStyle : int
->>>>>>> 1ec71635b (sync with main branch)
     {
         MVK_CONFIG_VK_SEMAPHORE_SUPPORT_STYLE_SINGLE_QUEUE = 0,
         MVK_CONFIG_VK_SEMAPHORE_SUPPORT_STYLE_METAL_EVENTS_WHERE_SAFE = 1,
         MVK_CONFIG_VK_SEMAPHORE_SUPPORT_STYLE_METAL_EVENTS = 2,
         MVK_CONFIG_VK_SEMAPHORE_SUPPORT_STYLE_CALLBACK = 3,
-<<<<<<< HEAD
         MVK_CONFIG_VK_SEMAPHORE_SUPPORT_STYLE_MAX_ENUM = 0x7FFFFFFF,
-=======
-        MVK_CONFIG_VK_SEMAPHORE_SUPPORT_STYLE_MAX_ENUM = 0x7FFFFFFF
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     readonly struct Bool32
@@ -97,11 +60,7 @@ namespace Ryujinx.Graphics.Vulkan.MoltenVK
         }
 
         public static implicit operator bool(Bool32 val) => val.Value == 1;
-<<<<<<< HEAD
         public static implicit operator Bool32(bool val) => new(val);
-=======
-        public static implicit operator Bool32(bool val) => new Bool32(val);
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     [StructLayout(LayoutKind.Sequential)]

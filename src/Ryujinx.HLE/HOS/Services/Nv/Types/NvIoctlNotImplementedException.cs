@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Nv.NvDrvServices;
-=======
-﻿using Ryujinx.HLE.HOS.Services.Nv.NvDrvServices;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Text;
 
@@ -10,15 +6,9 @@ namespace Ryujinx.HLE.HOS.Services.Nv.Types
 {
     class NvIoctlNotImplementedException : Exception
     {
-<<<<<<< HEAD
         public ServiceCtx Context { get; }
         public NvDeviceFile DeviceFile { get; }
         public NvIoctl Command { get; }
-=======
-        public ServiceCtx   Context    { get; }
-        public NvDeviceFile DeviceFile { get; }
-        public NvIoctl      Command    { get; }
->>>>>>> 1ec71635b (sync with main branch)
 
         public NvIoctlNotImplementedException(ServiceCtx context, NvDeviceFile deviceFile, NvIoctl command)
             : this(context, deviceFile, command, "The ioctl is not implemented.")
@@ -27,15 +17,9 @@ namespace Ryujinx.HLE.HOS.Services.Nv.Types
         public NvIoctlNotImplementedException(ServiceCtx context, NvDeviceFile deviceFile, NvIoctl command, string message)
             : base(message)
         {
-<<<<<<< HEAD
             Context = context;
             DeviceFile = deviceFile;
             Command = command;
-=======
-            Context    = context;
-            DeviceFile = deviceFile;
-            Command    = command;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override string Message
@@ -51,11 +35,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.Types
 
         private string BuildMessage()
         {
-<<<<<<< HEAD
             StringBuilder sb = new();
-=======
-            StringBuilder sb = new StringBuilder();
->>>>>>> 1ec71635b (sync with main branch)
 
             sb.AppendLine($"Device File: {DeviceFile.GetType().Name}");
             sb.AppendLine();

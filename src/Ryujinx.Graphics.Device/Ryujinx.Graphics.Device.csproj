@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-<<<<<<< HEAD
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
@@ -9,9 +8,4 @@
     <ProjectReference Include="..\Ryujinx.Memory\Ryujinx.Memory.csproj" />
   </ItemGroup>
 
-=======
-    <TargetFramework>net7.0</TargetFramework>
-  </PropertyGroup>
-
->>>>>>> 1ec71635b (sync with main branch)
 </Project>

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
-=======
-﻿using Ryujinx.Horizon.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -16,11 +12,7 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
             return ProcessMessageImpl(ref context, ((DomainServiceObject)context.ServiceObject).GetServerDomain(), inRawData);
         }
 
-<<<<<<< HEAD
         private static Result ProcessMessageImpl(ref ServiceDispatchContext context, ServerDomainBase domain, ReadOnlySpan<byte> inRawData)
-=======
-        private Result ProcessMessageImpl(ref ServiceDispatchContext context, ServerDomainBase domain, ReadOnlySpan<byte> inRawData)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (inRawData.Length < Unsafe.SizeOf<CmifDomainInHeader>())
             {

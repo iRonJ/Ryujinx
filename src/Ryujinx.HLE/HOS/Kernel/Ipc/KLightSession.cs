@@ -13,8 +13,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             ClientSession = new KLightClientSession(context, this);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

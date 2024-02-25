@@ -10,11 +10,7 @@ namespace Ryujinx.Audio.Backends.Common
     {
         private const int RingBufferAlignment = 2048;
 
-<<<<<<< HEAD
         private readonly object _lock = new();
-=======
-        private object _lock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         private byte[] _buffer;
         private int _size;
@@ -167,8 +163,4 @@ namespace Ryujinx.Audio.Backends.Common
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

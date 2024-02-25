@@ -72,8 +72,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
             return memoryManager.UnmapPages(address, _pageList, MemoryState.SharedMemory);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

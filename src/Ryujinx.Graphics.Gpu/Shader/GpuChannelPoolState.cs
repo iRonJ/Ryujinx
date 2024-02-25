@@ -2,10 +2,7 @@ using System;
 
 namespace Ryujinx.Graphics.Gpu.Shader
 {
-<<<<<<< HEAD
 #pragma warning disable CS0659 // Class overrides Object.Equals(object o) but does not override Object.GetHashCode()
-=======
->>>>>>> 1ec71635b (sync with main branch)
     /// <summary>
     /// State used by the <see cref="GpuAccessor"/>.
     /// </summary>
@@ -50,7 +47,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 TexturePoolMaximumId == other.TexturePoolMaximumId &&
                 TextureBufferIndex == other.TextureBufferIndex;
         }
-<<<<<<< HEAD
 
         public override bool Equals(object obj)
         {
@@ -59,7 +55,3 @@ namespace Ryujinx.Graphics.Gpu.Shader
     }
 #pragma warning restore CS0659
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Silk.NET.Vulkan;
-=======
-﻿using Silk.NET.Vulkan;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Threading;
 
@@ -21,15 +17,9 @@ namespace Ryujinx.Graphics.Vulkan
             _api = api;
             _device = device;
 
-<<<<<<< HEAD
             var fenceCreateInfo = new FenceCreateInfo
             {
                 SType = StructureType.FenceCreateInfo,
-=======
-            var fenceCreateInfo = new FenceCreateInfo()
-            {
-                SType = StructureType.FenceCreateInfo
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             api.CreateFence(device, in fenceCreateInfo, null, out _fence).ThrowOnError();
@@ -80,11 +70,7 @@ namespace Ryujinx.Graphics.Vulkan
         {
             Span<Fence> fences = stackalloc Fence[]
             {
-<<<<<<< HEAD
                 _fence,
-=======
-                _fence
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             FenceHelper.WaitAllIndefinitely(_api, _device, fences);
@@ -94,11 +80,7 @@ namespace Ryujinx.Graphics.Vulkan
         {
             Span<Fence> fences = stackalloc Fence[]
             {
-<<<<<<< HEAD
                 _fence,
-=======
-                _fence
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             return FenceHelper.AllSignaled(_api, _device, fences);

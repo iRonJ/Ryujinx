@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
-=======
-﻿namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
->>>>>>> 1ec71635b (sync with main branch)
 {
     enum AVLog
     {
@@ -14,10 +10,6 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
         Verbose = 40,
         Debug = 48,
         Trace = 56,
-<<<<<<< HEAD
         MaxOffset = 64,
-=======
-        MaxOffset = 64
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -14,11 +14,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
     {
         private const int Mod0 = 'M' << 0 | 'O' << 8 | 'D' << 16 | '0' << 24;
 
-<<<<<<< HEAD
         private readonly KProcess _owner;
-=======
-        private KProcess _owner;
->>>>>>> 1ec71635b (sync with main branch)
 
         private class Image
         {
@@ -31,21 +27,12 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             public Image(ulong baseAddress, ulong size, ElfSymbol[] symbols)
             {
                 BaseAddress = baseAddress;
-<<<<<<< HEAD
                 Size = size;
                 Symbols = symbols;
             }
         }
 
         private readonly List<Image> _images;
-=======
-                Size        = size;
-                Symbols     = symbols;
-            }
-        }
-
-        private List<Image> _images;
->>>>>>> 1ec71635b (sync with main branch)
 
         private int _loaded;
 
@@ -62,11 +49,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
             var context = thread.Context;
 
-<<<<<<< HEAD
             StringBuilder trace = new();
-=======
-            StringBuilder trace = new StringBuilder();
->>>>>>> 1ec71635b (sync with main branch)
 
             trace.AppendLine($"Process: {_owner.Name}, PID: {_owner.Pid}");
 
@@ -128,11 +111,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
             var context = thread.Context;
 
-<<<<<<< HEAD
             StringBuilder sb = new();
-=======
-            StringBuilder sb = new StringBuilder();
->>>>>>> 1ec71635b (sync with main branch)
 
             string GetReg(int x)
             {
@@ -166,19 +145,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             return sb.ToString();
         }
 
-<<<<<<< HEAD
         private static bool TryGetSubName(Image image, ulong address, out ElfSymbol symbol)
         {
             address -= image.BaseAddress;
 
             int left = 0;
-=======
-        private bool TryGetSubName(Image image, ulong address, out ElfSymbol symbol)
-        {
-            address -= image.BaseAddress;
-
-            int left  = 0;
->>>>>>> 1ec71635b (sync with main branch)
             int right = image.Symbols.Length - 1;
 
             while (left <= right)
@@ -219,15 +190,9 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             public ulong Offset;
             public ulong SubOffset;
 
-<<<<<<< HEAD
             public readonly string ImageDisplay => $"{ImageName}:0x{Offset:x4}";
             public readonly string SubDisplay => SubOffset == 0 ? SubName : $"{SubName}:0x{SubOffset:x4}";
             public readonly string SpDisplay => SubOffset == 0 ? "SP" : $"SP:-0x{SubOffset:x4}";
-=======
-            public string ImageDisplay => $"{ImageName}:0x{Offset:x4}";
-            public string SubDisplay => SubOffset == 0 ? SubName : $"{SubName}:0x{SubOffset:x4}";
-            public string SpDisplay => SubOffset == 0 ? "SP" : $"SP:-0x{SubOffset:x4}";
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private bool AnalyzePointer(out PointerInfo info, ulong address, KThread thread)
@@ -359,11 +324,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
         private void ScanMemoryForTextSegments()
         {
             ulong oldAddress = 0;
-<<<<<<< HEAD
             ulong address = 0;
-=======
-            ulong address    = 0;
->>>>>>> 1ec71635b (sync with main branch)
 
             while (address >= oldAddress)
             {
@@ -394,11 +355,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
                 return;
             }
 
-<<<<<<< HEAD
             Dictionary<ElfDynamicTag, ulong> dynamic = new();
-=======
-            Dictionary<ElfDynamicTag, ulong> dynamic = new Dictionary<ElfDynamicTag, ulong>();
->>>>>>> 1ec71635b (sync with main branch)
 
             int mod0Magic = memory.Read<int>(mod0Offset + 0x0);
 
@@ -407,21 +364,12 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
                 return;
             }
 
-<<<<<<< HEAD
             ulong dynamicOffset = memory.Read<uint>(mod0Offset + 0x4) + mod0Offset;
             ulong bssStartOffset = memory.Read<uint>(mod0Offset + 0x8) + mod0Offset;
             ulong bssEndOffset = memory.Read<uint>(mod0Offset + 0xc) + mod0Offset;
             ulong ehHdrStartOffset = memory.Read<uint>(mod0Offset + 0x10) + mod0Offset;
             ulong ehHdrEndOffset = memory.Read<uint>(mod0Offset + 0x14) + mod0Offset;
             ulong modObjOffset = memory.Read<uint>(mod0Offset + 0x18) + mod0Offset;
-=======
-            ulong dynamicOffset    = memory.Read<uint>(mod0Offset + 0x4)  + mod0Offset;
-            ulong bssStartOffset   = memory.Read<uint>(mod0Offset + 0x8)  + mod0Offset;
-            ulong bssEndOffset     = memory.Read<uint>(mod0Offset + 0xc)  + mod0Offset;
-            ulong ehHdrStartOffset = memory.Read<uint>(mod0Offset + 0x10) + mod0Offset;
-            ulong ehHdrEndOffset   = memory.Read<uint>(mod0Offset + 0x14) + mod0Offset;
-            ulong modObjOffset     = memory.Read<uint>(mod0Offset + 0x18) + mod0Offset;
->>>>>>> 1ec71635b (sync with main branch)
 
             bool isAArch32 = memory.Read<ulong>(dynamicOffset) > 0xFFFFFFFF || memory.Read<ulong>(dynamicOffset + 0x10) > 0xFFFFFFFF;
 
@@ -433,22 +381,14 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
                 if (isAArch32)
                 {
                     tagVal = memory.Read<uint>(dynamicOffset + 0);
-<<<<<<< HEAD
                     value = memory.Read<uint>(dynamicOffset + 4);
-=======
-                    value  = memory.Read<uint>(dynamicOffset + 4);
->>>>>>> 1ec71635b (sync with main branch)
 
                     dynamicOffset += 0x8;
                 }
                 else
                 {
                     tagVal = memory.Read<ulong>(dynamicOffset + 0);
-<<<<<<< HEAD
                     value = memory.Read<ulong>(dynamicOffset + 8);
-=======
-                    value  = memory.Read<ulong>(dynamicOffset + 8);
->>>>>>> 1ec71635b (sync with main branch)
 
                     dynamicOffset += 0x10;
                 }
@@ -473,11 +413,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             ulong strTblAddr = textOffset + strTab;
             ulong symTblAddr = textOffset + symTab;
 
-<<<<<<< HEAD
             List<ElfSymbol> symbols = new();
-=======
-            List<ElfSymbol> symbols = new List<ElfSymbol>();
->>>>>>> 1ec71635b (sync with main branch)
 
             while (symTblAddr < strTblAddr)
             {
@@ -494,17 +430,12 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             }
         }
 
-<<<<<<< HEAD
         private static ElfSymbol GetSymbol64(IVirtualMemoryManager memory, ulong address, ulong strTblAddr)
-=======
-        private ElfSymbol GetSymbol64(IVirtualMemoryManager memory, ulong address, ulong strTblAddr)
->>>>>>> 1ec71635b (sync with main branch)
         {
             ElfSymbol64 sym = memory.Read<ElfSymbol64>(address);
 
             uint nameIndex = sym.NameOffset;
 
-<<<<<<< HEAD
             StringBuilder nameBuilder = new();
 
             for (int chr; (chr = memory.Read<byte>(strTblAddr + nameIndex++)) != 0;)
@@ -516,25 +447,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
         }
 
         private static ElfSymbol GetSymbol32(IVirtualMemoryManager memory, ulong address, ulong strTblAddr)
-=======
-            string name = string.Empty;
-
-            for (int chr; (chr = memory.Read<byte>(strTblAddr + nameIndex++)) != 0;)
-            {
-                name += (char)chr;
-            }
-
-            return new ElfSymbol(name, sym.Info, sym.Other, sym.SectionIndex, sym.ValueAddress, sym.Size);
-        }
-
-        private ElfSymbol GetSymbol32(IVirtualMemoryManager memory, ulong address, ulong strTblAddr)
->>>>>>> 1ec71635b (sync with main branch)
         {
             ElfSymbol32 sym = memory.Read<ElfSymbol32>(address);
 
             uint nameIndex = sym.NameOffset;
 
-<<<<<<< HEAD
             StringBuilder nameBuilder = new();
 
             for (int chr; (chr = memory.Read<byte>(strTblAddr + nameIndex++)) != 0;)
@@ -543,16 +460,6 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             }
 
             return new ElfSymbol(nameBuilder.ToString(), sym.Info, sym.Other, sym.SectionIndex, sym.ValueAddress, sym.Size);
-=======
-            string name = string.Empty;
-
-            for (int chr; (chr = memory.Read<byte>(strTblAddr + nameIndex++)) != 0;)
-            {
-                name += (char)chr;
-            }
-
-            return new ElfSymbol(name, sym.Info, sym.Other, sym.SectionIndex, sym.ValueAddress, sym.Size);
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

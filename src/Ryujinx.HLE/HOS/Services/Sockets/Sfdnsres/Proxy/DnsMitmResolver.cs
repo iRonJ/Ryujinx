@@ -19,13 +19,8 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres.Proxy
 
         public void ReloadEntries(ServiceCtx context)
         {
-<<<<<<< HEAD
             string sdPath = FileSystem.VirtualFileSystem.GetSdCardPath();
             string filePath = FileSystem.VirtualFileSystem.GetFullPath(sdPath, HostsFilePath);
-=======
-            string sdPath = context.Device.Configuration.VirtualFileSystem.GetSdCardPath();
-            string filePath = context.Device.Configuration.VirtualFileSystem.GetFullPath(sdPath, HostsFilePath);
->>>>>>> 1ec71635b (sync with main branch)
 
             _mitmHostEntries.Clear();
 
@@ -44,11 +39,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres.Proxy
                     }
 
                     // Ignore comments and empty lines
-<<<<<<< HEAD
                     if (line.StartsWith('#') || line.Trim().Length == 0)
-=======
-                    if (line.StartsWith("#") || line.Trim().Length == 0)
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         continue;
                     }
@@ -103,11 +94,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres.Proxy
                     {
                         AddressList = new[] { hostEntry.Value },
                         HostName = hostEntry.Key,
-<<<<<<< HEAD
                         Aliases = Array.Empty<string>(),
-=======
-                        Aliases = Array.Empty<string>()
->>>>>>> 1ec71635b (sync with main branch)
                     };
                 }
             }
@@ -116,8 +103,4 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres.Proxy
             return Dns.GetHostEntry(host);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -54,8 +54,4 @@ namespace Ryujinx.Audio.Renderer.Utils
         {
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

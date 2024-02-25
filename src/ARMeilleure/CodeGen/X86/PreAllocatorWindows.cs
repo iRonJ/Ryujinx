@@ -155,11 +155,7 @@ namespace ARMeilleure.CodeGen.X86
             node.SetSources(sources);
         }
 
-<<<<<<< HEAD
         public static void InsertTailcallCopies(IntrusiveList<Operation> nodes, Operation node)
-=======
-        public static void InsertTailcallCopies(IntrusiveList<Operation> nodes, StackAllocator stackAlloc, Operation node)
->>>>>>> 1ec71635b (sync with main branch)
         {
             int argsCount = node.SourcesCount - 1;
             int maxArgs = CallingConvention.GetArgumentsOnRegsCount();
@@ -328,8 +324,4 @@ namespace ARMeilleure.CodeGen.X86
             node.SetSources(Array.Empty<Operand>());
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

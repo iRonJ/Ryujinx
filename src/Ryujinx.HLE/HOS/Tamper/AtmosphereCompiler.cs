@@ -9,7 +9,6 @@ namespace Ryujinx.HLE.HOS.Tamper
 {
     class AtmosphereCompiler
     {
-<<<<<<< HEAD
         private readonly ulong _exeAddress;
         private readonly ulong _heapAddress;
         private readonly ulong _aliasAddress;
@@ -23,39 +22,15 @@ namespace Ryujinx.HLE.HOS.Tamper
             _aliasAddress = aliasAddress;
             _aslrAddress = aslrAddress;
             _process = process;
-=======
-        private ulong            _exeAddress;
-        private ulong            _heapAddress;
-        private ulong            _aliasAddress;
-        private ulong            _aslrAddress;
-        private ITamperedProcess _process;
-
-        public AtmosphereCompiler(ulong exeAddress, ulong heapAddress, ulong aliasAddress, ulong aslrAddress, ITamperedProcess process)
-        {
-            _exeAddress   = exeAddress;
-            _heapAddress  = heapAddress;
-            _aliasAddress = aliasAddress;
-            _aslrAddress  = aslrAddress;
-            _process      = process;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ITamperProgram Compile(string name, IEnumerable<string> rawInstructions)
         {
-<<<<<<< HEAD
             string[] addresses = {
                 $"    Executable address: 0x{_exeAddress:X16}",
                 $"    Heap address      : 0x{_heapAddress:X16}",
                 $"    Alias address     : 0x{_aliasAddress:X16}",
                 $"    Aslr address      : 0x{_aslrAddress:X16}",
-=======
-            string[] addresses = new string[]
-            {
-                $"    Executable address: 0x{_exeAddress:X16}",
-                $"    Heap address      : 0x{_heapAddress:X16}",
-                $"    Alias address     : 0x{_aliasAddress:X16}",
-                $"    Aslr address      : 0x{_aslrAddress:X16}"
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             Logger.Debug?.Print(LogClass.TamperMachine, $"Compiling Atmosphere cheat {name}...\n{string.Join('\n', addresses)}");
@@ -64,7 +39,6 @@ namespace Ryujinx.HLE.HOS.Tamper
             {
                 return CompileImpl(name, rawInstructions);
             }
-<<<<<<< HEAD
             catch (TamperCompilationException ex)
             {
                 // Just print the message without the stack trace.
@@ -73,16 +47,6 @@ namespace Ryujinx.HLE.HOS.Tamper
             catch (Exception ex)
             {
                 Logger.Error?.Print(LogClass.TamperMachine, ex.ToString());
-=======
-            catch(TamperCompilationException exception)
-            {
-                // Just print the message without the stack trace.
-                Logger.Error?.Print(LogClass.TamperMachine, exception.Message);
-            }
-            catch (Exception exception)
-            {
-                Logger.Error?.Print(LogClass.TamperMachine, exception.ToString());
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             Logger.Error?.Print(LogClass.TamperMachine, "There was a problem while compiling the Atmosphere cheat");
@@ -92,11 +56,7 @@ namespace Ryujinx.HLE.HOS.Tamper
 
         private ITamperProgram CompileImpl(string name, IEnumerable<string> rawInstructions)
         {
-<<<<<<< HEAD
             CompilationContext context = new(_exeAddress, _heapAddress, _aliasAddress, _aslrAddress, _process);
-=======
-            CompilationContext context = new CompilationContext(_exeAddress, _heapAddress, _aliasAddress, _aslrAddress, _process);
->>>>>>> 1ec71635b (sync with main branch)
             context.BlockStack.Push(new OperationBlock(null));
 
             // Parse the instructions.
@@ -171,11 +131,7 @@ namespace Ryujinx.HLE.HOS.Tamper
 
             // Initialize only the registers used.
 
-<<<<<<< HEAD
             Value<ulong> zero = new(0UL);
-=======
-            Value<ulong> zero = new Value<ulong>(0UL);
->>>>>>> 1ec71635b (sync with main branch)
             int position = 0;
 
             foreach (Register register in context.Registers.Values)
@@ -186,11 +142,7 @@ namespace Ryujinx.HLE.HOS.Tamper
 
             if (context.BlockStack.Count != 1)
             {
-<<<<<<< HEAD
                 throw new TamperCompilationException("Reached end of compilation with unmatched conditional(s) or loop(s)");
-=======
-                throw new TamperCompilationException($"Reached end of compilation with unmatched conditional(s) or loop(s)");
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return new AtmosphereProgram(name, _process, context.PressedKeys, new Block(context.CurrentOperations));

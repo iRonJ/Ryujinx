@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
-=======
-﻿using Ryujinx.Horizon.Sdk.Sf.Hipc;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Horizon.Sdk.Sf
@@ -10,13 +6,8 @@ namespace Ryujinx.Horizon.Sdk.Sf
     [AttributeUsage(AttributeTargets.Parameter)]
     class BufferAttribute : Attribute
     {
-<<<<<<< HEAD
         public HipcBufferFlags Flags { get; }
         public ushort FixedSize { get; }
-=======
-        public HipcBufferFlags Flags     { get; }
-        public ushort          FixedSize { get; }
->>>>>>> 1ec71635b (sync with main branch)
 
         public BufferAttribute(HipcBufferFlags flags)
         {
@@ -25,11 +16,7 @@ namespace Ryujinx.Horizon.Sdk.Sf
 
         public BufferAttribute(HipcBufferFlags flags, ushort fixedSize)
         {
-<<<<<<< HEAD
             Flags = flags | HipcBufferFlags.FixedSize;
-=======
-            Flags     = flags | HipcBufferFlags.FixedSize;
->>>>>>> 1ec71635b (sync with main branch)
             FixedSize = fixedSize;
         }
     }
@@ -48,8 +35,4 @@ namespace Ryujinx.Horizon.Sdk.Sf
     class MoveHandleAttribute : Attribute
     {
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

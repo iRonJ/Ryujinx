@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using LibHac;
-=======
-﻿using LibHac;
->>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using LibHac.Fs;
 using LibHac.Fs.Fsa;
@@ -27,8 +23,4 @@ namespace Ryujinx.HLE.FileSystem
             return Result.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

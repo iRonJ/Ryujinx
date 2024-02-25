@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
-=======
-﻿using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -14,11 +10,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
         private ulong _value;
         private readonly EventFdFlags _flags;
 
-<<<<<<< HEAD
         private readonly object _lock = new();
-=======
-        private object _lock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         public bool Blocking { get => !_flags.HasFlag(EventFdFlags.NonBlocking); set => throw new NotSupportedException(); }
 
@@ -158,8 +150,4 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

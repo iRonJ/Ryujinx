@@ -1,11 +1,8 @@
 using LibHac;
 using LibHac.Common;
 using LibHac.Fs;
-<<<<<<< HEAD
 using LibHac.Fs.Fsa;
 using Ryujinx.Common.Logging;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using Path = LibHac.FsSrv.Sf.Path;
 
 namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
@@ -120,11 +117,7 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
 
             if (result.IsSuccess())
             {
-<<<<<<< HEAD
                 IFile fileInterface = new(ref file.Ref);
-=======
-                IFile fileInterface = new IFile(ref file.Ref);
->>>>>>> 1ec71635b (sync with main branch)
 
                 MakeObject(context, fileInterface);
             }
@@ -145,11 +138,7 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
 
             if (result.IsSuccess())
             {
-<<<<<<< HEAD
                 IDirectory dirInterface = new(ref dir.Ref);
-=======
-                IDirectory dirInterface = new IDirectory(ref dir.Ref);
->>>>>>> 1ec71635b (sync with main branch)
 
                 MakeObject(context, dirInterface);
             }
@@ -161,7 +150,6 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
         // Commit()
         public ResultCode Commit(ServiceCtx context)
         {
-<<<<<<< HEAD
             ResultCode resultCode = (ResultCode)_fileSystem.Get.Commit().Value;
             if (resultCode == ResultCode.PathAlreadyInUse)
             {
@@ -169,9 +157,6 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
             }
 
             return resultCode;
-=======
-            return (ResultCode)_fileSystem.Get.Commit().Value;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CommandCmif(11)]
@@ -225,7 +210,6 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
             return (ResultCode)result.Value;
         }
 
-<<<<<<< HEAD
         [CommandCmif(16)]
         public ResultCode GetFileSystemAttribute(ServiceCtx context)
         {
@@ -236,8 +220,6 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
             return (ResultCode)result.Value;
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         protected override void Dispose(bool isDisposing)
         {
             if (isDisposing)
@@ -246,8 +228,4 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

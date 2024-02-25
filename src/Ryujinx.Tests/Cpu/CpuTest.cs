@@ -13,7 +13,6 @@ namespace Ryujinx.Tests.Cpu
     [TestFixture]
     public class CpuTest
     {
-<<<<<<< HEAD
         protected static readonly ulong Size = MemoryBlock.GetPageSize();
 #pragma warning disable CA2211 // Non-constant fields should not be visible
         protected static ulong CodeBaseAddress = Size;
@@ -24,16 +23,6 @@ namespace Ryujinx.Tests.Cpu
         private static readonly bool _ignoreFpcrDn = false;
 
         private static readonly bool _ignoreAllExceptFpsrQc = false;
-=======
-        protected const ulong Size = 0x1000;
-        protected const ulong CodeBaseAddress = 0x1000;
-        protected const ulong DataBaseAddress = CodeBaseAddress + Size;
-
-        private static bool Ignore_FpcrFz = false;
-        private static bool Ignore_FpcrDn = false;
-
-        private static bool IgnoreAllExcept_FpsrQc = false;
->>>>>>> 1ec71635b (sync with main branch)
 
         private ulong _currAddress;
 
@@ -52,7 +41,6 @@ namespace Ryujinx.Tests.Cpu
         [SetUp]
         public void Setup()
         {
-<<<<<<< HEAD
             int pageBits = (int)ulong.Log2(Size);
 
             _ram = new MemoryBlock(Size * 2);
@@ -73,17 +61,6 @@ namespace Ryujinx.Tests.Cpu
             _memory.Map(DataBaseAddress, Size, Size, MemoryMapFlags.Private);
 
             _context = CpuContext.CreateExecutionContext();
-=======
-            _currAddress = CodeBaseAddress;
-
-            _ram = new MemoryBlock(Size * 2);
-            _memory = new MemoryManager(_ram, 1ul << 16);
-            _memory.IncrementReferenceCount();
-            _memory.Map(CodeBaseAddress, 0, Size * 2, MemoryMapFlags.Private);
-
-            _context = CpuContext.CreateExecutionContext();
-            Translator.IsReadyForTranslation.Set();
->>>>>>> 1ec71635b (sync with main branch)
 
             _cpuContext = new CpuContext(_memory, for64Bit: true);
 
@@ -108,13 +85,8 @@ namespace Ryujinx.Tests.Cpu
             _context.Dispose();
             _ram.Dispose();
 
-<<<<<<< HEAD
             _memory = null;
             _context = null;
-=======
-            _memory     = null;
-            _context    = null;
->>>>>>> 1ec71635b (sync with main branch)
             _cpuContext = null;
             _unicornEmu = null;
 
@@ -138,7 +110,6 @@ namespace Ryujinx.Tests.Cpu
 
         protected ExecutionContext GetContext() => _context;
 
-<<<<<<< HEAD
         protected void SetContext(ulong x0 = 0,
                                   ulong x1 = 0,
                                   ulong x2 = 0,
@@ -171,40 +142,6 @@ namespace Ryujinx.Tests.Cpu
             _context.SetV(3, v3);
             _context.SetV(4, v4);
             _context.SetV(5, v5);
-=======
-        protected void SetContext(ulong x0       = 0,
-                                  ulong x1       = 0,
-                                  ulong x2       = 0,
-                                  ulong x3       = 0,
-                                  ulong x31      = 0,
-                                  V128  v0       = default,
-                                  V128  v1       = default,
-                                  V128  v2       = default,
-                                  V128  v3       = default,
-                                  V128  v4       = default,
-                                  V128  v5       = default,
-                                  V128  v30      = default,
-                                  V128  v31      = default,
-                                  bool  overflow = false,
-                                  bool  carry    = false,
-                                  bool  zero     = false,
-                                  bool  negative = false,
-                                  int   fpcr     = 0,
-                                  int   fpsr     = 0)
-        {
-            _context.SetX(0,  x0);
-            _context.SetX(1,  x1);
-            _context.SetX(2,  x2);
-            _context.SetX(3,  x3);
-            _context.SetX(31, x31);
-
-            _context.SetV(0,  v0);
-            _context.SetV(1,  v1);
-            _context.SetV(2,  v2);
-            _context.SetV(3,  v3);
-            _context.SetV(4,  v4);
-            _context.SetV(5,  v5);
->>>>>>> 1ec71635b (sync with main branch)
             _context.SetV(30, v30);
             _context.SetV(31, v31);
 
@@ -220,7 +157,6 @@ namespace Ryujinx.Tests.Cpu
             _unicornEmu.X[1] = x1;
             _unicornEmu.X[2] = x2;
             _unicornEmu.X[3] = x3;
-<<<<<<< HEAD
             _unicornEmu.SP = x31;
 
             _unicornEmu.Q[0] = V128ToSimdValue(v0);
@@ -229,27 +165,12 @@ namespace Ryujinx.Tests.Cpu
             _unicornEmu.Q[3] = V128ToSimdValue(v3);
             _unicornEmu.Q[4] = V128ToSimdValue(v4);
             _unicornEmu.Q[5] = V128ToSimdValue(v5);
-=======
-            _unicornEmu.SP   = x31;
-
-            _unicornEmu.Q[0]  = V128ToSimdValue(v0);
-            _unicornEmu.Q[1]  = V128ToSimdValue(v1);
-            _unicornEmu.Q[2]  = V128ToSimdValue(v2);
-            _unicornEmu.Q[3]  = V128ToSimdValue(v3);
-            _unicornEmu.Q[4]  = V128ToSimdValue(v4);
-            _unicornEmu.Q[5]  = V128ToSimdValue(v5);
->>>>>>> 1ec71635b (sync with main branch)
             _unicornEmu.Q[30] = V128ToSimdValue(v30);
             _unicornEmu.Q[31] = V128ToSimdValue(v31);
 
             _unicornEmu.OverflowFlag = overflow;
-<<<<<<< HEAD
             _unicornEmu.CarryFlag = carry;
             _unicornEmu.ZeroFlag = zero;
-=======
-            _unicornEmu.CarryFlag    = carry;
-            _unicornEmu.ZeroFlag     = zero;
->>>>>>> 1ec71635b (sync with main branch)
             _unicornEmu.NegativeFlag = negative;
 
             _unicornEmu.Fpcr = fpcr;
@@ -266,7 +187,6 @@ namespace Ryujinx.Tests.Cpu
             }
         }
 
-<<<<<<< HEAD
         protected ExecutionContext SingleOpcode(uint opcode,
                                                 ulong x0 = 0,
                                                 ulong x1 = 0,
@@ -290,40 +210,11 @@ namespace Ryujinx.Tests.Cpu
                                                 bool runUnicorn = true)
         {
             if (_ignoreFpcrFz)
-=======
-        protected ExecutionContext SingleOpcode(uint  opcode,
-                                                ulong x0         = 0,
-                                                ulong x1         = 0,
-                                                ulong x2         = 0,
-                                                ulong x3         = 0,
-                                                ulong x31        = 0,
-                                                V128  v0         = default,
-                                                V128  v1         = default,
-                                                V128  v2         = default,
-                                                V128  v3         = default,
-                                                V128  v4         = default,
-                                                V128  v5         = default,
-                                                V128  v30        = default,
-                                                V128  v31        = default,
-                                                bool  overflow   = false,
-                                                bool  carry      = false,
-                                                bool  zero       = false,
-                                                bool  negative   = false,
-                                                int   fpcr       = 0,
-                                                int   fpsr       = 0,
-                                                bool  runUnicorn = true)
-        {
-            if (Ignore_FpcrFz)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 fpcr &= ~(1 << (int)Fpcr.Fz);
             }
 
-<<<<<<< HEAD
             if (_ignoreFpcrDn)
-=======
-            if (Ignore_FpcrDn)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 fpcr &= ~(1 << (int)Fpcr.Dn);
             }
@@ -364,13 +255,8 @@ namespace Ryujinx.Tests.Cpu
             /// <summary>Round towards Minus Infinity mode.</summary>
             Rm,
             /// <summary>Round towards Zero mode.</summary>
-<<<<<<< HEAD
             Rz,
         }
-=======
-            Rz
-        };
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>Floating-point Control Register.</summary>
         protected enum Fpcr
@@ -378,7 +264,6 @@ namespace Ryujinx.Tests.Cpu
             /// <summary>Rounding Mode control field.</summary>
             RMode = 22,
             /// <summary>Flush-to-zero mode control bit.</summary>
-<<<<<<< HEAD
             Fz = 24,
             /// <summary>Default NaN mode control bit.</summary>
             Dn = 25,
@@ -389,17 +274,6 @@ namespace Ryujinx.Tests.Cpu
         /// <summary>Floating-point Status Register.</summary>
         [Flags]
         protected enum Fpsr
-=======
-            Fz    = 24,
-            /// <summary>Default NaN mode control bit.</summary>
-            Dn    = 25,
-            /// <summary>Alternative half-precision control bit.</summary>
-            Ahp   = 26
-        }
-
-        /// <summary>Floating-point Status Register.</summary>
-        [Flags] protected enum Fpsr
->>>>>>> 1ec71635b (sync with main branch)
         {
             None = 0,
 
@@ -417,18 +291,11 @@ namespace Ryujinx.Tests.Cpu
             Idc = 1 << 7,
 
             /// <summary>Cumulative saturation bit.</summary>
-<<<<<<< HEAD
             Qc = 1 << 27,
         }
 
         [Flags]
         protected enum FpSkips
-=======
-            Qc = 1 << 27
-        }
-
-        [Flags] protected enum FpSkips
->>>>>>> 1ec71635b (sync with main branch)
         {
             None = 0,
 
@@ -436,11 +303,7 @@ namespace Ryujinx.Tests.Cpu
             IfNaND = 2,
 
             IfUnderflow = 4,
-<<<<<<< HEAD
             IfOverflow = 8,
-=======
-            IfOverflow  = 8
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         protected enum FpTolerances
@@ -448,7 +311,6 @@ namespace Ryujinx.Tests.Cpu
             None,
 
             UpToOneUlpsS,
-<<<<<<< HEAD
             UpToOneUlpsD,
         }
 
@@ -458,17 +320,6 @@ namespace Ryujinx.Tests.Cpu
             FpTolerances fpTolerances = FpTolerances.None)
         {
             if (_ignoreAllExceptFpsrQc)
-=======
-            UpToOneUlpsD
-        }
-
-        protected void CompareAgainstUnicorn(
-            Fpsr         fpsrMask     = Fpsr.None,
-            FpSkips      fpSkips      = FpSkips.None,
-            FpTolerances fpTolerances = FpTolerances.None)
-        {
-            if (IgnoreAllExcept_FpsrQc)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 fpsrMask &= Fpsr.Qc;
             }
@@ -478,10 +329,7 @@ namespace Ryujinx.Tests.Cpu
                 ManageFpSkips(fpSkips);
             }
 
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Assert.That(_context.GetX(0),  Is.EqualTo(_unicornEmu.X[0]), "X0");
             Assert.That(_context.GetX(1),  Is.EqualTo(_unicornEmu.X[1]), "X1");
             Assert.That(_context.GetX(2),  Is.EqualTo(_unicornEmu.X[2]), "X2");
@@ -514,10 +362,7 @@ namespace Ryujinx.Tests.Cpu
             Assert.That(_context.GetX(29), Is.EqualTo(_unicornEmu.X[29]));
             Assert.That(_context.GetX(30), Is.EqualTo(_unicornEmu.X[30]));
             Assert.That(_context.GetX(31), Is.EqualTo(_unicornEmu.SP), "X31");
-<<<<<<< HEAD
 #pragma warning restore IDE0055
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             if (fpTolerances == FpTolerances.None)
             {
@@ -527,11 +372,8 @@ namespace Ryujinx.Tests.Cpu
             {
                 ManageFpTolerances(fpTolerances);
             }
-<<<<<<< HEAD
 
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Assert.That(V128ToSimdValue(_context.GetV(1)),  Is.EqualTo(_unicornEmu.Q[1]), "V1");
             Assert.That(V128ToSimdValue(_context.GetV(2)),  Is.EqualTo(_unicornEmu.Q[2]), "V2");
             Assert.That(V128ToSimdValue(_context.GetV(3)),  Is.EqualTo(_unicornEmu.Q[3]), "V3");
@@ -574,10 +416,7 @@ namespace Ryujinx.Tests.Cpu
 
             Assert.That((int)_context.Fpcr,                 Is.EqualTo(_unicornEmu.Fpcr),                 "Fpcr");
             Assert.That((int)_context.Fpsr & (int)fpsrMask, Is.EqualTo(_unicornEmu.Fpsr & (int)fpsrMask), "Fpsr");
-<<<<<<< HEAD
 #pragma warning restore IDE0055
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             if (_usingMemory)
             {
@@ -624,11 +463,7 @@ namespace Ryujinx.Tests.Cpu
 
         private void ManageFpTolerances(FpTolerances fpTolerances)
         {
-<<<<<<< HEAD
             bool IsNormalOrSubnormalS(float f) => float.IsNormal(f) || float.IsSubnormal(f);
-=======
-            bool IsNormalOrSubnormalS(float f)  => float.IsNormal(f)  || float.IsSubnormal(f);
->>>>>>> 1ec71635b (sync with main branch)
             bool IsNormalOrSubnormalD(double d) => double.IsNormal(d) || double.IsSubnormal(d);
 
             if (!Is.EqualTo(_unicornEmu.Q[0]).ApplyTo(V128ToSimdValue(_context.GetV(0))).IsSuccess)
@@ -640,7 +475,6 @@ namespace Ryujinx.Tests.Cpu
                     {
                         Assert.Multiple(() =>
                         {
-<<<<<<< HEAD
                             Assert.That(_context.GetV(0).Extract<float>(0),
                                 Is.EqualTo(_unicornEmu.Q[0].GetFloat(0)).Within(1).Ulps, "V0[0]");
                             Assert.That(_context.GetV(0).Extract<float>(1),
@@ -648,15 +482,6 @@ namespace Ryujinx.Tests.Cpu
                             Assert.That(_context.GetV(0).Extract<float>(2),
                                 Is.EqualTo(_unicornEmu.Q[0].GetFloat(2)).Within(1).Ulps, "V0[2]");
                             Assert.That(_context.GetV(0).Extract<float>(3),
-=======
-                            Assert.That   (_context.GetV(0).Extract<float>(0),
-                                Is.EqualTo(_unicornEmu.Q[0].GetFloat(0)).Within(1).Ulps, "V0[0]");
-                            Assert.That   (_context.GetV(0).Extract<float>(1),
-                                Is.EqualTo(_unicornEmu.Q[0].GetFloat(1)).Within(1).Ulps, "V0[1]");
-                            Assert.That   (_context.GetV(0).Extract<float>(2),
-                                Is.EqualTo(_unicornEmu.Q[0].GetFloat(2)).Within(1).Ulps, "V0[2]");
-                            Assert.That   (_context.GetV(0).Extract<float>(3),
->>>>>>> 1ec71635b (sync with main branch)
                                 Is.EqualTo(_unicornEmu.Q[0].GetFloat(3)).Within(1).Ulps, "V0[3]");
                         });
 
@@ -675,15 +500,9 @@ namespace Ryujinx.Tests.Cpu
                     {
                         Assert.Multiple(() =>
                         {
-<<<<<<< HEAD
                             Assert.That(_context.GetV(0).Extract<double>(0),
                                 Is.EqualTo(_unicornEmu.Q[0].GetDouble(0)).Within(1).Ulps, "V0[0]");
                             Assert.That(_context.GetV(0).Extract<double>(1),
-=======
-                            Assert.That   (_context.GetV(0).Extract<double>(0),
-                                Is.EqualTo(_unicornEmu.Q[0].GetDouble(0)).Within(1).Ulps, "V0[0]");
-                            Assert.That   (_context.GetV(0).Extract<double>(1),
->>>>>>> 1ec71635b (sync with main branch)
                                 Is.EqualTo(_unicornEmu.Q[0].GetDouble(1)).Within(1).Ulps, "V0[1]");
                         });
 
@@ -702,7 +521,6 @@ namespace Ryujinx.Tests.Cpu
             return new SimdValue(value.Extract<ulong>(0), value.Extract<ulong>(1));
         }
 
-<<<<<<< HEAD
         protected static V128 MakeVectorScalar(float value) => new(value);
         protected static V128 MakeVectorScalar(double value) => new(value);
 
@@ -710,15 +528,6 @@ namespace Ryujinx.Tests.Cpu
         protected static V128 MakeVectorE1(ulong e1) => new(0, e1);
 
         protected static V128 MakeVectorE0E1(ulong e0, ulong e1) => new(e0, e1);
-=======
-        protected static V128 MakeVectorScalar(float value)  => new V128(value);
-        protected static V128 MakeVectorScalar(double value) => new V128(value);
-
-        protected static V128 MakeVectorE0(ulong e0) => new V128(e0, 0);
-        protected static V128 MakeVectorE1(ulong e1) => new V128(0, e1);
-
-        protected static V128 MakeVectorE0E1(ulong e0, ulong e1) => new V128(e0, e1);
->>>>>>> 1ec71635b (sync with main branch)
 
         protected static ulong GetVectorE0(V128 vector) => vector.Extract<ulong>(0);
         protected static ulong GetVectorE1(V128 vector) => vector.Extract<ulong>(1);
@@ -727,14 +536,9 @@ namespace Ryujinx.Tests.Cpu
         {
             uint rnd;
 
-<<<<<<< HEAD
             do
                 rnd = TestContext.CurrentContext.Random.NextUShort();
             while ((rnd & 0x7C00u) == 0u ||
-=======
-            do       rnd = TestContext.CurrentContext.Random.NextUShort();
-            while (( rnd & 0x7C00u) == 0u ||
->>>>>>> 1ec71635b (sync with main branch)
                    (~rnd & 0x7C00u) == 0u);
 
             return (ushort)rnd;
@@ -744,12 +548,8 @@ namespace Ryujinx.Tests.Cpu
         {
             uint rnd;
 
-<<<<<<< HEAD
             do
                 rnd = TestContext.CurrentContext.Random.NextUShort();
-=======
-            do      rnd = TestContext.CurrentContext.Random.NextUShort();
->>>>>>> 1ec71635b (sync with main branch)
             while ((rnd & 0x03FFu) == 0u);
 
             return (ushort)(rnd & 0x83FFu);
@@ -759,14 +559,9 @@ namespace Ryujinx.Tests.Cpu
         {
             uint rnd;
 
-<<<<<<< HEAD
             do
                 rnd = TestContext.CurrentContext.Random.NextUInt();
             while ((rnd & 0x7F800000u) == 0u ||
-=======
-            do       rnd = TestContext.CurrentContext.Random.NextUInt();
-            while (( rnd & 0x7F800000u) == 0u ||
->>>>>>> 1ec71635b (sync with main branch)
                    (~rnd & 0x7F800000u) == 0u);
 
             return rnd;
@@ -776,12 +571,8 @@ namespace Ryujinx.Tests.Cpu
         {
             uint rnd;
 
-<<<<<<< HEAD
             do
                 rnd = TestContext.CurrentContext.Random.NextUInt();
-=======
-            do      rnd = TestContext.CurrentContext.Random.NextUInt();
->>>>>>> 1ec71635b (sync with main branch)
             while ((rnd & 0x007FFFFFu) == 0u);
 
             return rnd & 0x807FFFFFu;
@@ -791,14 +582,9 @@ namespace Ryujinx.Tests.Cpu
         {
             ulong rnd;
 
-<<<<<<< HEAD
             do
                 rnd = TestContext.CurrentContext.Random.NextULong();
             while ((rnd & 0x7FF0000000000000ul) == 0ul ||
-=======
-            do       rnd = TestContext.CurrentContext.Random.NextULong();
-            while (( rnd & 0x7FF0000000000000ul) == 0ul ||
->>>>>>> 1ec71635b (sync with main branch)
                    (~rnd & 0x7FF0000000000000ul) == 0ul);
 
             return rnd;
@@ -808,19 +594,11 @@ namespace Ryujinx.Tests.Cpu
         {
             ulong rnd;
 
-<<<<<<< HEAD
             do
                 rnd = TestContext.CurrentContext.Random.NextULong();
-=======
-            do      rnd = TestContext.CurrentContext.Random.NextULong();
->>>>>>> 1ec71635b (sync with main branch)
             while ((rnd & 0x000FFFFFFFFFFFFFul) == 0ul);
 
             return rnd & 0x800FFFFFFFFFFFFFul;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

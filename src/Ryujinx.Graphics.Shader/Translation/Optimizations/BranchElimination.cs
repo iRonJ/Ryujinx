@@ -31,11 +31,7 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                 return false;
             }
 
-<<<<<<< HEAD
             if (nextBlock.Operations.First?.Value is not Operation next)
-=======
-            if (!(nextBlock.Operations.First?.Value is Operation next))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return false;
             }
@@ -65,8 +61,4 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             return block;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

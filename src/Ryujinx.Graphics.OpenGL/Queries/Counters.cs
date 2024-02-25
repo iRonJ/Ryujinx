@@ -5,11 +5,7 @@ namespace Ryujinx.Graphics.OpenGL.Queries
 {
     class Counters : IDisposable
     {
-<<<<<<< HEAD
         private readonly CounterQueue[] _counterQueues;
-=======
-        private CounterQueue[] _counterQueues;
->>>>>>> 1ec71635b (sync with main branch)
 
         public Counters()
         {
@@ -18,16 +14,11 @@ namespace Ryujinx.Graphics.OpenGL.Queries
             _counterQueues = new CounterQueue[count];
         }
 
-<<<<<<< HEAD
         public void Initialize()
-=======
-        public void Initialize(Pipeline pipeline)
->>>>>>> 1ec71635b (sync with main branch)
         {
             for (int index = 0; index < _counterQueues.Length; index++)
             {
                 CounterType type = (CounterType)index;
-<<<<<<< HEAD
                 _counterQueues[index] = new CounterQueue(type);
             }
         }
@@ -35,15 +26,6 @@ namespace Ryujinx.Graphics.OpenGL.Queries
         public CounterQueueEvent QueueReport(CounterType type, EventHandler<ulong> resultHandler, float divisor, ulong lastDrawIndex, bool hostReserved)
         {
             return _counterQueues[(int)type].QueueReport(resultHandler, divisor, lastDrawIndex, hostReserved);
-=======
-                _counterQueues[index] = new CounterQueue(pipeline, type);
-            }
-        }
-
-        public CounterQueueEvent QueueReport(CounterType type, EventHandler<ulong> resultHandler, ulong lastDrawIndex, bool hostReserved)
-        {
-            return _counterQueues[(int)type].QueueReport(resultHandler, lastDrawIndex, hostReserved);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void QueueReset(CounterType type)
@@ -72,8 +54,4 @@ namespace Ryujinx.Graphics.OpenGL.Queries
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

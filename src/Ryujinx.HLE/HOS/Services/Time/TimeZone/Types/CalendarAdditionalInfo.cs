@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
@@ -22,8 +18,4 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
         public int GmtOffset;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

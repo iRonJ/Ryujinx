@@ -22,7 +22,6 @@ namespace Ryujinx.Audio.Renderer.Server
     public class StateUpdater
     {
         private readonly ReadOnlyMemory<byte> _inputOrigin;
-<<<<<<< HEAD
         private readonly ReadOnlyMemory<byte> _outputOrigin;
         private ReadOnlyMemory<byte> _input;
 
@@ -32,17 +31,6 @@ namespace Ryujinx.Audio.Renderer.Server
 
         private UpdateDataHeader _inputHeader;
         private readonly Memory<UpdateDataHeader> _outputHeader;
-=======
-        private ReadOnlyMemory<byte> _outputOrigin;
-        private ReadOnlyMemory<byte> _input;
-
-        private Memory<byte> _output;
-        private uint _processHandle;
-        private BehaviourContext _behaviourContext;
-
-        private UpdateDataHeader _inputHeader;
-        private Memory<UpdateDataHeader> _outputHeader;
->>>>>>> 1ec71635b (sync with main branch)
 
         private ref UpdateDataHeader OutputHeader => ref _outputHeader.Span[0];
 
@@ -57,15 +45,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
             _inputHeader = SpanIOHelper.Read<UpdateDataHeader>(ref _input);
 
-<<<<<<< HEAD
             _outputHeader = SpanMemoryManager<UpdateDataHeader>.Cast(_output[..Unsafe.SizeOf<UpdateDataHeader>()]);
             OutputHeader.Initialize(_behaviourContext.UserRevision);
             _output = _output[Unsafe.SizeOf<UpdateDataHeader>()..];
-=======
-            _outputHeader = SpanMemoryManager<UpdateDataHeader>.Cast(_output.Slice(0, Unsafe.SizeOf<UpdateDataHeader>()));
-            OutputHeader.Initialize(_behaviourContext.UserRevision);
-            _output = _output.Slice(Unsafe.SizeOf<UpdateDataHeader>());
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ResultCode UpdateBehaviourContext()
@@ -90,11 +72,7 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public ResultCode UpdateMemoryPools(Span<MemoryPoolState> memoryPools)
         {
-<<<<<<< HEAD
             PoolMapper mapper = new(_processHandle, _behaviourContext.IsMemoryPoolForceMappingEnabled());
-=======
-            PoolMapper mapper = new PoolMapper(_processHandle, _behaviourContext.IsMemoryPoolForceMappingEnabled());
->>>>>>> 1ec71635b (sync with main branch)
 
             if (memoryPools.Length * Unsafe.SizeOf<MemoryPoolInParameter>() != _inputHeader.MemoryPoolsSize)
             {
@@ -158,19 +136,11 @@ namespace Ryujinx.Audio.Renderer.Server
 
             int initialOutputSize = _output.Length;
 
-<<<<<<< HEAD
             ReadOnlySpan<VoiceInParameter> parameters = MemoryMarshal.Cast<byte, VoiceInParameter>(_input[..(int)_inputHeader.VoicesSize].Span);
 
             _input = _input[(int)_inputHeader.VoicesSize..];
 
             PoolMapper mapper = new(_processHandle, memoryPools, _behaviourContext.IsMemoryPoolForceMappingEnabled());
-=======
-            ReadOnlySpan<VoiceInParameter> parameters = MemoryMarshal.Cast<byte, VoiceInParameter>(_input.Slice(0, (int)_inputHeader.VoicesSize).Span);
-
-            _input = _input.Slice((int)_inputHeader.VoicesSize);
-
-            PoolMapper mapper = new PoolMapper(_processHandle, memoryPools, _behaviourContext.IsMemoryPoolForceMappingEnabled());
->>>>>>> 1ec71635b (sync with main branch)
 
             // First make everything not in use.
             for (int i = 0; i < context.GetCount(); i++)
@@ -181,11 +151,7 @@ namespace Ryujinx.Audio.Renderer.Server
             }
 
             Memory<VoiceUpdateState>[] voiceUpdateStatesArray = ArrayPool<Memory<VoiceUpdateState>>.Shared.Rent(Constants.VoiceChannelCountMax);
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 1ec71635b (sync with main branch)
             Span<Memory<VoiceUpdateState>> voiceUpdateStates = voiceUpdateStatesArray.AsSpan(0, Constants.VoiceChannelCountMax);
 
             // Start processing
@@ -252,7 +218,6 @@ namespace Ryujinx.Audio.Renderer.Server
         {
             effect.ForceUnmapBuffers(mapper);
 
-<<<<<<< HEAD
             effect = parameter.Type switch
             {
                 EffectType.Invalid => new BaseEffect(),
@@ -267,44 +232,6 @@ namespace Ryujinx.Audio.Renderer.Server
                 EffectType.Compressor => new CompressorEffect(),
                 _ => throw new NotImplementedException($"EffectType {parameter.Type} not implemented!"),
             };
-=======
-            switch (parameter.Type)
-            {
-                case EffectType.Invalid:
-                    effect = new BaseEffect();
-                    break;
-                case EffectType.BufferMix:
-                    effect = new BufferMixEffect();
-                    break;
-                case EffectType.AuxiliaryBuffer:
-                    effect = new AuxiliaryBufferEffect();
-                    break;
-                case EffectType.Delay:
-                    effect = new DelayEffect();
-                    break;
-                case EffectType.Reverb:
-                    effect = new ReverbEffect();
-                    break;
-                case EffectType.Reverb3d:
-                    effect = new Reverb3dEffect();
-                    break;
-                case EffectType.BiquadFilter:
-                    effect = new BiquadFilterEffect();
-                    break;
-                case EffectType.Limiter:
-                    effect = new LimiterEffect();
-                    break;
-                case EffectType.CaptureBuffer:
-                    effect = new CaptureBufferEffect();
-                    break;
-                case EffectType.Compressor:
-                    effect = new CompressorEffect();
-                    break;
-
-                default:
-                    throw new NotImplementedException($"EffectType {parameter.Type} not implemented!");
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ResultCode UpdateEffects(EffectContext context, bool isAudioRendererActive, Memory<MemoryPoolState> memoryPools)
@@ -313,15 +240,8 @@ namespace Ryujinx.Audio.Renderer.Server
             {
                 return UpdateEffectsVersion2(context, isAudioRendererActive, memoryPools);
             }
-<<<<<<< HEAD
 
             return UpdateEffectsVersion1(context, isAudioRendererActive, memoryPools);
-=======
-            else
-            {
-                return UpdateEffectsVersion1(context, isAudioRendererActive, memoryPools);
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ResultCode UpdateEffectsVersion2(EffectContext context, bool isAudioRendererActive, Memory<MemoryPoolState> memoryPools)
@@ -333,19 +253,11 @@ namespace Ryujinx.Audio.Renderer.Server
 
             int initialOutputSize = _output.Length;
 
-<<<<<<< HEAD
             ReadOnlySpan<EffectInParameterVersion2> parameters = MemoryMarshal.Cast<byte, EffectInParameterVersion2>(_input[..(int)_inputHeader.EffectsSize].Span);
 
             _input = _input[(int)_inputHeader.EffectsSize..];
 
             PoolMapper mapper = new(_processHandle, memoryPools, _behaviourContext.IsMemoryPoolForceMappingEnabled());
-=======
-            ReadOnlySpan<EffectInParameterVersion2> parameters = MemoryMarshal.Cast<byte, EffectInParameterVersion2>(_input.Slice(0, (int)_inputHeader.EffectsSize).Span);
-
-            _input = _input.Slice((int)_inputHeader.EffectsSize);
-
-            PoolMapper mapper = new PoolMapper(_processHandle, memoryPools, _behaviourContext.IsMemoryPoolForceMappingEnabled());
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < context.GetCount(); i++)
             {
@@ -397,19 +309,11 @@ namespace Ryujinx.Audio.Renderer.Server
 
             int initialOutputSize = _output.Length;
 
-<<<<<<< HEAD
             ReadOnlySpan<EffectInParameterVersion1> parameters = MemoryMarshal.Cast<byte, EffectInParameterVersion1>(_input[..(int)_inputHeader.EffectsSize].Span);
 
             _input = _input[(int)_inputHeader.EffectsSize..];
 
             PoolMapper mapper = new(_processHandle, memoryPools, _behaviourContext.IsMemoryPoolForceMappingEnabled());
-=======
-            ReadOnlySpan<EffectInParameterVersion1> parameters = MemoryMarshal.Cast<byte, EffectInParameterVersion1>(_input.Slice(0, (int)_inputHeader.EffectsSize).Span);
-
-            _input = _input.Slice((int)_inputHeader.EffectsSize);
-
-            PoolMapper mapper = new PoolMapper(_processHandle, memoryPools, _behaviourContext.IsMemoryPoolForceMappingEnabled());
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < context.GetCount(); i++)
             {
@@ -448,7 +352,6 @@ namespace Ryujinx.Audio.Renderer.Server
         {
             if (context.Update(_input.Span, out int consumedSize))
             {
-<<<<<<< HEAD
                 _input = _input[consumedSize..];
 
                 return ResultCode.Success;
@@ -458,19 +361,6 @@ namespace Ryujinx.Audio.Renderer.Server
         }
 
         private static bool CheckMixParametersValidity(MixContext mixContext, uint mixBufferCount, uint inputMixCount, ReadOnlySpan<MixParameter> parameters)
-=======
-                _input = _input.Slice(consumedSize);
-
-                return ResultCode.Success;
-            }
-            else
-            {
-                return ResultCode.InvalidUpdateInfo;
-            }
-        }
-
-        private bool CheckMixParametersValidity(MixContext mixContext, uint mixBufferCount, uint inputMixCount, ReadOnlySpan<MixParameter> parameters)
->>>>>>> 1ec71635b (sync with main branch)
         {
             uint maxMixStateCount = mixContext.GetCount();
             uint totalRequiredMixBufferCount = 0;
@@ -523,21 +413,12 @@ namespace Ryujinx.Audio.Renderer.Server
 
             if (_behaviourContext.IsMixInParameterDirtyOnlyUpdateSupported())
             {
-<<<<<<< HEAD
                 _input = _input[Unsafe.SizeOf<MixInParameterDirtyOnlyUpdate>()..];
             }
 
             ReadOnlySpan<MixParameter> parameters = MemoryMarshal.Cast<byte, MixParameter>(_input.Span[..(int)inputMixSize]);
 
             _input = _input[(int)inputMixSize..];
-=======
-                _input = _input.Slice(Unsafe.SizeOf<MixInParameterDirtyOnlyUpdate>());
-            }
-
-            ReadOnlySpan<MixParameter> parameters = MemoryMarshal.Cast<byte, MixParameter>(_input.Span.Slice(0, (int)inputMixSize));
-
-            _input = _input.Slice((int)inputMixSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (CheckMixParametersValidity(mixContext, mixBufferCount, mixCount, parameters))
             {
@@ -599,7 +480,6 @@ namespace Ryujinx.Audio.Renderer.Server
         {
             sink.CleanUp();
 
-<<<<<<< HEAD
             sink = parameter.Type switch
             {
                 SinkType.Invalid => new BaseSink(),
@@ -607,31 +487,11 @@ namespace Ryujinx.Audio.Renderer.Server
                 SinkType.Device => new DeviceSink(),
                 _ => throw new NotImplementedException($"SinkType {parameter.Type} not implemented!"),
             };
-=======
-            switch (parameter.Type)
-            {
-                case SinkType.Invalid:
-                    sink = new BaseSink();
-                    break;
-                case SinkType.CircularBuffer:
-                    sink = new CircularBufferSink();
-                    break;
-                case SinkType.Device:
-                    sink = new DeviceSink();
-                    break;
-                default:
-                    throw new NotImplementedException($"SinkType {parameter.Type} not implemented!");
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ResultCode UpdateSinks(SinkContext context, Memory<MemoryPoolState> memoryPools)
         {
-<<<<<<< HEAD
             PoolMapper mapper = new(_processHandle, memoryPools, _behaviourContext.IsMemoryPoolForceMappingEnabled());
-=======
-            PoolMapper mapper = new PoolMapper(_processHandle, memoryPools, _behaviourContext.IsMemoryPoolForceMappingEnabled());
->>>>>>> 1ec71635b (sync with main branch)
 
             if (context.GetCount() * Unsafe.SizeOf<SinkInParameter>() != _inputHeader.SinksSize)
             {
@@ -640,15 +500,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
             int initialOutputSize = _output.Length;
 
-<<<<<<< HEAD
             ReadOnlySpan<SinkInParameter> parameters = MemoryMarshal.Cast<byte, SinkInParameter>(_input[..(int)_inputHeader.SinksSize].Span);
 
             _input = _input[(int)_inputHeader.SinksSize..];
-=======
-            ReadOnlySpan<SinkInParameter> parameters = MemoryMarshal.Cast<byte, SinkInParameter>(_input.Slice(0, (int)_inputHeader.SinksSize).Span);
-
-            _input = _input.Slice((int)_inputHeader.SinksSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < context.GetCount(); i++)
             {
@@ -753,8 +607,4 @@ namespace Ryujinx.Audio.Renderer.Server
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

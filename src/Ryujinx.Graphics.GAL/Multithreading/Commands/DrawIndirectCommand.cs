@@ -2,11 +2,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct DrawIndirectCommand : IGALCommand, IGALCommand<DrawIndirectCommand>
     {
-<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.DrawIndirect;
-=======
-        public CommandType CommandType => CommandType.DrawIndirect;
->>>>>>> 1ec71635b (sync with main branch)
         private BufferRange _indirectBuffer;
 
         public void Set(BufferRange indirectBuffer)

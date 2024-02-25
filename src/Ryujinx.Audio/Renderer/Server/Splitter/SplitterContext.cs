@@ -101,15 +101,8 @@ namespace Ryujinx.Audio.Renderer.Server.Splitter
 
                 return size;
             }
-<<<<<<< HEAD
 
             return size;
-=======
-            else
-            {
-                return size;
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -169,17 +162,10 @@ namespace Ryujinx.Audio.Renderer.Server.Splitter
                     {
                         ref SplitterState splitter = ref GetState(parameter.Id);
 
-<<<<<<< HEAD
                         splitter.Update(this, ref parameter, input[Unsafe.SizeOf<SplitterInParameter>()..]);
                     }
 
                     input = input[(0x1C + parameter.DestinationCount * 4)..];
-=======
-                        splitter.Update(this, ref parameter, input.Slice(Unsafe.SizeOf<SplitterInParameter>()));
-                    }
-
-                    input = input.Slice(0x1C + (int)parameter.DestinationCount * 4);
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
         }
@@ -206,11 +192,7 @@ namespace Ryujinx.Audio.Renderer.Server.Splitter
                         destination.Update(parameter);
                     }
 
-<<<<<<< HEAD
                     input = input[Unsafe.SizeOf<SplitterDestinationInParameter>()..];
-=======
-                    input = input.Slice(Unsafe.SizeOf<SplitterDestinationInParameter>());
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
         }
@@ -245,19 +227,10 @@ namespace Ryujinx.Audio.Renderer.Server.Splitter
 
                 return true;
             }
-<<<<<<< HEAD
 
             consumedSize = 0;
 
             return false;
-=======
-            else
-            {
-                consumedSize = 0;
-
-                return false;
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -323,8 +296,4 @@ namespace Ryujinx.Audio.Renderer.Server.Splitter
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -7,8 +7,4 @@ namespace Ryujinx.Graphics.Texture
 
         public const int GobSize = GobStride * GobHeight;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

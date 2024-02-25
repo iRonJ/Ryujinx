@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Sdk.Diag;
-=======
-﻿using Ryujinx.Horizon.Sdk.Diag;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Text;
 
 namespace Ryujinx.Horizon.LogManager.Types
 {
     struct LogPacket
     {
-<<<<<<< HEAD
         public string Message;
         public int Line;
         public string Filename;
@@ -19,17 +14,6 @@ namespace Ryujinx.Horizon.LogManager.Types
         public long DropCount;
         public long Time;
         public string ProgramName;
-=======
-        public string      Message;
-        public int         Line;
-        public string      Filename;
-        public string      Function;
-        public string      Module;
-        public string      Thread;
-        public long        DropCount;
-        public long        Time;
-        public string      ProgramName;
->>>>>>> 1ec71635b (sync with main branch)
         public LogSeverity Severity;
 
         public override string ToString()
@@ -51,20 +35,12 @@ namespace Ryujinx.Horizon.LogManager.Types
             {
                 builder.AppendLine($"    ProgramName: {ProgramName}");
             }
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 1ec71635b (sync with main branch)
             if (!string.IsNullOrEmpty(Module))
             {
                 builder.AppendLine($"    Module: {Module}");
             }
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 1ec71635b (sync with main branch)
             if (!string.IsNullOrEmpty(Thread))
             {
                 builder.AppendLine($"    Thread: {Thread}");
@@ -93,8 +69,4 @@ namespace Ryujinx.Horizon.LogManager.Types
             return builder.ToString();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

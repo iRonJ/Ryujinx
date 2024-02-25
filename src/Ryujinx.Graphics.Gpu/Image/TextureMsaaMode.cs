@@ -9,11 +9,7 @@ namespace Ryujinx.Graphics.Gpu.Image
         Ms2x2 = 2,
         Ms4x2 = 4,
         Ms2x1 = 5,
-<<<<<<< HEAD
         Ms4x4 = 6,
-=======
-        Ms4x4 = 6
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class TextureMsaaModeConverter
@@ -31,11 +27,7 @@ namespace Ryujinx.Graphics.Gpu.Image
                 TextureMsaaMode.Ms2x2 => 4,
                 TextureMsaaMode.Ms4x2 => 8,
                 TextureMsaaMode.Ms4x4 => 16,
-<<<<<<< HEAD
                 _ => 1,
-=======
-                _ => 1
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -52,11 +44,7 @@ namespace Ryujinx.Graphics.Gpu.Image
                 TextureMsaaMode.Ms2x2 => 2,
                 TextureMsaaMode.Ms4x2 => 4,
                 TextureMsaaMode.Ms4x4 => 4,
-<<<<<<< HEAD
                 _ => 1,
-=======
-                _ => 1
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -73,16 +61,8 @@ namespace Ryujinx.Graphics.Gpu.Image
                 TextureMsaaMode.Ms2x2 => 2,
                 TextureMsaaMode.Ms4x2 => 2,
                 TextureMsaaMode.Ms4x4 => 4,
-<<<<<<< HEAD
                 _ => 1,
             };
         }
     }
 }
-=======
-                _ => 1
-            };
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Kernel.Threading;
 using Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu.Types;
 using Ryujinx.Horizon.Common;
@@ -14,7 +10,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
 {
     class NvHostCtrlGpuDeviceFile : NvDeviceFile
     {
-<<<<<<< HEAD
         private static readonly Stopwatch _pTimer = new();
         private static readonly double _ticksToNs = (1.0 / Stopwatch.Frequency) * 1_000_000_000;
 
@@ -24,17 +19,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
         public NvHostCtrlGpuDeviceFile(ServiceCtx context, IVirtualMemoryManager memory, ulong owner) : base(context, owner)
         {
             _errorEvent = new KEvent(context.Device.System.KernelContext);
-=======
-        private static Stopwatch _pTimer    = new Stopwatch();
-        private static double    _ticksToNs = (1.0 / Stopwatch.Frequency) * 1_000_000_000;
-
-        private KEvent _errorEvent;
-        private KEvent _unknownEvent;
-
-        public NvHostCtrlGpuDeviceFile(ServiceCtx context, IVirtualMemoryManager memory, ulong owner) : base(context, owner)
-        {
-            _errorEvent   = new KEvent(context.Device.System.KernelContext);
->>>>>>> 1ec71635b (sync with main branch)
             _unknownEvent = new KEvent(context.Device.System.KernelContext);
         }
 
@@ -66,15 +50,12 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
                     case 0x06:
                         result = CallIoctlMethod<GetTpcMasksArguments>(GetTpcMasks, arguments);
                         break;
-<<<<<<< HEAD
                     case 0x12:
                         result = CallIoctlMethod<NumVsmsArguments>(NumVsms, arguments);
                         break;
                     case 0x13:
                         result = CallIoctlMethod<VsmsMappingArguments>(VsmsMapping, arguments);
                         break;
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     case 0x14:
                         result = CallIoctlMethod<GetActiveSlotMaskArguments>(GetActiveSlotMask, arguments);
                         break;
@@ -101,15 +82,12 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
                     case 0x06:
                         result = CallIoctlMethod<GetTpcMasksArguments, int>(GetTpcMasks, arguments, inlineOutBuffer);
                         break;
-<<<<<<< HEAD
                     case 0x12:
                         result = CallIoctlMethod<NumVsmsArguments>(NumVsms, arguments);
                         break;
                     case 0x13:
                         result = CallIoctlMethod<VsmsMappingArguments>(VsmsMapping, arguments);
                         break;
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -159,10 +137,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
 
         private NvInternalResult ZcullGetInfo(ref ZcullGetInfoArguments arguments)
         {
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
             arguments.WidthAlignPixels           = 0x20;
             arguments.HeightAlignPixels          = 0x20;
             arguments.PixelSquaresByAliquots     = 0x400;
@@ -173,10 +148,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
             arguments.SubregionWidthAlignPixels  = 0x20;
             arguments.SubregionHeightAlignPixels = 0x40;
             arguments.SubregionCount             = 0x10;
-<<<<<<< HEAD
 #pragma warning restore IDE0055
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             return NvInternalResult.Success;
         }
@@ -197,10 +169,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
         {
             arguments.Header.BufferSize = 0xa0;
 
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
             characteristics.Arch                   = 0x120;
             characteristics.Impl                   = 0xb;
             characteristics.Rev                    = 0xa1;
@@ -236,10 +205,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
             characteristics.RopL2EnMask1           = 0x0;
             characteristics.ChipName               = 0x6230326d67;
             characteristics.GrCompbitStoreBaseHw   = 0x0;
-<<<<<<< HEAD
 #pragma warning restore IDE0055
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             arguments.Characteristics = characteristics;
 
@@ -255,18 +221,13 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
         {
             if (arguments.MaskBufferSize != 0)
             {
-<<<<<<< HEAD
                 tpcMask = 3;
-=======
-                tpcMask           = 3;
->>>>>>> 1ec71635b (sync with main branch)
                 arguments.TpcMask = tpcMask;
             }
 
             return NvInternalResult.Success;
         }
 
-<<<<<<< HEAD
         private NvInternalResult NumVsms(ref NumVsmsArguments arguments)
         {
             Logger.Stub?.PrintStub(LogClass.ServiceNv);
@@ -288,8 +249,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrlGpu
             return NvInternalResult.Success;
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         private NvInternalResult GetActiveSlotMask(ref GetActiveSlotMaskArguments arguments)
         {
             Logger.Stub?.PrintStub(LogClass.ServiceNv);

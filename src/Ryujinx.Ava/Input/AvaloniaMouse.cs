@@ -10,21 +10,12 @@ namespace Ryujinx.Ava.Input
     {
         private AvaloniaMouseDriver _driver;
 
-<<<<<<< HEAD
         public string Id => "0";
         public string Name => "AvaloniaMouse";
 
         public bool IsConnected => true;
         public GamepadFeaturesFlag Features => throw new NotImplementedException();
         public bool[] Buttons => _driver.PressedButtons;
-=======
-        public string Id   => "0";
-        public string Name => "AvaloniaMouse";
-
-        public bool                IsConnected => true;
-        public GamepadFeaturesFlag Features    => throw new NotImplementedException();
-        public bool[]              Buttons     => _driver.PressedButtons;
->>>>>>> 1ec71635b (sync with main branch)
 
         public AvaloniaMouse(AvaloniaMouseDriver driver)
         {
@@ -93,8 +84,4 @@ namespace Ryujinx.Ava.Input
             _driver = null;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

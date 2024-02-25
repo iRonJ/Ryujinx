@@ -26,17 +26,10 @@ namespace Ryujinx.HLE.HOS.Services.Hid
         internal const int SharedMemEntryCount = 17;
 
         public DebugPadDevice DebugPad;
-<<<<<<< HEAD
         public TouchDevice Touchscreen;
         public MouseDevice Mouse;
         public KeyboardDevice Keyboard;
         public NpadDevices Npads;
-=======
-        public TouchDevice    Touchscreen;
-        public MouseDevice    Mouse;
-        public KeyboardDevice Keyboard;
-        public NpadDevices    Npads;
->>>>>>> 1ec71635b (sync with main branch)
 
         private static void CheckTypeSizeOrThrow<T>(int expectedSize)
         {
@@ -58,11 +51,7 @@ namespace Ryujinx.HLE.HOS.Services.Hid
 
         internal Hid(in Switch device, SharedMemoryStorage storage)
         {
-<<<<<<< HEAD
             _device = device;
-=======
-            _device  = device;
->>>>>>> 1ec71635b (sync with main branch)
             _storage = storage;
 
             SharedMemory = SharedMemory.Create();
@@ -72,19 +61,11 @@ namespace Ryujinx.HLE.HOS.Services.Hid
 
         private void InitDevices()
         {
-<<<<<<< HEAD
             DebugPad = new DebugPadDevice(_device, true);
             Touchscreen = new TouchDevice(_device, true);
             Mouse = new MouseDevice(_device, false);
             Keyboard = new KeyboardDevice(_device, false);
             Npads = new NpadDevices(_device, true);
-=======
-            DebugPad    = new DebugPadDevice(_device, true);
-            Touchscreen = new TouchDevice(_device, true);
-            Mouse       = new MouseDevice(_device, false);
-            Keyboard    = new KeyboardDevice(_device, false);
-            Npads       = new NpadDevices(_device, true);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void RefreshInputConfig(List<InputConfig> inputConfig)
@@ -102,7 +83,6 @@ namespace Ryujinx.HLE.HOS.Services.Hid
 
         public ControllerKeys UpdateStickButtons(JoystickPosition leftStick, JoystickPosition rightStick)
         {
-<<<<<<< HEAD
             const int StickButtonThreshold = short.MaxValue / 2;
             ControllerKeys result = 0;
 
@@ -117,29 +97,11 @@ namespace Ryujinx.HLE.HOS.Services.Hid
             result |= (rightStick.Dy < -StickButtonThreshold) ? ControllerKeys.RStickDown  : result;
             result |= (rightStick.Dy > StickButtonThreshold)  ? ControllerKeys.RStickUp    : result;
 #pragma warning restore IDE0055
-=======
-            const int stickButtonThreshold = short.MaxValue / 2;
-            ControllerKeys result = 0;
-
-            result |= (leftStick.Dx < -stickButtonThreshold) ? ControllerKeys.LStickLeft  : result;
-            result |= (leftStick.Dx > stickButtonThreshold)  ? ControllerKeys.LStickRight : result;
-            result |= (leftStick.Dy < -stickButtonThreshold) ? ControllerKeys.LStickDown  : result;
-            result |= (leftStick.Dy > stickButtonThreshold)  ? ControllerKeys.LStickUp    : result;
-
-            result |= (rightStick.Dx < -stickButtonThreshold) ? ControllerKeys.RStickLeft  : result;
-            result |= (rightStick.Dx > stickButtonThreshold)  ? ControllerKeys.RStickRight : result;
-            result |= (rightStick.Dy < -stickButtonThreshold) ? ControllerKeys.RStickDown  : result;
-            result |= (rightStick.Dy > stickButtonThreshold)  ? ControllerKeys.RStickUp    : result;
->>>>>>> 1ec71635b (sync with main branch)
 
             return result;
         }
 
-<<<<<<< HEAD
         internal ulong GetTimestampTicks()
-=======
-        internal static ulong GetTimestampTicks()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (ulong)PerformanceCounter.ElapsedMilliseconds * 19200;
         }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 // Copyright (c) 2014-2020 The Khronos Group Inc.
-=======
-﻿// Copyright (c) 2014-2020 The Khronos Group Inc.
->>>>>>> 1ec71635b (sync with main branch)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and/or associated documentation files (the "Materials"),
@@ -79,7 +75,6 @@ namespace Spv
             TaskNV = 5267,
             MeshNV = 5268,
             RayGenerationKHR = 5313,
-<<<<<<< HEAD
             RayGenerationNV = RayGenerationKHR,
             IntersectionKHR = 5314,
             IntersectionNV = IntersectionKHR,
@@ -91,19 +86,6 @@ namespace Spv
             MissNV = MissKHR,
             CallableKHR = 5318,
             CallableNV = CallableKHR,
-=======
-            RayGenerationNV = 5313,
-            IntersectionKHR = 5314,
-            IntersectionNV = 5314,
-            AnyHitKHR = 5315,
-            AnyHitNV = 5315,
-            ClosestHitKHR = 5316,
-            ClosestHitNV = 5316,
-            MissKHR = 5317,
-            MissNV = 5317,
-            CallableKHR = 5318,
-            CallableNV = 5318,
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public enum AddressingModel
@@ -112,11 +94,7 @@ namespace Spv
             Physical32 = 1,
             Physical64 = 2,
             PhysicalStorageBuffer64 = 5348,
-<<<<<<< HEAD
             PhysicalStorageBuffer64EXT = PhysicalStorageBuffer64,
-=======
-            PhysicalStorageBuffer64EXT = 5348,
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public enum MemoryModel
@@ -125,11 +103,7 @@ namespace Spv
             GLSL450 = 1,
             OpenCL = 2,
             Vulkan = 3,
-<<<<<<< HEAD
             VulkanKHR = Vulkan,
-=======
-            VulkanKHR = 3,
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public enum ExecutionMode
@@ -212,7 +186,6 @@ namespace Spv
             Image = 11,
             StorageBuffer = 12,
             CallableDataKHR = 5328,
-<<<<<<< HEAD
             CallableDataNV = CallableDataKHR,
             IncomingCallableDataKHR = 5329,
             IncomingCallableDataNV = IncomingCallableDataKHR,
@@ -226,21 +199,6 @@ namespace Spv
             ShaderRecordBufferNV = ShaderRecordBufferKHR,
             PhysicalStorageBuffer = 5349,
             PhysicalStorageBufferEXT = PhysicalStorageBuffer,
-=======
-            CallableDataNV = 5328,
-            IncomingCallableDataKHR = 5329,
-            IncomingCallableDataNV = 5329,
-            RayPayloadKHR = 5338,
-            RayPayloadNV = 5338,
-            HitAttributeKHR = 5339,
-            HitAttributeNV = 5339,
-            IncomingRayPayloadKHR = 5342,
-            IncomingRayPayloadNV = 5342,
-            ShaderRecordBufferKHR = 5343,
-            ShaderRecordBufferNV = 5343,
-            PhysicalStorageBuffer = 5349,
-            PhysicalStorageBufferEXT = 5349,
->>>>>>> 1ec71635b (sync with main branch)
             CodeSectionINTEL = 5605,
         }
 
@@ -372,7 +330,6 @@ namespace Spv
             Sample = 6,
             MinLod = 7,
             MakeTexelAvailable = 8,
-<<<<<<< HEAD
             MakeTexelAvailableKHR = MakeTexelAvailable,
             MakeTexelVisible = 9,
             MakeTexelVisibleKHR = MakeTexelVisible,
@@ -380,15 +337,6 @@ namespace Spv
             NonPrivateTexelKHR = NonPrivateTexel,
             VolatileTexel = 11,
             VolatileTexelKHR = VolatileTexel,
-=======
-            MakeTexelAvailableKHR = 8,
-            MakeTexelVisible = 9,
-            MakeTexelVisibleKHR = 9,
-            NonPrivateTexel = 10,
-            NonPrivateTexelKHR = 10,
-            VolatileTexel = 11,
-            VolatileTexelKHR = 11,
->>>>>>> 1ec71635b (sync with main branch)
             SignExtend = 12,
             ZeroExtend = 13,
         }
@@ -405,7 +353,6 @@ namespace Spv
             Sample = 0x00000040,
             MinLod = 0x00000080,
             MakeTexelAvailable = 0x00000100,
-<<<<<<< HEAD
             MakeTexelAvailableKHR = MakeTexelAvailable,
             MakeTexelVisible = 0x00000200,
             MakeTexelVisibleKHR = MakeTexelVisible,
@@ -413,15 +360,6 @@ namespace Spv
             NonPrivateTexelKHR = NonPrivateTexel,
             VolatileTexel = 0x00000800,
             VolatileTexelKHR = VolatileTexel,
-=======
-            MakeTexelAvailableKHR = 0x00000100,
-            MakeTexelVisible = 0x00000200,
-            MakeTexelVisibleKHR = 0x00000200,
-            NonPrivateTexel = 0x00000400,
-            NonPrivateTexelKHR = 0x00000400,
-            VolatileTexel = 0x00000800,
-            VolatileTexelKHR = 0x00000800,
->>>>>>> 1ec71635b (sync with main branch)
             SignExtend = 0x00001000,
             ZeroExtend = 0x00002000,
             Offsets = 0x00010000,
@@ -540,7 +478,6 @@ namespace Spv
             PerTaskNV = 5273,
             PerVertexNV = 5285,
             NonUniform = 5300,
-<<<<<<< HEAD
             NonUniformEXT = NonUniform,
             RestrictPointer = 5355,
             RestrictPointerEXT = RestrictPointer,
@@ -551,18 +488,6 @@ namespace Spv
             HlslCounterBufferGOOGLE = CounterBuffer,
             HlslSemanticGOOGLE = 5635,
             UserSemantic = HlslSemanticGOOGLE,
-=======
-            NonUniformEXT = 5300,
-            RestrictPointer = 5355,
-            RestrictPointerEXT = 5355,
-            AliasedPointer = 5356,
-            AliasedPointerEXT = 5356,
-            ReferencedIndirectlyINTEL = 5602,
-            CounterBuffer = 5634,
-            HlslCounterBufferGOOGLE = 5634,
-            HlslSemanticGOOGLE = 5635,
-            UserSemantic = 5635,
->>>>>>> 1ec71635b (sync with main branch)
             UserTypeGOOGLE = 5636,
             RegisterINTEL = 5825,
             MemoryINTEL = 5826,
@@ -622,7 +547,6 @@ namespace Spv
             VertexIndex = 42,
             InstanceIndex = 43,
             SubgroupEqMask = 4416,
-<<<<<<< HEAD
             SubgroupEqMaskKHR = SubgroupEqMask,
             SubgroupGeMask = 4417,
             SubgroupGeMaskKHR = SubgroupGeMask,
@@ -632,17 +556,6 @@ namespace Spv
             SubgroupLeMaskKHR = SubgroupLeMask,
             SubgroupLtMask = 4420,
             SubgroupLtMaskKHR = SubgroupLtMask,
-=======
-            SubgroupEqMaskKHR = 4416,
-            SubgroupGeMask = 4417,
-            SubgroupGeMaskKHR = 4417,
-            SubgroupGtMask = 4418,
-            SubgroupGtMaskKHR = 4418,
-            SubgroupLeMask = 4419,
-            SubgroupLeMaskKHR = 4419,
-            SubgroupLtMask = 4420,
-            SubgroupLtMaskKHR = 4420,
->>>>>>> 1ec71635b (sync with main branch)
             BaseVertex = 4424,
             BaseInstance = 4425,
             DrawIndex = 4426,
@@ -675,7 +588,6 @@ namespace Spv
             BaryCoordNV = 5286,
             BaryCoordNoPerspNV = 5287,
             FragSizeEXT = 5292,
-<<<<<<< HEAD
             FragmentSizeNV = FragSizeEXT,
             FragInvocationCountEXT = 5293,
             InvocationsPerPixelNV = FragInvocationCountEXT,
@@ -706,38 +618,6 @@ namespace Spv
             HitKindNV = HitKindKHR,
             IncomingRayFlagsKHR = 5351,
             IncomingRayFlagsNV = IncomingRayFlagsKHR,
-=======
-            FragmentSizeNV = 5292,
-            FragInvocationCountEXT = 5293,
-            InvocationsPerPixelNV = 5293,
-            LaunchIdKHR = 5319,
-            LaunchIdNV = 5319,
-            LaunchSizeKHR = 5320,
-            LaunchSizeNV = 5320,
-            WorldRayOriginKHR = 5321,
-            WorldRayOriginNV = 5321,
-            WorldRayDirectionKHR = 5322,
-            WorldRayDirectionNV = 5322,
-            ObjectRayOriginKHR = 5323,
-            ObjectRayOriginNV = 5323,
-            ObjectRayDirectionKHR = 5324,
-            ObjectRayDirectionNV = 5324,
-            RayTminKHR = 5325,
-            RayTminNV = 5325,
-            RayTmaxKHR = 5326,
-            RayTmaxNV = 5326,
-            InstanceCustomIndexKHR = 5327,
-            InstanceCustomIndexNV = 5327,
-            ObjectToWorldKHR = 5330,
-            ObjectToWorldNV = 5330,
-            WorldToObjectKHR = 5331,
-            WorldToObjectNV = 5331,
-            HitTNV = 5332,
-            HitKindKHR = 5333,
-            HitKindNV = 5333,
-            IncomingRayFlagsKHR = 5351,
-            IncomingRayFlagsNV = 5351,
->>>>>>> 1ec71635b (sync with main branch)
             RayGeometryIndexKHR = 5352,
             WarpsPerSMNV = 5374,
             SMCountNV = 5375,
@@ -829,19 +709,11 @@ namespace Spv
             AtomicCounterMemory = 10,
             ImageMemory = 11,
             OutputMemory = 12,
-<<<<<<< HEAD
             OutputMemoryKHR = OutputMemory,
             MakeAvailable = 13,
             MakeAvailableKHR = MakeAvailable,
             MakeVisible = 14,
             MakeVisibleKHR = MakeVisible,
-=======
-            OutputMemoryKHR = 12,
-            MakeAvailable = 13,
-            MakeAvailableKHR = 13,
-            MakeVisible = 14,
-            MakeVisibleKHR = 14,
->>>>>>> 1ec71635b (sync with main branch)
             Volatile = 15,
         }
 
@@ -859,19 +731,11 @@ namespace Spv
             AtomicCounterMemory = 0x00000400,
             ImageMemory = 0x00000800,
             OutputMemory = 0x00001000,
-<<<<<<< HEAD
             OutputMemoryKHR = OutputMemory,
             MakeAvailable = 0x00002000,
             MakeAvailableKHR = MakeAvailable,
             MakeVisible = 0x00004000,
             MakeVisibleKHR = MakeVisible,
-=======
-            OutputMemoryKHR = 0x00001000,
-            MakeAvailable = 0x00002000,
-            MakeAvailableKHR = 0x00002000,
-            MakeVisible = 0x00004000,
-            MakeVisibleKHR = 0x00004000,
->>>>>>> 1ec71635b (sync with main branch)
             Volatile = 0x00008000,
         }
 
@@ -881,19 +745,11 @@ namespace Spv
             Aligned = 1,
             Nontemporal = 2,
             MakePointerAvailable = 3,
-<<<<<<< HEAD
             MakePointerAvailableKHR = MakePointerAvailable,
             MakePointerVisible = 4,
             MakePointerVisibleKHR = MakePointerVisible,
             NonPrivatePointer = 5,
             NonPrivatePointerKHR = NonPrivatePointer,
-=======
-            MakePointerAvailableKHR = 3,
-            MakePointerVisible = 4,
-            MakePointerVisibleKHR = 4,
-            NonPrivatePointer = 5,
-            NonPrivatePointerKHR = 5,
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public enum MemoryAccessMask
@@ -903,19 +759,11 @@ namespace Spv
             Aligned = 0x00000002,
             Nontemporal = 0x00000004,
             MakePointerAvailable = 0x00000008,
-<<<<<<< HEAD
             MakePointerAvailableKHR = MakePointerAvailable,
             MakePointerVisible = 0x00000010,
             MakePointerVisibleKHR = MakePointerVisible,
             NonPrivatePointer = 0x00000020,
             NonPrivatePointerKHR = NonPrivatePointer,
-=======
-            MakePointerAvailableKHR = 0x00000008,
-            MakePointerVisible = 0x00000010,
-            MakePointerVisibleKHR = 0x00000010,
-            NonPrivatePointer = 0x00000020,
-            NonPrivatePointerKHR = 0x00000020,
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public enum Scope
@@ -926,11 +774,7 @@ namespace Spv
             Subgroup = 3,
             Invocation = 4,
             QueueFamily = 5,
-<<<<<<< HEAD
             QueueFamilyKHR = QueueFamily,
-=======
-            QueueFamilyKHR = 5,
->>>>>>> 1ec71635b (sync with main branch)
             ShaderCallKHR = 6,
         }
 
@@ -1039,15 +883,9 @@ namespace Spv
             DrawParameters = 4427,
             SubgroupVoteKHR = 4431,
             StorageBuffer16BitAccess = 4433,
-<<<<<<< HEAD
             StorageUniformBufferBlock16 = StorageBuffer16BitAccess,
             StorageUniform16 = 4434,
             UniformAndStorageBuffer16BitAccess = StorageUniform16,
-=======
-            StorageUniformBufferBlock16 = 4433,
-            StorageUniform16 = 4434,
-            UniformAndStorageBuffer16BitAccess = 4434,
->>>>>>> 1ec71635b (sync with main branch)
             StoragePushConstant16 = 4435,
             StorageInputOutput16 = 4436,
             DeviceGroup = 4437,
@@ -1078,11 +916,7 @@ namespace Spv
             SampleMaskOverrideCoverageNV = 5249,
             GeometryShaderPassthroughNV = 5251,
             ShaderViewportIndexLayerEXT = 5254,
-<<<<<<< HEAD
             ShaderViewportIndexLayerNV = ShaderViewportIndexLayerEXT,
-=======
-            ShaderViewportIndexLayerNV = 5254,
->>>>>>> 1ec71635b (sync with main branch)
             ShaderViewportMaskNV = 5255,
             ShaderStereoViewNV = 5259,
             PerViewAttributesNV = 5260,
@@ -1092,7 +926,6 @@ namespace Spv
             FragmentBarycentricNV = 5284,
             ComputeDerivativeGroupQuadsNV = 5288,
             FragmentDensityEXT = 5291,
-<<<<<<< HEAD
             ShadingRateNV = FragmentDensityEXT,
             GroupNonUniformPartitionedNV = 5297,
             ShaderNonUniform = 5301,
@@ -1126,41 +959,6 @@ namespace Spv
             VulkanMemoryModelDeviceScopeKHR = VulkanMemoryModelDeviceScope,
             PhysicalStorageBufferAddresses = 5347,
             PhysicalStorageBufferAddressesEXT = PhysicalStorageBufferAddresses,
-=======
-            ShadingRateNV = 5291,
-            GroupNonUniformPartitionedNV = 5297,
-            ShaderNonUniform = 5301,
-            ShaderNonUniformEXT = 5301,
-            RuntimeDescriptorArray = 5302,
-            RuntimeDescriptorArrayEXT = 5302,
-            InputAttachmentArrayDynamicIndexing = 5303,
-            InputAttachmentArrayDynamicIndexingEXT = 5303,
-            UniformTexelBufferArrayDynamicIndexing = 5304,
-            UniformTexelBufferArrayDynamicIndexingEXT = 5304,
-            StorageTexelBufferArrayDynamicIndexing = 5305,
-            StorageTexelBufferArrayDynamicIndexingEXT = 5305,
-            UniformBufferArrayNonUniformIndexing = 5306,
-            UniformBufferArrayNonUniformIndexingEXT = 5306,
-            SampledImageArrayNonUniformIndexing = 5307,
-            SampledImageArrayNonUniformIndexingEXT = 5307,
-            StorageBufferArrayNonUniformIndexing = 5308,
-            StorageBufferArrayNonUniformIndexingEXT = 5308,
-            StorageImageArrayNonUniformIndexing = 5309,
-            StorageImageArrayNonUniformIndexingEXT = 5309,
-            InputAttachmentArrayNonUniformIndexing = 5310,
-            InputAttachmentArrayNonUniformIndexingEXT = 5310,
-            UniformTexelBufferArrayNonUniformIndexing = 5311,
-            UniformTexelBufferArrayNonUniformIndexingEXT = 5311,
-            StorageTexelBufferArrayNonUniformIndexing = 5312,
-            StorageTexelBufferArrayNonUniformIndexingEXT = 5312,
-            RayTracingNV = 5340,
-            VulkanMemoryModel = 5345,
-            VulkanMemoryModelKHR = 5345,
-            VulkanMemoryModelDeviceScope = 5346,
-            VulkanMemoryModelDeviceScopeKHR = 5346,
-            PhysicalStorageBufferAddresses = 5347,
-            PhysicalStorageBufferAddressesEXT = 5347,
->>>>>>> 1ec71635b (sync with main branch)
             ComputeDerivativeGroupLinearNV = 5350,
             RayTracingProvisionalKHR = 5353,
             CooperativeMatrixNV = 5357,
@@ -1635,20 +1433,12 @@ namespace Spv
             OpGroupNonUniformPartitionNV = 5296,
             OpWritePackedPrimitiveIndices4x8NV = 5299,
             OpReportIntersectionKHR = 5334,
-<<<<<<< HEAD
             OpReportIntersectionNV = OpReportIntersectionKHR,
-=======
-            OpReportIntersectionNV = 5334,
->>>>>>> 1ec71635b (sync with main branch)
             OpIgnoreIntersectionNV = 5335,
             OpTerminateRayNV = 5336,
             OpTraceNV = 5337,
             OpTypeAccelerationStructureKHR = 5341,
-<<<<<<< HEAD
             OpTypeAccelerationStructureNV = OpTypeAccelerationStructureKHR,
-=======
-            OpTypeAccelerationStructureNV = 5341,
->>>>>>> 1ec71635b (sync with main branch)
             OpExecuteCallableNV = 5344,
             OpTypeCooperativeMatrixNV = 5358,
             OpCooperativeMatrixLoadNV = 5359,
@@ -1686,15 +1476,9 @@ namespace Spv
             OpFunctionPointerINTEL = 5600,
             OpFunctionPointerCallINTEL = 5601,
             OpDecorateString = 5632,
-<<<<<<< HEAD
             OpDecorateStringGOOGLE = OpDecorateString,
             OpMemberDecorateString = 5633,
             OpMemberDecorateStringGOOGLE = OpMemberDecorateString,
-=======
-            OpDecorateStringGOOGLE = 5632,
-            OpMemberDecorateString = 5633,
-            OpMemberDecorateStringGOOGLE = 5633,
->>>>>>> 1ec71635b (sync with main branch)
             OpVmeImageINTEL = 5699,
             OpTypeVmeImageINTEL = 5700,
             OpTypeAvcImePayloadINTEL = 5701,
@@ -1838,7 +1622,3 @@ namespace Spv
         }
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)

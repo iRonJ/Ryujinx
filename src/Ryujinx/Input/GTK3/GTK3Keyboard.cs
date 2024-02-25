@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Configuration.Hid;
-=======
-﻿using Ryujinx.Common.Configuration.Hid;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Configuration.Hid.Keyboard;
 using System;
 using System.Collections.Generic;
@@ -25,19 +21,11 @@ namespace Ryujinx.Input.GTK3
             }
         }
 
-<<<<<<< HEAD
         private readonly object _userMappingLock = new();
 
         private readonly GTK3KeyboardDriver _driver;
         private StandardKeyboardInputConfig _configuration;
         private readonly List<ButtonMappingEntry> _buttonsUserMapping;
-=======
-        private object _userMappingLock = new object();
-
-        private readonly GTK3KeyboardDriver _driver;
-        private StandardKeyboardInputConfig _configuration;
-        private List<ButtonMappingEntry> _buttonsUserMapping;
->>>>>>> 1ec71635b (sync with main branch)
 
         public GTK3Keyboard(GTK3KeyboardDriver driver, string id, string name)
         {
@@ -60,10 +48,7 @@ namespace Ryujinx.Input.GTK3
         public void Dispose()
         {
             // No operations
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
-=======
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public KeyboardStateSnapshot GetKeyboardStateSnapshot()
@@ -103,11 +88,7 @@ namespace Ryujinx.Input.GTK3
                 stickX -= 1;
             }
 
-<<<<<<< HEAD
             OpenTK.Mathematics.Vector2 stick = new(stickX, stickY);
-=======
-            OpenTK.Mathematics.Vector2 stick = new OpenTK.Mathematics.Vector2(stickX, stickY);
->>>>>>> 1ec71635b (sync with main branch)
 
             stick.NormalizeFast();
 

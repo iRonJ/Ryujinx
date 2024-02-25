@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using FuncBinaryInstruction = System.Func<Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction>;
-=======
-﻿using FuncBinaryInstruction = System.Func<Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction>;
->>>>>>> 1ec71635b (sync with main branch)
 using FuncQuaternaryInstruction = System.Func<Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction>;
 using FuncTernaryInstruction = System.Func<Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction>;
 using FuncUnaryInstruction = System.Func<Spv.Generator.Instruction, Spv.Generator.Instruction, Spv.Generator.Instruction>;

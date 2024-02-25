@@ -8,12 +8,6 @@ namespace Ryujinx.Common.Configuration
     {
         Bilinear,
         Nearest,
-<<<<<<< HEAD
         Fsr,
     }
 }
-=======
-        Fsr
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

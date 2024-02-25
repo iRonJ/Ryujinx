@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 using Microsoft.IO;
-=======
-﻿using Microsoft.IO;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Common.Memory
 {
     public static class MemoryStreamManager
     {
-<<<<<<< HEAD
         private static readonly RecyclableMemoryStreamManager _shared = new();
-=======
-        private static readonly RecyclableMemoryStreamManager _shared = new RecyclableMemoryStreamManager();
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// We don't expose the <c>RecyclableMemoryStreamManager</c> directly because version 2.x
@@ -27,11 +19,7 @@ namespace Ryujinx.Common.Memory
             /// </summary>
             /// <returns>A <c>RecyclableMemoryStream</c></returns>
             public static RecyclableMemoryStream GetStream()
-<<<<<<< HEAD
                 => new(_shared);
-=======
-                => new RecyclableMemoryStream(_shared);
->>>>>>> 1ec71635b (sync with main branch)
 
             /// <summary>
             /// Retrieve a new <c>MemoryStream</c> object with the contents copied from the provided

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 
@@ -12,18 +8,13 @@ namespace Ryujinx.HLE.HOS.Services.Nifm.StaticService.Types
     struct IpAddressSetting
     {
         [MarshalAs(UnmanagedType.U1)]
-<<<<<<< HEAD
         public bool IsDhcpEnabled;
-=======
-        public bool        IsDhcpEnabled;
->>>>>>> 1ec71635b (sync with main branch)
         public IpV4Address Address;
         public IpV4Address IPv4Mask;
         public IpV4Address GatewayAddress;
 
         public IpAddressSetting(IPInterfaceProperties interfaceProperties, UnicastIPAddressInformation unicastIPAddressInformation)
         {
-<<<<<<< HEAD
             IsDhcpEnabled = OperatingSystem.IsMacOS() || interfaceProperties.DhcpServerAddresses.Count != 0;
             Address = new IpV4Address(unicastIPAddressInformation.Address);
             IPv4Mask = new IpV4Address(unicastIPAddressInformation.IPv4Mask);
@@ -31,12 +22,3 @@ namespace Ryujinx.HLE.HOS.Services.Nifm.StaticService.Types
         }
     }
 }
-=======
-            IsDhcpEnabled  = OperatingSystem.IsMacOS() || interfaceProperties.DhcpServerAddresses.Count != 0;
-            Address        = new IpV4Address(unicastIPAddressInformation.Address);
-            IPv4Mask       = new IpV4Address(unicastIPAddressInformation.IPv4Mask);
-            GatewayAddress = (interfaceProperties.GatewayAddresses.Count == 0) ? new IpV4Address() : new IpV4Address(interfaceProperties.GatewayAddresses[0].Address);
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

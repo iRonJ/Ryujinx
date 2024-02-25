@@ -146,13 +146,9 @@ namespace Ryujinx.Graphics.GAL
         B5G5R5A1Unorm,
         A1B5G5R5Unorm,
         B8G8R8A8Unorm,
-<<<<<<< HEAD
         B8G8R8A8Srgb,
         B10G10R10A2Unorm,
         X8UintD24Unorm,
-=======
-        B8G8R8A8Srgb
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     public static class FormatExtensions
@@ -266,10 +262,7 @@ namespace Ryujinx.Graphics.GAL
                 case Format.R10G10B10A2Sint:
                 case Format.R10G10B10A2Uscaled:
                 case Format.R10G10B10A2Sscaled:
-<<<<<<< HEAD
                 case Format.B10G10R10A2Unorm:
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     return 4;
 
                 case Format.S8Uint:
@@ -277,10 +270,7 @@ namespace Ryujinx.Graphics.GAL
                 case Format.D16Unorm:
                     return 2;
                 case Format.S8UintD24Unorm:
-<<<<<<< HEAD
                 case Format.X8UintD24Unorm:
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 case Format.D32Float:
                 case Format.D24UnormS8Uint:
                     return 4;
@@ -350,7 +340,6 @@ namespace Ryujinx.Graphics.GAL
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Checks if the texture format is a depth or depth-stencil format.
         /// </summary>
         /// <param name="format">Texture format</param>
@@ -391,8 +380,6 @@ namespace Ryujinx.Graphics.GAL
         }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Checks if the texture format is valid to use as image format.
         /// </summary>
         /// <param name="format">Texture format</param>
@@ -440,10 +427,7 @@ namespace Ryujinx.Graphics.GAL
                 case Format.R10G10B10A2Unorm:
                 case Format.R10G10B10A2Uint:
                 case Format.R11G11B10Float:
-<<<<<<< HEAD
                 case Format.B8G8R8A8Unorm:
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     return true;
             }
 
@@ -472,10 +456,7 @@ namespace Ryujinx.Graphics.GAL
                 case Format.R32G32Uint:
                 case Format.B8G8R8A8Unorm:
                 case Format.B8G8R8A8Srgb:
-<<<<<<< HEAD
                 case Format.B10G10R10A2Unorm:
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 case Format.R10G10B10A2Unorm:
                 case Format.R10G10B10A2Uint:
                 case Format.R8G8B8A8Unorm:
@@ -636,10 +617,7 @@ namespace Ryujinx.Graphics.GAL
                 case Format.B5G5R5A1Unorm:
                 case Format.B8G8R8A8Unorm:
                 case Format.B8G8R8A8Srgb:
-<<<<<<< HEAD
                 case Format.B10G10R10A2Unorm:
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     return true;
             }
 
@@ -658,10 +636,7 @@ namespace Ryujinx.Graphics.GAL
                 case Format.D16Unorm:
                 case Format.D24UnormS8Uint:
                 case Format.S8UintD24Unorm:
-<<<<<<< HEAD
                 case Format.X8UintD24Unorm:
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 case Format.D32Float:
                 case Format.D32FloatS8Uint:
                 case Format.S8Uint:
@@ -737,8 +712,4 @@ namespace Ryujinx.Graphics.GAL
             return format.IsUint() || format.IsSint();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

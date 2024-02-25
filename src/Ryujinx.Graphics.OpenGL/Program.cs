@@ -30,10 +30,6 @@ namespace Ryujinx.Graphics.OpenGL
         private ProgramLinkStatus _status = ProgramLinkStatus.Incomplete;
         private int[] _shaderHandles;
 
-<<<<<<< HEAD
-=======
-        public bool HasFragmentShader;
->>>>>>> 1ec71635b (sync with main branch)
         public int FragmentOutputMap { get; }
 
         public Program(ShaderSource[] shaders, int fragmentOutputMap)
@@ -43,10 +39,7 @@ namespace Ryujinx.Graphics.OpenGL
             GL.ProgramParameter(Handle, ProgramParameterName.ProgramBinaryRetrievableHint, 1);
 
             _shaderHandles = new int[shaders.Length];
-<<<<<<< HEAD
             bool hasFragmentShader = false;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int index = 0; index < shaders.Length; index++)
             {
@@ -54,11 +47,7 @@ namespace Ryujinx.Graphics.OpenGL
 
                 if (shader.Stage == ShaderStage.Fragment)
                 {
-<<<<<<< HEAD
                     hasFragmentShader = true;
-=======
-                    HasFragmentShader = true;
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 int shaderHandle = GL.CreateShader(shader.Stage.Convert());
@@ -82,11 +71,7 @@ namespace Ryujinx.Graphics.OpenGL
 
             GL.LinkProgram(Handle);
 
-<<<<<<< HEAD
             FragmentOutputMap = hasFragmentShader ? fragmentOutputMap : 0;
-=======
-            FragmentOutputMap = fragmentOutputMap;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public Program(ReadOnlySpan<byte> code, bool hasFragmentShader, int fragmentOutputMap)
@@ -106,12 +91,7 @@ namespace Ryujinx.Graphics.OpenGL
                 }
             }
 
-<<<<<<< HEAD
             FragmentOutputMap = hasFragmentShader ? fragmentOutputMap : 0;
-=======
-            HasFragmentShader = hasFragmentShader;
-            FragmentOutputMap = fragmentOutputMap;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void Bind()
@@ -142,11 +122,7 @@ namespace Ryujinx.Graphics.OpenGL
 
                 if (log.Length > MaxShaderLogLength)
                 {
-<<<<<<< HEAD
                     log = log[..MaxShaderLogLength] + "...";
-=======
-                    log = log.Substring(0, MaxShaderLogLength) + "...";
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 Logger.Warning?.Print(LogClass.Gpu, $"Shader linking failed: \n{log}");

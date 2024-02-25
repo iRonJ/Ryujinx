@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System;
 
 namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
@@ -6,15 +5,6 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
     struct FFCodecLegacy<T> where T : struct
     {
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-﻿using System;
-
-namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
-{
-    struct FFCodecLegacy<T> where T: struct
-    {
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public T Base;
         public uint CapsInternalOrCbType;
         public int PrivDataSize;

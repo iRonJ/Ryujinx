@@ -1,14 +1,9 @@
 using Ryujinx.Audio.Common;
 using Ryujinx.Audio.Renderer.Common;
-<<<<<<< HEAD
 using Ryujinx.Audio.Renderer.Server.Voice;
 using System;
 using static Ryujinx.Audio.Renderer.Parameter.VoiceInParameter;
 using WaveBuffer = Ryujinx.Audio.Renderer.Common.WaveBuffer;
-=======
-using System;
-using static Ryujinx.Audio.Renderer.Parameter.VoiceInParameter;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Audio.Renderer.Dsp.Command
 {
@@ -35,11 +30,7 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
         public Memory<VoiceUpdateState> State { get; }
         public DecodingBehaviour DecodingBehaviour { get; }
 
-<<<<<<< HEAD
         public PcmInt16DataSourceCommandVersion1(ref VoiceState serverState, Memory<VoiceUpdateState> state, ushort outputBufferIndex, ushort channelIndex, int nodeId)
-=======
-        public PcmInt16DataSourceCommandVersion1(ref Server.Voice.VoiceState serverState, Memory<VoiceUpdateState> state, ushort outputBufferIndex, ushort channelIndex, int nodeId)
->>>>>>> 1ec71635b (sync with main branch)
         {
             Enabled = true;
             NodeId = nodeId;
@@ -67,11 +58,7 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
         {
             Span<float> outputBuffer = context.GetBuffer(OutputBufferIndex);
 
-<<<<<<< HEAD
             DataSourceHelper.WaveBufferInformation info = new()
-=======
-            DataSourceHelper.WaveBufferInformation info = new DataSourceHelper.WaveBufferInformation
->>>>>>> 1ec71635b (sync with main branch)
             {
                 SourceSampleRate = SampleRate,
                 SampleFormat = SampleFormat.PcmInt16,
@@ -86,8 +73,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             DataSourceHelper.ProcessWaveBuffers(context.MemoryManager, outputBuffer, ref info, WaveBuffers, ref State.Span[0], context.SampleRate, (int)context.SampleCount);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -56,11 +56,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
             return false;
         }
 
-<<<<<<< HEAD
         public static bool KernelToUser<T>(ulong address, T value) where T : unmanaged
-=======
-        public static bool KernelToUser<T>(ulong address, T value) where T: unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             KProcess currentProcess = KernelStatic.GetCurrentProcess();
 
@@ -74,8 +70,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
             return false;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

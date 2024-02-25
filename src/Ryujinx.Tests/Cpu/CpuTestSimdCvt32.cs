@@ -12,11 +12,7 @@ namespace Ryujinx.Tests.Cpu
     {
 #if SimdCvt32
 
-<<<<<<< HEAD
         #region "ValueSource (Opcodes)"
-=======
-#region "ValueSource (Opcodes)"
->>>>>>> 1ec71635b (sync with main branch)
         private static uint[] _Vrint_AMNP_V_F32_()
         {
             return new[]
@@ -24,7 +20,6 @@ namespace Ryujinx.Tests.Cpu
                 0xf3ba0500u, // VRINTA.F32 Q0, Q0
                 0xf3ba0680u, // VRINTM.F32 Q0, Q0
                 0xf3ba0400u, // VRINTN.F32 Q0, Q0
-<<<<<<< HEAD
                 0xf3ba0780u, // VRINTP.F32 Q0, Q0
             };
         }
@@ -37,18 +32,6 @@ namespace Ryujinx.Tests.Cpu
                 0x00000000u, 0x7FFFFFFFu,
                 0x80000000u, 0xFFFFFFFFu,
             };
-=======
-                0xf3ba0780u  // VRINTP.F32 Q0, Q0
-            };
-        }
-#endregion
-
-#region "ValueSource (Types)"
-        private static uint[] _1S_()
-        {
-            return new[] { 0x00000000u, 0x7FFFFFFFu,
-                           0x80000000u, 0xFFFFFFFFu };
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static IEnumerable<ulong> _1S_F_()
@@ -62,31 +45,19 @@ namespace Ryujinx.Tests.Cpu
             yield return 0x00000000007FFFFFul; // +Max Subnormal
             yield return 0x0000000000000001ul; // +Min Subnormal (float.Epsilon)
 
-<<<<<<< HEAD
             if (!_noZeros)
-=======
-            if (!NoZeros)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 yield return 0x0000000080000000ul; // -Zero
                 yield return 0x0000000000000000ul; // +Zero
             }
 
-<<<<<<< HEAD
             if (!_noInfs)
-=======
-            if (!NoInfs)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 yield return 0x00000000FF800000ul; // -Infinity
                 yield return 0x000000007F800000ul; // +Infinity
             }
 
-<<<<<<< HEAD
             if (!_noNaNs)
-=======
-            if (!NoNaNs)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 yield return 0x00000000FFC00000ul; // -QNaN (all zeros payload) (float.NaN)
                 yield return 0x00000000FFBFFFFFul; // -SNaN (all ones  payload)
@@ -116,31 +87,19 @@ namespace Ryujinx.Tests.Cpu
             yield return 0x007FFFFF007FFFFFul; // +Max Subnormal
             yield return 0x0000000100000001ul; // +Min Subnormal (float.Epsilon)
 
-<<<<<<< HEAD
             if (!_noZeros)
-=======
-            if (!NoZeros)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 yield return 0x8000000080000000ul; // -Zero
                 yield return 0x0000000000000000ul; // +Zero
             }
 
-<<<<<<< HEAD
             if (!_noInfs)
-=======
-            if (!NoInfs)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 yield return 0xFF800000FF800000ul; // -Infinity
                 yield return 0x7F8000007F800000ul; // +Infinity
             }
 
-<<<<<<< HEAD
             if (!_noNaNs)
-=======
-            if (!NoNaNs)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 yield return 0xFFC00000FFC00000ul; // -QNaN (all zeros payload) (float.NaN)
                 yield return 0xFFBFFFFFFFBFFFFFul; // -SNaN (all ones  payload)
@@ -169,31 +128,19 @@ namespace Ryujinx.Tests.Cpu
             yield return 0x000FFFFFFFFFFFFFul; // +Max Subnormal
             yield return 0x0000000000000001ul; // +Min Subnormal (double.Epsilon)
 
-<<<<<<< HEAD
             if (!_noZeros)
-=======
-            if (!NoZeros)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 yield return 0x8000000000000000ul; // -Zero
                 yield return 0x0000000000000000ul; // +Zero
             }
 
-<<<<<<< HEAD
             if (!_noInfs)
-=======
-            if (!NoInfs)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 yield return 0xFFF0000000000000ul; // -Infinity
                 yield return 0x7FF0000000000000ul; // +Infinity
             }
 
-<<<<<<< HEAD
             if (!_noNaNs)
-=======
-            if (!NoNaNs)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 yield return 0xFFF8000000000000ul; // -QNaN (all zeros payload) (double.NaN)
                 yield return 0xFFF7FFFFFFFFFFFFul; // -SNaN (all ones  payload)
@@ -210,7 +157,6 @@ namespace Ryujinx.Tests.Cpu
                 yield return rnd2;
             }
         }
-<<<<<<< HEAD
         #endregion
 
         private const int RndCnt = 2;
@@ -218,15 +164,6 @@ namespace Ryujinx.Tests.Cpu
         private static readonly bool _noZeros = false;
         private static readonly bool _noInfs = false;
         private static readonly bool _noNaNs = false;
-=======
-#endregion
-
-        private const int RndCnt = 2;
-
-        private static readonly bool NoZeros = false;
-        private static readonly bool NoInfs  = false;
-        private static readonly bool NoNaNs  = false;
->>>>>>> 1ec71635b (sync with main branch)
 
         [Explicit]
         [Test, Pairwise, Description("VCVT.<dt>.F32 <Sd>, <Sm>")]
@@ -340,12 +277,8 @@ namespace Ryujinx.Tests.Cpu
             CompareAgainstUnicorn();
         }
 
-<<<<<<< HEAD
         [Test, Pairwise]
         [Explicit]
-=======
-        [Test, Pairwise] [Explicit]
->>>>>>> 1ec71635b (sync with main branch)
         public void Vrint_AMNP_V_F32([ValueSource(nameof(_Vrint_AMNP_V_F32_))] uint opcode,
                                      [Values(0u, 1u, 2u, 3u)] uint rd,
                                      [Values(0u, 1u, 2u, 3u)] uint rm,
@@ -359,7 +292,6 @@ namespace Ryujinx.Tests.Cpu
             {
                 opcode |= 1 << 6;
 
-<<<<<<< HEAD
                 rd >>= 1;
                 rd <<= 1;
                 rm >>= 1;
@@ -368,14 +300,6 @@ namespace Ryujinx.Tests.Cpu
 
             opcode |= ((rd & 0xf) << 12) | ((rd & 0x10) << 18);
             opcode |= ((rm & 0xf) << 0) | ((rm & 0x10) << 1);
-=======
-                rd >>= 1; rd <<= 1;
-                rm >>= 1; rm <<= 1;
-            }
-
-            opcode |= ((rd & 0xf) << 12) | ((rd & 0x10) << 18);
-            opcode |= ((rm & 0xf) << 0)  | ((rm & 0x10) << 1);
->>>>>>> 1ec71635b (sync with main branch)
 
             V128 v0 = MakeVectorE0E1(d0, d1);
             V128 v1 = MakeVectorE0E1(d2, d3);
@@ -476,19 +400,11 @@ namespace Ryujinx.Tests.Cpu
         [Explicit]
         [Test, Pairwise, Description("VCVT<top>.F<size>.F16 <Vd>, <Sm>")]
         public void Vcvt_F16_Fx([Values(0u, 1u, 2u, 3u)] uint rd,
-<<<<<<< HEAD
                                 [Values(0u, 1u, 2u, 3u)] uint rm,
                                 [ValueSource(nameof(_1D_F_))] ulong d0,
                                 [ValueSource(nameof(_1D_F_))] ulong d1,
                                 [Values] bool top,
                                 [Values] bool sz)
-=======
-                                 [Values(0u, 1u, 2u, 3u)] uint rm,
-                                 [ValueSource(nameof(_1D_F_))] ulong d0,
-                                 [ValueSource(nameof(_1D_F_))] ulong d1,
-                                 [Values] bool top,
-                                 [Values] bool sz)
->>>>>>> 1ec71635b (sync with main branch)
         {
             uint opcode = 0xeeb20a40; // VCVTB.F32.F16 S0, S0
 
@@ -515,7 +431,6 @@ namespace Ryujinx.Tests.Cpu
 
             CompareAgainstUnicorn();
         }
-<<<<<<< HEAD
 
         [Test, Pairwise, Description("VCVT.I32.F32 <Vd>, <Vm>, #<fbits>")]
         public void Vcvt_V_Fixed_F32_I32([Values(0u, 1u, 2u, 3u)] uint vd,
@@ -638,8 +553,3 @@ namespace Ryujinx.Tests.Cpu
 #endif
     }
 }
-=======
-#endif
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

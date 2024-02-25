@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.Gpu.Engine.InlineToMemory;
 using Ryujinx.Graphics.Gpu.Engine.Types;
@@ -22,11 +18,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         TessellationControl,
         TessellationEvaluation,
         Geometry,
-<<<<<<< HEAD
         Fragment,
-=======
-        Fragment
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -34,11 +26,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct TessMode
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public uint Packed;
 #pragma warning restore CS0649
 
@@ -46,11 +34,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the tessellation abstract patch type.
         /// </summary>
         /// <returns>Abtract patch type</returns>
-<<<<<<< HEAD
         public readonly TessPatchType UnpackPatchType()
-=======
-        public TessPatchType UnpackPatchType()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (TessPatchType)(Packed & 3);
         }
@@ -59,11 +43,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the spacing between tessellated vertices of the patch.
         /// </summary>
         /// <returns>Spacing between tessellated vertices</returns>
-<<<<<<< HEAD
         public readonly TessSpacing UnpackSpacing()
-=======
-        public TessSpacing UnpackSpacing()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (TessSpacing)((Packed >> 4) & 3);
         }
@@ -72,11 +52,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the primitive winding order.
         /// </summary>
         /// <returns>True if clockwise, false if counter-clockwise</returns>
-<<<<<<< HEAD
         public readonly bool UnpackCw()
-=======
-        public bool UnpackCw()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (Packed & (1 << 8)) != 0;
         }
@@ -87,11 +63,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct TfBufferState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 Enable;
         public GpuVa Address;
         public int Size;
@@ -107,11 +79,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct TfState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public int BufferIndex;
         public int VaryingsCount;
         public int Stride;
@@ -124,11 +92,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct RtColorState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public GpuVa Address;
         public int WidthOrStride;
         public int Height;
@@ -152,11 +116,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct ViewportTransform
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public float ScaleX;
         public float ScaleY;
         public float ScaleZ;
@@ -171,11 +131,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks viewport swizzle of the position X component.
         /// </summary>
         /// <returns>Swizzle enum value</returns>
-<<<<<<< HEAD
         public readonly ViewportSwizzle UnpackSwizzleX()
-=======
-        public ViewportSwizzle UnpackSwizzleX()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (ViewportSwizzle)(Swizzle & 7);
         }
@@ -184,11 +140,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks viewport swizzle of the position Y component.
         /// </summary>
         /// <returns>Swizzle enum value</returns>
-<<<<<<< HEAD
         public readonly ViewportSwizzle UnpackSwizzleY()
-=======
-        public ViewportSwizzle UnpackSwizzleY()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (ViewportSwizzle)((Swizzle >> 4) & 7);
         }
@@ -197,11 +149,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks viewport swizzle of the position Z component.
         /// </summary>
         /// <returns>Swizzle enum value</returns>
-<<<<<<< HEAD
         public readonly ViewportSwizzle UnpackSwizzleZ()
-=======
-        public ViewportSwizzle UnpackSwizzleZ()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (ViewportSwizzle)((Swizzle >> 8) & 7);
         }
@@ -210,11 +158,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks viewport swizzle of the position W component.
         /// </summary>
         /// <returns>Swizzle enum value</returns>
-<<<<<<< HEAD
         public readonly ViewportSwizzle UnpackSwizzleW()
-=======
-        public ViewportSwizzle UnpackSwizzleW()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (ViewportSwizzle)((Swizzle >> 12) & 7);
         }
@@ -225,11 +169,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct ViewportExtents
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public ushort X;
         public ushort Width;
         public ushort Y;
@@ -244,11 +184,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct VertexBufferDrawState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public int First;
         public int Count;
 #pragma warning restore CS0649
@@ -259,11 +195,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct ClearColors
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public float Red;
         public float Green;
         public float Blue;
@@ -276,11 +208,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct DepthBiasState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 PointEnable;
         public Boolean32 LineEnable;
         public Boolean32 FillEnable;
@@ -295,11 +223,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         Disabled = 0,
         EnableRGB = 1,
         EnableAlpha = 2,
-<<<<<<< HEAD
         EnableRGBA = 3,
-=======
-        EnableRGBA = 3
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -307,11 +231,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct ScissorState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 Enable;
         public ushort X1;
         public ushort X2;
@@ -326,11 +246,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct StencilBackMasks
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public int FuncRef;
         public int Mask;
         public int FuncMask;
@@ -342,11 +258,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct RtDepthStencilState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public GpuVa Address;
         public ZetaFormat Format;
         public MemoryLayout MemoryLayout;
@@ -359,11 +271,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct ScreenScissorState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public ushort X;
         public ushort Width;
         public ushort Y;
@@ -389,11 +297,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         Size16 = 0x1b,
         Size8 = 0x1d,
         Rgb10A2 = 0x30,
-<<<<<<< HEAD
         Rg11B10 = 0x31,
-=======
-        Rg11B10 = 0x31
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -407,11 +311,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         Uint = 4,
         Uscaled = 5,
         Sscaled = 6,
-<<<<<<< HEAD
         Float = 7,
-=======
-        Float = 7
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -419,11 +319,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct VertexAttribState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public uint Attribute;
 #pragma warning restore CS0649
 
@@ -431,11 +327,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the index of the vertex buffer this attribute belongs to.
         /// </summary>
         /// <returns>Vertex buffer index</returns>
-<<<<<<< HEAD
         public readonly int UnpackBufferIndex()
-=======
-        public int UnpackBufferIndex()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (int)(Attribute & 0x1f);
         }
@@ -444,11 +336,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the attribute constant flag.
         /// </summary>
         /// <returns>True if the attribute is constant, false otherwise</returns>
-<<<<<<< HEAD
         public readonly bool UnpackIsConstant()
-=======
-        public bool UnpackIsConstant()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (Attribute & 0x40) != 0;
         }
@@ -457,11 +345,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the offset, in bytes, of the attribute on the vertex buffer.
         /// </summary>
         /// <returns>Attribute offset in bytes</returns>
-<<<<<<< HEAD
         public readonly int UnpackOffset()
-=======
-        public int UnpackOffset()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (int)((Attribute >> 7) & 0x3fff);
         }
@@ -470,11 +354,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the Maxwell attribute format integer.
         /// </summary>
         /// <returns>Attribute format integer</returns>
-<<<<<<< HEAD
         public readonly uint UnpackFormat()
-=======
-        public uint UnpackFormat()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return Attribute & 0x3fe00000;
         }
@@ -483,11 +363,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the Maxwell attribute size.
         /// </summary>
         /// <returns>Attribute size</returns>
-<<<<<<< HEAD
         public readonly VertexAttribSize UnpackSize()
-=======
-        public VertexAttribSize UnpackSize()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (VertexAttribSize)((Attribute >> 21) & 0x3f);
         }
@@ -496,11 +372,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the Maxwell attribute component type.
         /// </summary>
         /// <returns>Attribute component type</returns>
-<<<<<<< HEAD
         public readonly VertexAttribType UnpackType()
-=======
-        public VertexAttribType UnpackType()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (VertexAttribType)((Attribute >> 27) & 7);
         }
@@ -511,11 +383,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct RtControl
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public uint Packed;
 #pragma warning restore CS0649
 
@@ -523,11 +391,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the number of active draw buffers.
         /// </summary>
         /// <returns>Number of active draw buffers</returns>
-<<<<<<< HEAD
         public readonly int UnpackCount()
-=======
-        public int UnpackCount()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (int)(Packed & 0xf);
         }
@@ -537,11 +401,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// </summary>
         /// <param name="index">Index of the draw buffer</param>
         /// <returns>Attachment index</returns>
-<<<<<<< HEAD
         public readonly int UnpackPermutationIndex(int index)
-=======
-        public int UnpackPermutationIndex(int index)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (int)((Packed >> (4 + index * 3)) & 7);
         }
@@ -552,11 +412,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct Size3D
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public int Width;
         public int Height;
         public int Depth;
@@ -568,11 +424,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct StencilTestState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 Enable;
         public StencilOp FrontSFail;
         public StencilOp FrontDpFail;
@@ -591,11 +443,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     enum YControl
     {
         NegateY = 1 << 0,
-<<<<<<< HEAD
         TriangleRastFlip = 1 << 4,
-=======
-        TriangleRastFlip = 1 << 4
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -603,11 +451,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct RgbHalf
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public uint R;
         public uint G;
         public uint B;
@@ -618,11 +462,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the red color component as a 16-bit float value.
         /// </summary>
         /// <returns>The component value</returns>
-<<<<<<< HEAD
         public readonly Half UnpackR()
-=======
-        public Half UnpackR()
->>>>>>> 1ec71635b (sync with main branch)
         {
             ushort value = (ushort)R;
             return Unsafe.As<ushort, Half>(ref value);
@@ -632,11 +472,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the green color component as a 16-bit float value.
         /// </summary>
         /// <returns>The component value</returns>
-<<<<<<< HEAD
         public readonly Half UnpackG()
-=======
-        public Half UnpackG()
->>>>>>> 1ec71635b (sync with main branch)
         {
             ushort value = (ushort)G;
             return Unsafe.As<ushort, Half>(ref value);
@@ -646,11 +482,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks the blue color component as a 16-bit float value.
         /// </summary>
         /// <returns>The component value</returns>
-<<<<<<< HEAD
         public readonly Half UnpackB()
-=======
-        public Half UnpackB()
->>>>>>> 1ec71635b (sync with main branch)
         {
             ushort value = (ushort)B;
             return Unsafe.As<ushort, Half>(ref value);
@@ -666,11 +498,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         Always,
         ResultNonZero,
         Equal,
-<<<<<<< HEAD
         NotEqual,
-=======
-        NotEqual
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -678,11 +506,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct PoolState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public GpuVa Address;
         public int MaximumId;
 #pragma warning restore CS0649
@@ -693,11 +517,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct StencilBackTestState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 TwoSided;
         public StencilOp BackSFail;
         public StencilOp BackDpFail;
@@ -711,11 +531,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct PrimitiveRestartState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 Enable;
         public int Index;
 #pragma warning restore CS0649
@@ -727,11 +543,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct IndexBufferState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public GpuVa Address;
         public GpuVa EndAddress;
         public IndexType Type;
@@ -744,11 +556,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct FaceState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 CullEnable;
         public FrontFace FrontFace;
         public Face CullFace;
@@ -762,11 +570,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     enum ViewVolumeClipControl
     {
         ForceDepthRangeZeroToOne = 1 << 0,
-<<<<<<< HEAD
         DepthClampDisabled = 1 << 11,
-=======
-        DepthClampDisabled = 1 << 11
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -774,11 +578,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct LogicalOpState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 Enable;
         public LogicalOp LogicalOp;
 #pragma warning restore CS0649
@@ -790,28 +590,18 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct RtColorMask
     {
-<<<<<<< HEAD
         public uint Packed;
 
         public RtColorMask(uint packed)
         {
             Packed = packed;
         }
-=======
-#pragma warning disable CS0649
-        public uint Packed;
-#pragma warning restore CS0649
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Unpacks red channel enable.
         /// </summary>
         /// <returns>True to write the new red channel color, false to keep the old value</returns>
-<<<<<<< HEAD
         public readonly bool UnpackRed()
-=======
-        public bool UnpackRed()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (Packed & 0x1) != 0;
         }
@@ -820,11 +610,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks green channel enable.
         /// </summary>
         /// <returns>True to write the new green channel color, false to keep the old value</returns>
-<<<<<<< HEAD
         public readonly bool UnpackGreen()
-=======
-        public bool UnpackGreen()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (Packed & 0x10) != 0;
         }
@@ -833,11 +619,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks blue channel enable.
         /// </summary>
         /// <returns>True to write the new blue channel color, false to keep the old value</returns>
-<<<<<<< HEAD
         public readonly bool UnpackBlue()
-=======
-        public bool UnpackBlue()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (Packed & 0x100) != 0;
         }
@@ -846,11 +628,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Unpacks alpha channel enable.
         /// </summary>
         /// <returns>True to write the new alpha channel color, false to keep the old value</returns>
-<<<<<<< HEAD
         public readonly bool UnpackAlpha()
-=======
-        public bool UnpackAlpha()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (Packed & 0x1000) != 0;
         }
@@ -861,11 +639,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct VertexBufferState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public uint Control;
         public GpuVa Address;
         public int Divisor;
@@ -875,11 +649,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Vertex buffer stride, defined as the number of bytes occupied by each vertex in memory.
         /// </summary>
         /// <returns>Vertex buffer stride</returns>
-<<<<<<< HEAD
         public readonly int UnpackStride()
-=======
-        public int UnpackStride()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (int)(Control & 0xfff);
         }
@@ -888,11 +658,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Vertex buffer enable.
         /// </summary>
         /// <returns>True if the vertex buffer is enabled, false otherwise</returns>
-<<<<<<< HEAD
         public readonly bool UnpackEnable()
-=======
-        public bool UnpackEnable()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (Control & (1 << 12)) != 0;
         }
@@ -903,11 +669,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct BlendStateCommon
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 SeparateAlpha;
         public BlendOp ColorOp;
         public BlendFactor ColorSrcFactor;
@@ -924,11 +686,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct BlendState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Boolean32 SeparateAlpha;
         public BlendOp ColorOp;
         public BlendFactor ColorSrcFactor;
@@ -945,11 +703,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct ShaderState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public uint Control;
         public uint Offset;
         public uint Unknown0x8;
@@ -973,11 +727,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// Must be ignored for vertex shaders, those are always enabled.
         /// </summary>
         /// <returns>True if the stage is enabled, false otherwise</returns>
-<<<<<<< HEAD
         public readonly bool UnpackEnable()
-=======
-        public bool UnpackEnable()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return (Control & 1) != 0;
         }
@@ -988,11 +738,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
     /// </summary>
     struct UniformBufferState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public int Size;
         public GpuVa Address;
         public int Offset;
@@ -1001,7 +747,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
 
     unsafe struct ThreedClassState : IShadowState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
         public uint SetObject;
         public readonly int SetObjectClassId => (int)(SetObject & 0xFFFF);
@@ -1013,26 +758,12 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         public uint SetNotifyB;
         public uint Notify;
         public readonly NotifyType NotifyType => (NotifyType)(Notify);
-=======
-#pragma warning disable CS0649
-        public uint SetObject;
-        public int SetObjectClassId => (int)((SetObject >> 0) & 0xFFFF);
-        public int SetObjectEngineId => (int)((SetObject >> 16) & 0x1F);
-        public fixed uint Reserved04[63];
-        public uint NoOperation;
-        public uint SetNotifyA;
-        public int SetNotifyAAddressUpper => (int)((SetNotifyA >> 0) & 0xFF);
-        public uint SetNotifyB;
-        public uint Notify;
-        public NotifyType NotifyType => (NotifyType)(Notify);
->>>>>>> 1ec71635b (sync with main branch)
         public uint WaitForIdle;
         public uint LoadMmeInstructionRamPointer;
         public uint LoadMmeInstructionRam;
         public uint LoadMmeStartAddressRamPointer;
         public uint LoadMmeStartAddressRam;
         public uint SetMmeShadowRamControl;
-<<<<<<< HEAD
         public readonly SetMmeShadowRamControlMode SetMmeShadowRamControlMode => (SetMmeShadowRamControlMode)(SetMmeShadowRamControl & 0x3);
         public fixed uint Reserved128[2];
         public uint SetGlobalRenderEnableA;
@@ -1040,15 +771,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         public uint SetGlobalRenderEnableB;
         public uint SetGlobalRenderEnableC;
         public readonly int SetGlobalRenderEnableCMode => (int)(SetGlobalRenderEnableC & 0x7);
-=======
-        public SetMmeShadowRamControlMode SetMmeShadowRamControlMode => (SetMmeShadowRamControlMode)((SetMmeShadowRamControl >> 0) & 0x3);
-        public fixed uint Reserved128[2];
-        public uint SetGlobalRenderEnableA;
-        public int SetGlobalRenderEnableAOffsetUpper => (int)((SetGlobalRenderEnableA >> 0) & 0xFF);
-        public uint SetGlobalRenderEnableB;
-        public uint SetGlobalRenderEnableC;
-        public int SetGlobalRenderEnableCMode => (int)((SetGlobalRenderEnableC >> 0) & 0x7);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SendGoIdle;
         public uint PmTrigger;
         public uint PmTriggerWfi;
@@ -1059,7 +781,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         public uint LineLengthIn;
         public uint LineCount;
         public uint OffsetOutUpper;
-<<<<<<< HEAD
         public readonly int OffsetOutUpperValue => (int)(OffsetOutUpper & 0xFF);
         public uint OffsetOut;
         public uint PitchOut;
@@ -1067,21 +788,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         public readonly SetDstBlockSizeWidth SetDstBlockSizeWidth => (SetDstBlockSizeWidth)(SetDstBlockSize & 0xF);
         public readonly SetDstBlockSizeHeight SetDstBlockSizeHeight => (SetDstBlockSizeHeight)((SetDstBlockSize >> 4) & 0xF);
         public readonly SetDstBlockSizeDepth SetDstBlockSizeDepth => (SetDstBlockSizeDepth)((SetDstBlockSize >> 8) & 0xF);
-=======
-        public int OffsetOutUpperValue => (int)((OffsetOutUpper >> 0) & 0xFF);
-        public uint OffsetOut;
-        public uint PitchOut;
-        public uint SetDstBlockSize;
-        public SetDstBlockSizeWidth SetDstBlockSizeWidth => (SetDstBlockSizeWidth)((SetDstBlockSize >> 0) & 0xF);
-        public SetDstBlockSizeHeight SetDstBlockSizeHeight => (SetDstBlockSizeHeight)((SetDstBlockSize >> 4) & 0xF);
-        public SetDstBlockSizeDepth SetDstBlockSizeDepth => (SetDstBlockSizeDepth)((SetDstBlockSize >> 8) & 0xF);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetDstWidth;
         public uint SetDstHeight;
         public uint SetDstDepth;
         public uint SetDstLayer;
         public uint SetDstOriginBytesX;
-<<<<<<< HEAD
         public readonly int SetDstOriginBytesXV => (int)(SetDstOriginBytesX & 0xFFFFF);
         public uint SetDstOriginSamplesY;
         public readonly int SetDstOriginSamplesYV => (int)(SetDstOriginSamplesY & 0xFFFF);
@@ -1094,20 +805,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         public readonly LaunchDmaReductionOp LaunchDmaReductionOp => (LaunchDmaReductionOp)((LaunchDma >> 13) & 0x7);
         public readonly LaunchDmaReductionFormat LaunchDmaReductionFormat => (LaunchDmaReductionFormat)((LaunchDma >> 2) & 0x3);
         public readonly bool LaunchDmaSysmembarDisable => (LaunchDma & 0x40) != 0;
-=======
-        public int SetDstOriginBytesXV => (int)((SetDstOriginBytesX >> 0) & 0xFFFFF);
-        public uint SetDstOriginSamplesY;
-        public int SetDstOriginSamplesYV => (int)((SetDstOriginSamplesY >> 0) & 0xFFFF);
-        public uint LaunchDma;
-        public LaunchDmaDstMemoryLayout LaunchDmaDstMemoryLayout => (LaunchDmaDstMemoryLayout)((LaunchDma >> 0) & 0x1);
-        public LaunchDmaCompletionType LaunchDmaCompletionType => (LaunchDmaCompletionType)((LaunchDma >> 4) & 0x3);
-        public LaunchDmaInterruptType LaunchDmaInterruptType => (LaunchDmaInterruptType)((LaunchDma >> 8) & 0x3);
-        public LaunchDmaSemaphoreStructSize LaunchDmaSemaphoreStructSize => (LaunchDmaSemaphoreStructSize)((LaunchDma >> 12) & 0x1);
-        public bool LaunchDmaReductionEnable => (LaunchDma & 0x2) != 0;
-        public LaunchDmaReductionOp LaunchDmaReductionOp => (LaunchDmaReductionOp)((LaunchDma >> 13) & 0x7);
-        public LaunchDmaReductionFormat LaunchDmaReductionFormat => (LaunchDmaReductionFormat)((LaunchDma >> 2) & 0x3);
-        public bool LaunchDmaSysmembarDisable => (LaunchDma & 0x40) != 0;
->>>>>>> 1ec71635b (sync with main branch)
         public uint LoadInlineData;
         public fixed uint Reserved1B8[22];
         public Boolean32 EarlyZForce;
@@ -1348,11 +1045,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         public fixed uint Reserved260C[125];
         public Array4<Array32<uint>> TfVaryingLocations;
         public fixed uint Reserved2A00[640];
-<<<<<<< HEAD
         public Array256<uint> SetMmeShadowScratch;
-=======
-        public MmeShadowScratch SetMmeShadowScratch;
->>>>>>> 1ec71635b (sync with main branch)
 #pragma warning restore CS0649
     }
 }

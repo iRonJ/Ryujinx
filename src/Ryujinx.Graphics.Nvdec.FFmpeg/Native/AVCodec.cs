@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
 {
     struct AVCodec
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public unsafe byte* Name;
         public unsafe byte* LongName;
         public int Type;

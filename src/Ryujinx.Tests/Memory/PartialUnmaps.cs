@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using ARMeilleure.Signal;
-=======
-﻿using ARMeilleure.Signal;
->>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.Translation;
 using NUnit.Framework;
 using Ryujinx.Common.Memory.PartialUnmaps;
@@ -24,11 +20,7 @@ namespace Ryujinx.Tests.Memory
     {
         private static Translator _translator;
 
-<<<<<<< HEAD
         private static (MemoryBlock virt, MemoryBlock mirror, MemoryEhMeilleure exceptionHandler) GetVirtual(ulong asSize)
-=======
-        private (MemoryBlock virt, MemoryBlock mirror, MemoryEhMeilleure exceptionHandler) GetVirtual(ulong asSize)
->>>>>>> 1ec71635b (sync with main branch)
         {
             MemoryAllocationFlags asFlags = MemoryAllocationFlags.Reserve | MemoryAllocationFlags.ViewCompatible;
 
@@ -41,11 +33,7 @@ namespace Ryujinx.Tests.Memory
             return (addressSpace, addressSpaceMirror, exceptionHandler);
         }
 
-<<<<<<< HEAD
         private static int CountThreads(ref PartialUnmapState state)
-=======
-        private int CountThreads(ref PartialUnmapState state)
->>>>>>> 1ec71635b (sync with main branch)
         {
             int count = 0;
 
@@ -62,11 +50,7 @@ namespace Ryujinx.Tests.Memory
             return count;
         }
 
-<<<<<<< HEAD
         private static void EnsureTranslator()
-=======
-        private void EnsureTranslator()
->>>>>>> 1ec71635b (sync with main branch)
         {
             // Create a translator, as one is needed to register the signal handler or emit methods.
             _translator ??= new Translator(new JitMemoryAllocator(), new MockMemoryManager(), true);
@@ -255,11 +239,7 @@ namespace Ryujinx.Tests.Memory
                 var writeFunc = TestMethods.GenerateDebugNativeWriteLoop();
                 IntPtr writePtr = mainMemory.GetPointer(vaSize - 0x1000, 4);
 
-<<<<<<< HEAD
                 Thread testThread = new(() =>
-=======
-                Thread testThread = new Thread(() =>
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     writeFunc(statePtr, writePtr);
                 });
@@ -303,11 +283,7 @@ namespace Ryujinx.Tests.Memory
         [Test]
         // Only test in Windows, as this is only used on Windows and uses Windows APIs for trimming.
         [Platform("Win")]
-<<<<<<< HEAD
         [SuppressMessage("Interoperability", "CA1416: Validate platform compatibility")]
-=======
-        [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
->>>>>>> 1ec71635b (sync with main branch)
         public void ThreadLocalMap()
         {
             PartialUnmapState.Reset();
@@ -489,8 +465,4 @@ namespace Ryujinx.Tests.Memory
             Assert.False(error);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

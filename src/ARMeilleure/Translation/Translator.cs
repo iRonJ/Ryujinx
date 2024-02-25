@@ -22,39 +22,24 @@ namespace ARMeilleure.Translation
 {
     public class Translator
     {
-<<<<<<< HEAD
         private static readonly AddressTable<ulong>.Level[] _levels64Bit =
-=======
-        private static readonly AddressTable<ulong>.Level[] Levels64Bit =
->>>>>>> 1ec71635b (sync with main branch)
             new AddressTable<ulong>.Level[]
             {
                 new(31, 17),
                 new(23,  8),
                 new(15,  8),
                 new( 7,  8),
-<<<<<<< HEAD
                 new( 2,  5),
             };
 
         private static readonly AddressTable<ulong>.Level[] _levels32Bit =
-=======
-                new( 2,  5)
-            };
-
-        private static readonly AddressTable<ulong>.Level[] Levels32Bit =
->>>>>>> 1ec71635b (sync with main branch)
             new AddressTable<ulong>.Level[]
             {
                 new(31, 17),
                 new(23,  8),
                 new(15,  8),
                 new( 7,  8),
-<<<<<<< HEAD
                 new( 1,  6),
-=======
-                new( 1,  6)
->>>>>>> 1ec71635b (sync with main branch)
             };
 
         private readonly IJitMemoryAllocator _allocator;
@@ -72,12 +57,6 @@ namespace ARMeilleure.Translation
         private Thread[] _backgroundTranslationThreads;
         private volatile int _threadCount;
 
-<<<<<<< HEAD
-=======
-        // FIXME: Remove this once the init logic of the emulator will be redone.
-        public static readonly ManualResetEvent IsReadyForTranslation = new(false);
-
->>>>>>> 1ec71635b (sync with main branch)
         public Translator(IJitMemoryAllocator allocator, IMemoryManager memory, bool for64Bits)
         {
             _allocator = allocator;
@@ -93,22 +72,10 @@ namespace ARMeilleure.Translation
 
             CountTable = new EntryTable<uint>();
             Functions = new TranslatorCache<TranslatedFunction>();
-<<<<<<< HEAD
             FunctionTable = new AddressTable<ulong>(for64Bits ? _levels64Bit : _levels32Bit);
             Stubs = new TranslatorStubs(FunctionTable);
 
             FunctionTable.Fill = (ulong)Stubs.SlowDispatchStub;
-=======
-            FunctionTable = new AddressTable<ulong>(for64Bits ? Levels64Bit : Levels32Bit);
-            Stubs = new TranslatorStubs(this);
-
-            FunctionTable.Fill = (ulong)Stubs.SlowDispatchStub;
-
-            if (memory.Type.IsHostMapped())
-            {
-                NativeSignalHandler.InitializeSignalHandler(allocator.GetPageSize());
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public IPtcLoadState LoadDiskCache(string titleIdText, string displayVersion, bool enabled)
@@ -130,11 +97,6 @@ namespace ARMeilleure.Translation
         {
             if (Interlocked.Increment(ref _threadCount) == 1)
             {
-<<<<<<< HEAD
-=======
-                IsReadyForTranslation.WaitOne();
-
->>>>>>> 1ec71635b (sync with main branch)
                 if (_ptc.State == PtcState.Enabled)
                 {
                     Debug.Assert(Functions.Count == 0);
@@ -154,11 +116,7 @@ namespace ARMeilleure.Translation
                 // TODO: Use physical cores rather than logical. This only really makes sense for processors with
                 // hyperthreading. Requires OS specific code.
                 int unboundedThreadCount = Math.Max(1, (Environment.ProcessorCount - 6) / 3);
-<<<<<<< HEAD
                 int threadCount = Math.Min(4, unboundedThreadCount);
-=======
-                int threadCount          = Math.Min(4, unboundedThreadCount);
->>>>>>> 1ec71635b (sync with main branch)
 
                 Thread[] backgroundTranslationThreads = new Thread[threadCount];
 
@@ -166,17 +124,10 @@ namespace ARMeilleure.Translation
                 {
                     bool last = i != 0 && i == unboundedThreadCount - 1;
 
-<<<<<<< HEAD
                     backgroundTranslationThreads[i] = new(BackgroundTranslate)
                     {
                         Name = "CPU.BackgroundTranslatorThread." + i,
                         Priority = last ? ThreadPriority.Lowest : ThreadPriority.Normal,
-=======
-                    backgroundTranslationThreads[i] = new Thread(BackgroundTranslate)
-                    {
-                        Name = "CPU.BackgroundTranslatorThread." + i,
-                        Priority = last ? ThreadPriority.Lowest : ThreadPriority.Normal
->>>>>>> 1ec71635b (sync with main branch)
                     };
 
                     backgroundTranslationThreads[i].Start();

@@ -16,11 +16,7 @@ namespace Ryujinx.Audio.Renderer.Common
         /// <summary>
         /// Reserved/padding.
         /// </summary>
-<<<<<<< HEAD
         private readonly uint _padding;
-=======
-        private uint _padding;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The flags given controlling behaviour of the audio renderer
@@ -42,11 +38,7 @@ namespace Ryujinx.Audio.Renderer.Common
             /// <summary>
             /// Reserved/padding.
             /// </summary>
-<<<<<<< HEAD
             private readonly uint _padding;
-=======
-            private uint _padding;
->>>>>>> 1ec71635b (sync with main branch)
 
             /// <summary>
             /// Extra information given with the <see cref="ResultCode"/>
@@ -55,8 +47,4 @@ namespace Ryujinx.Audio.Renderer.Common
             public ulong ExtraErrorInfo;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

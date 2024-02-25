@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 using System;
 using System.Diagnostics.CodeAnalysis;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Kernel.Process
 {
     [Flags]
-<<<<<<< HEAD
     [SuppressMessage("Design", "CA1069: Enums values should not be duplicated")]
-=======
->>>>>>> 1ec71635b (sync with main branch)
     enum ProcessCreationFlags
     {
         Is64Bit = 1 << 0,
@@ -45,10 +38,6 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             IsApplication |
             DeprecatedUseSecureMemory |
             PoolPartitionMask |
-<<<<<<< HEAD
             OptimizeMemoryAllocation,
-=======
-            OptimizeMemoryAllocation
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

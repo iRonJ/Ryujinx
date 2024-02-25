@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Device;
-=======
-﻿using Ryujinx.Graphics.Device;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
@@ -52,11 +48,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         /// <returns>Delegate of the host compiled code</returns>
         public MacroExecute Compile(ReadOnlySpan<int> code)
         {
-<<<<<<< HEAD
             Dictionary<int, Label> labels = new();
-=======
-            Dictionary<int, Label> labels = new Dictionary<int, Label>();
->>>>>>> 1ec71635b (sync with main branch)
 
             int lastTarget = 0;
             int i;

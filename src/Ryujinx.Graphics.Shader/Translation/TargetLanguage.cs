@@ -4,10 +4,6 @@ namespace Ryujinx.Graphics.Shader.Translation
     {
         Glsl,
         Spirv,
-<<<<<<< HEAD
         Arb,
-=======
-        Arb
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using OpenTK.Audio.OpenAL;
-=======
-﻿using OpenTK.Audio.OpenAL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Audio.Backends.Common;
 using Ryujinx.Audio.Common;
 using Ryujinx.Memory;
@@ -14,7 +10,6 @@ namespace Ryujinx.Audio.Backends.OpenAL
 {
     class OpenALHardwareDeviceSession : HardwareDeviceSessionOutputBase
     {
-<<<<<<< HEAD
         private readonly OpenALHardwareDeviceDriver _driver;
         private readonly int _sourceId;
         private readonly ALFormat _targetFormat;
@@ -26,18 +21,6 @@ namespace Ryujinx.Audio.Backends.OpenAL
         private readonly object _lock = new();
 
         public OpenALHardwareDeviceSession(OpenALHardwareDeviceDriver driver, IVirtualMemoryManager memoryManager, SampleFormat requestedSampleFormat, uint requestedSampleRate, uint requestedChannelCount) : base(memoryManager, requestedSampleFormat, requestedSampleRate, requestedChannelCount)
-=======
-        private OpenALHardwareDeviceDriver _driver;
-        private int _sourceId;
-        private ALFormat _targetFormat;
-        private bool _isActive;
-        private Queue<OpenALAudioBuffer> _queuedBuffers;
-        private ulong _playedSampleCount;
-
-        private object _lock = new object();
-
-        public OpenALHardwareDeviceSession(OpenALHardwareDeviceDriver driver, IVirtualMemoryManager memoryManager, SampleFormat requestedSampleFormat, uint requestedSampleRate, uint requestedChannelCount, float requestedVolume) : base(memoryManager, requestedSampleFormat, requestedSampleRate, requestedChannelCount)
->>>>>>> 1ec71635b (sync with main branch)
         {
             _driver = driver;
             _queuedBuffers = new Queue<OpenALAudioBuffer>();
@@ -45,16 +28,11 @@ namespace Ryujinx.Audio.Backends.OpenAL
             _targetFormat = GetALFormat();
             _isActive = false;
             _playedSampleCount = 0;
-<<<<<<< HEAD
             SetVolume(1f);
-=======
-            SetVolume(requestedVolume);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private ALFormat GetALFormat()
         {
-<<<<<<< HEAD
             return RequestedSampleFormat switch
             {
                 SampleFormat.PcmInt16 => RequestedChannelCount switch
@@ -66,25 +44,6 @@ namespace Ryujinx.Audio.Backends.OpenAL
                 },
                 _ => throw new NotImplementedException($"Unsupported sample format {RequestedSampleFormat}"),
             };
-=======
-            switch (RequestedSampleFormat)
-            {
-                case SampleFormat.PcmInt16:
-                    switch (RequestedChannelCount)
-                    {
-                        case 1:
-                            return ALFormat.Mono16;
-                        case 2:
-                            return ALFormat.Stereo16;
-                        case 6:
-                            return ALFormat.Multi51Chn16Ext;
-                        default:
-                            throw new NotImplementedException($"Unsupported channel config {RequestedChannelCount}");
-                    }
-                default:
-                    throw new NotImplementedException($"Unsupported sample format {RequestedSampleFormat}");
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void PrepareToClose() { }
@@ -105,19 +64,11 @@ namespace Ryujinx.Audio.Backends.OpenAL
         {
             lock (_lock)
             {
-<<<<<<< HEAD
                 OpenALAudioBuffer driverBuffer = new()
                 {
                     DriverIdentifier = buffer.DataPointer,
                     BufferId = AL.GenBuffer(),
                     SampleCount = GetSampleCount(buffer),
-=======
-                OpenALAudioBuffer driverBuffer = new OpenALAudioBuffer
-                {
-                    DriverIdentifier = buffer.DataPointer,
-                    BufferId = AL.GenBuffer(),
-                    SampleCount = GetSampleCount(buffer)
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 AL.BufferData(driverBuffer.BufferId, _targetFormat, buffer.Data, (int)RequestedSampleRate);
@@ -135,21 +86,13 @@ namespace Ryujinx.Audio.Backends.OpenAL
 
         public override void SetVolume(float volume)
         {
-<<<<<<< HEAD
             _volume = volume;
 
             UpdateMasterVolume(_driver.Volume);
-=======
-            lock (_lock)
-            {
-                AL.Source(_sourceId, ALSourcef.Gain, volume);
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override float GetVolume()
         {
-<<<<<<< HEAD
             return _volume;
         }
 
@@ -159,11 +102,6 @@ namespace Ryujinx.Audio.Backends.OpenAL
             {
                 AL.Source(_sourceId, ALSourcef.Gain, newVolume * _volume);
             }
-=======
-            AL.GetSource(_sourceId, ALSourcef.Gain, out float volume);
-
-            return volume;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void Start()

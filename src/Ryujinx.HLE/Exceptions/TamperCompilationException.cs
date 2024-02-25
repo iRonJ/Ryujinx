@@ -6,8 +6,4 @@ namespace Ryujinx.HLE.Exceptions
     {
         public TamperCompilationException(string message) : base(message) { }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

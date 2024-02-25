@@ -9,8 +9,4 @@ namespace ARMeilleure.Decoders
             Immediate = (long)address + DecoderHelper.DecodeImm26_2(opCode);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

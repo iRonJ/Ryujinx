@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 // This file was auto-generated from NVIDIA official Maxwell definitions.
-=======
-﻿// This file was auto-generated from NVIDIA official Maxwell definitions.
->>>>>>> 1ec71635b (sync with main branch)
 
 using Ryujinx.Common.Memory;
 
@@ -490,11 +486,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
     /// </summary>
     struct RenderSolidPrimPoint
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetX;
         public uint Y;
 #pragma warning restore CS0649
@@ -505,7 +497,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
     /// </summary>
     unsafe struct TwodClassState : IShadowState
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
         public uint SetObject;
         public readonly int SetObjectClassId => (int)(SetObject & 0xFFFF);
@@ -517,26 +508,12 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetNotifyB;
         public uint Notify;
         public readonly NotifyType NotifyType => (NotifyType)(Notify);
-=======
-#pragma warning disable CS0649
-        public uint SetObject;
-        public int SetObjectClassId => (int)((SetObject >> 0) & 0xFFFF);
-        public int SetObjectEngineId => (int)((SetObject >> 16) & 0x1F);
-        public fixed uint Reserved04[63];
-        public uint NoOperation;
-        public uint SetNotifyA;
-        public int SetNotifyAAddressUpper => (int)((SetNotifyA >> 0) & 0x1FFFFFF);
-        public uint SetNotifyB;
-        public uint Notify;
-        public NotifyType NotifyType => (NotifyType)(Notify);
->>>>>>> 1ec71635b (sync with main branch)
         public uint WaitForIdle;
         public uint LoadMmeInstructionRamPointer;
         public uint LoadMmeInstructionRam;
         public uint LoadMmeStartAddressRamPointer;
         public uint LoadMmeStartAddressRam;
         public uint SetMmeShadowRamControl;
-<<<<<<< HEAD
         public readonly SetMmeShadowRamControlMode SetMmeShadowRamControlMode => (SetMmeShadowRamControlMode)(SetMmeShadowRamControl & 0x3);
         public fixed uint Reserved128[2];
         public uint SetGlobalRenderEnableA;
@@ -544,15 +521,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetGlobalRenderEnableB;
         public uint SetGlobalRenderEnableC;
         public readonly int SetGlobalRenderEnableCMode => (int)(SetGlobalRenderEnableC & 0x7);
-=======
-        public SetMmeShadowRamControlMode SetMmeShadowRamControlMode => (SetMmeShadowRamControlMode)((SetMmeShadowRamControl >> 0) & 0x3);
-        public fixed uint Reserved128[2];
-        public uint SetGlobalRenderEnableA;
-        public int SetGlobalRenderEnableAOffsetUpper => (int)((SetGlobalRenderEnableA >> 0) & 0xFF);
-        public uint SetGlobalRenderEnableB;
-        public uint SetGlobalRenderEnableC;
-        public int SetGlobalRenderEnableCMode => (int)((SetGlobalRenderEnableC >> 0) & 0x7);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SendGoIdle;
         public uint PmTrigger;
         public fixed uint Reserved144[3];
@@ -560,7 +528,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetInstrumentationMethodData;
         public fixed uint Reserved158[37];
         public uint SetMmeSwitchState;
-<<<<<<< HEAD
         public readonly bool SetMmeSwitchStateValid => (SetMmeSwitchState & 0x1) != 0;
         public readonly int SetMmeSwitchStateSaveMacro => (int)((SetMmeSwitchState >> 4) & 0xFF);
         public readonly int SetMmeSwitchStateRestoreMacro => (int)((SetMmeSwitchState >> 12) & 0xFF);
@@ -572,26 +539,12 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetDstBlockSize;
         public readonly SetDstBlockSizeHeight SetDstBlockSizeHeight => (SetDstBlockSizeHeight)((SetDstBlockSize >> 4) & 0x7);
         public readonly SetDstBlockSizeDepth SetDstBlockSizeDepth => (SetDstBlockSizeDepth)((SetDstBlockSize >> 8) & 0x7);
-=======
-        public bool SetMmeSwitchStateValid => (SetMmeSwitchState & 0x1) != 0;
-        public int SetMmeSwitchStateSaveMacro => (int)((SetMmeSwitchState >> 4) & 0xFF);
-        public int SetMmeSwitchStateRestoreMacro => (int)((SetMmeSwitchState >> 12) & 0xFF);
-        public fixed uint Reserved1F0[4];
-        public uint SetDstFormat;
-        public SetDstFormatV SetDstFormatV => (SetDstFormatV)((SetDstFormat >> 0) & 0xFF);
-        public uint SetDstMemoryLayout;
-        public SetDstMemoryLayoutV SetDstMemoryLayoutV => (SetDstMemoryLayoutV)((SetDstMemoryLayout >> 0) & 0x1);
-        public uint SetDstBlockSize;
-        public SetDstBlockSizeHeight SetDstBlockSizeHeight => (SetDstBlockSizeHeight)((SetDstBlockSize >> 4) & 0x7);
-        public SetDstBlockSizeDepth SetDstBlockSizeDepth => (SetDstBlockSizeDepth)((SetDstBlockSize >> 8) & 0x7);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetDstDepth;
         public uint SetDstLayer;
         public uint SetDstPitch;
         public uint SetDstWidth;
         public uint SetDstHeight;
         public uint SetDstOffsetUpper;
-<<<<<<< HEAD
         public readonly int SetDstOffsetUpperV => (int)(SetDstOffsetUpper & 0xFF);
         public uint SetDstOffsetLower;
         public uint FlushAndInvalidateRopMiniCache;
@@ -607,28 +560,10 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetSrcDepth;
         public uint TwodInvalidateTextureDataCache;
         public readonly TwodInvalidateTextureDataCacheV TwodInvalidateTextureDataCacheV => (TwodInvalidateTextureDataCacheV)(TwodInvalidateTextureDataCache & 0x3);
-=======
-        public int SetDstOffsetUpperV => (int)((SetDstOffsetUpper >> 0) & 0xFF);
-        public uint SetDstOffsetLower;
-        public uint FlushAndInvalidateRopMiniCache;
-        public bool FlushAndInvalidateRopMiniCacheV => (FlushAndInvalidateRopMiniCache & 0x1) != 0;
-        public uint SetSpareNoop06;
-        public uint SetSrcFormat;
-        public SetSrcFormatV SetSrcFormatV => (SetSrcFormatV)((SetSrcFormat >> 0) & 0xFF);
-        public uint SetSrcMemoryLayout;
-        public SetSrcMemoryLayoutV SetSrcMemoryLayoutV => (SetSrcMemoryLayoutV)((SetSrcMemoryLayout >> 0) & 0x1);
-        public uint SetSrcBlockSize;
-        public SetSrcBlockSizeHeight SetSrcBlockSizeHeight => (SetSrcBlockSizeHeight)((SetSrcBlockSize >> 4) & 0x7);
-        public SetSrcBlockSizeDepth SetSrcBlockSizeDepth => (SetSrcBlockSizeDepth)((SetSrcBlockSize >> 8) & 0x7);
-        public uint SetSrcDepth;
-        public uint TwodInvalidateTextureDataCache;
-        public TwodInvalidateTextureDataCacheV TwodInvalidateTextureDataCacheV => (TwodInvalidateTextureDataCacheV)((TwodInvalidateTextureDataCache >> 0) & 0x3);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetSrcPitch;
         public uint SetSrcWidth;
         public uint SetSrcHeight;
         public uint SetSrcOffsetUpper;
-<<<<<<< HEAD
         public readonly int SetSrcOffsetUpperV => (int)(SetSrcOffsetUpper & 0xFF);
         public uint SetSrcOffsetLower;
         public uint SetPixelsFromMemorySectorPromotion;
@@ -641,20 +576,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetRenderEnableB;
         public uint SetRenderEnableC;
         public readonly int SetRenderEnableCMode => (int)(SetRenderEnableC & 0x7);
-=======
-        public int SetSrcOffsetUpperV => (int)((SetSrcOffsetUpper >> 0) & 0xFF);
-        public uint SetSrcOffsetLower;
-        public uint SetPixelsFromMemorySectorPromotion;
-        public SetPixelsFromMemorySectorPromotionV SetPixelsFromMemorySectorPromotionV => (SetPixelsFromMemorySectorPromotionV)((SetPixelsFromMemorySectorPromotion >> 0) & 0x3);
-        public uint SetSpareNoop12;
-        public uint SetNumProcessingClusters;
-        public SetNumProcessingClustersV SetNumProcessingClustersV => (SetNumProcessingClustersV)((SetNumProcessingClusters >> 0) & 0x1);
-        public uint SetRenderEnableA;
-        public int SetRenderEnableAOffsetUpper => (int)((SetRenderEnableA >> 0) & 0xFF);
-        public uint SetRenderEnableB;
-        public uint SetRenderEnableC;
-        public int SetRenderEnableCMode => (int)((SetRenderEnableC >> 0) & 0x7);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetSpareNoop08;
         public uint SetSpareNoop01;
         public uint SetSpareNoop11;
@@ -664,7 +585,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetClipWidth;
         public uint SetClipHeight;
         public uint SetClipEnable;
-<<<<<<< HEAD
         public readonly bool SetClipEnableV => (SetClipEnable & 0x1) != 0;
         public uint SetColorKeyFormat;
         public readonly SetColorKeyFormatV SetColorKeyFormatV => (SetColorKeyFormatV)(SetColorKeyFormat & 0x7);
@@ -688,31 +608,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public readonly SetPatternSelectV SetPatternSelectV => (SetPatternSelectV)(SetPatternSelect & 0x3);
         public uint SetDstColorRenderToZetaSurface;
         public readonly bool SetDstColorRenderToZetaSurfaceV => (SetDstColorRenderToZetaSurface & 0x1) != 0;
-=======
-        public bool SetClipEnableV => (SetClipEnable & 0x1) != 0;
-        public uint SetColorKeyFormat;
-        public SetColorKeyFormatV SetColorKeyFormatV => (SetColorKeyFormatV)((SetColorKeyFormat >> 0) & 0x7);
-        public uint SetColorKey;
-        public uint SetColorKeyEnable;
-        public bool SetColorKeyEnableV => (SetColorKeyEnable & 0x1) != 0;
-        public uint SetRop;
-        public int SetRopV => (int)((SetRop >> 0) & 0xFF);
-        public uint SetBeta1;
-        public uint SetBeta4;
-        public int SetBeta4B => (int)((SetBeta4 >> 0) & 0xFF);
-        public int SetBeta4G => (int)((SetBeta4 >> 8) & 0xFF);
-        public int SetBeta4R => (int)((SetBeta4 >> 16) & 0xFF);
-        public int SetBeta4A => (int)((SetBeta4 >> 24) & 0xFF);
-        public uint SetOperation;
-        public SetOperationV SetOperationV => (SetOperationV)((SetOperation >> 0) & 0x7);
-        public uint SetPatternOffset;
-        public int SetPatternOffsetX => (int)((SetPatternOffset >> 0) & 0x3F);
-        public int SetPatternOffsetY => (int)((SetPatternOffset >> 8) & 0x3F);
-        public uint SetPatternSelect;
-        public SetPatternSelectV SetPatternSelectV => (SetPatternSelectV)((SetPatternSelect >> 0) & 0x3);
-        public uint SetDstColorRenderToZetaSurface;
-        public bool SetDstColorRenderToZetaSurfaceV => (SetDstColorRenderToZetaSurface & 0x1) != 0;
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetSpareNoop04;
         public uint SetSpareNoop15;
         public uint SetSpareNoop13;
@@ -720,7 +615,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetSpareNoop14;
         public uint SetSpareNoop02;
         public uint SetCompression;
-<<<<<<< HEAD
         public readonly bool SetCompressionEnable => (SetCompression & 0x1) != 0;
         public uint SetSpareNoop09;
         public uint SetRenderEnableOverride;
@@ -733,20 +627,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public readonly SetMonochromePatternColorFormatV SetMonochromePatternColorFormatV => (SetMonochromePatternColorFormatV)(SetMonochromePatternColorFormat & 0x7);
         public uint SetMonochromePatternFormat;
         public readonly SetMonochromePatternFormatV SetMonochromePatternFormatV => (SetMonochromePatternFormatV)(SetMonochromePatternFormat & 0x1);
-=======
-        public bool SetCompressionEnable => (SetCompression & 0x1) != 0;
-        public uint SetSpareNoop09;
-        public uint SetRenderEnableOverride;
-        public SetRenderEnableOverrideMode SetRenderEnableOverrideMode => (SetRenderEnableOverrideMode)((SetRenderEnableOverride >> 0) & 0x3);
-        public uint SetPixelsFromMemoryDirection;
-        public SetPixelsFromMemoryDirectionHorizontal SetPixelsFromMemoryDirectionHorizontal => (SetPixelsFromMemoryDirectionHorizontal)((SetPixelsFromMemoryDirection >> 0) & 0x3);
-        public SetPixelsFromMemoryDirectionVertical SetPixelsFromMemoryDirectionVertical => (SetPixelsFromMemoryDirectionVertical)((SetPixelsFromMemoryDirection >> 4) & 0x3);
-        public uint SetSpareNoop10;
-        public uint SetMonochromePatternColorFormat;
-        public SetMonochromePatternColorFormatV SetMonochromePatternColorFormatV => (SetMonochromePatternColorFormatV)((SetMonochromePatternColorFormat >> 0) & 0x7);
-        public uint SetMonochromePatternFormat;
-        public SetMonochromePatternFormatV SetMonochromePatternFormatV => (SetMonochromePatternFormatV)((SetMonochromePatternFormat >> 0) & 0x1);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetMonochromePatternColor0;
         public uint SetMonochromePatternColor1;
         public uint SetMonochromePattern0;
@@ -782,18 +662,13 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetRenderSolidPrimColor2;
         public uint SetRenderSolidPrimColor3;
         public uint SetMmeMemAddressA;
-<<<<<<< HEAD
         public readonly int SetMmeMemAddressAUpper => (int)(SetMmeMemAddressA & 0x1FFFFFF);
-=======
-        public int SetMmeMemAddressAUpper => (int)((SetMmeMemAddressA >> 0) & 0x1FFFFFF);
->>>>>>> 1ec71635b (sync with main branch)
         public uint SetMmeMemAddressB;
         public uint SetMmeDataRamAddress;
         public uint MmeDmaRead;
         public uint MmeDmaReadFifoed;
         public uint MmeDmaWrite;
         public uint MmeDmaReduction;
-<<<<<<< HEAD
         public readonly MmeDmaReductionReductionOp MmeDmaReductionReductionOp => (MmeDmaReductionReductionOp)(MmeDmaReduction & 0x7);
         public readonly MmeDmaReductionReductionFormat MmeDmaReductionReductionFormat => (MmeDmaReductionReductionFormat)((MmeDmaReduction >> 4) & 0x3);
         public readonly MmeDmaReductionReductionSize MmeDmaReductionReductionSize => (MmeDmaReductionReductionSize)((MmeDmaReduction >> 8) & 0x1);
@@ -833,47 +708,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetPixelsFromCpuColor1;
         public uint SetPixelsFromCpuMonoOpacity;
         public readonly SetPixelsFromCpuMonoOpacityV SetPixelsFromCpuMonoOpacityV => (SetPixelsFromCpuMonoOpacityV)(SetPixelsFromCpuMonoOpacity & 0x1);
-=======
-        public MmeDmaReductionReductionOp MmeDmaReductionReductionOp => (MmeDmaReductionReductionOp)((MmeDmaReduction >> 0) & 0x7);
-        public MmeDmaReductionReductionFormat MmeDmaReductionReductionFormat => (MmeDmaReductionReductionFormat)((MmeDmaReduction >> 4) & 0x3);
-        public MmeDmaReductionReductionSize MmeDmaReductionReductionSize => (MmeDmaReductionReductionSize)((MmeDmaReduction >> 8) & 0x1);
-        public uint MmeDmaSysmembar;
-        public bool MmeDmaSysmembarV => (MmeDmaSysmembar & 0x1) != 0;
-        public uint MmeDmaSync;
-        public uint SetMmeDataFifoConfig;
-        public SetMmeDataFifoConfigFifoSize SetMmeDataFifoConfigFifoSize => (SetMmeDataFifoConfigFifoSize)((SetMmeDataFifoConfig >> 0) & 0x7);
-        public fixed uint Reserved578[2];
-        public uint RenderSolidPrimMode;
-        public RenderSolidPrimModeV RenderSolidPrimModeV => (RenderSolidPrimModeV)((RenderSolidPrimMode >> 0) & 0x7);
-        public uint SetRenderSolidPrimColorFormat;
-        public SetRenderSolidPrimColorFormatV SetRenderSolidPrimColorFormatV => (SetRenderSolidPrimColorFormatV)((SetRenderSolidPrimColorFormat >> 0) & 0xFF);
-        public uint SetRenderSolidPrimColor;
-        public uint SetRenderSolidLineTieBreakBits;
-        public bool SetRenderSolidLineTieBreakBitsXmajXincYinc => (SetRenderSolidLineTieBreakBits & 0x1) != 0;
-        public bool SetRenderSolidLineTieBreakBitsXmajXdecYinc => (SetRenderSolidLineTieBreakBits & 0x10) != 0;
-        public bool SetRenderSolidLineTieBreakBitsYmajXincYinc => (SetRenderSolidLineTieBreakBits & 0x100) != 0;
-        public bool SetRenderSolidLineTieBreakBitsYmajXdecYinc => (SetRenderSolidLineTieBreakBits & 0x1000) != 0;
-        public fixed uint Reserved590[20];
-        public uint RenderSolidPrimPointXY;
-        public int RenderSolidPrimPointXYX => (int)((RenderSolidPrimPointXY >> 0) & 0xFFFF);
-        public int RenderSolidPrimPointXYY => (int)((RenderSolidPrimPointXY >> 16) & 0xFFFF);
-        public fixed uint Reserved5E4[7];
-        public Array64<RenderSolidPrimPoint> RenderSolidPrimPoint;
-        public uint SetPixelsFromCpuDataType;
-        public SetPixelsFromCpuDataTypeV SetPixelsFromCpuDataTypeV => (SetPixelsFromCpuDataTypeV)((SetPixelsFromCpuDataType >> 0) & 0x1);
-        public uint SetPixelsFromCpuColorFormat;
-        public SetPixelsFromCpuColorFormatV SetPixelsFromCpuColorFormatV => (SetPixelsFromCpuColorFormatV)((SetPixelsFromCpuColorFormat >> 0) & 0xFF);
-        public uint SetPixelsFromCpuIndexFormat;
-        public SetPixelsFromCpuIndexFormatV SetPixelsFromCpuIndexFormatV => (SetPixelsFromCpuIndexFormatV)((SetPixelsFromCpuIndexFormat >> 0) & 0x3);
-        public uint SetPixelsFromCpuMonoFormat;
-        public SetPixelsFromCpuMonoFormatV SetPixelsFromCpuMonoFormatV => (SetPixelsFromCpuMonoFormatV)((SetPixelsFromCpuMonoFormat >> 0) & 0x1);
-        public uint SetPixelsFromCpuWrap;
-        public SetPixelsFromCpuWrapV SetPixelsFromCpuWrapV => (SetPixelsFromCpuWrapV)((SetPixelsFromCpuWrap >> 0) & 0x3);
-        public uint SetPixelsFromCpuColor0;
-        public uint SetPixelsFromCpuColor1;
-        public uint SetPixelsFromCpuMonoOpacity;
-        public SetPixelsFromCpuMonoOpacityV SetPixelsFromCpuMonoOpacityV => (SetPixelsFromCpuMonoOpacityV)((SetPixelsFromCpuMonoOpacity >> 0) & 0x1);
->>>>>>> 1ec71635b (sync with main branch)
         public fixed uint Reserved820[6];
         public uint SetPixelsFromCpuSrcWidth;
         public uint SetPixelsFromCpuSrcHeight;
@@ -888,7 +722,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint PixelsFromCpuData;
         public fixed uint Reserved864[3];
         public uint SetBigEndianControl;
-<<<<<<< HEAD
         public readonly bool SetBigEndianControlX32Swap1 => (SetBigEndianControl & 0x1) != 0;
         public readonly bool SetBigEndianControlX32Swap4 => (SetBigEndianControl & 0x2) != 0;
         public readonly bool SetBigEndianControlX32Swap8 => (SetBigEndianControl & 0x4) != 0;
@@ -928,47 +761,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetPixelsFromMemorySampleMode;
         public readonly SetPixelsFromMemorySampleModeOrigin SetPixelsFromMemorySampleModeOrigin => (SetPixelsFromMemorySampleModeOrigin)(SetPixelsFromMemorySampleMode & 0x1);
         public readonly SetPixelsFromMemorySampleModeFilter SetPixelsFromMemorySampleModeFilter => (SetPixelsFromMemorySampleModeFilter)((SetPixelsFromMemorySampleMode >> 4) & 0x1);
-=======
-        public bool SetBigEndianControlX32Swap1 => (SetBigEndianControl & 0x1) != 0;
-        public bool SetBigEndianControlX32Swap4 => (SetBigEndianControl & 0x2) != 0;
-        public bool SetBigEndianControlX32Swap8 => (SetBigEndianControl & 0x4) != 0;
-        public bool SetBigEndianControlX32Swap16 => (SetBigEndianControl & 0x8) != 0;
-        public bool SetBigEndianControlX16Swap1 => (SetBigEndianControl & 0x10) != 0;
-        public bool SetBigEndianControlX16Swap4 => (SetBigEndianControl & 0x20) != 0;
-        public bool SetBigEndianControlX16Swap8 => (SetBigEndianControl & 0x40) != 0;
-        public bool SetBigEndianControlX16Swap16 => (SetBigEndianControl & 0x80) != 0;
-        public bool SetBigEndianControlX8Swap1 => (SetBigEndianControl & 0x100) != 0;
-        public bool SetBigEndianControlX8Swap4 => (SetBigEndianControl & 0x200) != 0;
-        public bool SetBigEndianControlX8Swap8 => (SetBigEndianControl & 0x400) != 0;
-        public bool SetBigEndianControlX8Swap16 => (SetBigEndianControl & 0x800) != 0;
-        public bool SetBigEndianControlI1X8Cga6Swap1 => (SetBigEndianControl & 0x1000) != 0;
-        public bool SetBigEndianControlI1X8Cga6Swap4 => (SetBigEndianControl & 0x2000) != 0;
-        public bool SetBigEndianControlI1X8Cga6Swap8 => (SetBigEndianControl & 0x4000) != 0;
-        public bool SetBigEndianControlI1X8Cga6Swap16 => (SetBigEndianControl & 0x8000) != 0;
-        public bool SetBigEndianControlI1X8LeSwap1 => (SetBigEndianControl & 0x10000) != 0;
-        public bool SetBigEndianControlI1X8LeSwap4 => (SetBigEndianControl & 0x20000) != 0;
-        public bool SetBigEndianControlI1X8LeSwap8 => (SetBigEndianControl & 0x40000) != 0;
-        public bool SetBigEndianControlI1X8LeSwap16 => (SetBigEndianControl & 0x80000) != 0;
-        public bool SetBigEndianControlI4Swap1 => (SetBigEndianControl & 0x100000) != 0;
-        public bool SetBigEndianControlI4Swap4 => (SetBigEndianControl & 0x200000) != 0;
-        public bool SetBigEndianControlI4Swap8 => (SetBigEndianControl & 0x400000) != 0;
-        public bool SetBigEndianControlI4Swap16 => (SetBigEndianControl & 0x800000) != 0;
-        public bool SetBigEndianControlI8Swap1 => (SetBigEndianControl & 0x1000000) != 0;
-        public bool SetBigEndianControlI8Swap4 => (SetBigEndianControl & 0x2000000) != 0;
-        public bool SetBigEndianControlI8Swap8 => (SetBigEndianControl & 0x4000000) != 0;
-        public bool SetBigEndianControlI8Swap16 => (SetBigEndianControl & 0x8000000) != 0;
-        public bool SetBigEndianControlOverride => (SetBigEndianControl & 0x10000000) != 0;
-        public fixed uint Reserved874[3];
-        public uint SetPixelsFromMemoryBlockShape;
-        public SetPixelsFromMemoryBlockShapeV SetPixelsFromMemoryBlockShapeV => (SetPixelsFromMemoryBlockShapeV)((SetPixelsFromMemoryBlockShape >> 0) & 0x7);
-        public uint SetPixelsFromMemoryCorralSize;
-        public int SetPixelsFromMemoryCorralSizeV => (int)((SetPixelsFromMemoryCorralSize >> 0) & 0x3FF);
-        public uint SetPixelsFromMemorySafeOverlap;
-        public bool SetPixelsFromMemorySafeOverlapV => (SetPixelsFromMemorySafeOverlap & 0x1) != 0;
-        public uint SetPixelsFromMemorySampleMode;
-        public SetPixelsFromMemorySampleModeOrigin SetPixelsFromMemorySampleModeOrigin => (SetPixelsFromMemorySampleModeOrigin)((SetPixelsFromMemorySampleMode >> 0) & 0x1);
-        public SetPixelsFromMemorySampleModeFilter SetPixelsFromMemorySampleModeFilter => (SetPixelsFromMemorySampleModeFilter)((SetPixelsFromMemorySampleMode >> 4) & 0x1);
->>>>>>> 1ec71635b (sync with main branch)
         public fixed uint Reserved890[8];
         public uint SetPixelsFromMemoryDstX0;
         public uint SetPixelsFromMemoryDstY0;
@@ -1016,15 +808,9 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
         public uint SetFalcon31;
         public fixed uint Reserved960[291];
         public uint MmeDmaWriteMethodBarrier;
-<<<<<<< HEAD
         public readonly bool MmeDmaWriteMethodBarrierV => (MmeDmaWriteMethodBarrier & 0x1) != 0;
         public fixed uint ReservedDF0[2436];
         public Array256<uint> SetMmeShadowScratch;
-=======
-        public bool MmeDmaWriteMethodBarrierV => (MmeDmaWriteMethodBarrier & 0x1) != 0;
-        public fixed uint ReservedDF0[2436];
-        public MmeShadowScratch SetMmeShadowScratch;
->>>>>>> 1ec71635b (sync with main branch)
 #pragma warning restore CS0649
     }
 }

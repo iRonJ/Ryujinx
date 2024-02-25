@@ -134,8 +134,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             ProcessMix(outputBuffer, inputBuffer);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

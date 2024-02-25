@@ -13,11 +13,7 @@ namespace Ryujinx.HLE.HOS.Applets
 {
     internal class ControllerApplet : IApplet
     {
-<<<<<<< HEAD
         private readonly Horizon _system;
-=======
-        private Horizon _system;
->>>>>>> 1ec71635b (sync with main branch)
 
         private AppletSession _normalSession;
 
@@ -69,11 +65,7 @@ namespace Ryujinx.HLE.HOS.Applets
             }
             else
             {
-<<<<<<< HEAD
                 Logger.Stub?.PrintStub(LogClass.ServiceHid, "ControllerSupportArg Version Unknown");
-=======
-                Logger.Stub?.PrintStub(LogClass.ServiceHid, $"ControllerSupportArg Version Unknown");
->>>>>>> 1ec71635b (sync with main branch)
 
                 argHeader = IApplet.ReadStruct<ControllerSupportArgHeader>(controllerSupportArg); // Read just the header
             }
@@ -90,51 +82,29 @@ namespace Ryujinx.HLE.HOS.Applets
                 playerMin = playerMax = 1;
             }
 
-<<<<<<< HEAD
             int configuredCount;
             PlayerIndex primaryIndex;
             while (!_system.Device.Hid.Npads.Validate(playerMin, playerMax, (ControllerType)privateArg.NpadStyleSet, out configuredCount, out primaryIndex))
             {
                 ControllerAppletUIArgs uiArgs = new()
-=======
-            int configuredCount = 0;
-            PlayerIndex primaryIndex = PlayerIndex.Unknown;
-            while (!_system.Device.Hid.Npads.Validate(playerMin, playerMax, (ControllerType)privateArg.NpadStyleSet, out configuredCount, out primaryIndex))
-            {
-                ControllerAppletUiArgs uiArgs = new ControllerAppletUiArgs
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     PlayerCountMin = playerMin,
                     PlayerCountMax = playerMax,
                     SupportedStyles = (ControllerType)privateArg.NpadStyleSet,
                     SupportedPlayers = _system.Device.Hid.Npads.GetSupportedPlayers(),
-<<<<<<< HEAD
                     IsDocked = _system.State.DockedMode,
                 };
 
                 if (!_system.Device.UIHandler.DisplayMessageDialog(uiArgs))
-=======
-                    IsDocked = _system.State.DockedMode
-                };
-
-                if (!_system.Device.UiHandler.DisplayMessageDialog(uiArgs))
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     break;
                 }
             }
 
-<<<<<<< HEAD
             ControllerSupportResultInfo result = new()
             {
                 PlayerCount = (sbyte)configuredCount,
                 SelectedId = (uint)GetNpadIdTypeFromIndex(primaryIndex),
-=======
-            ControllerSupportResultInfo result = new ControllerSupportResultInfo
-            {
-                PlayerCount = (sbyte)configuredCount,
-                SelectedId = (uint)GetNpadIdTypeFromIndex(primaryIndex)
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             Logger.Stub?.PrintStub(LogClass.ServiceHid, $"ControllerApplet ReturnResult {result.PlayerCount} {result.SelectedId}");
@@ -152,7 +122,6 @@ namespace Ryujinx.HLE.HOS.Applets
             return ResultCode.Success;
         }
 
-<<<<<<< HEAD
         private static byte[] BuildResponse(ControllerSupportResultInfo result)
         {
             using MemoryStream stream = MemoryStreamManager.Shared.GetStream();
@@ -171,28 +140,6 @@ namespace Ryujinx.HLE.HOS.Applets
             writer.Write((ulong)ResultCode.Success);
 
             return stream.ToArray();
-=======
-        private byte[] BuildResponse(ControllerSupportResultInfo result)
-        {
-            using (MemoryStream stream = MemoryStreamManager.Shared.GetStream())
-            using (BinaryWriter writer = new BinaryWriter(stream))
-            {
-                writer.Write(MemoryMarshal.AsBytes(MemoryMarshal.CreateReadOnlySpan(ref result, Unsafe.SizeOf<ControllerSupportResultInfo>())));
-
-                return stream.ToArray();
-            }
-        }
-
-        private byte[] BuildResponse()
-        {
-            using (MemoryStream stream = MemoryStreamManager.Shared.GetStream())
-            using (BinaryWriter writer = new BinaryWriter(stream))
-            {
-                writer.Write((ulong)ResultCode.Success);
-
-                return stream.ToArray();
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 using System.Diagnostics;
-=======
-﻿﻿using System.Diagnostics;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Common
 {
     public static class PerformanceCounter
     {
-<<<<<<< HEAD
         private static readonly double _ticksToNs;
-=======
-        private static double _ticksToNs;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Represents the number of ticks in 1 day.
@@ -79,23 +71,12 @@ namespace Ryujinx.Common
         static PerformanceCounter()
         {
             TicksPerMillisecond = Stopwatch.Frequency / 1000;
-<<<<<<< HEAD
             TicksPerSecond = Stopwatch.Frequency;
             TicksPerMinute = TicksPerSecond * 60;
             TicksPerHour = TicksPerMinute * 60;
             TicksPerDay = TicksPerHour * 24;
-=======
-            TicksPerSecond      = Stopwatch.Frequency;
-            TicksPerMinute      = TicksPerSecond * 60;
-            TicksPerHour        = TicksPerMinute * 60;
-            TicksPerDay         = TicksPerHour * 24;
->>>>>>> 1ec71635b (sync with main branch)
 
             _ticksToNs = 1000000000.0 / Stopwatch.Frequency;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

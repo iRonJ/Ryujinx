@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.SDL2.Common;
-=======
-﻿using Ryujinx.SDL2.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Input.SDL2
@@ -42,10 +38,7 @@ namespace Ryujinx.Input.SDL2
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
 
@@ -59,8 +52,4 @@ namespace Ryujinx.Input.SDL2
             return new SDL2Keyboard(this, _keyboardIdentifers[0], "All keyboards");
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

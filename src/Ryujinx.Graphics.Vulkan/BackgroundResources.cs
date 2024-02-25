@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Silk.NET.Vulkan;
-=======
-﻿using Silk.NET.Vulkan;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -11,11 +7,7 @@ namespace Ryujinx.Graphics.Vulkan
 {
     class BackgroundResource : IDisposable
     {
-<<<<<<< HEAD
         private readonly VulkanRenderer _gd;
-=======
-        private VulkanRenderer _gd;
->>>>>>> 1ec71635b (sync with main branch)
         private Device _device;
 
         private CommandBufferPool _pool;
@@ -46,14 +38,7 @@ namespace Ryujinx.Graphics.Vulkan
 
         public PersistentFlushBuffer GetFlushBuffer()
         {
-<<<<<<< HEAD
             _flushBuffer ??= new PersistentFlushBuffer(_gd);
-=======
-            if (_flushBuffer == null)
-            {
-                _flushBuffer = new PersistentFlushBuffer(_gd);
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             return _flushBuffer;
         }
@@ -67,17 +52,10 @@ namespace Ryujinx.Graphics.Vulkan
 
     class BackgroundResources : IDisposable
     {
-<<<<<<< HEAD
         private readonly VulkanRenderer _gd;
         private Device _device;
 
         private readonly Dictionary<Thread, BackgroundResource> _resources;
-=======
-        private VulkanRenderer _gd;
-        private Device _device;
-
-        private Dictionary<Thread, BackgroundResource> _resources;
->>>>>>> 1ec71635b (sync with main branch)
 
         public BackgroundResources(VulkanRenderer gd, Device device)
         {
@@ -108,12 +86,7 @@ namespace Ryujinx.Graphics.Vulkan
 
             lock (_resources)
             {
-<<<<<<< HEAD
                 if (!_resources.TryGetValue(thread, out BackgroundResource resource))
-=======
-                BackgroundResource resource;
-                if (!_resources.TryGetValue(thread, out resource))
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     Cleanup();
 

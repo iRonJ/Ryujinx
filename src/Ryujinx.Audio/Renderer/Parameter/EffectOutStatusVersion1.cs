@@ -18,12 +18,6 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// </summary>
         private unsafe fixed byte _reserved[15];
 
-<<<<<<< HEAD
         EffectState IEffectOutStatus.State { readonly get => State; set => State = value; }
     }
 }
-=======
-        EffectState IEffectOutStatus.State { get => State; set => State = value; }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

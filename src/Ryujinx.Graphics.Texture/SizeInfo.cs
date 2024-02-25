@@ -20,7 +20,6 @@ namespace Ryujinx.Graphics.Texture
         public SizeInfo(int size)
         {
             _mipOffsets = new int[] { 0 };
-<<<<<<< HEAD
             AllOffsets = new int[] { 0 };
             SliceSizes = new int[] { size };
             LevelSizes = new int[] { size };
@@ -29,16 +28,6 @@ namespace Ryujinx.Graphics.Texture
             LayerSize = size;
             TotalSize = size;
             _is3D = false;
-=======
-            AllOffsets  = new int[] { 0 };
-            SliceSizes  = new int[] { size };
-            LevelSizes  = new int[] { size };
-            _depth      = 1;
-            _levels     = 1;
-            LayerSize   = size;
-            TotalSize   = size;
-            _is3D       = false;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         internal SizeInfo(
@@ -46,7 +35,6 @@ namespace Ryujinx.Graphics.Texture
             int[] allOffsets,
             int[] sliceSizes,
             int[] levelSizes,
-<<<<<<< HEAD
             int depth,
             int levels,
             int layerSize,
@@ -62,23 +50,6 @@ namespace Ryujinx.Graphics.Texture
             LayerSize = layerSize;
             TotalSize = totalSize;
             _is3D = is3D;
-=======
-            int   depth,
-            int   levels,
-            int   layerSize,
-            int   totalSize,
-            bool  is3D)
-        {
-            _mipOffsets = mipOffsets;
-            AllOffsets  = allOffsets;
-            SliceSizes  = sliceSizes;
-            LevelSizes  = levelSizes;
-            _depth      = depth;
-            _levels     = levels;
-            LayerSize   = layerSize;
-            TotalSize   = totalSize;
-            _is3D       = is3D;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public int GetMipOffset(int level)
@@ -145,8 +116,4 @@ namespace Ryujinx.Graphics.Texture
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

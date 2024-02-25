@@ -11,11 +11,7 @@ namespace ARMeilleure.IntermediateRepresentation
         public Register(int index, RegisterType type)
         {
             Index = index;
-<<<<<<< HEAD
             Type = type;
-=======
-            Type  = type;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override int GetHashCode()
@@ -41,14 +37,7 @@ namespace ARMeilleure.IntermediateRepresentation
         public bool Equals(Register other)
         {
             return other.Index == Index &&
-<<<<<<< HEAD
                    other.Type == Type;
         }
     }
 }
-=======
-                   other.Type  == Type;
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Memory;
 using Ryujinx.Common.Utilities;
 using Ryujinx.HLE.Utilities;
@@ -12,17 +8,12 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.HLE.HOS.Services.Time.TimeZone.TimeZoneRule;
 
 namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 {
     public class TimeZone
     {
-<<<<<<< HEAD
         private const int TimeTypeSize = 8;
         private const int EpochYear = 1970;
         private const int YearBase = 1900;
@@ -45,31 +36,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
         private static readonly int[][] _monthsLengths = {
             new[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
             new[] { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
-=======
-        private const int TimeTypeSize     = 8;
-        private const int EpochYear        = 1970;
-        private const int YearBase         = 1900;
-        private const int EpochWeekDay     = 4;
-        private const int SecondsPerMinute = 60;
-        private const int MinutesPerHour   = 60;
-        private const int HoursPerDays     = 24;
-        private const int DaysPerWekk      = 7;
-        private const int DaysPerNYear     = 365;
-        private const int DaysPerLYear     = 366;
-        private const int MonthsPerYear    = 12;
-        private const int SecondsPerHour   = SecondsPerMinute * MinutesPerHour;
-        private const int SecondsPerDay    = SecondsPerHour * HoursPerDays;
-
-        private const int YearsPerRepeat         = 400;
-        private const long AverageSecondsPerYear = 31556952;
-        private const long SecondsPerRepeat      = YearsPerRepeat * AverageSecondsPerYear;
-
-        private static readonly int[] YearLengths     = { DaysPerNYear, DaysPerLYear };
-        private static readonly int[][] MonthsLengths = new int[][]
-        {
-            new int[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
-            new int[] { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private static ReadOnlySpan<byte> TimeZoneDefaultRule => ",M4.1.0,M10.5.0"u8;
@@ -78,22 +44,14 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
         private struct CalendarTimeInternal
         {
             // NOTE: On the IPC side this is supposed to be a 16 bits value but internally this need to be a 64 bits value for ToPosixTime.
-<<<<<<< HEAD
             public long Year;
-=======
-            public long  Year;
->>>>>>> 1ec71635b (sync with main branch)
             public sbyte Month;
             public sbyte Day;
             public sbyte Hour;
             public sbyte Minute;
             public sbyte Second;
 
-<<<<<<< HEAD
             public readonly int CompareTo(CalendarTimeInternal other)
-=======
-            public int CompareTo(CalendarTimeInternal other)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 if (Year != other.Year)
                 {
@@ -138,27 +96,16 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
         {
             JulianDay,
             DayOfYear,
-<<<<<<< HEAD
             MonthNthDayOfWeek,
-=======
-            MonthNthDayOfWeek
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private struct Rule
         {
             public RuleType Type;
-<<<<<<< HEAD
             public int Day;
             public int Week;
             public int Month;
             public int TransitionTime;
-=======
-            public int      Day;
-            public int      Week;
-            public int      Month;
-            public int      TransitionTime;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static int Detzcode32(ReadOnlySpan<byte> bytes)
@@ -196,17 +143,10 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             TimeTypeInfo a = outRules.Ttis[aIndex];
             TimeTypeInfo b = outRules.Ttis[bIndex];
 
-<<<<<<< HEAD
             return a.GmtOffset == b.GmtOffset &&
                    a.IsDaySavingTime == b.IsDaySavingTime &&
                    a.IsStandardTimeDaylight == b.IsStandardTimeDaylight &&
                    a.IsGMT == b.IsGMT &&
-=======
-            return a.GmtOffset              == b.GmtOffset &&
-                   a.IsDaySavingTime        == b.IsDaySavingTime &&
-                   a.IsStandardTimeDaylight == b.IsStandardTimeDaylight &&
-                   a.IsGMT                  == b.IsGMT &&
->>>>>>> 1ec71635b (sync with main branch)
                    StringUtils.CompareCStr(outRules.Chars[a.AbbreviationListIndex..], outRules.Chars[b.AbbreviationListIndex..]) == 0;
         }
 
@@ -282,11 +222,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             seconds = 0;
 
 
-<<<<<<< HEAD
             bool isValid = GetNum(name, ref namePosition, out int num, 0, HoursPerDays * DaysPerWeek - 1);
-=======
-            bool isValid = GetNum(name, ref namePosition, out int num, 0, HoursPerDays * DaysPerWekk - 1);
->>>>>>> 1ec71635b (sync with main branch)
             if (!isValid)
             {
                 return false;
@@ -372,11 +308,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
         {
             rule = new Rule();
 
-<<<<<<< HEAD
             bool isValid;
-=======
-            bool isValid = false;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (name[namePosition] == 'J')
             {
@@ -413,11 +345,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     return false;
                 }
 
-<<<<<<< HEAD
                 isValid = GetNum(name, ref namePosition, out rule.Day, 0, DaysPerWeek - 1);
-=======
-                isValid = GetNum(name, ref namePosition, out rule.Day, 0, DaysPerWekk - 1);
->>>>>>> 1ec71635b (sync with main branch)
             }
             else if (char.IsDigit((char)name[namePosition]))
             {
@@ -461,11 +389,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
         {
             outRules = new TimeZoneRule();
 
-<<<<<<< HEAD
             int stdLen;
-=======
-            int        stdLen;
->>>>>>> 1ec71635b (sync with main branch)
 
             ReadOnlySpan<byte> stdName = name;
             int namePosition = 0;
@@ -482,11 +406,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                 {
                     namePosition++;
 
-<<<<<<< HEAD
                     stdName = name[namePosition..];
-=======
-                    stdName = name.Slice(namePosition);
->>>>>>> 1ec71635b (sync with main branch)
 
                     int stdNamePosition = namePosition;
 
@@ -520,17 +440,10 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             }
 
             int charCount = stdLen + 1;
-<<<<<<< HEAD
             int destLen = 0;
             int dstOffset = 0;
 
             ReadOnlySpan<byte> destName = name[namePosition..];
-=======
-            int destLen   = 0;
-            int dstOffset = 0;
-
-            ReadOnlySpan<byte> destName = name.Slice(namePosition);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (TzCharsArraySize < charCount)
             {
@@ -541,11 +454,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             {
                 if (name[namePosition] == '<')
                 {
-<<<<<<< HEAD
                     destName = name[++namePosition..];
-=======
-                    destName = name.Slice(++namePosition);
->>>>>>> 1ec71635b (sync with main branch)
                     int destNamePosition = namePosition;
 
                     namePosition = GetQZName(name.ToArray(), namePosition, '>');
@@ -560,15 +469,9 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                 }
                 else
                 {
-<<<<<<< HEAD
                     destName = name[namePosition..];
                     namePosition = GetTZName(name, namePosition);
                     destLen = namePosition;
-=======
-                    destName     = name.Slice(namePosition);
-                    namePosition = GetTZName(name, namePosition);
-                    destLen      = namePosition;
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 if (destLen == 0)
@@ -606,13 +509,8 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                 {
                     namePosition++;
 
-<<<<<<< HEAD
                     bool isRuleValid = GetRule(name, ref namePosition, out Rule start);
                     if (!isRuleValid)
-=======
-                    bool IsRuleValid = GetRule(name, ref namePosition, out Rule start);
-                    if (!IsRuleValid)
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         return false;
                     }
@@ -622,13 +520,8 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                         return false;
                     }
 
-<<<<<<< HEAD
                     isRuleValid = GetRule(name, ref namePosition, out Rule end);
                     if (!isRuleValid)
-=======
-                    IsRuleValid = GetRule(name, ref namePosition, out Rule end);
-                    if (!IsRuleValid)
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         return false;
                     }
@@ -642,33 +535,20 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
                     outRules.Ttis[0] = new TimeTypeInfo
                     {
-<<<<<<< HEAD
                         GmtOffset = -dstOffset,
                         IsDaySavingTime = true,
                         AbbreviationListIndex = stdLen + 1,
-=======
-                        GmtOffset             = -dstOffset,
-                        IsDaySavingTime       = true,
-                        AbbreviationListIndex = stdLen + 1
->>>>>>> 1ec71635b (sync with main branch)
                     };
 
                     outRules.Ttis[1] = new TimeTypeInfo
                     {
-<<<<<<< HEAD
                         GmtOffset = -stdOffset,
                         IsDaySavingTime = false,
                         AbbreviationListIndex = 0,
-=======
-                        GmtOffset             = -stdOffset,
-                        IsDaySavingTime       = false,
-                        AbbreviationListIndex = 0
->>>>>>> 1ec71635b (sync with main branch)
                     };
 
                     outRules.DefaultType = 0;
 
-<<<<<<< HEAD
                     int timeCount = 0;
                     long janFirst = 0;
                     int janOffset = 0;
@@ -677,16 +557,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     do
                     {
                         int yearSeconds = _yearLengths[IsLeap(yearBegining - 1)] * SecondsPerDay;
-=======
-                    int  timeCount    = 0;
-                    long janFirst     = 0;
-                    int  janOffset    = 0;
-                    int  yearBegining = EpochYear;
-
-                    do
-                    {
-                        int yearSeconds = YearLengths[IsLeap(yearBegining - 1)] * SecondsPerDay;
->>>>>>> 1ec71635b (sync with main branch)
                         yearBegining--;
                         if (IncrementOverflow64(ref janFirst, -yearSeconds))
                         {
@@ -701,27 +571,14 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     for (year = yearBegining; year < yearLimit; year++)
                     {
                         int startTime = TransitionTime(year, start, stdOffset);
-<<<<<<< HEAD
                         int endTime = TransitionTime(year, end, dstOffset);
 
                         int yearSeconds = _yearLengths[IsLeap(year)] * SecondsPerDay;
-=======
-                        int endTime   = TransitionTime(year, end, dstOffset);
-
-                        int yearSeconds = YearLengths[IsLeap(year)] * SecondsPerDay;
->>>>>>> 1ec71635b (sync with main branch)
 
                         bool isReversed = endTime < startTime;
                         if (isReversed)
                         {
-<<<<<<< HEAD
                             (endTime, startTime) = (startTime, endTime);
-=======
-                            int swap = startTime;
-
-                            startTime = endTime;
-                            endTime   = swap;
->>>>>>> 1ec71635b (sync with main branch)
                         }
 
                         if (isReversed || (startTime < endTime && (endTime - startTime < (yearSeconds + (stdOffset - dstOffset)))))
@@ -770,11 +627,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     }
                     else if (YearsPerRepeat < year - yearBegining)
                     {
-<<<<<<< HEAD
                         outRules.GoBack = true;
-=======
-                        outRules.GoBack  = true;
->>>>>>> 1ec71635b (sync with main branch)
                         outRules.GoAhead = true;
                     }
                 }
@@ -795,34 +648,22 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                         }
                     }
 
-<<<<<<< HEAD
                     long theirDstOffset;
-=======
-                    long theirDstOffset = 0;
->>>>>>> 1ec71635b (sync with main branch)
                     for (int i = 0; i < outRules.TimeCount; i++)
                     {
                         int j = outRules.Types[i];
                         if (outRules.Ttis[j].IsDaySavingTime)
                         {
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
                             theirDstOffset = -outRules.Ttis[j].GmtOffset;
 #pragma warning restore IDE0059
-=======
-                            theirDstOffset = -outRules.Ttis[j].GmtOffset;
->>>>>>> 1ec71635b (sync with main branch)
                         }
                     }
 
                     bool isDaySavingTime = false;
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
                     long theirOffset = theirStdOffset;
 #pragma warning restore IDE0059
-=======
-                    long theirOffset     = theirStdOffset;
->>>>>>> 1ec71635b (sync with main branch)
                     for (int i = 0; i < outRules.TimeCount; i++)
                     {
                         int j = outRules.Types[i];
@@ -842,13 +683,9 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                         theirOffset = -outRules.Ttis[j].GmtOffset;
                         if (outRules.Ttis[j].IsDaySavingTime)
                         {
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
                             theirDstOffset = theirOffset;
 #pragma warning restore IDE0059
-=======
-                            theirDstOffset = theirOffset;
->>>>>>> 1ec71635b (sync with main branch)
                         }
                         else
                         {
@@ -858,41 +695,25 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
                     outRules.Ttis[0] = new TimeTypeInfo
                     {
-<<<<<<< HEAD
                         GmtOffset = -stdOffset,
                         IsDaySavingTime = false,
                         AbbreviationListIndex = 0,
-=======
-                        GmtOffset             = -stdOffset,
-                        IsDaySavingTime       = false,
-                        AbbreviationListIndex = 0
->>>>>>> 1ec71635b (sync with main branch)
                     };
 
                     outRules.Ttis[1] = new TimeTypeInfo
                     {
-<<<<<<< HEAD
                         GmtOffset = -dstOffset,
                         IsDaySavingTime = true,
                         AbbreviationListIndex = stdLen + 1,
                     };
 
                     outRules.TypeCount = 2;
-=======
-                        GmtOffset             = -dstOffset,
-                        IsDaySavingTime       = true,
-                        AbbreviationListIndex = stdLen + 1
-                    };
-
-                    outRules.TypeCount   = 2;
->>>>>>> 1ec71635b (sync with main branch)
                     outRules.DefaultType = 0;
                 }
             }
             else
             {
                 // default is perpetual standard time
-<<<<<<< HEAD
                 outRules.TypeCount = 1;
                 outRules.TimeCount = 0;
                 outRules.DefaultType = 0;
@@ -901,16 +722,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     GmtOffset = -stdOffset,
                     IsDaySavingTime = false,
                     AbbreviationListIndex = 0,
-=======
-                outRules.TypeCount   = 1;
-                outRules.TimeCount   = 0;
-                outRules.DefaultType = 0;
-                outRules.Ttis[0]     = new TimeTypeInfo
-                {
-                    GmtOffset             = -stdOffset,
-                    IsDaySavingTime       = false,
-                    AbbreviationListIndex = 0
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -960,11 +771,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                 case RuleType.MonthNthDayOfWeek:
                     // Here we use Zeller's Congruence to get the day of week of the first month.
 
-<<<<<<< HEAD
                     int m1 = (rule.Month + 9) % 12 + 1;
-=======
-                    int m1  = (rule.Month + 9) % 12 + 1;
->>>>>>> 1ec71635b (sync with main branch)
                     int yy0 = (rule.Month <= 2) ? (year - 1) : year;
                     int yy1 = yy0 / 100;
                     int yy2 = yy0 % 100;
@@ -973,11 +780,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
                     if (dayOfWeek < 0)
                     {
-<<<<<<< HEAD
                         dayOfWeek += DaysPerWeek;
-=======
-                        dayOfWeek += DaysPerWekk;
->>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     // Get the zero origin
@@ -985,39 +788,23 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
                     if (d < 0)
                     {
-<<<<<<< HEAD
                         d += DaysPerWeek;
-=======
-                        d += DaysPerWekk;
->>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     for (int i = 1; i < rule.Week; i++)
                     {
-<<<<<<< HEAD
                         if (d + DaysPerWeek >= _monthsLengths[leapYear][rule.Month - 1])
-=======
-                        if (d + DaysPerWekk >= MonthsLengths[leapYear][rule.Month - 1])
->>>>>>> 1ec71635b (sync with main branch)
                         {
                             break;
                         }
 
-<<<<<<< HEAD
                         d += DaysPerWeek;
-=======
-                        d += DaysPerWekk;
->>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     value = d * SecondsPerDay;
                     for (int i = 0; i < rule.Month - 1; i++)
                     {
-<<<<<<< HEAD
                         value += _monthsLengths[leapYear][i] * SecondsPerDay;
-=======
-                        value += MonthsLengths[leapYear][i] * SecondsPerDay;
->>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     break;
@@ -1101,11 +888,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
         {
             outRules = new TimeZoneRule();
 
-<<<<<<< HEAD
             BinaryReader reader = new(inputData);
-=======
-            BinaryReader reader = new BinaryReader(inputData);
->>>>>>> 1ec71635b (sync with main branch)
 
             long streamLength = reader.BaseStream.Length;
 
@@ -1120,17 +903,10 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
             int ttisGMTCount = Detzcode32(header.TtisGMTCount);
             int ttisSTDCount = Detzcode32(header.TtisSTDCount);
-<<<<<<< HEAD
             int leapCount = Detzcode32(header.LeapCount);
             int timeCount = Detzcode32(header.TimeCount);
             int typeCount = Detzcode32(header.TypeCount);
             int charCount = Detzcode32(header.CharCount);
-=======
-            int leapCount    = Detzcode32(header.LeapCount);
-            int timeCount    = Detzcode32(header.TimeCount);
-            int typeCount    = Detzcode32(header.TypeCount);
-            int charCount    = Detzcode32(header.CharCount);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (!(0 <= leapCount
                 && leapCount < TzMaxLeaps
@@ -1278,11 +1054,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                 }
 
                 long position = (workBuffer.Length - p.Length);
-<<<<<<< HEAD
                 long nRead = streamLength - position;
-=======
-                long nRead    = streamLength - position;
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (nRead < 0)
                 {
@@ -1306,11 +1078,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     byte[] name = new byte[TzNameMax];
                     Array.Copy(tempName, 1, name, 0, nRead - 1);
 
-<<<<<<< HEAD
                     Box<TimeZoneRule> tempRulesBox = new();
-=======
-                    Box<TimeZoneRule> tempRulesBox = new Box<TimeZoneRule>();
->>>>>>> 1ec71635b (sync with main branch)
                     ref TimeZoneRule tempRules = ref tempRulesBox.Data;
 
                     if (ParsePosixName(name, ref tempRulesBox.Data, false))
@@ -1480,7 +1248,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
         private static ResultCode CreateCalendarTime(long time, int gmtOffset, out CalendarTimeInternal calendarTime, out CalendarAdditionalInfo calendarAdditionalInfo)
         {
-<<<<<<< HEAD
             long year = EpochYear;
             long timeDays = time / SecondsPerDay;
             long remainingSeconds = time % SecondsPerDay;
@@ -1492,19 +1259,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             {
                 long timeDelta = timeDays / DaysPerLYear;
                 long delta = timeDelta;
-=======
-            long year             = EpochYear;
-            long timeDays         = time / SecondsPerDay;
-            long remainingSeconds = time % SecondsPerDay;
-
-            calendarTime           = new CalendarTimeInternal();
-            calendarAdditionalInfo = new CalendarAdditionalInfo();
-
-            while (timeDays < 0 || timeDays >= YearLengths[IsLeap((int)year)])
-            {
-                long timeDelta = timeDays / DaysPerLYear;
-                long delta     = timeDelta;
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (delta == 0)
                 {
@@ -1545,21 +1299,12 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     return ResultCode.OutOfRange;
                 }
 
-<<<<<<< HEAD
                 dayOfYear += _yearLengths[IsLeap((int)year)];
             }
 
             while (dayOfYear >= _yearLengths[IsLeap((int)year)])
             {
                 dayOfYear -= _yearLengths[IsLeap((int)year)];
-=======
-                dayOfYear += YearLengths[IsLeap((int)year)];
-            }
-
-            while (dayOfYear >= YearLengths[IsLeap((int)year)])
-            {
-                dayOfYear -= YearLengths[IsLeap((int)year)];
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (IncrementOverflow64(ref year, 1))
                 {
@@ -1567,7 +1312,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                 }
             }
 
-<<<<<<< HEAD
             calendarTime.Year = year;
             calendarAdditionalInfo.DayOfYear = (uint)dayOfYear;
 
@@ -1575,15 +1319,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             if (dayOfWeek < 0)
             {
                 dayOfWeek += DaysPerWeek;
-=======
-            calendarTime.Year                = year;
-            calendarAdditionalInfo.DayOfYear = (uint)dayOfYear;
-
-            long dayOfWeek = (EpochWeekDay + ((year - EpochYear) % DaysPerWekk) * (DaysPerNYear % DaysPerWekk) + GetLeapDays(year - 1) - GetLeapDays(EpochYear - 1) + dayOfYear) % DaysPerWekk;
-            if (dayOfWeek < 0)
-            {
-                dayOfWeek += DaysPerWekk;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             calendarAdditionalInfo.DayOfWeek = (uint)dayOfWeek;
@@ -1594,11 +1329,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             calendarTime.Minute = (sbyte)(remainingSeconds / SecondsPerMinute);
             calendarTime.Second = (sbyte)(remainingSeconds % SecondsPerMinute);
 
-<<<<<<< HEAD
             int[] ip = _monthsLengths[IsLeap((int)year)];
-=======
-            int[] ip = MonthsLengths[IsLeap((int)year)];
->>>>>>> 1ec71635b (sync with main branch)
 
             for (calendarTime.Month = 0; dayOfYear >= ip[calendarTime.Month]; ++calendarTime.Month)
             {
@@ -1608,22 +1339,14 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             calendarTime.Day = (sbyte)(dayOfYear + 1);
 
             calendarAdditionalInfo.IsDaySavingTime = false;
-<<<<<<< HEAD
             calendarAdditionalInfo.GmtOffset = gmtOffset;
-=======
-            calendarAdditionalInfo.GmtOffset       = gmtOffset;
->>>>>>> 1ec71635b (sync with main branch)
 
             return 0;
         }
 
         private static ResultCode ToCalendarTimeInternal(in TimeZoneRule rules, long time, out CalendarTimeInternal calendarTime, out CalendarAdditionalInfo calendarAdditionalInfo)
         {
-<<<<<<< HEAD
             calendarTime = new CalendarTimeInternal();
-=======
-            calendarTime           = new CalendarTimeInternal();
->>>>>>> 1ec71635b (sync with main branch)
             calendarAdditionalInfo = new CalendarAdditionalInfo();
 
             ResultCode result;
@@ -1646,11 +1369,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
                 seconds -= 1;
 
-<<<<<<< HEAD
                 years = (seconds / SecondsPerRepeat + 1) * YearsPerRepeat;
-=======
-                years   = (seconds / SecondsPerRepeat + 1) * YearsPerRepeat;
->>>>>>> 1ec71635b (sync with main branch)
                 seconds = years * AverageSecondsPerYear;
 
                 if (time < rules.Ats[0])
@@ -1693,11 +1412,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             }
             else
             {
-<<<<<<< HEAD
                 int low = 1;
-=======
-                int low  = 1;
->>>>>>> 1ec71635b (sync with main branch)
                 int high = rules.TimeCount;
 
                 while (low < high)
@@ -1737,11 +1452,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
         {
             posixTime = 0;
 
-<<<<<<< HEAD
             int hour = calendarTime.Hour;
-=======
-            int hour   = calendarTime.Hour;
->>>>>>> 1ec71635b (sync with main branch)
             int minute = calendarTime.Minute;
 
             if (NormalizeOverflow32(ref hour, ref minute, MinutesPerHour))
@@ -1757,17 +1468,10 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                 return ResultCode.Overflow;
             }
 
-<<<<<<< HEAD
             calendarTime.Day = (sbyte)day;
             calendarTime.Hour = (sbyte)hour;
 
             long year = calendarTime.Year;
-=======
-            calendarTime.Day  = (sbyte)day;
-            calendarTime.Hour = (sbyte)hour;
-
-            long year  = calendarTime.Year;
->>>>>>> 1ec71635b (sync with main branch)
             long month = calendarTime.Month;
 
             if (NormalizeOverflow64(ref year, ref month, MonthsPerYear))
@@ -1796,11 +1500,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     li++;
                 }
 
-<<<<<<< HEAD
                 day += _yearLengths[IsLeap((int)li)];
-=======
-                day += YearLengths[IsLeap((int)li)];
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             while (day > DaysPerLYear)
@@ -1812,11 +1512,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     li++;
                 }
 
-<<<<<<< HEAD
                 day -= _yearLengths[IsLeap((int)li)];
-=======
-                day -= YearLengths[IsLeap((int)li)];
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (IncrementOverflow64(ref year, 1))
                 {
@@ -1826,11 +1522,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
             while (true)
             {
-<<<<<<< HEAD
                 int i = _monthsLengths[IsLeap((int)year)][calendarTime.Month];
-=======
-                int i = MonthsLengths[IsLeap((int)year)][calendarTime.Month];
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (day <= i)
                 {
@@ -1882,11 +1574,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                 calendarTime.Second = 0;
             }
 
-<<<<<<< HEAD
             long low = long.MinValue;
-=======
-            long low  = long.MinValue;
->>>>>>> 1ec71635b (sync with main branch)
             long high = long.MaxValue;
 
             while (true)
@@ -1983,7 +1671,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
             {
                 Time = new CalendarTime()
                 {
-<<<<<<< HEAD
                     Year = (short)calendarTime.Year,
                     // NOTE: Nintendo's month range is 1-12, internal range is 0-11.
                     Month = (sbyte)(calendarTime.Month + 1),
@@ -1993,17 +1680,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                     Second = calendarTime.Second,
                 },
                 AdditionalInfo = calendarAdditionalInfo,
-=======
-                    Year   = (short)calendarTime.Year,
-                    // NOTE: Nintendo's month range is 1-12, internal range is 0-11.
-                    Month = (sbyte)(calendarTime.Month + 1),
-                    Day    = calendarTime.Day,
-                    Hour   = calendarTime.Hour,
-                    Minute = calendarTime.Minute,
-                    Second = calendarTime.Second
-                },
-                AdditionalInfo = calendarAdditionalInfo
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             return result;
@@ -2011,7 +1687,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
         internal static ResultCode ToPosixTime(in TimeZoneRule rules, CalendarTime calendarTime, out long posixTime)
         {
-<<<<<<< HEAD
             CalendarTimeInternal calendarTimeInternal = new()
             {
                 Year = calendarTime.Year,
@@ -2021,24 +1696,9 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
                 Hour = calendarTime.Hour,
                 Minute = calendarTime.Minute,
                 Second = calendarTime.Second,
-=======
-            CalendarTimeInternal calendarTimeInternal = new CalendarTimeInternal()
-            {
-                Year   = calendarTime.Year,
-                // NOTE: Nintendo's month range is 1-12, internal range is 0-11.
-                Month  = (sbyte)(calendarTime.Month - 1),
-                Day    = calendarTime.Day,
-                Hour   = calendarTime.Hour,
-                Minute = calendarTime.Minute,
-                Second = calendarTime.Second
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             return ToPosixTimeInternal(in rules, calendarTimeInternal, out posixTime);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

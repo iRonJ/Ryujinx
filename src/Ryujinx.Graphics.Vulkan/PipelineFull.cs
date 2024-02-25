@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
-=======
-﻿using Ryujinx.Graphics.GAL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Vulkan.Queries;
 using Silk.NET.Vulkan;
 using System;
@@ -18,28 +14,18 @@ namespace Ryujinx.Graphics.Vulkan
         private CounterQueueEvent _activeConditionalRender;
 
         private readonly List<BufferedQuery> _pendingQueryCopies;
-<<<<<<< HEAD
         private readonly List<BufferHolder> _activeBufferMirrors;
 
         private ulong _byteWeight;
 
         private readonly List<BufferHolder> _backingSwaps;
-=======
-
-        private ulong _byteWeight;
-
-        private List<BufferHolder> _backingSwaps;
->>>>>>> 1ec71635b (sync with main branch)
 
         public PipelineFull(VulkanRenderer gd, Device device) : base(gd, device)
         {
             _activeQueries = new List<(QueryPool, bool)>();
             _pendingQueryCopies = new();
             _backingSwaps = new();
-<<<<<<< HEAD
             _activeBufferMirrors = new();
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             CommandBuffer = (Cbs = gd.CommandBufferPool.Rent()).CommandBuffer;
         }
@@ -65,11 +51,7 @@ namespace Ryujinx.Graphics.Vulkan
             {
                 // We can't use CmdClearAttachments if not writing all components,
                 // because on Vulkan, the pipeline state does not affect clears.
-<<<<<<< HEAD
                 var dstTexture = FramebufferParams.GetColorView(index);
-=======
-                var dstTexture = FramebufferParams.GetAttachment(index);
->>>>>>> 1ec71635b (sync with main branch)
                 if (dstTexture == null)
                 {
                     return;
@@ -89,10 +71,6 @@ namespace Ryujinx.Graphics.Vulkan
                     componentMask,
                     (int)FramebufferParams.Width,
                     (int)FramebufferParams.Height,
-<<<<<<< HEAD
-=======
-                    FramebufferParams.AttachmentFormats[index],
->>>>>>> 1ec71635b (sync with main branch)
                     FramebufferParams.GetAttachmentComponentType(index),
                     ClearScissor);
             }
@@ -102,7 +80,6 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
-<<<<<<< HEAD
         public void ClearRenderTargetDepthStencil(int layer, int layerCount, float depthValue, bool depthMask, int stencilValue, int stencilMask)
         {
             if (FramebufferParams == null)
@@ -139,8 +116,6 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public void EndHostConditionalRendering()
         {
             if (Gd.Capabilities.SupportsConditionalRendering)
@@ -178,7 +153,6 @@ namespace Ryujinx.Graphics.Vulkan
 
                     if (Gd.Capabilities.SupportsConditionalRendering)
                     {
-<<<<<<< HEAD
                         // var buffer = evt.GetBuffer().Get(Cbs, 0, sizeof(long)).Value;
                         // var flags = isEqual ? ConditionalRenderingFlagsEXT.InvertedBitExt : 0;
 
@@ -188,17 +162,6 @@ namespace Ryujinx.Graphics.Vulkan
                         //     Buffer = buffer,
                         //     Flags = flags,
                         // };
-=======
-                        var buffer = evt.GetBuffer().Get(Cbs, 0, sizeof(long)).Value;
-                        var flags = isEqual ? ConditionalRenderingFlagsEXT.InvertedBitExt : 0;
-
-                        var conditionalRenderingBeginInfo = new ConditionalRenderingBeginInfoEXT()
-                        {
-                            SType = StructureType.ConditionalRenderingBeginInfoExt,
-                            Buffer = buffer,
-                            Flags = flags
-                        };
->>>>>>> 1ec71635b (sync with main branch)
 
                         // Gd.ConditionalRenderingApi.CmdBeginConditionalRendering(CommandBuffer, conditionalRenderingBeginInfo);
                     }
@@ -230,14 +193,7 @@ namespace Ryujinx.Graphics.Vulkan
 
         public CommandBufferScoped GetPreloadCommandBuffer()
         {
-<<<<<<< HEAD
             PreloadCbs ??= Gd.CommandBufferPool.Rent();
-=======
-            if (PreloadCbs == null)
-            {
-                PreloadCbs = Gd.CommandBufferPool.Rent();
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             return PreloadCbs.Value;
         }
@@ -270,11 +226,7 @@ namespace Ryujinx.Graphics.Vulkan
         {
             CommandBufferScoped? cbs = null;
 
-<<<<<<< HEAD
             _backingSwaps.RemoveAll(holder => holder.TryBackingSwap(ref cbs));
-=======
-            _backingSwaps.RemoveAll((holder) => holder.TryBackingSwap(ref cbs));
->>>>>>> 1ec71635b (sync with main branch)
 
             cbs?.Dispose();
         }
@@ -293,14 +245,10 @@ namespace Ryujinx.Graphics.Vulkan
 
             SignalCommandBufferChange();
 
-<<<<<<< HEAD
             if (Pipeline != null && Pbp == PipelineBindPoint.Graphics)
             {
                 DynamicState.ReplayIfDirty(Gd.Api, CommandBuffer);
             }
-=======
-            DynamicState.ReplayIfDirty(Gd.Api, CommandBuffer);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void FlushCommandsImpl()
@@ -321,23 +269,17 @@ namespace Ryujinx.Graphics.Vulkan
                 PreloadCbs = null;
             }
 
-<<<<<<< HEAD
             Gd.Barriers.Flush(Cbs.CommandBuffer, false, null);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             CommandBuffer = (Cbs = Gd.CommandBufferPool.ReturnAndRent(Cbs)).CommandBuffer;
             Gd.RegisterFlush();
 
             // Restore per-command buffer state.
-<<<<<<< HEAD
             foreach (BufferHolder buffer in _activeBufferMirrors)
             {
                 buffer.ClearMirrors();
             }
 
             _activeBufferMirrors.Clear();
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
             foreach ((var queryPool, var isOcclusion) in _activeQueries)
             {
@@ -354,14 +296,11 @@ namespace Ryujinx.Graphics.Vulkan
             Restore();
         }
 
-<<<<<<< HEAD
         public void RegisterActiveMirror(BufferHolder buffer)
         {
             _activeBufferMirrors.Add(buffer);
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public void BeginQuery(BufferedQuery query, QueryPool pool, bool needsReset, bool isOcclusion, bool fromSamplePool)
         {
             if (needsReset)

@@ -16,36 +16,26 @@ namespace Ryujinx.Graphics.Gpu.Shader
         private const int TextureSetIndex = 2;
         private const int ImageSetIndex = 3;
 
-<<<<<<< HEAD
         private const ResourceStages SupportBufferStages =
-=======
-        private const ResourceStages SupportBufferStags =
->>>>>>> 1ec71635b (sync with main branch)
             ResourceStages.Compute |
             ResourceStages.Vertex |
             ResourceStages.Fragment;
 
-<<<<<<< HEAD
         private const ResourceStages VtgStages =
             ResourceStages.Vertex |
             ResourceStages.TessellationControl |
             ResourceStages.TessellationEvaluation |
             ResourceStages.Geometry;
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         private readonly GpuContext _context;
 
         private int _fragmentOutputMap;
 
-<<<<<<< HEAD
         private readonly int _reservedConstantBuffers;
         private readonly int _reservedStorageBuffers;
         private readonly int _reservedTextures;
         private readonly int _reservedImages;
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         private readonly List<ResourceDescriptor>[] _resourceDescriptors;
         private readonly List<ResourceUsage>[] _resourceUsages;
 
@@ -53,13 +43,9 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// Creates a new shader info builder.
         /// </summary>
         /// <param name="context">GPU context that owns the shaders that will be added to the builder</param>
-<<<<<<< HEAD
         /// <param name="tfEnabled">Indicates if the graphics shader is used with transform feedback enabled</param>
         /// <param name="vertexAsCompute">Indicates that the vertex shader will be emulated on a compute shader</param>
         public ShaderInfoBuilder(GpuContext context, bool tfEnabled, bool vertexAsCompute = false)
-=======
-        public ShaderInfoBuilder(GpuContext context)
->>>>>>> 1ec71635b (sync with main branch)
         {
             _context = context;
 
@@ -74,7 +60,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 _resourceUsages[index] = new();
             }
 
-<<<<<<< HEAD
             AddDescriptor(SupportBufferStages, ResourceType.UniformBuffer, UniformSetIndex, 0, 1);
             AddUsage(SupportBufferStages, ResourceType.UniformBuffer, UniformSetIndex, 0, 1);
 
@@ -98,21 +83,14 @@ namespace Ryujinx.Graphics.Gpu.Shader
         {
             AddDescriptor(stages, type, setIndex, start, count);
             AddUsage(stages, type, setIndex, start, count);
-=======
-            AddDescriptor(SupportBufferStags, ResourceType.UniformBuffer, UniformSetIndex, 0, 1);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
         /// Adds information from a given shader stage.
         /// </summary>
         /// <param name="info">Shader stage information</param>
-<<<<<<< HEAD
         /// <param name="vertexAsCompute">True if the shader stage has been converted into a compute shader</param>
         public void AddStageInfo(ShaderProgramInfo info, bool vertexAsCompute = false)
-=======
-        public void AddStageInfo(ShaderProgramInfo info)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (info.Stage == ShaderStage.Fragment)
             {
@@ -125,17 +103,10 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 ShaderStage.TessellationEvaluation => 2,
                 ShaderStage.Geometry => 3,
                 ShaderStage.Fragment => 4,
-<<<<<<< HEAD
                 _ => 0,
             });
 
             ResourceStages stages = vertexAsCompute ? ResourceStages.Compute : info.Stage switch
-=======
-                _ => 0
-            });
-
-            ResourceStages stages = info.Stage switch
->>>>>>> 1ec71635b (sync with main branch)
             {
                 ShaderStage.Compute => ResourceStages.Compute,
                 ShaderStage.Vertex => ResourceStages.Vertex,
@@ -143,11 +114,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 ShaderStage.TessellationEvaluation => ResourceStages.TessellationEvaluation,
                 ShaderStage.Geometry => ResourceStages.Geometry,
                 ShaderStage.Fragment => ResourceStages.Fragment,
-<<<<<<< HEAD
                 _ => ResourceStages.None,
-=======
-                _ => ResourceStages.None
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             int uniformsPerStage = (int)_context.Capabilities.MaximumUniformBuffersPerStage;
@@ -155,7 +122,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
             int texturesPerStage = (int)_context.Capabilities.MaximumTexturesPerStage;
             int imagesPerStage = (int)_context.Capabilities.MaximumImagesPerStage;
 
-<<<<<<< HEAD
             int uniformBinding = _reservedConstantBuffers + stageIndex * uniformsPerStage;
             int storageBinding = _reservedStorageBuffers + stageIndex * storagesPerStage;
             int textureBinding = _reservedTextures + stageIndex * texturesPerStage * 2;
@@ -163,15 +129,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
 
             AddDescriptor(stages, ResourceType.UniformBuffer, UniformSetIndex, uniformBinding, uniformsPerStage);
             AddDescriptor(stages, ResourceType.StorageBuffer, StorageSetIndex, storageBinding, storagesPerStage);
-=======
-            int uniformBinding = 1 + stageIndex * uniformsPerStage;
-            int storageBinding = stageIndex * storagesPerStage;
-            int textureBinding = stageIndex * texturesPerStage * 2;
-            int imageBinding = stageIndex * imagesPerStage * 2;
-
-            AddDescriptor(stages, ResourceType.UniformBuffer, UniformSetIndex, uniformBinding, uniformsPerStage);
-            AddArrayDescriptor(stages, ResourceType.StorageBuffer, StorageSetIndex, storageBinding, storagesPerStage);
->>>>>>> 1ec71635b (sync with main branch)
             AddDualDescriptor(stages, ResourceType.TextureAndSampler, ResourceType.BufferTexture, TextureSetIndex, textureBinding, texturesPerStage);
             AddDualDescriptor(stages, ResourceType.Image, ResourceType.BufferImage, ImageSetIndex, imageBinding, imagesPerStage);
 
@@ -213,29 +170,19 @@ namespace Ryujinx.Graphics.Gpu.Shader
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Adds buffer usage information to the list of usages.
-=======
-        /// Adds an array resource to the list of descriptors.
->>>>>>> 1ec71635b (sync with main branch)
         /// </summary>
         /// <param name="stages">Shader stages where the resource is used</param>
         /// <param name="type">Type of the resource</param>
         /// <param name="setIndex">Descriptor set number where the resource will be bound</param>
         /// <param name="binding">Binding number where the resource will be bound</param>
         /// <param name="count">Number of resources bound at the binding location</param>
-<<<<<<< HEAD
         private void AddUsage(ResourceStages stages, ResourceType type, int setIndex, int binding, int count)
         {
             for (int index = 0; index < count; index++)
             {
                 _resourceUsages[setIndex].Add(new ResourceUsage(binding + index, type, stages));
             }
-=======
-        private void AddArrayDescriptor(ResourceStages stages, ResourceType type, int setIndex, int binding, int count)
-        {
-            _resourceDescriptors[setIndex].Add(new ResourceDescriptor(binding, count, type, stages));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -252,12 +199,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 _resourceUsages[setIndex].Add(new ResourceUsage(
                     buffer.Binding,
                     isStorage ? ResourceType.StorageBuffer : ResourceType.UniformBuffer,
-<<<<<<< HEAD
                     stages));
-=======
-                    stages,
-                    buffer.Flags.HasFlag(BufferUsageFlags.Write) ? ResourceAccess.ReadWrite : ResourceAccess.Read));
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -281,12 +223,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 _resourceUsages[setIndex].Add(new ResourceUsage(
                     texture.Binding,
                     type,
-<<<<<<< HEAD
                     stages));
-=======
-                    stages,
-                    texture.Flags.HasFlag(TextureUsageFlags.ImageStore) ? ResourceAccess.ReadWrite : ResourceAccess.Read));
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -307,11 +244,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 usages[index] = new ResourceUsageCollection(_resourceUsages[index].ToArray().AsReadOnly());
             }
 
-<<<<<<< HEAD
             ResourceLayout resourceLayout = new(descriptors.AsReadOnly(), usages.AsReadOnly());
-=======
-            ResourceLayout resourceLayout = new ResourceLayout(descriptors.AsReadOnly(), usages.AsReadOnly());
->>>>>>> 1ec71635b (sync with main branch)
 
             if (pipeline.HasValue)
             {
@@ -329,7 +262,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// <param name="context">GPU context that owns the shaders</param>
         /// <param name="programs">Shaders from the disk cache</param>
         /// <param name="pipeline">Optional pipeline for background compilation</param>
-<<<<<<< HEAD
         /// <param name="tfEnabled">Indicates if the graphics shader is used with transform feedback enabled</param>
         /// <returns>Shader information</returns>
         public static ShaderInfo BuildForCache(
@@ -339,12 +271,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
             bool tfEnabled)
         {
             ShaderInfoBuilder builder = new(context, tfEnabled);
-=======
-        /// <returns>Shader information</returns>
-        public static ShaderInfo BuildForCache(GpuContext context, IEnumerable<CachedShaderStage> programs, ProgramPipelineState? pipeline)
-        {
-            ShaderInfoBuilder builder = new ShaderInfoBuilder(context);
->>>>>>> 1ec71635b (sync with main branch)
 
             foreach (CachedShaderStage program in programs)
             {
@@ -366,17 +292,12 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// <returns>Shader information</returns>
         public static ShaderInfo BuildForCompute(GpuContext context, ShaderProgramInfo info, bool fromCache = false)
         {
-<<<<<<< HEAD
             ShaderInfoBuilder builder = new(context, tfEnabled: false, vertexAsCompute: false);
-=======
-            ShaderInfoBuilder builder = new ShaderInfoBuilder(context);
->>>>>>> 1ec71635b (sync with main branch)
 
             builder.AddStageInfo(info);
 
             return builder.Build(null, fromCache);
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Builds shader information for a vertex or geometry shader thas was converted to compute shader.
@@ -396,7 +317,3 @@ namespace Ryujinx.Graphics.Gpu.Shader
         }
     }
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -10,8 +10,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.State
         public float State2;
         public float State3;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

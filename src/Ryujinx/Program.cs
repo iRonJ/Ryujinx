@@ -3,7 +3,6 @@ using Ryujinx.Common;
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.GraphicsDriver;
 using Ryujinx.Common.Logging;
-<<<<<<< HEAD
 using Ryujinx.Common.SystemInterop;
 using Ryujinx.Modules;
 using Ryujinx.SDL2.Common;
@@ -13,17 +12,6 @@ using Ryujinx.UI.Common.Configuration;
 using Ryujinx.UI.Common.Helper;
 using Ryujinx.UI.Common.SystemInfo;
 using Ryujinx.UI.Widgets;
-=======
-using Ryujinx.Common.SystemInfo;
-using Ryujinx.Common.SystemInterop;
-using Ryujinx.Modules;
-using Ryujinx.SDL2.Common;
-using Ryujinx.Ui;
-using Ryujinx.Ui.Common;
-using Ryujinx.Ui.Common.Configuration;
-using Ryujinx.Ui.Common.Helper;
-using Ryujinx.Ui.Widgets;
->>>>>>> 1ec71635b (sync with main branch)
 using SixLabors.ImageSharp.Formats.Jpeg;
 using System;
 using System.Collections.Generic;
@@ -55,14 +43,7 @@ namespace Ryujinx
         [LibraryImport("libc", SetLastError = true)]
         private static partial int setenv([MarshalAs(UnmanagedType.LPStr)] string name, [MarshalAs(UnmanagedType.LPStr)] string value, int overwrite);
 
-<<<<<<< HEAD
         private const uint MbIconWarning = 0x30;
-=======
-        [LibraryImport("libc")]
-        private static partial IntPtr getenv([MarshalAs(UnmanagedType.LPStr)] string name);
-
-        private const uint MB_ICONWARNING = 0x30;
->>>>>>> 1ec71635b (sync with main branch)
 
         static Program()
         {
@@ -90,34 +71,20 @@ namespace Ryujinx
 
         static void Main(string[] args)
         {
-<<<<<<< HEAD
             Version = ReleaseInformation.Version;
 
             if (OperatingSystem.IsWindows() && !OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134))
             {
                 MessageBoxA(IntPtr.Zero, "You are running an outdated version of Windows.\n\nStarting on June 1st 2022, Ryujinx will only support Windows 10 1803 and newer.\n", $"Ryujinx {Version}", MbIconWarning);
-=======
-            Version = ReleaseInformation.GetVersion();
-
-            if (OperatingSystem.IsWindows() && !OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134))
-            {
-                MessageBoxA(IntPtr.Zero, "You are running an outdated version of Windows.\n\nStarting on June 1st 2022, Ryujinx will only support Windows 10 1803 and newer.\n", $"Ryujinx {Version}", MB_ICONWARNING);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             // Parse arguments
             CommandLineState.ParseArguments(args);
 
             // Hook unhandled exception and process exit events.
-<<<<<<< HEAD
             GLib.ExceptionManager.UnhandledException += (GLib.UnhandledExceptionArgs e) => ProcessUnhandledException(e.ExceptionObject as Exception, e.IsTerminating);
             AppDomain.CurrentDomain.UnhandledException += (object sender, UnhandledExceptionEventArgs e) => ProcessUnhandledException(e.ExceptionObject as Exception, e.IsTerminating);
             AppDomain.CurrentDomain.ProcessExit += (object sender, EventArgs e) => Exit();
-=======
-            GLib.ExceptionManager.UnhandledException   += (GLib.UnhandledExceptionArgs e)                => ProcessUnhandledException(e.ExceptionObject as Exception, e.IsTerminating);
-            AppDomain.CurrentDomain.UnhandledException += (object sender, UnhandledExceptionEventArgs e) => ProcessUnhandledException(e.ExceptionObject as Exception, e.IsTerminating);
-            AppDomain.CurrentDomain.ProcessExit        += (object sender, EventArgs e)                   => Exit();
->>>>>>> 1ec71635b (sync with main branch)
 
             // Make process DPI aware for proper window sizing on high-res screens.
             ForceDpiAware.Windows();
@@ -132,15 +99,11 @@ namespace Ryujinx
             // This ends up causing race condition and abort of XCB when a context is created by SPB (even if SPB do call XInitThreads).
             if (OperatingSystem.IsLinux())
             {
-<<<<<<< HEAD
                 if (XInitThreads() == 0)
                 {
                     throw new NotSupportedException("Failed to initialize multi-threading support.");
                 }
 
-=======
-                XInitThreads();
->>>>>>> 1ec71635b (sync with main branch)
                 Environment.SetEnvironmentVariable("GDK_BACKEND", "x11");
                 setenv("GDK_BACKEND", "x11", 1);
             }
@@ -159,11 +122,7 @@ namespace Ryujinx
                     resourcesDataDir = baseDirectory;
                 }
 
-<<<<<<< HEAD
                 static void SetEnvironmentVariableNoCaching(string key, string value)
-=======
-                void SetEnvironmentVariableNoCaching(string key, string value)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     int res = setenv(key, value, 1);
                     Debug.Assert(res != -1);
@@ -205,19 +164,11 @@ namespace Ryujinx
             // Sets ImageSharp Jpeg Encoder Quality.
             SixLabors.ImageSharp.Configuration.Default.ImageFormatsManager.SetEncoder(JpegFormat.Instance, new JpegEncoder()
             {
-<<<<<<< HEAD
                 Quality = 100,
             });
 
             string localConfigurationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ReleaseInformation.ConfigName);
             string appDataConfigurationPath = Path.Combine(AppDataManager.BaseDirPath, ReleaseInformation.ConfigName);
-=======
-                Quality = 100
-            });
-
-            string localConfigurationPath   = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.json");
-            string appDataConfigurationPath = Path.Combine(AppDataManager.BaseDirPath,            "Config.json");
->>>>>>> 1ec71635b (sync with main branch)
 
             // Now load the configuration as the other subsystems are now registered
             ConfigurationPath = File.Exists(localConfigurationPath)
@@ -226,11 +177,6 @@ namespace Ryujinx
                     ? appDataConfigurationPath
                     : null;
 
-<<<<<<< HEAD
-=======
-            bool showVulkanPrompt = false;
-
->>>>>>> 1ec71635b (sync with main branch)
             if (ConfigurationPath == null)
             {
                 // No configuration, we load the default values and save it to disk
@@ -238,36 +184,17 @@ namespace Ryujinx
 
                 ConfigurationState.Instance.LoadDefault();
                 ConfigurationState.Instance.ToFileFormat().SaveConfig(ConfigurationPath);
-<<<<<<< HEAD
-=======
-
-                showVulkanPrompt = true;
->>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
                 if (ConfigurationFileFormat.TryLoad(ConfigurationPath, out ConfigurationFileFormat configurationFileFormat))
                 {
-<<<<<<< HEAD
                     ConfigurationState.Instance.Load(configurationFileFormat, ConfigurationPath);
-=======
-                    ConfigurationLoadResult result = ConfigurationState.Instance.Load(configurationFileFormat, ConfigurationPath);
-
-                    if ((result & ConfigurationLoadResult.MigratedFromPreVulkan) != 0)
-                    {
-                        showVulkanPrompt = true;
-                    }
->>>>>>> 1ec71635b (sync with main branch)
                 }
                 else
                 {
                     ConfigurationState.Instance.LoadDefault();
 
-<<<<<<< HEAD
-=======
-                    showVulkanPrompt = true;
-
->>>>>>> 1ec71635b (sync with main branch)
                     Logger.Warning?.PrintMsg(LogClass.Application, $"Failed to load config! Loading the default config instead.\nFailed config location {ConfigurationPath}");
                 }
             }
@@ -278,18 +205,10 @@ namespace Ryujinx
                 if (CommandLineState.OverrideGraphicsBackend.ToLower() == "opengl")
                 {
                     ConfigurationState.Instance.Graphics.GraphicsBackend.Value = GraphicsBackend.OpenGl;
-<<<<<<< HEAD
-=======
-                    showVulkanPrompt = false;
->>>>>>> 1ec71635b (sync with main branch)
                 }
                 else if (CommandLineState.OverrideGraphicsBackend.ToLower() == "vulkan")
                 {
                     ConfigurationState.Instance.Graphics.GraphicsBackend.Value = GraphicsBackend.Vulkan;
-<<<<<<< HEAD
-=======
-                    showVulkanPrompt = false;
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -301,11 +220,7 @@ namespace Ryujinx
                     "never" => HideCursorMode.Never,
                     "onidle" => HideCursorMode.OnIdle,
                     "always" => HideCursorMode.Always,
-<<<<<<< HEAD
                     _ => ConfigurationState.Instance.HideCursor.Value,
-=======
-                    _ => ConfigurationState.Instance.HideCursor.Value
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -334,7 +249,6 @@ namespace Ryujinx
             }
 
             // Show the main window UI.
-<<<<<<< HEAD
             MainWindow mainWindow = new();
             mainWindow.Show();
 
@@ -403,11 +317,6 @@ namespace Ryujinx
                 }
             }
 
-=======
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-
->>>>>>> 1ec71635b (sync with main branch)
             if (CommandLineState.LaunchPathArg != null)
             {
                 mainWindow.RunApplication(CommandLineState.LaunchPathArg, CommandLineState.StartFullscreenArg);
@@ -421,38 +330,6 @@ namespace Ryujinx
                 }, TaskContinuationOptions.OnlyOnFaulted);
             }
 
-<<<<<<< HEAD
-=======
-            if (showVulkanPrompt)
-            {
-                var buttonTexts = new Dictionary<int, string>()
-                {
-                    { 0, "Yes (Vulkan)" },
-                    { 1, "No (OpenGL)" }
-                };
-
-                ResponseType response = GtkDialog.CreateCustomDialog(
-                    "Ryujinx - Default graphics backend",
-                    "Use Vulkan as default graphics backend?",
-                    "Ryujinx now supports the Vulkan API. " +
-                    "Vulkan greatly improves shader compilation performance, " +
-                    "and fixes some graphical glitches; however, since it is a new feature, " +
-                    "you may experience some issues that did not occur with OpenGL.\n\n" +
-                    "Note that you will also lose any existing shader cache the first time you start a game " +
-                    "on version 1.1.200 onwards, because Vulkan required changes to the shader cache that makes it incompatible with previous versions.\n\n" +
-                    "Would you like to set Vulkan as the default graphics backend? " +
-                    "You can change this at any time on the settings window.",
-                    buttonTexts,
-                    MessageType.Question);
-
-                ConfigurationState.Instance.Graphics.GraphicsBackend.Value = response == 0
-                    ? GraphicsBackend.Vulkan
-                    : GraphicsBackend.OpenGl;
-
-                ConfigurationState.Instance.ToFileFormat().SaveConfig(ConfigurationPath);
-            }
-
->>>>>>> 1ec71635b (sync with main branch)
             Application.Run();
         }
 
@@ -498,8 +375,4 @@ namespace Ryujinx
             Logger.Shutdown();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Nfc.NfcManager;
-=======
-﻿using Ryujinx.HLE.HOS.Services.Nfc.NfcManager;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Nfc
 {
@@ -20,8 +16,4 @@ namespace Ryujinx.HLE.HOS.Services.Nfc
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

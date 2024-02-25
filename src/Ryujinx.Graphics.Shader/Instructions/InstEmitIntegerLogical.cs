@@ -1,10 +1,6 @@
 using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitAluHelper;
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
@@ -106,17 +102,10 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
             Operand res = logicOp switch
             {
-<<<<<<< HEAD
                 LogicOp.And => context.BitwiseAnd(srcA, srcB),
                 LogicOp.Or => context.BitwiseOr(srcA, srcB),
                 LogicOp.Xor => context.BitwiseExclusiveOr(srcA, srcB),
                 _ => srcB,
-=======
-                LogicOp.And => res = context.BitwiseAnd(srcA, srcB),
-                LogicOp.Or => res = context.BitwiseOr(srcA, srcB),
-                LogicOp.Xor => res = context.BitwiseExclusiveOr(srcA, srcB),
-                _ => srcB
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             EmitLopPredWrite(context, res, predOp, destPred);
@@ -174,8 +163,4 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

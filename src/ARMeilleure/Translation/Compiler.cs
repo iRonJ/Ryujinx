@@ -11,17 +11,10 @@ namespace ARMeilleure.Translation
     {
         public static CompiledFunction Compile(
             ControlFlowGraph cfg,
-<<<<<<< HEAD
             OperandType[] argTypes,
             OperandType retType,
             CompilerOptions options,
             Architecture target)
-=======
-            OperandType[]    argTypes,
-            OperandType      retType,
-            CompilerOptions  options,
-            Architecture     target)
->>>>>>> 1ec71635b (sync with main branch)
         {
             CompilerContext cctx = new(cfg, argTypes, retType, options);
 
@@ -72,8 +65,4 @@ namespace ARMeilleure.Translation
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

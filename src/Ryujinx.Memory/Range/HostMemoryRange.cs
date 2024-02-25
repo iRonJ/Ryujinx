@@ -5,20 +5,12 @@ namespace Ryujinx.Memory.Range
     /// <summary>
     /// Range of memory composed of an address and size.
     /// </summary>
-<<<<<<< HEAD
     public readonly struct HostMemoryRange : IEquatable<HostMemoryRange>
-=======
-    public struct HostMemoryRange : IEquatable<HostMemoryRange>
->>>>>>> 1ec71635b (sync with main branch)
     {
         /// <summary>
         /// An empty memory range, with a null address and zero size.
         /// </summary>
-<<<<<<< HEAD
         public static HostMemoryRange Empty => new(0, 0);
-=======
-        public static HostMemoryRange Empty => new HostMemoryRange(0, 0);
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Start address of the range.
@@ -75,7 +67,6 @@ namespace Ryujinx.Memory.Range
         {
             return HashCode.Combine(Address, Size);
         }
-<<<<<<< HEAD
 
         public static bool operator ==(HostMemoryRange left, HostMemoryRange right)
         {
@@ -86,7 +77,5 @@ namespace Ryujinx.Memory.Range
         {
             return !(left == right);
         }
-=======
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

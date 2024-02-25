@@ -1,8 +1,0 @@
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ui.LocaleGenerator/bin/Release/netstandard2.0/Ryujinx.Ui.LocaleGenerator.deps.json
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ui.LocaleGenerator/bin/Release/netstandard2.0/Ryujinx.Ui.LocaleGenerator.dll
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ui.LocaleGenerator/obj/Release/netstandard2.0/Ryujinx.Ui.LocaleGenerator.csproj.AssemblyReference.cache
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ui.LocaleGenerator/obj/Release/netstandard2.0/Ryujinx.Ui.LocaleGenerator.GeneratedMSBuildEditorConfig.editorconfig
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ui.LocaleGenerator/obj/Release/netstandard2.0/Ryujinx.Ui.LocaleGenerator.AssemblyInfoInputs.cache
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ui.LocaleGenerator/obj/Release/netstandard2.0/Ryujinx.Ui.LocaleGenerator.AssemblyInfo.cs
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ui.LocaleGenerator/obj/Release/netstandard2.0/Ryujinx.Ui.LocaleGenerator.csproj.CoreCompileInputs.cache
-/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ui.LocaleGenerator/obj/Release/netstandard2.0/Ryujinx.Ui.LocaleGenerator.dll

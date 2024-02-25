@@ -31,8 +31,4 @@ namespace ARMeilleure.Translation
             return dispatcher(context.NativeContextPtr, (ulong)FuncPointer);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

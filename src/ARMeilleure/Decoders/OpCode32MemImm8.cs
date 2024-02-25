@@ -12,8 +12,4 @@ namespace ARMeilleure.Decoders
             Immediate = imm4L | (imm4H << 4);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

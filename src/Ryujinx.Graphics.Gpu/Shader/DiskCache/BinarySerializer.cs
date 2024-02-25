@@ -29,20 +29,12 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         /// </summary>
         /// <typeparam name="T">Type of the data</typeparam>
         /// <param name="data">Data read</param>
-<<<<<<< HEAD
         public readonly void Read<T>(ref T data) where T : unmanaged
-=======
-        public void Read<T>(ref T data) where T : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             Span<byte> buffer = MemoryMarshal.Cast<T, byte>(MemoryMarshal.CreateSpan(ref data, 1));
             for (int offset = 0; offset < buffer.Length;)
             {
-<<<<<<< HEAD
                 offset += _activeStream.Read(buffer[offset..]);
-=======
-                offset += _activeStream.Read(buffer.Slice(offset));
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -52,11 +44,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         /// <typeparam name="T">Type of the data</typeparam>
         /// <param name="data">Data read</param>
         /// <returns>True if the read was successful, false otherwise</returns>
-<<<<<<< HEAD
         public readonly bool TryRead<T>(ref T data) where T : unmanaged
-=======
-        public bool TryRead<T>(ref T data) where T : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             // Length is unknown on compressed streams.
             if (_activeStream == _stream)
@@ -78,11 +66,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         /// <typeparam name="T">Type of the data</typeparam>
         /// <param name="data">Data read</param>
         /// <param name="magic">Expected magic value, for validation</param>
-<<<<<<< HEAD
         public readonly void ReadWithMagicAndSize<T>(ref T data, uint magic) where T : unmanaged
-=======
-        public void ReadWithMagicAndSize<T>(ref T data, uint magic) where T : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             uint actualMagic = 0;
             int size = 0;
@@ -100,17 +84,10 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
                 throw new DiskCacheLoadException(DiskCacheLoadResult.FileCorruptedInvalidLength);
             }
 
-<<<<<<< HEAD
             Span<byte> buffer = MemoryMarshal.Cast<T, byte>(MemoryMarshal.CreateSpan(ref data, 1))[..size];
             for (int offset = 0; offset < buffer.Length;)
             {
                 offset += _activeStream.Read(buffer[offset..]);
-=======
-            Span<byte> buffer = MemoryMarshal.Cast<T, byte>(MemoryMarshal.CreateSpan(ref data, 1)).Slice(0, size);
-            for (int offset = 0; offset < buffer.Length;)
-            {
-                offset += _activeStream.Read(buffer.Slice(offset));
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -119,11 +96,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         /// </summary>
         /// <typeparam name="T">Type of the data</typeparam>
         /// <param name="data">Data to be written</param>
-<<<<<<< HEAD
         public readonly void Write<T>(ref T data) where T : unmanaged
-=======
-        public void Write<T>(ref T data) where T : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             Span<byte> buffer = MemoryMarshal.Cast<T, byte>(MemoryMarshal.CreateSpan(ref data, 1));
             _activeStream.Write(buffer);
@@ -135,11 +108,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         /// <typeparam name="T">Type of the data</typeparam>
         /// <param name="data">Data to write</param>
         /// <param name="magic">Magic value to write</param>
-<<<<<<< HEAD
         public readonly void WriteWithMagicAndSize<T>(ref T data, uint magic) where T : unmanaged
-=======
-        public void WriteWithMagicAndSize<T>(ref T data, uint magic) where T : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             int size = Unsafe.SizeOf<T>();
             Write(ref magic);
@@ -214,11 +183,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
                     stream = new DeflateStream(stream, CompressionMode.Decompress, true);
                     for (int offset = 0; offset < data.Length;)
                     {
-<<<<<<< HEAD
                         offset += stream.Read(data[offset..]);
-=======
-                        offset += stream.Read(data.Slice(offset));
->>>>>>> 1ec71635b (sync with main branch)
                     }
                     stream.Dispose();
                     break;
@@ -248,8 +213,4 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

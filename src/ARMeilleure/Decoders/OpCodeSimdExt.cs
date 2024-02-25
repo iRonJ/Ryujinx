@@ -11,8 +11,4 @@ namespace ARMeilleure.Decoders
             Imm4 = (opCode >> 11) & 0xf;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

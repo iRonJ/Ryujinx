@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace ARMeilleure.Decoders
-=======
-﻿namespace ARMeilleure.Decoders
->>>>>>> 1ec71635b (sync with main branch)
 {
     class OpCodeT32 : OpCode32
     {
@@ -16,8 +12,4 @@ namespace ARMeilleure.Decoders
             OpCodeSizeInBytes = 4;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

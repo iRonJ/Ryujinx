@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
@@ -12,13 +8,8 @@ namespace Ryujinx.Graphics.Texture.Utils
 {
     static class BC67Utils
     {
-<<<<<<< HEAD
         private static readonly byte[][] _quantizationLut;
         private static readonly byte[][] _quantizationLutNoPBit;
-=======
-        private static byte[][] _quantizationLut;
-        private static byte[][] _quantizationLutNoPBit;
->>>>>>> 1ec71635b (sync with main branch)
 
         static BC67Utils()
         {
@@ -55,11 +46,7 @@ namespace Ryujinx.Graphics.Texture.Utils
             }
             else
             {
-<<<<<<< HEAD
                 RgbaColor8 minColor = new(255, 255, 255, 255);
-=======
-                RgbaColor8 minColor = new RgbaColor8(255, 255, 255, 255);
->>>>>>> 1ec71635b (sync with main branch)
                 RgbaColor8 maxColor = default;
 
                 for (int i = 0; i < tile.Length; i++)
@@ -1189,13 +1176,8 @@ namespace Ryujinx.Graphics.Texture.Utils
 
             int weight = (((weightIndex << 7) / ((1 << indexBitCount) - 1)) + 1) >> 1;
 
-<<<<<<< HEAD
             RgbaColor32 weightV = new(weight);
             RgbaColor32 invWeightV = new(64 - weight);
-=======
-            RgbaColor32 weightV = new RgbaColor32(weight);
-            RgbaColor32 invWeightV = new RgbaColor32(64 - weight);
->>>>>>> 1ec71635b (sync with main branch)
 
             return (color1 * invWeightV + color2 * weightV + new RgbaColor32(32)) >> 6;
         }
@@ -1215,15 +1197,10 @@ namespace Ryujinx.Graphics.Texture.Utils
             int colorWeight = BC67Tables.Weights[colorIndexBitCount - 2][colorWeightIndex];
             int alphaWeight = BC67Tables.Weights[alphaIndexBitCount - 2][alphaWeightIndex];
 
-<<<<<<< HEAD
             RgbaColor32 weightV = new(colorWeight)
             {
                 A = alphaWeight,
             };
-=======
-            RgbaColor32 weightV = new RgbaColor32(colorWeight);
-            weightV.A = alphaWeight;
->>>>>>> 1ec71635b (sync with main branch)
             RgbaColor32 invWeightV = new RgbaColor32(64) - weightV;
 
             return (color1 * invWeightV + color2 * weightV + new RgbaColor32(32)) >> 6;

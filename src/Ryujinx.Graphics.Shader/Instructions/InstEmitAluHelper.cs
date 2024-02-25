@@ -2,10 +2,6 @@ using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
 using System;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 
@@ -21,11 +17,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 IDstFmt.S16 => short.MinValue,
                 IDstFmt.U32 => uint.MinValue,
                 IDstFmt.S32 => int.MinValue,
-<<<<<<< HEAD
                 _ => throw new ArgumentException($"The type \"{type}\" is not a supported integer type."),
-=======
-                _ => throw new ArgumentException($"The type \"{type}\" is not a supported integer type.")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -37,11 +29,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 IDstFmt.S16 => short.MaxValue,
                 IDstFmt.U32 => uint.MaxValue,
                 IDstFmt.S32 => int.MaxValue,
-<<<<<<< HEAD
                 _ => throw new ArgumentException($"The type \"{type}\" is not a supported integer type."),
-=======
-                _ => throw new ArgumentException($"The type \"{type}\" is not a supported integer type.")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -55,11 +43,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 ISrcDstFmt.S16 => short.MinValue,
                 ISrcDstFmt.U32 => uint.MinValue,
                 ISrcDstFmt.S32 => int.MinValue,
-<<<<<<< HEAD
                 _ => throw new ArgumentException($"The type \"{type}\" is not a supported integer type."),
-=======
-                _ => throw new ArgumentException($"The type \"{type}\" is not a supported integer type.")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -73,11 +57,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 ISrcDstFmt.S16 => short.MaxValue,
                 ISrcDstFmt.U32 => uint.MaxValue,
                 ISrcDstFmt.S32 => int.MaxValue,
-<<<<<<< HEAD
                 _ => throw new ArgumentException($"The type \"{type}\" is not a supported integer type."),
-=======
-                _ => throw new ArgumentException($"The type \"{type}\" is not a supported integer type.")
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -88,11 +68,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 BoolOp.And => context.BitwiseAnd(input, pred),
                 BoolOp.Or => context.BitwiseOr(input, pred),
                 BoolOp.Xor => context.BitwiseExclusiveOr(input, pred),
-<<<<<<< HEAD
                 _ => input,
-=======
-                _ => input
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -112,11 +88,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 VectorSelect.S8B3 => SignExtendTo32(context, context.ShiftRightU32(src, Const(24)), 8),
                 VectorSelect.S16H0 => SignExtendTo32(context, context.ShiftRightU32(src, Const(0)), 16),
                 VectorSelect.S16H1 => SignExtendTo32(context, context.ShiftRightU32(src, Const(16)), 16),
-<<<<<<< HEAD
                 _ => src,
-=======
-                _ => src
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -161,11 +133,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 }
 
                 context.Copy(GetZF(), context.FPCompareEqual(dest, zero, fpType));
-<<<<<<< HEAD
                 context.Copy(GetNF(), context.FPCompareLess(dest, zero, fpType));
-=======
-                context.Copy(GetNF(), context.FPCompareLess (dest, zero, fpType));
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -188,8 +156,4 @@ namespace Ryujinx.Graphics.Shader.Instructions
             return result;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

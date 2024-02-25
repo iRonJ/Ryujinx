@@ -120,8 +120,4 @@ namespace Ryujinx.Cpu.Jit
             _impl.Dispose();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

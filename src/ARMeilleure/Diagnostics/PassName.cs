@@ -14,12 +14,6 @@ namespace ARMeilleure.Diagnostics
         RegisterAllocation,
         CodeGeneration,
 
-<<<<<<< HEAD
         Count,
     }
 }
-=======
-        Count
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

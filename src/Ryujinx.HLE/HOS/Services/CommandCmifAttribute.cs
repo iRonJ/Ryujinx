@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services
 {
@@ -13,8 +9,4 @@ namespace Ryujinx.HLE.HOS.Services
 
         public CommandCmifAttribute(int id) => Id = id;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

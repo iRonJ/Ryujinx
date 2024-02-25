@@ -18,11 +18,7 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/padding.
         /// </summary>
-<<<<<<< HEAD
         private readonly byte _reserved;
-=======
-        private byte _reserved;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Biquad filter numerator (b0, b1, b2).
@@ -35,8 +31,4 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <remarks>a0 = 1</remarks>
         public Array2<short> Denominator;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

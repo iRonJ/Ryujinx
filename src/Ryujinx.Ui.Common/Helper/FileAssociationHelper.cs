@@ -7,22 +7,22 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-namespace Ryujinx.Ui.Common.Helper
+namespace Ryujinx.UI.Common.Helper
 {
     public static partial class FileAssociationHelper
     {
-        private static string[] _fileExtensions = new string[] { ".nca", ".nro", ".nso", ".nsp", ".xci" };
+        private static readonly string[] _fileExtensions = { ".nca", ".nro", ".nso", ".nsp", ".xci" };
 
         [SupportedOSPlatform("linux")]
-        private static string _mimeDbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".local", "share", "mime");
+        private static readonly string _mimeDbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".local", "share", "mime");
 
         private const int SHCNE_ASSOCCHANGED = 0x8000000;
-        private const int SHCNF_FLUSH        = 0x1000;
+        private const int SHCNF_FLUSH = 0x1000;
 
         [LibraryImport("shell32.dll", SetLastError = true)]
         public static partial void SHChangeNotify(uint wEventId, uint uFlags, IntPtr dwItem1, IntPtr dwItem2);
 
-        public static bool IsTypeAssociationSupported => (OperatingSystem.IsLinux() || OperatingSystem.IsWindows()) && !ReleaseInformation.IsFlatHubBuild();
+        public static bool IsTypeAssociationSupported => (OperatingSystem.IsLinux() || OperatingSystem.IsWindows()) && !ReleaseInformation.IsFlatHubBuild;
 
         [SupportedOSPlatform("linux")]
         private static bool AreMimeTypesRegisteredLinux() => File.Exists(Path.Combine(_mimeDbPath, "packages", "Ryujinx.xml"));
@@ -32,9 +32,9 @@ namespace Ryujinx.Ui.Common.Helper
         {
             string installKeyword = uninstall ? "uninstall" : "install";
 
-            if (!AreMimeTypesRegisteredLinux())
+            if ((uninstall && AreMimeTypesRegisteredLinux()) || (!uninstall && !AreMimeTypesRegisteredLinux()))
             {
-                string mimeTypesFile = Path.Combine(ReleaseInformation.GetBaseApplicationDirectory(), "mime", "Ryujinx.xml");
+                string mimeTypesFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mime", "Ryujinx.xml");
                 string additionalArgs = !uninstall ? "--novendor" : "";
 
                 using Process mimeProcess = new();
@@ -81,9 +81,9 @@ namespace Ryujinx.Ui.Common.Helper
                     return false;
                 }
 
-                key.OpenSubKey(@"shell\open\command");
+                var openCmd = key.OpenSubKey(@"shell\open\command");
 
-                string keyValue = (string)key.GetValue("");
+                string keyValue = (string)openCmd.GetValue("");
 
                 return keyValue is not null && (keyValue.Contains("Ryujinx") || keyValue.Contains(AppDomain.CurrentDomain.FriendlyName));
             }
@@ -107,29 +107,30 @@ namespace Ryujinx.Ui.Common.Helper
 
                 if (uninstall)
                 {
+                    // If the types don't already exist, there's nothing to do and we can call this operation successful.
                     if (!AreMimeTypesRegisteredWindows())
                     {
-                        return false;
+                        return true;
                     }
-
+                    Logger.Debug?.Print(LogClass.Application, $"Removing type association {ext}");
                     Registry.CurrentUser.DeleteSubKeyTree(keyString);
+                    Logger.Debug?.Print(LogClass.Application, $"Removed type association {ext}");
                 }
                 else
                 {
-                    RegistryKey key = Registry.CurrentUser.CreateSubKey(keyString);
+                    using var key = Registry.CurrentUser.CreateSubKey(keyString);
+
                     if (key is null)
                     {
                         return false;
                     }
 
-                    key.CreateSubKey(@"shell\open\command");
+                    Logger.Debug?.Print(LogClass.Application, $"Adding type association {ext}");
+                    using var openCmd = key.CreateSubKey(@"shell\open\command");
+                    openCmd.SetValue("", $"\"{Environment.ProcessPath}\" \"%1\"");
+                    Logger.Debug?.Print(LogClass.Application, $"Added type association {ext}");
 
-                    key.SetValue("", $"\"{Environment.ProcessPath}\" \"%1\"");
-                    key.Close();
                 }
-
-                // Notify Explorer the file association has been changed.
-                SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_FLUSH, IntPtr.Zero, IntPtr.Zero);
 
                 return true;
             }
@@ -140,6 +141,9 @@ namespace Ryujinx.Ui.Common.Helper
             {
                 registered |= RegisterExtension(ext, uninstall);
             }
+
+            // Notify Explorer the file association has been changed.
+            SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_FLUSH, IntPtr.Zero, IntPtr.Zero);
 
             return registered;
         }

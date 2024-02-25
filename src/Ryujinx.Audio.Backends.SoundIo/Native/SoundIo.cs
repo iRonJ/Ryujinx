@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -14,7 +10,6 @@ namespace Ryujinx.Audio.Backends.SoundIo.Native
         private const string LibraryName = "libsoundio";
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-<<<<<<< HEAD
         public delegate void OnDeviceChangeNativeDelegate(IntPtr ctx);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -28,21 +23,6 @@ namespace Ryujinx.Audio.Backends.SoundIo.Native
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void JackCallbackDelegate(IntPtr msg);
-=======
-        public unsafe delegate void OnDeviceChangeNativeDelegate(IntPtr ctx);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public unsafe delegate void OnBackendDisconnectedDelegate(IntPtr ctx, SoundIoError err);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public unsafe delegate void OnEventsSignalDelegate(IntPtr ctx);
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public unsafe delegate void EmitRtPrioWarningDelegate();
-
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public unsafe delegate void JackCallbackDelegate(IntPtr msg);
->>>>>>> 1ec71635b (sync with main branch)
 
         [StructLayout(LayoutKind.Sequential)]
         public struct SoundIoStruct
@@ -130,7 +110,6 @@ namespace Ryujinx.Audio.Backends.SoundIo.Native
         }
 
         [LibraryImport(LibraryName)]
-<<<<<<< HEAD
         internal static partial IntPtr soundio_create();
 
         [LibraryImport(LibraryName)]
@@ -195,71 +174,5 @@ namespace Ryujinx.Audio.Backends.SoundIo.Native
 
         [LibraryImport(LibraryName)]
         internal static partial IntPtr soundio_strerror(SoundIoError err);
-=======
-        public static partial IntPtr soundio_create();
-
-        [LibraryImport(LibraryName)]
-        public static partial SoundIoError soundio_connect(IntPtr ctx);
-
-        [LibraryImport(LibraryName)]
-        public static partial void soundio_disconnect(IntPtr ctx);
-
-        [LibraryImport(LibraryName)]
-        public static partial void soundio_flush_events(IntPtr ctx);
-
-        [LibraryImport(LibraryName)]
-        public static partial int soundio_output_device_count(IntPtr ctx);
-
-        [LibraryImport(LibraryName)]
-        public static partial int soundio_default_output_device_index(IntPtr ctx);
-
-        [LibraryImport(LibraryName)]
-        public static partial IntPtr soundio_get_output_device(IntPtr ctx, int index);
-
-        [LibraryImport(LibraryName)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static partial bool soundio_device_supports_format(IntPtr devCtx, SoundIoFormat format);
-
-        [LibraryImport(LibraryName)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static partial bool soundio_device_supports_layout(IntPtr devCtx, IntPtr layout);
-
-        [LibraryImport(LibraryName)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static partial bool soundio_device_supports_sample_rate(IntPtr devCtx, int sampleRate);
-
-        [LibraryImport(LibraryName)]
-        public static partial IntPtr soundio_outstream_create(IntPtr devCtx);
-
-        [LibraryImport(LibraryName)]
-        public static partial SoundIoError soundio_outstream_open(IntPtr outStreamCtx);
-
-        [LibraryImport(LibraryName)]
-        public static partial SoundIoError soundio_outstream_start(IntPtr outStreamCtx);
-
-        [LibraryImport(LibraryName)]
-        public static partial SoundIoError soundio_outstream_begin_write(IntPtr outStreamCtx, IntPtr areas, IntPtr frameCount);
-
-        [LibraryImport(LibraryName)]
-        public static partial SoundIoError soundio_outstream_end_write(IntPtr outStreamCtx);
-
-        [LibraryImport(LibraryName)]
-        public static partial SoundIoError soundio_outstream_pause(IntPtr devCtx, [MarshalAs(UnmanagedType.Bool)] bool pause);
-
-        [LibraryImport(LibraryName)]
-        public static partial SoundIoError soundio_outstream_set_volume(IntPtr devCtx, double volume);
-
-        [LibraryImport(LibraryName)]
-        public static partial void soundio_outstream_destroy(IntPtr streamCtx);
-
-        [LibraryImport(LibraryName)]
-        public static partial void soundio_destroy(IntPtr ctx);
-
-        [LibraryImport(LibraryName)]
-        public static partial IntPtr soundio_channel_layout_get_default(int channelCount);
-
-        [LibraryImport(LibraryName)]
-        public static partial IntPtr soundio_strerror(SoundIoError err);
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

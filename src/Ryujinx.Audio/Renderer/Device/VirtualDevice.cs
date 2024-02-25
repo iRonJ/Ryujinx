@@ -12,19 +12,11 @@ namespace Ryujinx.Audio.Renderer.Device
         /// </summary>
         public static readonly VirtualDevice[] Devices = new VirtualDevice[5]
         {
-<<<<<<< HEAD
             new("AudioStereoJackOutput", 2, true),
             new("AudioBuiltInSpeakerOutput", 2, false),
             new("AudioTvOutput", 6, false),
             new("AudioUsbDeviceOutput", 2, true),
             new("AudioExternalOutput", 6, true),
-=======
-            new VirtualDevice("AudioStereoJackOutput", 2, true),
-            new VirtualDevice("AudioBuiltInSpeakerOutput", 2, false),
-            new VirtualDevice("AudioTvOutput", 6, false),
-            new VirtualDevice("AudioUsbDeviceOutput", 2, true),
-            new VirtualDevice("AudioExternalOutput", 6, true),
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         /// <summary>
@@ -94,8 +86,4 @@ namespace Ryujinx.Audio.Renderer.Device
             return Name;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

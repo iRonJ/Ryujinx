@@ -11,38 +11,22 @@ namespace Ryujinx.Audio.Renderer.Server.Upsampler
         /// <summary>
         /// Work buffer for upsampler.
         /// </summary>
-<<<<<<< HEAD
         private readonly Memory<float> _upSamplerWorkBuffer;
-=======
-        private Memory<float> _upSamplerWorkBuffer;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Global lock of the object.
         /// </summary>
-<<<<<<< HEAD
         private readonly object _lock = new();
-=======
-        private object Lock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The upsamplers instances.
         /// </summary>
-<<<<<<< HEAD
         private readonly UpsamplerState[] _upsamplers;
-=======
-        private UpsamplerState[] _upsamplers;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The count of upsamplers.
         /// </summary>
-<<<<<<< HEAD
         private readonly uint _count;
-=======
-        private uint _count;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Create a new <see cref="UpsamplerManager"/>.
@@ -65,11 +49,7 @@ namespace Ryujinx.Audio.Renderer.Server.Upsampler
         {
             int workBufferOffset = 0;
 
-<<<<<<< HEAD
             lock (_lock)
-=======
-            lock (Lock)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 for (int i = 0; i < _count; i++)
                 {
@@ -93,11 +73,7 @@ namespace Ryujinx.Audio.Renderer.Server.Upsampler
         /// <param name="index">The index of the <see cref="UpsamplerState"/> to free.</param>
         public void Free(int index)
         {
-<<<<<<< HEAD
             lock (_lock)
-=======
-            lock (Lock)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 Debug.Assert(_upsamplers[index] != null);
 
@@ -105,8 +81,4 @@ namespace Ryujinx.Audio.Renderer.Server.Upsampler
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

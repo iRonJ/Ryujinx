@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Runtime.InteropServices;
-=======
-﻿using System.Runtime.InteropServices;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
 {
@@ -81,7 +77,6 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
         [MarshalAs(UnmanagedType.I1)]
         public bool UseSaveData;
 
-<<<<<<< HEAD
         public uint Reserved3;
         public ushort Reserved4;
         public byte Reserved5;
@@ -118,43 +113,6 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
                 Reserved8 = 0,
                 Reserved9 = 0,
             };
-=======
-        public uint   Reserved3;
-        public ushort Reserved4;
-        public byte   Reserved5;
-        public ulong  Reserved6;
-        public ulong  Reserved7;
-
-        public SoftwareKeyboardAppearEx ToExtended()
-        {
-            SoftwareKeyboardAppearEx appear = new SoftwareKeyboardAppearEx();
-
-            appear.KeyboardMode           = KeyboardMode;
-            appear.OkText                 = OkText;
-            appear.LeftOptionalSymbolKey  = LeftOptionalSymbolKey;
-            appear.RightOptionalSymbolKey = RightOptionalSymbolKey;
-            appear.PredictionEnabled      = PredictionEnabled;
-            appear.CancelButtonDisabled   = CancelButtonDisabled;
-            appear.InvalidChars           = InvalidChars;
-            appear.TextMaxLength          = TextMaxLength;
-            appear.TextMinLength          = TextMinLength;
-            appear.UseNewLine             = UseNewLine;
-            appear.MiniaturizationMode    = MiniaturizationMode;
-            appear.Reserved1              = Reserved1;
-            appear.Reserved2              = Reserved2;
-            appear.InvalidButtons         = InvalidButtons;
-            appear.UseSaveData            = UseSaveData;
-            appear.Reserved3              = Reserved3;
-            appear.Reserved4              = Reserved4;
-            appear.Reserved5              = Reserved5;
-            appear.Uid0                   = Reserved6;
-            appear.Uid1                   = Reserved7;
-            appear.SamplingNumber         = 0;
-            appear.Reserved6              = 0;
-            appear.Reserved7              = 0;
-            appear.Reserved8              = 0;
-            appear.Reserved9              = 0;
->>>>>>> 1ec71635b (sync with main branch)
 
             return appear;
         }

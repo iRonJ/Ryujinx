@@ -9,19 +9,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
     partial class KScheduler : IDisposable
     {
         public const int PrioritiesCount = 64;
-<<<<<<< HEAD
         public const int CpuCoresCount = 4;
 
         private const int RoundRobinTimeQuantumMs = 10;
 
         private static readonly int[] _preemptionPriorities = { 59, 59, 59, 63 };
-=======
-        public const int CpuCoresCount   = 4;
-
-        private const int RoundRobinTimeQuantumMs = 10;
-
-        private static readonly int[] PreemptionPriorities = new int[] { 59, 59, 59, 63 };
->>>>>>> 1ec71635b (sync with main branch)
 
         private static readonly int[] _srcCoresHighestPrioThreads = new int[CpuCoresCount];
 
@@ -67,11 +59,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
 
         private KThread CreateIdleThread(KernelContext context, int cpuCore)
         {
-<<<<<<< HEAD
             KThread idleThread = new(context);
-=======
-            KThread idleThread = new KThread(context);
->>>>>>> 1ec71635b (sync with main branch)
 
             idleThread.Initialize(0UL, 0UL, 0UL, PrioritiesCount, cpuCore, null, ThreadType.Dummy, IdleThreadLoop);
 
@@ -107,11 +95,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
                 {
                     KThread candidate = thread.Owner.PinnedThreads[core];
 
-<<<<<<< HEAD
                     if (candidate.KernelWaitersCount == 0 && !KProcess.IsExceptionUserThread(candidate))
-=======
-                    if (candidate.KernelWaitersCount == 0 && !thread.Owner.IsExceptionUserThread(candidate))
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         if (candidate.SchedFlags == ThreadSchedState.Running)
                         {
@@ -394,14 +378,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
 
                 currentThread.AddCpuTime(ticksDelta);
 
-<<<<<<< HEAD
                 currentProcess?.AddCpuTime(ticksDelta);
-=======
-                if (currentProcess != null)
-                {
-                    currentProcess.AddCpuTime(ticksDelta);
-                }
->>>>>>> 1ec71635b (sync with main branch)
 
                 LastContextSwitchTime = currentTicks;
 
@@ -431,11 +408,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
 
                 for (int core = 0; core < CpuCoresCount; core++)
                 {
-<<<<<<< HEAD
                     RotateScheduledQueue(context, core, _preemptionPriorities[core]);
-=======
-                    RotateScheduledQueue(context, core, PreemptionPriorities[core]);
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 context.CriticalSection.Leave();
@@ -455,11 +428,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
                 nextThread = context.PriorityQueue.Reschedule(prio, core, selectedThread);
             }
 
-<<<<<<< HEAD
             static KThread FirstSuitableCandidateOrDefault(KernelContext context, int core, KThread selectedThread, KThread nextThread, Predicate<KThread> predicate)
-=======
-            static KThread FirstSuitableCandidateOrDefault(KernelContext context, int core, KThread selectedThread, KThread nextThread, Predicate< KThread> predicate)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 foreach (KThread suggested in context.PriorityQueue.SuggestedThreads(core))
                 {
@@ -679,19 +648,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
             // Ensure that the idle thread is not blocked and can exit.
             lock (_idleInterruptEventLock)
             {
-<<<<<<< HEAD
                 _idleInterruptEvent?.Set();
             }
         }
     }
 }
-=======
-                if (_idleInterruptEvent != null)
-                {
-                    _idleInterruptEvent.Set();
-                }
-            }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

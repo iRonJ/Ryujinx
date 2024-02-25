@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using NUnit.Framework;
-=======
-﻿using NUnit.Framework;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Applets;
 using System.Text;
 
@@ -25,12 +21,7 @@ namespace Ryujinx.Tests.HLE
         [Test]
         public void StripUnicodeControlCodes_Passthrough()
         {
-<<<<<<< HEAD
             string[] prompts = {
-=======
-            string[] prompts = new string[]
-            {
->>>>>>> 1ec71635b (sync with main branch)
                 "Please name him.",
                 "Name her, too.",
                 "Name your friend.",

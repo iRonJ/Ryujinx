@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Avalonia.Controls;
-=======
-﻿using Avalonia.Controls;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.Views.Settings
 {
@@ -13,8 +9,4 @@ namespace Ryujinx.Ava.UI.Views.Settings
             InitializeComponent();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -7,11 +7,7 @@ using Ryujinx.Ava.UI.Helpers;
 using Ryujinx.Ava.UI.Models;
 using Ryujinx.Ava.UI.ViewModels;
 using Ryujinx.HLE.FileSystem;
-<<<<<<< HEAD
 using Ryujinx.UI.Common.Helper;
-=======
-using Ryujinx.Ui.Common.Helper;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Threading.Tasks;
 using Button = Avalonia.Controls.Button;
 
@@ -28,15 +24,9 @@ namespace Ryujinx.Ava.UI.Windows
             InitializeComponent();
         }
 
-<<<<<<< HEAD
         public DownloadableContentManagerWindow(VirtualFileSystem virtualFileSystem, ulong titleId)
         {
             DataContext = ViewModel = new DownloadableContentManagerViewModel(virtualFileSystem, titleId);
-=======
-        public DownloadableContentManagerWindow(VirtualFileSystem virtualFileSystem, ulong titleId, string titleName)
-        {
-            DataContext = ViewModel = new DownloadableContentManagerViewModel(virtualFileSystem, titleId, titleName);
->>>>>>> 1ec71635b (sync with main branch)
 
             InitializeComponent();
         }
@@ -45,19 +35,11 @@ namespace Ryujinx.Ava.UI.Windows
         {
             ContentDialog contentDialog = new()
             {
-<<<<<<< HEAD
                 PrimaryButtonText = "",
                 SecondaryButtonText = "",
                 CloseButtonText = "",
                 Content = new DownloadableContentManagerWindow(virtualFileSystem, titleId),
                 Title = string.Format(LocaleManager.Instance[LocaleKeys.DlcWindowTitle], titleName, titleId.ToString("X16")),
-=======
-                PrimaryButtonText   = "",
-                SecondaryButtonText = "",
-                CloseButtonText     = "",
-                Content             = new DownloadableContentManagerWindow(virtualFileSystem, titleId, titleName),
-                Title               = string.Format(LocaleManager.Instance[LocaleKeys.DlcWindowTitle], titleName, titleId.ToString("X16"))
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             Style bottomBorder = new(x => x.OfType<Grid>().Name("DialogSpace").Child().OfType<Border>());
@@ -130,8 +112,4 @@ namespace Ryujinx.Ava.UI.Windows
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

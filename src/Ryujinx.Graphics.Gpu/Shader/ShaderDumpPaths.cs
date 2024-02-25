@@ -46,8 +46,4 @@ namespace Ryujinx.Graphics.Gpu.Shader
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

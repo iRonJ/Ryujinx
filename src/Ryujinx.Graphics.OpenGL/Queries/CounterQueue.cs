@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using OpenTK.Graphics.OpenGL;
-=======
-﻿using OpenTK.Graphics.OpenGL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using System;
 using System.Collections.Generic;
@@ -17,19 +13,12 @@ namespace Ryujinx.Graphics.OpenGL.Queries
         public CounterType Type { get; }
         public bool Disposed { get; private set; }
 
-<<<<<<< HEAD
         private readonly Queue<CounterQueueEvent> _events = new();
-=======
-        private readonly Pipeline _pipeline;
-
-        private Queue<CounterQueueEvent> _events = new Queue<CounterQueueEvent>();
->>>>>>> 1ec71635b (sync with main branch)
         private CounterQueueEvent _current;
 
         private ulong _accumulatedCounter;
         private int _waiterCount;
 
-<<<<<<< HEAD
         private readonly object _lock = new();
 
         private readonly Queue<BufferedQuery> _queryPool;
@@ -43,23 +32,6 @@ namespace Ryujinx.Graphics.OpenGL.Queries
         {
             Type = type;
 
-=======
-        private object _lock = new object();
-
-        private Queue<BufferedQuery> _queryPool;
-        private AutoResetEvent _queuedEvent = new AutoResetEvent(false);
-        private AutoResetEvent _wakeSignal = new AutoResetEvent(false);
-        private AutoResetEvent _eventConsumed = new AutoResetEvent(false);
-
-        private Thread _consumerThread;
-
-        internal CounterQueue(Pipeline pipeline, CounterType type)
-        {
-            Type = type;
-
-            _pipeline = pipeline;
-
->>>>>>> 1ec71635b (sync with main branch)
             QueryTarget glType = GetTarget(Type);
 
             _queryPool = new Queue<BufferedQuery>(QueryPoolInitialSize);
@@ -131,11 +103,7 @@ namespace Ryujinx.Graphics.OpenGL.Queries
             }
         }
 
-<<<<<<< HEAD
         public CounterQueueEvent QueueReport(EventHandler<ulong> resultHandler, float divisor, ulong lastDrawIndex, bool hostReserved)
-=======
-        public CounterQueueEvent QueueReport(EventHandler<ulong> resultHandler, ulong lastDrawIndex, bool hostReserved)
->>>>>>> 1ec71635b (sync with main branch)
         {
             CounterQueueEvent result;
             ulong draws = lastDrawIndex - _current.DrawIndex;
@@ -151,11 +119,7 @@ namespace Ryujinx.Graphics.OpenGL.Queries
                     _current.ReserveForHostAccess();
                 }
 
-<<<<<<< HEAD
                 _current.Complete(draws > 0, divisor);
-=======
-                _current.Complete(draws > 0, _pipeline.GetCounterDivisor(Type));
->>>>>>> 1ec71635b (sync with main branch)
                 _events.Enqueue(_current);
 
                 _current.OnResult += resultHandler;
@@ -180,7 +144,6 @@ namespace Ryujinx.Graphics.OpenGL.Queries
 
         private static QueryTarget GetTarget(CounterType type)
         {
-<<<<<<< HEAD
             return type switch
             {
                 CounterType.SamplesPassed => QueryTarget.SamplesPassed,
@@ -188,16 +151,6 @@ namespace Ryujinx.Graphics.OpenGL.Queries
                 CounterType.TransformFeedbackPrimitivesWritten => QueryTarget.TransformFeedbackPrimitivesWritten,
                 _ => QueryTarget.SamplesPassed,
             };
-=======
-            switch (type)
-            {
-                case CounterType.SamplesPassed: return QueryTarget.SamplesPassed;
-                case CounterType.PrimitivesGenerated: return QueryTarget.PrimitivesGenerated;
-                case CounterType.TransformFeedbackPrimitivesWritten: return QueryTarget.TransformFeedbackPrimitivesWritten;
-            }
-
-            return QueryTarget.SamplesPassed;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void Flush(bool blocking)

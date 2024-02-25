@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Numerics;
 
@@ -228,11 +224,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
         {
             while (depth >= 0)
             {
-<<<<<<< HEAD
                 int ind = (int)(offset / UInt64BitSize);
-=======
-                int ind   = (int)(offset / UInt64BitSize);
->>>>>>> 1ec71635b (sync with main branch)
                 int which = (int)(offset % UInt64BitSize);
 
                 ulong mask = 1UL << which;
@@ -255,11 +247,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
         {
             while (depth >= 0)
             {
-<<<<<<< HEAD
                 int ind = (int)(offset / UInt64BitSize);
-=======
-                int ind   = (int)(offset / UInt64BitSize);
->>>>>>> 1ec71635b (sync with main branch)
                 int which = (int)(offset % UInt64BitSize);
 
                 ulong mask = 1UL << which;

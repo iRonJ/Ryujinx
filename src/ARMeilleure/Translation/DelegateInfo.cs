@@ -5,13 +5,9 @@ namespace ARMeilleure.Translation
 {
     class DelegateInfo
     {
-<<<<<<< HEAD
 #pragma warning disable IDE0052 // Remove unread private member
         private readonly Delegate _dlg; // Ensure that this delegate will not be garbage collected.
 #pragma warning restore IDE0052
-=======
-        private readonly Delegate _dlg; // Ensure that this delegate will not be garbage collected.
->>>>>>> 1ec71635b (sync with main branch)
 
         public IntPtr FuncPtr { get; }
 

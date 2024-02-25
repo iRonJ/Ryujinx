@@ -4,13 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-<<<<<<< HEAD
     xmlns:views="using:Ryujinx.Ava.UI.Controls"
     Width="400"
     x:DataType="views:SwkbdAppletDialog"
-=======
-    Width="400"
->>>>>>> 1ec71635b (sync with main branch)
     mc:Ignorable="d"
     Focusable="True">
     <Grid
@@ -35,11 +31,7 @@
             MinWidth="50"
             Margin="5,10,20,10"
             VerticalAlignment="Center"
-<<<<<<< HEAD
             Source="resm:Ryujinx.UI.Common.Resources.Logo_Ryujinx.png?assembly=Ryujinx.UI.Common" />
-=======
-            Source="resm:Ryujinx.Ui.Common.Resources.Logo_Ryujinx.png?assembly=Ryujinx.Ui.Common" />
->>>>>>> 1ec71635b (sync with main branch)
         <TextBlock
             Grid.Row="1"
             Grid.Column="1"

@@ -1,9 +1,9 @@
-﻿using Ryujinx.Common.Logging;
+using Ryujinx.Common.Logging;
 using Ryujinx.HLE.FileSystem;
 using System;
 using System.IO;
 
-namespace Ryujinx.Ui.Common.Helper
+namespace Ryujinx.UI.Common.Helper
 {
     /// <summary>
     /// Ensure installation validity
@@ -20,12 +20,10 @@ namespace Ryujinx.Ui.Common.Helper
 
                 return true;
             }
-            else
-            {
-                error = UserError.NoFirmware;
 
-                return false;
-            }
+            error = UserError.NoFirmware;
+
+            return false;
         }
 
         public static bool CanFixStartApplication(ContentManager contentManager, string baseApplicationPath, UserError error, out SystemVersion firmwareVersion)
@@ -107,12 +105,10 @@ namespace Ryujinx.Ui.Common.Helper
 
                 return IsFirmwareValid(contentManager, out error);
             }
-            else
-            {
-                error = UserError.ApplicationNotFound;
 
-                return false;
-            }
+            error = UserError.ApplicationNotFound;
+
+            return false;
         }
     }
 }

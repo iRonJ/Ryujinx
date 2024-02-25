@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Commands.CounterEvent;
-=======
-﻿using Ryujinx.Graphics.GAL.Multithreading.Commands.CounterEvent;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL.Multithreading.Model;
 using System.Threading;
 
@@ -10,11 +6,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Resources
 {
     class ThreadedCounterEvent : ICounterEvent
     {
-<<<<<<< HEAD
         private readonly ThreadedRenderer _renderer;
-=======
-        private ThreadedRenderer _renderer;
->>>>>>> 1ec71635b (sync with main branch)
         public ICounterEvent Base;
 
         public bool Invalid { get; set; }
@@ -78,17 +70,10 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Resources
             }
         }
 
-<<<<<<< HEAD
         public void Create(IRenderer renderer, CounterType type, System.EventHandler<ulong> eventHandler, float divisor, bool hostReserved)
         {
             ThreadedHelpers.SpinUntilExchange(ref _createLock, 1, 0);
             Base = renderer.ReportCounter(type, eventHandler, divisor, hostReserved || _reserved);
-=======
-        public void Create(IRenderer renderer, CounterType type, System.EventHandler<ulong> eventHandler, bool hostReserved)
-        {
-            ThreadedHelpers.SpinUntilExchange(ref _createLock, 1, 0);
-            Base = renderer.ReportCounter(type, eventHandler, hostReserved || _reserved);
->>>>>>> 1ec71635b (sync with main branch)
             Volatile.Write(ref _createLock, 0);
         }
     }

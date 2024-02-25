@@ -10,11 +10,7 @@ namespace Ryujinx.Tests.Cpu
     {
 #if Alu
 
-<<<<<<< HEAD
         #region "Helper methods"
-=======
-#region "Helper methods"
->>>>>>> 1ec71635b (sync with main branch)
         private static uint GenLeadingSignsMinus32(int cnt) // 0 <= cnt <= 31
         {
             return ~GenLeadingZeros32(cnt + 1);
@@ -37,7 +33,6 @@ namespace Ryujinx.Tests.Cpu
 
         private static uint GenLeadingZeros32(int cnt) // 0 <= cnt <= 32
         {
-<<<<<<< HEAD
             if (cnt == 32)
             {
                 return 0u;
@@ -50,20 +45,12 @@ namespace Ryujinx.Tests.Cpu
 
             uint rnd = TestContext.CurrentContext.Random.NextUInt();
             int mask = int.MinValue;
-=======
-            if (cnt == 32) return 0u;
-            if (cnt == 31) return 1u;
-
-            uint rnd  = TestContext.CurrentContext.Random.NextUInt();
-            int  mask = int.MinValue;
->>>>>>> 1ec71635b (sync with main branch)
 
             return (rnd >> (cnt + 1)) | ((uint)mask >> cnt);
         }
 
         private static ulong GenLeadingZeros64(int cnt) // 0 <= cnt <= 64
         {
-<<<<<<< HEAD
             if (cnt == 64)
             {
                 return 0ul;
@@ -83,20 +70,6 @@ namespace Ryujinx.Tests.Cpu
 
         #region "ValueSource (Types)"
         private static IEnumerable<ulong> GenLeadingSignsX()
-=======
-            if (cnt == 64) return 0ul;
-            if (cnt == 63) return 1ul;
-
-            ulong rnd  = TestContext.CurrentContext.Random.NextULong();
-            long  mask = long.MinValue;
-
-            return (rnd >> (cnt + 1)) | ((ulong)mask >> cnt);
-        }
-#endregion
-
-#region "ValueSource (Types)"
-        private static IEnumerable<ulong> _GenLeadingSignsX_()
->>>>>>> 1ec71635b (sync with main branch)
         {
             for (int cnt = 0; cnt <= 63; cnt++)
             {
@@ -105,11 +78,7 @@ namespace Ryujinx.Tests.Cpu
             }
         }
 
-<<<<<<< HEAD
         private static IEnumerable<uint> GenLeadingSignsW()
-=======
-        private static IEnumerable<uint> _GenLeadingSignsW_()
->>>>>>> 1ec71635b (sync with main branch)
         {
             for (int cnt = 0; cnt <= 31; cnt++)
             {
@@ -118,11 +87,7 @@ namespace Ryujinx.Tests.Cpu
             }
         }
 
-<<<<<<< HEAD
         private static IEnumerable<ulong> GenLeadingZerosX()
-=======
-        private static IEnumerable<ulong> _GenLeadingZerosX_()
->>>>>>> 1ec71635b (sync with main branch)
         {
             for (int cnt = 0; cnt <= 64; cnt++)
             {
@@ -130,31 +95,19 @@ namespace Ryujinx.Tests.Cpu
             }
         }
 
-<<<<<<< HEAD
         private static IEnumerable<uint> GenLeadingZerosW()
-=======
-        private static IEnumerable<uint> _GenLeadingZerosW_()
->>>>>>> 1ec71635b (sync with main branch)
         {
             for (int cnt = 0; cnt <= 32; cnt++)
             {
                 yield return GenLeadingZeros32(cnt);
             }
         }
-<<<<<<< HEAD
         #endregion
-=======
-#endregion
->>>>>>> 1ec71635b (sync with main branch)
 
         [Test, Pairwise, Description("CLS <Xd>, <Xn>")]
         public void Cls_64bit([Values(0u, 31u)] uint rd,
                               [Values(1u, 31u)] uint rn,
-<<<<<<< HEAD
                               [ValueSource(nameof(GenLeadingSignsX))] ulong xn)
-=======
-                              [ValueSource(nameof(_GenLeadingSignsX_))] ulong xn)
->>>>>>> 1ec71635b (sync with main branch)
         {
             uint opcode = 0xDAC01400; // CLS X0, X0
             opcode |= ((rn & 31) << 5) | ((rd & 31) << 0);
@@ -169,11 +122,7 @@ namespace Ryujinx.Tests.Cpu
         [Test, Pairwise, Description("CLS <Wd>, <Wn>")]
         public void Cls_32bit([Values(0u, 31u)] uint rd,
                               [Values(1u, 31u)] uint rn,
-<<<<<<< HEAD
                               [ValueSource(nameof(GenLeadingSignsW))] uint wn)
-=======
-                              [ValueSource(nameof(_GenLeadingSignsW_))] uint wn)
->>>>>>> 1ec71635b (sync with main branch)
         {
             uint opcode = 0x5AC01400; // CLS W0, W0
             opcode |= ((rn & 31) << 5) | ((rd & 31) << 0);
@@ -188,11 +137,7 @@ namespace Ryujinx.Tests.Cpu
         [Test, Pairwise, Description("CLZ <Xd>, <Xn>")]
         public void Clz_64bit([Values(0u, 31u)] uint rd,
                               [Values(1u, 31u)] uint rn,
-<<<<<<< HEAD
                               [ValueSource(nameof(GenLeadingZerosX))] ulong xn)
-=======
-                              [ValueSource(nameof(_GenLeadingZerosX_))] ulong xn)
->>>>>>> 1ec71635b (sync with main branch)
         {
             uint opcode = 0xDAC01000; // CLZ X0, X0
             opcode |= ((rn & 31) << 5) | ((rd & 31) << 0);
@@ -207,11 +152,7 @@ namespace Ryujinx.Tests.Cpu
         [Test, Pairwise, Description("CLZ <Wd>, <Wn>")]
         public void Clz_32bit([Values(0u, 31u)] uint rd,
                               [Values(1u, 31u)] uint rn,
-<<<<<<< HEAD
                               [ValueSource(nameof(GenLeadingZerosW))] uint wn)
-=======
-                              [ValueSource(nameof(_GenLeadingZerosW_))] uint wn)
->>>>>>> 1ec71635b (sync with main branch)
         {
             uint opcode = 0x5AC01000; // CLZ W0, W0
             opcode |= ((rn & 31) << 5) | ((rd & 31) << 0);
@@ -336,8 +277,4 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

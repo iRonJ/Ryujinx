@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using LibHac.Common;
-=======
-﻿using LibHac.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Microsoft.IO;
 using Ryujinx.Common.Memory;
 using Ryujinx.HLE.HOS;
@@ -81,7 +77,6 @@ namespace Ryujinx.HLE.Utilities
         public static string ReadUtf8String(ServiceCtx context, int index = 0)
         {
             ulong position = context.Request.PtrBuff[index].Position;
-<<<<<<< HEAD
             ulong size = context.Request.PtrBuff[index].Size;
 
             using RecyclableMemoryStream ms = MemoryStreamManager.Shared.GetStream();
@@ -98,36 +93,12 @@ namespace Ryujinx.HLE.Utilities
             }
 
             return Encoding.UTF8.GetString(ms.GetReadOnlySequence());
-=======
-            ulong size     = context.Request.PtrBuff[index].Size;
-
-            using (RecyclableMemoryStream ms = MemoryStreamManager.Shared.GetStream())
-            {
-                while (size-- > 0)
-                {
-                    byte value = context.Memory.Read<byte>(position++);
-
-                    if (value == 0)
-                    {
-                        break;
-                    }
-
-                    ms.WriteByte(value);
-                }
-
-                return Encoding.UTF8.GetString(ms.GetReadOnlySequence());
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static U8Span ReadUtf8Span(ServiceCtx context, int index = 0)
         {
             ulong position = context.Request.PtrBuff[index].Position;
-<<<<<<< HEAD
             ulong size = context.Request.PtrBuff[index].Size;
-=======
-            ulong size     = context.Request.PtrBuff[index].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             ReadOnlySpan<byte> buffer = context.Memory.GetSpan(position, (int)size);
 
@@ -137,7 +108,6 @@ namespace Ryujinx.HLE.Utilities
         public static string ReadUtf8StringSend(ServiceCtx context, int index = 0)
         {
             ulong position = context.Request.SendBuff[index].Position;
-<<<<<<< HEAD
             ulong size = context.Request.SendBuff[index].Size;
 
             using RecyclableMemoryStream ms = MemoryStreamManager.Shared.GetStream();
@@ -155,26 +125,6 @@ namespace Ryujinx.HLE.Utilities
             }
 
             return Encoding.UTF8.GetString(ms.GetReadOnlySequence());
-=======
-            ulong size     = context.Request.SendBuff[index].Size;
-
-            using (RecyclableMemoryStream ms = MemoryStreamManager.Shared.GetStream())
-            {
-                while (size-- > 0)
-                {
-                    byte value = context.Memory.Read<byte>(position++);
-
-                    if (value == 0)
-                    {
-                        break;
-                    }
-
-                    ms.WriteByte(value);
-                }
-
-                return Encoding.UTF8.GetString(ms.GetReadOnlySequence());
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static int CompareCStr(ReadOnlySpan<byte> s1, ReadOnlySpan<byte> s2)
@@ -203,8 +153,4 @@ namespace Ryujinx.HLE.Utilities
             return i;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

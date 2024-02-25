@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Device;
-=======
-﻿using Ryujinx.Graphics.Device;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 
@@ -13,11 +9,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
     /// </summary>
     class MacroJit : IMacroEE
     {
-<<<<<<< HEAD
         private readonly MacroJitContext _context = new();
-=======
-        private readonly MacroJitContext _context = new MacroJitContext();
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Arguments FIFO.
@@ -36,11 +28,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         {
             if (_execute == null)
             {
-<<<<<<< HEAD
                 MacroJitCompiler compiler = new();
-=======
-                MacroJitCompiler compiler = new MacroJitCompiler();
->>>>>>> 1ec71635b (sync with main branch)
 
                 _execute = compiler.Compile(code);
             }

@@ -10,25 +10,15 @@ namespace Ryujinx.Input.Assigner
     /// </summary>
     public class GamepadButtonAssigner : IButtonAssigner
     {
-<<<<<<< HEAD
         private readonly IGamepad _gamepad;
-=======
-        private IGamepad _gamepad;
->>>>>>> 1ec71635b (sync with main branch)
 
         private GamepadStateSnapshot _currState;
 
         private GamepadStateSnapshot _prevState;
 
-<<<<<<< HEAD
         private readonly JoystickButtonDetector _detector;
 
         private readonly bool _forStick;
-=======
-        private JoystickButtonDetector _detector;
-
-        private bool _forStick;
->>>>>>> 1ec71635b (sync with main branch)
 
         public GamepadButtonAssigner(IGamepad gamepad, float triggerThreshold, bool forStick)
         {
@@ -45,11 +35,7 @@ namespace Ryujinx.Input.Assigner
             {
                 _currState = _gamepad.GetStateSnapshot();
                 _prevState = _currState;
-<<<<<<< HEAD
             }
-=======
-            }    
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void ReadInput()
@@ -130,11 +116,7 @@ namespace Ryujinx.Input.Assigner
 
         private class JoystickButtonDetector
         {
-<<<<<<< HEAD
             private readonly Dictionary<GamepadButtonInputId, InputSummary> _stats;
-=======
-            private Dictionary<GamepadButtonInputId, InputSummary> _stats;
->>>>>>> 1ec71635b (sync with main branch)
 
             public JoystickButtonDetector()
             {
@@ -153,14 +135,8 @@ namespace Ryujinx.Input.Assigner
 
             public void AddInput(GamepadButtonInputId button, float value)
             {
-<<<<<<< HEAD
 
                 if (!_stats.TryGetValue(button, out InputSummary inputSummary))
-=======
-                InputSummary inputSummary;
-
-                if (!_stats.TryGetValue(button, out inputSummary))
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     inputSummary = new InputSummary();
                     _stats.Add(button, inputSummary);
@@ -171,11 +147,7 @@ namespace Ryujinx.Input.Assigner
 
             public override string ToString()
             {
-<<<<<<< HEAD
                 StringWriter writer = new();
-=======
-                StringWriter writer = new StringWriter();
->>>>>>> 1ec71635b (sync with main branch)
 
                 foreach (var kvp in _stats)
                 {

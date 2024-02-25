@@ -10,11 +10,7 @@ namespace ARMeilleure.Decoders
             Imm8ToFP64Table = BuildImm8ToFP64Table();
         }
 
-<<<<<<< HEAD
         public static readonly uint[] Imm8ToFP32Table;
-=======
-        public static readonly uint[]  Imm8ToFP32Table;
->>>>>>> 1ec71635b (sync with main branch)
         public static readonly ulong[] Imm8ToFP64Table;
 
         private static uint[] BuildImm8ToFP32Table()
@@ -44,46 +40,29 @@ namespace ARMeilleure.Decoders
         // abcdefgh -> aBbbbbbc defgh000 00000000 00000000 (B = ~b)
         private static uint ExpandImm8ToFP32(uint imm)
         {
-<<<<<<< HEAD
             static uint MoveBit(uint bits, int from, int to)
-=======
-            uint MoveBit(uint bits, int from, int to)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return ((bits >> from) & 1U) << to;
             }
 
             return MoveBit(imm, 7, 31) | MoveBit(~imm, 6, 30) |
-<<<<<<< HEAD
                    MoveBit(imm, 6, 29) | MoveBit(imm, 6, 28) |
                    MoveBit(imm, 6, 27) | MoveBit(imm, 6, 26) |
                    MoveBit(imm, 6, 25) | MoveBit(imm, 5, 24) |
                    MoveBit(imm, 4, 23) | MoveBit(imm, 3, 22) |
                    MoveBit(imm, 2, 21) | MoveBit(imm, 1, 20) |
-=======
-                   MoveBit(imm, 6, 29) | MoveBit( imm, 6, 28) |
-                   MoveBit(imm, 6, 27) | MoveBit( imm, 6, 26) |
-                   MoveBit(imm, 6, 25) | MoveBit( imm, 5, 24) |
-                   MoveBit(imm, 4, 23) | MoveBit( imm, 3, 22) |
-                   MoveBit(imm, 2, 21) | MoveBit( imm, 1, 20) |
->>>>>>> 1ec71635b (sync with main branch)
                    MoveBit(imm, 0, 19);
         }
 
         // abcdefgh -> aBbbbbbb bbcdefgh 00000000 00000000 00000000 00000000 00000000 00000000 (B = ~b)
         private static ulong ExpandImm8ToFP64(ulong imm)
         {
-<<<<<<< HEAD
             static ulong MoveBit(ulong bits, int from, int to)
-=======
-            ulong MoveBit(ulong bits, int from, int to)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return ((bits >> from) & 1UL) << to;
             }
 
             return MoveBit(imm, 7, 63) | MoveBit(~imm, 6, 62) |
-<<<<<<< HEAD
                    MoveBit(imm, 6, 61) | MoveBit(imm, 6, 60) |
                    MoveBit(imm, 6, 59) | MoveBit(imm, 6, 58) |
                    MoveBit(imm, 6, 57) | MoveBit(imm, 6, 56) |
@@ -91,34 +70,17 @@ namespace ARMeilleure.Decoders
                    MoveBit(imm, 5, 53) | MoveBit(imm, 4, 52) |
                    MoveBit(imm, 3, 51) | MoveBit(imm, 2, 50) |
                    MoveBit(imm, 1, 49) | MoveBit(imm, 0, 48);
-=======
-                   MoveBit(imm, 6, 61) | MoveBit( imm, 6, 60) |
-                   MoveBit(imm, 6, 59) | MoveBit( imm, 6, 58) |
-                   MoveBit(imm, 6, 57) | MoveBit( imm, 6, 56) |
-                   MoveBit(imm, 6, 55) | MoveBit( imm, 6, 54) |
-                   MoveBit(imm, 5, 53) | MoveBit( imm, 4, 52) |
-                   MoveBit(imm, 3, 51) | MoveBit( imm, 2, 50) |
-                   MoveBit(imm, 1, 49) | MoveBit( imm, 0, 48);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public struct BitMask
         {
             public long WMask;
             public long TMask;
-<<<<<<< HEAD
             public int Pos;
             public int Shift;
             public bool IsUndefined;
 
             public static BitMask Invalid => new() { IsUndefined = true };
-=======
-            public int  Pos;
-            public int  Shift;
-            public bool IsUndefined;
-
-            public static BitMask Invalid => new BitMask { IsUndefined = true };
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static BitMask DecodeBitMask(int opCode, bool immediate)
@@ -126,11 +88,7 @@ namespace ARMeilleure.Decoders
             int immS = (opCode >> 10) & 0x3f;
             int immR = (opCode >> 16) & 0x3f;
 
-<<<<<<< HEAD
             int n = (opCode >> 22) & 1;
-=======
-            int n  = (opCode >> 22) & 1;
->>>>>>> 1ec71635b (sync with main branch)
             int sf = (opCode >> 31) & 1;
 
             int length = BitUtils.HighestBitSet((~immS & 0x3f) | (n << 6));
@@ -157,11 +115,7 @@ namespace ARMeilleure.Decoders
 
             if (r > 0)
             {
-<<<<<<< HEAD
                 wMask = BitUtils.RotateRight(wMask, r, size);
-=======
-                wMask  = BitUtils.RotateRight(wMask, r, size);
->>>>>>> 1ec71635b (sync with main branch)
                 wMask &= BitUtils.FillWithOnes(size);
             }
 
@@ -170,13 +124,8 @@ namespace ARMeilleure.Decoders
                 WMask = BitUtils.Replicate(wMask, size),
                 TMask = BitUtils.Replicate(tMask, size),
 
-<<<<<<< HEAD
                 Pos = immS,
                 Shift = immR,
-=======
-                Pos   = immS,
-                Shift = immR
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -215,8 +164,4 @@ namespace ARMeilleure.Decoders
             return false;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

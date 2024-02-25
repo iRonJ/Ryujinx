@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Memory.Range;
-=======
-﻿using Ryujinx.Memory.Range;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,11 +136,7 @@ namespace Ryujinx.Memory
                 {
                     size = Math.Min(data.Length, PageSize - (int)(va & PageMask));
 
-<<<<<<< HEAD
                     data[..size].CopyTo(GetHostSpanContiguous(va, size));
-=======
-                    data.Slice(0, size).CopyTo(GetHostSpanContiguous(va, size));
->>>>>>> 1ec71635b (sync with main branch)
 
                     offset += size;
                 }
@@ -223,11 +215,7 @@ namespace Ryujinx.Memory
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-<<<<<<< HEAD
         private static int GetPagesCount(ulong va, uint size, out ulong startVa)
-=======
-        private int GetPagesCount(ulong va, uint size, out ulong startVa)
->>>>>>> 1ec71635b (sync with main branch)
         {
             // WARNING: Always check if ulong does not overflow during the operations.
             startVa = va & ~(ulong)PageMask;
@@ -236,11 +224,7 @@ namespace Ryujinx.Memory
             return (int)(vaSpan / PageSize);
         }
 
-<<<<<<< HEAD
         private static void ThrowMemoryNotContiguous() => throw new MemoryNotContiguousException();
-=======
-        private void ThrowMemoryNotContiguous() => throw new MemoryNotContiguousException();
->>>>>>> 1ec71635b (sync with main branch)
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool IsContiguousAndMapped(ulong va, int size) => IsContiguous(va, size) && IsMapped(va);
@@ -377,11 +361,7 @@ namespace Ryujinx.Memory
             {
                 size = Math.Min(data.Length, PageSize - (int)(va & PageMask));
 
-<<<<<<< HEAD
                 GetHostSpanContiguous(va, size).CopyTo(data[..size]);
-=======
-                GetHostSpanContiguous(va, size).CopyTo(data.Slice(0, size));
->>>>>>> 1ec71635b (sync with main branch)
 
                 offset += size;
             }
@@ -476,14 +456,11 @@ namespace Ryujinx.Memory
         }
 
         /// <inheritdoc/>
-<<<<<<< HEAD
         public void Reprotect(ulong va, ulong size, MemoryPermission protection)
         {
         }
 
         /// <inheritdoc/>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public void TrackingReprotect(ulong va, ulong size, MemoryPermission protection)
         {
             throw new NotImplementedException();

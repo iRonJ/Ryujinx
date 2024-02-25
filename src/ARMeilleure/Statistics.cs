@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 #if M_PROFILE
 using System;
 #endif
-=======
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,21 +13,12 @@ namespace ARMeilleure
     {
         private const int ReportMaxFunctions = 100;
 
-<<<<<<< HEAD
 #if M_PROFILE
         [ThreadStatic]
         private static Stopwatch _executionTimer;
 #endif
 
         private static readonly ConcurrentDictionary<ulong, long> _ticksPerFunction;
-=======
-#pragma warning disable CS0169
-        [ThreadStatic]
-        private static Stopwatch _executionTimer;
-#pragma warning restore CS0169
-
-        private static ConcurrentDictionary<ulong, long> _ticksPerFunction;
->>>>>>> 1ec71635b (sync with main branch)
 
         static Statistics()
         {
@@ -62,11 +49,7 @@ namespace ARMeilleure
 
             long ticks = _executionTimer.ElapsedTicks;
 
-<<<<<<< HEAD
             TicksPerFunction.AddOrUpdate(funcAddr, ticks, (key, oldTicks) => oldTicks + ticks);
-=======
-            _ticksPerFunction.AddOrUpdate(funcAddr, ticks, (key, oldTicks) => oldTicks + ticks);
->>>>>>> 1ec71635b (sync with main branch)
 #endif
         }
 
@@ -88,11 +71,7 @@ namespace ARMeilleure
         {
             int count = 0;
 
-<<<<<<< HEAD
             StringBuilder sb = new();
-=======
-            StringBuilder sb = new StringBuilder();
->>>>>>> 1ec71635b (sync with main branch)
 
             sb.AppendLine(" Function address   | Time");
             sb.AppendLine("--------------------------");
@@ -114,8 +93,4 @@ namespace ARMeilleure
             return sb.ToString();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

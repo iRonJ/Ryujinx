@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using NUnit.Framework;
-=======
-﻿using NUnit.Framework;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Audio;
 using Ryujinx.Audio.Renderer.Server.MemoryPool;
 using System;
@@ -19,21 +15,13 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestInitializeSystemPool()
         {
-<<<<<<< HEAD
             PoolMapper poolMapper = new(DummyProcessHandle, true);
-=======
-            PoolMapper      poolMapper    = new PoolMapper(DummyProcessHandle, true);
->>>>>>> 1ec71635b (sync with main branch)
             MemoryPoolState memoryPoolDsp = MemoryPoolState.Create(MemoryPoolState.LocationType.Dsp);
             MemoryPoolState memoryPoolCpu = MemoryPoolState.Create(MemoryPoolState.LocationType.Cpu);
 
             const CpuAddress CpuAddress = 0x20000;
             const DspAddress DspAddress = CpuAddress; // TODO: DSP LLE
-<<<<<<< HEAD
             const ulong CpuSize = 0x1000;
-=======
-            const ulong      CpuSize    = 0x1000;
->>>>>>> 1ec71635b (sync with main branch)
 
             Assert.IsFalse(poolMapper.InitializeSystemPool(ref memoryPoolCpu, CpuAddress, CpuSize));
             Assert.IsTrue(poolMapper.InitializeSystemPool(ref memoryPoolDsp, CpuAddress, CpuSize));
@@ -46,11 +34,7 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestGetProcessHandle()
         {
-<<<<<<< HEAD
             PoolMapper poolMapper = new(DummyProcessHandle, true);
-=======
-            PoolMapper      poolMapper    = new PoolMapper(DummyProcessHandle, true);
->>>>>>> 1ec71635b (sync with main branch)
             MemoryPoolState memoryPoolDsp = MemoryPoolState.Create(MemoryPoolState.LocationType.Dsp);
             MemoryPoolState memoryPoolCpu = MemoryPoolState.Create(MemoryPoolState.LocationType.Cpu);
 
@@ -61,21 +45,13 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestMappings()
         {
-<<<<<<< HEAD
             PoolMapper poolMapper = new(DummyProcessHandle, true);
-=======
-            PoolMapper      poolMapper    = new PoolMapper(DummyProcessHandle, true);
->>>>>>> 1ec71635b (sync with main branch)
             MemoryPoolState memoryPoolDsp = MemoryPoolState.Create(MemoryPoolState.LocationType.Dsp);
             MemoryPoolState memoryPoolCpu = MemoryPoolState.Create(MemoryPoolState.LocationType.Cpu);
 
             const CpuAddress CpuAddress = 0x20000;
             const DspAddress DspAddress = CpuAddress; // TODO: DSP LLE
-<<<<<<< HEAD
             const ulong CpuSize = 0x1000;
-=======
-            const ulong      CpuSize    = 0x1000;
->>>>>>> 1ec71635b (sync with main branch)
 
             memoryPoolDsp.SetCpuAddress(CpuAddress, CpuSize);
             memoryPoolCpu.SetCpuAddress(CpuAddress, CpuSize);
@@ -96,17 +72,10 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         {
             const CpuAddress CpuAddress = 0x20000;
             const DspAddress DspAddress = CpuAddress; // TODO: DSP LLE
-<<<<<<< HEAD
             const ulong CpuSize = 0x1000;
 
             const int MemoryPoolStateArraySize = 0x10;
             const CpuAddress CpuAddressRegionEnding = CpuAddress * MemoryPoolStateArraySize;
-=======
-            const ulong      CpuSize    = 0x1000;
-
-            const int        MemoryPoolStateArraySize = 0x10;
-            const CpuAddress CpuAddressRegionEnding   = CpuAddress * MemoryPoolStateArraySize;
->>>>>>> 1ec71635b (sync with main branch)
 
             MemoryPoolState[] memoryPoolStateArray = new MemoryPoolState[MemoryPoolStateArraySize];
 
@@ -116,22 +85,12 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
                 memoryPoolStateArray[i].SetCpuAddress(CpuAddress + (ulong)i * CpuSize, CpuSize);
             }
 
-<<<<<<< HEAD
 
             AddressInfo addressInfo = AddressInfo.Create();
 
             PoolMapper poolMapper = new(DummyProcessHandle, true);
 
             Assert.IsTrue(poolMapper.TryAttachBuffer(out ErrorInfo errorInfo, ref addressInfo, 0, 0));
-=======
-            ErrorInfo errorInfo;
-
-            AddressInfo addressInfo = AddressInfo.Create();
-
-            PoolMapper poolMapper = new PoolMapper(DummyProcessHandle, true);
-
-            Assert.IsTrue(poolMapper.TryAttachBuffer(out errorInfo, ref addressInfo, 0, 0));
->>>>>>> 1ec71635b (sync with main branch)
 
             Assert.AreEqual(ResultCode.InvalidAddressInfo, errorInfo.ErrorCode);
             Assert.AreEqual(0, errorInfo.ExtraErrorInfo);
@@ -145,11 +104,7 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
 
             poolMapper = new PoolMapper(DummyProcessHandle, false);
 
-<<<<<<< HEAD
             Assert.IsFalse(poolMapper.TryAttachBuffer(out _, ref addressInfo, 0, 0));
-=======
-            Assert.IsFalse(poolMapper.TryAttachBuffer(out errorInfo, ref addressInfo, 0, 0));
->>>>>>> 1ec71635b (sync with main branch)
 
             addressInfo.ForceMappedDspAddress = 0;
 

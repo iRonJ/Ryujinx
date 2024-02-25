@@ -22,10 +22,6 @@ namespace Ryujinx.Cpu.AppleHv.Arm
 
         UserNoneKernelReadWrite = (1UL << (int)PxnShift) | (1UL << (int)UxnShift) | (0UL << (int)ApShift),
         UserNoneKernelRead = (1UL << (int)PxnShift) | (1UL << (int)UxnShift) | (2UL << (int)ApShift),
-<<<<<<< HEAD
         UserReadKernelRead = (1UL << (int)PxnShift) | (1UL << (int)UxnShift) | (3UL << (int)ApShift),
-=======
-        UserReadKernelRead = (1UL << (int)PxnShift) | (1UL << (int)UxnShift) | (3UL << (int)ApShift)
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

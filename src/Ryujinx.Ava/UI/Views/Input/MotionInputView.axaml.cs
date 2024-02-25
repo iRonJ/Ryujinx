@@ -10,11 +10,7 @@ namespace Ryujinx.Ava.UI.Views.Input
 {
     public partial class MotionInputView : UserControl
     {
-<<<<<<< HEAD
         private readonly MotionInputViewModel _viewModel;
-=======
-        private MotionInputViewModel _viewModel;
->>>>>>> 1ec71635b (sync with main branch)
 
         public MotionInputView()
         {
@@ -34,11 +30,7 @@ namespace Ryujinx.Ava.UI.Views.Input
                 MirrorInput = config.MirrorInput,
                 Sensitivity = config.Sensitivity,
                 GyroDeadzone = config.GyroDeadzone,
-<<<<<<< HEAD
                 EnableCemuHookMotion = config.EnableCemuHookMotion,
-=======
-                EnableCemuHookMotion = config.EnableCemuHookMotion
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             InitializeComponent();
@@ -55,11 +47,7 @@ namespace Ryujinx.Ava.UI.Views.Input
                 PrimaryButtonText = LocaleManager.Instance[LocaleKeys.ControllerSettingsSave],
                 SecondaryButtonText = "",
                 CloseButtonText = LocaleManager.Instance[LocaleKeys.ControllerSettingsClose],
-<<<<<<< HEAD
                 Content = content,
-=======
-                Content = content
->>>>>>> 1ec71635b (sync with main branch)
             };
             contentDialog.PrimaryButtonClick += (sender, args) =>
             {
@@ -77,8 +65,4 @@ namespace Ryujinx.Ava.UI.Views.Input
             await contentDialog.ShowAsync();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

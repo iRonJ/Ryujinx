@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Nvdec.FFmpeg.Native;
 using System;
 using System.Runtime.InteropServices;
@@ -16,13 +12,8 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg
         private readonly AVCodec_decode _decodeFrame;
         private static readonly FFmpegApi.av_log_set_callback_callback _logFunc;
         private readonly AVCodec* _codec;
-<<<<<<< HEAD
         private readonly AVPacket* _packet;
         private readonly AVCodecContext* _context;
-=======
-        private AVPacket* _packet;
-        private AVCodecContext* _context;
->>>>>>> 1ec71635b (sync with main branch)
 
         public FFmpegContext(AVCodecID codecId)
         {
@@ -173,11 +164,7 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg
                 FFmpegApi.av_packet_free(ppPacket);
             }
 
-<<<<<<< HEAD
             _ = FFmpegApi.avcodec_close(_context);
-=======
-            FFmpegApi.avcodec_close(_context);
->>>>>>> 1ec71635b (sync with main branch)
 
             fixed (AVCodecContext** ppContext = &_context)
             {

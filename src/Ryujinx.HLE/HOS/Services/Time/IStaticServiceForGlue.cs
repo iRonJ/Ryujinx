@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Pcv.Bpc;
 using Ryujinx.HLE.HOS.Services.Settings;
 using Ryujinx.HLE.HOS.Services.Time.Clock;
@@ -16,22 +12,13 @@ namespace Ryujinx.HLE.HOS.Services.Time
     [Service("time:u", TimePermissions.User)]
     class IStaticServiceForGlue : IpcService
     {
-<<<<<<< HEAD
         private readonly IStaticServiceForPsc _inner;
         private readonly TimePermissions _permissions;
-=======
-        private IStaticServiceForPsc _inner;
-        private TimePermissions      _permissions;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IStaticServiceForGlue(ServiceCtx context, TimePermissions permissions) : base(context.Device.System.TimeServer)
         {
             _permissions = permissions;
-<<<<<<< HEAD
             _inner = new IStaticServiceForPsc(context, permissions);
-=======
-            _inner       = new IStaticServiceForPsc(context, permissions);
->>>>>>> 1ec71635b (sync with main branch)
             _inner.TrySetServer(Server);
             _inner.SetParent(this);
         }
@@ -96,13 +83,9 @@ namespace Ryujinx.HLE.HOS.Services.Time
                 return ResultCode.PermissionDenied;
             }
 
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             TimeSpanType internalOffset = context.RequestData.ReadStruct<TimeSpanType>();
 #pragma warning restore IDE0059
-=======
-            TimeSpanType internalOffset = context.RequestData.ReadStruct<TimeSpanType>();
->>>>>>> 1ec71635b (sync with main branch)
 
             // TODO: set:sys SetExternalSteadyClockInternalOffset(internalOffset.ToSeconds())
 

@@ -14,7 +14,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
     {
         private const int PtLvl0Bits = 14;
         private const int PtLvl1Bits = 14;
-<<<<<<< HEAD
         public const int PtPageBits = 12;
 
         private const ulong PtLvl0Size = 1UL << PtLvl0Bits;
@@ -24,17 +23,6 @@ namespace Ryujinx.Graphics.Gpu.Memory
         private const ulong PtLvl0Mask = PtLvl0Size - 1;
         private const ulong PtLvl1Mask = PtLvl1Size - 1;
         public const ulong PageMask = PageSize - 1;
-=======
-        public  const int PtPageBits = 12;
-
-        private const ulong PtLvl0Size = 1UL << PtLvl0Bits;
-        private const ulong PtLvl1Size = 1UL << PtLvl1Bits;
-        public  const ulong PageSize   = 1UL << PtPageBits;
-
-        private const ulong PtLvl0Mask = PtLvl0Size - 1;
-        private const ulong PtLvl1Mask = PtLvl1Size - 1;
-        public  const ulong PageMask   = PageSize   - 1;
->>>>>>> 1ec71635b (sync with main branch)
 
         private const int PtLvl0Bit = PtPageBits + PtLvl1Bits;
         private const int PtLvl1Bit = PtPageBits;
@@ -52,14 +40,11 @@ namespace Ryujinx.Graphics.Gpu.Memory
         internal PhysicalMemory Physical { get; }
 
         /// <summary>
-<<<<<<< HEAD
         /// Virtual range cache.
         /// </summary>
         internal VirtualRangeCache VirtualRangeCache { get; }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Cache of GPU counters.
         /// </summary>
         internal CounterCache CounterCache { get; }
@@ -71,18 +56,12 @@ namespace Ryujinx.Graphics.Gpu.Memory
         internal MemoryManager(PhysicalMemory physicalMemory)
         {
             Physical = physicalMemory;
-<<<<<<< HEAD
             VirtualRangeCache = new VirtualRangeCache(this);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             CounterCache = new CounterCache();
             _pageTable = new ulong[PtLvl0Size][];
             MemoryUnmapped += Physical.TextureCache.MemoryUnmappedHandler;
             MemoryUnmapped += Physical.BufferCache.MemoryUnmappedHandler;
-<<<<<<< HEAD
             MemoryUnmapped += VirtualRangeCache.MemoryUnmappedHandler;
-=======
->>>>>>> 1ec71635b (sync with main branch)
             MemoryUnmapped += CounterCache.MemoryUnmappedHandler;
         }
 
@@ -231,11 +210,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
 
                 size = Math.Min(data.Length, (int)PageSize - (int)(va & PageMask));
 
-<<<<<<< HEAD
                 Physical.GetSpan(pa, size, tracked).CopyTo(data[..size]);
-=======
-                Physical.GetSpan(pa, size, tracked).CopyTo(data.Slice(0, size));
->>>>>>> 1ec71635b (sync with main branch)
 
                 offset += size;
             }
@@ -338,11 +313,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
 
                     size = Math.Min(data.Length, (int)PageSize - (int)(va & PageMask));
 
-<<<<<<< HEAD
                     writeCallback(pa, data[..size]);
-=======
-                    writeCallback(pa, data.Slice(0, size));
->>>>>>> 1ec71635b (sync with main branch)
 
                     offset += size;
                 }
@@ -359,61 +330,11 @@ namespace Ryujinx.Graphics.Gpu.Memory
         }
 
         /// <summary>
-<<<<<<< HEAD
-=======
-        /// Writes data to GPU mapped memory, stopping at the first unmapped page at the memory region, if any.
-        /// </summary>
-        /// <param name="va">GPU virtual address to write the data into</param>
-        /// <param name="data">The data to be written</param>
-        public void WriteMapped(ulong va, ReadOnlySpan<byte> data)
-        {
-            if (IsContiguous(va, data.Length))
-            {
-                Physical.Write(Translate(va), data);
-            }
-            else
-            {
-                int offset = 0, size;
-
-                if ((va & PageMask) != 0)
-                {
-                    ulong pa = Translate(va);
-
-                    size = Math.Min(data.Length, (int)PageSize - (int)(va & PageMask));
-
-                    if (pa != PteUnmapped && Physical.IsMapped(pa))
-                    {
-                        Physical.Write(pa, data.Slice(0, size));
-                    }
-
-                    offset += size;
-                }
-
-                for (; offset < data.Length; offset += size)
-                {
-                    ulong pa = Translate(va + (ulong)offset);
-
-                    size = Math.Min(data.Length - offset, (int)PageSize);
-
-                    if (pa != PteUnmapped && Physical.IsMapped(pa))
-                    {
-                        Physical.Write(pa, data.Slice(offset, size));
-                    }
-                }
-            }
-        }
-
-        /// <summary>
->>>>>>> 1ec71635b (sync with main branch)
         /// Runs remap actions that are added to an unmap event.
         /// These must run after the mapping completes.
         /// </summary>
         /// <param name="e">Event with remap actions</param>
-<<<<<<< HEAD
         private static void RunRemapActions(UnmapEventArgs e)
-=======
-        private void RunRemapActions(UnmapEventArgs e)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (e.RemapActions != null)
             {
@@ -551,14 +472,11 @@ namespace Ryujinx.Graphics.Gpu.Memory
                 regionSize += Math.Min(endVa - va, PageSize);
             }
 
-<<<<<<< HEAD
             if (regions.Count == 0)
             {
                 return new MultiRange(regionStart, regionSize);
             }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
             regions.Add(new MemoryRange(regionStart, regionSize));
 
             return new MultiRange(regions.ToArray());
@@ -810,8 +728,4 @@ namespace Ryujinx.Graphics.Gpu.Memory
             return pte & 0xffffffffffffffUL;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

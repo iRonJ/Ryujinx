@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Ryujinx.Ui.Common.Models.Amiibo
+namespace Ryujinx.UI.Common.Models.Amiibo
 {
     public struct AmiiboJson
     {

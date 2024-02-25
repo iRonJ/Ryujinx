@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Texture.Utils;
-=======
-﻿using Ryujinx.Graphics.Texture.Utils;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.InteropServices;
 
@@ -31,11 +27,7 @@ namespace Ryujinx.Graphics.Texture
                     int x2 = x * 4;
                     int bw = Math.Min(4, width - x2);
 
-<<<<<<< HEAD
                     DecodeBlock(blocks[y * wInBlocks + x], output64[(y2 * width + x2)..], bw, bh, width, signed);
-=======
-                    DecodeBlock(blocks[y * wInBlocks + x], output64.Slice(y2 * width + x2), bw, bh, width, signed);
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
         }

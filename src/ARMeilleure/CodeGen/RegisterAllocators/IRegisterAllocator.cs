@@ -9,8 +9,4 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
             StackAllocator stackAlloc,
             RegisterMasks regMasks);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

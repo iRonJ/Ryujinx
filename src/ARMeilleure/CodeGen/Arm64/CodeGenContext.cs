@@ -14,11 +14,7 @@ namespace ARMeilleure.CodeGen.Arm64
         private const int CbnzInstLength = 4;
         private const int LdrLitInstLength = 4;
 
-<<<<<<< HEAD
         private readonly Stream _stream;
-=======
-        private Stream _stream;
->>>>>>> 1ec71635b (sync with main branch)
 
         public int StreamOffset => (int)_stream.Length;
 
@@ -36,11 +32,7 @@ namespace ARMeilleure.CodeGen.Arm64
         private readonly Dictionary<BasicBlock, long> _visitedBlocks;
         private readonly Dictionary<BasicBlock, List<(ArmCondition Condition, long BranchPos)>> _pendingBranches;
 
-<<<<<<< HEAD
         private readonly struct ConstantPoolEntry
-=======
-        private struct ConstantPoolEntry
->>>>>>> 1ec71635b (sync with main branch)
         {
             public readonly int Offset;
             public readonly Symbol Symbol;
@@ -66,11 +58,7 @@ namespace ARMeilleure.CodeGen.Arm64
 
         private readonly bool _relocatable;
 
-<<<<<<< HEAD
         public CodeGenContext(AllocationResult allocResult, int maxCallArgs, bool relocatable)
-=======
-        public CodeGenContext(AllocationResult allocResult, int maxCallArgs, int blocksCount, bool relocatable)
->>>>>>> 1ec71635b (sync with main branch)
         {
             _stream = MemoryStreamManager.Shared.GetStream();
 
@@ -105,17 +93,10 @@ namespace ARMeilleure.CodeGen.Arm64
 
             if (_pendingBranches.TryGetValue(block, out var list))
             {
-<<<<<<< HEAD
                 foreach ((ArmCondition condition, long branchPos) in list)
                 {
                     _stream.Seek(branchPos, SeekOrigin.Begin);
                     WriteBranch(condition, target);
-=======
-                foreach (var tuple in list)
-                {
-                    _stream.Seek(tuple.BranchPos, SeekOrigin.Begin);
-                    WriteBranch(tuple.Condition, target);
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 _stream.Seek(target, SeekOrigin.Begin);
@@ -303,8 +284,4 @@ namespace ARMeilleure.CodeGen.Arm64
             _stream.WriteByte((byte)(value >> 56));
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

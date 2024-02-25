@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using OpenTK.Audio.OpenAL;
-=======
-﻿using OpenTK.Audio.OpenAL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Audio.Common;
 using Ryujinx.Audio.Integration;
 using Ryujinx.Memory;
@@ -22,7 +18,6 @@ namespace Ryujinx.Audio.Backends.OpenAL
         private readonly ManualResetEvent _pauseEvent;
         private readonly ConcurrentDictionary<OpenALHardwareDeviceSession, byte> _sessions;
         private bool _stillRunning;
-<<<<<<< HEAD
         private readonly Thread _updaterThread;
 
         private float _volume;
@@ -43,9 +38,6 @@ namespace Ryujinx.Audio.Backends.OpenAL
                 }
             }
         }
-=======
-        private Thread _updaterThread;
->>>>>>> 1ec71635b (sync with main branch)
 
         public OpenALHardwareDeviceDriver()
         {
@@ -58,17 +50,11 @@ namespace Ryujinx.Audio.Backends.OpenAL
             _stillRunning = true;
             _updaterThread = new Thread(Update)
             {
-<<<<<<< HEAD
                 Name = "HardwareDeviceDriver.OpenAL",
             };
 
             _volume = 1f;
 
-=======
-                Name = "HardwareDeviceDriver.OpenAL"
-            };
-
->>>>>>> 1ec71635b (sync with main branch)
             _updaterThread.Start();
         }
 
@@ -87,11 +73,7 @@ namespace Ryujinx.Audio.Backends.OpenAL
             }
         }
 
-<<<<<<< HEAD
         public IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount)
-=======
-        public IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount, float volume)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (channelCount == 0)
             {
@@ -112,11 +94,7 @@ namespace Ryujinx.Audio.Backends.OpenAL
                 throw new ArgumentException($"{channelCount}");
             }
 
-<<<<<<< HEAD
             OpenALHardwareDeviceSession session = new(this, memoryManager, sampleFormat, sampleRate, channelCount);
-=======
-            OpenALHardwareDeviceSession session = new OpenALHardwareDeviceSession(this, memoryManager, sampleFormat, sampleRate, channelCount, volume);
->>>>>>> 1ec71635b (sync with main branch)
 
             _sessions.TryAdd(session, 0);
 
@@ -166,10 +144,7 @@ namespace Ryujinx.Audio.Backends.OpenAL
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
 

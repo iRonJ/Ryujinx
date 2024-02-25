@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace ARMeilleure.Decoders
-=======
-﻿namespace ARMeilleure.Decoders
->>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// A special alias that always runs in 64 bit int, to speed up binary ops a little.

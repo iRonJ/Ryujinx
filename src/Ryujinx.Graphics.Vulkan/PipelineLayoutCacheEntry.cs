@@ -1,9 +1,6 @@
 using Ryujinx.Graphics.GAL;
 using Silk.NET.Vulkan;
-<<<<<<< HEAD
 using System;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -11,7 +8,6 @@ namespace Ryujinx.Graphics.Vulkan
 {
     class PipelineLayoutCacheEntry
     {
-<<<<<<< HEAD
         // Those were adjusted based on current descriptor usage and the descriptor counts usually used on pipeline layouts.
         // It might be a good idea to tweak them again if those change, or maybe find a way to calculate an optimal value dynamically.
         private const uint DefaultUniformBufferPoolCapacity = 19 * DescriptorSetManager.MaxSets;
@@ -21,15 +17,12 @@ namespace Ryujinx.Graphics.Vulkan
 
         private const int MaxPoolSizesPerSet = 2;
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         private readonly VulkanRenderer _gd;
         private readonly Device _device;
 
         public DescriptorSetLayout[] DescriptorSetLayouts { get; }
         public PipelineLayout PipelineLayout { get; }
 
-<<<<<<< HEAD
         private readonly int[] _consumedDescriptorsPerSet;
 
         private readonly List<Auto<DescriptorSetCollection>>[][] _dsCache;
@@ -42,11 +35,6 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly ResourceDescriptorCollection _pdDescriptors;
         private long _lastPdUsage;
         private DescriptorSetTemplate _lastPdTemplate;
-=======
-        private readonly List<Auto<DescriptorSetCollection>>[][] _dsCache;
-        private readonly int[] _dsCacheCursor;
-        private int _dsLastCbIndex;
->>>>>>> 1ec71635b (sync with main branch)
 
         private PipelineLayoutCacheEntry(VulkanRenderer gd, Device device, int setsCount)
         {
@@ -75,7 +63,6 @@ namespace Ryujinx.Graphics.Vulkan
             bool usePushDescriptors) : this(gd, device, setDescriptors.Count)
         {
             (DescriptorSetLayouts, PipelineLayout) = PipelineLayoutFactory.Create(gd, device, setDescriptors, usePushDescriptors);
-<<<<<<< HEAD
 
             _consumedDescriptorsPerSet = new int[setDescriptors.Count];
 
@@ -131,31 +118,6 @@ namespace Ryujinx.Graphics.Vulkan
                     consumedDescriptors,
                     false);
 
-=======
-        }
-
-        public Auto<DescriptorSetCollection> GetNewDescriptorSetCollection(
-            VulkanRenderer gd,
-            int commandBufferIndex,
-            int setIndex,
-            out bool isNew)
-        {
-            if (_dsLastCbIndex != commandBufferIndex)
-            {
-                _dsLastCbIndex = commandBufferIndex;
-
-                for (int i = 0; i < _dsCacheCursor.Length; i++)
-                {
-                    _dsCacheCursor[i] = 0;
-                }
-            }
-
-            var list = _dsCache[commandBufferIndex][setIndex];
-            int index = _dsCacheCursor[setIndex]++;
-            if (index == list.Count)
-            {
-                var dsc = gd.DescriptorSetManager.AllocateDescriptorSet(gd.Api, DescriptorSetLayouts[setIndex]);
->>>>>>> 1ec71635b (sync with main branch)
                 list.Add(dsc);
                 isNew = true;
                 return dsc;
@@ -165,7 +127,6 @@ namespace Ryujinx.Graphics.Vulkan
             return list[index];
         }
 
-<<<<<<< HEAD
         private static Span<DescriptorPoolSize> GetDescriptorPoolSizes(Span<DescriptorPoolSize> output, int setIndex)
         {
             int count = 1;
@@ -214,13 +175,10 @@ namespace Ryujinx.Graphics.Vulkan
             return template;
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         protected virtual unsafe void Dispose(bool disposing)
         {
             if (disposing)
             {
-<<<<<<< HEAD
                 if (_pdTemplates != null)
                 {
                     foreach (DescriptorSetTemplate template in _pdTemplates.Values)
@@ -229,8 +187,6 @@ namespace Ryujinx.Graphics.Vulkan
                     }
                 }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 for (int i = 0; i < _dsCache.Length; i++)
                 {
                     for (int j = 0; j < _dsCache[i].Length; j++)

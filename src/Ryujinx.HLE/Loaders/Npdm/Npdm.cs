@@ -11,7 +11,6 @@ namespace Ryujinx.HLE.Loaders.Npdm
     {
         private const int MetaMagic = 'M' << 0 | 'E' << 8 | 'T' << 16 | 'A' << 24;
 
-<<<<<<< HEAD
         public byte ProcessFlags { get; private set; }
         public bool Is64Bit { get; private set; }
         public byte MainThreadPriority { get; private set; }
@@ -21,28 +20,13 @@ namespace Ryujinx.HLE.Loaders.Npdm
         public int MainThreadStackSize { get; private set; }
         public string TitleName { get; set; }
         public byte[] ProductCode { get; private set; }
-=======
-        public byte   ProcessFlags        { get; private set; }
-        public bool   Is64Bit             { get; private set; }
-        public byte   MainThreadPriority  { get; private set; }
-        public byte   DefaultCpuId        { get; private set; }
-        public int    PersonalMmHeapSize  { get; private set; }
-        public int    Version             { get; private set; }
-        public int    MainThreadStackSize { get; private set; }
-        public string TitleName           { get;         set; }
-        public byte[] ProductCode         { get; private set; }
->>>>>>> 1ec71635b (sync with main branch)
 
         public Aci0 Aci0 { get; private set; }
         public Acid Acid { get; private set; }
 
         public Npdm(Stream stream)
         {
-<<<<<<< HEAD
             BinaryReader reader = new(stream);
-=======
-            BinaryReader reader = new BinaryReader(stream);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (reader.ReadInt32() != MetaMagic)
             {
@@ -58,11 +42,7 @@ namespace Ryujinx.HLE.Loaders.Npdm
             reader.ReadByte();
 
             MainThreadPriority = reader.ReadByte();
-<<<<<<< HEAD
             DefaultCpuId = reader.ReadByte();
-=======
-            DefaultCpuId       = reader.ReadByte();
->>>>>>> 1ec71635b (sync with main branch)
 
             reader.ReadInt32();
 
@@ -81,17 +61,11 @@ namespace Ryujinx.HLE.Loaders.Npdm
             stream.Seek(0x30, SeekOrigin.Current);
 
             int aci0Offset = reader.ReadInt32();
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             int aci0Size = reader.ReadInt32();
             int acidOffset = reader.ReadInt32();
             int acidSize = reader.ReadInt32();
 #pragma warning restore IDE0059
-=======
-            int aci0Size   = reader.ReadInt32();
-            int acidOffset = reader.ReadInt32();
-            int acidSize   = reader.ReadInt32();
->>>>>>> 1ec71635b (sync with main branch)
 
             Aci0 = new Aci0(stream, aci0Offset);
             Acid = new Acid(stream, acidOffset);

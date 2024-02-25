@@ -83,15 +83,8 @@ namespace Ryujinx.Input.GTK3
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
             _driver = null;
         }
     }
 }
-=======
-            _driver = null;
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

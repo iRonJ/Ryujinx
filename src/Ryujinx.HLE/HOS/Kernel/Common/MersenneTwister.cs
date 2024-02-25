@@ -5,11 +5,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
     class MersenneTwister
     {
         private int _index;
-<<<<<<< HEAD
         private readonly uint[] _mt;
-=======
-        private uint[] _mt;
->>>>>>> 1ec71635b (sync with main branch)
 
         public MersenneTwister(uint seed)
         {
@@ -50,20 +46,12 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
             // If Range is already power of 2, subtract one to use log2(Range) directly.
             int rangeLog2 = nextRangeLog2 - (BitOperations.IsPow2(range) ? 1 : 0);
 
-<<<<<<< HEAD
             int parts = rangeLog2 > 32 ? 2 : 1;
-=======
-            int parts       = rangeLog2 > 32 ? 2 : 1;
->>>>>>> 1ec71635b (sync with main branch)
             int bitsPerPart = rangeLog2 / parts;
 
             int fullParts = parts - (rangeLog2 - parts * bitsPerPart);
 
-<<<<<<< HEAD
             uint mask = 0xffffffffu >> (32 - bitsPerPart);
-=======
-            uint mask      = 0xffffffffu >> (32 - bitsPerPart);
->>>>>>> 1ec71635b (sync with main branch)
             uint maskPlus1 = 0xffffffffu >> (31 - bitsPerPart);
 
             long randomNumber;
@@ -78,15 +66,9 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
         }
 
         private long GenRandomNumber(
-<<<<<<< HEAD
             int parts,
             int fullParts,
             int bitsPerPart,
-=======
-            int  parts,
-            int  fullParts,
-            int  bitsPerPart,
->>>>>>> 1ec71635b (sync with main branch)
             uint mask,
             uint maskPlus1)
         {
@@ -97,21 +79,13 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
             for (; part < fullParts; part++)
             {
                 randomNumber <<= bitsPerPart;
-<<<<<<< HEAD
                 randomNumber |= GenRandomNumber() & mask;
-=======
-                randomNumber  |= GenRandomNumber() & mask;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             for (; part < parts; part++)
             {
                 randomNumber <<= bitsPerPart + 1;
-<<<<<<< HEAD
                 randomNumber |= GenRandomNumber() & maskPlus1;
-=======
-                randomNumber  |= GenRandomNumber() & maskPlus1;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return randomNumber;

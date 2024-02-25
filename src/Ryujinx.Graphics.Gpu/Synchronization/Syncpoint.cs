@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Threading;
 
@@ -27,11 +23,7 @@ namespace Ryujinx.Graphics.Gpu.Synchronization
 
         public Syncpoint(uint id)
         {
-<<<<<<< HEAD
             Id = id;
-=======
-            Id       = id;
->>>>>>> 1ec71635b (sync with main branch)
             _waiters = new List<SyncpointWaiterHandle>();
         }
 
@@ -54,17 +46,10 @@ namespace Ryujinx.Graphics.Gpu.Synchronization
                 }
                 else
                 {
-<<<<<<< HEAD
                     SyncpointWaiterHandle waiterInformation = new()
                     {
                         Threshold = threshold,
                         Callback = callback,
-=======
-                    SyncpointWaiterHandle waiterInformation = new SyncpointWaiterHandle
-                    {
-                        Threshold = threshold,
-                        Callback  = callback
->>>>>>> 1ec71635b (sync with main branch)
                     };
 
                     _waiters.Add(waiterInformation);
@@ -107,14 +92,7 @@ namespace Ryujinx.Graphics.Gpu.Synchronization
                         }
                         else
                         {
-<<<<<<< HEAD
                             expiredList ??= new List<SyncpointWaiterHandle>();
-=======
-                            if (expiredList == null)
-                            {
-                                expiredList = new List<SyncpointWaiterHandle>();
-                            }
->>>>>>> 1ec71635b (sync with main branch)
 
                             expiredList.Add(item);
                         }

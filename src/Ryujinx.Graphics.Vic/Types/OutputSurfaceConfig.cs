@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
 
 namespace Ryujinx.Graphics.Vic.Types
@@ -8,17 +7,6 @@ namespace Ryujinx.Graphics.Vic.Types
 #pragma warning disable CS0649 // Field is never assigned to
         private readonly long _word0;
         private readonly long _word1;
-=======
-﻿using Ryujinx.Common.Utilities;
-
-namespace Ryujinx.Graphics.Vic.Types
-{
-    struct OutputSurfaceConfig
-    {
-#pragma warning disable CS0649
-        private long _word0;
-        private long _word1;
->>>>>>> 1ec71635b (sync with main branch)
 #pragma warning restore CS0649
 
         public PixelFormat OutPixelFormat => (PixelFormat)_word0.Extract(0, 7);

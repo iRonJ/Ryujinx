@@ -8,11 +8,7 @@ namespace Ryujinx.Tests.Cpu
     public sealed class CpuTestBfm : CpuTest
     {
 #if Bfm
-<<<<<<< HEAD
         private const int RndCnt = 2;
-=======
-        private const int RndCnt     = 2;
->>>>>>> 1ec71635b (sync with main branch)
 
         [Test, Pairwise, Description("BFM <Xd>, <Xn>, #<immr>, #<imms>")]
         public void Bfm_64bit([Values(0u, 31u)] uint rd,
@@ -131,8 +127,4 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

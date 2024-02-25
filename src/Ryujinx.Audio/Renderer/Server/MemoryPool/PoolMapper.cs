@@ -40,39 +40,23 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
             /// <summary>
             /// <see cref="Dsp.AudioProcessor"/> unmapping failed.
             /// </summary>
-<<<<<<< HEAD
             UnmapError = 3,
-=======
-            UnmapError = 3
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
         /// The handle of the process owning the CPU memory manipulated.
         /// </summary>
-<<<<<<< HEAD
         private readonly uint _processHandle;
-=======
-        private uint _processHandle;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The <see cref="Memory{MemoryPoolState}"/> that will be manipulated.
         /// </summary>
-<<<<<<< HEAD
         private readonly Memory<MemoryPoolState> _memoryPools;
-=======
-        private Memory<MemoryPoolState> _memoryPools;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// If set to true, this will try to force map memory pool even if their state are considered invalid.
         /// </summary>
-<<<<<<< HEAD
         private readonly bool _isForceMapEnabled;
-=======
-        private bool _isForceMapEnabled;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Create a new <see cref="PoolMapper"/> used for system mapping.
@@ -141,12 +125,8 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
             {
                 return CurrentProcessPseudoHandle;
             }
-<<<<<<< HEAD
 
             if (memoryPool.Location == MemoryPoolState.LocationType.Dsp)
-=======
-            else if (memoryPool.Location == MemoryPoolState.LocationType.Dsp)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return _processHandle;
             }
@@ -255,21 +235,11 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
 
                 return true;
             }
-<<<<<<< HEAD
 
             errorInfo.ErrorCode = ResultCode.InvalidAddressInfo;
             errorInfo.ExtraErrorInfo = addressInfo.CpuAddress;
 
             return _isForceMapEnabled;
-=======
-            else
-            {
-                errorInfo.ErrorCode = ResultCode.InvalidAddressInfo;
-                errorInfo.ExtraErrorInfo = addressInfo.CpuAddress;
-
-                return _isForceMapEnabled;
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -285,31 +255,19 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
 
             MemoryPoolUserState outputState;
 
-<<<<<<< HEAD
             const uint PageSize = 0x1000;
-=======
-            const uint pageSize = 0x1000;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (inputState != MemoryPoolUserState.RequestAttach && inputState != MemoryPoolUserState.RequestDetach)
             {
                 return UpdateResult.Success;
             }
 
-<<<<<<< HEAD
             if (inParameter.CpuAddress == 0 || (inParameter.CpuAddress % PageSize) != 0)
-=======
-            if (inParameter.CpuAddress == 0 || (inParameter.CpuAddress % pageSize) != 0)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return UpdateResult.InvalidParameter;
             }
 
-<<<<<<< HEAD
             if (inParameter.Size == 0 || (inParameter.Size % PageSize) != 0)
-=======
-            if (inParameter.Size == 0 || (inParameter.Size % pageSize) != 0)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return UpdateResult.InvalidParameter;
             }
@@ -404,8 +362,4 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

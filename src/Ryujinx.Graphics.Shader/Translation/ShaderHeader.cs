@@ -9,11 +9,7 @@ namespace Ryujinx.Graphics.Shader.Translation
         Unused = 0,
         Constant = 1,
         Perspective = 2,
-<<<<<<< HEAD
         ScreenLinear = 3,
-=======
-        ScreenLinear = 3
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     readonly struct ImapPixelType
@@ -33,7 +29,6 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         public PixelImap GetFirstUsedType()
         {
-<<<<<<< HEAD
             if (X != PixelImap.Unused)
             {
                 return X;
@@ -47,11 +42,6 @@ namespace Ryujinx.Graphics.Shader.Translation
                 return Z;
             }
 
-=======
-            if (X != PixelImap.Unused) return X;
-            if (Y != PixelImap.Unused) return Y;
-            if (Z != PixelImap.Unused) return Z;
->>>>>>> 1ec71635b (sync with main branch)
             return W;
         }
     }
@@ -175,8 +165,4 @@ namespace Ryujinx.Graphics.Shader.Translation
             OmapDepth = type2Omap.Extract(1);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

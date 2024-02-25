@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Mii.Types
-=======
-﻿namespace Ryujinx.HLE.HOS.Services.Mii.Types
->>>>>>> 1ec71635b (sync with main branch)
 {
     enum GlassType : byte
     {
@@ -27,12 +23,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         OpaqueRectangle,
         OpaqueAviator,
 
-<<<<<<< HEAD
         Min = None,
         Max = OpaqueAviator,
-=======
-        Min = 0,
-        Max = 19
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

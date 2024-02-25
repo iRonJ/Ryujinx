@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace ARMeilleure.Memory
 {
@@ -78,8 +74,4 @@ namespace ARMeilleure.Memory
         /// <param name="exemptId">Optional ID of the handles that should not be signalled</param>
         void SignalMemoryTracking(ulong va, ulong size, bool write, bool precise = false, int? exemptId = null);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

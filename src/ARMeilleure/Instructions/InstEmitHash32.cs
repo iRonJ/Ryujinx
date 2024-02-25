@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using ARMeilleure.Decoders;
-=======
-﻿using ARMeilleure.Decoders;
->>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
 using static ARMeilleure.Instructions.InstEmitHashHelper;

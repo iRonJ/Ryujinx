@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Ipc;
 using Ryujinx.HLE.HOS.Services.Mii.Types;
 using System;
@@ -55,11 +51,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
 
             ResultCode result = Get(flag, out int count, elementsSpan);
 
-<<<<<<< HEAD
             elementsSpan = elementsSpan[..count];
-=======
-            elementsSpan = elementsSpan.Slice(0, count);
->>>>>>> 1ec71635b (sync with main branch)
 
             context.ResponseData.Write(count);
 
@@ -80,11 +72,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
 
             ResultCode result = Get1(flag, out int count, elementsSpan);
 
-<<<<<<< HEAD
             elementsSpan = elementsSpan[..count];
-=======
-            elementsSpan = elementsSpan.Slice(0, count);
->>>>>>> 1ec71635b (sync with main branch)
 
             context.ResponseData.Write(count);
 
@@ -97,13 +85,8 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
         // UpdateLatest(nn::mii::CharInfo old_char_info, SourceFlag flag) -> nn::mii::CharInfo
         public ResultCode UpdateLatest(ServiceCtx context)
         {
-<<<<<<< HEAD
             CharInfo oldCharInfo = context.RequestData.ReadStruct<CharInfo>();
             SourceFlag flag = (SourceFlag)context.RequestData.ReadInt32();
-=======
-            CharInfo   oldCharInfo = context.RequestData.ReadStruct<CharInfo>();
-            SourceFlag flag        = (SourceFlag)context.RequestData.ReadInt32();
->>>>>>> 1ec71635b (sync with main branch)
 
             ResultCode result = UpdateLatest(oldCharInfo, flag, out CharInfo newCharInfo);
 
@@ -116,15 +99,9 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
         // BuildRandom(Age age, Gender gender, Race race) -> nn::mii::CharInfo
         public ResultCode BuildRandom(ServiceCtx context)
         {
-<<<<<<< HEAD
             Age age = (Age)context.RequestData.ReadInt32();
             Gender gender = (Gender)context.RequestData.ReadInt32();
             Race race = (Race)context.RequestData.ReadInt32();
-=======
-            Age    age    = (Age)context.RequestData.ReadInt32();
-            Gender gender = (Gender)context.RequestData.ReadInt32();
-            Race   race   = (Race)context.RequestData.ReadInt32();
->>>>>>> 1ec71635b (sync with main branch)
 
             ResultCode result = BuildRandom(age, gender, race, out CharInfo charInfo);
 
@@ -158,11 +135,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
 
             ResultCode result = Get2(flag, out int count, elementsSpan);
 
-<<<<<<< HEAD
             elementsSpan = elementsSpan[..count];
-=======
-            elementsSpan = elementsSpan.Slice(0, count);
->>>>>>> 1ec71635b (sync with main branch)
 
             context.ResponseData.Write(count);
 
@@ -183,11 +156,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
 
             ResultCode result = Get3(flag, out int count, elementsSpan);
 
-<<<<<<< HEAD
             elementsSpan = elementsSpan[..count];
-=======
-            elementsSpan = elementsSpan.Slice(0, count);
->>>>>>> 1ec71635b (sync with main branch)
 
             context.ResponseData.Write(count);
 
@@ -200,13 +169,8 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
         // UpdateLatest1(nn::mii::StoreData old_store_data, SourceFlag flag) -> nn::mii::StoreData
         public ResultCode UpdateLatest1(ServiceCtx context)
         {
-<<<<<<< HEAD
             StoreData oldStoreData = context.RequestData.ReadStruct<StoreData>();
             SourceFlag flag = (SourceFlag)context.RequestData.ReadInt32();
-=======
-            StoreData  oldStoreData = context.RequestData.ReadStruct<StoreData>();
-            SourceFlag flag         = (SourceFlag)context.RequestData.ReadInt32();
->>>>>>> 1ec71635b (sync with main branch)
 
             ResultCode result = UpdateLatest1(oldStoreData, flag, out StoreData newStoreData);
 
@@ -219,13 +183,8 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
         // FindIndex(nn::mii::CreateId create_id, bool is_special) -> s32
         public ResultCode FindIndex(ServiceCtx context)
         {
-<<<<<<< HEAD
             CreateId createId = context.RequestData.ReadStruct<CreateId>();
             bool isSpecial = context.RequestData.ReadBoolean();
-=======
-            CreateId createId  = context.RequestData.ReadStruct<CreateId>();
-            bool     isSpecial = context.RequestData.ReadBoolean();
->>>>>>> 1ec71635b (sync with main branch)
 
             ResultCode result = FindIndex(createId, isSpecial, out int index);
 
@@ -239,11 +198,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
         public ResultCode Move(ServiceCtx context)
         {
             CreateId createId = context.RequestData.ReadStruct<CreateId>();
-<<<<<<< HEAD
             int newIndex = context.RequestData.ReadInt32();
-=======
-            int      newIndex = context.RequestData.ReadInt32();
->>>>>>> 1ec71635b (sync with main branch)
 
             return Move(createId, newIndex);
         }
@@ -403,20 +358,12 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
             return new Span<byte>(rawData);
         }
 
-<<<<<<< HEAD
         private Span<T> CreateSpanFromBuffer<T>(ServiceCtx context, IpcBuffDesc ipcBuff, bool isOutput) where T : unmanaged
-=======
-        private Span<T> CreateSpanFromBuffer<T>(ServiceCtx context, IpcBuffDesc ipcBuff, bool isOutput) where T: unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             return MemoryMarshal.Cast<byte, T>(CreateByteSpanFromBuffer(context, ipcBuff, isOutput));
         }
 
-<<<<<<< HEAD
         private void WriteSpanToBuffer<T>(ServiceCtx context, IpcBuffDesc ipcBuff, Span<T> span) where T : unmanaged
-=======
-        private void WriteSpanToBuffer<T>(ServiceCtx context, IpcBuffDesc ipcBuff, Span<T> span) where T: unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             Span<byte> rawData = MemoryMarshal.Cast<T, byte>(span);
 

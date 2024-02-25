@@ -244,7 +244,6 @@ namespace Ryujinx.Audio.Renderer.Server.Effect
         /// <returns>The <see cref="PerformanceDetailType"/> associated to the <see cref="Type"/> of this effect.</returns>
         public PerformanceDetailType GetPerformanceDetailType()
         {
-<<<<<<< HEAD
             return Type switch
             {
                 EffectType.BiquadFilter => PerformanceDetailType.BiquadFilter,
@@ -261,31 +260,3 @@ namespace Ryujinx.Audio.Renderer.Server.Effect
         }
     }
 }
-=======
-            switch (Type)
-            {
-                case EffectType.BiquadFilter:
-                    return PerformanceDetailType.BiquadFilter;
-                case EffectType.AuxiliaryBuffer:
-                    return PerformanceDetailType.Aux;
-                case EffectType.Delay:
-                    return PerformanceDetailType.Delay;
-                case EffectType.Reverb:
-                    return PerformanceDetailType.Reverb;
-                case EffectType.Reverb3d:
-                    return PerformanceDetailType.Reverb3d;
-                case EffectType.BufferMix:
-                    return PerformanceDetailType.Mix;
-                case EffectType.Limiter:
-                    return PerformanceDetailType.Limiter;
-                case EffectType.CaptureBuffer:
-                    return PerformanceDetailType.CaptureBuffer;
-                case EffectType.Compressor:
-                    return PerformanceDetailType.Compressor;
-                default:
-                    throw new NotImplementedException($"{Type}");
-            }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

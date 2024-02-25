@@ -90,8 +90,4 @@ namespace Ryujinx.HLE.HOS.Ipc
             return ms;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

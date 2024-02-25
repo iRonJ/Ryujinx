@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Vic
 {
     struct PlaneOffsets
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public uint LumaOffset;
         public uint ChromaUOffset;
         public uint ChromaVOffset;
@@ -21,11 +13,7 @@ namespace Ryujinx.Graphics.Vic
 
     struct VicRegisters
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Array64<uint> Reserved0;
         public uint Nop;
         public Array15<uint> Reserved104;

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Model;
-=======
-﻿using Ryujinx.Graphics.GAL.Multithreading.Model;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL.Multithreading.Resources;
 using System;
 
@@ -10,11 +6,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Commands.Texture
 {
     struct TextureSetDataCommand : IGALCommand, IGALCommand<TextureSetDataCommand>
     {
-<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.TextureSetData;
-=======
-        public CommandType CommandType => CommandType.TextureSetData;
->>>>>>> 1ec71635b (sync with main branch)
         private TableRef<ThreadedTexture> _texture;
         private TableRef<byte[]> _data;
 

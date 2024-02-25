@@ -127,8 +127,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.Models
 {
@@ -29,8 +25,4 @@ namespace Ryujinx.Ava.UI.Models
             GpuName = gpuName;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

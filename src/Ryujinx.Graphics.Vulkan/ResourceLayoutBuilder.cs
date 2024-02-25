@@ -31,36 +31,15 @@ namespace Ryujinx.Graphics.Vulkan
                 ResourceType.StorageBuffer => PipelineBase.StorageSetIndex,
                 ResourceType.TextureAndSampler or ResourceType.BufferTexture => PipelineBase.TextureSetIndex,
                 ResourceType.Image or ResourceType.BufferImage => PipelineBase.ImageSetIndex,
-<<<<<<< HEAD
                 _ => throw new ArgumentException($"Invalid resource type \"{type}\"."),
             };
 
             _resourceDescriptors[setIndex].Add(new ResourceDescriptor(binding, 1, type, stages));
             _resourceUsages[setIndex].Add(new ResourceUsage(binding, type, stages));
-=======
-                _ => throw new ArgumentException($"Invalid resource type \"{type}\".")
-            };
-
-            ResourceAccess access = IsReadOnlyType(type) ? ResourceAccess.Read : ResourceAccess.ReadWrite;
-
-            _resourceDescriptors[setIndex].Add(new ResourceDescriptor(binding, 1, type, stages));
-            _resourceUsages[setIndex].Add(new ResourceUsage(binding, type, stages, access));
->>>>>>> 1ec71635b (sync with main branch)
 
             return this;
         }
 
-<<<<<<< HEAD
-=======
-        private static bool IsReadOnlyType(ResourceType type)
-        {
-            return type == ResourceType.UniformBuffer ||
-                   type == ResourceType.Sampler ||
-                   type == ResourceType.TextureAndSampler ||
-                   type == ResourceType.BufferTexture;
-        }
-
->>>>>>> 1ec71635b (sync with main branch)
         public ResourceLayout Build()
         {
             var descriptors = new ResourceDescriptorCollection[TotalSets];
@@ -75,8 +54,4 @@ namespace Ryujinx.Graphics.Vulkan
             return new ResourceLayout(descriptors.AsReadOnly(), usages.AsReadOnly());
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

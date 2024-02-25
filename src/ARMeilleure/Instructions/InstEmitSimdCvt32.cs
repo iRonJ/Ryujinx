@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 using ARMeilleure.Decoders;
-=======
-﻿using ARMeilleure.Decoders;
->>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation;
 using System;
 using System.Diagnostics;
 using System.Reflection;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper32;
@@ -122,7 +114,6 @@ namespace ARMeilleure.Instructions
             }
         }
 
-<<<<<<< HEAD
         public static void Vcvt_V_Fixed(ArmEmitterContext context)
         {
             OpCode32SimdCvtFFixed op = (OpCode32SimdCvtFFixed)context.CurrOp;
@@ -152,8 +143,6 @@ namespace ARMeilleure.Instructions
             }
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public static void Vcvt_FD(ArmEmitterContext context)
         {
             OpCode32SimdS op = (OpCode32SimdS)context.CurrOp;
@@ -204,11 +193,7 @@ namespace ARMeilleure.Instructions
                     {
                         Operand m = GetVecA32(op.Vm >> 1);
 
-<<<<<<< HEAD
                         Operand toConvert = InstEmitSimdHelper32Arm64.EmitExtractScalar(context, m, op.Vm, true);
-=======
-                        Operand toConvert = InstEmitSimdHelper32Arm64.EmitExtractScalar(context, m, op.Vm, doubleSize);
->>>>>>> 1ec71635b (sync with main branch)
 
                         Intrinsic inst = (unsigned ? Intrinsic.Arm64FcvtzuGp : Intrinsic.Arm64FcvtzsGp) | Intrinsic.Arm64VDouble;
 
@@ -218,11 +203,7 @@ namespace ARMeilleure.Instructions
                     }
                     else
                     {
-<<<<<<< HEAD
                         InstEmitSimdHelper32Arm64.EmitScalarUnaryOpF32(context, unsigned ? Intrinsic.Arm64FcvtzuS : Intrinsic.Arm64FcvtzsS, false);
-=======
-                        InstEmitSimdHelper32Arm64.EmitScalarUnaryOpF32(context, unsigned ? Intrinsic.Arm64FcvtzuS : Intrinsic.Arm64FcvtzsS);
->>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
                 else if (!roundWithFpscr && Optimizations.UseSse41)
@@ -264,20 +245,14 @@ namespace ARMeilleure.Instructions
             string name = nameof(Math.Round);
 
             MethodInfo info = (op.Size & 1) == 0
-<<<<<<< HEAD
                 ? typeof(MathF).GetMethod(name, new Type[] { typeof(float), typeof(MidpointRounding) })
                 : typeof(Math).GetMethod(name, new Type[] { typeof(double), typeof(MidpointRounding) });
-=======
-                ? typeof(MathF).GetMethod(name, new Type[] { typeof(float),  typeof(MidpointRounding) })
-                : typeof(Math). GetMethod(name, new Type[] { typeof(double), typeof(MidpointRounding) });
->>>>>>> 1ec71635b (sync with main branch)
 
             return context.Call(info, n, Const((int)roundMode));
         }
 
         private static FPRoundingMode RMToRoundMode(int rm)
         {
-<<<<<<< HEAD
             return rm switch
             {
                 0b00 => FPRoundingMode.ToNearestAway,
@@ -286,27 +261,6 @@ namespace ARMeilleure.Instructions
                 0b11 => FPRoundingMode.TowardsMinusInfinity,
                 _ => throw new ArgumentOutOfRangeException(nameof(rm)),
             };
-=======
-            FPRoundingMode roundMode;
-            switch (rm)
-            {
-                case 0b00:
-                    roundMode = FPRoundingMode.ToNearestAway;
-                    break;
-                case 0b01:
-                    roundMode = FPRoundingMode.ToNearest;
-                    break;
-                case 0b10:
-                    roundMode = FPRoundingMode.TowardsPlusInfinity;
-                    break;
-                case 0b11:
-                    roundMode = FPRoundingMode.TowardsMinusInfinity;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(rm));
-            }
-            return roundMode;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         // VCVTA/M/N/P (floating-point).
@@ -323,7 +277,6 @@ namespace ARMeilleure.Instructions
 
             if (Optimizations.UseAdvSimd)
             {
-<<<<<<< HEAD
                 bool doubleSize = floatSize == OperandType.FP64;
 
                 if (doubleSize)
@@ -386,30 +339,6 @@ namespace ARMeilleure.Instructions
 
                     InstEmitSimdHelper32Arm64.EmitScalarUnaryOpF32(context, inst);
                 }
-=======
-                if (unsigned)
-                {
-                    inst = rm switch {
-                        0b00 => Intrinsic.Arm64FcvtauS,
-                        0b01 => Intrinsic.Arm64FcvtnuS,
-                        0b10 => Intrinsic.Arm64FcvtpuS,
-                        0b11 => Intrinsic.Arm64FcvtmuS,
-                        _ => throw new ArgumentOutOfRangeException(nameof(rm))
-                    };
-                }
-                else
-                {
-                    inst = rm switch {
-                        0b00 => Intrinsic.Arm64FcvtasS,
-                        0b01 => Intrinsic.Arm64FcvtnsS,
-                        0b10 => Intrinsic.Arm64FcvtpsS,
-                        0b11 => Intrinsic.Arm64FcvtmsS,
-                        _ => throw new ArgumentOutOfRangeException(nameof(rm))
-                    };
-                }
-
-                InstEmitSimdHelper32Arm64.EmitScalarUnaryOpF32(context, inst);
->>>>>>> 1ec71635b (sync with main branch)
             }
             else if (Optimizations.UseSse41)
             {
@@ -524,21 +453,13 @@ namespace ARMeilleure.Instructions
 
             if (Optimizations.UseAdvSimd)
             {
-<<<<<<< HEAD
                 Intrinsic inst = rm switch
                 {
-=======
-                Intrinsic inst = rm switch {
->>>>>>> 1ec71635b (sync with main branch)
                     0b00 => Intrinsic.Arm64FrintaS,
                     0b01 => Intrinsic.Arm64FrintnS,
                     0b10 => Intrinsic.Arm64FrintpS,
                     0b11 => Intrinsic.Arm64FrintmS,
-<<<<<<< HEAD
                     _ => throw new InvalidOperationException($"{nameof(rm)} contains an invalid value: {rm}"),
-=======
-                    _ => throw new ArgumentOutOfRangeException(nameof(rm))
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 InstEmitSimdHelper32Arm64.EmitScalarUnaryOpF32(context, inst);
@@ -657,7 +578,6 @@ namespace ARMeilleure.Instructions
             }
         }
 
-<<<<<<< HEAD
         // VRINTR (floating-point).
         public static void Vrintr_S(ArmEmitterContext context)
         {
@@ -674,8 +594,6 @@ namespace ARMeilleure.Instructions
             }
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         // VRINTZ (floating-point).
         public static void Vrint_Z(ArmEmitterContext context)
         {

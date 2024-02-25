@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 using ARMeilleure.CodeGen.X86;
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
-=======
-﻿using ARMeilleure.CodeGen.X86;
-using ARMeilleure.IntermediateRepresentation;
-using ARMeilleure.State;
-using ARMeilleure.Translation;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.InteropServices;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
@@ -68,11 +61,7 @@ namespace ARMeilleure.Translation
 
         public static FpFlagsPInvokeTest GenerateFpFlagsPInvokeTest()
         {
-<<<<<<< HEAD
             EmitterContext context = new();
-=======
-            EmitterContext context = new EmitterContext();
->>>>>>> 1ec71635b (sync with main branch)
 
             Operand methodAddress = context.Copy(context.LoadArgument(OperandType.I64, 0));
 
@@ -120,11 +109,7 @@ namespace ARMeilleure.Translation
 
             context.MarkLabel(correct2Label);
 
-<<<<<<< HEAD
             // Call a managed method. This method should not change Fz state.
-=======
-            // Call a managed method. This method should not change Fz state. 
->>>>>>> 1ec71635b (sync with main branch)
 
             context.Call(methodAddress, OperandType.None);
 

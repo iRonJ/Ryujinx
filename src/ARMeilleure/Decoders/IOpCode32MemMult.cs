@@ -12,8 +12,4 @@ namespace ARMeilleure.Decoders
 
         int Offset { get; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

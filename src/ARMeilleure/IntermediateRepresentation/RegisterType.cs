@@ -5,12 +5,6 @@ namespace ARMeilleure.IntermediateRepresentation
         Integer,
         Vector,
         Flag,
-<<<<<<< HEAD
         FpFlag,
     }
 }
-=======
-        FpFlag
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

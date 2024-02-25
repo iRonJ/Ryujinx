@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types
@@ -31,11 +27,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types
             int controlLength = message.Control == null ? 0 : message.Control.Length;
             BsdSocketFlags flags = message.Flags;
 
-<<<<<<< HEAD
             if (!MemoryMarshal.TryWrite(rawData, in msgNameLength))
-=======
-            if (!MemoryMarshal.TryWrite(rawData, ref msgNameLength))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return LinuxError.EFAULT;
             }
@@ -53,11 +45,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types
                 rawData = rawData[msgNameLength..];
             }
 
-<<<<<<< HEAD
             if (!MemoryMarshal.TryWrite(rawData, in iovCount))
-=======
-            if (!MemoryMarshal.TryWrite(rawData, ref iovCount))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return LinuxError.EFAULT;
             }
@@ -70,11 +58,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types
                 {
                     ulong iovLength = (ulong)message.Iov[index].Length;
 
-<<<<<<< HEAD
                     if (!MemoryMarshal.TryWrite(rawData, in iovLength))
-=======
-                    if (!MemoryMarshal.TryWrite(rawData, ref iovLength))
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         return LinuxError.EFAULT;
                     }
@@ -94,11 +78,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types
                 }
             }
 
-<<<<<<< HEAD
             if (!MemoryMarshal.TryWrite(rawData, in controlLength))
-=======
-            if (!MemoryMarshal.TryWrite(rawData, ref controlLength))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return LinuxError.EFAULT;
             }
@@ -116,22 +96,14 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types
                 rawData = rawData[controlLength..];
             }
 
-<<<<<<< HEAD
             if (!MemoryMarshal.TryWrite(rawData, in flags))
-=======
-            if (!MemoryMarshal.TryWrite(rawData, ref flags))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return LinuxError.EFAULT;
             }
 
             rawData = rawData[sizeof(BsdSocketFlags)..];
 
-<<<<<<< HEAD
             if (!MemoryMarshal.TryWrite(rawData, in message.Length))
-=======
-            if (!MemoryMarshal.TryWrite(rawData, ref message.Length))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return LinuxError.EFAULT;
             }

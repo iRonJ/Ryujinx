@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Fatal.Types;
 using System;
 using System.Runtime.InteropServices;
@@ -20,11 +16,7 @@ namespace Ryujinx.HLE.HOS.Services.Fatal
         public ResultCode ThrowFatal(ServiceCtx context)
         {
             ResultCode resultCode = (ResultCode)context.RequestData.ReadUInt64();
-<<<<<<< HEAD
             ulong pid = context.Request.HandleDesc.PId;
-=======
-            ulong      pid        = context.Request.HandleDesc.PId;
->>>>>>> 1ec71635b (sync with main branch)
 
             return ThrowFatalWithCpuContextImpl(context, resultCode, pid, FatalPolicy.ErrorReportAndErrorScreen, null);
         }
@@ -33,15 +25,9 @@ namespace Ryujinx.HLE.HOS.Services.Fatal
         // ThrowFatalWithPolicy(u64 result_code, u32 fatal_policy, u64 pid)
         public ResultCode ThrowFatalWithPolicy(ServiceCtx context)
         {
-<<<<<<< HEAD
             ResultCode resultCode = (ResultCode)context.RequestData.ReadUInt64();
             FatalPolicy fatalPolicy = (FatalPolicy)context.RequestData.ReadUInt32();
             ulong pid = context.Request.HandleDesc.PId;
-=======
-            ResultCode  resultCode  = (ResultCode)context.RequestData.ReadUInt64();
-            FatalPolicy fatalPolicy = (FatalPolicy)context.RequestData.ReadUInt32();
-            ulong       pid         = context.Request.HandleDesc.PId;
->>>>>>> 1ec71635b (sync with main branch)
 
             return ThrowFatalWithCpuContextImpl(context, resultCode, pid, fatalPolicy, null);
         }
@@ -50,21 +36,12 @@ namespace Ryujinx.HLE.HOS.Services.Fatal
         // ThrowFatalWithCpuContext(u64 result_code, u32 fatal_policy, u64 pid, buffer<bytes, 0x15> cpu_context)
         public ResultCode ThrowFatalWithCpuContext(ServiceCtx context)
         {
-<<<<<<< HEAD
             ResultCode resultCode = (ResultCode)context.RequestData.ReadUInt64();
             FatalPolicy fatalPolicy = (FatalPolicy)context.RequestData.ReadUInt32();
             ulong pid = context.Request.HandleDesc.PId;
 
             ulong cpuContextPosition = context.Request.SendBuff[0].Position;
             ulong cpuContextSize = context.Request.SendBuff[0].Size;
-=======
-            ResultCode  resultCode  = (ResultCode)context.RequestData.ReadUInt64();
-            FatalPolicy fatalPolicy = (FatalPolicy)context.RequestData.ReadUInt32();
-            ulong       pid         = context.Request.HandleDesc.PId;
-
-            ulong cpuContextPosition = context.Request.SendBuff[0].Position;
-            ulong cpuContextSize     = context.Request.SendBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             ReadOnlySpan<byte> cpuContextData = context.Memory.GetSpan(cpuContextPosition, (int)cpuContextSize);
 
@@ -73,11 +50,7 @@ namespace Ryujinx.HLE.HOS.Services.Fatal
 
         private ResultCode ThrowFatalWithCpuContextImpl(ServiceCtx context, ResultCode resultCode, ulong pid, FatalPolicy fatalPolicy, ReadOnlySpan<byte> cpuContext)
         {
-<<<<<<< HEAD
             StringBuilder errorReport = new();
-=======
-            StringBuilder errorReport = new StringBuilder();
->>>>>>> 1ec71635b (sync with main branch)
 
             errorReport.AppendLine();
             errorReport.AppendLine("ErrorReport log:");
@@ -171,8 +144,4 @@ namespace Ryujinx.HLE.HOS.Services.Fatal
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -2,28 +2,17 @@
   "Language": "Italiano",
   "MenuBarFileOpenApplet": "Apri Applet",
   "MenuBarFileOpenAppletOpenMiiAppletToolTip": "Apri l'applet Mii Editor in modalità Standalone",
-<<<<<<< HEAD
   "SettingsTabInputDirectMouseAccess": "Accesso diretto mouse",
-=======
-  "SettingsTabInputDirectMouseAccess": "Accesso diretto al mouse",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabSystemMemoryManagerMode": "Modalità di gestione della memoria:",
   "SettingsTabSystemMemoryManagerModeSoftware": "Software",
   "SettingsTabSystemMemoryManagerModeHost": "Host (veloce)",
   "SettingsTabSystemMemoryManagerModeHostUnchecked": "Host Unchecked (più veloce, non sicura)",
-<<<<<<< HEAD
   "SettingsTabSystemUseHypervisor": "Usa Hypervisor",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "MenuBarFile": "_File",
   "MenuBarFileOpenFromFile": "_Carica applicazione da un file",
   "MenuBarFileOpenUnpacked": "Carica _gioco estratto",
   "MenuBarFileOpenEmuFolder": "Apri cartella di Ryujinx",
-<<<<<<< HEAD
   "MenuBarFileOpenLogsFolder": "Apri cartella dei Log",
-=======
-  "MenuBarFileOpenLogsFolder": "Apri cartella dei logs",
->>>>>>> 1ec71635b (sync with main branch)
   "MenuBarFileExit": "_Esci",
   "MenuBarOptions": "Opzioni",
   "MenuBarOptionsToggleFullscreen": "Schermo intero",
@@ -38,21 +27,14 @@
   "MenuBarToolsInstallFirmware": "Installa firmware",
   "MenuBarFileToolsInstallFirmwareFromFile": "Installa un firmware da file XCI o ZIP",
   "MenuBarFileToolsInstallFirmwareFromDirectory": "Installa un firmare da una cartella",
-<<<<<<< HEAD
   "MenuBarToolsManageFileTypes": "Gestisci i tipi di file",
   "MenuBarToolsInstallFileTypes": "Installa i tipi di file",
   "MenuBarToolsUninstallFileTypes": "Disinstalla i tipi di file",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "MenuBarHelp": "Aiuto",
   "MenuBarHelpCheckForUpdates": "Controlla aggiornamenti",
   "MenuBarHelpAbout": "Informazioni",
   "MenuSearch": "Cerca...",
-<<<<<<< HEAD
   "GameListHeaderFavorite": "Preferito",
-=======
-  "GameListHeaderFavorite": "Pref",
->>>>>>> 1ec71635b (sync with main branch)
   "GameListHeaderIcon": "Icona",
   "GameListHeaderApplication": "Nome",
   "GameListHeaderDeveloper": "Sviluppatore",
@@ -92,7 +74,6 @@
   "GameListContextMenuExtractDataLogoToolTip": "Estrae la sezione Logo dall'attuale configurazione dell'applicazione (includendo aggiornamenti)",
   "StatusBarGamesLoaded": "{0}/{1} Giochi caricati",
   "StatusBarSystemVersion": "Versione di sistema: {0}",
-<<<<<<< HEAD
   "LinuxVmMaxMapCountDialogTitle": "Limite basso per le mappature di memoria rilevate",
   "LinuxVmMaxMapCountDialogTextPrimary": "Vuoi aumentare il valore di vm.max_map_count a {0}?",
   "LinuxVmMaxMapCountDialogTextSecondary": "Alcuni giochi potrebbero provare a creare più mappature di memoria di quanto sia attualmente consentito. Ryujinx si bloccherà non appena questo limite viene superato.",
@@ -100,22 +81,16 @@
   "LinuxVmMaxMapCountDialogButtonPersistent": "Sì, in modo permanente",
   "LinuxVmMaxMapCountWarningTextPrimary": "La quantità massima di mappature di memoria è inferiore a quella consigliata.",
   "LinuxVmMaxMapCountWarningTextSecondary": "Il valore corrente di vm.max_map_count ({0}) è inferiore a {1}. Alcuni giochi potrebbero provare a creare più mappature di memoria di quanto sia attualmente consentito. Ryujinx si bloccherà non appena questo limite viene superato.\n\nPotresti voler aumentare manualmente il limite o installare pkexec, il che permette a Ryujinx di assisterlo.",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "Settings": "Impostazioni",
   "SettingsTabGeneral": "Interfaccia utente",
   "SettingsTabGeneralGeneral": "Generali",
   "SettingsTabGeneralEnableDiscordRichPresence": "Attiva Discord Rich Presence",
   "SettingsTabGeneralCheckUpdatesOnLaunch": "Controlla aggiornamenti all'avvio",
   "SettingsTabGeneralShowConfirmExitDialog": "Mostra dialogo \"Conferma Uscita\"",
-<<<<<<< HEAD
   "SettingsTabGeneralHideCursor": "Nascondi il cursore:",
   "SettingsTabGeneralHideCursorNever": "Mai",
   "SettingsTabGeneralHideCursorOnIdle": "Nascondi cursore inattivo",
   "SettingsTabGeneralHideCursorAlways": "Sempre",
-=======
-  "SettingsTabGeneralHideCursorOnIdle": "Nascondi cursore inattivo",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabGeneralGameDirectories": "Cartelle dei giochi",
   "SettingsTabGeneralAdd": "Aggiungi",
   "SettingsTabGeneralRemove": "Rimuovi",
@@ -128,11 +103,7 @@
   "SettingsTabSystemSystemRegionAustralia": "Australia",
   "SettingsTabSystemSystemRegionChina": "Cina",
   "SettingsTabSystemSystemRegionKorea": "Corea",
-<<<<<<< HEAD
   "SettingsTabSystemSystemRegionTaiwan": "Taiwan",
-=======
-  "SettingsTabSystemSystemRegionTaiwan": "Tailandia",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabSystemSystemLanguage": "Lingua del sistema:",
   "SettingsTabSystemSystemLanguageJapanese": "Giapponese",
   "SettingsTabSystemSystemLanguageAmericanEnglish": "Inglese americano",
@@ -201,10 +172,7 @@
   "SettingsTabLoggingEnableFsAccessLogs": "Attiva Fs Access Logs",
   "SettingsTabLoggingFsGlobalAccessLogMode": "Modalità log accesso globale Fs:",
   "SettingsTabLoggingDeveloperOptions": "Opzioni da sviluppatore (AVVISO: Ridurrà le prestazioni)",
-<<<<<<< HEAD
   "SettingsTabLoggingDeveloperOptionsNote": "ATTENZIONE: ridurrà le prestazioni",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabLoggingGraphicsBackendLogLevel": "Livello registro backend grafico:",
   "SettingsTabLoggingGraphicsBackendLogLevelNone": "Nessuno",
   "SettingsTabLoggingGraphicsBackendLogLevelError": "Errore",
@@ -255,7 +223,6 @@
   "ControllerSettingsDPadDown": "Giù",
   "ControllerSettingsDPadLeft": "Sinistra",
   "ControllerSettingsDPadRight": "Destra",
-<<<<<<< HEAD
   "ControllerSettingsStickButton": "Pulsante",
   "ControllerSettingsStickUp": "Su",
   "ControllerSettingsStickDown": "Giù",
@@ -267,28 +234,6 @@
   "ControllerSettingsStickDeadzone": "Zona morta:",
   "ControllerSettingsLStick": "Stick sinistro",
   "ControllerSettingsRStick": "Stick destro",
-=======
-  "ControllerSettingsLStick": "Stick sinistro",
-  "ControllerSettingsLStickButton": "Pulsante",
-  "ControllerSettingsLStickUp": "Su",
-  "ControllerSettingsLStickDown": "Giù",
-  "ControllerSettingsLStickLeft": "Sinistra",
-  "ControllerSettingsLStickRight": "Destra",
-  "ControllerSettingsLStickStick": "Levetta",
-  "ControllerSettingsLStickInvertXAxis": "Inverti stick X",
-  "ControllerSettingsLStickInvertYAxis": "Inverti stick Y",
-  "ControllerSettingsLStickDeadzone": "Zona morta:",
-  "ControllerSettingsRStick": "Stick destro",
-  "ControllerSettingsRStickButton": "Pulsante",
-  "ControllerSettingsRStickUp": "Su",
-  "ControllerSettingsRStickDown": "Giù",
-  "ControllerSettingsRStickLeft": "Sinistra",
-  "ControllerSettingsRStickRight": "Destra",
-  "ControllerSettingsRStickStick": "Levetta",
-  "ControllerSettingsRStickInvertXAxis": "Inverti stick X",
-  "ControllerSettingsRStickInvertYAxis": "Inverti stick Y",
-  "ControllerSettingsRStickDeadzone": "Zona morta:",
->>>>>>> 1ec71635b (sync with main branch)
   "ControllerSettingsTriggersLeft": "Grilletto sinistro",
   "ControllerSettingsTriggersRight": "Grilletto destro",
   "ControllerSettingsTriggersButtonsLeft": "Pulsante dorsale sinistro",
@@ -321,14 +266,9 @@
   "UserProfilesChangeProfileImage": "Cambia immagine profilo",
   "UserProfilesAvailableUserProfiles": "Profili utente disponibili:",
   "UserProfilesAddNewProfile": "Aggiungi nuovo profilo",
-<<<<<<< HEAD
   "UserProfilesDelete": "Elimina",
   "UserProfilesClose": "Chiudi",
   "ProfileNameSelectionWatermark": "Scegli un soprannome",
-=======
-  "UserProfilesDeleteSelectedProfile": "Elimina il profilo selezionato",
-  "UserProfilesClose": "Chiudi",
->>>>>>> 1ec71635b (sync with main branch)
   "ProfileImageSelectionTitle": "Selezione dell'immagine profilo",
   "ProfileImageSelectionHeader": "Scegli un'immagine profilo",
   "ProfileImageSelectionNote": "Puoi importare un'immagine profilo personalizzata o selezionare un avatar dal firmware del sistema",
@@ -349,10 +289,7 @@
   "ControllerSettingsSaveProfileToolTip": "Salva profilo",
   "MenuBarFileToolsTakeScreenshot": "Fai uno screenshot",
   "MenuBarFileToolsHideUi": "Nascondi UI",
-<<<<<<< HEAD
   "GameListContextMenuRunApplication": "Esegui applicazione",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "GameListContextMenuToggleFavorite": "Preferito",
   "GameListContextMenuToggleFavoriteToolTip": "Segna il gioco come preferito",
   "SettingsTabGeneralTheme": "Tema",
@@ -408,13 +345,10 @@
   "DialogFirmwareInstallEmbeddedSuccessMessage": "Non è stato trovato alcun firmware installato, ma Ryujinx è riuscito ad installare il firmware {0} dal gioco fornito.\nL'emulatore si avvierà adesso.",
   "DialogFirmwareNoFirmwareInstalledMessage": "Nessun firmware installato",
   "DialogFirmwareInstalledMessage": "Il firmware {0} è stato installato",
-<<<<<<< HEAD
   "DialogInstallFileTypesSuccessMessage": "Tipi di file installati con successo!",
   "DialogInstallFileTypesErrorMessage": "Impossibile installare i tipi di file.",
   "DialogUninstallFileTypesSuccessMessage": "Tipi di file disinstallati con successo!",
   "DialogUninstallFileTypesErrorMessage": "Disinstallazione dei tipi di file non riuscita.",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DialogOpenSettingsWindowLabel": "Apri finestra delle impostazioni",
   "DialogControllerAppletTitle": "Applet del controller",
   "DialogMessageDialogErrorExceptionMessage": "Errore nella visualizzazione del Message Dialog: {0}",
@@ -446,12 +380,9 @@
   "DialogFirmwareInstallerFirmwareInstallSuccessMessage": "La versione del sistema {0} è stata installata.",
   "DialogUserProfileDeletionWarningMessage": "Non ci sarebbero altri profili da aprire se il profilo selezionato viene cancellato",
   "DialogUserProfileDeletionConfirmMessage": "Vuoi eliminare il profilo selezionato?",
-<<<<<<< HEAD
   "DialogUserProfileUnsavedChangesTitle": "Attenzione - Modifiche Non Salvate",
   "DialogUserProfileUnsavedChangesMessage": "Hai apportato modifiche a questo profilo utente che non sono state salvate.",
   "DialogUserProfileUnsavedChangesSubMessage": "Vuoi scartare le modifiche?",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DialogControllerSettingsModifiedConfirmMessage": "Le attuali impostazioni del controller sono state aggiornate.",
   "DialogControllerSettingsModifiedConfirmSubMessage": "Vuoi salvare?",
   "DialogLoadNcaErrorMessage": "{0}. File errato: {1}",
@@ -493,21 +424,14 @@
   "AmiiboOptionsShowAllLabel": "Mostra tutti gli amiibo",
   "AmiiboOptionsUsRandomTagLabel": "Hack: Usa un tag uuid casuale",
   "DlcManagerTableHeadingEnabledLabel": "Abilitato",
-<<<<<<< HEAD
   "DlcManagerTableHeadingTitleIdLabel": "ID Titolo",
-=======
-  "DlcManagerTableHeadingTitleIdLabel": "Titolo ID",
->>>>>>> 1ec71635b (sync with main branch)
   "DlcManagerTableHeadingContainerPathLabel": "Percorso del contenitore",
   "DlcManagerTableHeadingFullPathLabel": "Percorso completo",
   "DlcManagerRemoveAllButton": "Rimuovi tutti",
   "DlcManagerEnableAllButton": "Abilita tutto",
   "DlcManagerDisableAllButton": "Disabilita tutto",
   "MenuBarOptionsChangeLanguage": "Cambia lingua",
-<<<<<<< HEAD
   "MenuBarShowFileTypes": "Mostra tipi di file",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "CommonSort": "Ordina",
   "CommonShowNames": "Mostra nomi",
   "CommonFavorite": "Preferito",
@@ -537,10 +461,7 @@
   "MemoryManagerSoftwareTooltip": "Usa una software page table per la traduzione degli indirizzi. Massima precisione ma prestazioni più lente.",
   "MemoryManagerHostTooltip": "Mappa direttamente la memoria nello spazio degli indirizzi dell'host. Compilazione ed esecuzione JIT molto più veloce.",
   "MemoryManagerUnsafeTooltip": "Mappa direttamente la memoria, ma non maschera l'indirizzo all'interno dello spazio degli indirizzi guest prima dell'accesso. Più veloce, ma a costo della sicurezza. L'applicazione guest può accedere alla memoria da qualsiasi punto di Ryujinx, quindi esegui solo programmi di cui ti fidi con questa modalità.",
-<<<<<<< HEAD
   "UseHypervisorTooltip": "Usa Hypervisor invece di JIT. Migliora notevolmente le prestazioni quando disponibile, ma può essere instabile nel suo stato attuale.",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DRamTooltip": "Espande l'ammontare di memoria sul sistema emulato da 4GiB A 6GiB",
   "IgnoreMissingServicesTooltip": "Attiva o disattiva l'opzione di ignorare i servizi mancanti",
   "GraphicsBackendThreadingTooltip": "Attiva il Graphics Backend Multithreading",
@@ -623,12 +544,9 @@
   "SwkbdMinCharacters": "Non può avere meno di {0} caratteri",
   "SwkbdMinRangeCharacters": "Può avere da {0} a {1} caratteri",
   "SoftwareKeyboard": "Tastiera software",
-<<<<<<< HEAD
   "SoftwareKeyboardModeNumbersOnly": "Deve essere solo numeri",
   "SoftwareKeyboardModeAlphabet": "Deve essere solo caratteri non CJK",
   "SoftwareKeyboardModeASCII": "Deve essere solo testo ASCII",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DialogControllerAppletMessagePlayerRange": "L'applicazione richiede {0} giocatori con:\n\nTIPI: {1}\n\nGIOCATORI: {2}\n\n{3}Apri le impostazioni e riconfigura l'input adesso o premi Chiudi.",
   "DialogControllerAppletMessage": "L'applicazione richiede esattamente {0} giocatori con:\n\nTIPI: {1}\n\nGIOCATORI: {2}\n\n{3}Apri le impostazioni e riconfigura l'input adesso o premi Chiudi.",
   "DialogControllerAppletDockModeSet": "Modalità TV attivata. Neanche portatile è valida.\n\n",
@@ -674,10 +592,7 @@
   "DlcWindowTitle": "Gestisci DLC dei giochi",
   "UpdateWindowTitle": "Gestisci aggiornamenti dei giochi",
   "CheatWindowHeading": "Cheat disponibiili per {0} [{1}]",
-<<<<<<< HEAD
   "BuildId": "ID Build",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DlcWindowHeading": "DLC disponibili per {0} [{1}]",
   "UserProfilesEditProfile": "Modifica selezionati",
   "Cancel": "Annulla",
@@ -705,11 +620,8 @@
   "SettingsTabHotkeysVolumeDownHotkey": "Diminuire il volume:",
   "SettingsEnableMacroHLE": "Abilita Macro HLE",
   "SettingsEnableMacroHLETooltip": "Emulazione di alto livello del codice Macro GPU.\n\nMigliora le prestazioni, ma può causare anomalie grafiche in alcuni giochi.\n\nLasciare ON se non sei sicuro.",
-<<<<<<< HEAD
   "SettingsEnableColorSpacePassthrough": "Spazio colore passante",
   "SettingsEnableColorSpacePassthroughTooltip": "Indica al backend Vulkan di passare le informazioni sul colore senza specificare uno spazio colore. Per gli utenti con schermi ad ampia gamma, questo può risultare in colori più vivaci, al costo della correttezza del colore.",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "VolumeShort": "Vol",
   "UserProfilesManageSaves": "Gestisci i salvataggi",
   "DeleteUserSave": "Vuoi eliminare il salvataggio utente per questo gioco?",
@@ -721,7 +633,6 @@
   "Search": "Cerca",
   "UserProfilesRecoverLostAccounts": "Recupera il tuo account",
   "Recover": "Recupera",
-<<<<<<< HEAD
   "UserProfilesRecoverHeading": "Sono stati trovati dei salvataggi per i seguenti account",
   "UserProfilesRecoverEmptyList": "Nessun profilo da recuperare",
   "GraphicsAATooltip": "Applica anti-aliasing al rendering del gioco",
@@ -743,7 +654,3 @@
   "AboutChangelogButton": "Visualizza changelog su GitHub",
   "AboutChangelogButtonTooltipMessage": "Clicca per aprire il changelog per questa versione nel tuo browser predefinito."
 }
-=======
-  "UserProfilesRecoverHeading": "Sono stati trovati dei salvataggi per i seguenti account"
-}
->>>>>>> 1ec71635b (sync with main branch)

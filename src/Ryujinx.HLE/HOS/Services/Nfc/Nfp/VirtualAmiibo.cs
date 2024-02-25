@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Configuration;
-=======
-﻿using Ryujinx.Common.Configuration;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Memory;
 using Ryujinx.Common.Utilities;
 using Ryujinx.Cpu;
@@ -12,10 +8,6 @@ using Ryujinx.HLE.HOS.Services.Nfc.Nfp.NfpManager;
 using System;
 using System.Collections.Generic;
 using System.IO;
-<<<<<<< HEAD
-=======
-using System.Linq;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
 {
@@ -23,11 +15,7 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
     {
         private static uint _openedApplicationAreaId;
 
-<<<<<<< HEAD
         private static readonly AmiiboJsonSerializerContext _serializerContext = AmiiboJsonSerializerContext.Default;
-=======
-        private static readonly AmiiboJsonSerializerContext SerializerContext = AmiiboJsonSerializerContext.Default;
->>>>>>> 1ec71635b (sync with main branch)
 
         public static byte[] GenerateUuid(string amiiboId, bool useRandomUuid)
         {
@@ -54,11 +42,7 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
 
             Random.Shared.NextBytes(uuid);
 
-<<<<<<< HEAD
             uuid[3] = (byte)(0x88 ^ uuid[0] ^ uuid[1] ^ uuid[2]);
-=======
-            uuid[3] = (byte)(0x88    ^ uuid[0] ^ uuid[1] ^ uuid[2]);
->>>>>>> 1ec71635b (sync with main branch)
             uuid[8] = (byte)(uuid[3] ^ uuid[4] ^ uuid[5] ^ uuid[6]);
 
             return uuid;
@@ -70,7 +54,6 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
 
             return new CommonInfo()
             {
-<<<<<<< HEAD
                 LastWriteYear = (ushort)amiiboFile.LastWriteDate.Year,
                 LastWriteMonth = (byte)amiiboFile.LastWriteDate.Month,
                 LastWriteDay = (byte)amiiboFile.LastWriteDate.Day,
@@ -78,15 +61,6 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
                 Version = 1,
                 ApplicationAreaSize = AmiiboConstants.ApplicationAreaSize,
                 Reserved = new Array52<byte>(),
-=======
-                LastWriteYear       = (ushort)amiiboFile.LastWriteDate.Year,
-                LastWriteMonth      = (byte)amiiboFile.LastWriteDate.Month,
-                LastWriteDay        = (byte)amiiboFile.LastWriteDate.Day,
-                WriteCounter        = amiiboFile.WriteCounter,
-                Version             = 1,
-                ApplicationAreaSize = AmiiboConstants.ApplicationAreaSize,
-                Reserved            = new Array52<byte>()
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -94,19 +68,13 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
         {
             VirtualAmiiboFile amiiboFile = LoadAmiiboFile(amiiboId);
 
-<<<<<<< HEAD
             UtilityImpl utilityImpl = new(tickSource);
             CharInfo charInfo = new();
-=======
-            UtilityImpl utilityImpl = new UtilityImpl(tickSource);
-            CharInfo    charInfo    = new CharInfo();
->>>>>>> 1ec71635b (sync with main branch)
 
             charInfo.SetFromStoreData(StoreData.BuildDefault(utilityImpl, 0));
 
             charInfo.Nickname = Nickname.FromString(nickname);
 
-<<<<<<< HEAD
             RegisterInfo registerInfo = new()
             {
                 MiiCharInfo = charInfo,
@@ -116,17 +84,6 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
                 FontRegion = 0,
                 Reserved1 = new Array64<byte>(),
                 Reserved2 = new Array58<byte>(),
-=======
-            RegisterInfo registerInfo = new RegisterInfo()
-            {
-                MiiCharInfo     = charInfo,
-                FirstWriteYear  = (ushort)amiiboFile.FirstWriteDate.Year,
-                FirstWriteMonth = (byte)amiiboFile.FirstWriteDate.Month,
-                FirstWriteDay   = (byte)amiiboFile.FirstWriteDate.Day,
-                FontRegion      = 0,
-                Reserved1       = new Array64<byte>(),
-                Reserved2       = new Array58<byte>()
->>>>>>> 1ec71635b (sync with main branch)
             };
             "Ryujinx"u8.CopyTo(registerInfo.Nickname.AsSpan());
 
@@ -137,11 +94,7 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
         {
             VirtualAmiiboFile virtualAmiiboFile = LoadAmiiboFile(amiiboId);
 
-<<<<<<< HEAD
             if (virtualAmiiboFile.ApplicationAreas.Exists(item => item.ApplicationAreaId == applicationAreaId))
-=======
-            if (virtualAmiiboFile.ApplicationAreas.Any(item => item.ApplicationAreaId == applicationAreaId))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 _openedApplicationAreaId = applicationAreaId;
 
@@ -170,11 +123,7 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
         {
             VirtualAmiiboFile virtualAmiiboFile = LoadAmiiboFile(amiiboId);
 
-<<<<<<< HEAD
             if (virtualAmiiboFile.ApplicationAreas.Exists(item => item.ApplicationAreaId == applicationAreaId))
-=======
-            if (virtualAmiiboFile.ApplicationAreas.Any(item => item.ApplicationAreaId == applicationAreaId))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return false;
             }
@@ -182,11 +131,7 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
             virtualAmiiboFile.ApplicationAreas.Add(new VirtualAmiiboApplicationArea()
             {
                 ApplicationAreaId = applicationAreaId,
-<<<<<<< HEAD
                 ApplicationArea = applicationAreaData,
-=======
-                ApplicationArea   = applicationAreaData
->>>>>>> 1ec71635b (sync with main branch)
             });
 
             SaveAmiiboFile(virtualAmiiboFile);
@@ -198,11 +143,7 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
         {
             VirtualAmiiboFile virtualAmiiboFile = LoadAmiiboFile(amiiboId);
 
-<<<<<<< HEAD
             if (virtualAmiiboFile.ApplicationAreas.Exists(item => item.ApplicationAreaId == _openedApplicationAreaId))
-=======
-            if (virtualAmiiboFile.ApplicationAreas.Any(item => item.ApplicationAreaId == _openedApplicationAreaId))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 for (int i = 0; i < virtualAmiiboFile.ApplicationAreas.Count; i++)
                 {
@@ -211,11 +152,7 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
                         virtualAmiiboFile.ApplicationAreas[i] = new VirtualAmiiboApplicationArea()
                         {
                             ApplicationAreaId = _openedApplicationAreaId,
-<<<<<<< HEAD
                             ApplicationArea = applicationAreaData,
-=======
-                            ApplicationArea   = applicationAreaData
->>>>>>> 1ec71635b (sync with main branch)
                         };
 
                         break;
@@ -236,17 +173,12 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
 
             if (File.Exists(filePath))
             {
-<<<<<<< HEAD
                 virtualAmiiboFile = JsonHelper.DeserializeFromFile(filePath, _serializerContext.VirtualAmiiboFile);
-=======
-                virtualAmiiboFile = JsonHelper.DeserializeFromFile(filePath, SerializerContext.VirtualAmiiboFile);
->>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
                 virtualAmiiboFile = new VirtualAmiiboFile()
                 {
-<<<<<<< HEAD
                     FileVersion = 0,
                     TagUuid = Array.Empty<byte>(),
                     AmiiboId = amiiboId,
@@ -254,15 +186,6 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
                     LastWriteDate = DateTime.Now,
                     WriteCounter = 0,
                     ApplicationAreas = new List<VirtualAmiiboApplicationArea>(),
-=======
-                    FileVersion      = 0,
-                    TagUuid          = Array.Empty<byte>(),
-                    AmiiboId         = amiiboId,
-                    FirstWriteDate   = DateTime.Now,
-                    LastWriteDate    = DateTime.Now,
-                    WriteCounter     = 0,
-                    ApplicationAreas = new List<VirtualAmiiboApplicationArea>()
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 SaveAmiiboFile(virtualAmiiboFile);
@@ -274,11 +197,7 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.Nfp
         private static void SaveAmiiboFile(VirtualAmiiboFile virtualAmiiboFile)
         {
             string filePath = Path.Join(AppDataManager.BaseDirPath, "system", "amiibo", $"{virtualAmiiboFile.AmiiboId}.json");
-<<<<<<< HEAD
             JsonHelper.SerializeToFile(filePath, virtualAmiiboFile, _serializerContext.VirtualAmiiboFile);
-=======
-            JsonHelper.SerializeToFile(filePath, virtualAmiiboFile, SerializerContext.VirtualAmiiboFile);
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

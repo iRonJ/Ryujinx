@@ -1,10 +1,6 @@
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.StructuredIr.AstHelper;
 
 namespace Ryujinx.Graphics.Shader.StructuredIr
@@ -113,28 +109,16 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
             if (lLevel > rLevel)
             {
-<<<<<<< HEAD
                 block = lBlock;
                 blockLvl = lLevel;
                 other = rBlock;
-=======
-                block    = lBlock;
-                blockLvl = lLevel;
-                other    = rBlock;
->>>>>>> 1ec71635b (sync with main branch)
                 otherLvl = rLevel;
             }
             else /* if (rLevel > lLevel) */
             {
-<<<<<<< HEAD
                 block = rBlock;
                 blockLvl = rLevel;
                 other = lBlock;
-=======
-                block    = rBlock;
-                blockLvl = rLevel;
-                other    = lBlock;
->>>>>>> 1ec71635b (sync with main branch)
                 otherLvl = lLevel;
             }
 
@@ -159,11 +143,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
             AstBlock[] path = BackwardsPath(block, ParentBlock(stmt.Label));
 
-<<<<<<< HEAD
             AstBlock loopFirstStmt = path[^1];
-=======
-            AstBlock loopFirstStmt = path[path.Length - 1];
->>>>>>> 1ec71635b (sync with main branch)
 
             if (loopFirstStmt.Type == AstBlockType.Else)
             {
@@ -213,11 +193,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
                     loopBlock.AddAfter(child, stmt.Goto);
 
-<<<<<<< HEAD
                     block = loopBlock;
-=======
-                    block  = loopBlock;
->>>>>>> 1ec71635b (sync with main branch)
                     gLevel = loopLevel;
                 }
             }
@@ -275,11 +251,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             for (int index = path.Length - 1; index >= 0; index--)
             {
                 AstBlock child = path[index];
-<<<<<<< HEAD
                 AstBlock last = child;
-=======
-                AstBlock last  = child;
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (child.Type == AstBlockType.If)
                 {
@@ -292,11 +264,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 else if (child.Type == AstBlockType.Else)
                 {
                     // Modify the matching if condition to force the else to be entered by the goto.
-<<<<<<< HEAD
                     if (Previous(child) is not AstBlock ifBlock || ifBlock.Type != AstBlockType.If)
-=======
-                    if (!(Previous(child) is AstBlock ifBlock) || ifBlock.Type != AstBlockType.If)
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         throw new InvalidOperationException("Found an else without a matching if.");
                     }
@@ -363,11 +331,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
         {
             AstBlock block = ParentBlock(stmt.Goto);
 
-<<<<<<< HEAD
             AstBlock newBlock = new(AstBlockType.If, stmt.Condition);
-=======
-            AstBlock newBlock = new AstBlock(AstBlockType.If, stmt.Condition);
->>>>>>> 1ec71635b (sync with main branch)
 
             block.AddAfter(stmt.Goto, newBlock);
 
@@ -375,19 +339,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
         }
 
         private static AstBlock Enclose(
-<<<<<<< HEAD
             AstBlock block,
             AstBlockType type,
             IAstNode cond,
             IAstNode first,
             IAstNode last = null)
-=======
-            AstBlock     block,
-            AstBlockType type,
-            IAstNode     cond,
-            IAstNode     first,
-            IAstNode     last  = null)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (first == last)
             {
@@ -410,11 +366,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 return first as AstBlock;
             }
 
-<<<<<<< HEAD
             AstBlock newBlock = new(type, cond);
-=======
-            AstBlock newBlock = new AstBlock(type, cond);
->>>>>>> 1ec71635b (sync with main branch)
 
             block.AddBefore(first, newBlock);
 
@@ -434,11 +386,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         private static bool BlockMatches(IAstNode node, AstBlockType type, IAstNode cond)
         {
-<<<<<<< HEAD
             if (node is not AstBlock block)
-=======
-            if (!(node is AstBlock block))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return false;
             }
@@ -450,11 +398,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
         {
             if (lCond is AstOperation lCondOp && lCondOp.Inst == Instruction.LogicalNot)
             {
-<<<<<<< HEAD
                 if (rCond is not AstOperation rCondOp || rCondOp.Inst != lCondOp.Inst)
-=======
-                if (!(rCond is AstOperation rCondOp) || rCondOp.Inst != lCondOp.Inst)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     return false;
                 }
@@ -473,11 +417,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 return block.Parent;
             }
 
-<<<<<<< HEAD
             while (node is not AstBlock)
-=======
-            while (!(node is AstBlock))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 node = node.Parent;
             }
@@ -489,11 +429,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
         {
             AstBlock block = bottom;
 
-<<<<<<< HEAD
             List<AstBlock> path = new();
-=======
-            List<AstBlock> path = new List<AstBlock>();
->>>>>>> 1ec71635b (sync with main branch)
 
             while (block != top)
             {
@@ -519,8 +455,4 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             return level;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

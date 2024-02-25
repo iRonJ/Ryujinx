@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Sdk.Sf.Cmif;
 using System;
 using System.Runtime.CompilerServices;
@@ -14,15 +10,9 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
     {
         public const int AutoReceiveStatic = byte.MaxValue;
 
-<<<<<<< HEAD
         public HipcMetadata Meta;
         public HipcMessageData Data;
         public ulong Pid;
-=======
-        public HipcMetadata    Meta;
-        public HipcMessageData Data;
-        public ulong           Pid;
->>>>>>> 1ec71635b (sync with main branch)
 
         public HipcMessage(Span<byte> data)
         {
@@ -32,13 +22,8 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 
             data = data[Unsafe.SizeOf<Header>()..];
 
-<<<<<<< HEAD
             int receiveStaticsCount = 0;
             ulong pid = 0;
-=======
-            int   receiveStaticsCount = 0;
-            ulong pid                 = 0;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (header.ReceiveStaticMode != 0)
             {
@@ -57,24 +42,15 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             if (header.HasSpecialHeader)
             {
                 specialHeader = MemoryMarshal.Cast<byte, SpecialHeader>(data)[0];
-<<<<<<< HEAD
                 data = data[Unsafe.SizeOf<SpecialHeader>()..];
 
                 if (specialHeader.SendPid)
                 {
                     pid = MemoryMarshal.Cast<byte, ulong>(data)[0];
-=======
-                data          = data[Unsafe.SizeOf<SpecialHeader>()..];
-
-                if (specialHeader.SendPid)
-                {
-                    pid  = MemoryMarshal.Cast<byte, ulong>(data)[0];
->>>>>>> 1ec71635b (sync with main branch)
                     data = data[sizeof(ulong)..];
                 }
             }
 
-<<<<<<< HEAD
             Meta = new HipcMetadata
             {
                 Type = (int)header.Type,
@@ -91,29 +67,10 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 
             Data = CreateMessageData(Meta, data, initialLength);
             Pid = pid;
-=======
-            Meta = new HipcMetadata()
-            {
-                Type                 = (int)header.Type,
-                SendStaticsCount     = header.SendStaticsCount,
-                SendBuffersCount     = header.SendBuffersCount,
-                ReceiveBuffersCount  = header.ReceiveBuffersCount,
-                ExchangeBuffersCount = header.ExchangeBuffersCount,
-                DataWordsCount       = header.DataWordsCount,
-                ReceiveStaticsCount  = receiveStaticsCount,
-                SendPid              = specialHeader.SendPid,
-                CopyHandlesCount     = specialHeader.CopyHandlesCount,
-                MoveHandlesCount     = specialHeader.MoveHandlesCount
-            };
-
-            Data = CreateMessageData(Meta, data, initialLength);
-            Pid  = pid;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static HipcMessageData WriteResponse(
             Span<byte> destination,
-<<<<<<< HEAD
             int sendStaticCount,
             int dataWordsCount,
             int copyHandlesCount,
@@ -125,25 +82,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
                 DataWordsCount = dataWordsCount,
                 CopyHandlesCount = copyHandlesCount,
                 MoveHandlesCount = moveHandlesCount,
-=======
-            int        sendStaticCount,
-            int        dataWordsCount,
-            int        copyHandlesCount,
-            int        moveHandlesCount)
-        {
-            return WriteMessage(destination, new HipcMetadata()
-            {
-                SendStaticsCount = sendStaticCount,
-                DataWordsCount   = dataWordsCount,
-                CopyHandlesCount = copyHandlesCount,
-                MoveHandlesCount = moveHandlesCount
->>>>>>> 1ec71635b (sync with main branch)
             });
         }
 
         public static HipcMessageData WriteMessage(Span<byte> destination, HipcMetadata meta)
         {
-<<<<<<< HEAD
             int initialLength = destination.Length;
             bool hasSpecialHeader = meta.SendPid || meta.CopyHandlesCount != 0 || meta.MoveHandlesCount != 0;
 
@@ -157,40 +100,17 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
                 DataWordsCount = meta.DataWordsCount,
                 ReceiveStaticMode = meta.ReceiveStaticsCount != 0 ? (meta.ReceiveStaticsCount != AutoReceiveStatic ? meta.ReceiveStaticsCount + 2 : 2) : 0,
                 HasSpecialHeader = hasSpecialHeader,
-=======
-            int  initialLength    = destination.Length;
-            bool hasSpecialHeader = meta.SendPid || meta.CopyHandlesCount != 0 || meta.MoveHandlesCount != 0;
-
-            MemoryMarshal.Cast<byte, Header>(destination)[0] = new Header()
-            {
-                Type                 = (CommandType)meta.Type,
-                SendStaticsCount     = meta.SendStaticsCount,
-                SendBuffersCount     = meta.SendBuffersCount,
-                ReceiveBuffersCount  = meta.ReceiveBuffersCount,
-                ExchangeBuffersCount = meta.ExchangeBuffersCount,
-                DataWordsCount       = meta.DataWordsCount,
-                ReceiveStaticMode    = meta.ReceiveStaticsCount != 0 ? (meta.ReceiveStaticsCount != AutoReceiveStatic ? meta.ReceiveStaticsCount + 2 : 2) : 0,
-                HasSpecialHeader     = hasSpecialHeader
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             destination = destination[Unsafe.SizeOf<Header>()..];
 
             if (hasSpecialHeader)
             {
-<<<<<<< HEAD
                 MemoryMarshal.Cast<byte, SpecialHeader>(destination)[0] = new SpecialHeader
                 {
                     SendPid = meta.SendPid,
                     CopyHandlesCount = meta.CopyHandlesCount,
                     MoveHandlesCount = meta.MoveHandlesCount,
-=======
-                MemoryMarshal.Cast<byte, SpecialHeader>(destination)[0] = new SpecialHeader()
-                {
-                    SendPid          = meta.SendPid,
-                    CopyHandlesCount = meta.CopyHandlesCount,
-                    MoveHandlesCount = meta.MoveHandlesCount
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 destination = destination[Unsafe.SizeOf<SpecialHeader>()..];
@@ -261,7 +181,6 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             }
 
             Span<uint> dataWords = Span<uint>.Empty;
-<<<<<<< HEAD
             Span<uint> dataWordsPadded = Span<uint>.Empty;
 
             if (meta.DataWordsCount != 0)
@@ -272,16 +191,6 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 
                 dataWords = MemoryMarshal.Cast<byte, uint>(data)[padding..meta.DataWordsCount];
                 dataWordsPadded = MemoryMarshal.Cast<byte, uint>(data)[..meta.DataWordsCount];
-=======
-
-            if (meta.DataWordsCount != 0)
-            {
-                int dataOffset        = initialLength - data.Length;
-                int dataOffsetAligned = BitUtils.AlignUp(dataOffset, 0x10);
-                int padding           = (dataOffsetAligned - dataOffset) / sizeof(uint);
-
-                dataWords = MemoryMarshal.Cast<byte, uint>(data)[padding..meta.DataWordsCount];
->>>>>>> 1ec71635b (sync with main branch)
 
                 data = data[(meta.DataWordsCount * sizeof(uint))..];
             }
@@ -295,7 +204,6 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
                 receiveList = MemoryMarshal.Cast<byte, HipcReceiveListEntry>(data)[..receiveListSize];
             }
 
-<<<<<<< HEAD
             return new HipcMessageData
             {
                 SendStatics = sendStatics,
@@ -307,18 +215,6 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
                 ReceiveList = receiveList,
                 CopyHandles = copyHandles,
                 MoveHandles = moveHandles,
-=======
-            return new HipcMessageData()
-            {
-                SendStatics     = sendStatics,
-                SendBuffers     = sendBuffers,
-                ReceiveBuffers  = receiveBuffers,
-                ExchangeBuffers = exchangeBuffers,
-                DataWords       = dataWords,
-                ReceiveList     = receiveList,
-                CopyHandles     = copyHandles,
-                MoveHandles     = moveHandles
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

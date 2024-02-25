@@ -1,21 +1,11 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Model;
 using Ryujinx.Graphics.GAL.Multithreading.Resources;
-=======
-﻿using Ryujinx.Graphics.GAL.Multithreading.Model;
-using Ryujinx.Graphics.GAL.Multithreading.Resources;
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands.Texture
 {
     struct TextureGetDataSliceCommand : IGALCommand, IGALCommand<TextureGetDataSliceCommand>
     {
-<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.TextureGetDataSlice;
-=======
-        public CommandType CommandType => CommandType.TextureGetDataSlice;
->>>>>>> 1ec71635b (sync with main branch)
         private TableRef<ThreadedTexture> _texture;
         private TableRef<ResultBox<PinnedSpan<byte>>> _result;
         private int _layer;

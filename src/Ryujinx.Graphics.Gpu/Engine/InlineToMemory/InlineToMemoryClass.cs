@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Device;
 using Ryujinx.Graphics.Texture;
 using System;
@@ -57,11 +53,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
                 _state = new DeviceState<InlineToMemoryClassState>(new Dictionary<string, RwCallback>
                 {
                     { nameof(InlineToMemoryClassState.LaunchDma), new RwCallback(LaunchDma, null) },
-<<<<<<< HEAD
                     { nameof(InlineToMemoryClassState.LoadInlineData), new RwCallback(LoadInlineData, null) },
-=======
-                    { nameof(InlineToMemoryClassState.LoadInlineData), new RwCallback(LoadInlineData, null) }
->>>>>>> 1ec71635b (sync with main branch)
                 });
             }
         }
@@ -142,11 +134,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
             if (!_finished)
             {
                 int copySize = Math.Min(data.Length, _buffer.Length - _offset);
-<<<<<<< HEAD
                 data[..copySize].CopyTo(new Span<int>(_buffer).Slice(_offset, copySize));
-=======
-                data.Slice(0, copySize).CopyTo(new Span<int>(_buffer).Slice(_offset, copySize));
->>>>>>> 1ec71635b (sync with main branch)
 
                 _offset += copySize;
 
@@ -181,19 +169,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.InlineToMemory
         {
             var memoryManager = _channel.MemoryManager;
 
-<<<<<<< HEAD
             var data = MemoryMarshal.Cast<int, byte>(_buffer)[.._size];
 
             if (_isLinear && _lineCount == 1)
             {
                 memoryManager.WriteTrackedResource(_dstGpuVa, data[.._lineLengthIn]);
-=======
-            var data = MemoryMarshal.Cast<int, byte>(_buffer).Slice(0, _size);
-
-            if (_isLinear && _lineCount == 1)
-            {
-                memoryManager.WriteTrackedResource(_dstGpuVa, data.Slice(0, _lineLengthIn));
->>>>>>> 1ec71635b (sync with main branch)
                 _context.AdvanceSequence();
             }
             else

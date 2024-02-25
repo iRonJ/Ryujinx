@@ -10,12 +10,6 @@ namespace Ryujinx.Ava.Common
         FileType,
         FileSize,
         Path,
-<<<<<<< HEAD
         Favorite,
     }
 }
-=======
-        Favorite
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

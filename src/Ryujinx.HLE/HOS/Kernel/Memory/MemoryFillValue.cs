@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Kernel.Memory
-=======
-﻿namespace Ryujinx.HLE.HOS.Kernel.Memory
->>>>>>> 1ec71635b (sync with main branch)
 {
     enum MemoryFillValue : byte
     {

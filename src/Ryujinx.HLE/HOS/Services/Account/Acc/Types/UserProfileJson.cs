@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Account.Acc.Types
-=======
-﻿namespace Ryujinx.HLE.HOS.Services.Account.Acc.Types
->>>>>>> 1ec71635b (sync with main branch)
 {
     internal struct UserProfileJson
     {
@@ -13,8 +9,4 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc.Types
         public long LastModifiedTimestamp { get; set; }
         public byte[] Image { get; set; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

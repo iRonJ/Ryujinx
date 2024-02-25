@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Memory.Tracking;
-=======
-﻿using Ryujinx.Memory.Tracking;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Graphics.Gpu.Memory

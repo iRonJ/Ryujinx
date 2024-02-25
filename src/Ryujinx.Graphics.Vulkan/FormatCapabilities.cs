@@ -2,17 +2,13 @@ using Ryujinx.Common.Logging;
 using Ryujinx.Graphics.GAL;
 using Silk.NET.Vulkan;
 using System;
-<<<<<<< HEAD
 using Format = Ryujinx.Graphics.GAL.Format;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using VkFormat = Silk.NET.Vulkan.Format;
 
 namespace Ryujinx.Graphics.Vulkan
 {
     class FormatCapabilities
     {
-<<<<<<< HEAD
         private static readonly GAL.Format[] _scaledFormats = {
             GAL.Format.R8Uscaled,
             GAL.Format.R8Sscaled,
@@ -55,8 +51,6 @@ namespace Ryujinx.Graphics.Vulkan
             GAL.Format.R10G10B10A2Sint,
         };
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         private readonly FormatFeatureFlags[] _bufferTable;
         private readonly FormatFeatureFlags[] _optimalTable;
 
@@ -68,25 +62,15 @@ namespace Ryujinx.Graphics.Vulkan
             _api = api;
             _physicalDevice = physicalDevice;
 
-<<<<<<< HEAD
             int totalFormats = Enum.GetNames(typeof(Format)).Length;
-=======
-            int totalFormats = Enum.GetNames(typeof(GAL.Format)).Length;
->>>>>>> 1ec71635b (sync with main branch)
 
             _bufferTable = new FormatFeatureFlags[totalFormats];
             _optimalTable = new FormatFeatureFlags[totalFormats];
         }
 
-<<<<<<< HEAD
         public bool BufferFormatsSupport(FormatFeatureFlags flags, params Format[] formats)
         {
             foreach (Format format in formats)
-=======
-        public bool BufferFormatsSupport(FormatFeatureFlags flags, params GAL.Format[] formats)
-        {
-            foreach (GAL.Format format in formats)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 if (!BufferFormatSupports(flags, format))
                 {
@@ -97,15 +81,9 @@ namespace Ryujinx.Graphics.Vulkan
             return true;
         }
 
-<<<<<<< HEAD
         public bool OptimalFormatsSupport(FormatFeatureFlags flags, params Format[] formats)
         {
             foreach (Format format in formats)
-=======
-        public bool OptimalFormatsSupport(FormatFeatureFlags flags, params GAL.Format[] formats)
-        {
-            foreach (GAL.Format format in formats)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 if (!OptimalFormatSupports(flags, format))
                 {
@@ -116,11 +94,7 @@ namespace Ryujinx.Graphics.Vulkan
             return true;
         }
 
-<<<<<<< HEAD
         public bool BufferFormatSupports(FormatFeatureFlags flags, Format format)
-=======
-        public bool BufferFormatSupports(FormatFeatureFlags flags, GAL.Format format)
->>>>>>> 1ec71635b (sync with main branch)
         {
             var formatFeatureFlags = _bufferTable[(int)format];
 
@@ -134,7 +108,6 @@ namespace Ryujinx.Graphics.Vulkan
             return (formatFeatureFlags & flags) == flags;
         }
 
-<<<<<<< HEAD
         public bool SupportsScaledVertexFormats()
         {
             // We want to check is all scaled formats are supported,
@@ -162,9 +135,6 @@ namespace Ryujinx.Graphics.Vulkan
         }
 
         public bool OptimalFormatSupports(FormatFeatureFlags flags, Format format)
-=======
-        public bool OptimalFormatSupports(FormatFeatureFlags flags, GAL.Format format)
->>>>>>> 1ec71635b (sync with main branch)
         {
             var formatFeatureFlags = _optimalTable[(int)format];
 
@@ -178,11 +148,7 @@ namespace Ryujinx.Graphics.Vulkan
             return (formatFeatureFlags & flags) == flags;
         }
 
-<<<<<<< HEAD
         public VkFormat ConvertToVkFormat(Format srcFormat)
-=======
-        public VkFormat ConvertToVkFormat(GAL.Format srcFormat)
->>>>>>> 1ec71635b (sync with main branch)
         {
             var format = FormatTable.GetFormat(srcFormat);
 
@@ -211,11 +177,7 @@ namespace Ryujinx.Graphics.Vulkan
                 {
                     format = VkFormat.D32SfloatS8Uint;
                 }
-<<<<<<< HEAD
                 else if (srcFormat == Format.R4G4B4A4Unorm)
-=======
-                else if (srcFormat == GAL.Format.R4G4B4A4Unorm)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     format = VkFormat.R4G4B4A4UnormPack16;
                 }
@@ -228,11 +190,7 @@ namespace Ryujinx.Graphics.Vulkan
             return format;
         }
 
-<<<<<<< HEAD
         public VkFormat ConvertToVertexVkFormat(Format srcFormat)
-=======
-        public VkFormat ConvertToVertexVkFormat(GAL.Format srcFormat)
->>>>>>> 1ec71635b (sync with main branch)
         {
             var format = FormatTable.GetFormat(srcFormat);
 
@@ -242,7 +200,6 @@ namespace Ryujinx.Graphics.Vulkan
                 // The format is not supported. Can we convert it to an alternative format?
                 switch (srcFormat)
                 {
-<<<<<<< HEAD
                     case Format.R16G16B16Float:
                         format = VkFormat.R16G16B16A16Sfloat;
                         break;
@@ -250,15 +207,6 @@ namespace Ryujinx.Graphics.Vulkan
                         format = VkFormat.R16G16B16A16Sint;
                         break;
                     case Format.R16G16B16Uint:
-=======
-                    case GAL.Format.R16G16B16Float:
-                        format = VkFormat.R16G16B16A16Sfloat;
-                        break;
-                    case GAL.Format.R16G16B16Sint:
-                        format = VkFormat.R16G16B16A16Sint;
-                        break;
-                    case GAL.Format.R16G16B16Uint:
->>>>>>> 1ec71635b (sync with main branch)
                         format = VkFormat.R16G16B16A16Uint;
                         break;
                     default:
@@ -270,7 +218,6 @@ namespace Ryujinx.Graphics.Vulkan
             return format;
         }
 
-<<<<<<< HEAD
         public static bool IsD24S8(Format format)
         {
             return format == Format.D24UnormS8Uint || format == Format.S8UintD24Unorm || format == Format.X8UintD24Unorm;
@@ -281,18 +228,6 @@ namespace Ryujinx.Graphics.Vulkan
             return format == Format.R16G16B16Float ||
                    format == Format.R16G16B16Sint ||
                    format == Format.R16G16B16Uint;
-=======
-        public static bool IsD24S8(GAL.Format format)
-        {
-            return format == GAL.Format.D24UnormS8Uint || format == GAL.Format.S8UintD24Unorm;
-        }
-
-        private static bool IsRGB16IntFloat(GAL.Format format)
-        {
-            return format == GAL.Format.R16G16B16Float ||
-                   format == GAL.Format.R16G16B16Sint ||
-                   format == GAL.Format.R16G16B16Uint;
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

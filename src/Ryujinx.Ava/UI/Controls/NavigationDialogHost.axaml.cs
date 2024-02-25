@@ -2,10 +2,6 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Styling;
 using Avalonia.Threading;
-<<<<<<< HEAD
-=======
-using FluentAvalonia.Core;
->>>>>>> 1ec71635b (sync with main branch)
 using FluentAvalonia.UI.Controls;
 using LibHac;
 using LibHac.Common;
@@ -13,10 +9,6 @@ using LibHac.Fs;
 using LibHac.Fs.Shim;
 using Ryujinx.Ava.Common.Locale;
 using Ryujinx.Ava.UI.Helpers;
-<<<<<<< HEAD
-=======
-using Ryujinx.Ava.UI.Models;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Ava.UI.ViewModels;
 using Ryujinx.Ava.UI.Views.User;
 using Ryujinx.HLE.FileSystem;
@@ -25,10 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using UserId = Ryujinx.HLE.HOS.Services.Account.Acc.UserId;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using UserProfile = Ryujinx.Ava.UI.Models.UserProfile;
 
 namespace Ryujinx.Ava.UI.Controls
@@ -66,11 +55,7 @@ namespace Ryujinx.Ava.UI.Controls
             InitializeComponent();
         }
 
-<<<<<<< HEAD
         public void GoBack()
-=======
-        public void GoBack(object parameter = null)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (ContentFrame.BackStack.Count > 0)
             {
@@ -89,22 +74,14 @@ namespace Ryujinx.Ava.UI.Controls
             VirtualFileSystem ownerVirtualFileSystem, HorizonClient ownerHorizonClient)
         {
             var content = new NavigationDialogHost(ownerAccountManager, ownerContentManager, ownerVirtualFileSystem, ownerHorizonClient);
-<<<<<<< HEAD
             ContentDialog contentDialog = new()
-=======
-            ContentDialog contentDialog = new ContentDialog
->>>>>>> 1ec71635b (sync with main branch)
             {
                 Title = LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle],
                 PrimaryButtonText = "",
                 SecondaryButtonText = "",
                 CloseButtonText = "",
                 Content = content,
-<<<<<<< HEAD
                 Padding = new Thickness(0),
-=======
-                Padding = new Thickness(0)
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             contentDialog.Closed += (sender, args) =>
@@ -147,11 +124,7 @@ namespace Ryujinx.Ava.UI.Controls
 
             Span<SaveDataInfo> saveDataInfo = stackalloc SaveDataInfo[10];
 
-<<<<<<< HEAD
             HashSet<UserId> lostAccounts = new();
-=======
-            HashSet<HLE.HOS.Services.Account.Acc.UserId> lostAccounts = new();
->>>>>>> 1ec71635b (sync with main branch)
 
             while (true)
             {
@@ -165,24 +138,15 @@ namespace Ryujinx.Ava.UI.Controls
                 for (int i = 0; i < readCount; i++)
                 {
                     var save = saveDataInfo[i];
-<<<<<<< HEAD
                     var id = new UserId((long)save.UserId.Id.Low, (long)save.UserId.Id.High);
                     if (ViewModel.Profiles.Cast<UserProfile>().FirstOrDefault(x => x.UserId == id) == null)
-=======
-                    var id = new HLE.HOS.Services.Account.Acc.UserId((long)save.UserId.Id.Low, (long)save.UserId.Id.High);
-                    if (ViewModel.Profiles.Cast<UserProfile>().FirstOrDefault( x=> x.UserId == id) == null)
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         lostAccounts.Add(id);
                     }
                 }
             }
 
-<<<<<<< HEAD
             foreach (var account in lostAccounts)
-=======
-            foreach(var account in lostAccounts)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 ViewModel.LostProfiles.Add(new UserProfile(new HLE.HOS.Services.Account.Acc.UserProfile(account, "", null), this));
             }
@@ -201,11 +165,7 @@ namespace Ryujinx.Ava.UI.Controls
 
                 if (profile == null)
                 {
-<<<<<<< HEAD
                     static async void Action()
-=======
-                    async void Action()
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         await ContentDialogHelper.CreateErrorDialog(LocaleManager.Instance[LocaleKeys.DialogUserProfileDeletionWarningMessage]);
                     }
@@ -254,8 +214,4 @@ namespace Ryujinx.Ava.UI.Controls
             Navigate(typeof(UserSaveManagerView), (this, AccountManager, HorizonClient, VirtualFileSystem));
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

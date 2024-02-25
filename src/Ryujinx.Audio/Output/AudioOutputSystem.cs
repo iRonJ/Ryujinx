@@ -18,11 +18,7 @@ namespace Ryujinx.Audio.Output
         /// <summary>
         /// The session the <see cref="AudioOutputSystem"/>.
         /// </summary>
-<<<<<<< HEAD
         private readonly AudioDeviceSession _session;
-=======
-        private AudioDeviceSession _session;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The target device name of the <see cref="AudioOutputSystem"/>.
@@ -47,20 +43,12 @@ namespace Ryujinx.Audio.Output
         /// <summary>
         /// The <see cref="AudioOutputManager"/> owning this.
         /// </summary>
-<<<<<<< HEAD
         private readonly AudioOutputManager _manager;
-=======
-        private AudioOutputManager _manager;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// THe lock of the parent.
         /// </summary>
-<<<<<<< HEAD
         private readonly object _parentLock;
-=======
-        private object _parentLock;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The dispose state.
@@ -102,7 +90,6 @@ namespace Ryujinx.Audio.Output
             {
                 return ResultCode.DeviceNotFound;
             }
-<<<<<<< HEAD
 
             if (configuration.SampleRate != 0 && configuration.SampleRate != Constants.TargetSampleRate)
             {
@@ -110,13 +97,6 @@ namespace Ryujinx.Audio.Output
             }
 
             if (configuration.ChannelCount != 0 && configuration.ChannelCount != 1 && configuration.ChannelCount != 2 && configuration.ChannelCount != 6)
-=======
-            else if (configuration.SampleRate != 0 && configuration.SampleRate != Constants.TargetSampleRate)
-            {
-                return ResultCode.UnsupportedSampleRate;
-            }
-            else if (configuration.ChannelCount != 0 && configuration.ChannelCount != 1 && configuration.ChannelCount != 2 && configuration.ChannelCount != 6)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return ResultCode.UnsupportedChannelConfiguration;
             }
@@ -207,19 +187,11 @@ namespace Ryujinx.Audio.Output
         {
             lock (_parentLock)
             {
-<<<<<<< HEAD
                 AudioBuffer buffer = new()
                 {
                     BufferTag = bufferTag,
                     DataPointer = userBuffer.Data,
                     DataSize = userBuffer.DataSize,
-=======
-                AudioBuffer buffer = new AudioBuffer
-                {
-                    BufferTag = bufferTag,
-                    DataPointer = userBuffer.Data,
-                    DataSize = userBuffer.DataSize
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 if (_session.AppendBuffer(buffer))
@@ -376,11 +348,8 @@ namespace Ryujinx.Audio.Output
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
             if (Interlocked.CompareExchange(ref _disposeState, 1, 0) == 0)
             {
                 Dispose(true);
@@ -397,8 +366,4 @@ namespace Ryujinx.Audio.Output
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

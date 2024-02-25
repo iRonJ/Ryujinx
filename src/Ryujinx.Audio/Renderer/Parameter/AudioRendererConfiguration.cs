@@ -60,11 +60,7 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/unused
         /// </summary>
-<<<<<<< HEAD
         private readonly byte _reserved;
-=======
-        private byte _reserved;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The target rendering device.
@@ -100,8 +96,4 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <seealso cref="Server.BehaviourContext"/>
         public int Revision;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

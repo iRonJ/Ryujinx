@@ -105,11 +105,7 @@ namespace Ryujinx.Graphics.OpenGL
             _colorsCount = colorsCount;
         }
 
-<<<<<<< HEAD
         private static void SetDrawBuffersImpl(int colorsCount)
-=======
-        private void SetDrawBuffersImpl(int colorsCount)
->>>>>>> 1ec71635b (sync with main branch)
         {
             DrawBuffersEnum[] drawBuffers = new DrawBuffersEnum[colorsCount];
 
@@ -123,19 +119,11 @@ namespace Ryujinx.Graphics.OpenGL
 
         private static FramebufferAttachment GetAttachment(Format format)
         {
-<<<<<<< HEAD
             if (FormatTable.IsPackedDepthStencil(format))
             {
                 return FramebufferAttachment.DepthStencilAttachment;
             }
             else if (FormatTable.IsDepthOnly(format))
-=======
-            if (IsPackedDepthStencilFormat(format))
-            {
-                return FramebufferAttachment.DepthStencilAttachment;
-            }
-            else if (IsDepthOnlyFormat(format))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return FramebufferAttachment.DepthAttachment;
             }
@@ -145,21 +133,6 @@ namespace Ryujinx.Graphics.OpenGL
             }
         }
 
-<<<<<<< HEAD
-=======
-        private static bool IsPackedDepthStencilFormat(Format format)
-        {
-            return format == Format.D24UnormS8Uint ||
-                   format == Format.D32FloatS8Uint ||
-                   format == Format.S8UintD24Unorm;
-        }
-
-        private static bool IsDepthOnlyFormat(Format format)
-        {
-            return format == Format.D16Unorm || format == Format.D32Float;
-        }
-
->>>>>>> 1ec71635b (sync with main branch)
         public int GetColorLayerCount(int index)
         {
             return _colors[index]?.Info.GetDepthOrLayers() ?? 0;

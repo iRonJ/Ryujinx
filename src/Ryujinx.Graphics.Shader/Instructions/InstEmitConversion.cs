@@ -2,10 +2,6 @@ using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
 using System;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitAluHelper;
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
@@ -143,11 +139,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     IntegerRound.Floor => context.FPFloor(srcB, srcType.ToInstFPType()),
                     IntegerRound.Ceil => context.FPCeiling(srcB, srcType.ToInstFPType()),
                     IntegerRound.Trunc => context.FPTruncate(srcB, srcType.ToInstFPType()),
-<<<<<<< HEAD
                     _ => srcB,
-=======
-                    _ => srcB
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -182,11 +174,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
         {
             if (dstType == IDstFmt.U64)
             {
-<<<<<<< HEAD
                 context.TranslatorContext.GpuAccessor.Log("Unimplemented 64-bits F2I.");
-=======
-                context.Config.GpuAccessor.Log("Unimplemented 64-bits F2I.");
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             Instruction fpType = srcType.ToInstFPType();
@@ -202,11 +190,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 RoundMode2.Floor => context.FPFloor(srcB, fpType),
                 RoundMode2.Ceil => context.FPCeiling(srcB, fpType),
                 RoundMode2.Trunc => context.FPTruncate(srcB, fpType),
-<<<<<<< HEAD
                 _ => srcB,
-=======
-                _ => srcB
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             if (!isSignedInt)
@@ -313,11 +297,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
         {
             if ((srcType & ~ISrcDstFmt.S8) > ISrcDstFmt.U32 || (dstType & ~ISrcDstFmt.S8) > ISrcDstFmt.U32)
             {
-<<<<<<< HEAD
                 context.TranslatorContext.GpuAccessor.Log("Invalid I2I encoding.");
-=======
-                context.Config.GpuAccessor.Log("Invalid I2I encoding.");
->>>>>>> 1ec71635b (sync with main branch)
                 return;
             }
 
@@ -441,8 +421,4 @@ namespace Ryujinx.Graphics.Shader.Instructions
             return type == DstFmt.F64 ? Instruction.FP64 : Instruction.FP32;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

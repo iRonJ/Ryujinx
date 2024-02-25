@@ -30,8 +30,4 @@ namespace Ryujinx.Graphics.Vulkan.MoltenVK
             vkSetMoltenVKConfigurationMVK(IntPtr.Zero, config, configSize);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

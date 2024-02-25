@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
-=======
-﻿using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd
@@ -16,8 +12,4 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd
 
         LinuxError Write(out int writeSize, ReadOnlySpan<byte> buffer);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

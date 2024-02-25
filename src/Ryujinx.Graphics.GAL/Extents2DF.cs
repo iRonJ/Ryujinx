@@ -15,8 +15,4 @@ namespace Ryujinx.Graphics.GAL
             Y2 = y2;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

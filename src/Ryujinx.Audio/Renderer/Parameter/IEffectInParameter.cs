@@ -50,8 +50,4 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// </summary>
         Span<byte> SpecificData { get; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

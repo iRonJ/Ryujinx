@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Graphics.Nvdec.FFmpeg.Native
 {
     struct AVFrame
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public Array8<IntPtr> Data;
         public Array8<int> LineSize;
         public IntPtr ExtendedData;

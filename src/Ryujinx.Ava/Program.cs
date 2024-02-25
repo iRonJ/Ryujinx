@@ -6,7 +6,6 @@ using Ryujinx.Common;
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.GraphicsDriver;
 using Ryujinx.Common.Logging;
-<<<<<<< HEAD
 using Ryujinx.Common.SystemInterop;
 using Ryujinx.Modules;
 using Ryujinx.SDL2.Common;
@@ -14,15 +13,6 @@ using Ryujinx.UI.Common;
 using Ryujinx.UI.Common.Configuration;
 using Ryujinx.UI.Common.Helper;
 using Ryujinx.UI.Common.SystemInfo;
-=======
-using Ryujinx.Common.SystemInfo;
-using Ryujinx.Common.SystemInterop;
-using Ryujinx.Modules;
-using Ryujinx.SDL2.Common;
-using Ryujinx.Ui.Common;
-using Ryujinx.Ui.Common.Configuration;
-using Ryujinx.Ui.Common.Helper;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -32,24 +22,15 @@ namespace Ryujinx.Ava
 {
     internal partial class Program
     {
-<<<<<<< HEAD
         public static double WindowScaleFactor { get; set; }
         public static double DesktopScaleFactor { get; set; } = 1.0;
         public static string Version { get; private set; }
         public static string ConfigurationPath { get; private set; }
         public static bool PreviewerDetached { get; private set; }
-=======
-        public static double WindowScaleFactor  { get; set; }
-        public static double DesktopScaleFactor { get; set; } = 1.0;
-        public static string Version            { get; private set; }
-        public static string ConfigurationPath  { get; private set; }
-        public static bool   PreviewerDetached  { get; private set; }
->>>>>>> 1ec71635b (sync with main branch)
 
         [LibraryImport("user32.dll", SetLastError = true)]
         public static partial int MessageBoxA(IntPtr hWnd, [MarshalAs(UnmanagedType.LPStr)] string text, [MarshalAs(UnmanagedType.LPStr)] string caption, uint type);
 
-<<<<<<< HEAD
         private const uint MbIconwarning = 0x30;
 
         public static void Main(string[] args)
@@ -59,17 +40,6 @@ namespace Ryujinx.Ava
             if (OperatingSystem.IsWindows() && !OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134))
             {
                 _ = MessageBoxA(IntPtr.Zero, "You are running an outdated version of Windows.\n\nStarting on June 1st 2022, Ryujinx will only support Windows 10 1803 and newer.\n", $"Ryujinx {Version}", MbIconwarning);
-=======
-        private const uint MB_ICONWARNING = 0x30;
-
-        public static void Main(string[] args)
-        {
-            Version = ReleaseInformation.GetVersion();
-
-            if (OperatingSystem.IsWindows() && !OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134))
-            {
-                _ = MessageBoxA(IntPtr.Zero, "You are running an outdated version of Windows.\n\nStarting on June 1st 2022, Ryujinx will only support Windows 10 1803 and newer.\n", $"Ryujinx {Version}", MB_ICONWARNING);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             PreviewerDetached = true;
@@ -88,7 +58,6 @@ namespace Ryujinx.Ava
                 .With(new X11PlatformOptions
                 {
                     EnableMultiTouch = true,
-<<<<<<< HEAD
                     EnableIme = true,
                     EnableInputFocusProxy = true,
                     RenderingMode = new[] { X11RenderingMode.Glx, X11RenderingMode.Software },
@@ -97,18 +66,6 @@ namespace Ryujinx.Ava
                 {
                     WinUICompositionBackdropCornerRadius = 8.0f,
                     RenderingMode = new[] { Win32RenderingMode.AngleEgl, Win32RenderingMode.Software },
-=======
-                    EnableIme        = true,
-                    UseEGL           = false,
-                    UseGpu           = true
-                })
-                .With(new Win32PlatformOptions
-                {
-                    EnableMultitouch                = true,
-                    UseWgl                          = false,
-                    AllowEglInitialization          = false,
-                    CompositionBackdropCornerRadius = 8.0f,
->>>>>>> 1ec71635b (sync with main branch)
                 })
                 .UseSkia();
         }
@@ -125,11 +82,7 @@ namespace Ryujinx.Ava
 
             // Hook unhandled exception and process exit events.
             AppDomain.CurrentDomain.UnhandledException += (sender, e) => ProcessUnhandledException(e.ExceptionObject as Exception, e.IsTerminating);
-<<<<<<< HEAD
             AppDomain.CurrentDomain.ProcessExit += (sender, e) => Exit();
-=======
-            AppDomain.CurrentDomain.ProcessExit        += (sender, e) => Exit();
->>>>>>> 1ec71635b (sync with main branch)
 
             // Setup base data directory.
             AppDataManager.Initialize(CommandLineState.BaseDirPathArg);
@@ -148,11 +101,6 @@ namespace Ryujinx.Ava
 
             ReloadConfig();
 
-<<<<<<< HEAD
-=======
-            ForceDpiAware.Windows();
-
->>>>>>> 1ec71635b (sync with main branch)
             WindowScaleFactor = ForceDpiAware.GetWindowScaleFactor();
 
             // Logging system information.
@@ -178,13 +126,8 @@ namespace Ryujinx.Ava
 
         public static void ReloadConfig()
         {
-<<<<<<< HEAD
             string localConfigurationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ReleaseInformation.ConfigName);
             string appDataConfigurationPath = Path.Combine(AppDataManager.BaseDirPath, ReleaseInformation.ConfigName);
-=======
-            string localConfigurationPath   = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.json");
-            string appDataConfigurationPath = Path.Combine(AppDataManager.BaseDirPath, "Config.json");
->>>>>>> 1ec71635b (sync with main branch)
 
             // Now load the configuration as the other subsystems are now registered
             if (File.Exists(localConfigurationPath))
@@ -245,11 +188,7 @@ namespace Ryujinx.Ava
                     "never" => HideCursorMode.Never,
                     "onidle" => HideCursorMode.OnIdle,
                     "always" => HideCursorMode.Always,
-<<<<<<< HEAD
                     _ => ConfigurationState.Instance.HideCursor.Value,
-=======
-                    _ => ConfigurationState.Instance.HideCursor.Value
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
         }
@@ -295,8 +234,4 @@ namespace Ryujinx.Ava
             Logger.Shutdown();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

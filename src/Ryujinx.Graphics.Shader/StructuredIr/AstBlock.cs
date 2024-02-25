@@ -29,11 +29,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             }
         }
 
-<<<<<<< HEAD
         private readonly LinkedList<IAstNode> _nodes;
-=======
-        private LinkedList<IAstNode> _nodes;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IAstNode First => _nodes.First?.Value;
         public IAstNode Last => _nodes.Last?.Value;
@@ -42,11 +38,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         public AstBlock(AstBlockType type, IAstNode condition = null)
         {
-<<<<<<< HEAD
             Type = type;
-=======
-            Type      = type;
->>>>>>> 1ec71635b (sync with main branch)
             Condition = condition;
 
             _nodes = new LinkedList<IAstNode>();
@@ -122,8 +114,4 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             return GetEnumerator();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

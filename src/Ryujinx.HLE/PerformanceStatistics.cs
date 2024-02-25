@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Timers;
 
 namespace Ryujinx.HLE
 {
     public class PerformanceStatistics
     {
-<<<<<<< HEAD
         private const int FrameTypeGame = 0;
         private const int PercentTypeFifo = 0;
 
@@ -48,46 +43,6 @@ namespace Ryujinx.HLE
 
             _frameLock = new[] { new object() };
             _percentLock = new[] { new object() };
-=======
-        private const int FrameTypeGame   = 0;
-        private const int PercentTypeFifo = 0;
-
-        private double[] _frameRate;
-        private double[] _accumulatedFrameTime;
-        private double[] _previousFrameTime;
-
-        private double[] _averagePercent;
-        private double[] _accumulatedActiveTime;
-        private double[] _percentLastEndTime;
-        private double[] _percentStartTime;
-
-        private long[]   _framesRendered;
-        private double[] _percentTime;
-
-        private object[] _frameLock;
-        private object[] _percentLock;
-
-        private double _ticksToSeconds;
-
-        private Timer _resetTimer;
-
-        public PerformanceStatistics()
-        {
-            _frameRate            = new double[1];
-            _accumulatedFrameTime = new double[1];
-            _previousFrameTime    = new double[1];
-
-            _averagePercent        = new double[1];
-            _accumulatedActiveTime = new double[1];
-            _percentLastEndTime    = new double[1];
-            _percentStartTime      = new double[1];
-
-            _framesRendered = new long[1];
-            _percentTime    = new double[1];
-
-            _frameLock   = new object[] { new object() };
-            _percentLock = new object[] { new object() };
->>>>>>> 1ec71635b (sync with main branch)
 
             _resetTimer = new Timer(750);
 
@@ -116,13 +71,8 @@ namespace Ryujinx.HLE
                     frameRate = _framesRendered[frameType] / _accumulatedFrameTime[frameType];
                 }
 
-<<<<<<< HEAD
                 _frameRate[frameType] = frameRate;
                 _framesRendered[frameType] = 0;
-=======
-                _frameRate[frameType]            = frameRate;
-                _framesRendered[frameType]       = 0;
->>>>>>> 1ec71635b (sync with main branch)
                 _accumulatedFrameTime[frameType] = 0;
             }
         }
@@ -140,13 +90,8 @@ namespace Ryujinx.HLE
                     percent = (_accumulatedActiveTime[percentType] / _percentTime[percentType]) * 100;
                 }
 
-<<<<<<< HEAD
                 _averagePercent[percentType] = percent;
                 _percentTime[percentType] = 0;
-=======
-                _averagePercent[percentType]        = percent;
-                _percentTime[percentType]           = 0;
->>>>>>> 1ec71635b (sync with main branch)
                 _accumulatedActiveTime[percentType] = 0;
             }
         }
@@ -175,31 +120,18 @@ namespace Ryujinx.HLE
 
         private void EndPercentTime(int percentType)
         {
-<<<<<<< HEAD
             double currentTime = PerformanceCounter.ElapsedTicks * _ticksToSeconds;
             double elapsedTime = currentTime - _percentLastEndTime[percentType];
-=======
-            double currentTime       = PerformanceCounter.ElapsedTicks * _ticksToSeconds;
-            double elapsedTime       = currentTime - _percentLastEndTime[percentType];
->>>>>>> 1ec71635b (sync with main branch)
             double elapsedActiveTime = currentTime - _percentStartTime[percentType];
 
             lock (_percentLock[percentType])
             {
                 _accumulatedActiveTime[percentType] += elapsedActiveTime;
-<<<<<<< HEAD
                 _percentTime[percentType] += elapsedTime;
             }
 
             _percentLastEndTime[percentType] = currentTime;
             _percentStartTime[percentType] = 0;
-=======
-                _percentTime[percentType]           += elapsedTime;
-            }
-
-            _percentLastEndTime[percentType] = currentTime;
-            _percentStartTime[percentType]   = 0;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void RecordFrameTime(int frameType)
@@ -232,8 +164,4 @@ namespace Ryujinx.HLE
             return 1000 / _frameRate[FrameTypeGame];
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

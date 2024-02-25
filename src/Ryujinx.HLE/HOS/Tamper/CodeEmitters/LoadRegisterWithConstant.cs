@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Tamper.Operations;
-=======
-﻿using Ryujinx.HLE.HOS.Tamper.Operations;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
 {
@@ -24,11 +20,7 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
 
             Register destinationRegister = context.GetRegister(instruction[RegisterIndex]);
             ulong immediate = InstructionHelper.GetImmediate(instruction, ValueImmediateIndex, ValueImmediateSize);
-<<<<<<< HEAD
             Value<ulong> sourceValue = new(immediate);
-=======
-            Value<ulong> sourceValue = new Value<ulong>(immediate);
->>>>>>> 1ec71635b (sync with main branch)
 
             context.CurrentOperations.Add(new OpMov<ulong>(destinationRegister, sourceValue));
         }

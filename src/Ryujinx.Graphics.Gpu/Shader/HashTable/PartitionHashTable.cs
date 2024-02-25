@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -52,11 +48,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
             /// Partial entries have no items associated with them. They just indicates that the data might be present on
             /// the table, and one must keep looking for the full entry on other tables of larger data size.
             /// </remarks>
-<<<<<<< HEAD
             public readonly bool IsPartial => OwnSize != 0;
-=======
-            public bool IsPartial => OwnSize != 0;
->>>>>>> 1ec71635b (sync with main branch)
 
             /// <summary>
             /// Creates a new partial hash table entry.
@@ -90,19 +82,11 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
             /// Gets the data for this entry, either full or partial.
             /// </summary>
             /// <returns>Data sub-region</returns>
-<<<<<<< HEAD
             public readonly ReadOnlySpan<byte> GetData()
             {
                 if (OwnSize != 0)
                 {
                     return new ReadOnlySpan<byte>(Data)[..OwnSize];
-=======
-            public ReadOnlySpan<byte> GetData()
-            {
-                if (OwnSize != 0)
-                {
-                    return new ReadOnlySpan<byte>(Data).Slice(0, OwnSize);
->>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 return Data;
@@ -155,11 +139,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
                 return existingItem;
             }
 
-<<<<<<< HEAD
             Entry entry = new(dataHash, data, item);
-=======
-            Entry entry = new Entry(dataHash, data, item);
->>>>>>> 1ec71635b (sync with main branch)
 
             AddToBucket(dataHash, ref entry);
 
@@ -180,11 +160,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
                 return false;
             }
 
-<<<<<<< HEAD
             Entry entry = new(dataHash, data, item);
-=======
-            Entry entry = new Entry(dataHash, data, item);
->>>>>>> 1ec71635b (sync with main branch)
 
             AddToBucket(dataHash, ref entry);
 
@@ -199,11 +175,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
         /// <returns>True if added, false otherwise</returns>
         public bool AddPartial(byte[] ownerData, int ownSize)
         {
-<<<<<<< HEAD
             ReadOnlySpan<byte> data = new ReadOnlySpan<byte>(ownerData)[..ownSize];
-=======
-            ReadOnlySpan<byte> data = new ReadOnlySpan<byte>(ownerData).Slice(0, ownSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             return AddPartial(ownerData, HashState.CalcHash(data), ownSize);
         }
@@ -217,22 +189,14 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
         /// <returns>True if added, false otherwise</returns>
         public bool AddPartial(byte[] ownerData, uint dataHash, int ownSize)
         {
-<<<<<<< HEAD
             ReadOnlySpan<byte> data = new ReadOnlySpan<byte>(ownerData)[..ownSize];
-=======
-            ReadOnlySpan<byte> data = new ReadOnlySpan<byte>(ownerData).Slice(0, ownSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (TryFindItem(dataHash, data, out _))
             {
                 return false;
             }
 
-<<<<<<< HEAD
             Entry entry = new(dataHash, ownerData, ownSize);
-=======
-            Entry entry = new Entry(dataHash, ownerData, ownSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             AddToBucket(dataHash, ref entry);
 
@@ -262,11 +226,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
         /// </summary>
         /// <param name="bucket">Bucket to add the entry into</param>
         /// <param name="entry">Entry to be added</param>
-<<<<<<< HEAD
         private static void AddToBucket(ref Bucket bucket, ref Entry entry)
-=======
-        private void AddToBucket(ref Bucket bucket, ref Entry entry)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (bucket.InlineEntry.Data == null)
             {
@@ -379,11 +339,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
             /// <summary>
             /// A full entry was found, the search was concluded and the item can be retrieved.
             /// </summary>
-<<<<<<< HEAD
             FoundFull,
-=======
-            FoundFull
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>

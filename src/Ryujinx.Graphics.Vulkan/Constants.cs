@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.Vulkan
-=======
-﻿namespace Ryujinx.Graphics.Vulkan
->>>>>>> 1ec71635b (sync with main branch)
 {
     static class Constants
     {
@@ -20,11 +16,8 @@ namespace Ryujinx.Graphics.Vulkan
         public const int MaxStorageBufferBindings = MaxStorageBuffersPerStage * MaxShaderStages;
         public const int MaxTextureBindings = MaxTexturesPerStage * MaxShaderStages;
         public const int MaxImageBindings = MaxImagesPerStage * MaxShaderStages;
-<<<<<<< HEAD
         public const int MaxPushDescriptorBinding = 64;
 
         public const ulong SparseBufferAlignment = 0x10000;
-=======
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

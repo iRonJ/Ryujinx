@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.Gpu.Shader;
-=======
-﻿using Ryujinx.Graphics.GAL;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Gpu.Engine.Threed
 {
@@ -43,14 +39,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         public bool DrawIndirect;
 
         /// <summary>
-<<<<<<< HEAD
         /// Indicates that the draw is using the draw parameters on the 3D engine state, rather than inline parameters submitted with the draw command.
         /// </summary>
         public bool DrawUsesEngineState;
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Indicates if any of the currently used vertex shaders reads the instance ID.
         /// </summary>
         public bool VsUsesInstanceId;
@@ -61,14 +54,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         public bool IsAnyVbInstanced;
 
         /// <summary>
-<<<<<<< HEAD
-=======
-        /// Indicates that the draw is writing the base vertex, base instance and draw index to Constant Buffer 0.
-        /// </summary>
-        public bool HasConstantBufferDrawParameters;
-
-        /// <summary>
->>>>>>> 1ec71635b (sync with main branch)
         /// Primitive topology for the next draw.
         /// </summary>
         public PrimitiveTopology Topology;
@@ -76,7 +61,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// <summary>
         /// Index buffer data streamer for inline index buffer updates, such as those used in legacy OpenGL.
         /// </summary>
-<<<<<<< HEAD
         public IbStreamer IbStreamer = new();
 
         /// <summary>
@@ -93,8 +77,5 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// If the vertex shader is emulated on compute, this should be set to the passthrough vertex program, otherwise it should be null.
         /// </summary>
         public IProgram VertexPassthrough;
-=======
-        public IbStreamer IbStreamer = new IbStreamer();
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -3,10 +3,6 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-<<<<<<< HEAD
-=======
-    xmlns:flex="clr-namespace:Avalonia.Flexbox;assembly=Avalonia.Flexbox"
->>>>>>> 1ec71635b (sync with main branch)
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
@@ -16,10 +12,6 @@
     Margin="0,-12,0,0"
     d:DesignHeight="260"
     d:DesignWidth="550"
-<<<<<<< HEAD
-=======
-    x:CompileBindings="True"
->>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModel:AboutWindowViewModel"
     Focusable="True"
     mc:Ignorable="d">
@@ -52,7 +44,6 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-<<<<<<< HEAD
                     <StackPanel
                         Grid.Column="1"
                         Orientation="Horizontal"
@@ -84,26 +75,6 @@
                                 VerticalAlignment="Center" />
                         </WrapPanel>
                     </StackPanel>
-=======
-                    <Image
-                        Grid.Column="0"
-                        Height="80"
-                        Source="resm:Ryujinx.Ui.Common.Resources.Logo_Ryujinx.png?assembly=Ryujinx.Ui.Common" />
-                    <flex:FlexPanel
-                        Grid.Column="2"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Direction="Column"
-                        JustifyContent="SpaceAround"
-                        RowSpacing="2">
-                        <TextBlock
-                            FontSize="28"
-                            FontWeight="Bold"
-                            Text="Ryujinx"
-                            TextAlignment="Left" />
-                        <TextBlock Text="(REE-YOU-JINX)" TextAlignment="Left" />
-                    </flex:FlexPanel>
->>>>>>> 1ec71635b (sync with main branch)
                 </Grid>
                 <TextBlock
                     HorizontalAlignment="Center"
@@ -112,7 +83,6 @@
                     LineHeight="12"
                     Text="{Binding Version}"
                     TextAlignment="Center" />
-<<<<<<< HEAD
                 <Button
                     Padding="5"
                     HorizontalAlignment="Center"
@@ -125,8 +95,6 @@
                         TextAlignment="Center"
                         ToolTip.Tip="{locale:Locale AboutChangelogButtonTooltipMessage}" />
                 </Button>
-=======
->>>>>>> 1ec71635b (sync with main branch)
             </StackPanel>
             <StackPanel
                 Grid.Row="2"
@@ -273,11 +241,7 @@
                     <TextBlock
                         FontSize="10"
                         Text="{locale:Locale AboutRyujinxContributorsButtonHeader}"
-<<<<<<< HEAD
                         TextAlignment="End"
-=======
-                        TextAlignment="Right"
->>>>>>> 1ec71635b (sync with main branch)
                         ToolTip.Tip="{locale:Locale AboutRyujinxMaintainersContentTooltipMessage}" />
                 </Button>
             </StackPanel>
@@ -303,8 +267,4 @@
             </StackPanel>
         </Grid>
     </Grid>
-<<<<<<< HEAD
 </UserControl>
-=======
-</UserControl>
->>>>>>> 1ec71635b (sync with main branch)

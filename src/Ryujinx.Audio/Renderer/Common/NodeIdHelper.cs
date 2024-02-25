@@ -25,8 +25,4 @@ namespace Ryujinx.Audio.Renderer.Common
             return (nodeId >> 16) & 0xFFF;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

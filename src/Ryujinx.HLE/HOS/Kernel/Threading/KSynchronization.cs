@@ -8,11 +8,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
 {
     class KSynchronization
     {
-<<<<<<< HEAD
         private readonly KernelContext _context;
-=======
-        private KernelContext _context;
->>>>>>> 1ec71635b (sync with main branch)
 
         public KSynchronization(KernelContext context)
         {
@@ -72,13 +68,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
                     syncNodes[index] = syncObjs[index].AddWaitingThread(currentThread);
                 }
 
-<<<<<<< HEAD
                 currentThread.WaitingSync = true;
                 currentThread.SignaledObj = null;
-=======
-                currentThread.WaitingSync   = true;
-                currentThread.SignaledObj   = null;
->>>>>>> 1ec71635b (sync with main branch)
                 currentThread.ObjSyncResult = result;
 
                 currentThread.Reschedule(ThreadSchedState.Paused);
@@ -135,11 +126,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
 
                     if ((thread.SchedFlags & ThreadSchedState.LowMask) == ThreadSchedState.Paused)
                     {
-<<<<<<< HEAD
                         thread.SignaledObj = syncObj;
-=======
-                        thread.SignaledObj   = syncObj;
->>>>>>> 1ec71635b (sync with main branch)
                         thread.ObjSyncResult = Result.Success;
 
                         thread.Reschedule(ThreadSchedState.Running);
@@ -152,8 +139,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
             _context.CriticalSection.Leave();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

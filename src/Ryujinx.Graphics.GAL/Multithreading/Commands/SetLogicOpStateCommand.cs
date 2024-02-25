@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetLogicOpStateCommand : IGALCommand, IGALCommand<SetLogicOpStateCommand>
     {
         public readonly CommandType CommandType => CommandType.SetLogicOpState;
-=======
-﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
-{
-    struct SetLogicOpStateCommand : IGALCommand, IGALCommand<SetLogicOpStateCommand>
-    {
-        public CommandType CommandType => CommandType.SetLogicOpState;
->>>>>>> 1ec71635b (sync with main branch)
         private bool _enable;
         private LogicalOp _op;
 

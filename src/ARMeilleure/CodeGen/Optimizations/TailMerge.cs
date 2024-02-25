@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using ARMeilleure.IntermediateRepresentation;
-=======
-﻿using ARMeilleure.IntermediateRepresentation;
->>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.Translation;
 using static ARMeilleure.IntermediateRepresentation.Operation.Factory;
 

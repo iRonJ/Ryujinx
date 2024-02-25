@@ -18,10 +18,7 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         FrontColorDiffuse,
         FrontColorSpecular,
         FrontFacing,
-<<<<<<< HEAD
         GlobalId,
-=======
->>>>>>> 1ec71635b (sync with main branch)
         InstanceId,
         InstanceIndex,
         InvocationId,
@@ -47,12 +44,6 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         VertexId,
         VertexIndex,
         ViewportIndex,
-<<<<<<< HEAD
         ViewportMask,
     }
 }
-=======
-        ViewportMask
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

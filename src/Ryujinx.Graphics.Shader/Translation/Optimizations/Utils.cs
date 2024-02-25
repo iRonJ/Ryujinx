@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using System.Collections.Generic;
-=======
-﻿using Ryujinx.Graphics.Shader.IntermediateRepresentation;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Shader.Translation.Optimizations
 {
@@ -18,11 +14,7 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
 
         public static bool IsInputLoad(INode node, IoVariable ioVariable, int elemIndex)
         {
-<<<<<<< HEAD
             if (node is not Operation operation ||
-=======
-            if (!(node is Operation operation) ||
->>>>>>> 1ec71635b (sync with main branch)
                 operation.Inst != Instruction.Load ||
                 operation.StorageKind != StorageKind.Input ||
                 operation.SourcesCount != 2)
@@ -102,7 +94,6 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
 
             return source;
         }
-<<<<<<< HEAD
 
         public static void DeleteNode(LinkedListNode<INode> node, Operation operation)
         {
@@ -115,7 +106,5 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
 
             operation.Dest = null;
         }
-=======
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -15,11 +15,7 @@ namespace Ryujinx.Graphics.Vic.Types
         TopFieldChromaBottom,
         BottomFieldChromaTop,
         SubPicTopFieldChromaBottom,
-<<<<<<< HEAD
         SubPicBottomFieldChromaTop,
-=======
-        SubPicBottomFieldChromaTop
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class FrameFormatExtensions
@@ -80,8 +76,4 @@ namespace Ryujinx.Graphics.Vic.Types
             return false;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

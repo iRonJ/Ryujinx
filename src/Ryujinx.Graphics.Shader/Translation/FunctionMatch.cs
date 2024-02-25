@@ -7,19 +7,11 @@ namespace Ryujinx.Graphics.Shader.Translation
 {
     static class FunctionMatch
     {
-<<<<<<< HEAD
         private static readonly IPatternTreeNode[] _fsiGetAddressTree = PatternTrees.GetFsiGetAddress();
         private static readonly IPatternTreeNode[] _fsiGetAddressV2Tree = PatternTrees.GetFsiGetAddressV2();
         private static readonly IPatternTreeNode[] _fsiIsLastWarpThreadPatternTree = PatternTrees.GetFsiIsLastWarpThread();
         private static readonly IPatternTreeNode[] _fsiBeginPatternTree = PatternTrees.GetFsiBeginPattern();
         private static readonly IPatternTreeNode[] _fsiEndPatternTree = PatternTrees.GetFsiEndPattern();
-=======
-        private static IPatternTreeNode[] _fsiGetAddressTree = PatternTrees.GetFsiGetAddress();
-        private static IPatternTreeNode[] _fsiGetAddressV2Tree = PatternTrees.GetFsiGetAddressV2();
-        private static IPatternTreeNode[] _fsiIsLastWarpThreadPatternTree = PatternTrees.GetFsiIsLastWarpThread();
-        private static IPatternTreeNode[] _fsiBeginPatternTree = PatternTrees.GetFsiBeginPattern();
-        private static IPatternTreeNode[] _fsiEndPatternTree = PatternTrees.GetFsiEndPattern();
->>>>>>> 1ec71635b (sync with main branch)
 
         public static void RunPass(DecodedProgram program)
         {
@@ -121,11 +113,7 @@ namespace Ryujinx.Graphics.Shader.Translation
         private enum TreeNodeType : byte
         {
             Op,
-<<<<<<< HEAD
             Label,
-=======
-            Label
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private class TreeNode
@@ -162,15 +150,9 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         private static TreeNode[] BuildTree(Block[] blocks)
         {
-<<<<<<< HEAD
             List<TreeNode> nodes = new();
 
             Dictionary<ulong, TreeNode> labels = new();
-=======
-            List<TreeNode> nodes = new List<TreeNode>();
-
-            Dictionary<ulong, TreeNode> labels = new Dictionary<ulong, TreeNode>();
->>>>>>> 1ec71635b (sync with main branch)
 
             TreeNodeUse[] predDefs = new TreeNodeUse[RegisterConsts.PredsCount];
             TreeNodeUse[] gprDefs = new TreeNodeUse[RegisterConsts.GprsCount];
@@ -241,11 +223,7 @@ namespace Ryujinx.Graphics.Shader.Translation
 
                 if (block.Predecessors.Count > 1)
                 {
-<<<<<<< HEAD
                     TreeNode label = new(order++);
-=======
-                    TreeNode label = new TreeNode(order++);
->>>>>>> 1ec71635b (sync with main branch)
                     nodes.Add(label);
                     labels.Add(block.Address, label);
                 }
@@ -254,11 +232,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                 {
                     InstOp op = block.OpCodes[opIndex];
 
-<<<<<<< HEAD
                     TreeNode node = new(op, IsOrderDependant(op.Name) ? order : (byte)0);
-=======
-                    TreeNode node = new TreeNode(op, IsOrderDependant(op.Name) ? order : (byte)0);
->>>>>>> 1ec71635b (sync with main branch)
 
                     // Add uses.
 
@@ -314,11 +288,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                             InstProps.SPd => 30,
                             InstProps.TPd => 51,
                             InstProps.VPd => 45,
-<<<<<<< HEAD
                             _ => throw new InvalidOperationException($"Table has unknown predicate destination {pdType}."),
-=======
-                            _ => throw new InvalidOperationException($"Table has unknown predicate destination {pdType}.")
->>>>>>> 1ec71635b (sync with main branch)
                         };
 
                         byte predIndex = (byte)((op.RawOpCode >> bit) & 7);
@@ -380,11 +350,7 @@ namespace Ryujinx.Graphics.Shader.Translation
             public IPatternTreeNode Node { get; }
             public int Index { get; }
             public bool Inverted { get; }
-<<<<<<< HEAD
             public PatternTreeNodeUse Inv => new(Index, !Inverted, Node);
-=======
-            public PatternTreeNodeUse Inv => new PatternTreeNodeUse(Index, !Inverted, Node);
->>>>>>> 1ec71635b (sync with main branch)
 
             private PatternTreeNodeUse(int index, bool inverted, IPatternTreeNode node)
             {
@@ -407,11 +373,7 @@ namespace Ryujinx.Graphics.Shader.Translation
             public TreeNodeType Type { get; }
             public byte Order { get; }
             public bool IsImm { get; }
-<<<<<<< HEAD
             public PatternTreeNodeUse Out => new(0, this);
-=======
-            public PatternTreeNodeUse Out => new PatternTreeNodeUse(0, this);
->>>>>>> 1ec71635b (sync with main branch)
 
             public PatternTreeNode(InstName name, Func<T, bool> match, TreeNodeType type = TreeNodeType.Op, byte order = 0, bool isImm = false)
             {
@@ -473,11 +435,7 @@ namespace Ryujinx.Graphics.Shader.Translation
             }
 
             DecodedFunction callTarget = program.GetFunctionByAddress(callOp.GetAbsoluteAddress());
-<<<<<<< HEAD
             TreeNode[] callTargetTree;
-=======
-            TreeNode[] callTargetTree = null;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (callTarget == null || !Matches(_fsiIsLastWarpThreadPatternTree, callTargetTree = BuildTree(callTarget.Blocks)))
             {
@@ -590,11 +548,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                             .Use(PT)
                             .Use(orderingTicketValue).Out),
                     Iadd(x: true, 0, 405).Use(PT).Use(RZ),
-<<<<<<< HEAD
                     Ret().Use(PT),
-=======
-                    Ret().Use(PT)
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -622,11 +576,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                                 .Use(PT)
                                 .Use(orderingTicketValue).Out).Out),
                     Iadd(x: true, 0, 405).Use(PT).Use(RZ),
-<<<<<<< HEAD
                     Ret().Use(PT),
-=======
-                    Ret().Use(PT)
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -653,11 +603,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                                         .Use(threadKillValue).OutAt(1))
                                     .Use(RZ).Out).OutAt(1)).Out)
                         .Use(laneIdValue),
-<<<<<<< HEAD
                     Ret().Use(PT),
-=======
-                    Ret().Use(PT)
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -692,11 +638,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                             .Use(PT)
                             .Use(addressLowValue).Out).Inv)
                         .Use(label.Out),
-<<<<<<< HEAD
                     Ret().Use(PT),
-=======
-                    Ret().Use(PT)
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -742,11 +684,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                                 .Use(incrementValue)
                                 .Use(popcResult)
                                 .Use(RZ).Out).Out),
-<<<<<<< HEAD
                     Ret().Use(PT),
-=======
-                    Ret().Use(PT)
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -868,10 +806,6 @@ namespace Ryujinx.Graphics.Shader.Translation
 
             private static PatternTreeNodeUse PT => PTOrRZ();
             private static PatternTreeNodeUse RZ => PTOrRZ();
-<<<<<<< HEAD
-=======
-            private static PatternTreeNodeUse Undef => new PatternTreeNodeUse(0, null);
->>>>>>> 1ec71635b (sync with main branch)
 
             private static PatternTreeNodeUse CallArg(int index)
             {

@@ -41,11 +41,7 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/padding.
         /// </summary>
-<<<<<<< HEAD
         private readonly ushort _reserved1;
-=======
-        private ushort _reserved1;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The id of the mix.
@@ -65,11 +61,7 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/padding.
         /// </summary>
-<<<<<<< HEAD
         private readonly ulong _reserved2;
-=======
-        private ulong _reserved2;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Mix buffer volumes storage.
@@ -89,11 +81,7 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/padding.
         /// </summary>
-<<<<<<< HEAD
         private readonly uint _reserved3;
-=======
-        private uint _reserved3;
->>>>>>> 1ec71635b (sync with main branch)
 
         [StructLayout(LayoutKind.Sequential, Size = 4 * Constants.MixBufferCountMax * Constants.MixBufferCountMax, Pack = 1)]
         private struct MixVolumeArray { }
@@ -104,8 +92,4 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <remarks>Used when no splitter id is specified.</remarks>
         public Span<float> MixBufferVolume => SpanHelpers.AsSpan<MixVolumeArray, float>(ref _mixBufferVolumeArray);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

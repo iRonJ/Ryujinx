@@ -4,11 +4,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class PointerType : BaseNode
     {
-<<<<<<< HEAD
         private readonly BaseNode _child;
-=======
-        private BaseNode _child;
->>>>>>> 1ec71635b (sync with main branch)
 
         public PointerType(BaseNode child) : base(NodeType.PointerType)
         {
@@ -46,8 +42,4 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             _child.PrintRight(writer);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

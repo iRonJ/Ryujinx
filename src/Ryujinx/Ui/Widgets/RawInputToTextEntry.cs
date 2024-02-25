@@ -1,6 +1,6 @@
-﻿using Gtk;
+using Gtk;
 
-namespace Ryujinx.Ui.Widgets
+namespace Ryujinx.UI.Widgets
 {
     public class RawInputToTextEntry : Entry
     {

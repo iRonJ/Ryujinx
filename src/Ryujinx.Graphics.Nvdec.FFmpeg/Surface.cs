@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Nvdec.FFmpeg.Native;
-=======
-﻿using Ryujinx.Graphics.Nvdec.FFmpeg.Native;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Video;
 using System;
 
@@ -15,15 +11,9 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg
         public int RequestedWidth { get; }
         public int RequestedHeight { get; }
 
-<<<<<<< HEAD
         public Plane YPlane => new((IntPtr)Frame->Data[0], Stride * Height);
         public Plane UPlane => new((IntPtr)Frame->Data[1], UvStride * UvHeight);
         public Plane VPlane => new((IntPtr)Frame->Data[2], UvStride * UvHeight);
-=======
-        public Plane YPlane => new Plane((IntPtr)Frame->Data[0], Stride * Height);
-        public Plane UPlane => new Plane((IntPtr)Frame->Data[1], UvStride * UvHeight);
-        public Plane VPlane => new Plane((IntPtr)Frame->Data[2], UvStride * UvHeight);
->>>>>>> 1ec71635b (sync with main branch)
 
         public FrameField Field => Frame->InterlacedFrame != 0 ? FrameField.Interlaced : FrameField.Progressive;
 

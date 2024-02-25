@@ -5,22 +5,13 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class IntegerLiteral : BaseNode
     {
-<<<<<<< HEAD
         private readonly string _literalName;
         private readonly string _literalValue;
-=======
-        private string _literalName;
-        private string _literalValue;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IntegerLiteral(string literalName, string literalValue) : base(NodeType.IntegerLiteral)
         {
             _literalValue = literalValue;
-<<<<<<< HEAD
             _literalName = literalName;
-=======
-            _literalName  = literalName;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void PrintLeft(TextWriter writer)
@@ -48,8 +39,4 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

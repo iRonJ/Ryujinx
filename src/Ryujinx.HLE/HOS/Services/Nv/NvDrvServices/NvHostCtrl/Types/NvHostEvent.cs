@@ -12,7 +12,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl
 {
     class NvHostEvent
     {
-<<<<<<< HEAD
         public NvFence Fence;
         public NvHostEventState State;
         public KEvent Event;
@@ -28,21 +27,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl
         private uint _failingCount;
 
         public readonly object Lock = new();
-=======
-        public NvFence          Fence;
-        public NvHostEventState State;
-        public KEvent           Event;
-        public int              EventHandle;
-
-        private uint                  _eventId;
-        private NvHostSyncpt          _syncpointManager;
-        private SyncpointWaiterHandle _waiterInformation;
-
-        private NvFence _previousFailingFence;
-        private uint    _failingCount;
-
-        public readonly object Lock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Max failing count until waiting on CPU.
@@ -72,15 +56,9 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl
 
         private void ResetFailingState()
         {
-<<<<<<< HEAD
             _previousFailingFence.Id = NvFence.InvalidSyncPointId;
             _previousFailingFence.Value = 0;
             _failingCount = 0;
-=======
-            _previousFailingFence.Id    = NvFence.InvalidSyncPointId;
-            _previousFailingFence.Value = 0;
-            _failingCount               = 0;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void Signal()
@@ -206,8 +184,4 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

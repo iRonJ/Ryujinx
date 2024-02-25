@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Mii
 {
@@ -22,11 +18,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii
             bool useHardcodedData = context.RequestData.ReadBoolean();
 
             _imageCount = 0;
-<<<<<<< HEAD
             _isDirty = false;
-=======
-            _isDirty    = false;
->>>>>>> 1ec71635b (sync with main branch)
 
             context.ResponseData.Write(_isDirty);
 
@@ -46,8 +38,4 @@ namespace Ryujinx.HLE.HOS.Services.Mii
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -59,8 +59,4 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
             return new Operand(OperandType.Undefined);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -68,8 +68,4 @@ namespace Ryujinx.Graphics.Shader.Instructions
             // TODO: X flags.
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

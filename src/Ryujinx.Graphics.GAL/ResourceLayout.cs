@@ -12,19 +12,7 @@ namespace Ryujinx.Graphics.GAL
         TextureAndSampler,
         Image,
         BufferTexture,
-<<<<<<< HEAD
         BufferImage,
-=======
-        BufferImage
-    }
-
-    public enum ResourceAccess : byte
-    {
-        None = 0,
-        Read = 1,
-        Write = 2,
-        ReadWrite = Read | Write
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     [Flags]
@@ -36,11 +24,7 @@ namespace Ryujinx.Graphics.GAL
         TessellationControl = 1 << 2,
         TessellationEvaluation = 1 << 3,
         Geometry = 1 << 4,
-<<<<<<< HEAD
         Fragment = 1 << 5,
-=======
-        Fragment = 1 << 5
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     public readonly struct ResourceDescriptor : IEquatable<ResourceDescriptor>
@@ -72,7 +56,6 @@ namespace Ryujinx.Graphics.GAL
         {
             return Binding == other.Binding && Count == other.Count && Type == other.Type && Stages == other.Stages;
         }
-<<<<<<< HEAD
 
         public static bool operator ==(ResourceDescriptor left, ResourceDescriptor right)
         {
@@ -83,8 +66,6 @@ namespace Ryujinx.Graphics.GAL
         {
             return !(left == right);
         }
-=======
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     public readonly struct ResourceUsage : IEquatable<ResourceUsage>
@@ -92,31 +73,17 @@ namespace Ryujinx.Graphics.GAL
         public int Binding { get; }
         public ResourceType Type { get; }
         public ResourceStages Stages { get; }
-<<<<<<< HEAD
 
         public ResourceUsage(int binding, ResourceType type, ResourceStages stages)
-=======
-        public ResourceAccess Access { get; }
-
-        public ResourceUsage(int binding, ResourceType type, ResourceStages stages, ResourceAccess access)
->>>>>>> 1ec71635b (sync with main branch)
         {
             Binding = binding;
             Type = type;
             Stages = stages;
-<<<<<<< HEAD
-=======
-            Access = access;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override int GetHashCode()
         {
-<<<<<<< HEAD
             return HashCode.Combine(Binding, Type, Stages);
-=======
-            return HashCode.Combine(Binding, Type, Stages, Access);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override bool Equals(object obj)
@@ -126,7 +93,6 @@ namespace Ryujinx.Graphics.GAL
 
         public bool Equals(ResourceUsage other)
         {
-<<<<<<< HEAD
             return Binding == other.Binding && Type == other.Type && Stages == other.Stages;
         }
 
@@ -138,9 +104,6 @@ namespace Ryujinx.Graphics.GAL
         public static bool operator !=(ResourceUsage left, ResourceUsage right)
         {
             return !(left == right);
-=======
-            return Binding == other.Binding && Type == other.Type && Stages == other.Stages && Access == other.Access;
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 
@@ -155,11 +118,7 @@ namespace Ryujinx.Graphics.GAL
 
         public override int GetHashCode()
         {
-<<<<<<< HEAD
             HashCode hasher = new();
-=======
-            HashCode hasher = new HashCode();
->>>>>>> 1ec71635b (sync with main branch)
 
             if (Descriptors != null)
             {
@@ -202,7 +161,6 @@ namespace Ryujinx.Graphics.GAL
 
             return true;
         }
-<<<<<<< HEAD
 
         public static bool operator ==(ResourceDescriptorCollection left, ResourceDescriptorCollection right)
         {
@@ -213,8 +171,6 @@ namespace Ryujinx.Graphics.GAL
         {
             return !(left == right);
         }
-=======
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     public readonly struct ResourceUsageCollection

@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 using Microsoft.IO;
 using Ryujinx.Common.Memory;
 using Ryujinx.Memory;
 using System;
-=======
-﻿using Microsoft.IO;
-using Ryujinx.Common.Memory;
-using Ryujinx.Memory;
-using System;
-using System.IO;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -33,20 +25,12 @@ namespace Ryujinx.Cpu
             }
         }
 
-<<<<<<< HEAD
         public static T Read<T>(IVirtualMemoryManager memory, ulong position) where T : unmanaged
-=======
-        public unsafe static T Read<T>(IVirtualMemoryManager memory, ulong position) where T : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             return MemoryMarshal.Cast<byte, T>(memory.GetSpan(position, Unsafe.SizeOf<T>()))[0];
         }
 
-<<<<<<< HEAD
         public static ulong Write<T>(IVirtualMemoryManager memory, ulong position, T value) where T : unmanaged
-=======
-        public unsafe static ulong Write<T>(IVirtualMemoryManager memory, ulong position, T value) where T : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
         {
             ReadOnlySpan<byte> data = MemoryMarshal.Cast<T, byte>(MemoryMarshal.CreateReadOnlySpan(ref value, 1));
 
@@ -57,7 +41,6 @@ namespace Ryujinx.Cpu
 
         public static string ReadAsciiString(IVirtualMemoryManager memory, ulong position, long maxSize = -1)
         {
-<<<<<<< HEAD
             using RecyclableMemoryStream ms = MemoryStreamManager.Shared.GetStream();
 
             for (long offs = 0; offs < maxSize || maxSize == -1; offs++)
@@ -76,24 +59,3 @@ namespace Ryujinx.Cpu
         }
     }
 }
-=======
-            using (RecyclableMemoryStream ms = MemoryStreamManager.Shared.GetStream())
-            {
-                for (long offs = 0; offs < maxSize || maxSize == -1; offs++)
-                {
-                    byte value = memory.Read<byte>(position + (ulong)offs);
-
-                    if (value == 0)
-                    {
-                        break;
-                    }
-
-                    ms.WriteByte(value);
-                }
-
-                return Encoding.ASCII.GetString(ms.GetReadOnlySequence());
-            }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

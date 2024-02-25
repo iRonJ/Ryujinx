@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Runtime.InteropServices;
-=======
-﻿using System.Runtime.InteropServices;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Applets.Error
 {
@@ -13,8 +9,4 @@ namespace Ryujinx.HLE.HOS.Applets.Error
         public uint Description;
         public uint ResultCode;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

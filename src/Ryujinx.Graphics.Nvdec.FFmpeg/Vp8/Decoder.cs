@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Nvdec.FFmpeg.Native;
-=======
-﻿using Ryujinx.Graphics.Nvdec.FFmpeg.Native;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Video;
 using System;
 
@@ -12,11 +8,7 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg.Vp8
     {
         public bool IsHardwareAccelerated => false;
 
-<<<<<<< HEAD
         private readonly FFmpegContext _context = new(AVCodecID.AV_CODEC_ID_VP8);
-=======
-        private readonly FFmpegContext _context = new FFmpegContext(AVCodecID.AV_CODEC_ID_VP8);
->>>>>>> 1ec71635b (sync with main branch)
 
         public ISurface CreateSurface(int width, int height)
         {
@@ -51,19 +43,11 @@ namespace Ryujinx.Graphics.Nvdec.FFmpeg.Vp8
                 frame[9] = (byte)((pictureInfo.FrameHeight >> 8) & 0x3F);
             }
 
-<<<<<<< HEAD
             bitstream.CopyTo(new Span<byte>(frame)[uncompHeaderSize..]);
-=======
-            bitstream.CopyTo(new Span<byte>(frame).Slice(uncompHeaderSize));
->>>>>>> 1ec71635b (sync with main branch)
 
             return _context.DecodeFrame(outSurf, frame) == 0;
         }
 
         public void Dispose() => _context.Dispose();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.FileSystem;
-=======
-﻿using Ryujinx.HLE.FileSystem;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Kernel.Common;
 using Ryujinx.HLE.HOS.Services.Spl.Types;
 
@@ -62,15 +58,10 @@ namespace Ryujinx.HLE.HOS.Services.Spl
         {
             configValue = default;
 
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             SystemVersion version = context.Device.System.ContentManager.GetCurrentFirmwareVersion();
 #pragma warning restore IDE0059
             MemorySize memorySize = context.Device.Configuration.MemoryConfiguration.ToKernelMemorySize();
-=======
-            SystemVersion version    = context.Device.System.ContentManager.GetCurrentFirmwareVersion();
-            MemorySize    memorySize = context.Device.Configuration.MemoryConfiguration.ToKernelMemorySize();
->>>>>>> 1ec71635b (sync with main branch)
 
             switch (configItem)
             {
@@ -91,15 +82,9 @@ namespace Ryujinx.HLE.HOS.Services.Spl
                         configValue = (ulong)DramId.IcosaSamsung4GiB;
                     }
                     break;
-<<<<<<< HEAD
                 case ConfigItem.SecurityEngineInterruptNumber:
                     return SmcResult.NotImplemented;
                 case ConfigItem.FuseVersion:
-=======
-                case ConfigItem.SecurityEngineInterruptNumber: 
-                    return SmcResult.NotImplemented;
-                case ConfigItem.FuseVersion: 
->>>>>>> 1ec71635b (sync with main branch)
                     return SmcResult.NotImplemented;
                 case ConfigItem.HardwareType:
                     configValue = (ulong)HardwareType.Icosa;
@@ -110,11 +95,7 @@ namespace Ryujinx.HLE.HOS.Services.Spl
                 case ConfigItem.IsRecoveryBoot:
                     configValue = 0;
                     break;
-<<<<<<< HEAD
                 case ConfigItem.DeviceId:
-=======
-                case ConfigItem.DeviceId: 
->>>>>>> 1ec71635b (sync with main branch)
                     return SmcResult.NotImplemented;
                 case ConfigItem.BootReason:
                     // This was removed in firmware 4.0.0.
@@ -144,8 +125,4 @@ namespace Ryujinx.HLE.HOS.Services.Spl
             return SmcResult.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

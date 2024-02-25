@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Configuration.Hid.Controller.Motion;
-=======
-﻿using Ryujinx.Common.Configuration.Hid.Controller.Motion;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Text.Json.Serialization;
 
 namespace Ryujinx.Common.Configuration.Hid.Controller
 {
-<<<<<<< HEAD
     public class GenericControllerInputConfig<TButton, TStick> : GenericInputConfigurationCommon<TButton> where TButton : unmanaged where TStick : unmanaged
-=======
-    public class GenericControllerInputConfig<Button, Stick> : GenericInputConfigurationCommon<Button> where Button : unmanaged where Stick : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
     {
         [JsonIgnore]
         private float _deadzoneLeft;
@@ -24,20 +16,12 @@ namespace Ryujinx.Common.Configuration.Hid.Controller
         /// <summary>
         /// Left JoyCon Controller Stick Bindings
         /// </summary>
-<<<<<<< HEAD
         public JoyconConfigControllerStick<TButton, TStick> LeftJoyconStick { get; set; }
-=======
-        public JoyconConfigControllerStick<Button, Stick> LeftJoyconStick { get; set; }
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Right JoyCon Controller Stick Bindings
         /// </summary>
-<<<<<<< HEAD
         public JoyconConfigControllerStick<TButton, TStick> RightJoyconStick { get; set; }
-=======
-        public JoyconConfigControllerStick<Button, Stick> RightJoyconStick { get; set; }
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Controller Left Analog Stick Deadzone

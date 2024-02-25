@@ -238,11 +238,7 @@ namespace Ryujinx.Memory.Range
 
             if (index < 0)
             {
-<<<<<<< HEAD
                 return default;
-=======
-                return default(T);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return _items[index].Value;
@@ -402,11 +398,7 @@ namespace Ryujinx.Memory.Range
         /// <returns>List index of the item, or complement index of nearest item with lower value on the list</returns>
         private int BinarySearch(ulong address)
         {
-<<<<<<< HEAD
             int left = 0;
-=======
-            int left  = 0;
->>>>>>> 1ec71635b (sync with main branch)
             int right = Count - 1;
 
             while (left <= right)
@@ -443,11 +435,7 @@ namespace Ryujinx.Memory.Range
         /// <returns>List index of the item, or complement index of nearest item with lower value on the list</returns>
         private int BinarySearch(ulong address, ulong endAddress)
         {
-<<<<<<< HEAD
             int left = 0;
-=======
-            int left  = 0;
->>>>>>> 1ec71635b (sync with main branch)
             int right = Count - 1;
 
             while (left <= right)
@@ -492,8 +480,4 @@ namespace Ryujinx.Memory.Range
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
 {
@@ -43,12 +39,6 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
         // FIXME: Probably a button on Lark.
         Unknown29 = 1 << 29,
 
-<<<<<<< HEAD
         HandheldLeftB = 1 << 30,
     }
 }
-=======
-        HandheldLeftB = 1 << 30
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Device;
 using Ryujinx.Graphics.Gpu.Engine.Threed;
 using Ryujinx.Graphics.Gpu.Memory;
@@ -34,21 +30,13 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
             SrcLinear = 1 << 7,
             DstLinear = 1 << 8,
             MultiLineEnable = 1 << 9,
-<<<<<<< HEAD
             RemapEnable = 1 << 10,
-=======
-            RemapEnable = 1 << 10
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
         /// Texture parameters for copy.
         /// </summary>
-<<<<<<< HEAD
         private readonly struct TextureParams
-=======
-        private struct TextureParams
->>>>>>> 1ec71635b (sync with main branch)
         {
             /// <summary>
             /// Copy region X coordinate.
@@ -121,11 +109,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
             _3dEngine = threedEngine;
             _state = new DeviceState<DmaClassState>(new Dictionary<string, RwCallback>
             {
-<<<<<<< HEAD
                 { nameof(DmaClassState.LaunchDma), new RwCallback(LaunchDma, null) },
-=======
-                { nameof(DmaClassState.LaunchDma), new RwCallback(LaunchDma, null) }
->>>>>>> 1ec71635b (sync with main branch)
             });
         }
 
@@ -227,10 +211,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
             int xCount = (int)_state.State.LineLengthIn;
             int yCount = (int)_state.State.LineCount;
 
-<<<<<<< HEAD
             _channel.TextureManager.RefreshModifiedTextures();
-=======
->>>>>>> 1ec71635b (sync with main branch)
             _3dEngine.CreatePendingSyncs();
             _3dEngine.FlushUboDirty();
 
@@ -296,7 +277,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
 
                 ReadOnlySpan<byte> srcSpan = memoryManager.GetSpan(srcGpuVa + (ulong)srcBaseOffset, srcSize, true);
 
-<<<<<<< HEAD
                 // If remapping is disabled, we always copy the components directly, in order.
                 // If it's enabled, but the mapping is just XYZW, we also copy them in order.
                 bool isIdentityRemap = !remap ||
@@ -313,12 +293,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
                 // and not for block linear to linear copies, since those are typically accessed from the CPU.
 
                 if (completeSource && completeDest && !(dstLinear && !srcLinear) && isIdentityRemap)
-=======
-                bool completeSource = IsTextureCopyComplete(src, srcLinear, srcBpp, srcStride, xCount, yCount);
-                bool completeDest = IsTextureCopyComplete(dst, dstLinear, dstBpp, dstStride, xCount, yCount);
-
-                if (completeSource && completeDest)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     var target = memoryManager.Physical.TextureCache.FindTexture(
                         memoryManager,
@@ -384,21 +358,8 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
                 // all be rewritten to use pooled arrays, but that gets complicated with packed data and strides
                 Span<byte> dstSpan = memoryManager.GetSpan(dstGpuVa + (ulong)dstBaseOffset, dstSize).ToArray();
 
-<<<<<<< HEAD
                 TextureParams srcParams = new(srcRegionX, srcRegionY, srcBaseOffset, srcBpp, srcLinear, srcCalculator);
                 TextureParams dstParams = new(dstRegionX, dstRegionY, dstBaseOffset, dstBpp, dstLinear, dstCalculator);
-=======
-                TextureParams srcParams = new TextureParams(srcRegionX, srcRegionY, srcBaseOffset, srcBpp, srcLinear, srcCalculator);
-                TextureParams dstParams = new TextureParams(dstRegionX, dstRegionY, dstBaseOffset, dstBpp, dstLinear, dstCalculator);
-
-                // If remapping is enabled, we always copy the components directly, in order.
-                // If it's enabled, but the mapping is just XYZW, we also copy them in order.
-                bool isIdentityRemap = !remap ||
-                    (_state.State.SetRemapComponentsDstX == SetRemapComponentsDst.SrcX &&
-                    (dstComponents < 2 || _state.State.SetRemapComponentsDstY == SetRemapComponentsDst.SrcY) &&
-                    (dstComponents < 3 || _state.State.SetRemapComponentsDstZ == SetRemapComponentsDst.SrcZ) &&
-                    (dstComponents < 4 || _state.State.SetRemapComponentsDstW == SetRemapComponentsDst.SrcW));
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (isIdentityRemap)
                 {
@@ -407,7 +368,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
 
                     switch (srcBpp)
                     {
-<<<<<<< HEAD
                         case 1:
                             Copy<byte>(dstSpan, srcSpan, dstParams, srcParams);
                             break;
@@ -428,15 +388,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
                             break;
                         default:
                             throw new NotSupportedException($"Unable to copy ${srcBpp} bpp pixel format.");
-=======
-                        case 1: Copy<byte>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        case 2: Copy<ushort>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        case 4: Copy<uint>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        case 8: Copy<ulong>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        case 12: Copy<Bpp12Pixel>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        case 16: Copy<Vector128<byte>>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        default: throw new NotSupportedException($"Unable to copy ${srcBpp} bpp pixel format.");
->>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
                 else
@@ -445,7 +396,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
 
                     switch (componentSize)
                     {
-<<<<<<< HEAD
                         case 1:
                             CopyShuffle<byte>(dstSpan, srcSpan, dstParams, srcParams);
                             break;
@@ -460,13 +410,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
                             break;
                         default:
                             throw new NotSupportedException($"Unable to copy ${componentSize} component size.");
-=======
-                        case 1: CopyShuffle<byte>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        case 2: CopyShuffle<ushort>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        case 3: CopyShuffle<UInt24>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        case 4: CopyShuffle<uint>(dstSpan, srcSpan, dstParams, srcParams); break;
-                        default: throw new NotSupportedException($"Unable to copy ${componentSize} component size.");
->>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
 
@@ -610,17 +553,12 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
                     0 => _state.State.SetRemapComponentsDstX,
                     1 => _state.State.SetRemapComponentsDstY,
                     2 => _state.State.SetRemapComponentsDstZ,
-<<<<<<< HEAD
                     _ => _state.State.SetRemapComponentsDstW,
-=======
-                    _ => _state.State.SetRemapComponentsDstW
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 switch (componentsDst)
                 {
                     case SetRemapComponentsDst.SrcX:
-<<<<<<< HEAD
                         Copy<T>(dstSpan[(Unsafe.SizeOf<T>() * i)..], srcSpan, dst, src);
                         break;
                     case SetRemapComponentsDst.SrcY:
@@ -637,24 +575,6 @@ namespace Ryujinx.Graphics.Gpu.Engine.Dma
                         break;
                     case SetRemapComponentsDst.ConstB:
                         Fill<T>(dstSpan[(Unsafe.SizeOf<T>() * i)..], dst, Unsafe.As<uint, T>(ref _state.State.SetRemapConstB));
-=======
-                        Copy<T>(dstSpan.Slice(Unsafe.SizeOf<T>() * i), srcSpan, dst, src);
-                        break;
-                    case SetRemapComponentsDst.SrcY:
-                        Copy<T>(dstSpan.Slice(Unsafe.SizeOf<T>() * i), srcSpan.Slice(Unsafe.SizeOf<T>()), dst, src);
-                        break;
-                    case SetRemapComponentsDst.SrcZ:
-                        Copy<T>(dstSpan.Slice(Unsafe.SizeOf<T>() * i), srcSpan.Slice(Unsafe.SizeOf<T>() * 2), dst, src);
-                        break;
-                    case SetRemapComponentsDst.SrcW:
-                        Copy<T>(dstSpan.Slice(Unsafe.SizeOf<T>() * i), srcSpan.Slice(Unsafe.SizeOf<T>() * 3), dst, src);
-                        break;
-                    case SetRemapComponentsDst.ConstA:
-                        Fill<T>(dstSpan.Slice(Unsafe.SizeOf<T>() * i), dst, Unsafe.As<uint, T>(ref _state.State.SetRemapConstA));
-                        break;
-                    case SetRemapComponentsDst.ConstB:
-                        Fill<T>(dstSpan.Slice(Unsafe.SizeOf<T>() * i), dst, Unsafe.As<uint, T>(ref _state.State.SetRemapConstB));
->>>>>>> 1ec71635b (sync with main branch)
                         break;
                 }
             }

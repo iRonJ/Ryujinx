@@ -14,20 +14,11 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
         {
             _infoTable = new InstInfo[(int)Instruction.Count];
 
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
             Add(Instruction.AtomicAdd,                InstType.AtomicBinary,   "atomicAdd");
             Add(Instruction.AtomicAnd,                InstType.AtomicBinary,   "atomicAnd");
             Add(Instruction.AtomicCompareAndSwap,     InstType.AtomicTernary,  "atomicCompSwap");
             Add(Instruction.AtomicMaxU32,             InstType.AtomicBinary,   "atomicMax");
-=======
-            Add(Instruction.AtomicAdd,                InstType.AtomicBinary,   "atomicAdd");
-            Add(Instruction.AtomicAnd,                InstType.AtomicBinary,   "atomicAnd");
-            Add(Instruction.AtomicCompareAndSwap,     InstType.AtomicTernary,  "atomicCompSwap");
-            Add(Instruction.AtomicMaxS32,             InstType.CallTernary,    HelperFunctionNames.AtomicMaxS32);
-            Add(Instruction.AtomicMaxU32,             InstType.AtomicBinary,   "atomicMax");
-            Add(Instruction.AtomicMinS32,             InstType.CallTernary,    HelperFunctionNames.AtomicMinS32);
->>>>>>> 1ec71635b (sync with main branch)
             Add(Instruction.AtomicMinU32,             InstType.AtomicBinary,   "atomicMin");
             Add(Instruction.AtomicOr,                 InstType.AtomicBinary,   "atomicOr");
             Add(Instruction.AtomicSwap,               InstType.AtomicBinary,   "atomicExchange");
@@ -91,12 +82,6 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             Add(Instruction.ImageAtomic,              InstType.Special);
             Add(Instruction.IsNan,                    InstType.CallUnary,      "isnan");
             Add(Instruction.Load,                     InstType.Special);
-<<<<<<< HEAD
-=======
-            Add(Instruction.LoadLocal,                InstType.Special);
-            Add(Instruction.LoadShared,               InstType.Special);
-            Add(Instruction.LoadStorage,              InstType.Special);
->>>>>>> 1ec71635b (sync with main branch)
             Add(Instruction.Lod,                      InstType.Special);
             Add(Instruction.LogarithmB2,              InstType.CallUnary,      "log2");
             Add(Instruction.LogicalAnd,               InstType.OpBinaryCom,    "&&",              9);
@@ -123,7 +108,6 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             Add(Instruction.ShiftLeft,                InstType.OpBinary,       "<<",              3);
             Add(Instruction.ShiftRightS32,            InstType.OpBinary,       ">>",              3);
             Add(Instruction.ShiftRightU32,            InstType.OpBinary,       ">>",              3);
-<<<<<<< HEAD
             Add(Instruction.Shuffle,                  InstType.Special);
             Add(Instruction.ShuffleDown,              InstType.CallBinary,     "subgroupShuffleDown");
             Add(Instruction.ShuffleUp,                InstType.CallBinary,     "subgroupShuffleUp");
@@ -136,26 +120,6 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             Add(Instruction.TextureSample,            InstType.Special);
             Add(Instruction.TextureQuerySamples,      InstType.Special);
             Add(Instruction.TextureQuerySize,         InstType.Special);
-=======
-            Add(Instruction.Shuffle,                  InstType.CallQuaternary, HelperFunctionNames.Shuffle);
-            Add(Instruction.ShuffleDown,              InstType.CallQuaternary, HelperFunctionNames.ShuffleDown);
-            Add(Instruction.ShuffleUp,                InstType.CallQuaternary, HelperFunctionNames.ShuffleUp);
-            Add(Instruction.ShuffleXor,               InstType.CallQuaternary, HelperFunctionNames.ShuffleXor);
-            Add(Instruction.Sine,                     InstType.CallUnary,      "sin");
-            Add(Instruction.SquareRoot,               InstType.CallUnary,      "sqrt");
-            Add(Instruction.Store,                    InstType.Special);
-            Add(Instruction.StoreLocal,               InstType.Special);
-            Add(Instruction.StoreShared,              InstType.Special);
-            Add(Instruction.StoreShared16,            InstType.Special);
-            Add(Instruction.StoreShared8,             InstType.Special);
-            Add(Instruction.StoreStorage,             InstType.Special);
-            Add(Instruction.StoreStorage16,           InstType.Special);
-            Add(Instruction.StoreStorage8,            InstType.Special);
-            Add(Instruction.Subtract,                 InstType.OpBinary,       "-",               2);
-            Add(Instruction.SwizzleAdd,               InstType.CallTernary,    HelperFunctionNames.SwizzleAdd);
-            Add(Instruction.TextureSample,            InstType.Special);
-            Add(Instruction.TextureSize,              InstType.Special);
->>>>>>> 1ec71635b (sync with main branch)
             Add(Instruction.Truncate,                 InstType.CallUnary,      "trunc");
             Add(Instruction.UnpackDouble2x32,         InstType.Special);
             Add(Instruction.UnpackHalf2x16,           InstType.Special);
@@ -163,10 +127,7 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             Add(Instruction.VoteAll,                  InstType.CallUnary,      "allInvocationsARB");
             Add(Instruction.VoteAllEqual,             InstType.CallUnary,      "allInvocationsEqualARB");
             Add(Instruction.VoteAny,                  InstType.CallUnary,      "anyInvocationARB");
-<<<<<<< HEAD
 #pragma warning restore IDE0055
-=======
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void Add(Instruction inst, InstType flags, string opName = null, int precedence = 0)
@@ -205,11 +166,7 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
         {
             // If the node isn't a operation, then it can only be a operand,
             // and those never needs to be surrounded in parenthesis.
-<<<<<<< HEAD
             if (node is not AstOperation operation)
-=======
-            if (!(node is AstOperation operation))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 // This is sort of a special case, if this is a negative constant,
                 // and it is consumed by a unary operation, we need to put on the parenthesis,
@@ -254,11 +211,7 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
 
         private static bool IsNegativeConst(IAstNode node)
         {
-<<<<<<< HEAD
             if (node is not AstOperand operand)
-=======
-            if (!(node is AstOperand operand))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return false;
             }
@@ -266,8 +219,4 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             return operand.Type == OperandType.Constant && operand.Value < 0;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -11,8 +11,4 @@ namespace ARMeilleure.Decoders
             Rm = opCode & 0xf;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

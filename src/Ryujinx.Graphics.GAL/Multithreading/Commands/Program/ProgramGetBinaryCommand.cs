@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Model;
-=======
-﻿using Ryujinx.Graphics.GAL.Multithreading.Model;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL.Multithreading.Resources;
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands.Program
 {
     struct ProgramGetBinaryCommand : IGALCommand, IGALCommand<ProgramGetBinaryCommand>
     {
-<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.ProgramGetBinary;
-=======
-        public CommandType CommandType => CommandType.ProgramGetBinary;
->>>>>>> 1ec71635b (sync with main branch)
         private TableRef<ThreadedProgram> _program;
         private TableRef<ResultBox<byte[]>> _result;
 

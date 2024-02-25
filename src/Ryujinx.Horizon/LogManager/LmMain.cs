@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Horizon.LogManager
-=======
-﻿namespace Ryujinx.Horizon.LogManager
->>>>>>> 1ec71635b (sync with main branch)
 {
     class LmMain : IService
     {
@@ -18,8 +14,4 @@ namespace Ryujinx.Horizon.LogManager
             ipcServer.Shutdown();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

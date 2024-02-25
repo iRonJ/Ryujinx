@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
 
 namespace Ryujinx.Graphics.Vic.Types
@@ -15,22 +14,6 @@ namespace Ryujinx.Graphics.Vic.Types
 #pragma warning disable IDE0051 // Remove unused private member
         private readonly long _word7;
 #pragma warning restore IDE0051
-=======
-﻿using Ryujinx.Common.Utilities;
-
-namespace Ryujinx.Graphics.Vic.Types
-{
-    struct SlotConfig
-    {
-        private long _word0;
-        private long _word1;
-        private long _word2;
-        private long _word3;
-        private long _word4;
-        private long _word5;
-        private long _word6;
-        private long _word7;
->>>>>>> 1ec71635b (sync with main branch)
 
         public bool SlotEnable => _word0.Extract(0);
         public bool DeNoise => _word0.Extract(1);

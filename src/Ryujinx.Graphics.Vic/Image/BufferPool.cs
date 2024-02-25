@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Vic.Image
 {
@@ -38,11 +34,7 @@ namespace Ryujinx.Graphics.Vic.Image
         {
             int index = RentMinimum(length, out T[] bufferArray);
 
-<<<<<<< HEAD
             buffer = new Span<T>(bufferArray)[..length];
-=======
-            buffer = new Span<T>(bufferArray).Slice(0, length);
->>>>>>> 1ec71635b (sync with main branch)
 
             return index;
         }

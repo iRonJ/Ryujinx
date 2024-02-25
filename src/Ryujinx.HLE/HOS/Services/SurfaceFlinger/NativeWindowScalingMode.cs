@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 {
     enum NativeWindowScalingMode : uint
@@ -8,16 +7,5 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         ScaleCrop = 2,
         Unknown = 3,
         NoScaleCrop = 4,
-=======
-﻿namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
-{
-    enum NativeWindowScalingMode : uint
-    {
-        Freeze        = 0,
-        ScaleToWindow = 1,
-        ScaleCrop     = 2,
-        Unknown       = 3,
-        NoScaleCrop   = 4,
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

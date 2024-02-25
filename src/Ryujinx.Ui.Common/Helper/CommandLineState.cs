@@ -1,19 +1,19 @@
 using Ryujinx.Common.Logging;
 using System.Collections.Generic;
 
-namespace Ryujinx.Ui.Common.Helper
+namespace Ryujinx.UI.Common.Helper
 {
     public static class CommandLineState
     {
         public static string[] Arguments { get; private set; }
 
-        public static bool?  OverrideDockedMode      { get; private set; }
+        public static bool? OverrideDockedMode { get; private set; }
         public static string OverrideGraphicsBackend { get; private set; }
-        public static string OverrideHideCursor      { get; private set; }
-        public static string BaseDirPathArg          { get; private set; }
-        public static string Profile                 { get; private set; }
-        public static string LaunchPathArg           { get; private set; }
-        public static bool   StartFullscreenArg      { get; private set; }
+        public static string OverrideHideCursor { get; private set; }
+        public static string BaseDirPathArg { get; private set; }
+        public static string Profile { get; private set; }
+        public static string LaunchPathArg { get; private set; }
+        public static bool StartFullscreenArg { get; private set; }
 
         public static void ParseArguments(string[] args)
         {

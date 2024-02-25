@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -15,20 +11,12 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         public const int CharCount = 10;
         private const int SizeConst = (CharCount + 1) * 2;
 
-<<<<<<< HEAD
         private Array22<byte> _storage;
-=======
-        private byte _storage;
->>>>>>> 1ec71635b (sync with main branch)
 
         public static Nickname Default => FromString("no name");
         public static Nickname Question => FromString("???");
 
-<<<<<<< HEAD
         public Span<byte> Raw => _storage.AsSpan();
-=======
-        public Span<byte> Raw => MemoryMarshal.CreateSpan(ref _storage, SizeConst);
->>>>>>> 1ec71635b (sync with main branch)
 
         private ReadOnlySpan<ushort> Characters => MemoryMarshal.Cast<byte, ushort>(Raw);
 
@@ -61,11 +49,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         public bool IsValid()
         {
             // Create a new unicode encoding instance with error checking enabled
-<<<<<<< HEAD
             UnicodeEncoding unicodeEncoding = new(false, false, true);
-=======
-            UnicodeEncoding unicodeEncoding = new UnicodeEncoding(false, false, true);
->>>>>>> 1ec71635b (sync with main branch)
 
             try
             {
@@ -94,17 +78,10 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         {
             if (data.Length > SizeConst)
             {
-<<<<<<< HEAD
                 data = data[..SizeConst];
             }
 
             Nickname result = new();
-=======
-                data = data.Slice(0, SizeConst);
-            }
-
-            Nickname result = new Nickname();
->>>>>>> 1ec71635b (sync with main branch)
 
             data.CopyTo(result.Raw);
 

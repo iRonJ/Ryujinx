@@ -1,8 +1,4 @@
 using Ryujinx.Common.Logging;
-<<<<<<< HEAD
-=======
-using Ryujinx.Graphics.GAL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu.Image;
 using Ryujinx.Graphics.Shader;
 using Ryujinx.Graphics.Shader.Translation;
@@ -22,10 +18,6 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         private readonly ShaderSpecializationState _newSpecState;
         private readonly int _stageIndex;
         private readonly bool _isVulkan;
-<<<<<<< HEAD
-=======
-        private readonly ResourceCounts _resourceCounts;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Creates a new instance of the cached GPU state accessor for shader translation.
@@ -51,16 +43,12 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
             _newSpecState = newSpecState;
             _stageIndex = stageIndex;
             _isVulkan = context.Capabilities.Api == TargetApi.Vulkan;
-<<<<<<< HEAD
 
             if (stageIndex == (int)ShaderStage.Geometry - 1)
             {
                 // Only geometry shaders require the primitive topology.
                 newSpecState.RecordPrimitiveTopology();
             }
-=======
-            _resourceCounts = counts;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <inheritdoc/>
@@ -71,11 +59,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
                 throw new DiskCacheLoadException(DiskCacheLoadResult.InvalidCb1DataLength);
             }
 
-<<<<<<< HEAD
             return MemoryMarshal.Cast<byte, uint>(_cb1Data.Span[offset..])[0];
-=======
-            return MemoryMarshal.Cast<byte, uint>(_cb1Data.Span.Slice(offset))[0];
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <inheritdoc/>
@@ -87,53 +71,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         /// <inheritdoc/>
         public ReadOnlySpan<ulong> GetCode(ulong address, int minimumSize)
         {
-<<<<<<< HEAD
             return MemoryMarshal.Cast<byte, ulong>(_data.Span[(int)address..]);
-=======
-            return MemoryMarshal.Cast<byte, ulong>(_data.Span.Slice((int)address));
-        }
-
-        /// <inheritdoc/>
-        public bool QueryAlphaToCoverageDitherEnable()
-        {
-            return _oldSpecState.GraphicsState.AlphaToCoverageEnable && _oldSpecState.GraphicsState.AlphaToCoverageDitherEnable;
-        }
-
-        /// <inheritdoc/>
-        public AlphaTestOp QueryAlphaTestCompare()
-        {
-            if (!_isVulkan || !_oldSpecState.GraphicsState.AlphaTestEnable)
-            {
-                return AlphaTestOp.Always;
-            }
-
-            return _oldSpecState.GraphicsState.AlphaTestCompare switch
-            {
-                CompareOp.Never or CompareOp.NeverGl => AlphaTestOp.Never,
-                CompareOp.Less or CompareOp.LessGl => AlphaTestOp.Less,
-                CompareOp.Equal or CompareOp.EqualGl => AlphaTestOp.Equal,
-                CompareOp.LessOrEqual or CompareOp.LessOrEqualGl => AlphaTestOp.LessOrEqual,
-                CompareOp.Greater or CompareOp.GreaterGl => AlphaTestOp.Greater,
-                CompareOp.NotEqual or CompareOp.NotEqualGl => AlphaTestOp.NotEqual,
-                CompareOp.GreaterOrEqual or CompareOp.GreaterOrEqualGl => AlphaTestOp.GreaterOrEqual,
-                _ => AlphaTestOp.Always
-            };
-        }
-
-        /// <inheritdoc/>
-        public float QueryAlphaTestReference() => _oldSpecState.GraphicsState.AlphaTestReference;
-
-        /// <inheritdoc/>
-        public AttributeType QueryAttributeType(int location)
-        {
-            return _oldSpecState.GraphicsState.AttributeTypes[location];
-        }
-
-        /// <inheritdoc/>
-        public AttributeType QueryFragmentOutputType(int location)
-        {
-            return _oldSpecState.GraphicsState.FragmentOutputTypes[location];
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <inheritdoc/>
@@ -159,67 +97,18 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         }
 
         /// <inheritdoc/>
-<<<<<<< HEAD
         public GpuGraphicsState QueryGraphicsState()
         {
             return _oldSpecState.GraphicsState.CreateShaderGraphicsState(!_isVulkan, _isVulkan || _oldSpecState.GraphicsState.YNegateEnabled);
         }
 
         /// <inheritdoc/>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public bool QueryHasConstantBufferDrawParameters()
         {
             return _oldSpecState.GraphicsState.HasConstantBufferDrawParameters;
         }
 
         /// <inheritdoc/>
-<<<<<<< HEAD
-=======
-        public bool QueryDualSourceBlendEnable()
-        {
-            return _oldSpecState.GraphicsState.DualSourceBlendEnable;
-        }
-
-        /// <inheritdoc/>
-        public InputTopology QueryPrimitiveTopology()
-        {
-            _newSpecState.RecordPrimitiveTopology();
-            return ConvertToInputTopology(_oldSpecState.GraphicsState.Topology, _oldSpecState.GraphicsState.TessellationMode);
-        }
-
-        /// <inheritdoc/>
-        public bool QueryProgramPointSize()
-        {
-            return _oldSpecState.GraphicsState.ProgramPointSizeEnable;
-        }
-
-        /// <inheritdoc/>
-        public float QueryPointSize()
-        {
-            return _oldSpecState.GraphicsState.PointSize;
-        }
-
-        /// <inheritdoc/>
-        public bool QueryTessCw()
-        {
-            return _oldSpecState.GraphicsState.TessellationMode.UnpackCw();
-        }
-
-        /// <inheritdoc/>
-        public TessPatchType QueryTessPatchType()
-        {
-            return _oldSpecState.GraphicsState.TessellationMode.UnpackPatchType();
-        }
-
-        /// <inheritdoc/>
-        public TessSpacing QueryTessSpacing()
-        {
-            return _oldSpecState.GraphicsState.TessellationMode.UnpackSpacing();
-        }
-
-        /// <inheritdoc/>
->>>>>>> 1ec71635b (sync with main branch)
         public TextureFormat QueryTextureFormat(int handle, int cbufSlot)
         {
             _newSpecState.RecordTextureFormat(_stageIndex, handle, cbufSlot);
@@ -242,15 +131,6 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         }
 
         /// <inheritdoc/>
-<<<<<<< HEAD
-=======
-        public bool QueryTransformDepthMinusOneToOne()
-        {
-            return _oldSpecState.GraphicsState.DepthMode;
-        }
-
-        /// <inheritdoc/>
->>>>>>> 1ec71635b (sync with main branch)
         public bool QueryTransformFeedbackEnabled()
         {
             return _oldSpecState.TransformFeedbackDescriptors != null;
@@ -269,31 +149,12 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         }
 
         /// <inheritdoc/>
-<<<<<<< HEAD
-=======
-        public bool QueryEarlyZForce()
-        {
-            _newSpecState.RecordEarlyZForce();
-            return _oldSpecState.GraphicsState.EarlyZForce;
-        }
-
-        /// <inheritdoc/>
->>>>>>> 1ec71635b (sync with main branch)
         public bool QueryHasUnalignedStorageBuffer()
         {
             return _oldSpecState.GraphicsState.HasUnalignedStorageBuffer || _oldSpecState.ComputeState.HasUnalignedStorageBuffer;
         }
 
         /// <inheritdoc/>
-<<<<<<< HEAD
-=======
-        public bool QueryViewportTransformDisable()
-        {
-            return _oldSpecState.GraphicsState.ViewportTransformDisable;
-        }
-
-        /// <inheritdoc/>
->>>>>>> 1ec71635b (sync with main branch)
         public void RegisterTexture(int handle, int cbufSlot)
         {
             if (!_oldSpecState.TextureRegistered(_stageIndex, handle, cbufSlot))

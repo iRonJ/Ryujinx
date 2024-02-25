@@ -13,12 +13,6 @@ namespace Ryujinx.Audio.Common
         /// <summary>
         /// The audio device is stopped.
         /// </summary>
-<<<<<<< HEAD
         Stopped,
     }
 }
-=======
-        Stopped
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

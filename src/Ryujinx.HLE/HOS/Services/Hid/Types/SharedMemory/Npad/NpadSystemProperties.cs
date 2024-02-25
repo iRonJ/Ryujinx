@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
 {
@@ -23,10 +19,6 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
         IsSlSrButtonOriented = 1 << 12,
         IsPlusAvailable = 1 << 13,
         IsMinusAvailable = 1 << 14,
-<<<<<<< HEAD
         IsDirectionalButtonsAvailable = 1 << 15,
-=======
-        IsDirectionalButtonsAvailable = 1 << 15
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

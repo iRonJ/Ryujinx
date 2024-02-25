@@ -26,7 +26,6 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
             context.RequestData.BaseStream.Position += 4;
 
             long offset = context.RequestData.ReadInt64();
-<<<<<<< HEAD
             long size = context.RequestData.ReadInt64();
 
             using var region = context.Memory.GetWritableRegion(bufferAddress, (int)bufferLen, true);
@@ -35,18 +34,6 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
             context.ResponseData.Write(bytesRead);
 
             return (ResultCode)result.Value;
-=======
-            long size   = context.RequestData.ReadInt64();
-
-            using (var region = context.Memory.GetWritableRegion(bufferAddress, (int)bufferLen, true))
-            {
-                Result result = _baseFile.Get.Read(out long bytesRead, offset, new OutBuffer(region.Memory.Span), size, readOption);
-
-                context.ResponseData.Write(bytesRead);
-
-                return (ResultCode)result.Value;
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CommandCmif(1)]
@@ -59,11 +46,7 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
             context.RequestData.BaseStream.Position += 4;
 
             long offset = context.RequestData.ReadInt64();
-<<<<<<< HEAD
             long size = context.RequestData.ReadInt64();
-=======
-            long size   = context.RequestData.ReadInt64();
->>>>>>> 1ec71635b (sync with main branch)
 
             byte[] data = new byte[context.Request.SendBuff[0].Size];
 
@@ -107,8 +90,4 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

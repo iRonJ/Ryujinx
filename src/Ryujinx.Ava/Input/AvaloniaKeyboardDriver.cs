@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 using Avalonia.Controls;
 using Avalonia.Input;
-=======
-﻿using Avalonia.Controls;
-using Avalonia.Input;
-using Avalonia.Interactivity;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Ava.Common.Locale;
 using Ryujinx.Input;
 using System;
@@ -18,44 +12,24 @@ namespace Ryujinx.Ava.Input
     internal class AvaloniaKeyboardDriver : IGamepadDriver
     {
         private static readonly string[] _keyboardIdentifers = new string[1] { "0" };
-<<<<<<< HEAD
         private readonly Control _control;
-=======
-        private readonly Control         _control;
->>>>>>> 1ec71635b (sync with main branch)
         private readonly HashSet<AvaKey> _pressedKeys;
 
         public event EventHandler<KeyEventArgs> KeyPressed;
         public event EventHandler<KeyEventArgs> KeyRelease;
-<<<<<<< HEAD
         public event EventHandler<string> TextInput;
 
         public string DriverName => "AvaloniaKeyboardDriver";
-=======
-        public event EventHandler<string>       TextInput;
-
-        public string               DriverName  => "AvaloniaKeyboardDriver";
->>>>>>> 1ec71635b (sync with main branch)
         public ReadOnlySpan<string> GamepadsIds => _keyboardIdentifers;
 
         public AvaloniaKeyboardDriver(Control control)
         {
-<<<<<<< HEAD
             _control = control;
             _pressedKeys = new HashSet<AvaKey>();
 
             _control.KeyDown += OnKeyPress;
             _control.KeyUp += OnKeyRelease;
             _control.TextInput += Control_TextInput;
-=======
-            _control     = control;
-            _pressedKeys = new HashSet<AvaKey>();
-
-            _control.KeyDown   += OnKeyPress;
-            _control.KeyUp     += OnKeyRelease;
-            _control.TextInput += Control_TextInput;
-            _control.AddHandler(InputElement.TextInputEvent, Control_LastChanceTextInput, RoutingStrategies.Bubble);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void Control_TextInput(object sender, TextInputEventArgs e)
@@ -63,31 +37,15 @@ namespace Ryujinx.Ava.Input
             TextInput?.Invoke(this, e.Text);
         }
 
-<<<<<<< HEAD
         public event Action<string> OnGamepadConnected
         {
             add { }
-=======
-        private void Control_LastChanceTextInput(object sender, TextInputEventArgs e)
-        {
-            // Swallow event
-            e.Handled = true;
-        }
-
-        public event Action<string> OnGamepadConnected
-        {
-            add    { }
->>>>>>> 1ec71635b (sync with main branch)
             remove { }
         }
 
         public event Action<string> OnGamepadDisconnected
         {
-<<<<<<< HEAD
             add { }
-=======
-            add    { }
->>>>>>> 1ec71635b (sync with main branch)
             remove { }
         }
 
@@ -105,11 +63,7 @@ namespace Ryujinx.Ava.Input
         {
             if (disposing)
             {
-<<<<<<< HEAD
                 _control.KeyUp -= OnKeyPress;
-=======
-                _control.KeyUp   -= OnKeyPress;
->>>>>>> 1ec71635b (sync with main branch)
                 _control.KeyDown -= OnKeyRelease;
             }
         }
@@ -150,8 +104,4 @@ namespace Ryujinx.Ava.Input
             Dispose(true);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

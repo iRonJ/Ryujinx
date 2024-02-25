@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 using System.Threading;
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common
 {
     struct AtomicStorage<T> where T : unmanaged, ISampledDataStruct
-=======
-﻿using System.Threading;
-
-namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common
-{
-    struct AtomicStorage<T> where T: unmanaged, ISampledDataStruct
->>>>>>> 1ec71635b (sync with main branch)
     {
         public ulong SamplingNumber;
         public T Object;

@@ -17,15 +17,11 @@ namespace ARMeilleure.Instructions
 
             Operand res;
 
-<<<<<<< HEAD
             if (Optimizations.UseArm64Aes)
             {
                 res = context.AddIntrinsic(Intrinsic.Arm64AesdV, d, n);
             }
             else if (Optimizations.UseAesni)
-=======
-            if (Optimizations.UseAesni)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 res = context.AddIntrinsic(Intrinsic.X86Aesdeclast, context.AddIntrinsic(Intrinsic.X86Xorpd, d, n), context.VectorZero());
             }
@@ -46,15 +42,11 @@ namespace ARMeilleure.Instructions
 
             Operand res;
 
-<<<<<<< HEAD
             if (Optimizations.UseArm64Aes)
             {
                 res = context.AddIntrinsic(Intrinsic.Arm64AeseV, d, n);
             }
             else if (Optimizations.UseAesni)
-=======
-            if (Optimizations.UseAesni)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 res = context.AddIntrinsic(Intrinsic.X86Aesenclast, context.AddIntrinsic(Intrinsic.X86Xorpd, d, n), context.VectorZero());
             }
@@ -74,15 +66,11 @@ namespace ARMeilleure.Instructions
 
             Operand res;
 
-<<<<<<< HEAD
             if (Optimizations.UseArm64Aes)
             {
                 res = context.AddIntrinsic(Intrinsic.Arm64AesimcV, n);
             }
             else if (Optimizations.UseAesni)
-=======
-            if (Optimizations.UseAesni)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 res = context.AddIntrinsic(Intrinsic.X86Aesimc, n);
             }
@@ -102,15 +90,11 @@ namespace ARMeilleure.Instructions
 
             Operand res;
 
-<<<<<<< HEAD
             if (Optimizations.UseArm64Aes)
             {
                 res = context.AddIntrinsic(Intrinsic.Arm64AesmcV, n);
             }
             else if (Optimizations.UseAesni)
-=======
-            if (Optimizations.UseAesni)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 Operand roundKey = context.VectorZero();
 

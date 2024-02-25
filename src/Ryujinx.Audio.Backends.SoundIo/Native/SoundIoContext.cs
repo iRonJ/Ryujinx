@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
-using System.Reflection.Metadata;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;

@@ -12,13 +12,8 @@ namespace Ryujinx.HLE.HOS.Services.Hid
             ref RingLifo<MouseState> lifo = ref _device.Hid.SharedMemory.Mouse;
 
             ref MouseState previousEntry = ref lifo.GetCurrentEntryRef();
-<<<<<<< HEAD
 
             MouseState newState = new()
-=======
-            
-            MouseState newState = new MouseState()
->>>>>>> 1ec71635b (sync with main branch)
             {
                 SamplingNumber = previousEntry.SamplingNumber + 1,
             };
@@ -38,8 +33,4 @@ namespace Ryujinx.HLE.HOS.Services.Hid
             lifo.Write(ref newState);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -3,10 +3,6 @@ using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation;
 using System.Diagnostics;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitAluHelper;
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
@@ -15,11 +11,7 @@ namespace ARMeilleure.Instructions
 {
     static partial class InstEmit
     {
-<<<<<<< HEAD
         public static void Adc(ArmEmitterContext context) => EmitAdc(context, setFlags: false);
-=======
-        public static void Adc(ArmEmitterContext context)  => EmitAdc(context, setFlags: false);
->>>>>>> 1ec71635b (sync with main branch)
         public static void Adcs(ArmEmitterContext context) => EmitAdc(context, setFlags: true);
 
         private static void EmitAdc(ArmEmitterContext context, bool setFlags)
@@ -94,11 +86,7 @@ namespace ARMeilleure.Instructions
             SetAluDOrZR(context, context.ShiftRightSI(GetAluN(context), GetAluMShift(context)));
         }
 
-<<<<<<< HEAD
         public static void Bic(ArmEmitterContext context) => EmitBic(context, setFlags: false);
-=======
-        public static void Bic(ArmEmitterContext context)  => EmitBic(context, setFlags: false);
->>>>>>> 1ec71635b (sync with main branch)
         public static void Bics(ArmEmitterContext context) => EmitBic(context, setFlags: true);
 
         private static void EmitBic(ArmEmitterContext context, bool setFlags)
@@ -201,11 +189,7 @@ namespace ARMeilleure.Instructions
             SetAluDOrZR(context, context.ShiftRightUI(GetAluN(context), GetAluMShift(context)));
         }
 
-<<<<<<< HEAD
         public static void Sbc(ArmEmitterContext context) => EmitSbc(context, setFlags: false);
-=======
-        public static void Sbc(ArmEmitterContext context)  => EmitSbc(context, setFlags: false);
->>>>>>> 1ec71635b (sync with main branch)
         public static void Sbcs(ArmEmitterContext context) => EmitSbc(context, setFlags: true);
 
         private static void EmitSbc(ArmEmitterContext context, bool setFlags)
@@ -296,7 +280,6 @@ namespace ARMeilleure.Instructions
             Debug.Assert(op.Type == OperandType.I64);
 
             Operand val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(op, Const(0xaaaaaaaaaaaaaaaaul)), Const(1)),
-<<<<<<< HEAD
                                             context.ShiftLeft(context.BitwiseAnd(op, Const(0x5555555555555555ul)), Const(1)));
 
             val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(val, Const(0xccccccccccccccccul)), Const(2)),
@@ -307,18 +290,6 @@ namespace ARMeilleure.Instructions
                                     context.ShiftLeft(context.BitwiseAnd(val, Const(0x00ff00ff00ff00fful)), Const(8)));
             val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(val, Const(0xffff0000ffff0000ul)), Const(16)),
                                     context.ShiftLeft(context.BitwiseAnd(val, Const(0x0000ffff0000fffful)), Const(16)));
-=======
-                                            context.ShiftLeft   (context.BitwiseAnd(op, Const(0x5555555555555555ul)), Const(1)));
-
-            val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(val, Const(0xccccccccccccccccul)), Const(2)),
-                                    context.ShiftLeft   (context.BitwiseAnd(val, Const(0x3333333333333333ul)), Const(2)));
-            val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(val, Const(0xf0f0f0f0f0f0f0f0ul)), Const(4)),
-                                    context.ShiftLeft   (context.BitwiseAnd(val, Const(0x0f0f0f0f0f0f0f0ful)), Const(4)));
-            val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(val, Const(0xff00ff00ff00ff00ul)), Const(8)),
-                                    context.ShiftLeft   (context.BitwiseAnd(val, Const(0x00ff00ff00ff00fful)), Const(8)));
-            val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(val, Const(0xffff0000ffff0000ul)), Const(16)),
-                                    context.ShiftLeft   (context.BitwiseAnd(val, Const(0x0000ffff0000fffful)), Const(16)));
->>>>>>> 1ec71635b (sync with main branch)
 
             return context.BitwiseOr(context.ShiftRightUI(val, Const(32)), context.ShiftLeft(val, Const(32)));
         }
@@ -368,11 +339,7 @@ namespace ARMeilleure.Instructions
             Operand val = EmitReverseBytes16_64Op(context, op);
 
             return context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(val, Const(0xffff0000ffff0000ul)), Const(16)),
-<<<<<<< HEAD
                                      context.ShiftLeft(context.BitwiseAnd(val, Const(0x0000ffff0000fffful)), Const(16)));
-=======
-                                     context.ShiftLeft   (context.BitwiseAnd(val, Const(0x0000ffff0000fffful)), Const(16)));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void Rev64(ArmEmitterContext context)

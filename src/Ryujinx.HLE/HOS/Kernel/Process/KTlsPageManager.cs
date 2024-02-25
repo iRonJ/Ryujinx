@@ -7,7 +7,6 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
     {
         private const int TlsEntrySize = 0x200;
 
-<<<<<<< HEAD
         private readonly long _pagePosition;
 
         private int _usedSlots;
@@ -16,16 +15,6 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
         public bool IsEmpty => _usedSlots == 0;
         public bool IsFull => _usedSlots == _slots.Length;
-=======
-        private long _pagePosition;
-
-        private int _usedSlots;
-
-        private bool[] _slots;
-
-        public bool IsEmpty => _usedSlots == 0;
-        public bool IsFull  => _usedSlots == _slots.Length;
->>>>>>> 1ec71635b (sync with main branch)
 
         public KTlsPageManager(long pagePosition)
         {
@@ -69,8 +58,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             _usedSlots--;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

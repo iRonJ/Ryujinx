@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
 using System;
 using System.Collections.Generic;
-=======
-﻿using Ryujinx.Graphics.GAL;
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 using VkFormat = Silk.NET.Vulkan.Format;
 
 namespace Ryujinx.Graphics.Vulkan
@@ -13,21 +8,14 @@ namespace Ryujinx.Graphics.Vulkan
     static class FormatTable
     {
         private static readonly VkFormat[] _table;
-<<<<<<< HEAD
         private static readonly Dictionary<VkFormat, Format> _reverseMap;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 
         static FormatTable()
         {
             _table = new VkFormat[Enum.GetNames(typeof(Format)).Length];
-<<<<<<< HEAD
             _reverseMap = new Dictionary<VkFormat, Format>();
 
 #pragma warning disable IDE0055 // Disable formatting
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
             Add(Format.R8Unorm,             VkFormat.R8Unorm);
             Add(Format.R8Snorm,             VkFormat.R8SNorm);
             Add(Format.R8Uint,              VkFormat.R8Uint);
@@ -79,10 +67,7 @@ namespace Ryujinx.Graphics.Vulkan
             Add(Format.S8Uint,              VkFormat.S8Uint);
             Add(Format.D16Unorm,            VkFormat.D16Unorm);
             Add(Format.S8UintD24Unorm,      VkFormat.D24UnormS8Uint);
-<<<<<<< HEAD
             Add(Format.X8UintD24Unorm,      VkFormat.X8D24UnormPack32);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Add(Format.D32Float,            VkFormat.D32Sfloat);
             Add(Format.D24UnormS8Uint,      VkFormat.D24UnormS8Uint);
             Add(Format.D32FloatS8Uint,      VkFormat.D32SfloatS8Uint);
@@ -177,20 +162,14 @@ namespace Ryujinx.Graphics.Vulkan
             Add(Format.A1B5G5R5Unorm,       VkFormat.R5G5B5A1UnormPack16);
             Add(Format.B8G8R8A8Unorm,       VkFormat.B8G8R8A8Unorm);
             Add(Format.B8G8R8A8Srgb,        VkFormat.B8G8R8A8Srgb);
-<<<<<<< HEAD
             Add(Format.B10G10R10A2Unorm,    VkFormat.A2R10G10B10UnormPack32);
 #pragma warning restore IDE0055
-=======
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void Add(Format format, VkFormat vkFormat)
         {
             _table[(int)format] = vkFormat;
-<<<<<<< HEAD
             _reverseMap[vkFormat] = format;
-=======
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static VkFormat GetFormat(Format format)
@@ -198,7 +177,6 @@ namespace Ryujinx.Graphics.Vulkan
             return _table[(int)format];
         }
 
-<<<<<<< HEAD
         public static Format GetFormat(VkFormat format)
         {
             if (!_reverseMap.TryGetValue(format, out Format result))
@@ -219,8 +197,6 @@ namespace Ryujinx.Graphics.Vulkan
             };
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public static int GetAttributeFormatSize(VkFormat format)
         {
             switch (format)
@@ -322,7 +298,6 @@ namespace Ryujinx.Graphics.Vulkan
 
         public static VkFormat DropLastComponent(VkFormat format)
         {
-<<<<<<< HEAD
             return format switch
             {
                 VkFormat.R8G8Unorm => VkFormat.R8Unorm,
@@ -378,123 +353,6 @@ namespace Ryujinx.Graphics.Vulkan
                 VkFormat.R32G32B32A32Sint => VkFormat.R32G32B32Sint,
                 _ => format,
             };
-=======
-            switch (format)
-            {
-                case VkFormat.R8G8Unorm:
-                    return VkFormat.R8Unorm;
-                case VkFormat.R8G8SNorm:
-                    return VkFormat.R8SNorm;
-                case VkFormat.R8G8Uint:
-                    return VkFormat.R8Uint;
-                case VkFormat.R8G8Sint:
-                    return VkFormat.R8Sint;
-                case VkFormat.R8G8Uscaled:
-                    return VkFormat.R8Uscaled;
-                case VkFormat.R8G8Sscaled:
-                    return VkFormat.R8Sscaled;
-
-                case VkFormat.R8G8B8Unorm:
-                    return VkFormat.R8G8Unorm;
-                case VkFormat.R8G8B8SNorm:
-                    return VkFormat.R8G8SNorm;
-                case VkFormat.R8G8B8Uint:
-                    return VkFormat.R8G8Uint;
-                case VkFormat.R8G8B8Sint:
-                    return VkFormat.R8G8Sint;
-                case VkFormat.R8G8B8Uscaled:
-                    return VkFormat.R8G8Uscaled;
-                case VkFormat.R8G8B8Sscaled:
-                    return VkFormat.R8G8Sscaled;
-
-                case VkFormat.R8G8B8A8Unorm:
-                    return VkFormat.R8G8B8Unorm;
-                case VkFormat.R8G8B8A8SNorm:
-                    return VkFormat.R8G8B8SNorm;
-                case VkFormat.R8G8B8A8Uint:
-                    return VkFormat.R8G8B8Uint;
-                case VkFormat.R8G8B8A8Sint:
-                    return VkFormat.R8G8B8Sint;
-                case VkFormat.R8G8B8A8Srgb:
-                    return VkFormat.R8G8B8Srgb;
-                case VkFormat.R8G8B8A8Uscaled:
-                    return VkFormat.R8G8B8Uscaled;
-                case VkFormat.R8G8B8A8Sscaled:
-                    return VkFormat.R8G8B8Sscaled;
-                case VkFormat.B8G8R8A8Unorm:
-                    return VkFormat.B8G8R8Unorm;
-                case VkFormat.B8G8R8A8Srgb:
-                    return VkFormat.B8G8R8Srgb;
-
-                case VkFormat.R16G16Sfloat:
-                    return VkFormat.R16Sfloat;
-                case VkFormat.R16G16Unorm:
-                    return VkFormat.R16Unorm;
-                case VkFormat.R16G16SNorm:
-                    return VkFormat.R16SNorm;
-                case VkFormat.R16G16Uint:
-                    return VkFormat.R16Uint;
-                case VkFormat.R16G16Sint:
-                    return VkFormat.R16Sint;
-                case VkFormat.R16G16Uscaled:
-                    return VkFormat.R16Uscaled;
-                case VkFormat.R16G16Sscaled:
-                    return VkFormat.R16Sscaled;
-
-                case VkFormat.R16G16B16Sfloat:
-                    return VkFormat.R16G16Sfloat;
-                case VkFormat.R16G16B16Unorm:
-                    return VkFormat.R16G16Unorm;
-                case VkFormat.R16G16B16SNorm:
-                    return VkFormat.R16G16SNorm;
-                case VkFormat.R16G16B16Uint:
-                    return VkFormat.R16G16Uint;
-                case VkFormat.R16G16B16Sint:
-                    return VkFormat.R16G16Sint;
-                case VkFormat.R16G16B16Uscaled:
-                    return VkFormat.R16G16Uscaled;
-                case VkFormat.R16G16B16Sscaled:
-                    return VkFormat.R16G16Sscaled;
-
-                case VkFormat.R16G16B16A16Sfloat:
-                    return VkFormat.R16G16B16Sfloat;
-                case VkFormat.R16G16B16A16Unorm:
-                    return VkFormat.R16G16B16Unorm;
-                case VkFormat.R16G16B16A16SNorm:
-                    return VkFormat.R16G16B16SNorm;
-                case VkFormat.R16G16B16A16Uint:
-                    return VkFormat.R16G16B16Uint;
-                case VkFormat.R16G16B16A16Sint:
-                    return VkFormat.R16G16B16Sint;
-                case VkFormat.R16G16B16A16Uscaled:
-                    return VkFormat.R16G16B16Uscaled;
-                case VkFormat.R16G16B16A16Sscaled:
-                    return VkFormat.R16G16B16Sscaled;
-
-                case VkFormat.R32G32Sfloat:
-                    return VkFormat.R32Sfloat;
-                case VkFormat.R32G32Uint:
-                    return VkFormat.R32Uint;
-                case VkFormat.R32G32Sint:
-                    return VkFormat.R32Sint;
-
-                case VkFormat.R32G32B32Sfloat:
-                    return VkFormat.R32G32Sfloat;
-                case VkFormat.R32G32B32Uint:
-                    return VkFormat.R32G32Uint;
-                case VkFormat.R32G32B32Sint:
-                    return VkFormat.R32G32Sint;
-
-                case VkFormat.R32G32B32A32Sfloat:
-                    return VkFormat.R32G32B32Sfloat;
-                case VkFormat.R32G32B32A32Uint:
-                    return VkFormat.R32G32B32Uint;
-                case VkFormat.R32G32B32A32Sint:
-                    return VkFormat.R32G32B32Sint;
-            }
-
-            return format;
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

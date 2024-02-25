@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Hid.HidServer;
 using Ryujinx.HLE.HOS.Services.Hid.Types;
 
@@ -69,11 +65,7 @@ namespace Ryujinx.HLE.HOS.Services.Hid
 
         private ResultCode GetAppletFooterUiTypeImpl(ServiceCtx context, out AppletFooterUiType appletFooterUiType)
         {
-<<<<<<< HEAD
             NpadIdType npadIdType = (NpadIdType)context.RequestData.ReadUInt32();
-=======
-            NpadIdType  npadIdType  = (NpadIdType)context.RequestData.ReadUInt32();
->>>>>>> 1ec71635b (sync with main branch)
             PlayerIndex playerIndex = HidUtils.GetIndexFromNpadIdType(npadIdType);
 
             appletFooterUiType = context.Device.Hid.SharedMemory.Npads[(int)playerIndex].InternalState.AppletFooterUiType;
@@ -81,8 +73,4 @@ namespace Ryujinx.HLE.HOS.Services.Hid
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

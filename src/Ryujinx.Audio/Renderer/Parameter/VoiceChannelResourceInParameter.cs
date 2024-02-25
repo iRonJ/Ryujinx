@@ -25,8 +25,4 @@ namespace Ryujinx.Audio.Renderer.Parameter
         [MarshalAs(UnmanagedType.I1)]
         public bool IsUsed;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

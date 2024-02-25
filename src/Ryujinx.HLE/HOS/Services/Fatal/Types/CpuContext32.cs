@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Fatal.Types
 {
@@ -26,8 +22,4 @@ namespace Ryujinx.HLE.HOS.Services.Fatal.Types
         public uint StartAddress;
         public uint RegisterSetFlags;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

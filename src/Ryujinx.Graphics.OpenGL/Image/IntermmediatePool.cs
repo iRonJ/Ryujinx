@@ -87,11 +87,7 @@ namespace Ryujinx.Graphics.OpenGL.Image
                 SwizzleComponent.Red,
                 SwizzleComponent.Green,
                 SwizzleComponent.Blue,
-<<<<<<< HEAD
                 SwizzleComponent.Alpha));
-=======
-                SwizzleComponent.Alpha), 1f);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void Dispose()
@@ -104,8 +100,4 @@ namespace Ryujinx.Graphics.OpenGL.Image
             _entries.Clear();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

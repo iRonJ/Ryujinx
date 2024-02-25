@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
-=======
-﻿namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
->>>>>>> 1ec71635b (sync with main branch)
 {
     internal static class TxfmCommon
     {

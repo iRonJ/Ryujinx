@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using ARMeilleure.Diagnostics;
-=======
-﻿using ARMeilleure.Diagnostics;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -13,11 +9,7 @@ namespace ARMeilleure.Common
     /// Represents a table of guest address to a value.
     /// </summary>
     /// <typeparam name="TEntry">Type of the value</typeparam>
-<<<<<<< HEAD
     public unsafe class AddressTable<TEntry> : IDisposable where TEntry : unmanaged
-=======
-    unsafe class AddressTable<TEntry> : IDisposable where TEntry : unmanaged
->>>>>>> 1ec71635b (sync with main branch)
     {
         /// <summary>
         /// Represents a level in an <see cref="AddressTable{TEntry}"/>.

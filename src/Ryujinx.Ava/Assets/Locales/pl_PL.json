@@ -1,23 +1,13 @@
 {
-<<<<<<< HEAD
   "Language": "Angielski (USA)",
-=======
-  "Language": "Polski",
->>>>>>> 1ec71635b (sync with main branch)
   "MenuBarFileOpenApplet": "Otwórz Aplet",
   "MenuBarFileOpenAppletOpenMiiAppletToolTip": "Otwórz aplet Mii Editor w trybie Indywidualnym",
   "SettingsTabInputDirectMouseAccess": "Bezpośredni Dostęp do Myszy",
   "SettingsTabSystemMemoryManagerMode": "Tryb Menedżera Pamięci:",
-<<<<<<< HEAD
   "SettingsTabSystemMemoryManagerModeSoftware": "Oprogramowanie",
   "SettingsTabSystemMemoryManagerModeHost": "Host (szybko)",
   "SettingsTabSystemMemoryManagerModeHostUnchecked": "Host Niesprawdzony (najszybciej, niebezpiecznie)",
   "SettingsTabSystemUseHypervisor": "Użyj Hiperwizora",
-=======
-  "SettingsTabSystemMemoryManagerModeSoftware": "Oprogramowania",
-  "SettingsTabSystemMemoryManagerModeHost": "Host (szybko)",
-  "SettingsTabSystemMemoryManagerModeHostUnchecked": "Host Niesprawdzony (najszybciej, niebezpiecznie)",
->>>>>>> 1ec71635b (sync with main branch)
   "MenuBarFile": "_Plik",
   "MenuBarFileOpenFromFile": "_Załaduj Aplikację z Pliku",
   "MenuBarFileOpenUnpacked": "Załaduj _Rozpakowaną Grę",
@@ -37,12 +27,9 @@
   "MenuBarToolsInstallFirmware": "Zainstaluj Firmware",
   "MenuBarFileToolsInstallFirmwareFromFile": "Zainstaluj Firmware z XCI lub ZIP",
   "MenuBarFileToolsInstallFirmwareFromDirectory": "Zainstaluj Firmware z Katalogu",
-<<<<<<< HEAD
   "MenuBarToolsManageFileTypes": "Zarządzaj rodzajem plików",
   "MenuBarToolsInstallFileTypes": "Instalacja typów plików",
   "MenuBarToolsUninstallFileTypes": "Odinstaluj rodzaje plików",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "MenuBarHelp": "Pomoc",
   "MenuBarHelpCheckForUpdates": "Sprawdź Aktualizacje",
   "MenuBarHelpAbout": "O Aplikacji",
@@ -87,7 +74,6 @@
   "GameListContextMenuExtractDataLogoToolTip": "Wyodrębnij sekcję Logo z bieżącej konfiguracji aplikacji (w tym aktualizacje)",
   "StatusBarGamesLoaded": "{0}/{1} Załadowane Gry",
   "StatusBarSystemVersion": "Wersja Systemu: {0}",
-<<<<<<< HEAD
   "LinuxVmMaxMapCountDialogTitle": "Wykryto niski limit dla mapowania pamięci",
   "LinuxVmMaxMapCountDialogTextPrimary": "Czy chciałbyś zwiększyć wartość vm.max_map_count do {0}",
   "LinuxVmMaxMapCountDialogTextSecondary": "Niektóre gry mogą próbować stworzyć więcej mapowań pamięci niż obecnie, jest to dozwolone. Ryujinx napotka crash, gdy dojdzie do takiej sytuacji.",
@@ -95,22 +81,16 @@
   "LinuxVmMaxMapCountDialogButtonPersistent": "Tak, permanentnie ",
   "LinuxVmMaxMapCountWarningTextPrimary": "Maksymalna ilość mapowania pamięci jest mniejsza niż zalecana.",
   "LinuxVmMaxMapCountWarningTextSecondary": "Obecna wartość vm.max_map_count ({0}) jest mniejsza niż {1}. Niektóre gry mogą próbować stworzyć więcej mapowań pamięci niż obecnie jest to dozwolone. Ryujinx napotka crash, gdy dojdzie do takiej sytuacji.\n\nMożesz chcieć ręcznie zwiększyć limit lub zainstalować pkexec, co pozwala Ryujinx na pomoc w tym zakresie.",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "Settings": "Ustawienia",
   "SettingsTabGeneral": "Interfejs Użytkownika",
   "SettingsTabGeneralGeneral": "Ogólne",
   "SettingsTabGeneralEnableDiscordRichPresence": "Włącz Bogatą Obecność Discord",
   "SettingsTabGeneralCheckUpdatesOnLaunch": "Sprawdź Aktualizacje przy Uruchomieniu",
   "SettingsTabGeneralShowConfirmExitDialog": "Pokaż Okno Dialogowe \"Potwierdzenia Wyjścia\"",
-<<<<<<< HEAD
   "SettingsTabGeneralHideCursor": "Ukryj kursor:",
   "SettingsTabGeneralHideCursorNever": "Nigdy",
   "SettingsTabGeneralHideCursorOnIdle": "Ukryj Kursor Podczas Bezczynności",
   "SettingsTabGeneralHideCursorAlways": "Zawsze",
-=======
-  "SettingsTabGeneralHideCursorOnIdle": "Ukryj Kursor Podczas Bezczynności",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabGeneralGameDirectories": "Katalogi Gier",
   "SettingsTabGeneralAdd": "Dodaj",
   "SettingsTabGeneralRemove": "Usuń",
@@ -144,11 +124,7 @@
   "SettingsTabSystemSystemLanguageTraditionalChinese": "Chiński Tradycyjny",
   "SettingsTabSystemSystemTimeZone": "Strefa Czasowa Systemu:",
   "SettingsTabSystemSystemTime": "Czas Systemu:",
-<<<<<<< HEAD
   "SettingsTabSystemEnableVsync": "Włącz synchronizację pionową",
-=======
-  "SettingsTabSystemEnableVsync": "VSync",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabSystemEnablePptc": "PPTC (Profilowany Cache Trwałych Tłumaczeń)",
   "SettingsTabSystemEnableFsIntegrityChecks": "Kontrole Integralności Systemu Plików",
   "SettingsTabSystemAudioBackend": "Backend Dżwięku:",
@@ -164,11 +140,7 @@
   "SettingsTabGraphicsAPI": "Graficzne API",
   "SettingsTabGraphicsEnableShaderCache": "Włącz Cache Shaderów",
   "SettingsTabGraphicsAnisotropicFiltering": "Filtrowanie Anizotropowe:",
-<<<<<<< HEAD
   "SettingsTabGraphicsAnisotropicFilteringAuto": "Automatyczny",
-=======
-  "SettingsTabGraphicsAnisotropicFilteringAuto": "Auto",
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabGraphicsAnisotropicFiltering2x": "2x",
   "SettingsTabGraphicsAnisotropicFiltering4x": "4x",
   "SettingsTabGraphicsAnisotropicFiltering8x": "8x",
@@ -200,10 +172,7 @@
   "SettingsTabLoggingEnableFsAccessLogs": "Włącz Logi Dostępu do Systemu Plików",
   "SettingsTabLoggingFsGlobalAccessLogMode": "Tryb Globalnych Logów Systemu Plików:",
   "SettingsTabLoggingDeveloperOptions": "Opcje programistyczne (OSTRZEŻENIE: Zmniejszą wydajność)",
-<<<<<<< HEAD
   "SettingsTabLoggingDeveloperOptionsNote": "UWAGA: Zredukuje wydajność",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabLoggingGraphicsBackendLogLevel": "Ilość Logów Backendu Graficznego:",
   "SettingsTabLoggingGraphicsBackendLogLevelNone": "Żadne",
   "SettingsTabLoggingGraphicsBackendLogLevelError": "Błędy",
@@ -233,11 +202,7 @@
   "ControllerSettingsDeviceDisabled": "Wyłączone",
   "ControllerSettingsControllerType": "Typ Kontrolera",
   "ControllerSettingsControllerTypeHandheld": "Przenośny",
-<<<<<<< HEAD
   "ControllerSettingsControllerTypeProController": "Pro Kontroler",
-=======
-  "ControllerSettingsControllerTypeProController": "Pro Controller",
->>>>>>> 1ec71635b (sync with main branch)
   "ControllerSettingsControllerTypeJoyConPair": "Para JoyCon-ów",
   "ControllerSettingsControllerTypeJoyConLeft": "Lewy JoyCon",
   "ControllerSettingsControllerTypeJoyConRight": "Prawy JoyCon",
@@ -258,7 +223,6 @@
   "ControllerSettingsDPadDown": "Dół",
   "ControllerSettingsDPadLeft": "Lewo",
   "ControllerSettingsDPadRight": "Prawo",
-<<<<<<< HEAD
   "ControllerSettingsStickButton": "Przycisk",
   "ControllerSettingsStickUp": "Góra ",
   "ControllerSettingsStickDown": "Dół ",
@@ -270,28 +234,6 @@
   "ControllerSettingsStickDeadzone": "Martwa strefa:",
   "ControllerSettingsLStick": "Lewa Gałka",
   "ControllerSettingsRStick": "Prawa Gałka",
-=======
-  "ControllerSettingsLStick": "Lewa Gałka",
-  "ControllerSettingsLStickButton": "Przycisk",
-  "ControllerSettingsLStickUp": "Góra",
-  "ControllerSettingsLStickDown": "Dół",
-  "ControllerSettingsLStickLeft": "Lewo",
-  "ControllerSettingsLStickRight": "Prawo",
-  "ControllerSettingsLStickStick": "Gałka",
-  "ControllerSettingsLStickInvertXAxis": "Odwróć X Gałki",
-  "ControllerSettingsLStickInvertYAxis": "Odwróć Y Gałki",
-  "ControllerSettingsLStickDeadzone": "Martwa Strefa:",
-  "ControllerSettingsRStick": "Prawa Gałka",
-  "ControllerSettingsRStickButton": "Przycisk",
-  "ControllerSettingsRStickUp": "Góra",
-  "ControllerSettingsRStickDown": "Dół",
-  "ControllerSettingsRStickLeft": "Lewo",
-  "ControllerSettingsRStickRight": "Prawo",
-  "ControllerSettingsRStickStick": "Gałka",
-  "ControllerSettingsRStickInvertXAxis": "Odwróć X Gałki",
-  "ControllerSettingsRStickInvertYAxis": "Odwróć Y Gałki",
-  "ControllerSettingsRStickDeadzone": "Martwa Strefa:",
->>>>>>> 1ec71635b (sync with main branch)
   "ControllerSettingsTriggersLeft": "Lewe Triggery",
   "ControllerSettingsTriggersRight": "Prawe Triggery",
   "ControllerSettingsTriggersButtonsLeft": "Lewe Przyciski Triggerów",
@@ -326,10 +268,7 @@
   "UserProfilesAddNewProfile": "Utwórz Profil",
   "UserProfilesDelete": "Usuwać",
   "UserProfilesClose": "Zamknij",
-<<<<<<< HEAD
   "ProfileNameSelectionWatermark": "Wybierz pseudonim",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "ProfileImageSelectionTitle": "Wybór Obrazu Profilu",
   "ProfileImageSelectionHeader": "Wybierz zdjęcie profilowe",
   "ProfileImageSelectionNote": "Możesz zaimportować niestandardowy obraz profilu lub wybrać awatar z firmware'u systemowego",
@@ -350,10 +289,7 @@
   "ControllerSettingsSaveProfileToolTip": "Zapisz Profil",
   "MenuBarFileToolsTakeScreenshot": "Zrób Zrzut Ekranu",
   "MenuBarFileToolsHideUi": "Ukryj UI",
-<<<<<<< HEAD
   "GameListContextMenuRunApplication": "Uruchom aplikację ",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "GameListContextMenuToggleFavorite": "Przełącz Ulubione",
   "GameListContextMenuToggleFavoriteToolTip": "Przełącz status Ulubionej Gry",
   "SettingsTabGeneralTheme": "Motyw",
@@ -409,13 +345,10 @@
   "DialogFirmwareInstallEmbeddedSuccessMessage": "Nie znaleziono zainstalowanego firmware'u, ale Ryujinx był w stanie zainstalować firmware {0} z dostarczonej gry.\n\nEmulator uruchomi się teraz.",
   "DialogFirmwareNoFirmwareInstalledMessage": "Brak Zainstalowanego Firmware'u",
   "DialogFirmwareInstalledMessage": "Firmware {0} został zainstalowany",
-<<<<<<< HEAD
   "DialogInstallFileTypesSuccessMessage": "Pomyślnie zainstalowano typy plików!",
   "DialogInstallFileTypesErrorMessage": "Nie udało się zainstalować typów plików.",
   "DialogUninstallFileTypesSuccessMessage": "Pomyślnie odinstalowano typy plików!",
   "DialogUninstallFileTypesErrorMessage": "Nie udało się odinstalować typów plików.",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DialogOpenSettingsWindowLabel": "Otwórz Okno Ustawień",
   "DialogControllerAppletTitle": "Aplet Kontrolera",
   "DialogMessageDialogErrorExceptionMessage": "Błąd wyświetlania okna Dialogowego Wiadomości: {0}",
@@ -447,12 +380,9 @@
   "DialogFirmwareInstallerFirmwareInstallSuccessMessage": "Wersja systemu {0} została pomyślnie zainstalowana.",
   "DialogUserProfileDeletionWarningMessage": "Nie będzie innych profili do otwarcia, jeśli wybrany profil zostanie usunięty",
   "DialogUserProfileDeletionConfirmMessage": "Czy chcesz usunąć wybrany profil",
-<<<<<<< HEAD
   "DialogUserProfileUnsavedChangesTitle": "Uwaga - Niezapisane zmiany",
   "DialogUserProfileUnsavedChangesMessage": "Wprowadziłeś zmiany dla tego profilu użytkownika, które nie zostały zapisane.",
   "DialogUserProfileUnsavedChangesSubMessage": "Czy chcesz odrzucić zmiany?",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DialogControllerSettingsModifiedConfirmMessage": "Aktualne ustawienia kontrolera zostały zaktualizowane.",
   "DialogControllerSettingsModifiedConfirmSubMessage": "Czy chcesz zapisać?",
   "DialogLoadNcaErrorMessage": "{0}. Błędny Plik: {1}",
@@ -501,10 +431,7 @@
   "DlcManagerEnableAllButton": "Włącz Wszystkie",
   "DlcManagerDisableAllButton": "Wyłącz Wszystkie",
   "MenuBarOptionsChangeLanguage": "Zmień Język",
-<<<<<<< HEAD
   "MenuBarShowFileTypes": "Pokaż typy plików",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "CommonSort": "Sortuj",
   "CommonShowNames": "Pokaż Nazwy",
   "CommonFavorite": "Ulubione",
@@ -534,10 +461,7 @@
   "MemoryManagerSoftwareTooltip": "Użyj tabeli stron oprogramowania do translacji adresów. Najwyższa celność, ale najwolniejsza wydajność.",
   "MemoryManagerHostTooltip": "Bezpośrednio mapuj pamięć w przestrzeni adresowej hosta. Znacznie szybsza kompilacja i wykonanie JIT.",
   "MemoryManagerUnsafeTooltip": "Bezpośrednio mapuj pamięć, ale nie maskuj adresu w przestrzeni adresowej gościa przed uzyskaniem dostępu. Szybciej, ale kosztem bezpieczeństwa. Aplikacja gościa może uzyskać dostęp do pamięci z dowolnego miejsca w Ryujinx, więc w tym trybie uruchamiaj tylko programy, którym ufasz.",
-<<<<<<< HEAD
   "UseHypervisorTooltip": "Użyj Hiperwizora zamiast JIT. Znacznie poprawia wydajność, gdy jest dostępny, ale może być niestabilny w swoim obecnym stanie ",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DRamTooltip": "Wykorzystuje alternatywny układ MemoryMode, aby naśladować model rozwojowy Switcha.\n\nJest to przydatne tylko w przypadku pakietów tekstur o wyższej rozdzielczości lub modów w rozdzielczości 4k. NIE poprawia wydajności.\n\nW razie wątpliwości pozostaw WYŁĄCZONE.",
   "IgnoreMissingServicesTooltip": "Ignoruje niezaimplementowane usługi Horizon OS. Może to pomóc w ominięciu awarii podczas uruchamiania niektórych gier.\n\nW razie wątpliwości pozostaw WYŁĄCZONE.",
   "GraphicsBackendThreadingTooltip": "Wykonuje polecenia backend'u graficznego w drugim wątku.\n\nPrzyspiesza kompilację shaderów, zmniejsza zacinanie się i poprawia wydajność sterowników GPU bez własnej obsługi wielowątkowości. Nieco lepsza wydajność w sterownikach z wielowątkowością.\n\nUstaw na AUTO, jeśli nie masz pewności.",
@@ -620,12 +544,9 @@
   "SwkbdMinCharacters": "Musi mieć co najmniej {0} znaków",
   "SwkbdMinRangeCharacters": "Musi mieć długość od {0}-{1} znaków",
   "SoftwareKeyboard": "Klawiatura Oprogramowania",
-<<<<<<< HEAD
   "SoftwareKeyboardModeNumbersOnly": "Mogą być tylko liczby ",
   "SoftwareKeyboardModeAlphabet": "Nie może zawierać znaków CJK",
   "SoftwareKeyboardModeASCII": "Musi zawierać tylko tekst ASCII",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DialogControllerAppletMessagePlayerRange": "Aplikacja żąda {0} graczy z:\n\nTYPY: {1}\n\nGRACZE: {2}\n\n{3}Otwórz Ustawienia i ponownie skonfiguruj Sterowanie lub naciśnij Zamknij.",
   "DialogControllerAppletMessage": "Aplikacja żąda dokładnie {0} graczy z:\n\nTYPY: {1}\n\nGRACZE: {2}\n\n{3}Otwórz teraz Ustawienia i ponownie skonfiguruj Sterowanie lub naciśnij Zamknij.",
   "DialogControllerAppletDockModeSet": "Ustawiono tryb Zadokowane. Przenośny też jest nieprawidłowy.\n\n",
@@ -671,10 +592,7 @@
   "DlcWindowTitle": "Menedżer Zawartości do Pobrania",
   "UpdateWindowTitle": "Menedżer Aktualizacji Tytułu",
   "CheatWindowHeading": "Kody Dostępne dla {0} [{1}]",
-<<<<<<< HEAD
   "BuildId": "Identyfikator wersji:",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "DlcWindowHeading": "{0} Zawartości do Pobrania dostępna dla {1} ({2})",
   "UserProfilesEditProfile": "Edytuj Zaznaczone",
   "Cancel": "Anuluj",
@@ -702,11 +620,8 @@
   "SettingsTabHotkeysVolumeDownHotkey": "Zmniejsz Głośność:",
   "SettingsEnableMacroHLE": "Włącz Macro HLE",
   "SettingsEnableMacroHLETooltip": "Wysokopoziomowa emulacja kodu GPU Macro.\n\nPoprawia wydajność, ale może powodować błędy graficzne w niektórych grach.\n\nW razie wątpliwości pozostaw WŁĄCZONE.",
-<<<<<<< HEAD
   "SettingsEnableColorSpacePassthrough": "Color Space Passthrough",
   "SettingsEnableColorSpacePassthroughTooltip": "Directs the Vulkan backend to pass through color information without specifying a color space. For users with wide gamut displays, this may result in more vibrant colors, at the cost of color correctness.",
-=======
->>>>>>> 1ec71635b (sync with main branch)
   "VolumeShort": "Głoś",
   "UserProfilesManageSaves": "Zarządzaj Zapisami",
   "DeleteUserSave": "Czy chcesz usunąć zapis użytkownika dla tej gry?",
@@ -718,7 +633,6 @@
   "Search": "Wyszukaj",
   "UserProfilesRecoverLostAccounts": "Odzyskaj Utracone Konta",
   "Recover": "Odzyskaj",
-<<<<<<< HEAD
   "UserProfilesRecoverHeading": "Znaleziono zapisy dla następujących kont",
   "UserProfilesRecoverEmptyList": "Brak profili do odzyskania",
   "GraphicsAATooltip": "Stosuje antyaliasing do renderowania gry",
@@ -740,7 +654,3 @@
   "AboutChangelogButton": "Zobacz listę zmian na GitHubie",
   "AboutChangelogButtonTooltipMessage": "Kliknij, aby otworzyć listę zmian dla tej wersji w domyślnej przeglądarce."
 }
-=======
-  "UserProfilesRecoverHeading": "Znaleziono zapisy dla następujących kont"
-}
->>>>>>> 1ec71635b (sync with main branch)

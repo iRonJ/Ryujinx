@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Input;
-=======
-﻿using Ryujinx.Input;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using AvaKey = Avalonia.Input.Key;
@@ -147,11 +143,7 @@ namespace Ryujinx.Ava.Input
             AvaKey.OemBackslash,
 
             // NOTE: invalid
-<<<<<<< HEAD
             AvaKey.None,
-=======
-            AvaKey.None
->>>>>>> 1ec71635b (sync with main branch)
         };
 
         private static readonly Dictionary<AvaKey, Key> _avaKeyMapping;
@@ -190,8 +182,4 @@ namespace Ryujinx.Ava.Input
             return _avaKeyMapping.GetValueOrDefault(key, Key.Unknown);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

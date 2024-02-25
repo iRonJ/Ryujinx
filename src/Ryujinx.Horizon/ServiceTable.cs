@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using Ryujinx.Horizon.Arp;
 using Ryujinx.Horizon.Audio;
 using Ryujinx.Horizon.Bcat;
@@ -16,11 +15,6 @@ using Ryujinx.Horizon.Sdk.Arp;
 using Ryujinx.Horizon.Srepo;
 using Ryujinx.Horizon.Usb;
 using Ryujinx.Horizon.Wlan;
-=======
-using Ryujinx.Horizon.Bcat;
-using Ryujinx.Horizon.LogManager;
-using Ryujinx.Horizon.Prepo;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Threading;
 
@@ -33,12 +27,9 @@ namespace Ryujinx.Horizon
 
         private readonly ManualResetEvent _servicesReadyEvent = new(false);
 
-<<<<<<< HEAD
         public IReader ArpReader { get; internal set; }
         public IWriter ArpWriter { get; internal set; }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public IEnumerable<ServiceEntry> GetServices(HorizonOptions options)
         {
             List<ServiceEntry> entries = new();
@@ -48,7 +39,6 @@ namespace Ryujinx.Horizon
                 entries.Add(new ServiceEntry(T.Main, this, options));
             }
 
-<<<<<<< HEAD
             RegisterService<ArpMain>();
             RegisterService<AudioMain>();
             RegisterService<BcatMain>();
@@ -66,11 +56,6 @@ namespace Ryujinx.Horizon
             RegisterService<SrepoMain>();
             RegisterService<UsbMain>();
             RegisterService<WlanMain>();
-=======
-            RegisterService<LmMain>();
-            RegisterService<PrepoMain>();
-            RegisterService<BcatMain>();
->>>>>>> 1ec71635b (sync with main branch)
 
             _totalServices = entries.Count;
 
@@ -103,8 +88,4 @@ namespace Ryujinx.Horizon
             Dispose(true);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -4,11 +4,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class ElaboratedType : ParentNode
     {
-<<<<<<< HEAD
         private readonly string _elaborated;
-=======
-        private string _elaborated;
->>>>>>> 1ec71635b (sync with main branch)
 
         public ElaboratedType(string elaborated, BaseNode type) : base(NodeType.ElaboratedType, type)
         {
@@ -22,8 +18,4 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             Child.Print(writer);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

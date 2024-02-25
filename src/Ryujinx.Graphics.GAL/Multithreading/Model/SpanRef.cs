@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System;
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Model
@@ -6,15 +5,6 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Model
     readonly struct SpanRef<T> where T : unmanaged
     {
         private readonly int _packedLengthId;
-=======
-﻿using System;
-
-namespace Ryujinx.Graphics.GAL.Multithreading.Model
-{
-    struct SpanRef<T> where T : unmanaged
-    {
-        private int _packedLengthId;
->>>>>>> 1ec71635b (sync with main branch)
 
         public SpanRef(ThreadedRenderer renderer, T[] data)
         {

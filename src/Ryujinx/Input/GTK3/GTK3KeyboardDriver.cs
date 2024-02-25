@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Gdk;
-=======
-﻿using Gdk;
->>>>>>> 1ec71635b (sync with main branch)
 using Gtk;
 using System;
 using System.Collections.Generic;
@@ -13,11 +9,7 @@ namespace Ryujinx.Input.GTK3
     public class GTK3KeyboardDriver : IGamepadDriver
     {
         private readonly Widget _widget;
-<<<<<<< HEAD
         private readonly HashSet<GtkKey> _pressedKeys;
-=======
-        private HashSet<GtkKey> _pressedKeys;
->>>>>>> 1ec71635b (sync with main branch)
 
         public GTK3KeyboardDriver(Widget widget)
         {
@@ -36,21 +28,13 @@ namespace Ryujinx.Input.GTK3
 
         public event Action<string> OnGamepadConnected
         {
-<<<<<<< HEAD
             add { }
-=======
-            add    { }
->>>>>>> 1ec71635b (sync with main branch)
             remove { }
         }
 
         public event Action<string> OnGamepadDisconnected
         {
-<<<<<<< HEAD
             add { }
-=======
-            add    { }
->>>>>>> 1ec71635b (sync with main branch)
             remove { }
         }
 
@@ -65,10 +49,7 @@ namespace Ryujinx.Input.GTK3
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
 

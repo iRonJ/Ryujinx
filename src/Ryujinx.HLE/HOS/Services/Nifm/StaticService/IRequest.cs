@@ -12,30 +12,18 @@ namespace Ryujinx.HLE.HOS.Services.Nifm.StaticService
         {
             Error = 1,
             OnHold = 2,
-<<<<<<< HEAD
             Available = 3,
         }
 
         private readonly KEvent _event0;
         private readonly KEvent _event1;
-=======
-            Available = 3
-        }
-
-        private KEvent _event0;
-        private KEvent _event1;
->>>>>>> 1ec71635b (sync with main branch)
 
         private int _event0Handle;
         private int _event1Handle;
 
-<<<<<<< HEAD
 #pragma warning disable IDE0052 // Remove unread private member
         private readonly uint _version;
 #pragma warning restore IDE0052
-=======
-        private uint _version;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IRequest(Horizon system, uint version)
         {
@@ -130,13 +118,9 @@ namespace Ryujinx.HLE.HOS.Services.Nifm.StaticService
         // GetAppletInfo(u32) -> (u32, u32, u32, buffer<bytes, 6>)
         public ResultCode GetAppletInfo(ServiceCtx context)
         {
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             uint themeColor = context.RequestData.ReadUInt32();
 #pragma warning restore IDE0059
-=======
-            uint themeColor = context.RequestData.ReadUInt32();
->>>>>>> 1ec71635b (sync with main branch)
 
             Logger.Stub?.PrintStub(LogClass.ServiceNifm);
 
@@ -159,8 +143,4 @@ namespace Ryujinx.HLE.HOS.Services.Nifm.StaticService
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -14,10 +14,6 @@ namespace Ryujinx.Common.Logging
         Guest,
         AccessLog,
         Notice,
-<<<<<<< HEAD
         Trace,
-=======
-        Trace
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

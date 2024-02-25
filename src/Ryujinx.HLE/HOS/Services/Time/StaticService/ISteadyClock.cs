@@ -6,7 +6,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
 {
     class ISteadyClock : IpcService
     {
-<<<<<<< HEAD
         private readonly SteadyClockCore _steadyClock;
         private readonly bool _writePermission;
         private readonly bool _bypassUninitializedClock;
@@ -15,16 +14,6 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
         {
             _steadyClock = steadyClock;
             _writePermission = writePermission;
-=======
-        private SteadyClockCore _steadyClock;
-        private bool            _writePermission;
-        private bool            _bypassUninitializedClock;
-
-        public ISteadyClock(SteadyClockCore steadyClock, bool writePermission, bool bypassUninitializedClock)
-        {
-            _steadyClock              = steadyClock;
-            _writePermission          = writePermission;
->>>>>>> 1ec71635b (sync with main branch)
             _bypassUninitializedClock = bypassUninitializedClock;
         }
 
@@ -163,8 +152,4 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

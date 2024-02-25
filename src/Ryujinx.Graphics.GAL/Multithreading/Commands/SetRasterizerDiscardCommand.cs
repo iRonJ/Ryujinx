@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetRasterizerDiscardCommand : IGALCommand, IGALCommand<SetRasterizerDiscardCommand>
     {
         public readonly CommandType CommandType => CommandType.SetRasterizerDiscard;
-=======
-﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
-{
-    struct SetRasterizerDiscardCommand : IGALCommand, IGALCommand<SetRasterizerDiscardCommand>
-    {
-        public CommandType CommandType => CommandType.SetRasterizerDiscard;
->>>>>>> 1ec71635b (sync with main branch)
         private bool _discard;
 
         public void Set(bool discard)

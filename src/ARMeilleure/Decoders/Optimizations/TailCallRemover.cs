@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 
 namespace ARMeilleure.Decoders.Optimizations
@@ -21,45 +17,26 @@ namespace ARMeilleure.Decoders.Optimizations
                 throw new InvalidOperationException("Function entry point is not contained in a block.");
             }
 
-<<<<<<< HEAD
             const ulong Allowance = 4;
-=======
-            const ulong allowance = 4;
->>>>>>> 1ec71635b (sync with main branch)
 
             Block entryBlock = blocks[entryBlockId];
 
             Block startBlock = entryBlock;
-<<<<<<< HEAD
             Block endBlock = entryBlock;
 
             int startBlockIndex = entryBlockId;
             int endBlockIndex = entryBlockId;
-=======
-            Block endBlock   = entryBlock;
-
-            int startBlockIndex = entryBlockId;
-            int endBlockIndex   = entryBlockId;
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = entryBlockId + 1; i < blocks.Count; i++) // Search forwards.
             {
                 Block block = blocks[i];
 
-<<<<<<< HEAD
                 if (endBlock.EndAddress < block.Address - Allowance)
-=======
-                if (endBlock.EndAddress < block.Address - allowance)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     break; // End of contiguous function.
                 }
 
-<<<<<<< HEAD
                 endBlock = block;
-=======
-                endBlock      = block;
->>>>>>> 1ec71635b (sync with main branch)
                 endBlockIndex = i;
             }
 
@@ -67,20 +44,12 @@ namespace ARMeilleure.Decoders.Optimizations
             {
                 Block block = blocks[i];
 
-<<<<<<< HEAD
                 if (startBlock.Address > block.EndAddress + Allowance)
-=======
-                if (startBlock.Address > block.EndAddress + allowance)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     break; // End of contiguous function.
                 }
 
-<<<<<<< HEAD
                 startBlock = block;
-=======
-                startBlock      = block;
->>>>>>> 1ec71635b (sync with main branch)
                 startBlockIndex = i;
             }
 
@@ -88,11 +57,7 @@ namespace ARMeilleure.Decoders.Optimizations
             {
                 return blocks.ToArray(); // Nothing to do here.
             }
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 1ec71635b (sync with main branch)
             // Mark branches whose target is outside of the contiguous region as an exit block.
             for (int i = startBlockIndex; i <= endBlockIndex; i++)
             {
@@ -104,11 +69,7 @@ namespace ARMeilleure.Decoders.Optimizations
                 }
             }
 
-<<<<<<< HEAD
             var newBlocks = new List<Block>(blocks.Count);
-=======
-           var newBlocks = new List<Block>(blocks.Count);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Finally, rebuild decoded block list, ignoring blocks outside the contiguous range.
             for (int i = 0; i < blocks.Count; i++)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using LibHac;
-=======
-﻿using LibHac;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Cpu;
 using Ryujinx.HLE.HOS.Services.Mii.Types;
 using System;
@@ -17,25 +13,14 @@ namespace Ryujinx.HLE.HOS.Services.Mii
         {
             get
             {
-<<<<<<< HEAD
                 _instance ??= new DatabaseImpl();
-=======
-                if (_instance == null)
-                {
-                    _instance = new DatabaseImpl();
-                }
->>>>>>> 1ec71635b (sync with main branch)
 
                 return _instance;
             }
         }
 
         private UtilityImpl _utilityImpl;
-<<<<<<< HEAD
         private readonly MiiDatabaseManager _miiDatabase;
-=======
-        private MiiDatabaseManager _miiDatabase;
->>>>>>> 1ec71635b (sync with main branch)
         private bool _isBroken;
 
         public DatabaseImpl()
@@ -305,11 +290,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii
         {
             coreData = new CoreData();
 
-<<<<<<< HEAD
             if (!charInfo.IsValid())
-=======
-            if (charInfo.IsValid())
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return ResultCode.InvalidCharInfo;
             }

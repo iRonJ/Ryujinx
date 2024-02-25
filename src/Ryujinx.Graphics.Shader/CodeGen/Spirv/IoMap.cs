@@ -1,9 +1,6 @@
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
-<<<<<<< HEAD
 using System;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using static Spv.Specification;
 
 namespace Ryujinx.Graphics.Shader.CodeGen.Spirv
@@ -25,10 +22,7 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Spirv
                 IoVariable.FragmentCoord => (BuiltIn.FragCoord, AggregateType.Vector4 | AggregateType.FP32),
                 IoVariable.FragmentOutputDepth => (BuiltIn.FragDepth, AggregateType.FP32),
                 IoVariable.FrontFacing => (BuiltIn.FrontFacing, AggregateType.Bool),
-<<<<<<< HEAD
                 IoVariable.GlobalId => (BuiltIn.GlobalInvocationId, AggregateType.Vector3 | AggregateType.U32),
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 IoVariable.InstanceId => (BuiltIn.InstanceId, AggregateType.S32),
                 IoVariable.InstanceIndex => (BuiltIn.InstanceIndex, AggregateType.S32),
                 IoVariable.InvocationId => (BuiltIn.InvocationId, AggregateType.S32),
@@ -53,11 +47,7 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Spirv
                 IoVariable.VertexIndex => (BuiltIn.VertexIndex, AggregateType.S32),
                 IoVariable.ViewportIndex => (BuiltIn.ViewportIndex, AggregateType.S32),
                 IoVariable.ViewportMask => (BuiltIn.ViewportMaskNV, AggregateType.Array | AggregateType.S32),
-<<<<<<< HEAD
                 _ => (default, AggregateType.Invalid),
-=======
-                _ => (default, AggregateType.Invalid)
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -70,11 +60,7 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Spirv
                 IoVariable.TessellationLevelOuter => 4,
                 IoVariable.ViewportMask => 1,
                 IoVariable.UserDefined => MaxAttributes,
-<<<<<<< HEAD
                 _ => 1,
-=======
-                _ => 1
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -90,7 +76,6 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Spirv
                 case IoVariable.ClipDistance:
                 case IoVariable.PointCoord:
                 case IoVariable.ViewportMask:
-<<<<<<< HEAD
                     return !isOutput &&
                            stage is ShaderStage.TessellationControl or ShaderStage.TessellationEvaluation or ShaderStage.Geometry;
             }
@@ -137,15 +122,3 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Spirv
         }
     }
 }
-=======
-                return !isOutput &&
-                       (stage == ShaderStage.TessellationControl ||
-                       stage == ShaderStage.TessellationEvaluation ||
-                       stage == ShaderStage.Geometry);
-            }
-
-            return false;
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

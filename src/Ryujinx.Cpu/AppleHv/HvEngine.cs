@@ -1,15 +1,9 @@
 using ARMeilleure.Memory;
-<<<<<<< HEAD
 using System.Runtime.Versioning;
 
 namespace Ryujinx.Cpu.AppleHv
 {
     [SupportedOSPlatform("macos")]
-=======
-
-namespace Ryujinx.Cpu.AppleHv
-{
->>>>>>> 1ec71635b (sync with main branch)
     public class HvEngine : ICpuEngine
     {
         private readonly ITickSource _tickSource;
@@ -25,8 +19,4 @@ namespace Ryujinx.Cpu.AppleHv
             return new HvCpuContext(_tickSource, memoryManager, for64Bit);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

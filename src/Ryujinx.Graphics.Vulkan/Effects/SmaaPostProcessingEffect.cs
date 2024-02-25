@@ -5,18 +5,11 @@ using Ryujinx.Graphics.Shader.Translation;
 using Silk.NET.Vulkan;
 using System;
 using Format = Ryujinx.Graphics.GAL.Format;
-<<<<<<< HEAD
 using SamplerCreateInfo = Ryujinx.Graphics.GAL.SamplerCreateInfo;
 
 namespace Ryujinx.Graphics.Vulkan.Effects
 {
     internal class SmaaPostProcessingEffect : IPostProcessingEffect
-=======
-
-namespace Ryujinx.Graphics.Vulkan.Effects
-{
-    internal partial class SmaaPostProcessingEffect : IPostProcessingEffect
->>>>>>> 1ec71635b (sync with main branch)
     {
         public const int AreaWidth = 160;
         public const int AreaHeight = 560;
@@ -72,11 +65,7 @@ namespace Ryujinx.Graphics.Vulkan.Effects
             _searchTexture?.Dispose();
         }
 
-<<<<<<< HEAD
         private void RecreateShaders(int width, int height)
-=======
-        private unsafe void RecreateShaders(int width, int height)
->>>>>>> 1ec71635b (sync with main branch)
         {
             _recreatePipelines = false;
 
@@ -107,15 +96,9 @@ namespace Ryujinx.Graphics.Vulkan.Effects
                 .Add(ResourceStages.Compute, ResourceType.TextureAndSampler, 3)
                 .Add(ResourceStages.Compute, ResourceType.Image, 0).Build();
 
-<<<<<<< HEAD
             _samplerLinear = _renderer.CreateSampler(SamplerCreateInfo.Create(MinFilter.Linear, MagFilter.Linear));
 
             _specConstants = new SmaaConstants
-=======
-            _samplerLinear = _renderer.CreateSampler(GAL.SamplerCreateInfo.Create(MinFilter.Linear, MagFilter.Linear));
-
-            _specConstants = new SmaaConstants()
->>>>>>> 1ec71635b (sync with main branch)
             {
                 Width = width,
                 Height = height,
@@ -135,29 +118,17 @@ namespace Ryujinx.Graphics.Vulkan.Effects
 
             _edgeProgram = _renderer.CreateProgramWithMinimalLayout(new[]
             {
-<<<<<<< HEAD
                 new ShaderSource(edgeShader, ShaderStage.Compute, TargetLanguage.Spirv),
-=======
-                new ShaderSource(edgeShader, ShaderStage.Compute, TargetLanguage.Spirv)
->>>>>>> 1ec71635b (sync with main branch)
             }, edgeResourceLayout, new[] { specInfo });
 
             _blendProgram = _renderer.CreateProgramWithMinimalLayout(new[]
             {
-<<<<<<< HEAD
                 new ShaderSource(blendShader, ShaderStage.Compute, TargetLanguage.Spirv),
-=======
-                new ShaderSource(blendShader, ShaderStage.Compute, TargetLanguage.Spirv)
->>>>>>> 1ec71635b (sync with main branch)
             }, blendResourceLayout, new[] { specInfo });
 
             _neighbourProgram = _renderer.CreateProgramWithMinimalLayout(new[]
             {
-<<<<<<< HEAD
                 new ShaderSource(neighbourShader, ShaderStage.Compute, TargetLanguage.Spirv),
-=======
-                new ShaderSource(neighbourShader, ShaderStage.Compute, TargetLanguage.Spirv)
->>>>>>> 1ec71635b (sync with main branch)
             }, neighbourResourceLayout, new[] { specInfo });
         }
 
@@ -206,13 +177,8 @@ namespace Ryujinx.Graphics.Vulkan.Effects
             var areaTexture = EmbeddedResources.Read("Ryujinx.Graphics.Vulkan/Effects/Textures/SmaaAreaTexture.bin");
             var searchTexture = EmbeddedResources.Read("Ryujinx.Graphics.Vulkan/Effects/Textures/SmaaSearchTexture.bin");
 
-<<<<<<< HEAD
             _areaTexture = _renderer.CreateTexture(areaInfo) as TextureView;
             _searchTexture = _renderer.CreateTexture(searchInfo) as TextureView;
-=======
-            _areaTexture = _renderer.CreateTexture(areaInfo, 1) as TextureView;
-            _searchTexture = _renderer.CreateTexture(searchInfo, 1) as TextureView;
->>>>>>> 1ec71635b (sync with main branch)
 
             _areaTexture.SetData(areaTexture);
             _searchTexture.SetData(searchTexture);
@@ -227,36 +193,9 @@ namespace Ryujinx.Graphics.Vulkan.Effects
                 _edgeOutputTexture?.Dispose();
                 _blendOutputTexture?.Dispose();
 
-<<<<<<< HEAD
                 _outputTexture = _renderer.CreateTexture(view.Info) as TextureView;
                 _edgeOutputTexture = _renderer.CreateTexture(view.Info) as TextureView;
                 _blendOutputTexture = _renderer.CreateTexture(view.Info) as TextureView;
-=======
-                var info = view.Info;
-
-                if (view.Info.Format.IsBgr())
-                {
-                    info = new TextureCreateInfo(info.Width,
-                        info.Height,
-                        info.Depth,
-                        info.Levels,
-                        info.Samples,
-                        info.BlockWidth,
-                        info.BlockHeight,
-                        info.BytesPerPixel,
-                        info.Format,
-                        info.DepthStencilMode,
-                        info.Target,
-                        info.SwizzleB,
-                        info.SwizzleG,
-                        info.SwizzleR,
-                        info.SwizzleA);
-                }
-
-                _outputTexture = _renderer.CreateTexture(info, view.ScaleFactor) as TextureView;
-                _edgeOutputTexture = _renderer.CreateTexture(info, view.ScaleFactor) as TextureView;
-                _blendOutputTexture = _renderer.CreateTexture(info, view.ScaleFactor) as TextureView;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             _pipeline.SetCommandBuffer(cbs);
@@ -276,20 +215,11 @@ namespace Ryujinx.Graphics.Vulkan.Effects
 
             ReadOnlySpan<float> resolutionBuffer = stackalloc float[] { view.Width, view.Height };
             int rangeSize = resolutionBuffer.Length * sizeof(float);
-<<<<<<< HEAD
             using var buffer = _renderer.BufferManager.ReserveOrCreate(_renderer, cbs, rangeSize);
 
             buffer.Holder.SetDataUnchecked(buffer.Offset, resolutionBuffer);
             _pipeline.SetUniformBuffers(stackalloc[] { new BufferAssignment(2, buffer.Range) });
             _pipeline.SetImage(ShaderStage.Compute, 0, _edgeOutputTexture, FormatTable.ConvertRgba8SrgbToUnorm(view.Info.Format));
-=======
-            var bufferHandle = _renderer.BufferManager.CreateWithHandle(_renderer, rangeSize);
-
-            _renderer.BufferManager.SetData(bufferHandle, 0, resolutionBuffer);
-            var bufferRanges = new BufferRange(bufferHandle, 0, rangeSize);
-            _pipeline.SetUniformBuffers(stackalloc[] { new BufferAssignment(2, bufferRanges) });
-            _pipeline.SetImage(0, _edgeOutputTexture, GAL.Format.R8G8B8A8Unorm);
->>>>>>> 1ec71635b (sync with main branch)
             _pipeline.DispatchCompute(dispatchX, dispatchY, 1);
             _pipeline.ComputeBarrier();
 
@@ -299,11 +229,7 @@ namespace Ryujinx.Graphics.Vulkan.Effects
             _pipeline.SetTextureAndSampler(ShaderStage.Compute, 1, _edgeOutputTexture, _samplerLinear);
             _pipeline.SetTextureAndSampler(ShaderStage.Compute, 3, _areaTexture, _samplerLinear);
             _pipeline.SetTextureAndSampler(ShaderStage.Compute, 4, _searchTexture, _samplerLinear);
-<<<<<<< HEAD
             _pipeline.SetImage(ShaderStage.Compute, 0, _blendOutputTexture, FormatTable.ConvertRgba8SrgbToUnorm(view.Info.Format));
-=======
-            _pipeline.SetImage(0, _blendOutputTexture, GAL.Format.R8G8B8A8Unorm);
->>>>>>> 1ec71635b (sync with main branch)
             _pipeline.DispatchCompute(dispatchX, dispatchY, 1);
             _pipeline.ComputeBarrier();
 
@@ -312,21 +238,12 @@ namespace Ryujinx.Graphics.Vulkan.Effects
             _pipeline.Specialize(_specConstants);
             _pipeline.SetTextureAndSampler(ShaderStage.Compute, 3, _blendOutputTexture, _samplerLinear);
             _pipeline.SetTextureAndSampler(ShaderStage.Compute, 1, view, _samplerLinear);
-<<<<<<< HEAD
             _pipeline.SetImage(ShaderStage.Compute, 0, _outputTexture, FormatTable.ConvertRgba8SrgbToUnorm(view.Info.Format));
-=======
-            _pipeline.SetImage(0, _outputTexture, GAL.Format.R8G8B8A8Unorm);
->>>>>>> 1ec71635b (sync with main branch)
             _pipeline.DispatchCompute(dispatchX, dispatchY, 1);
             _pipeline.ComputeBarrier();
 
             _pipeline.Finish();
 
-<<<<<<< HEAD
-=======
-            _renderer.BufferManager.Delete(bufferHandle);
-
->>>>>>> 1ec71635b (sync with main branch)
             return _outputTexture;
         }
 
@@ -340,18 +257,10 @@ namespace Ryujinx.Graphics.Vulkan.Effects
 
             scissors[0] = new Rectangle<int>(0, 0, texture.Width, texture.Height);
 
-<<<<<<< HEAD
             _pipeline.SetRenderTarget(texture, (uint)texture.Width, (uint)texture.Height);
-=======
-            _pipeline.SetRenderTarget(texture.GetImageViewForAttachment(), (uint)texture.Width, (uint)texture.Height, false, texture.VkFormat);
->>>>>>> 1ec71635b (sync with main branch)
             _pipeline.SetRenderTargetColorMasks(colorMasks);
             _pipeline.SetScissors(scissors);
             _pipeline.ClearRenderTargetColor(0, 0, 1, new ColorF(0f, 0f, 0f, 1f));
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

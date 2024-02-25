@@ -14,15 +14,9 @@ namespace Ryujinx.HLE.HOS.Services.Hid
 
             ref TouchScreenState previousEntry = ref lifo.GetCurrentEntryRef();
 
-<<<<<<< HEAD
             TouchScreenState newState = new()
             {
                 SamplingNumber = previousEntry.SamplingNumber + 1,
-=======
-            TouchScreenState newState = new TouchScreenState
-            {
-                SamplingNumber = previousEntry.SamplingNumber + 1
->>>>>>> 1ec71635b (sync with main branch)
             };
 
             if (Active)
@@ -43,11 +37,7 @@ namespace Ryujinx.HLE.HOS.Services.Hid
                         FingerId = (uint)i,
                         DiameterX = pi.DiameterX,
                         DiameterY = pi.DiameterY,
-<<<<<<< HEAD
                         RotationAngle = pi.Angle,
-=======
-                        RotationAngle = pi.Angle
->>>>>>> 1ec71635b (sync with main branch)
                     };
                 }
             }
@@ -55,8 +45,4 @@ namespace Ryujinx.HLE.HOS.Services.Hid
             lifo.Write(ref newState);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

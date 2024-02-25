@@ -71,18 +71,11 @@ namespace Ryujinx.Audio.Renderer.Server.Voice
         /// <returns>A new <see cref="Common.WaveBuffer"/> for use by the <see cref="Dsp.AudioProcessor"/>.</returns>
         public Common.WaveBuffer ToCommon(int version)
         {
-<<<<<<< HEAD
             Common.WaveBuffer waveBuffer = new()
             {
                 Buffer = BufferAddressInfo.GetReference(true),
                 BufferSize = (uint)BufferAddressInfo.Size,
             };
-=======
-            Common.WaveBuffer waveBuffer = new Common.WaveBuffer();
-
-            waveBuffer.Buffer = BufferAddressInfo.GetReference(true);
-            waveBuffer.BufferSize = (uint)BufferAddressInfo.Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (ContextAddressInfo.CpuAddress != 0)
             {
@@ -109,8 +102,4 @@ namespace Ryujinx.Audio.Renderer.Server.Voice
             return waveBuffer;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

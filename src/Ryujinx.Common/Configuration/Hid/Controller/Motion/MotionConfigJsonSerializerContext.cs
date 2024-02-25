@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Text.Json.Serialization;
-=======
-﻿using System.Text.Json.Serialization;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Common.Configuration.Hid.Controller.Motion
 {
@@ -13,8 +9,4 @@ namespace Ryujinx.Common.Configuration.Hid.Controller.Motion
     public partial class MotionConfigJsonSerializerContext : JsonSerializerContext
     {
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

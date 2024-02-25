@@ -8,17 +8,10 @@ namespace Ryujinx.Audio.Backends.Dummy
     class DummyHardwareDeviceSessionInput : IHardwareDeviceSession
     {
         private float _volume;
-<<<<<<< HEAD
         private readonly IHardwareDeviceDriver _manager;
         private readonly IVirtualMemoryManager _memoryManager;
 
         public DummyHardwareDeviceSessionInput(IHardwareDeviceDriver manager, IVirtualMemoryManager memoryManager)
-=======
-        private IHardwareDeviceDriver _manager;
-        private IVirtualMemoryManager _memoryManager;
-
-        public DummyHardwareDeviceSessionInput(IHardwareDeviceDriver manager, IVirtualMemoryManager memoryManager, SampleFormat requestedSampleFormat, uint requestedSampleRate, uint requestedChannelCount)
->>>>>>> 1ec71635b (sync with main branch)
         {
             _volume = 1.0f;
             _manager = manager;
@@ -71,8 +64,4 @@ namespace Ryujinx.Audio.Backends.Dummy
             return true;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

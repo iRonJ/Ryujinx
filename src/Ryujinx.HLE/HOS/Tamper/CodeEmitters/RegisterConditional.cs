@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.Exceptions;
-=======
-﻿using Ryujinx.HLE.Exceptions;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Tamper.Conditions;
 using Ryujinx.HLE.HOS.Tamper.Operations;
 

@@ -41,8 +41,4 @@ namespace Ryujinx.Audio.Renderer.Parameter.Effect
         /// </summary>
         public UsageState Status;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

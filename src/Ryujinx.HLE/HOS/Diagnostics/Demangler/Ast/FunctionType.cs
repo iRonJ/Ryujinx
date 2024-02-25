@@ -4,7 +4,6 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class FunctionType : BaseNode
     {
-<<<<<<< HEAD
         private readonly BaseNode _returnType;
         private readonly BaseNode _params;
         private readonly BaseNode _cvQualifier;
@@ -18,21 +17,6 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             _cvQualifier = cvQualifier;
             _referenceQualifier = referenceQualifier;
             _exceptionSpec = exceptionSpec;
-=======
-        private BaseNode            _returnType;
-        private BaseNode            _params;
-        private BaseNode            _cvQualifier;
-        private SimpleReferenceType _referenceQualifier;
-        private BaseNode            _exceptionSpec;
-
-        public FunctionType(BaseNode returnType, BaseNode Params, BaseNode cvQualifier, SimpleReferenceType referenceQualifier, BaseNode exceptionSpec) : base(NodeType.FunctionType)
-        {
-            _returnType         = returnType;
-            _params             = Params;
-            _cvQualifier        = cvQualifier;
-            _referenceQualifier = referenceQualifier;
-            _exceptionSpec      = exceptionSpec;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void PrintLeft(TextWriter writer)
@@ -74,8 +58,4 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             return true;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

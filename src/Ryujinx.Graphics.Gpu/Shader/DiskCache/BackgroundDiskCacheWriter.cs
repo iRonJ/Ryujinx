@@ -18,11 +18,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
             /// <summary>
             /// Operation to add a shader to the cache.
             /// </summary>
-<<<<<<< HEAD
             AddShader,
-=======
-            AddShader
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>

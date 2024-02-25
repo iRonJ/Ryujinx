@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 using System.Text;
 
 namespace Ryujinx.Horizon.Kernel.Generators
-=======
-﻿using System.Text;
-
-namespace Ryujinx.Horizon.Generators
->>>>>>> 1ec71635b (sync with main branch)
 {
     class CodeGenerator
     {

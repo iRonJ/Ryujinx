@@ -4,12 +4,6 @@ namespace Ryujinx.Common.Configuration
     {
         Never,
         OnIdle,
-<<<<<<< HEAD
         Always,
     }
 }
-=======
-        Always
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

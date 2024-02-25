@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
-=======
-﻿using Ryujinx.Graphics.GAL;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 
 namespace Ryujinx.Graphics.Gpu.Memory
@@ -38,19 +34,12 @@ namespace Ryujinx.Graphics.Gpu.Memory
         /// Adds a new counter to the counter cache, or updates a existing one.
         /// </summary>
         /// <param name="gpuVa">GPU virtual address where the counter will be written in memory</param>
-<<<<<<< HEAD
         /// <param name="evt">The new counter</param>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public void AddOrUpdate(ulong gpuVa, ICounterEvent evt)
         {
             int index = BinarySearch(gpuVa);
 
-<<<<<<< HEAD
             CounterEntry entry = new(gpuVa, evt);
-=======
-            CounterEntry entry = new CounterEntry(gpuVa, evt);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (index < 0)
             {
@@ -139,11 +128,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
                 _items[index].Event?.Flush();
 
                 return true;
-<<<<<<< HEAD
             }
-=======
-            } 
->>>>>>> 1ec71635b (sync with main branch)
             else
             {
                 return false;
@@ -184,11 +169,7 @@ namespace Ryujinx.Graphics.Gpu.Memory
 
                 int middle = left + (range >> 1);
 
-<<<<<<< HEAD
                 CounterEntry item = _items[middle];
-=======
-               CounterEntry item = _items[middle];
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (item.Address == address)
                 {

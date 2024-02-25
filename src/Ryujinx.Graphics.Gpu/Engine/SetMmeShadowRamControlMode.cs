@@ -10,7 +10,6 @@ namespace Ryujinx.Graphics.Gpu.Engine
         MethodPassthrough = 2,
         MethodReplay = 3,
     }
-<<<<<<< HEAD
 
     static class SetMmeShadowRamControlModeExtensions
     {
@@ -30,6 +29,3 @@ namespace Ryujinx.Graphics.Gpu.Engine
         }
     }
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

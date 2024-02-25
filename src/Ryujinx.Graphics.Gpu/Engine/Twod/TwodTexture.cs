@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Gpu.Engine.Types;
-=======
-﻿using Ryujinx.Graphics.Gpu.Engine.Types;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Gpu.Engine.Twod
 {
@@ -11,11 +7,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Twod
     /// </summary>
     struct TwodTexture
     {
-<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
-=======
-#pragma warning disable CS0649
->>>>>>> 1ec71635b (sync with main branch)
         public ColorFormat Format;
         public Boolean32 LinearLayout;
         public MemoryLayout MemoryLayout;

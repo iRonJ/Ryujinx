@@ -115,21 +115,13 @@ namespace Ryujinx.Audio.Renderer.Parameter.Effect
         /// <summary>
         /// Reserved/padding.
         /// </summary>
-<<<<<<< HEAD
         private readonly byte _reserved;
-=======
-        private byte _reserved;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Check if the <see cref="ChannelCount"/> is valid.
         /// </summary>
         /// <returns>Returns true if the <see cref="ChannelCount"/> is valid.</returns>
-<<<<<<< HEAD
         public readonly bool IsChannelCountValid()
-=======
-        public bool IsChannelCountValid()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return EffectInParameterVersion1.IsChannelCountValid(ChannelCount);
         }
@@ -138,17 +130,9 @@ namespace Ryujinx.Audio.Renderer.Parameter.Effect
         /// Check if the <see cref="ChannelCountMax"/> is valid.
         /// </summary>
         /// <returns>Returns true if the <see cref="ChannelCountMax"/> is valid.</returns>
-<<<<<<< HEAD
         public readonly bool IsChannelCountMaxValid()
-=======
-        public bool IsChannelCountMaxValid()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return EffectInParameterVersion1.IsChannelCountValid(ChannelCountMax);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

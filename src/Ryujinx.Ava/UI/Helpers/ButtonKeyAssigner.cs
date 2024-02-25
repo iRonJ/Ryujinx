@@ -23,11 +23,7 @@ namespace Ryujinx.Ava.UI.Helpers
                 IsAssigned = isAssigned;
             }
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 1ec71635b (sync with main branch)
         public ToggleButton ToggledButton { get; set; }
 
         private bool _isWaitingForInput;

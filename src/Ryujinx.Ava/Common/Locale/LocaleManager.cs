@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 using Ryujinx.Ava.UI.ViewModels;
 using Ryujinx.Common;
 using Ryujinx.Common.Utilities;
 using Ryujinx.UI.Common.Configuration;
-=======
-﻿using Ryujinx.Ava.UI.ViewModels;
-using Ryujinx.Common;
-using Ryujinx.Common.Utilities;
-using Ryujinx.Ui.Common.Configuration;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -20,7 +13,6 @@ namespace Ryujinx.Ava.Common.Locale
     {
         private const string DefaultLanguageCode = "en_US";
 
-<<<<<<< HEAD
         private readonly Dictionary<LocaleKeys, string> _localeStrings;
         private Dictionary<LocaleKeys, string> _localeDefaultStrings;
         private readonly ConcurrentDictionary<LocaleKeys, object[]> _dynamicValues;
@@ -34,19 +26,6 @@ namespace Ryujinx.Ava.Common.Locale
             _localeStrings = new Dictionary<LocaleKeys, string>();
             _localeDefaultStrings = new Dictionary<LocaleKeys, string>();
             _dynamicValues = new ConcurrentDictionary<LocaleKeys, object[]>();
-=======
-        private Dictionary<LocaleKeys, string>                      _localeStrings;
-        private Dictionary<LocaleKeys, string>                      _localeDefaultStrings;
-        private readonly ConcurrentDictionary<LocaleKeys, object[]> _dynamicValues;
-
-        public static LocaleManager Instance { get; } = new LocaleManager();
-
-        public LocaleManager()
-        {
-            _localeStrings        = new Dictionary<LocaleKeys, string>();
-            _localeDefaultStrings = new Dictionary<LocaleKeys, string>();
-            _dynamicValues        = new ConcurrentDictionary<LocaleKeys, object[]>();
->>>>>>> 1ec71635b (sync with main branch)
 
             Load();
         }
@@ -59,15 +38,9 @@ namespace Ryujinx.Ava.Common.Locale
             // If the view is loaded with the UI Previewer detached, then override it with the saved one or default.
             if (Program.PreviewerDetached)
             {
-<<<<<<< HEAD
                 if (!string.IsNullOrEmpty(ConfigurationState.Instance.UI.LanguageCode.Value))
                 {
                     localeLanguageCode = ConfigurationState.Instance.UI.LanguageCode.Value;
-=======
-                if (!string.IsNullOrEmpty(ConfigurationState.Instance.Ui.LanguageCode.Value))
-                {
-                    localeLanguageCode = ConfigurationState.Instance.Ui.LanguageCode.Value;
->>>>>>> 1ec71635b (sync with main branch)
                 }
                 else
                 {
@@ -133,7 +106,6 @@ namespace Ryujinx.Ava.Common.Locale
             }
         }
 
-<<<<<<< HEAD
         public bool IsRTL()
         {
             return _localeLanguageCode switch
@@ -143,8 +115,6 @@ namespace Ryujinx.Ava.Common.Locale
             };
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public string UpdateAndGetDynamicValue(LocaleKeys key, params object[] values)
         {
             _dynamicValues[key] = values;
@@ -165,7 +135,6 @@ namespace Ryujinx.Ava.Common.Locale
             {
                 this[item.Key] = item.Value;
             }
-<<<<<<< HEAD
 
             _localeLanguageCode = languageCode;
             LocaleChanged?.Invoke();
@@ -176,15 +145,6 @@ namespace Ryujinx.Ava.Common.Locale
             var localeStrings = new Dictionary<LocaleKeys, string>();
             string languageJson = EmbeddedResources.ReadAllText($"Ryujinx.Ava/Assets/Locales/{languageCode}.json");
             var strings = JsonHelper.Deserialize(languageJson, CommonJsonContext.Default.StringDictionary);
-=======
-        }
-
-        private Dictionary<LocaleKeys, string> LoadJsonLanguage(string languageCode = DefaultLanguageCode)
-        {
-            var    localeStrings = new Dictionary<LocaleKeys, string>();
-            string languageJson  = EmbeddedResources.ReadAllText($"Ryujinx.Ava/Assets/Locales/{languageCode}.json");
-            var    strings       = JsonHelper.Deserialize(languageJson, CommonJsonContext.Default.StringDictionary);
->>>>>>> 1ec71635b (sync with main branch)
 
             foreach (var item in strings)
             {
@@ -197,8 +157,4 @@ namespace Ryujinx.Ava.Common.Locale
             return localeStrings;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

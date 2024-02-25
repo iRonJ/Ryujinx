@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Cpu;
 using Ryujinx.HLE.Exceptions;
 using Ryujinx.HLE.HOS.Ipc;
@@ -17,21 +13,12 @@ namespace Ryujinx.HLE.HOS.Services.Time
     [Service("time:m")] // 9.0.0+
     class ITimeServiceManager : IpcService
     {
-<<<<<<< HEAD
         private readonly TimeManager _timeManager;
         private int _automaticCorrectionEvent;
 
         public ITimeServiceManager(ServiceCtx context)
         {
             _timeManager = TimeManager.Instance;
-=======
-        private TimeManager _timeManager;
-        private int         _automaticCorrectionEvent;
-
-        public ITimeServiceManager(ServiceCtx context)
-        {
-            _timeManager              = TimeManager.Instance;
->>>>>>> 1ec71635b (sync with main branch)
             _automaticCorrectionEvent = 0;
         }
 
@@ -75,19 +62,11 @@ namespace Ryujinx.HLE.HOS.Services.Time
         // SetupStandardSteadyClock(nn::util::Uuid clock_source_id, nn::TimeSpanType setup_value,  nn::TimeSpanType internal_offset,  nn::TimeSpanType test_offset, bool is_rtc_reset_detected)
         public ResultCode SetupStandardSteadyClock(ServiceCtx context)
         {
-<<<<<<< HEAD
             UInt128 clockSourceId = context.RequestData.ReadStruct<UInt128>();
             TimeSpanType setupValue = context.RequestData.ReadStruct<TimeSpanType>();
             TimeSpanType internalOffset = context.RequestData.ReadStruct<TimeSpanType>();
             TimeSpanType testOffset = context.RequestData.ReadStruct<TimeSpanType>();
             bool isRtcResetDetected = context.RequestData.ReadBoolean();
-=======
-            UInt128      clockSourceId      = context.RequestData.ReadStruct<UInt128>();
-            TimeSpanType setupValue         = context.RequestData.ReadStruct<TimeSpanType>();
-            TimeSpanType internalOffset     = context.RequestData.ReadStruct<TimeSpanType>();
-            TimeSpanType testOffset         = context.RequestData.ReadStruct<TimeSpanType>();
-            bool         isRtcResetDetected = context.RequestData.ReadBoolean();
->>>>>>> 1ec71635b (sync with main branch)
 
             ITickSource tickSource = context.Device.System.TickSource;
 
@@ -101,11 +80,7 @@ namespace Ryujinx.HLE.HOS.Services.Time
         public ResultCode SetupStandardLocalSystemClock(ServiceCtx context)
         {
             SystemClockContext clockContext = context.RequestData.ReadStruct<SystemClockContext>();
-<<<<<<< HEAD
             long posixTime = context.RequestData.ReadInt64();
-=======
-            long               posixTime    = context.RequestData.ReadInt64();
->>>>>>> 1ec71635b (sync with main branch)
 
             ITickSource tickSource = context.Device.System.TickSource;
 
@@ -118,13 +93,8 @@ namespace Ryujinx.HLE.HOS.Services.Time
         // SetupStandardNetworkSystemClock(nn::time::SystemClockContext context, nn::TimeSpanType sufficient_accuracy)
         public ResultCode SetupStandardNetworkSystemClock(ServiceCtx context)
         {
-<<<<<<< HEAD
             SystemClockContext clockContext = context.RequestData.ReadStruct<SystemClockContext>();
             TimeSpanType sufficientAccuracy = context.RequestData.ReadStruct<TimeSpanType>();
-=======
-            SystemClockContext clockContext       = context.RequestData.ReadStruct<SystemClockContext>();
-            TimeSpanType       sufficientAccuracy = context.RequestData.ReadStruct<TimeSpanType>();
->>>>>>> 1ec71635b (sync with main branch)
 
             _timeManager.SetupStandardNetworkSystemClock(clockContext, sufficientAccuracy);
 
@@ -152,17 +122,10 @@ namespace Ryujinx.HLE.HOS.Services.Time
         // SetupTimeZoneManager(nn::time::LocationName location_name, nn::time::SteadyClockTimePoint timezone_update_timepoint, u32 total_location_name_count, nn::time::TimeZoneRuleVersion timezone_rule_version, buffer<nn::time::TimeZoneBinary, 0x21> timezone_binary)
         public ResultCode SetupTimeZoneManager(ServiceCtx context)
         {
-<<<<<<< HEAD
             string locationName = StringUtils.ReadInlinedAsciiString(context.RequestData, 0x24);
             SteadyClockTimePoint timeZoneUpdateTimePoint = context.RequestData.ReadStruct<SteadyClockTimePoint>();
             uint totalLocationNameCount = context.RequestData.ReadUInt32();
             UInt128 timeZoneRuleVersion = context.RequestData.ReadStruct<UInt128>();
-=======
-            string               locationName            = StringUtils.ReadInlinedAsciiString(context.RequestData, 0x24);
-            SteadyClockTimePoint timeZoneUpdateTimePoint = context.RequestData.ReadStruct<SteadyClockTimePoint>();
-            uint                 totalLocationNameCount  = context.RequestData.ReadUInt32();
-            UInt128              timeZoneRuleVersion     = context.RequestData.ReadStruct<UInt128>();
->>>>>>> 1ec71635b (sync with main branch)
 
             (ulong bufferPosition, ulong bufferSize) = context.Request.GetBufferType0x21();
 
@@ -170,16 +133,9 @@ namespace Ryujinx.HLE.HOS.Services.Time
 
             context.Memory.Read(bufferPosition, temp);
 
-<<<<<<< HEAD
             using MemoryStream timeZoneBinaryStream = new(temp);
 
             _timeManager.SetupTimeZoneManager(locationName, timeZoneUpdateTimePoint, totalLocationNameCount, timeZoneRuleVersion, timeZoneBinaryStream);
-=======
-            using (MemoryStream timeZoneBinaryStream = new MemoryStream(temp))
-            {
-                _timeManager.SetupTimeZoneManager(locationName, timeZoneUpdateTimePoint, totalLocationNameCount, timeZoneRuleVersion, timeZoneBinaryStream);
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             return ResultCode.Success;
         }

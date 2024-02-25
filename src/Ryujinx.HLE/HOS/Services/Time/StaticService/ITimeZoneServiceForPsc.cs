@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.HOS.Services.Time.Clock;
 using Ryujinx.HLE.HOS.Services.Time.TimeZone;
@@ -18,13 +14,8 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
 {
     class ITimeZoneServiceForPsc : IpcService
     {
-<<<<<<< HEAD
         private readonly TimeZoneManager _timeZoneManager;
         private readonly bool _writePermission;
-=======
-        private TimeZoneManager _timeZoneManager;
-        private bool            _writePermission;
->>>>>>> 1ec71635b (sync with main branch)
 
         public ITimeZoneServiceForPsc(TimeZoneManager timeZoneManager, bool writePermission)
         {
@@ -143,15 +134,8 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
 
             context.Memory.Read(bufferPosition, temp);
 
-<<<<<<< HEAD
             using MemoryStream timeZoneBinaryStream = new(temp);
             result = _timeZoneManager.SetDeviceLocationNameWithTimeZoneRule(locationName, timeZoneBinaryStream);
-=======
-            using (MemoryStream timeZoneBinaryStream = new MemoryStream(temp))
-            {
-                result = _timeZoneManager.SetDeviceLocationNameWithTimeZoneRule(locationName, timeZoneBinaryStream);
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             return result;
         }
@@ -163,11 +147,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
             (ulong bufferPosition, ulong bufferSize) = context.Request.GetBufferType0x21();
 
             ulong timeZoneRuleBufferPosition = context.Request.ReceiveBuff[0].Position;
-<<<<<<< HEAD
             ulong timeZoneRuleBufferSize = context.Request.ReceiveBuff[0].Size;
-=======
-            ulong timeZoneRuleBufferSize     = context.Request.ReceiveBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (timeZoneRuleBufferSize != 0x4000)
             {
@@ -183,24 +163,12 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
 
             context.Memory.Read(bufferPosition, temp);
 
-<<<<<<< HEAD
             using MemoryStream timeZoneBinaryStream = new(temp);
             using WritableRegion region = context.Memory.GetWritableRegion(timeZoneRuleBufferPosition, Unsafe.SizeOf<TimeZoneRule>());
 
             ref TimeZoneRule rule = ref MemoryMarshal.Cast<byte, TimeZoneRule>(region.Memory.Span)[0];
 
             result = _timeZoneManager.ParseTimeZoneRuleBinary(ref rule, timeZoneBinaryStream);
-=======
-            using (MemoryStream timeZoneBinaryStream = new MemoryStream(temp))
-            {
-                using (WritableRegion region = context.Memory.GetWritableRegion(timeZoneRuleBufferPosition, Unsafe.SizeOf<TimeZoneRule>()))
-                {
-                    ref TimeZoneRule rule = ref MemoryMarshal.Cast<byte, TimeZoneRule>(region.Memory.Span)[0];
-
-                    result = _timeZoneManager.ParseTimeZoneRuleBinary(ref rule, timeZoneBinaryStream);
-                }
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             return result;
         }
@@ -216,15 +184,9 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
         // ToCalendarTime(nn::time::PosixTime time, buffer<nn::time::TimeZoneRule, 0x15> rules) -> (nn::time::CalendarTime, nn::time::sf::CalendarAdditionalInfo)
         public ResultCode ToCalendarTime(ServiceCtx context)
         {
-<<<<<<< HEAD
             long posixTime = context.RequestData.ReadInt64();
             ulong bufferPosition = context.Request.SendBuff[0].Position;
             ulong bufferSize = context.Request.SendBuff[0].Size;
-=======
-            long  posixTime      = context.RequestData.ReadInt64();
-            ulong bufferPosition = context.Request.SendBuff[0].Position;
-            ulong bufferSize     = context.Request.SendBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (bufferSize != 0x4000)
             {
@@ -267,11 +229,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
         public ResultCode ToPosixTime(ServiceCtx context)
         {
             ulong inBufferPosition = context.Request.SendBuff[0].Position;
-<<<<<<< HEAD
             ulong inBufferSize = context.Request.SendBuff[0].Size;
-=======
-            ulong inBufferSize     = context.Request.SendBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             CalendarTime calendarTime = context.RequestData.ReadStruct<CalendarTime>();
 
@@ -290,13 +248,9 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
             if (resultCode == ResultCode.Success)
             {
                 ulong outBufferPosition = context.Request.RecvListBuff[0].Position;
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
                 ulong outBufferSize = context.Request.RecvListBuff[0].Size;
 #pragma warning restore IDE0059
-=======
-                ulong outBufferSize     = context.Request.RecvListBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
                 context.Memory.Write(outBufferPosition, posixTime);
                 context.ResponseData.Write(1);
@@ -316,13 +270,9 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
             if (resultCode == ResultCode.Success)
             {
                 ulong outBufferPosition = context.Request.RecvListBuff[0].Position;
-<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
                 ulong outBufferSize = context.Request.RecvListBuff[0].Size;
 #pragma warning restore IDE0059
-=======
-                ulong outBufferSize     = context.Request.RecvListBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
                 context.Memory.Write(outBufferPosition, posixTime);
 

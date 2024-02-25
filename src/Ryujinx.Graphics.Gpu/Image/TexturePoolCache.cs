@@ -27,8 +27,4 @@ namespace Ryujinx.Graphics.Gpu.Image
             return new TexturePool(context, channel, address, maximumId);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

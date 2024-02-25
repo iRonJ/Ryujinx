@@ -10,8 +10,4 @@ namespace Ryujinx.Audio.Renderer.Common
         public ulong ReturnBufferInfo;
         public ulong ReturnBufferInfoBase;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

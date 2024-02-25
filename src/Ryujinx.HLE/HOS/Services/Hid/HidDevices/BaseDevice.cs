@@ -11,8 +11,4 @@ namespace Ryujinx.HLE.HOS.Services.Hid
             Active = active;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

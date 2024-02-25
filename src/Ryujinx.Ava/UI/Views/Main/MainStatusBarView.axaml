@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-<<<<<<< HEAD
     xmlns:controls="clr-namespace:Ryujinx.Ava.UI.Controls"
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
     xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
@@ -11,14 +10,6 @@
     xmlns:config="clr-namespace:Ryujinx.Common.Configuration;assembly=Ryujinx.Common"
     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
     x:Class="Ryujinx.Ava.UI.Views.Main.MainStatusBarView"
-=======
-    xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
-    xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
-    xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
-    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-    x:Class="Ryujinx.Ava.UI.Views.Main.MainStatusBarView"
-    x:CompileBindings="True"
->>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModels:MainWindowViewModel">
     <Design.DataContext>
         <viewModels:MainWindowViewModel />
@@ -56,11 +47,7 @@
                     Margin="0,0,5,0"
                     VerticalAlignment="Center"
                     Background="Transparent"
-<<<<<<< HEAD
                     Click="Refresh_OnClick">
-=======
-                    Command="{ReflectionBinding LoadApplications}">
->>>>>>> 1ec71635b (sync with main branch)
                     <ui:SymbolIcon
                         Width="50"
                         Height="100"
@@ -78,11 +65,7 @@
                     Grid.Column="2"
                     Height="6"
                     VerticalAlignment="Center"
-<<<<<<< HEAD
                     Foreground="{DynamicResource SystemAccentColorLight2}"
-=======
-                    Foreground="{DynamicResource HighlightColor}"
->>>>>>> 1ec71635b (sync with main branch)
                     IsVisible="{Binding StatusBarVisible}"
                     Maximum="{Binding StatusBarProgressMaximum}"
                     Value="{Binding StatusBarProgressValue}" />
@@ -105,20 +88,13 @@
                 IsVisible="{Binding !ShowLoadProgress}"
                 PointerReleased="VsyncStatus_PointerReleased"
                 Text="VSync"
-<<<<<<< HEAD
                 TextAlignment="Start" />
-=======
-                TextAlignment="Left" />
->>>>>>> 1ec71635b (sync with main branch)
             <Border
                 Width="2"
                 Height="12"
                 Margin="0"
                 BorderBrush="Gray"
-<<<<<<< HEAD
                 Background="Gray"
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock
@@ -129,17 +105,12 @@
                 IsVisible="{Binding !ShowLoadProgress}"
                 PointerReleased="DockedStatus_PointerReleased"
                 Text="{Binding DockedStatusText}"
-<<<<<<< HEAD
                 TextAlignment="Start" />
-=======
-                TextAlignment="Left" />
->>>>>>> 1ec71635b (sync with main branch)
             <Border
                 Width="2"
                 Height="12"
                 Margin="0"
                 BorderBrush="Gray"
-<<<<<<< HEAD
                 Background="Gray"
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
@@ -189,40 +160,20 @@
                     </MenuFlyout>
                 </SplitButton.Flyout>
             </SplitButton>
-=======
-                BorderThickness="1"
-                IsVisible="{Binding !ShowLoadProgress}" />
-            <TextBlock
-                Name="AspectRatioStatus"
-                Margin="5,0,5,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                IsVisible="{Binding !ShowLoadProgress}"
-                PointerReleased="AspectRatioStatus_PointerReleased"
-                Text="{Binding AspectRatioStatusText}"
-                TextAlignment="Left" />
->>>>>>> 1ec71635b (sync with main branch)
             <Border
                 Width="2"
                 Height="12"
                 Margin="0"
                 BorderBrush="Gray"
-<<<<<<< HEAD
                 Background="Gray"
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <ToggleSplitButton
-=======
-                BorderThickness="1"
-                IsVisible="{Binding !ShowLoadProgress}" />
-            <ui:ToggleSplitButton
->>>>>>> 1ec71635b (sync with main branch)
                 Name="VolumeStatus"
                 Padding="5,0,5,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-<<<<<<< HEAD
                 Content="{Binding VolumeStatusText}"
                 IsChecked="{Binding VolumeMuted}"
                 IsVisible="{Binding !ShowLoadProgress}"
@@ -244,17 +195,6 @@
                     <Flyout Placement="Bottom" ShowMode="TransientWithDismissOnPointerMoveAway">
                         <Grid Margin="0">
                             <controls:SliderScroll
-=======
-                Background="{DynamicResource ThemeContentBackgroundColor}"
-                BorderThickness="0"
-                Content="{Binding VolumeStatusText}"
-                IsChecked="{Binding VolumeMuted}"
-                IsVisible="{Binding !ShowLoadProgress}">
-                <ui:ToggleSplitButton.Flyout>
-                    <Flyout Placement="Bottom" ShowMode="TransientWithDismissOnPointerMoveAway">
-                        <Grid Margin="0">
-                            <Slider
->>>>>>> 1ec71635b (sync with main branch)
                                 MaxHeight="40"
                                 Width="150"
                                 Margin="0"
@@ -269,22 +209,14 @@
                                 Value="{Binding Volume}" />
                         </Grid>
                     </Flyout>
-<<<<<<< HEAD
                 </ToggleSplitButton.Flyout>
             </ToggleSplitButton>
-=======
-                </ui:ToggleSplitButton.Flyout>
-            </ui:ToggleSplitButton>
->>>>>>> 1ec71635b (sync with main branch)
             <Border
                 Width="2"
                 Height="12"
                 Margin="0"
                 BorderBrush="Gray"
-<<<<<<< HEAD
                 Background="Gray"
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock
@@ -293,20 +225,13 @@
                 VerticalAlignment="Center"
                 IsVisible="{Binding !ShowLoadProgress}"
                 Text="{Binding GameStatusText}"
-<<<<<<< HEAD
                 TextAlignment="Start" />
-=======
-                TextAlignment="Left" />
->>>>>>> 1ec71635b (sync with main branch)
             <Border
                 Width="2"
                 Height="12"
                 Margin="0"
                 BorderBrush="Gray"
-<<<<<<< HEAD
                 Background="Gray"
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock
@@ -315,20 +240,13 @@
                 VerticalAlignment="Center"
                 IsVisible="{Binding !ShowLoadProgress}"
                 Text="{Binding FifoStatusText}"
-<<<<<<< HEAD
                 TextAlignment="Start" />
-=======
-                TextAlignment="Left" />
->>>>>>> 1ec71635b (sync with main branch)
             <Border
                 Width="2"
                 Height="12"
                 Margin="0"
                 BorderBrush="Gray"
-<<<<<<< HEAD
                 Background="Gray"
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock
@@ -337,20 +255,13 @@
                 VerticalAlignment="Center"
                 IsVisible="{Binding !ShowLoadProgress}"
                 Text="{Binding BackendText}"
-<<<<<<< HEAD
                 TextAlignment="Start" />
-=======
-                TextAlignment="Left" />
->>>>>>> 1ec71635b (sync with main branch)
             <Border
                 Width="2"
                 Height="12"
                 Margin="0"
                 BorderBrush="Gray"
-<<<<<<< HEAD
                 Background="Gray"
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock
@@ -359,11 +270,7 @@
                 VerticalAlignment="Center"
                 IsVisible="{Binding !ShowLoadProgress}"
                 Text="{Binding GpuNameText}"
-<<<<<<< HEAD
                 TextAlignment="Start" />
-=======
-                TextAlignment="Left" />
->>>>>>> 1ec71635b (sync with main branch)
         </StackPanel>
         <StackPanel
             Grid.Column="3"
@@ -379,8 +286,4 @@
                 Text="{locale:Locale StatusBarSystemVersion}" />
         </StackPanel>
     </Grid>
-<<<<<<< HEAD
 </UserControl>
-=======
-</UserControl>
->>>>>>> 1ec71635b (sync with main branch)

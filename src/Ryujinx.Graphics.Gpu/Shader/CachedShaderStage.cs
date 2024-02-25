@@ -35,8 +35,4 @@ namespace Ryujinx.Graphics.Gpu.Shader
             Cb1Data = cb1Data;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using MsgPack;
-=======
-﻿using MsgPack;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Text;
 
@@ -16,15 +12,8 @@ namespace Ryujinx.Common.Utilities
             {
                 return Format(obj);
             }
-<<<<<<< HEAD
 
             return obj.ToString();
-=======
-            else
-            {
-                return obj.ToString();
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static string Format(MessagePackObject obj)
@@ -188,30 +177,17 @@ namespace Ryujinx.Common.Utilities
             {
                 return unchecked((char)('0' + b));
             }
-<<<<<<< HEAD
 
             return unchecked((char)('A' + (b - 10)));
-=======
-            else
-            {
-                return unchecked((char)('A' + (b - 10)));
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         internal class IndentedStringBuilder
         {
             const string DefaultIndent = "    ";
 
-<<<<<<< HEAD
             private int _indentCount;
             private int _newLineIndex;
             private readonly StringBuilder _builder;
-=======
-            private int _indentCount = 0;
-            private int _newLineIndex = 0;
-            private StringBuilder _builder;
->>>>>>> 1ec71635b (sync with main branch)
 
             public string IndentString { get; set; } = DefaultIndent;
 

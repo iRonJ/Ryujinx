@@ -1,10 +1,6 @@
 // https://www.intel.com/content/dam/doc/white-paper/advanced-encryption-standard-new-instructions-set-paper.pdf
 
 using ARMeilleure.State;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using NUnit.Framework;
 
 namespace Ryujinx.Tests.Cpu
@@ -16,13 +12,8 @@ namespace Ryujinx.Tests.Cpu
                            [Values(1u)] uint rn,
                            [Values(0x7B5B546573745665ul)] ulong valueH,
                            [Values(0x63746F725D53475Dul)] ulong valueL,
-<<<<<<< HEAD
                            [Random(2)] ulong roundKeyH,
                            [Random(2)] ulong roundKeyL,
-=======
-                           [Random(2)]                    ulong roundKeyH,
-                           [Random(2)]                    ulong roundKeyL,
->>>>>>> 1ec71635b (sync with main branch)
                            [Values(0x8DCAB9BC035006BCul)] ulong resultH,
                            [Values(0x8F57161E00CAFD8Dul)] ulong resultL)
         {
@@ -30,11 +21,7 @@ namespace Ryujinx.Tests.Cpu
             opcode |= ((rn & 31) << 5) | ((rd & 31) << 0);
 
             V128 v0 = MakeVectorE0E1(roundKeyL ^ valueL, roundKeyH ^ valueH);
-<<<<<<< HEAD
             V128 v1 = MakeVectorE0E1(roundKeyL, roundKeyH);
-=======
-            V128 v1 = MakeVectorE0E1(roundKeyL,          roundKeyH);
->>>>>>> 1ec71635b (sync with main branch)
 
             ExecutionContext context = SingleOpcode(opcode, v0: v0, v1: v1);
 
@@ -57,13 +44,8 @@ namespace Ryujinx.Tests.Cpu
                            [Values(1u)] uint rn,
                            [Values(0x7B5B546573745665ul)] ulong valueH,
                            [Values(0x63746F725D53475Dul)] ulong valueL,
-<<<<<<< HEAD
                            [Random(2)] ulong roundKeyH,
                            [Random(2)] ulong roundKeyL,
-=======
-                           [Random(2)]                    ulong roundKeyH,
-                           [Random(2)]                    ulong roundKeyL,
->>>>>>> 1ec71635b (sync with main branch)
                            [Values(0x8F92A04DFBED204Dul)] ulong resultH,
                            [Values(0x4C39B1402192A84Cul)] ulong resultL)
         {
@@ -71,11 +53,7 @@ namespace Ryujinx.Tests.Cpu
             opcode |= ((rn & 31) << 5) | ((rd & 31) << 0);
 
             V128 v0 = MakeVectorE0E1(roundKeyL ^ valueL, roundKeyH ^ valueH);
-<<<<<<< HEAD
             V128 v1 = MakeVectorE0E1(roundKeyL, roundKeyH);
-=======
-            V128 v1 = MakeVectorE0E1(roundKeyL,          roundKeyH);
->>>>>>> 1ec71635b (sync with main branch)
 
             ExecutionContext context = SingleOpcode(opcode, v0: v0, v1: v1);
 
@@ -94,11 +72,7 @@ namespace Ryujinx.Tests.Cpu
         }
 
         [Test, Description("AESIMC <Vd>.16B, <Vn>.16B")]
-<<<<<<< HEAD
         public void Aesimc_V([Values(0u)] uint rd,
-=======
-        public void Aesimc_V([Values(0u)]     uint rd,
->>>>>>> 1ec71635b (sync with main branch)
                              [Values(1u, 0u)] uint rn,
                              [Values(0x8DCAB9DC035006BCul)] ulong valueH,
                              [Values(0x8F57161E00CAFD8Dul)] ulong valueL,
@@ -112,13 +86,8 @@ namespace Ryujinx.Tests.Cpu
 
             ExecutionContext context = SingleOpcode(
                 opcode,
-<<<<<<< HEAD
                 v0: rn == 0u ? v : default,
                 v1: rn == 1u ? v : default);
-=======
-                v0: rn == 0u ? v : default(V128),
-                v1: rn == 1u ? v : default(V128));
->>>>>>> 1ec71635b (sync with main branch)
 
             Assert.Multiple(() =>
             {
@@ -138,11 +107,7 @@ namespace Ryujinx.Tests.Cpu
         }
 
         [Test, Description("AESMC <Vd>.16B, <Vn>.16B")]
-<<<<<<< HEAD
         public void Aesmc_V([Values(0u)] uint rd,
-=======
-        public void Aesmc_V([Values(0u)]     uint rd,
->>>>>>> 1ec71635b (sync with main branch)
                             [Values(1u, 0u)] uint rn,
                             [Values(0x627A6F6644B109C8ul)] ulong valueH,
                             [Values(0x2B18330A81C3B3E5ul)] ulong valueL,
@@ -156,13 +121,8 @@ namespace Ryujinx.Tests.Cpu
 
             ExecutionContext context = SingleOpcode(
                 opcode,
-<<<<<<< HEAD
                 v0: rn == 0u ? v : default,
                 v1: rn == 1u ? v : default);
-=======
-                v0: rn == 0u ? v : default(V128),
-                v1: rn == 1u ? v : default(V128));
->>>>>>> 1ec71635b (sync with main branch)
 
             Assert.Multiple(() =>
             {

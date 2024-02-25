@@ -17,7 +17,6 @@ namespace Ryujinx.Audio.Renderer.Server
 {
     public class CommandGenerator
     {
-<<<<<<< HEAD
         private readonly CommandBuffer _commandBuffer;
         private readonly RendererSystemContext _rendererContext;
         private readonly VoiceContext _voiceContext;
@@ -26,16 +25,6 @@ namespace Ryujinx.Audio.Renderer.Server
         private readonly SinkContext _sinkContext;
         private readonly SplitterContext _splitterContext;
         private readonly PerformanceManager _performanceManager;
-=======
-        private CommandBuffer _commandBuffer;
-        private RendererSystemContext _rendererContext;
-        private VoiceContext _voiceContext;
-        private MixContext _mixContext;
-        private EffectContext _effectContext;
-        private SinkContext _sinkContext;
-        private SplitterContext _splitterContext;
-        private PerformanceManager _performanceManager;
->>>>>>> 1ec71635b (sync with main branch)
 
         public CommandGenerator(CommandBuffer commandBuffer, RendererSystemContext rendererContext, VoiceContext voiceContext, MixContext mixContext, EffectContext effectContext, SinkContext sinkContext, SplitterContext splitterContext, PerformanceManager performanceManager)
         {
@@ -149,11 +138,7 @@ namespace Ryujinx.Audio.Renderer.Server
 
             if (supportsOptimizedPath && voiceState.BiquadFilters[0].Enable && voiceState.BiquadFilters[1].Enable)
             {
-<<<<<<< HEAD
                 Memory<byte> biquadStateRawMemory = SpanMemoryManager<byte>.Cast(state)[..(VoiceUpdateState.BiquadStateSize * Constants.VoiceBiquadFilterCount)];
-=======
-                Memory<byte> biquadStateRawMemory = SpanMemoryManager<byte>.Cast(state).Slice(VoiceUpdateState.BiquadStateOffset, VoiceUpdateState.BiquadStateSize * Constants.VoiceBiquadFilterCount);
->>>>>>> 1ec71635b (sync with main branch)
                 Memory<BiquadFilterState> stateMemory = SpanMemoryManager<BiquadFilterState>.Cast(biquadStateRawMemory);
 
                 _commandBuffer.GenerateGroupedBiquadFilter(baseIndex, voiceState.BiquadFilters.AsSpan(), stateMemory, bufferOffset, bufferOffset, voiceState.BiquadFilterNeedInitialization, nodeId);
@@ -166,11 +151,7 @@ namespace Ryujinx.Audio.Renderer.Server
 
                     if (filter.Enable)
                     {
-<<<<<<< HEAD
                         Memory<byte> biquadStateRawMemory = SpanMemoryManager<byte>.Cast(state)[..(VoiceUpdateState.BiquadStateSize * Constants.VoiceBiquadFilterCount)];
-=======
-                        Memory<byte> biquadStateRawMemory = SpanMemoryManager<byte>.Cast(state).Slice(VoiceUpdateState.BiquadStateOffset, VoiceUpdateState.BiquadStateSize * Constants.VoiceBiquadFilterCount);
->>>>>>> 1ec71635b (sync with main branch)
 
                         Memory<BiquadFilterState> stateMemory = SpanMemoryManager<BiquadFilterState>.Cast(biquadStateRawMemory);
 
@@ -243,11 +224,7 @@ namespace Ryujinx.Audio.Renderer.Server
 
                 bool performanceInitialized = false;
 
-<<<<<<< HEAD
                 PerformanceEntryAddresses performanceEntry = new();
-=======
-                PerformanceEntryAddresses performanceEntry = new PerformanceEntryAddresses();
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (_performanceManager != null && _performanceManager.IsTargetNodeId(nodeId) && _performanceManager.GetNextEntry(out performanceEntry, dataSourceDetailType, PerformanceEntryType.Voice, nodeId))
                 {
@@ -394,11 +371,7 @@ namespace Ryujinx.Audio.Renderer.Server
                 {
                     int nodeId = sortedState.NodeId;
 
-<<<<<<< HEAD
                     PerformanceEntryAddresses performanceEntry = new();
-=======
-                    PerformanceEntryAddresses performanceEntry = new PerformanceEntryAddresses();
->>>>>>> 1ec71635b (sync with main branch)
 
                     bool performanceInitialized = false;
 
@@ -529,17 +502,11 @@ namespace Ryujinx.Audio.Renderer.Server
                 bool needInitialization = effect.Parameter.Status == UsageState.Invalid ||
                                          (effect.Parameter.Status == UsageState.New && !_rendererContext.BehaviourContext.IsBiquadFilterEffectStateClearBugFixed());
 
-<<<<<<< HEAD
                 BiquadFilterParameter parameter = new()
                 {
                     Enable = true,
                 };
 
-=======
-                BiquadFilterParameter parameter = new BiquadFilterParameter();
-
-                parameter.Enable = true;
->>>>>>> 1ec71635b (sync with main branch)
                 effect.Parameter.Denominator.AsSpan().CopyTo(parameter.Denominator.AsSpan());
                 effect.Parameter.Numerator.AsSpan().CopyTo(parameter.Numerator.AsSpan());
 
@@ -658,11 +625,7 @@ namespace Ryujinx.Audio.Renderer.Server
 
             bool isFinalMix = mix.MixId == Constants.FinalMixId;
 
-<<<<<<< HEAD
             PerformanceEntryAddresses performanceEntry = new();
-=======
-            PerformanceEntryAddresses performanceEntry = new PerformanceEntryAddresses();
->>>>>>> 1ec71635b (sync with main branch)
 
             bool performanceInitialized = false;
 
@@ -828,11 +791,7 @@ namespace Ryujinx.Audio.Renderer.Server
 
             GenerateEffects(ref subMix);
 
-<<<<<<< HEAD
             PerformanceEntryAddresses performanceEntry = new();
-=======
-            PerformanceEntryAddresses performanceEntry = new PerformanceEntryAddresses();
->>>>>>> 1ec71635b (sync with main branch)
 
             int nodeId = subMix.NodeId;
 
@@ -863,11 +822,7 @@ namespace Ryujinx.Audio.Renderer.Server
                 {
                     int nodeId = sortedState.NodeId;
 
-<<<<<<< HEAD
                     PerformanceEntryAddresses performanceEntry = new();
-=======
-                    PerformanceEntryAddresses performanceEntry = new PerformanceEntryAddresses();
->>>>>>> 1ec71635b (sync with main branch)
 
                     bool performanceInitialized = false;
 
@@ -900,11 +855,7 @@ namespace Ryujinx.Audio.Renderer.Server
 
             GenerateEffects(ref finalMix);
 
-<<<<<<< HEAD
             PerformanceEntryAddresses performanceEntry = new();
-=======
-            PerformanceEntryAddresses performanceEntry = new PerformanceEntryAddresses();
->>>>>>> 1ec71635b (sync with main branch)
 
             int nodeId = finalMix.NodeId;
 
@@ -952,11 +903,7 @@ namespace Ryujinx.Audio.Renderer.Server
         {
             int nodeId = _mixContext.GetFinalState().NodeId;
 
-<<<<<<< HEAD
             PerformanceEntryAddresses performanceEntry = new();
-=======
-            PerformanceEntryAddresses performanceEntry = new PerformanceEntryAddresses();
->>>>>>> 1ec71635b (sync with main branch)
 
             bool performanceInitialized = false;
 
@@ -1032,11 +979,7 @@ namespace Ryujinx.Audio.Renderer.Server
         {
             bool performanceInitialized = false;
 
-<<<<<<< HEAD
             PerformanceEntryAddresses performanceEntry = new();
-=======
-            PerformanceEntryAddresses performanceEntry = new PerformanceEntryAddresses();
->>>>>>> 1ec71635b (sync with main branch)
 
             if (_performanceManager != null && _performanceManager.GetNextEntry(out performanceEntry, PerformanceEntryType.Sink, sink.NodeId))
             {
@@ -1084,8 +1027,4 @@ namespace Ryujinx.Audio.Renderer.Server
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

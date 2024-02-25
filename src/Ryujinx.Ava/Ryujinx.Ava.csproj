@@ -1,12 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-<<<<<<< HEAD
     <TargetFramework>net8.0</TargetFramework>
     <RuntimeIdentifiers>win-x64;osx-x64;linux-x64</RuntimeIdentifiers>
-=======
-    <TargetFramework>net7.0</TargetFramework>
-    <RuntimeIdentifiers>win10-x64;osx-x64;linux-x64</RuntimeIdentifiers>
->>>>>>> 1ec71635b (sync with main branch)
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Version>1.0.0-dirty</Version>
@@ -15,11 +10,8 @@
     <RootNamespace>Ryujinx.Ava</RootNamespace>
     <ApplicationIcon>Ryujinx.ico</ApplicationIcon>
     <TieredPGO>true</TieredPGO>
-<<<<<<< HEAD
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-=======
->>>>>>> 1ec71635b (sync with main branch)
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="$([MSBuild]::IsOSPlatform('OSX'))">
@@ -28,15 +20,11 @@
 
   <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
     <PublishSingleFile>true</PublishSingleFile>
-<<<<<<< HEAD
     <TrimmerSingleWarn>false</TrimmerSingleWarn>
-=======
->>>>>>> 1ec71635b (sync with main branch)
     <PublishTrimmed>true</PublishTrimmed>
     <TrimMode>partial</TrimMode>
   </PropertyGroup>
 
-<<<<<<< HEAD
   <!--
     FluentAvalonia, used in the Avalonia UI, requires a workaround for the json serializer used internally when using .NET 8+ System.Text.Json.
     See:
@@ -51,17 +39,10 @@
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Desktop" />
     <PackageReference Include="Avalonia.Diagnostics" Condition="'$(Configuration)'=='Debug'" />
-=======
-  <ItemGroup>
-    <PackageReference Include="Avalonia" />
-    <PackageReference Include="Avalonia.Desktop" />
-    <PackageReference Include="Avalonia.Diagnostics" />
->>>>>>> 1ec71635b (sync with main branch)
     <PackageReference Include="Avalonia.Controls.DataGrid" />
     <PackageReference Include="Avalonia.Markup.Xaml.Loader" />
     <PackageReference Include="Avalonia.Svg" />
     <PackageReference Include="Avalonia.Svg.Skia" />
-<<<<<<< HEAD
     <PackageReference Include="DynamicData" />
     <PackageReference Include="FluentAvaloniaUI" />
 
@@ -69,17 +50,6 @@
     <PackageReference Include="Ryujinx.Audio.OpenAL.Dependencies" Condition="'$(RuntimeIdentifier)' != 'linux-x64' AND '$(RuntimeIdentifier)' != 'linux-arm64' AND '$(RuntimeIdentifier)' != 'osx-x64' AND '$(RuntimeIdentifier)' != 'osx-arm64'" />
     <PackageReference Include="Ryujinx.Graphics.Nvdec.Dependencies" />
     <PackageReference Include="Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK" Condition="'$(RuntimeIdentifier)' != 'linux-x64' AND '$(RuntimeIdentifier)' != 'linux-arm64' AND '$(RuntimeIdentifier)' != 'win-x64'" />
-=======
-    <PackageReference Include="jp2masa.Avalonia.Flexbox" />
-    <PackageReference Include="DynamicData" />
-    <PackageReference Include="FluentAvaloniaUI" />
-    <PackageReference Include="XamlNameReferenceGenerator" />
-
-    <PackageReference Include="OpenTK.Core" />
-    <PackageReference Include="Ryujinx.Audio.OpenAL.Dependencies" Condition="'$(RuntimeIdentifier)' != 'linux-x64' AND '$(RuntimeIdentifier)' != 'osx-x64' AND '$(RuntimeIdentifier)' != 'osx-arm64'" />
-    <PackageReference Include="Ryujinx.Graphics.Nvdec.Dependencies" />
-    <PackageReference Include="Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK" Condition="'$(RuntimeIdentifier)' != 'linux-x64' AND '$(RuntimeIdentifier)' != 'win10-x64'" />
->>>>>>> 1ec71635b (sync with main branch)
     <PackageReference Include="Silk.NET.Vulkan" />
     <PackageReference Include="Silk.NET.Vulkan.Extensions.EXT" />
     <PackageReference Include="Silk.NET.Vulkan.Extensions.KHR" />
@@ -103,21 +73,12 @@
     <ProjectReference Include="..\ARMeilleure\ARMeilleure.csproj" />
     <ProjectReference Include="..\Ryujinx.Graphics.OpenGL\Ryujinx.Graphics.OpenGL.csproj" />
     <ProjectReference Include="..\Ryujinx.Graphics.Gpu\Ryujinx.Graphics.Gpu.csproj" />
-<<<<<<< HEAD
     <ProjectReference Include="..\Ryujinx.UI.Common\Ryujinx.UI.Common.csproj" />
     <ProjectReference Include="..\Ryujinx.UI.LocaleGenerator\Ryujinx.UI.LocaleGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="..\..\distribution\windows\alsoft.ini" Condition="'$(RuntimeIdentifier)' != 'linux-x64' AND '$(RuntimeIdentifier)' != 'linux-arm64' AND '$(RuntimeIdentifier)' != 'osx-x64'">
-=======
-    <ProjectReference Include="..\Ryujinx.Ui.Common\Ryujinx.Ui.Common.csproj" />
-    <ProjectReference Include="..\Ryujinx.Ui.LocaleGenerator\Ryujinx.Ui.LocaleGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\distribution\windows\alsoft.ini" Condition="'$(RuntimeIdentifier)' != 'linux-x64' AND '$(RuntimeIdentifier)' != 'osx-x64'">
->>>>>>> 1ec71635b (sync with main branch)
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>alsoft.ini</TargetPath>
     </Content>
@@ -131,11 +92,7 @@
     </Content>
   </ItemGroup>
 
-<<<<<<< HEAD
   <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64' OR '$(RuntimeIdentifier)' == 'linux-arm64'">
-=======
-  <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
->>>>>>> 1ec71635b (sync with main branch)
     <Content Include="..\..\distribution\linux\Ryujinx.sh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -146,22 +103,11 @@
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <AvaloniaResource Include="UI\**\*.xaml">
       <SubType>Designer</SubType>
     </AvaloniaResource>
     <AvaloniaResource Include="Assets\Fonts\SegoeFluentIcons.ttf" />
     <AvaloniaResource Include="Assets\Styles\Themes.xaml">
-=======
-    <AvaloniaResource Include="Ui\**\*.xaml">
-      <SubType>Designer</SubType>
-    </AvaloniaResource>
-    <AvaloniaResource Include="Assets\Fonts\SegoeFluentIcons.ttf" />
-    <AvaloniaResource Include="Assets\Styles\BaseLight.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </AvaloniaResource>
-    <AvaloniaResource Include="Assets\Styles\BaseDark.xaml">
->>>>>>> 1ec71635b (sync with main branch)
       <Generator>MSBuild:Compile</Generator>
     </AvaloniaResource>
     <AvaloniaResource Include="Assets\Styles\Styles.xaml" />
@@ -172,10 +118,7 @@
     <None Remove="Assets\Locales\en_US.json" />
     <None Remove="Assets\Locales\es_ES.json" />
     <None Remove="Assets\Locales\fr_FR.json" />
-<<<<<<< HEAD
     <None Remove="Assets\Locales\he_IL.json" />
-=======
->>>>>>> 1ec71635b (sync with main branch)
     <None Remove="Assets\Locales\de_DE.json" />
     <None Remove="Assets\Locales\it_IT.json" />
     <None Remove="Assets\Locales\ja_JP.json" />
@@ -188,16 +131,11 @@
     <None Remove="Assets\Locales\zh_CN.json" />
     <None Remove="Assets\Locales\zh_TW.json" />
     <None Remove="Assets\Styles\Styles.xaml" />
-<<<<<<< HEAD
     <None Remove="Assets\Styles\Themes.xaml" />
     <None Remove="Assets\Icons\Controller_JoyConLeft.svg" />
     <None Remove="Assets\Icons\Controller_JoyConPair.svg" />
     <None Remove="Assets\Icons\Controller_JoyConRight.svg" />
     <None Remove="Assets\Icons\Controller_ProCon.svg" />
-=======
-    <None Remove="Assets\Styles\BaseDark.xaml" />
-    <None Remove="Assets\Styles\BaseLight.xaml" />
->>>>>>> 1ec71635b (sync with main branch)
   </ItemGroup>
 
   <ItemGroup>
@@ -205,10 +143,7 @@
     <EmbeddedResource Include="Assets\Locales\en_US.json" />
     <EmbeddedResource Include="Assets\Locales\es_ES.json" />
     <EmbeddedResource Include="Assets\Locales\fr_FR.json" />
-<<<<<<< HEAD
     <EmbeddedResource Include="Assets\Locales\he_IL.json" />
-=======
->>>>>>> 1ec71635b (sync with main branch)
     <EmbeddedResource Include="Assets\Locales\de_DE.json" />
     <EmbeddedResource Include="Assets\Locales\it_IT.json" />
     <EmbeddedResource Include="Assets\Locales\ja_JP.json" />
@@ -221,13 +156,10 @@
     <EmbeddedResource Include="Assets\Locales\zh_CN.json" />
     <EmbeddedResource Include="Assets\Locales\zh_TW.json" />
     <EmbeddedResource Include="Assets\Styles\Styles.xaml" />
-<<<<<<< HEAD
     <EmbeddedResource Include="Assets\Icons\Controller_JoyConLeft.svg" />
     <EmbeddedResource Include="Assets\Icons\Controller_JoyConPair.svg" />
     <EmbeddedResource Include="Assets\Icons\Controller_JoyConRight.svg" />
     <EmbeddedResource Include="Assets\Icons\Controller_ProCon.svg" />
-=======
->>>>>>> 1ec71635b (sync with main branch)
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="Assets\Locales\en_US.json" />

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Kernel.Memory;
-=======
-﻿using Ryujinx.HLE.HOS.Kernel.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Kernel
 {
@@ -21,8 +17,4 @@ namespace Ryujinx.HLE.HOS.Kernel
 
         public const ulong CounterFrequency = 19200000;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

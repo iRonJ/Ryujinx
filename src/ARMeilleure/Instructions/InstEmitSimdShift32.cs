@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 using ARMeilleure.Decoders;
-=======
-﻿using ARMeilleure.Decoders;
->>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation;
 using System;
 using System.Diagnostics;
 using System.Reflection;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper32;
@@ -298,11 +290,7 @@ namespace ARMeilleure.Instructions
 
             VectorSxSx = SignedSrc | SignedDst,
             VectorSxZx = SignedSrc,
-<<<<<<< HEAD
             VectorZxZx = 0,
-=======
-            VectorZxZx = 0
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void EmitRoundShrImmSaturatingNarrowOp(ArmEmitterContext context, ShrImmSaturatingNarrowFlags flags)
@@ -314,17 +302,10 @@ namespace ARMeilleure.Instructions
         {
             OpCode32SimdShImm op = (OpCode32SimdShImm)context.CurrOp;
 
-<<<<<<< HEAD
             bool scalar = (flags & ShrImmSaturatingNarrowFlags.Scalar) != 0;
             bool signedSrc = (flags & ShrImmSaturatingNarrowFlags.SignedSrc) != 0;
             bool signedDst = (flags & ShrImmSaturatingNarrowFlags.SignedDst) != 0;
             bool round = (flags & ShrImmSaturatingNarrowFlags.Round) != 0;
-=======
-            bool scalar    = (flags & ShrImmSaturatingNarrowFlags.Scalar)    != 0;
-            bool signedSrc = (flags & ShrImmSaturatingNarrowFlags.SignedSrc) != 0;
-            bool signedDst = (flags & ShrImmSaturatingNarrowFlags.SignedDst) != 0;
-            bool round     = (flags & ShrImmSaturatingNarrowFlags.Round)     != 0;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (scalar)
             {

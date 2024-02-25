@@ -31,17 +31,11 @@ namespace Ryujinx.Memory.WindowsShared
 
             _partialUnmapStatePtr = PartialUnmapState.GlobalState;
 
-<<<<<<< HEAD
             _partialUnmapTrimThread = new Thread(TrimThreadLocalMapLoop)
             {
                 Name = "CPU.PartialUnmapTrimThread",
                 IsBackground = true,
             };
-=======
-            _partialUnmapTrimThread = new Thread(TrimThreadLocalMapLoop);
-            _partialUnmapTrimThread.Name = "CPU.PartialUnmapTrimThread";
-            _partialUnmapTrimThread.IsBackground = true;
->>>>>>> 1ec71635b (sync with main branch)
             _partialUnmapTrimThread.Start();
         }
 
@@ -712,11 +706,6 @@ namespace Ryujinx.Memory.WindowsShared
                 count = _protections.GetNodes(address, endAddress, ref overlaps);
             }
 
-<<<<<<< HEAD
-=======
-            ulong startAddress = address;
-
->>>>>>> 1ec71635b (sync with main branch)
             for (int index = 0; index < count; index++)
             {
                 var protection = overlaps[index];
@@ -744,8 +733,4 @@ namespace Ryujinx.Memory.WindowsShared
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

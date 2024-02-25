@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
 using Ryujinx.Graphics.GAL.Multithreading.Commands.Texture;
 using Ryujinx.Graphics.GAL.Multithreading.Model;
-=======
-﻿using Ryujinx.Common.Memory;
-using Ryujinx.Graphics.GAL.Multithreading.Commands.Texture;
-using Ryujinx.Graphics.GAL.Multithreading.Model;
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Resources
 {
@@ -16,33 +9,18 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Resources
     /// </summary>
     class ThreadedTexture : ITexture
     {
-<<<<<<< HEAD
         private readonly ThreadedRenderer _renderer;
         private readonly TextureCreateInfo _info;
-=======
-        private ThreadedRenderer _renderer;
-        private TextureCreateInfo _info;
->>>>>>> 1ec71635b (sync with main branch)
         public ITexture Base;
 
         public int Width => _info.Width;
 
         public int Height => _info.Height;
 
-<<<<<<< HEAD
         public ThreadedTexture(ThreadedRenderer renderer, TextureCreateInfo info)
         {
             _renderer = renderer;
             _info = info;
-=======
-        public float ScaleFactor { get; }
-
-        public ThreadedTexture(ThreadedRenderer renderer, TextureCreateInfo info, float scale)
-        {
-            _renderer = renderer;
-            _info = info;
-            ScaleFactor = scale;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private TableRef<T> Ref<T>(T reference)
@@ -83,11 +61,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Resources
 
         public ITexture CreateView(TextureCreateInfo info, int firstLayer, int firstLevel)
         {
-<<<<<<< HEAD
             ThreadedTexture newTex = new(_renderer, info);
-=======
-            ThreadedTexture newTex = new ThreadedTexture(_renderer, info, ScaleFactor);
->>>>>>> 1ec71635b (sync with main branch)
             _renderer.New<TextureCreateViewCommand>().Set(Ref(this), Ref(newTex), info, firstLayer, firstLevel);
             _renderer.QueueCommand();
 
@@ -98,11 +72,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Resources
         {
             if (_renderer.IsGpuThread())
             {
-<<<<<<< HEAD
                 ResultBox<PinnedSpan<byte>> box = new();
-=======
-                ResultBox<PinnedSpan<byte>> box = new ResultBox<PinnedSpan<byte>>();
->>>>>>> 1ec71635b (sync with main branch)
                 _renderer.New<TextureGetDataCommand>().Set(Ref(this), Ref(box));
                 _renderer.InvokeCommand();
 
@@ -120,11 +90,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Resources
         {
             if (_renderer.IsGpuThread())
             {
-<<<<<<< HEAD
                 ResultBox<PinnedSpan<byte>> box = new();
-=======
-                ResultBox<PinnedSpan<byte>> box = new ResultBox<PinnedSpan<byte>>();
->>>>>>> 1ec71635b (sync with main branch)
                 _renderer.New<TextureGetDataSliceCommand>().Set(Ref(this), Ref(box), layer, level);
                 _renderer.InvokeCommand();
 

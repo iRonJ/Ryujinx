@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace ARMeilleure.State
-=======
-﻿namespace ARMeilleure.State
->>>>>>> 1ec71635b (sync with main branch)
 {
     public enum FPState
     {
@@ -30,10 +26,6 @@ namespace ARMeilleure.State
         RMode1Flag = 23,
         FzFlag = 24,
         DnFlag = 25,
-<<<<<<< HEAD
         AhpFlag = 26,
-=======
-        AhpFlag = 26
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

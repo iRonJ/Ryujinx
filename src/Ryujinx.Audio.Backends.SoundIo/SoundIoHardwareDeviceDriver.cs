@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Audio.Backends.SoundIo.Native;
-=======
-﻿using Ryujinx.Audio.Backends.SoundIo.Native;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Audio.Common;
 using Ryujinx.Audio.Integration;
 using Ryujinx.Memory;
@@ -23,7 +19,6 @@ namespace Ryujinx.Audio.Backends.SoundIo
         private readonly ConcurrentDictionary<SoundIoHardwareDeviceSession, byte> _sessions;
         private int _disposeState;
 
-<<<<<<< HEAD
         private float _volume = 1f;
 
         public float Volume
@@ -43,8 +38,6 @@ namespace Ryujinx.Audio.Backends.SoundIo
             }
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public SoundIoHardwareDeviceDriver()
         {
             _audioContext = SoundIoContext.Create();
@@ -148,11 +141,7 @@ namespace Ryujinx.Audio.Backends.SoundIo
             return _pauseEvent;
         }
 
-<<<<<<< HEAD
         public IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount)
-=======
-        public IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount, float volume)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (channelCount == 0)
             {
@@ -164,21 +153,12 @@ namespace Ryujinx.Audio.Backends.SoundIo
                 sampleRate = Constants.TargetSampleRate;
             }
 
-<<<<<<< HEAD
-=======
-            volume = Math.Clamp(volume, 0, 1);
-
->>>>>>> 1ec71635b (sync with main branch)
             if (direction != Direction.Output)
             {
                 throw new NotImplementedException("Input direction is currently not implemented on SoundIO backend!");
             }
 
-<<<<<<< HEAD
             SoundIoHardwareDeviceSession session = new(this, memoryManager, sampleFormat, sampleRate, channelCount);
-=======
-            SoundIoHardwareDeviceSession session = new SoundIoHardwareDeviceSession(this, memoryManager, sampleFormat, sampleRate, channelCount, volume);
->>>>>>> 1ec71635b (sync with main branch)
 
             _sessions.TryAdd(session, 0);
 
@@ -199,11 +179,7 @@ namespace Ryujinx.Audio.Backends.SoundIo
                 SampleFormat.PcmInt24 => SoundIoFormat.S24LE,
                 SampleFormat.PcmInt32 => SoundIoFormat.S32LE,
                 SampleFormat.PcmFloat => SoundIoFormat.Float32LE,
-<<<<<<< HEAD
                 _ => throw new ArgumentException($"Unsupported sample format {format}"),
-=======
-                _ => throw new ArgumentException ($"Unsupported sample format {format}"),
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -243,11 +219,8 @@ namespace Ryujinx.Audio.Backends.SoundIo
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
             if (Interlocked.CompareExchange(ref _disposeState, 1, 0) == 0)
             {
                 Dispose(true);

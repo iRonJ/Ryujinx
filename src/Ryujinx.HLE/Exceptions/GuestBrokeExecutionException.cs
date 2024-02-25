@@ -8,8 +8,4 @@ namespace Ryujinx.HLE.Exceptions
 
         public GuestBrokeExecutionException() : base(ExMsg) { }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

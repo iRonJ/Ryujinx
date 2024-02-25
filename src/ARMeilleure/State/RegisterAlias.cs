@@ -2,7 +2,6 @@ namespace ARMeilleure.State
 {
     static class RegisterAlias
     {
-<<<<<<< HEAD
         public const int R8Usr = 8;
         public const int R9Usr = 9;
         public const int R10Usr = 10;
@@ -10,15 +9,6 @@ namespace ARMeilleure.State
         public const int R12Usr = 12;
         public const int SpUsr = 13;
         public const int LrUsr = 14;
-=======
-        public const int R8Usr  = 8;
-        public const int R9Usr  = 9;
-        public const int R10Usr = 10;
-        public const int R11Usr = 11;
-        public const int R12Usr = 12;
-        public const int SpUsr  = 13;
-        public const int LrUsr  = 14;
->>>>>>> 1ec71635b (sync with main branch)
 
         public const int SpHyp = 15;
 
@@ -34,7 +24,6 @@ namespace ARMeilleure.State
         public const int LrUnd = 22;
         public const int SpUnd = 23;
 
-<<<<<<< HEAD
         public const int R8Fiq = 24;
         public const int R9Fiq = 25;
         public const int R10Fiq = 26;
@@ -42,15 +31,6 @@ namespace ARMeilleure.State
         public const int R12Fiq = 28;
         public const int SpFiq = 29;
         public const int LrFiq = 30;
-=======
-        public const int R8Fiq  = 24;
-        public const int R9Fiq  = 25;
-        public const int R10Fiq = 26;
-        public const int R11Fiq = 27;
-        public const int R12Fiq = 28;
-        public const int SpFiq  = 29;
-        public const int LrFiq  = 30;
->>>>>>> 1ec71635b (sync with main branch)
 
         public const int Aarch32Sp = 13;
         public const int Aarch32Lr = 14;
@@ -59,8 +39,4 @@ namespace ARMeilleure.State
         public const int Lr = 30;
         public const int Zr = 31;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

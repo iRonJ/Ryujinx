@@ -29,8 +29,4 @@ namespace Ryujinx.Graphics.Gpu.Shader
             return _memoryManager.GetSpanMapped(_baseAddress + (ulong)offset, length);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

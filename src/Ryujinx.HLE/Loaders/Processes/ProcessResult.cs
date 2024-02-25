@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using LibHac.Common;
-=======
-﻿using LibHac.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Loader;
 using LibHac.Ns;
 using Ryujinx.Common.Logging;
@@ -10,11 +6,7 @@ using Ryujinx.Cpu;
 using Ryujinx.HLE.HOS.SystemState;
 using Ryujinx.HLE.Loaders.Processes.Extensions;
 using Ryujinx.Horizon.Common;
-<<<<<<< HEAD
 using System;
-=======
-using System.Linq;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.Loaders.Processes
 {
@@ -27,7 +19,6 @@ namespace Ryujinx.HLE.Loaders.Processes
 
         public readonly IDiskCacheLoadState DiskCacheLoadState;
 
-<<<<<<< HEAD
         public readonly MetaLoader MetaLoader;
         public readonly ApplicationControlProperty ApplicationControlProperties;
 
@@ -58,38 +49,6 @@ namespace Ryujinx.HLE.Loaders.Processes
             ProcessId = pid;
 
             MetaLoader = metaLoader;
-=======
-        public readonly MetaLoader                 MetaLoader;
-        public readonly ApplicationControlProperty ApplicationControlProperties;
-
-        public readonly ulong  ProcessId;
-        public readonly string Name;
-        public readonly string DisplayVersion;
-        public readonly ulong  ProgramId;
-        public readonly string ProgramIdText;
-        public readonly bool   Is64Bit;
-        public readonly bool   DiskCacheEnabled;
-        public readonly bool   AllowCodeMemoryForJit;
-
-        public ProcessResult(
-            MetaLoader                             metaLoader,
-            BlitStruct<ApplicationControlProperty> applicationControlProperties,
-            bool                                   diskCacheEnabled,
-            bool                                   allowCodeMemoryForJit,
-            IDiskCacheLoadState                    diskCacheLoadState,
-            ulong                                  pid,
-            byte                                   mainThreadPriority,
-            uint                                   mainThreadStackSize,
-            TitleLanguage                          titleLanguage)
-        {
-            _mainThreadPriority  = mainThreadPriority;
-            _mainThreadStackSize = mainThreadStackSize;
-
-            DiskCacheLoadState = diskCacheLoadState;
-            ProcessId          = pid;
-
-            MetaLoader                   = metaLoader;
->>>>>>> 1ec71635b (sync with main branch)
             ApplicationControlProperties = applicationControlProperties.Value;
 
             if (metaLoader is not null)
@@ -100,7 +59,6 @@ namespace Ryujinx.HLE.Loaders.Processes
 
                 if (string.IsNullOrWhiteSpace(Name))
                 {
-<<<<<<< HEAD
                     Name = Array.Find(ApplicationControlProperties.Title.ItemsRo.ToArray(), x => x.Name[0] != 0).NameString.ToString();
                 }
 
@@ -111,18 +69,6 @@ namespace Ryujinx.HLE.Loaders.Processes
             }
 
             DiskCacheEnabled = diskCacheEnabled;
-=======
-                    Name = ApplicationControlProperties.Title.ItemsRo.ToArray().FirstOrDefault(x => x.Name[0] != 0).NameString.ToString();
-                }
-
-                DisplayVersion = ApplicationControlProperties.DisplayVersionString.ToString();
-                ProgramId      = programId;
-                ProgramIdText  = $"{programId:x16}";
-                Is64Bit        = metaLoader.IsProgram64Bit();
-            }
-
-            DiskCacheEnabled      = diskCacheEnabled;
->>>>>>> 1ec71635b (sync with main branch)
             AllowCodeMemoryForJit = allowCodeMemoryForJit;
         }
 

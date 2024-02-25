@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.BluetoothManager.BtmUser;
-=======
-﻿using Ryujinx.HLE.HOS.Services.BluetoothManager.BtmUser;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.BluetoothManager
 {
@@ -20,8 +16,4 @@ namespace Ryujinx.HLE.HOS.Services.BluetoothManager
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

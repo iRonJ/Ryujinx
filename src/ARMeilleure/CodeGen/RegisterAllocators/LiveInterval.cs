@@ -240,15 +240,10 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
 
         public LiveInterval Split(int position)
         {
-<<<<<<< HEAD
             LiveInterval result = new(Local, Parent)
             {
                 End = End,
             };
-=======
-            LiveInterval result = new(Local, Parent);
-            result.End = End;
->>>>>>> 1ec71635b (sync with main branch)
 
             LiveRange prev = PrevRange;
             LiveRange curr = CurrRange;
@@ -400,8 +395,4 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
             return string.Join(", ", GetRanges());
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

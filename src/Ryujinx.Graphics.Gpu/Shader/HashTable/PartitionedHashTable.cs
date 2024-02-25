@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -153,20 +149,12 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
                 }
             }
 
-<<<<<<< HEAD
             HashState hashState = new();
-=======
-            HashState hashState = new HashState();
->>>>>>> 1ec71635b (sync with main branch)
             hashState.Initialize();
 
             for (int i = 0; i < index; i++)
             {
-<<<<<<< HEAD
                 ReadOnlySpan<byte> dataSlice = new ReadOnlySpan<byte>(data)[.._sizeTable[i].Size];
-=======
-                ReadOnlySpan<byte> dataSlice = new ReadOnlySpan<byte>(data).Slice(0, _sizeTable[i].Size);
->>>>>>> 1ec71635b (sync with main branch)
                 hashState.Continue(dataSlice);
                 _sizeTable[i].AddPartial(data, hashState.Finalize(dataSlice));
             }
@@ -220,11 +208,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
         /// <returns>True if the item was found on the table, false otherwise</returns>
         public bool TryFindItem(IDataAccessor dataAccessor, out T item, out byte[] data)
         {
-<<<<<<< HEAD
             SmartDataAccessor sda = new(dataAccessor);
-=======
-            SmartDataAccessor sda = new SmartDataAccessor(dataAccessor);
->>>>>>> 1ec71635b (sync with main branch)
 
             item = default;
             data = null;

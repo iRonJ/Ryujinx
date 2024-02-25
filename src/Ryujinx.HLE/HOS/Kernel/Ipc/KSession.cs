@@ -8,11 +8,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         public KServerSession ServerSession { get; }
         public KClientSession ClientSession { get; }
 
-<<<<<<< HEAD
         private readonly bool _hasBeenInitialized;
-=======
-        private bool _hasBeenInitialized;
->>>>>>> 1ec71635b (sync with main branch)
 
         public KSession(KernelContext context, KClientPort parentPort = null) : base(context)
         {
@@ -55,8 +51,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

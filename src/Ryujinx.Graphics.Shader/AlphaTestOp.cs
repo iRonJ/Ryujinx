@@ -9,12 +9,6 @@ namespace Ryujinx.Graphics.Shader
         Greater,
         NotEqual,
         GreaterOrEqual,
-<<<<<<< HEAD
         Always,
     }
 }
-=======
-        Always
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

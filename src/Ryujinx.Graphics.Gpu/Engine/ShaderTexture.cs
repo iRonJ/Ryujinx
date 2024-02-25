@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.Shader;
 
@@ -69,10 +65,7 @@ namespace Ryujinx.Graphics.Gpu.Engine
         {
             return format switch
             {
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 TextureFormat.R8Unorm           => Format.R8Unorm,
                 TextureFormat.R8Snorm           => Format.R8Snorm,
                 TextureFormat.R8Uint            => Format.R8Uint,
@@ -112,12 +105,8 @@ namespace Ryujinx.Graphics.Gpu.Engine
                 TextureFormat.R10G10B10A2Unorm  => Format.R10G10B10A2Unorm,
                 TextureFormat.R10G10B10A2Uint   => Format.R10G10B10A2Uint,
                 TextureFormat.R11G11B10Float    => Format.R11G11B10Float,
-<<<<<<< HEAD
                 _                               => 0,
 #pragma warning restore IDE0055
-=======
-                _                               => 0
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
-=======
-﻿using Ryujinx.Graphics.GAL;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Graphics.Gpu.Shader
@@ -19,7 +15,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
         public IProgram HostProgram { get; }
 
         /// <summary>
-<<<<<<< HEAD
         /// Optional vertex shader converted to compute.
         /// </summary>
         public ShaderAsCompute VertexAsCompute { get; }
@@ -30,8 +25,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
         public ShaderAsCompute GeometryAsCompute { get; }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// GPU state used to create this version of the shader.
         /// </summary>
         public ShaderSpecializationState SpecializationState { get; }
@@ -62,7 +55,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
             Bindings = new CachedShaderBindings(shaders.Length == 1, shaders);
         }
 
-<<<<<<< HEAD
         public CachedShaderProgram(
             IProgram hostProgram,
             ShaderAsCompute vertexAsCompute,
@@ -74,19 +66,14 @@ namespace Ryujinx.Graphics.Gpu.Shader
             GeometryAsCompute = geometryAsCompute;
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// <summary>
         /// Dispose of the host shader resources.
         /// </summary>
         public void Dispose()
         {
             HostProgram.Dispose();
-<<<<<<< HEAD
             VertexAsCompute?.HostProgram.Dispose();
             GeometryAsCompute?.HostProgram.Dispose();
-=======
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

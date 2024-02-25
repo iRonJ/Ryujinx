@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 using LibHac;
-=======
-﻿using LibHac;
->>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using LibHac.Fs;
 using LibHac.Fs.Shim;
 using Ryujinx.Common;
 using Ryujinx.Common.Logging;
-<<<<<<< HEAD
 using Ryujinx.Horizon.Sdk.Account;
-=======
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -19,15 +12,9 @@ using System.Linq;
 
 namespace Ryujinx.HLE.HOS.Services.Account.Acc
 {
-<<<<<<< HEAD
     public class AccountManager : IEmulatorAccountManager
     {
         public static readonly UserId DefaultUserId = new("00000000000000010000000000000000");
-=======
-    public class AccountManager
-    {
-        public static readonly UserId DefaultUserId = new UserId("00000000000000010000000000000000");
->>>>>>> 1ec71635b (sync with main branch)
 
         private readonly AccountSaveDataManager _accountSaveDataManager;
 
@@ -65,13 +52,9 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
                 {
                     commandLineUserProfileOverride = _profiles.Values.FirstOrDefault(x => x.Name == initialProfileName)?.UserId ?? default;
                     if (commandLineUserProfileOverride.IsNull)
-<<<<<<< HEAD
                     {
                         Logger.Warning?.Print(LogClass.Application, $"The command line specified profile named '{initialProfileName}' was not found");
                     }
-=======
-                        Logger.Warning?.Print(LogClass.Application, $"The command line specified profile named '{initialProfileName}' was not found");
->>>>>>> 1ec71635b (sync with main branch)
                 }
                 OpenUser(commandLineUserProfileOverride.IsNull ? _accountSaveDataManager.LastOpened : commandLineUserProfileOverride);
             }
@@ -84,11 +67,7 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
                 userId = new UserId(Guid.NewGuid().ToString().Replace("-", ""));
             }
 
-<<<<<<< HEAD
             UserProfile profile = new(userId, name, image);
-=======
-            UserProfile profile = new UserProfile(userId, name, image);
->>>>>>> 1ec71635b (sync with main branch)
 
             _profiles.AddOrUpdate(userId.ToString(), profile, (key, old) => profile);
 
@@ -128,14 +107,11 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             _accountSaveDataManager.Save(_profiles);
         }
 
-<<<<<<< HEAD
         public void OpenUserOnlinePlay(Uid userId)
         {
             OpenUserOnlinePlay(new UserId((long)userId.Low, (long)userId.High));
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public void OpenUserOnlinePlay(UserId userId)
         {
             if (_profiles.TryGetValue(userId.ToString(), out UserProfile profile))
@@ -157,14 +133,11 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             _accountSaveDataManager.Save(_profiles);
         }
 
-<<<<<<< HEAD
         public void CloseUserOnlinePlay(Uid userId)
         {
             CloseUserOnlinePlay(new UserId((long)userId.Low, (long)userId.High));
         }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         public void CloseUserOnlinePlay(UserId userId)
         {
             if (_profiles.TryGetValue(userId.ToString(), out UserProfile profile))
@@ -278,8 +251,4 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             return _profiles.First().Value;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

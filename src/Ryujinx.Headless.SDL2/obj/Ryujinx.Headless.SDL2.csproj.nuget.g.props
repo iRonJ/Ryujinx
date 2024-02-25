@@ -12,4 +12,16 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="/Users/ronj/.nuget/packages/" />
   </ItemGroup>
+  <ItemGroup Condition=" '$(Language)' == 'C#' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <None Include="$(NuGetPackageRoot)ryujinx.graphics.vulkan.dependencies.moltenvk/1.2.0/contentFiles/cs/netstandard2.0/libMoltenVK.dylib" Condition="Exists('$(NuGetPackageRoot)ryujinx.graphics.vulkan.dependencies.moltenvk/1.2.0/contentFiles/cs/netstandard2.0/libMoltenVK.dylib')">
+      <NuGetPackageId>Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK</NuGetPackageId>
+      <NuGetPackageVersion>1.2.0</NuGetPackageVersion>
+      <NuGetItemType>None</NuGetItemType>
+      <Pack>false</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libMoltenVK.dylib</TargetPath>
+      <Private>True</Private>
+      <Link>libMoltenVK.dylib</Link>
+    </None>
+  </ItemGroup>
 </Project>

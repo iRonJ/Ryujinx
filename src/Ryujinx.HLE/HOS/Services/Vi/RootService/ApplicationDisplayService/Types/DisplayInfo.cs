@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService.Types
@@ -11,7 +7,6 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService.Type
     struct DisplayInfo
     {
         public Array64<byte> Name;
-<<<<<<< HEAD
         public bool LayerLimitEnabled;
         public Array7<byte> Padding;
         public ulong LayerLimitMax;
@@ -19,12 +14,3 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService.Type
         public ulong Height;
     }
 }
-=======
-        public bool          LayerLimitEnabled;
-        public Array7<byte>  Padding;
-        public ulong         LayerLimitMax;
-        public ulong         Width;
-        public ulong         Height;
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

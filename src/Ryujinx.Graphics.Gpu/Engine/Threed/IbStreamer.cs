@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
 using Ryujinx.Graphics.GAL;
-=======
-﻿using Ryujinx.Common;
-using Ryujinx.Graphics.GAL;
-using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.Graphics.Gpu.Engine.Threed
@@ -22,58 +16,35 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         private int _inlineIndexBufferSize;
         private int _inlineIndexCount;
         private uint[] _buffer;
-<<<<<<< HEAD
 #pragma warning disable IDE0051 // Remove unused private member
         private readonly int _bufferOffset;
 #pragma warning restore IDE0051
-=======
-        private int _bufferOffset;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Indicates if any index buffer data has been pushed.
         /// </summary>
-<<<<<<< HEAD
         public readonly bool HasInlineIndexData => _inlineIndexCount != 0;
-=======
-        public bool HasInlineIndexData => _inlineIndexCount != 0;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Total numbers of indices that have been pushed.
         /// </summary>
-<<<<<<< HEAD
         public readonly int InlineIndexCount => _inlineIndexCount;
-=======
-        public int InlineIndexCount => _inlineIndexCount;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Gets the handle for the host buffer currently holding the inline index buffer data.
         /// </summary>
         /// <returns>Host buffer handle</returns>
-<<<<<<< HEAD
         public readonly BufferHandle GetInlineIndexBuffer()
-=======
-        public BufferHandle GetInlineIndexBuffer()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return _inlineIndexBuffer;
         }
 
         /// <summary>
         /// Gets the number of elements on the current inline index buffer,
-<<<<<<< HEAD
         /// while also resetting it to zero for the next draw.
         /// </summary>
         /// <param name="renderer">Host renderer</param>
         /// <returns>Inline index buffer count</returns>
-=======
-        /// while also reseting it to zero for the next draw.
-        /// </summary>
-        /// <param name="renderer">Host renderer</param>
-        /// <returns>Inline index bufffer count</returns>
->>>>>>> 1ec71635b (sync with main branch)
         public int GetAndResetInlineIndexCount(IRenderer renderer)
         {
             UpdateRemaining(renderer);
@@ -144,14 +115,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
         /// <param name="value">Index value to be written</param>
         private void PushData(IRenderer renderer, int offset, uint value)
         {
-<<<<<<< HEAD
             _buffer ??= new uint[BufferCapacity];
-=======
-            if (_buffer == null)
-            {
-                _buffer = new uint[BufferCapacity];
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             // We upload data in chunks.
             // If we are at the start of a chunk, then the buffer might be full,
@@ -189,11 +153,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
             int baseOffset = (offset - count) * sizeof(uint);
             int length = count * sizeof(uint);
             BufferHandle buffer = GetInlineIndexBuffer(renderer, baseOffset, length);
-<<<<<<< HEAD
             renderer.SetBufferData(buffer, baseOffset, MemoryMarshal.Cast<uint, byte>(_buffer)[..length]);
-=======
-            renderer.SetBufferData(buffer, baseOffset, MemoryMarshal.Cast<uint, byte>(_buffer).Slice(0, length));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -211,11 +171,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
 
             if (_inlineIndexBuffer == BufferHandle.Null)
             {
-<<<<<<< HEAD
                 _inlineIndexBuffer = renderer.CreateBuffer(size, BufferAccess.Stream);
-=======
-                _inlineIndexBuffer = renderer.CreateBuffer(size);
->>>>>>> 1ec71635b (sync with main branch)
                 _inlineIndexBufferSize = size;
             }
             else if (_inlineIndexBufferSize < size)
@@ -223,11 +179,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed
                 BufferHandle oldBuffer = _inlineIndexBuffer;
                 int oldSize = _inlineIndexBufferSize;
 
-<<<<<<< HEAD
                 _inlineIndexBuffer = renderer.CreateBuffer(size, BufferAccess.Stream);
-=======
-                _inlineIndexBuffer = renderer.CreateBuffer(size);
->>>>>>> 1ec71635b (sync with main branch)
                 _inlineIndexBufferSize = size;
 
                 renderer.Pipeline.CopyBuffer(oldBuffer, _inlineIndexBuffer, 0, 0, oldSize);

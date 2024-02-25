@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 using Ryujinx.Audio.Renderer.Dsp.Effect;
-=======
-﻿using Ryujinx.Audio.Renderer.Dsp.Effect;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Audio.Renderer.Parameter.Effect;
 
 namespace Ryujinx.Audio.Renderer.Dsp.State
 {
-<<<<<<< HEAD
     public struct CompressorState
-=======
-    public class CompressorState
->>>>>>> 1ec71635b (sync with main branch)
     {
         public ExponentialMovingAverage InputMovingAverage;
         public float Unknown4;
@@ -53,11 +45,7 @@ namespace Ryujinx.Audio.Renderer.Dsp.State
             CompressorGainReduction = (1.0f - ratio) / Constants.ChannelCountMax;
             Unknown10 = threshold - 1.5f;
             Unknown14 = threshold + 1.5f;
-<<<<<<< HEAD
             OutputGain = FloatingPointHelper.DecibelToLinear(parameter.OutputGain + makeupGain);
-=======
-            OutputGain = FloatingPointHelper.DecibelToLinearExtended(parameter.OutputGain + makeupGain);
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

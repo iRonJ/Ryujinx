@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Runtime.InteropServices;
-=======
-﻿using System.Runtime.InteropServices;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
 {
@@ -81,15 +77,9 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
         [MarshalAs(UnmanagedType.I1)]
         public bool UseSaveData;
 
-<<<<<<< HEAD
         public uint Reserved3;
         public ushort Reserved4;
         public byte Reserved5;
-=======
-        public uint   Reserved3;
-        public ushort Reserved4;
-        public byte   Reserved5;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The id of the user associated with the appear request.

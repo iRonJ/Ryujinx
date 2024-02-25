@@ -65,8 +65,4 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             context.ClearBuffer(OutputBufferIndices[5]);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

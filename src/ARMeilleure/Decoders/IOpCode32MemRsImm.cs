@@ -5,8 +5,4 @@ namespace ARMeilleure.Decoders
         int Rm { get; }
         ShiftType ShiftType { get; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

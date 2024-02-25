@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.Decoders;
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation;
 using System;
 using System.Diagnostics;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
@@ -80,14 +72,10 @@ namespace ARMeilleure.Instructions
         public static Operand EmitExtractScalar(ArmEmitterContext context, Operand target, int reg, bool doubleWidth)
         {
             int index = reg & (doubleWidth ? 1 : 3);
-<<<<<<< HEAD
             if (index == 0)
             {
                 return target; // Element is already at index 0, so just return the vector directly.
             }
-=======
-            if (index == 0) return target; // Element is already at index 0, so just return the vector directly.
->>>>>>> 1ec71635b (sync with main branch)
 
             if (doubleWidth)
             {
@@ -205,18 +193,10 @@ namespace ARMeilleure.Instructions
             EmitVectorTernaryOpSimd32(context, (d, n, m) => context.AddIntrinsic(inst, d, n, m));
         }
 
-<<<<<<< HEAD
         public static void EmitScalarUnaryOpSimd32(ArmEmitterContext context, Func1I scalarFunc, bool doubleSize)
         {
             OpCode32SimdS op = (OpCode32SimdS)context.CurrOp;
 
-=======
-        public static void EmitScalarUnaryOpSimd32(ArmEmitterContext context, Func1I scalarFunc)
-        {
-            OpCode32SimdS op = (OpCode32SimdS)context.CurrOp;
-
-            bool doubleSize = (op.Size & 1) != 0;
->>>>>>> 1ec71635b (sync with main branch)
             int shift = doubleSize ? 1 : 2;
             Operand m = GetVecA32(op.Vm >> shift);
             Operand d = GetVecA32(op.Vd >> shift);
@@ -235,7 +215,6 @@ namespace ARMeilleure.Instructions
         {
             OpCode32SimdS op = (OpCode32SimdS)context.CurrOp;
 
-<<<<<<< HEAD
             EmitScalarUnaryOpF32(context, inst, (op.Size & 1) != 0);
         }
 
@@ -243,10 +222,6 @@ namespace ARMeilleure.Instructions
         {
             inst |= (doubleSize ? Intrinsic.Arm64VDouble : Intrinsic.Arm64VFloat) | Intrinsic.Arm64V128;
             EmitScalarUnaryOpSimd32(context, (m) => (inst == 0) ? m : context.AddIntrinsic(inst, m), doubleSize);
-=======
-            inst |= ((op.Size & 1) != 0 ? Intrinsic.Arm64VDouble : Intrinsic.Arm64VFloat) | Intrinsic.Arm64V128;
-            EmitScalarUnaryOpSimd32(context, (m) => (inst == 0) ? m : context.AddIntrinsic(inst, m));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void EmitScalarBinaryOpSimd32(ArmEmitterContext context, Func2I scalarFunc)
@@ -275,11 +250,7 @@ namespace ARMeilleure.Instructions
             OpCode32SimdRegS op = (OpCode32SimdRegS)context.CurrOp;
 
             inst |= ((op.Size & 1) != 0 ? Intrinsic.Arm64VDouble : Intrinsic.Arm64VFloat) | Intrinsic.Arm64V128;
-<<<<<<< HEAD
             EmitScalarBinaryOpSimd32(context, (n, m) => context.AddIntrinsic(inst, n, m));
-=======
-            EmitScalarBinaryOpSimd32(context, (n, m) =>  context.AddIntrinsic(inst, n, m));
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void EmitScalarTernaryOpSimd32(ArmEmitterContext context, Func3I scalarFunc)
@@ -366,28 +337,17 @@ namespace ARMeilleure.Instructions
                     CmpCondition.GreaterThanOrEqual => Intrinsic.Arm64FcmgeVz,
                     CmpCondition.LessThan => Intrinsic.Arm64FcmltVz,
                     CmpCondition.LessThanOrEqual => Intrinsic.Arm64FcmleVz,
-<<<<<<< HEAD
                     _ => throw new InvalidOperationException(),
                 };
             }
             else
             {
-=======
-                    _ => throw new InvalidOperationException()
-                };
-            }
-            else {
->>>>>>> 1ec71635b (sync with main branch)
                 inst = cond switch
                 {
                     CmpCondition.Equal => Intrinsic.Arm64FcmeqV,
                     CmpCondition.GreaterThan => Intrinsic.Arm64FcmgtV,
                     CmpCondition.GreaterThanOrEqual => Intrinsic.Arm64FcmgeV,
-<<<<<<< HEAD
                     _ => throw new InvalidOperationException(),
-=======
-                    _ => throw new InvalidOperationException()
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -409,8 +369,4 @@ namespace ARMeilleure.Instructions
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

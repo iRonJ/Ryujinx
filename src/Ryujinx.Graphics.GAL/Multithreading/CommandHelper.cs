@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Commands;
-=======
-﻿using Ryujinx.Graphics.GAL.Multithreading.Commands;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL.Multithreading.Commands.Buffer;
 using Ryujinx.Graphics.GAL.Multithreading.Commands.CounterEvent;
 using Ryujinx.Graphics.GAL.Multithreading.Commands.Program;
@@ -21,13 +17,8 @@ namespace Ryujinx.Graphics.GAL.Multithreading
     {
         private delegate void CommandDelegate(Span<byte> memory, ThreadedRenderer threaded, IRenderer renderer);
 
-<<<<<<< HEAD
         private static readonly int _totalCommands = (int)Enum.GetValues<CommandType>().Max() + 1;
         private static readonly CommandDelegate[] _lookup = new CommandDelegate[_totalCommands];
-=======
-        private static int _totalCommands = (int)Enum.GetValues<CommandType>().Max() + 1;
-        private static CommandDelegate[] _lookup = new CommandDelegate[_totalCommands];
->>>>>>> 1ec71635b (sync with main branch)
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static ref T GetCommand<T>(Span<byte> memory)
@@ -53,10 +44,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading
             Register<ActionCommand>(CommandType.Action);
             Register<CreateBufferCommand>(CommandType.CreateBuffer);
             Register<CreateBufferAccessCommand>(CommandType.CreateBufferAccess);
-<<<<<<< HEAD
             Register<CreateBufferSparseCommand>(CommandType.CreateBufferSparse);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Register<CreateHostBufferCommand>(CommandType.CreateHostBuffer);
             Register<CreateProgramCommand>(CommandType.CreateProgram);
             Register<CreateSamplerCommand>(CommandType.CreateSampler);
@@ -138,10 +126,6 @@ namespace Ryujinx.Graphics.GAL.Multithreading
             Register<SetProgramCommand>(CommandType.SetProgram);
             Register<SetRasterizerDiscardCommand>(CommandType.SetRasterizerDiscard);
             Register<SetRenderTargetColorMasksCommand>(CommandType.SetRenderTargetColorMasks);
-<<<<<<< HEAD
-=======
-            Register<SetRenderTargetScaleCommand>(CommandType.SetRenderTargetScale);
->>>>>>> 1ec71635b (sync with main branch)
             Register<SetRenderTargetsCommand>(CommandType.SetRenderTargets);
             Register<SetScissorsCommand>(CommandType.SetScissor);
             Register<SetStencilTestCommand>(CommandType.SetStencilTest);
@@ -154,10 +138,6 @@ namespace Ryujinx.Graphics.GAL.Multithreading
             Register<TextureBarrierTiledCommand>(CommandType.TextureBarrierTiled);
             Register<TryHostConditionalRenderingCommand>(CommandType.TryHostConditionalRendering);
             Register<TryHostConditionalRenderingFlushCommand>(CommandType.TryHostConditionalRenderingFlush);
-<<<<<<< HEAD
-=======
-            Register<UpdateRenderScaleCommand>(CommandType.UpdateRenderScale);
->>>>>>> 1ec71635b (sync with main branch)
 
             return maxCommandSize;
         }
@@ -165,11 +145,7 @@ namespace Ryujinx.Graphics.GAL.Multithreading
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void RunCommand(Span<byte> memory, ThreadedRenderer threaded, IRenderer renderer)
         {
-<<<<<<< HEAD
             _lookup[memory[^1]](memory, threaded, renderer);
-=======
-            _lookup[memory[memory.Length - 1]](memory, threaded, renderer);
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

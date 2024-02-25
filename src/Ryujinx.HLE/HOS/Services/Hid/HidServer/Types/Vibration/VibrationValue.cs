@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid
 {
@@ -13,18 +9,13 @@ namespace Ryujinx.HLE.HOS.Services.Hid
         public float AmplitudeHigh;
         public float FrequencyHigh;
 
-<<<<<<< HEAD
         public readonly override bool Equals(object obj)
-=======
-        public override bool Equals(object obj)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is VibrationValue value &&
                    AmplitudeLow == value.AmplitudeLow &&
                    AmplitudeHigh == value.AmplitudeHigh;
         }
 
-<<<<<<< HEAD
         public readonly override int GetHashCode()
         {
             return HashCode.Combine(AmplitudeLow, AmplitudeHigh);
@@ -41,11 +32,3 @@ namespace Ryujinx.HLE.HOS.Services.Hid
         }
     }
 }
-=======
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(AmplitudeLow, AmplitudeHigh);
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

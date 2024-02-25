@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace ARMeilleure.Decoders
-=======
-﻿namespace ARMeilleure.Decoders
->>>>>>> 1ec71635b (sync with main branch)
 {
     class OpCodeT16BImm8 : OpCodeT16, IOpCode32BImm
     {
@@ -14,11 +10,7 @@ namespace ARMeilleure.Decoders
         {
             Cond = (Condition)((opCode >> 8) & 0xf);
 
-<<<<<<< HEAD
             int imm = (opCode << 24) >> 23;
-=======
-            int imm = (opCode << 24) >> 23; 
->>>>>>> 1ec71635b (sync with main branch)
             Immediate = GetPc() + imm;
         }
     }

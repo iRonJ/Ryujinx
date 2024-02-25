@@ -17,8 +17,4 @@ namespace ARMeilleure.Decoders
             SetFlags = ((opCode >> 20) & 1) != 0;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

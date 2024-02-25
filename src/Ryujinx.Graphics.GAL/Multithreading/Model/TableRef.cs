@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Model
 {
     readonly struct TableRef<T>
     {
         private readonly int _index;
-=======
-﻿namespace Ryujinx.Graphics.GAL.Multithreading.Model
-{
-    struct TableRef<T>
-    {
-        private int _index;
->>>>>>> 1ec71635b (sync with main branch)
 
         public TableRef(ThreadedRenderer renderer, T reference)
         {

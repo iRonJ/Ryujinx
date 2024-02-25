@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Memory;
 using Ryujinx.Graphics.Texture;
 using Ryujinx.Graphics.Vic.Types;
@@ -25,12 +21,8 @@ namespace Ryujinx.Graphics.Vic.Image
         {
             switch (surfaceConfig.SlotPixelFormat)
             {
-<<<<<<< HEAD
                 case PixelFormat.Y8___V8U8_N420:
                     return ReadNv12(rm, ref config, ref surfaceConfig, ref offsets);
-=======
-                case PixelFormat.Y8___V8U8_N420: return ReadNv12(rm, ref config, ref surfaceConfig, ref offsets);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             Logger.Error?.Print(LogClass.Vic, $"Unsupported pixel format \"{surfaceConfig.SlotPixelFormat}\".");
@@ -55,11 +47,7 @@ namespace Ryujinx.Graphics.Vic.Image
             int yStride = GetPitch(width, 1);
             int uvStride = GetPitch(input.UvWidth, 2);
 
-<<<<<<< HEAD
             Surface output = new(rm.SurfacePool, width, height);
-=======
-            Surface output = new Surface(rm.SurfacePool, width, height);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (Sse41.IsSupported)
             {
@@ -289,11 +277,7 @@ namespace Ryujinx.Graphics.Vic.Image
             int bytesPerPixel,
             int planes)
         {
-<<<<<<< HEAD
             InputSurface surface = new();
-=======
-            InputSurface surface = new InputSurface();
->>>>>>> 1ec71635b (sync with main branch)
 
             surface.Initialize();
 
@@ -433,11 +417,7 @@ namespace Ryujinx.Graphics.Vic.Image
                 0 => offsets.LumaOffset,
                 1 => offsets.ChromaUOffset,
                 2 => offsets.ChromaVOffset,
-<<<<<<< HEAD
                 _ => throw new ArgumentOutOfRangeException(nameof(plane)),
-=======
-                _ => throw new ArgumentOutOfRangeException(nameof(plane))
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -474,20 +454,12 @@ namespace Ryujinx.Graphics.Vic.Image
             int srcStride = GetPitch(width, bytesPerPixel);
             int inSize = srcStride * height;
 
-<<<<<<< HEAD
             ReadOnlySpan<byte> src = rm.MemoryManager.GetSpan(ExtendOffset(offset), inSize);
-=======
-            ReadOnlySpan<byte> src = rm.Gmm.GetSpan(ExtendOffset(offset), inSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             int outSize = dstStride * height;
             int bufferIndex = rm.BufferPool.RentMinimum(outSize, out byte[] buffer);
             Span<byte> dst = buffer;
-<<<<<<< HEAD
             dst = dst[..outSize];
-=======
-            dst = dst.Slice(0, outSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int y = 0; y < height; y++)
             {
@@ -509,24 +481,14 @@ namespace Ryujinx.Graphics.Vic.Image
         {
             int inSize = GetBlockLinearSize(width, height, bytesPerPixel, gobBlocksInY);
 
-<<<<<<< HEAD
             ReadOnlySpan<byte> src = rm.MemoryManager.GetSpan(ExtendOffset(offset), inSize);
-=======
-            ReadOnlySpan<byte> src = rm.Gmm.GetSpan(ExtendOffset(offset), inSize);
->>>>>>> 1ec71635b (sync with main branch)
 
             int outSize = dstStride * height;
             int bufferIndex = rm.BufferPool.RentMinimum(outSize, out byte[] buffer);
             Span<byte> dst = buffer;
-<<<<<<< HEAD
             dst = dst[..outSize];
 
             LayoutConverter.ConvertBlockLinearToLinear(dst[dstStart..], width, height, dstStride, bytesPerPixel, gobBlocksInY, src);
-=======
-            dst = dst.Slice(0, outSize);
-
-            LayoutConverter.ConvertBlockLinearToLinear(dst.Slice(dstStart), width, height, dstStride, bytesPerPixel, gobBlocksInY, src);
->>>>>>> 1ec71635b (sync with main branch)
 
             return new RentedBuffer(dst, bufferIndex);
         }

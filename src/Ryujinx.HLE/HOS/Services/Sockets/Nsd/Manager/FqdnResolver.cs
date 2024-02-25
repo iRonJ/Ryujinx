@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 using System.Text;
-=======
-﻿using System.Text;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Sockets.Nsd.Manager
 {
     class FqdnResolver
     {
-<<<<<<< HEAD
         private const string DummyAddress = "unknown.dummy.nintendo.net";
-=======
-        private const string _dummyAddress = "unknown.dummy.nintendo.net";
->>>>>>> 1ec71635b (sync with main branch)
 
         public ResultCode GetEnvironmentIdentifier(out string identifier)
         {
@@ -32,13 +24,8 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Nsd.Manager
 
         public static ResultCode Resolve(string address, out string resolvedAddress)
         {
-<<<<<<< HEAD
             if (address == "api.sect.srv.nintendo.net" ||
                 address == "ctest.cdn.nintendo.net" ||
-=======
-            if (address == "api.sect.srv.nintendo.net"     ||
-                address == "ctest.cdn.nintendo.net"        ||
->>>>>>> 1ec71635b (sync with main branch)
                 address == "ctest.cdn.n.nintendoswitch.cn" ||
                 address == "unknown.dummy.nintendo.net")
             {
@@ -63,10 +50,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Nsd.Manager
 
                 resolvedAddress = address switch
                 {
-<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
-=======
->>>>>>> 1ec71635b (sync with main branch)
                     "e97b8a9d672e4ce4845ec6947cd66ef6-sb-api.accounts.nintendo.com" => "e97b8a9d672e4ce4845ec6947cd66ef6-sb.baas.nintendo.com", // dp1 environment
                     "api.accounts.nintendo.com"                                     => "e0d67c509fb203858ebcb2fe3f88c2aa.baas.nintendo.com",    // dp1 environment
                     "e97b8a9d672e4ce4845ec6947cd66ef6-sb.accounts.nintendo.com"     => "e97b8a9d672e4ce4845ec6947cd66ef6-sb.baas.nintendo.com", // lp1 environment
@@ -77,10 +61,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Nsd.Manager
                         this + 0x2BE8 => this + 0x2BE8 + 0x300
                     */
                     _ => address,
-<<<<<<< HEAD
 #pragma warning restore IDE0055
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -90,11 +71,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Nsd.Manager
         public ResultCode ResolveEx(ServiceCtx context, out ResultCode resultCode, out string resolvedAddress)
         {
             ulong inputPosition = context.Request.SendBuff[0].Position;
-<<<<<<< HEAD
             ulong inputSize = context.Request.SendBuff[0].Size;
-=======
-            ulong inputSize     = context.Request.SendBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             byte[] addressBuffer = new byte[inputSize];
 
@@ -106,11 +83,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Nsd.Manager
 
             if (resultCode != ResultCode.Success)
             {
-<<<<<<< HEAD
                 resolvedAddress = DummyAddress;
-=======
-                resolvedAddress = _dummyAddress;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (IManager.NsdSettings.TestMode)
@@ -123,8 +96,4 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Nsd.Manager
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

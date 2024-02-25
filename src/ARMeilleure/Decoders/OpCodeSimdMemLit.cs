@@ -2,17 +2,10 @@ namespace ARMeilleure.Decoders
 {
     class OpCodeSimdMemLit : OpCode, IOpCodeSimd, IOpCodeLit
     {
-<<<<<<< HEAD
         public int Rt { get; }
         public long Immediate { get; }
         public int Size { get; }
         public bool Signed => false;
-=======
-        public int  Rt        { get; }
-        public long Immediate { get; }
-        public int  Size      { get; }
-        public bool Signed   => false;
->>>>>>> 1ec71635b (sync with main branch)
         public bool Prefetch => false;
 
         public new static OpCode Create(InstDescriptor inst, ulong address, int opCode) => new OpCodeSimdMemLit(inst, address, opCode);
@@ -35,8 +28,4 @@ namespace ARMeilleure.Decoders
             Size = opc + 2;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -111,19 +111,11 @@ namespace Ryujinx.Graphics.OpenGL
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             int srcX0, srcX1, srcY0, srcY1;
-<<<<<<< HEAD
-=======
-            float scale = viewConverted.ScaleFactor;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (crop.Left == 0 && crop.Right == 0)
             {
                 srcX0 = 0;
-<<<<<<< HEAD
                 srcX1 = viewConverted.Width;
-=======
-                srcX1 = (int)(viewConverted.Width / scale);
->>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -134,11 +126,7 @@ namespace Ryujinx.Graphics.OpenGL
             if (crop.Top == 0 && crop.Bottom == 0)
             {
                 srcY0 = 0;
-<<<<<<< HEAD
                 srcY1 = viewConverted.Height;
-=======
-                srcY1 = (int)(viewConverted.Height / scale);
->>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -146,17 +134,6 @@ namespace Ryujinx.Graphics.OpenGL
                 srcY1 = crop.Bottom;
             }
 
-<<<<<<< HEAD
-=======
-            if (scale != 1f)
-            {
-                srcX0 = (int)(srcX0 * scale);
-                srcY0 = (int)(srcY0 * scale);
-                srcX1 = (int)Math.Ceiling(srcX1 * scale);
-                srcY1 = (int)Math.Ceiling(srcY1 * scale);
-            }
-
->>>>>>> 1ec71635b (sync with main branch)
             float ratioX = crop.IsStretched ? 1.0f : MathF.Min(1.0f, _height * crop.AspectRatioX / (_width * crop.AspectRatioY));
             float ratioY = crop.IsStretched ? 1.0f : MathF.Min(1.0f, _width * crop.AspectRatioY / (_height * crop.AspectRatioX));
 
@@ -330,11 +307,8 @@ namespace Ryujinx.Graphics.OpenGL
             _updateScalingFilter = true;
         }
 
-<<<<<<< HEAD
         public void SetColorSpacePassthrough(bool colorSpacePassthroughEnabled) { }
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
         private void UpdateEffect()
         {
             if (_updateEffect)
@@ -394,11 +368,7 @@ namespace Ryujinx.Graphics.OpenGL
                         if (_scalingFilter is not FsrScalingFilter)
                         {
                             _scalingFilter?.Dispose();
-<<<<<<< HEAD
                             _scalingFilter = new FsrScalingFilter(_renderer);
-=======
-                            _scalingFilter = new FsrScalingFilter(_renderer, _antiAliasing);
->>>>>>> 1ec71635b (sync with main branch)
                         }
                         _isLinear = false;
                         _scalingFilter.Level = _scalingFilterLevel;
@@ -431,11 +401,7 @@ namespace Ryujinx.Graphics.OpenGL
                 SwizzleComponent.Alpha);
 
             _isBgra = forceBgra;
-<<<<<<< HEAD
             _upscaledTexture = _renderer.CreateTexture(info) as TextureView;
-=======
-            _upscaledTexture = _renderer.CreateTexture(info, 1) as TextureView;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void SetScalingFilterLevel(float level)
@@ -444,8 +410,4 @@ namespace Ryujinx.Graphics.OpenGL
             _updateScalingFilter = true;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

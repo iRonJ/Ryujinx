@@ -101,8 +101,4 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl
             return "0x" + value.ToString("X", CultureInfo.InvariantCulture) + "u";
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

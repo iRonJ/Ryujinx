@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
 
 namespace Ryujinx.Graphics.Vic.Types
@@ -9,18 +8,6 @@ namespace Ryujinx.Graphics.Vic.Types
         private readonly long _word1;
         private readonly long _word2;
         private readonly long _word3;
-=======
-﻿using Ryujinx.Common.Utilities;
-
-namespace Ryujinx.Graphics.Vic.Types
-{
-    struct MatrixStruct
-    {
-        private long _word0;
-        private long _word1;
-        private long _word2;
-        private long _word3;
->>>>>>> 1ec71635b (sync with main branch)
 
         public int MatrixCoeff00 => (int)_word0.ExtractSx(0, 20);
         public int MatrixCoeff10 => (int)_word0.ExtractSx(20, 20);

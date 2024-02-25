@@ -1,10 +1,6 @@
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 
 namespace Ryujinx.Graphics.Shader.Translation
@@ -12,17 +8,12 @@ namespace Ryujinx.Graphics.Shader.Translation
     class HelperFunctionManager
     {
         private readonly List<Function> _functionList;
-<<<<<<< HEAD
         private readonly Dictionary<int, int> _functionIds;
-=======
-        private readonly Dictionary<HelperFunctionName, int> _functionIds;
->>>>>>> 1ec71635b (sync with main branch)
         private readonly ShaderStage _stage;
 
         public HelperFunctionManager(List<Function> functionList, ShaderStage stage)
         {
             _functionList = functionList;
-<<<<<<< HEAD
             _functionIds = new Dictionary<int, int>();
             _stage = stage;
         }
@@ -38,21 +29,11 @@ namespace Ryujinx.Graphics.Shader.Translation
         public int GetOrCreateFunctionId(HelperFunctionName functionName)
         {
             if (_functionIds.TryGetValue((int)functionName, out int functionId))
-=======
-            _functionIds = new Dictionary<HelperFunctionName, int>();
-            _stage = stage;
-        }
-
-        public int GetOrCreateFunctionId(HelperFunctionName functionName)
-        {
-            if (_functionIds.TryGetValue(functionName, out int functionId))
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return functionId;
             }
 
             Function function = GenerateFunction(functionName);
-<<<<<<< HEAD
             functionId = AddFunction(function);
             _functionIds.Add((int)functionName, functionId);
 
@@ -85,11 +66,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             Function function = GenerateShuffleFunction(functionName, subgroupSize);
             functionId = AddFunction(function);
             _functionIds.Add((int)functionName, functionId);
-=======
-            functionId = _functionList.Count;
-            _functionList.Add(function);
-            _functionIds.Add(functionName, functionId);
->>>>>>> 1ec71635b (sync with main branch)
 
             return functionId;
         }
@@ -98,7 +74,6 @@ namespace Ryujinx.Graphics.Shader.Translation
         {
             return functionName switch
             {
-<<<<<<< HEAD
                 HelperFunctionName.ConvertDoubleToFloat => GenerateConvertDoubleToFloatFunction(),
                 HelperFunctionName.ConvertFloatToDouble => GenerateConvertFloatToDoubleFunction(),
                 HelperFunctionName.TexelFetchScale => GenerateTexelFetchScaleFunction(),
@@ -389,17 +364,6 @@ namespace Ryujinx.Graphics.Shader.Translation
         private Function GenerateTexelFetchScaleFunction()
         {
             EmitterContext context = new();
-=======
-                HelperFunctionName.TexelFetchScale => GenerateTexelFetchScaleFunction(),
-                HelperFunctionName.TextureSizeUnscale => GenerateTextureSizeUnscaleFunction(),
-                _ => throw new ArgumentException($"Invalid function name {functionName}")
-            };
-        }
-
-        private Function GenerateTexelFetchScaleFunction()
-        {
-            EmitterContext context = new EmitterContext();
->>>>>>> 1ec71635b (sync with main branch)
 
             Operand input = Argument(0);
             Operand samplerIndex = Argument(1);
@@ -450,11 +414,7 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         private Function GenerateTextureSizeUnscaleFunction()
         {
-<<<<<<< HEAD
             EmitterContext context = new();
-=======
-            EmitterContext context = new EmitterContext();
->>>>>>> 1ec71635b (sync with main branch)
 
             Operand input = Argument(0);
             Operand samplerIndex = Argument(1);
@@ -487,7 +447,6 @@ namespace Ryujinx.Graphics.Shader.Translation
                     return context.IAdd(Const(1), index);
             }
         }
-<<<<<<< HEAD
 
         public static Operand GetBitOffset(EmitterContext context, Operand offset)
         {
@@ -514,7 +473,3 @@ namespace Ryujinx.Graphics.Shader.Translation
 
     }
 }
-=======
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

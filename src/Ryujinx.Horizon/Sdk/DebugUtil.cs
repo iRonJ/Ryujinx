@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Diagnostics;
-=======
-﻿using System.Diagnostics;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Horizon.Sdk
 {

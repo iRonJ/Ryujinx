@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using OpenTK.Graphics.OpenGL;
-=======
-﻿using OpenTK.Graphics.OpenGL;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common;
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.OpenGL.Image;
@@ -26,11 +22,7 @@ namespace Ryujinx.Graphics.OpenGL.Effects.Smaa
         private int[] _neighbourShaderPrograms;
         private TextureStorage _edgeOutputTexture;
         private TextureStorage _blendOutputTexture;
-<<<<<<< HEAD
         private readonly string[] _qualities;
-=======
-        private string[] _qualities;
->>>>>>> 1ec71635b (sync with main branch)
         private int _inputUniform;
         private int _outputUniform;
         private int _samplerAreaUniform;
@@ -155,13 +147,8 @@ namespace Ryujinx.Graphics.OpenGL.Effects.Smaa
                 SwizzleComponent.Blue,
                 SwizzleComponent.Alpha);
 
-<<<<<<< HEAD
             _areaTexture = new TextureStorage(_renderer, areaInfo);
             _searchTexture = new TextureStorage(_renderer, searchInfo);
-=======
-            _areaTexture = new TextureStorage(_renderer, areaInfo, 1);
-            _searchTexture = new TextureStorage(_renderer, searchInfo, 1);
->>>>>>> 1ec71635b (sync with main branch)
 
             var areaTexture = EmbeddedResources.Read("Ryujinx.Graphics.OpenGL/Effects/Textures/SmaaAreaTexture.bin");
             var searchTexture = EmbeddedResources.Read("Ryujinx.Graphics.OpenGL/Effects/Textures/SmaaSearchTexture.bin");
@@ -178,19 +165,11 @@ namespace Ryujinx.Graphics.OpenGL.Effects.Smaa
             if (_outputTexture == null || _outputTexture.Info.Width != view.Width || _outputTexture.Info.Height != view.Height)
             {
                 _outputTexture?.Dispose();
-<<<<<<< HEAD
                 _outputTexture = new TextureStorage(_renderer, view.Info);
                 _outputTexture.CreateDefaultView();
                 _edgeOutputTexture = new TextureStorage(_renderer, view.Info);
                 _edgeOutputTexture.CreateDefaultView();
                 _blendOutputTexture = new TextureStorage(_renderer, view.Info);
-=======
-                _outputTexture = new TextureStorage(_renderer, view.Info, view.ScaleFactor);
-                _outputTexture.CreateDefaultView();
-                _edgeOutputTexture = new TextureStorage(_renderer, view.Info, view.ScaleFactor);
-                _edgeOutputTexture.CreateDefaultView();
-                _blendOutputTexture = new TextureStorage(_renderer, view.Info, view.ScaleFactor);
->>>>>>> 1ec71635b (sync with main branch)
                 _blendOutputTexture.CreateDefaultView();
 
                 DeleteShaders();

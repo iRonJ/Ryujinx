@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Apm
 {
@@ -10,11 +6,7 @@ namespace Ryujinx.HLE.HOS.Services.Apm
     {
         private readonly ServiceCtx _context;
 
-<<<<<<< HEAD
         public SessionServer(ServiceCtx context) : base(context)
-=======
-        public SessionServer(ServiceCtx context) : base(context) 
->>>>>>> 1ec71635b (sync with main branch)
         {
             _context = context;
         }
@@ -63,8 +55,4 @@ namespace Ryujinx.HLE.HOS.Services.Apm
             // NOTE: This call seems to overclock the system, since we emulate it, it's fine to do nothing instead.
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

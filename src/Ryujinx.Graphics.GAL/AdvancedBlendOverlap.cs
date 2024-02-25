@@ -4,10 +4,6 @@ namespace Ryujinx.Graphics.GAL
     {
         Uncorrelated,
         Disjoint,
-<<<<<<< HEAD
         Conjoint,
-=======
-        Conjoint
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

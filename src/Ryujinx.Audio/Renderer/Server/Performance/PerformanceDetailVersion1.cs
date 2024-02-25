@@ -34,38 +34,22 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
         /// </summary>
         public PerformanceEntryType EntryType;
 
-<<<<<<< HEAD
         public readonly int GetProcessingTime()
-=======
-        public int GetProcessingTime()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return ProcessingTime;
         }
 
-<<<<<<< HEAD
         public readonly int GetProcessingTimeOffset()
-=======
-        public int GetProcessingTimeOffset()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return 8;
         }
 
-<<<<<<< HEAD
         public readonly int GetStartTime()
-=======
-        public int GetStartTime()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return StartTime;
         }
 
-<<<<<<< HEAD
         public readonly int GetStartTimeOffset()
-=======
-        public int GetStartTimeOffset()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return 4;
         }
@@ -85,8 +69,4 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
             NodeId = nodeId;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

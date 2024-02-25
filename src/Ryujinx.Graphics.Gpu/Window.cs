@@ -8,11 +8,6 @@ using System.Threading;
 
 namespace Ryujinx.Graphics.Gpu
 {
-<<<<<<< HEAD
-=======
-    using Texture = Image.Texture;
-
->>>>>>> 1ec71635b (sync with main branch)
     /// <summary>
     /// GPU image presentation window.
     /// </summary>
@@ -71,7 +66,6 @@ namespace Ryujinx.Graphics.Gpu
             /// <param name="releaseCallback">Texture release callback</param>
             /// <param name="userObj">User defined object passed to the release callback, can be used to identify the texture</param>
             public PresentationTexture(
-<<<<<<< HEAD
                 TextureCache cache,
                 TextureInfo info,
                 MultiRange range,
@@ -87,23 +81,6 @@ namespace Ryujinx.Graphics.Gpu
                 AcquireCallback = acquireCallback;
                 ReleaseCallback = releaseCallback;
                 UserObj = userObj;
-=======
-                TextureCache               cache,
-                TextureInfo                info,
-                MultiRange                 range,
-                ImageCrop                  crop,
-                Action<GpuContext, object> acquireCallback,
-                Action<object>             releaseCallback,
-                object                     userObj)
-            {
-                Cache           = cache;
-                Info            = info;
-                Range           = range;
-                Crop            = crop;
-                AcquireCallback = acquireCallback;
-                ReleaseCallback = releaseCallback;
-                UserObj         = userObj;
->>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -146,7 +123,6 @@ namespace Ryujinx.Graphics.Gpu
         /// <exception cref="ArgumentException">Thrown when <paramref name="pid"/> is invalid</exception>
         /// <returns>True if the frame was added to the queue, false otherwise</returns>
         public bool EnqueueFrameThreadSafe(
-<<<<<<< HEAD
             ulong pid,
             ulong address,
             int width,
@@ -160,36 +136,15 @@ namespace Ryujinx.Graphics.Gpu
             Action<GpuContext, object> acquireCallback,
             Action<object> releaseCallback,
             object userObj)
-=======
-            ulong                      pid,
-            ulong                      address,
-            int                        width,
-            int                        height,
-            int                        stride,
-            bool                       isLinear,
-            int                        gobBlocksInY,
-            Format                     format,
-            int                        bytesPerPixel,
-            ImageCrop                  crop,
-            Action<GpuContext, object> acquireCallback,
-            Action<object>             releaseCallback,
-            object                     userObj)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (!_context.PhysicalMemoryRegistry.TryGetValue(pid, out var physicalMemory))
             {
                 return false;
             }
 
-<<<<<<< HEAD
             FormatInfo formatInfo = new(format, 1, 1, bytesPerPixel, 4);
 
             TextureInfo info = new(
-=======
-            FormatInfo formatInfo = new FormatInfo(format, 1, 1, bytesPerPixel, 4);
-
-            TextureInfo info = new TextureInfo(
->>>>>>> 1ec71635b (sync with main branch)
                 0UL,
                 width,
                 height,
@@ -218,11 +173,7 @@ namespace Ryujinx.Graphics.Gpu
                 1,
                 1).TotalSize;
 
-<<<<<<< HEAD
             MultiRange range = new(address, (ulong)size);
-=======
-            MultiRange range = new MultiRange(address, (ulong)size);
->>>>>>> 1ec71635b (sync with main branch)
 
             _frameQueue.Enqueue(new PresentationTexture(
                 physicalMemory.TextureCache,
@@ -249,17 +200,12 @@ namespace Ryujinx.Graphics.Gpu
             {
                 pt.AcquireCallback(_context, pt.UserObj);
 
-<<<<<<< HEAD
                 Image.Texture texture = pt.Cache.FindOrCreateTexture(null, TextureSearchFlags.WithUpscale, pt.Info, 0, range: pt.Range);
-=======
-                Texture texture = pt.Cache.FindOrCreateTexture(null, TextureSearchFlags.WithUpscale, pt.Info, 0, pt.Range);
->>>>>>> 1ec71635b (sync with main branch)
 
                 pt.Cache.Tick();
 
                 texture.SynchronizeMemory();
 
-<<<<<<< HEAD
                 ImageCrop crop = new(
                     (int)(pt.Crop.Left * texture.ScaleFactor),
                     (int)MathF.Ceiling(pt.Crop.Right * texture.ScaleFactor),
@@ -270,9 +216,6 @@ namespace Ryujinx.Graphics.Gpu
                     pt.Crop.IsStretched,
                     pt.Crop.AspectRatioX,
                     pt.Crop.AspectRatioY);
-=======
-                ImageCrop crop = pt.Crop;
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (texture.Info.Width > pt.Info.Width || texture.Info.Height > pt.Info.Height)
                 {
@@ -324,8 +267,4 @@ namespace Ryujinx.Graphics.Gpu
             return false;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

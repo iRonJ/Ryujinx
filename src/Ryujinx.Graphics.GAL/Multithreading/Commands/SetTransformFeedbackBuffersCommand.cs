@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Model;
-=======
-﻿using Ryujinx.Graphics.GAL.Multithreading.Model;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetTransformFeedbackBuffersCommand : IGALCommand, IGALCommand<SetTransformFeedbackBuffersCommand>
     {
-<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.SetTransformFeedbackBuffers;
-=======
-        public CommandType CommandType => CommandType.SetTransformFeedbackBuffers;
->>>>>>> 1ec71635b (sync with main branch)
         private SpanRef<BufferRange> _buffers;
 
         public void Set(SpanRef<BufferRange> buffers)

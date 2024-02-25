@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using LibHac;
-=======
-﻿using LibHac;
->>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using LibHac.Fs;
 using LibHac.Fs.Fsa;
@@ -24,11 +20,7 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
         public static ProcessResult Load(this Nca nca, Switch device, Nca patchNca, Nca controlNca)
         {
             // Extract RomFs and ExeFs from NCA.
-<<<<<<< HEAD
             IStorage romFs = nca.GetRomFs(device, patchNca);
-=======
-            IStorage    romFs = nca.GetRomFs(device, patchNca);
->>>>>>> 1ec71635b (sync with main branch)
             IFileSystem exeFs = nca.GetExeFs(device, patchNca);
 
             if (exeFs == null)
@@ -69,11 +61,7 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
 
             */
 
-<<<<<<< HEAD
             ProcessResult processResult = exeFs.Load(device, nacpData, metaLoader, (byte)nca.GetProgramIndex());
-=======
-            ProcessResult processResult = exeFs.Load(device, nacpData, metaLoader);
->>>>>>> 1ec71635b (sync with main branch)
 
             // Load RomFS.
             if (romFs == null)
@@ -185,8 +173,4 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
             return nacpData;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

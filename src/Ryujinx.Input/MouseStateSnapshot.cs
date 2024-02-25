@@ -8,11 +8,7 @@ namespace Ryujinx.Input
     /// </summary>
     public class MouseStateSnapshot
     {
-<<<<<<< HEAD
         private readonly bool[] _buttonState;
-=======
-        private bool[] _buttonState;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The position of the mouse cursor
@@ -35,11 +31,7 @@ namespace Ryujinx.Input
             _buttonState = buttonState;
 
             Position = position;
-<<<<<<< HEAD
             Scroll = scroll;
-=======
-            Scroll   = scroll;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -50,8 +42,4 @@ namespace Ryujinx.Input
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsPressed(MouseButton button) => _buttonState[(int)button];
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

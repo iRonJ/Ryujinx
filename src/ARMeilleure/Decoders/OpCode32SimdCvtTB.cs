@@ -15,13 +15,8 @@ namespace ARMeilleure.Decoders
         {
             IsThumb = isThumb;
 
-<<<<<<< HEAD
             Op = ((opCode >> 16) & 0x1) != 0;
             T = ((opCode >> 7) & 0x1) != 0;
-=======
-            Op   = ((opCode >> 16) & 0x1) != 0;
-            T    = ((opCode >> 7) & 0x1) != 0;
->>>>>>> 1ec71635b (sync with main branch)
             Size = ((opCode >> 8) & 0x1);
 
             RegisterSize = Size == 1 ? RegisterSize.Int64 : RegisterSize.Int32;
@@ -46,8 +41,4 @@ namespace ARMeilleure.Decoders
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

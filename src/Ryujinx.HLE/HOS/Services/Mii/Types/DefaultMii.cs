@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System;
-=======
-﻿using System;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.HLE.HOS.Services.Mii.Types
@@ -69,11 +65,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         public Nickname Nickname
         {
             get => Nickname.FromBytes(NicknameStorage);
-<<<<<<< HEAD
             set => value.Raw[..20].CopyTo(NicknameStorage);
-=======
-            set => value.Raw.Slice(0, 20).CopyTo(NicknameStorage);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static ReadOnlySpan<DefaultMii> Table => MemoryMarshal.Cast<byte, DefaultMii>(TableRawArray);
@@ -81,11 +73,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         // The first 2 Mii in the default table are used as base for Male/Female in editor but not exposed via IPC.
         public static int TableLength => _fromIndex.Length;
 
-<<<<<<< HEAD
         private static readonly int[] _fromIndex = { 2, 3, 4, 5, 6, 7 };
-=======
-        private static readonly int[] _fromIndex = new int[] { 2, 3, 4, 5, 6, 7 };
->>>>>>> 1ec71635b (sync with main branch)
 
         public static DefaultMii GetDefaultMii(uint index)
         {
@@ -202,11 +190,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00,
             0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6e, 0x00, 0x6f, 0x00,
-<<<<<<< HEAD
             0x20, 0x00, 0x6e, 0x00, 0x61, 0x00, 0x6d, 0x00, 0x65, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-=======
-            0x20, 0x00, 0x6e, 0x00, 0x61, 0x00, 0x6d, 0x00, 0x65, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
->>>>>>> 1ec71635b (sync with main branch)
         };
         #endregion
     }

@@ -12,15 +12,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public override uint Estimate(GroupedBiquadFilterCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)7424.5f;
             }
@@ -30,15 +24,9 @@ namespace Ryujinx.Audio.Renderer.Server
 
         public override uint Estimate(CaptureBufferCommand command)
         {
-<<<<<<< HEAD
             Debug.Assert(SampleCount == 160 || SampleCount == 240);
 
             if (SampleCount == 160)
-=======
-            Debug.Assert(_sampleCount == 160 || _sampleCount == 240);
-
-            if (_sampleCount == 160)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 if (command.Enabled)
                 {
@@ -56,8 +44,4 @@ namespace Ryujinx.Audio.Renderer.Server
             return (uint)435.2f;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using System.Runtime.InteropServices;
-=======
-﻿using System.Runtime.InteropServices;
->>>>>>> 1ec71635b (sync with main branch)
 using System.Text;
 
 namespace Ryujinx.Common.GraphicsDriver.NVAPI
@@ -17,11 +13,7 @@ namespace Ryujinx.Common.GraphicsDriver.NVAPI
             Set(text);
         }
 
-<<<<<<< HEAD
         public readonly string Get()
-=======
-        public string Get()
->>>>>>> 1ec71635b (sync with main branch)
         {
             fixed (byte* data = _data)
             {
@@ -37,11 +29,7 @@ namespace Ryujinx.Common.GraphicsDriver.NVAPI
             }
         }
 
-<<<<<<< HEAD
         public readonly void Set(string text)
-=======
-        public void Set(string text)
->>>>>>> 1ec71635b (sync with main branch)
         {
             text += '\0';
             fixed (char* textPtr = text)

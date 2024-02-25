@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-=======
-using Ryujinx.Graphics.Shader.IntermediateRepresentation;
-using System.Collections.Generic;
-
->>>>>>> 1ec71635b (sync with main branch)
 namespace Ryujinx.Graphics.Shader.Translation
 {
     enum HelperFunctionName
     {
-<<<<<<< HEAD
         Invalid,
 
         ConvertDoubleToFloat,
@@ -25,9 +18,3 @@ namespace Ryujinx.Graphics.Shader.Translation
         TextureSizeUnscale,
     }
 }
-=======
-        TexelFetchScale,
-        TextureSizeUnscale
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

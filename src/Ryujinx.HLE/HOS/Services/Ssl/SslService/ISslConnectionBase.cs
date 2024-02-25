@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Sockets.Bsd;
-=======
-﻿using Ryujinx.HLE.HOS.Services.Sockets.Bsd;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
 {
-<<<<<<< HEAD
     interface ISslConnectionBase : IDisposable
-=======
-    interface ISslConnectionBase: IDisposable
->>>>>>> 1ec71635b (sync with main branch)
     {
         int SocketFd { get; }
 

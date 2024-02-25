@@ -14,29 +14,17 @@ namespace Ryujinx.Audio.Input
     /// </summary>
     public class AudioInputManager : IDisposable
     {
-<<<<<<< HEAD
         private readonly object _lock = new();
-=======
-        private object _lock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Lock used for session allocation.
         /// </summary>
-<<<<<<< HEAD
         private readonly object _sessionLock = new();
-=======
-        private object _sessionLock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The session ids allocation table.
         /// </summary>
-<<<<<<< HEAD
         private readonly int[] _sessionIds;
-=======
-        private int[] _sessionIds;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The device driver.
@@ -51,11 +39,7 @@ namespace Ryujinx.Audio.Input
         /// <summary>
         /// The <see cref="AudioInputSystem"/> session instances.
         /// </summary>
-<<<<<<< HEAD
         private readonly AudioInputSystem[] _sessions;
-=======
-        private AudioInputSystem[] _sessions;
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The count of active sessions.
@@ -189,11 +173,7 @@ namespace Ryujinx.Audio.Input
                 // TODO: Detect if the driver supports audio input
             }
 
-<<<<<<< HEAD
             return new[] { Constants.DefaultDeviceInputName };
-=======
-            return new string[] { Constants.DefaultDeviceInputName };
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -206,11 +186,6 @@ namespace Ryujinx.Audio.Input
         /// <param name="inputDeviceName">The input device name wanted by the user</param>
         /// <param name="sampleFormat">The sample format to use</param>
         /// <param name="parameter">The user configuration</param>
-<<<<<<< HEAD
-=======
-        /// <param name="appletResourceUserId">The applet resource user id of the application</param>
-        /// <param name="processHandle">The process handle of the application</param>
->>>>>>> 1ec71635b (sync with main branch)
         /// <returns>A <see cref="ResultCode"/> reporting an error or a success</returns>
         public ResultCode OpenAudioIn(out string outputDeviceName,
                                       out AudioOutputConfiguration outputConfiguration,
@@ -218,13 +193,7 @@ namespace Ryujinx.Audio.Input
                                       IVirtualMemoryManager memoryManager,
                                       string inputDeviceName,
                                       SampleFormat sampleFormat,
-<<<<<<< HEAD
                                       ref AudioInputConfiguration parameter)
-=======
-                                      ref AudioInputConfiguration parameter,
-                                      ulong appletResourceUserId,
-                                      uint processHandle)
->>>>>>> 1ec71635b (sync with main branch)
         {
             int sessionId = AcquireSessionId();
 
@@ -232,11 +201,7 @@ namespace Ryujinx.Audio.Input
 
             IHardwareDeviceSession deviceSession = _deviceDriver.OpenDeviceSession(IHardwareDeviceDriver.Direction.Input, memoryManager, sampleFormat, parameter.SampleRate, parameter.ChannelCount);
 
-<<<<<<< HEAD
             AudioInputSystem audioIn = new(this, _lock, deviceSession, _sessionsBufferEvents[sessionId]);
-=======
-            AudioInputSystem audioIn = new AudioInputSystem(this, _lock, deviceSession, _sessionsBufferEvents[sessionId]);
->>>>>>> 1ec71635b (sync with main branch)
 
             ResultCode result = audioIn.Initialize(inputDeviceName, sampleFormat, ref parameter, sessionId);
 
@@ -269,11 +234,8 @@ namespace Ryujinx.Audio.Input
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
             if (Interlocked.CompareExchange(ref _disposeState, 1, 0) == 0)
             {
                 Dispose(true);
@@ -299,8 +261,4 @@ namespace Ryujinx.Audio.Input
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

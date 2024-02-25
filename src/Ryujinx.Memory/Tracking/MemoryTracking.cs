@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Pools;
-=======
-﻿using Ryujinx.Common.Pools;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Memory.Range;
 using System.Collections.Generic;
 
@@ -25,11 +21,7 @@ namespace Ryujinx.Memory.Tracking
         /// This lock must be obtained when traversing or updating the region-handle hierarchy.
         /// It is not required when reading dirty flags.
         /// </summary>
-<<<<<<< HEAD
         internal object TrackingLock = new();
-=======
-        internal object TrackingLock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Create a new tracking structure for the given "physical" memory block,
@@ -122,11 +114,7 @@ namespace Ryujinx.Memory.Tracking
         /// <returns>A list of virtual regions within the given range</returns>
         internal List<VirtualRegion> GetVirtualRegionsForHandle(ulong va, ulong size)
         {
-<<<<<<< HEAD
             List<VirtualRegion> result = new();
-=======
-            List<VirtualRegion> result = new List<VirtualRegion>();
->>>>>>> 1ec71635b (sync with main branch)
             _virtualRegions.GetOrAddRegions(result, va, size, (va, size) => new VirtualRegion(this, va, size));
 
             return result;
@@ -184,11 +172,7 @@ namespace Ryujinx.Memory.Tracking
             lock (TrackingLock)
             {
                 bool mapped = _memoryManager.IsRangeMapped(address, size);
-<<<<<<< HEAD
                 RegionHandle handle = new(this, paAddress, paSize, address, size, id, mapped);
-=======
-                RegionHandle handle = new RegionHandle(this, paAddress, paSize, address, size, id, mapped);
->>>>>>> 1ec71635b (sync with main branch)
 
                 return handle;
             }
@@ -210,11 +194,7 @@ namespace Ryujinx.Memory.Tracking
             lock (TrackingLock)
             {
                 bool mapped = _memoryManager.IsRangeMapped(address, size);
-<<<<<<< HEAD
                 RegionHandle handle = new(this, paAddress, paSize, address, size, bitmap, bit, id, mapped);
-=======
-                RegionHandle handle = new RegionHandle(this, paAddress, paSize, address, size, bitmap, bit, id, mapped);
->>>>>>> 1ec71635b (sync with main branch)
 
                 return handle;
             }

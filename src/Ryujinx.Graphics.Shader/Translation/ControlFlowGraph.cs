@@ -13,19 +13,11 @@ namespace Ryujinx.Graphics.Shader.Translation
         {
             Blocks = blocks;
 
-<<<<<<< HEAD
             HashSet<BasicBlock> visited = new();
 
             Stack<BasicBlock> blockStack = new();
 
             List<BasicBlock> postOrderBlocks = new(blocks.Length);
-=======
-            HashSet<BasicBlock> visited = new HashSet<BasicBlock>();
-
-            Stack<BasicBlock> blockStack = new Stack<BasicBlock>();
-
-            List<BasicBlock> postOrderBlocks = new List<BasicBlock>(blocks.Length);
->>>>>>> 1ec71635b (sync with main branch)
 
             PostOrderMap = new int[blocks.Length];
 
@@ -58,15 +50,9 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         public static ControlFlowGraph Create(Operation[] operations)
         {
-<<<<<<< HEAD
             Dictionary<Operand, BasicBlock> labels = new();
 
             List<BasicBlock> blocks = new();
-=======
-            Dictionary<Operand, BasicBlock> labels = new Dictionary<Operand, BasicBlock>();
-
-            List<BasicBlock> blocks = new List<BasicBlock>();
->>>>>>> 1ec71635b (sync with main branch)
 
             BasicBlock currentBlock = null;
 
@@ -82,11 +68,7 @@ namespace Ryujinx.Graphics.Shader.Translation
 
             void NewNextBlock()
             {
-<<<<<<< HEAD
                 BasicBlock block = new(blocks.Count);
-=======
-                BasicBlock block = new BasicBlock(blocks.Count);
->>>>>>> 1ec71635b (sync with main branch)
 
                 blocks.Add(block);
 
@@ -128,11 +110,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                     currentBlock.Operations.AddLast(operation);
                 }
 
-<<<<<<< HEAD
                 needsNewBlock = operation.Inst == Instruction.Branch ||
-=======
-                needsNewBlock = operation.Inst == Instruction.Branch       ||
->>>>>>> 1ec71635b (sync with main branch)
                                 operation.Inst == Instruction.BranchIfTrue ||
                                 operation.Inst == Instruction.BranchIfFalse;
 
@@ -195,8 +173,4 @@ namespace Ryujinx.Graphics.Shader.Translation
             return false;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

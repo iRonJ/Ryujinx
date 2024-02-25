@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation;
-=======
-﻿using ARMeilleure.IntermediateRepresentation;
-using ARMeilleure.State;
-using ARMeilleure.Translation;
-
->>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
 
@@ -39,11 +32,7 @@ namespace ARMeilleure.Instructions
 
                 Operand arg0 = context.LoadArgument(OperandType.I64, 0);
 
-<<<<<<< HEAD
                 Operand exAddrPtr = context.Add(arg0, Const((long)NativeContext.GetExclusiveAddressOffset()));
-=======
-                Operand exAddrPtr  = context.Add(arg0, Const((long)NativeContext.GetExclusiveAddressOffset()));
->>>>>>> 1ec71635b (sync with main branch)
                 Operand exValuePtr = context.Add(arg0, Const((long)NativeContext.GetExclusiveValueOffset()));
 
                 context.Store(exAddrPtr, context.BitwiseAnd(address, Const(address.Type, GetExclusiveAddressMask())));
@@ -128,22 +117,14 @@ namespace ARMeilleure.Instructions
                     1 => context.Load16(exValuePtr),
                     2 => context.Load(OperandType.I32, exValuePtr),
                     3 => context.Load(OperandType.I64, exValuePtr),
-<<<<<<< HEAD
                     _ => context.Load(OperandType.V128, exValuePtr),
-=======
-                    _ => context.Load(OperandType.V128, exValuePtr)
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 Operand currValue = size switch
                 {
                     0 => context.CompareAndSwap8(physAddr, exValue, value),
                     1 => context.CompareAndSwap16(physAddr, exValue, value),
-<<<<<<< HEAD
                     _ => context.CompareAndSwap(physAddr, exValue, value),
-=======
-                    _ => context.CompareAndSwap(physAddr, exValue, value)
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 // STEP 3: Check if we succeeded by comparing expected and in-memory values.
@@ -151,7 +132,6 @@ namespace ARMeilleure.Instructions
 
                 if (size == 4)
                 {
-<<<<<<< HEAD
                     Operand currValueLow = context.VectorExtract(OperandType.I64, currValue, 0);
                     Operand currValueHigh = context.VectorExtract(OperandType.I64, currValue, 1);
 
@@ -160,16 +140,6 @@ namespace ARMeilleure.Instructions
 
                     storeFailed = context.BitwiseOr(
                         context.ICompareNotEqual(currValueLow, exValueLow),
-=======
-                    Operand currValueLow  = context.VectorExtract(OperandType.I64, currValue, 0);
-                    Operand currValueHigh = context.VectorExtract(OperandType.I64, currValue, 1);
-
-                    Operand exValueLow  = context.VectorExtract(OperandType.I64, exValue, 0);
-                    Operand exValueHigh = context.VectorExtract(OperandType.I64, exValue, 1);
-
-                    storeFailed = context.BitwiseOr(
-                        context.ICompareNotEqual(currValueLow,  exValueLow),
->>>>>>> 1ec71635b (sync with main branch)
                         context.ICompareNotEqual(currValueHigh, exValueHigh));
                 }
                 else

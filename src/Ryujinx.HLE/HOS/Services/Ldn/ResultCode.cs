@@ -2,16 +2,11 @@ namespace Ryujinx.HLE.HOS.Services.Ldn
 {
     enum ResultCode
     {
-<<<<<<< HEAD
         ModuleId = 203,
-=======
-        ModuleId       = 203,
->>>>>>> 1ec71635b (sync with main branch)
         ErrorCodeShift = 9,
 
         Success = 0,
 
-<<<<<<< HEAD
         DeviceNotAvailable = (16 << ErrorCodeShift) | ModuleId,
         DeviceDisabled = (22 << ErrorCodeShift) | ModuleId,
         InvalidState = (32 << ErrorCodeShift) | ModuleId,
@@ -27,12 +22,3 @@ namespace Ryujinx.HLE.HOS.Services.Ldn
         TooManyPlayers = (144 << ErrorCodeShift) | ModuleId,
     }
 }
-=======
-        DeviceDisabled  = (22 << ErrorCodeShift) | ModuleId,
-        InvalidState    = (32 << ErrorCodeShift) | ModuleId,
-        Unknown1        = (48 << ErrorCodeShift) | ModuleId,
-        InvalidArgument = (96 << ErrorCodeShift) | ModuleId,
-        InvalidObject   = (97 << ErrorCodeShift) | ModuleId,
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

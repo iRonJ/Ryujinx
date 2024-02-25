@@ -89,8 +89,4 @@ namespace Ryujinx.Audio.Renderer.Server.Effect
             Parameter.ParameterStatus = UsageState.Enabled;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

@@ -5,11 +5,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class CallExpression : NodeArray
     {
-<<<<<<< HEAD
         private readonly BaseNode _callee;
-=======
-        private BaseNode _callee;
->>>>>>> 1ec71635b (sync with main branch)
 
         public CallExpression(BaseNode callee, List<BaseNode> nodes) : base(nodes, NodeType.CallExpression)
         {
@@ -25,8 +21,4 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             writer.Write(")");
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

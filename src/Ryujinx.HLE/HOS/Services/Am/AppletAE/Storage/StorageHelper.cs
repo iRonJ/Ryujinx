@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Memory;
-=======
-﻿using Ryujinx.Common.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Account.Acc;
 using System.IO;
 
@@ -15,7 +11,6 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.Storage
         public static byte[] MakeLaunchParams(UserProfile userProfile)
         {
             // Size needs to be at least 0x88 bytes otherwise application errors.
-<<<<<<< HEAD
             using MemoryStream ms = MemoryStreamManager.Shared.GetStream();
             BinaryWriter writer = new(ms);
 
@@ -26,20 +21,6 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.Storage
             userProfile.UserId.Write(writer);
 
             return ms.ToArray();
-=======
-            using (MemoryStream ms = MemoryStreamManager.Shared.GetStream())
-            {
-                BinaryWriter writer = new BinaryWriter(ms);
-
-                ms.SetLength(0x88);
-
-                writer.Write(LaunchParamsMagic);
-                writer.Write(1);  // IsAccountSelected? Only lower 8 bits actually used.
-                userProfile.UserId.Write(writer);
-
-                return ms.ToArray();
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Account.Acc.AccountService;
 
 namespace Ryujinx.HLE.HOS.Services.Account.Acc
@@ -10,11 +6,7 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
     [Service("acc:u1", AccountServiceFlag.SystemService)] // Max Sessions: 16
     class IAccountServiceForSystemService : IpcService
     {
-<<<<<<< HEAD
         private readonly ApplicationServiceServer _applicationServiceServer;
-=======
-        private ApplicationServiceServer _applicationServiceServer;
->>>>>>> 1ec71635b (sync with main branch)
 
         public IAccountServiceForSystemService(ServiceCtx context, AccountServiceFlag serviceFlag)
         {
@@ -112,8 +104,4 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             return _applicationServiceServer.ListQualifiedUsers(context);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

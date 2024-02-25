@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetAlphaTestCommand : IGALCommand, IGALCommand<SetAlphaTestCommand>
     {
         public readonly CommandType CommandType => CommandType.SetAlphaTest;
-=======
-﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
-{
-    struct SetAlphaTestCommand : IGALCommand, IGALCommand<SetAlphaTestCommand>
-    {
-        public CommandType CommandType => CommandType.SetAlphaTest;
->>>>>>> 1ec71635b (sync with main branch)
         private bool _enable;
         private float _reference;
         private CompareOp _op;

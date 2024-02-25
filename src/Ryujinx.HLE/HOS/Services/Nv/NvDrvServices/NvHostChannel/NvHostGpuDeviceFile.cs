@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Kernel.Threading;
-=======
-﻿using Ryujinx.HLE.HOS.Kernel.Threading;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel.Types;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Memory;
@@ -12,17 +8,11 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 {
     internal class NvHostGpuDeviceFile : NvHostChannelDeviceFile
     {
-<<<<<<< HEAD
 #pragma warning disable IDE0052 // Remove unread private member
         private readonly KEvent _smExceptionBptIntReportEvent;
         private readonly KEvent _smExceptionBptPauseReportEvent;
         private readonly KEvent _errorNotifierEvent;
 #pragma warning restore IDE0052
-=======
-        private KEvent _smExceptionBptIntReportEvent;
-        private KEvent _smExceptionBptPauseReportEvent;
-        private KEvent _errorNotifierEvent;
->>>>>>> 1ec71635b (sync with main branch)
 
         private int _smExceptionBptIntReportEventHandle;
         private int _smExceptionBptPauseReportEventHandle;
@@ -30,7 +20,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 
         public NvHostGpuDeviceFile(ServiceCtx context, IVirtualMemoryManager memory, ulong owner) : base(context, memory, owner)
         {
-<<<<<<< HEAD
             _smExceptionBptIntReportEvent = CreateEvent(context, out _smExceptionBptIntReportEventHandle);
             _smExceptionBptPauseReportEvent = CreateEvent(context, out _smExceptionBptPauseReportEventHandle);
             _errorNotifierEvent = CreateEvent(context, out _errorNotifierEventHandle);
@@ -39,16 +28,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
         private KEvent CreateEvent(ServiceCtx context, out int handle)
         {
             KEvent evnt = new(context.Device.System.KernelContext);
-=======
-            _smExceptionBptIntReportEvent   = CreateEvent(context, out _smExceptionBptIntReportEventHandle);
-            _smExceptionBptPauseReportEvent = CreateEvent(context, out _smExceptionBptPauseReportEventHandle);
-            _errorNotifierEvent             = CreateEvent(context, out _errorNotifierEventHandle);
-        }
-
-        private static KEvent CreateEvent(ServiceCtx context, out int handle)
-        {
-            KEvent evnt = new KEvent(context.Device.System.KernelContext);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (context.Process.HandleTable.GenerateHandle(evnt.ReadableEvent, out handle) != Result.Success)
             {
@@ -78,7 +57,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
         public override NvInternalResult QueryEvent(out int eventHandle, uint eventId)
         {
             // TODO: accurately represent and implement those events.
-<<<<<<< HEAD
             eventHandle = eventId switch
             {
                 0x1 => _smExceptionBptIntReportEventHandle,
@@ -86,24 +64,6 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
                 0x3 => _errorNotifierEventHandle,
                 _ => 0,
             };
-=======
-            switch (eventId)
-            {
-                case 0x1:
-                    eventHandle = _smExceptionBptIntReportEventHandle;
-                    break;
-                case 0x2:
-                    eventHandle = _smExceptionBptPauseReportEventHandle;
-                    break;
-                case 0x3:
-                    eventHandle = _errorNotifierEventHandle;
-                    break;
-                default:
-                    eventHandle = 0;
-                    break;
-            }
-
->>>>>>> 1ec71635b (sync with main branch)
             return eventHandle != 0 ? NvInternalResult.Success : NvInternalResult.InvalidInput;
         }
 

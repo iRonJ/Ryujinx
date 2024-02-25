@@ -138,11 +138,7 @@ namespace ARMeilleure.Common
                 var newSpan = new Span<long>(_masks, _count);
 
                 oldSpan.CopyTo(newSpan);
-<<<<<<< HEAD
                 newSpan[oldSpan.Length..].Clear();
-=======
-                newSpan.Slice(oldSpan.Length).Clear();
->>>>>>> 1ec71635b (sync with main branch)
 
                 _allocator.Free(oldMask);
             }
@@ -180,13 +176,8 @@ namespace ARMeilleure.Common
             private int _bit;
             private readonly BitMap _map;
 
-<<<<<<< HEAD
             public readonly int Current => (int)_index * IntSize + _bit;
             readonly object IEnumerator.Current => Current;
-=======
-            public int Current => (int)_index * IntSize + _bit;
-            object IEnumerator.Current => Current;
->>>>>>> 1ec71635b (sync with main branch)
 
             public Enumerator(BitMap map)
             {
@@ -223,18 +214,9 @@ namespace ARMeilleure.Common
                 return true;
             }
 
-<<<<<<< HEAD
             public readonly void Reset() { }
 
             public readonly void Dispose() { }
         }
     }
 }
-=======
-            public void Reset() { }
-
-            public void Dispose() { }
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

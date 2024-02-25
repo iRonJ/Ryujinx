@@ -28,15 +28,8 @@ namespace Ryujinx.Graphics.Gpu.Shader
         [Flags]
         private enum QueriedStateFlags
         {
-<<<<<<< HEAD
             PrimitiveTopology = 1 << 1,
             TransformFeedback = 1 << 3,
-=======
-            EarlyZForce = 1 << 0,
-            PrimitiveTopology = 1 << 1,
-            TessellationMode = 1 << 2,
-            TransformFeedback = 1 << 3
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private QueriedStateFlags _queriedState;
@@ -76,11 +69,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
         {
             TextureFormat = 1 << 0,
             SamplerType = 1 << 1,
-<<<<<<< HEAD
             CoordNormalized = 1 << 2,
-=======
-            CoordNormalized = 1 << 2
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -274,17 +263,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
         }
 
         /// <summary>
-<<<<<<< HEAD
-=======
-        /// Indicates that the shader accesses the early Z force state.
-        /// </summary>
-        public void RecordEarlyZForce()
-        {
-            _queriedState |= QueriedStateFlags.EarlyZForce;
-        }
-
-        /// <summary>
->>>>>>> 1ec71635b (sync with main branch)
         /// Indicates that the shader accesses the primitive topology state.
         /// </summary>
         public void RecordPrimitiveTopology()
@@ -293,17 +271,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
         }
 
         /// <summary>
-<<<<<<< HEAD
-=======
-        /// Indicates that the shader accesses the tessellation mode state.
-        /// </summary>
-        public void RecordTessellationMode()
-        {
-            _queriedState |= QueriedStateFlags.TessellationMode;
-        }
-
-        /// <summary>
->>>>>>> 1ec71635b (sync with main branch)
         /// Indicates that the shader accesses the constant buffer use state.
         /// </summary>
         /// <param name="stageIndex">Shader stage index</param>
@@ -455,11 +422,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// <returns>Texture specialization state</returns>
         private Box<TextureSpecializationState> GetOrCreateTextureSpecState(int stageIndex, int handle, int cbufSlot)
         {
-<<<<<<< HEAD
             TextureKey key = new(stageIndex, handle, cbufSlot);
-=======
-            TextureKey key = new TextureKey(stageIndex, handle, cbufSlot);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (!_textureSpecialization.TryGetValue(key, out Box<TextureSpecializationState> state))
             {
@@ -478,11 +441,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// <returns>Texture specialization state</returns>
         private Box<TextureSpecializationState> GetTextureSpecState(int stageIndex, int handle, int cbufSlot)
         {
-<<<<<<< HEAD
             TextureKey key = new(stageIndex, handle, cbufSlot);
-=======
-            TextureKey key = new TextureKey(stageIndex, handle, cbufSlot);
->>>>>>> 1ec71635b (sync with main branch)
 
             if (_textureSpecialization.TryGetValue(key, out Box<TextureSpecializationState> state))
             {
@@ -498,10 +457,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// <param name="channel">GPU channel</param>
         /// <param name="poolState">Texture pool state</param>
         /// <param name="graphicsState">Graphics state</param>
-<<<<<<< HEAD
         /// <param name="vertexAsCompute">Indicates that the vertex shader has been converted into a compute shader</param>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// <param name="usesDrawParameters">Indicates whether the vertex shader accesses draw parameters</param>
         /// <param name="checkTextures">Indicates whether texture descriptors should be checked</param>
         /// <returns>True if the state matches, false otherwise</returns>
@@ -509,10 +465,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
             GpuChannel channel,
             ref GpuChannelPoolState poolState,
             ref GpuChannelGraphicsState graphicsState,
-<<<<<<< HEAD
             bool vertexAsCompute,
-=======
->>>>>>> 1ec71635b (sync with main branch)
             bool usesDrawParameters,
             bool checkTextures)
         {
@@ -546,7 +499,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 return false;
             }
 
-<<<<<<< HEAD
             if (ShaderCache.MayConvertVtgToCompute(ref channel.Capabilities) && !vertexAsCompute)
             {
                 for (int index = 0; index < graphicsState.AttributeTypes.Length; index++)
@@ -566,11 +518,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 {
                     return false;
                 }
-=======
-            if (!graphicsState.AttributeTypes.AsSpan().SequenceEqual(GraphicsState.AttributeTypes.AsSpan()))
-            {
-                return false;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (usesDrawParameters && graphicsState.HasConstantBufferDrawParameters != GraphicsState.HasConstantBufferDrawParameters)
@@ -593,7 +540,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 return false;
             }
 
-<<<<<<< HEAD
             if (graphicsState.YNegateEnabled != GraphicsState.YNegateEnabled)
             {
                 return false;
@@ -615,11 +561,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
             return type;
         }
 
-=======
-            return Matches(channel, ref poolState, checkTextures, isCompute: false);
-        }
-
->>>>>>> 1ec71635b (sync with main branch)
         /// <summary>
         /// Checks if the recorded state matches the current GPU compute engine state.
         /// </summary>
@@ -670,11 +611,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
             {
                 ref BufferBounds bounds = ref channel.BufferManager.GetUniformBufferBounds(isCompute, stageIndex, textureBufferIndex);
 
-<<<<<<< HEAD
                 cachedTextureBuffer = MemoryMarshal.Cast<byte, int>(channel.MemoryManager.Physical.GetSpan(bounds.Range));
-=======
-                cachedTextureBuffer = MemoryMarshal.Cast<byte, int>(channel.MemoryManager.Physical.GetSpan(bounds.Address, (int)bounds.Size));
->>>>>>> 1ec71635b (sync with main branch)
                 cachedTextureBufferIndex = textureBufferIndex;
 
                 if (samplerBufferIndex == textureBufferIndex)
@@ -688,11 +625,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
             {
                 ref BufferBounds bounds = ref channel.BufferManager.GetUniformBufferBounds(isCompute, stageIndex, samplerBufferIndex);
 
-<<<<<<< HEAD
                 cachedSamplerBuffer = MemoryMarshal.Cast<byte, int>(channel.MemoryManager.Physical.GetSpan(bounds.Range));
-=======
-                cachedSamplerBuffer = MemoryMarshal.Cast<byte, int>(channel.MemoryManager.Physical.GetSpan(bounds.Address, (int)bounds.Size));
->>>>>>> 1ec71635b (sync with main branch)
                 cachedSamplerBufferIndex = samplerBufferIndex;
             }
 
@@ -779,11 +712,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// <param name="descriptor">Texture descriptor</param>
         /// <returns>True if the state matches, false otherwise</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-<<<<<<< HEAD
         private static bool MatchesTexture(Box<TextureSpecializationState> specializationState, in Image.TextureDescriptor descriptor)
-=======
-        private bool MatchesTexture(Box<TextureSpecializationState> specializationState, in Image.TextureDescriptor descriptor)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (specializationState != null)
             {
@@ -826,7 +755,6 @@ namespace Ryujinx.Graphics.Gpu.Shader
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Populates pipeline state that doesn't exist in older caches with default values
         /// based on specialization state.
         /// </summary>
@@ -840,19 +768,13 @@ namespace Ryujinx.Graphics.Gpu.Shader
         }
 
         /// <summary>
-=======
->>>>>>> 1ec71635b (sync with main branch)
         /// Reads shader specialization state that has been serialized.
         /// </summary>
         /// <param name="dataReader">Data reader</param>
         /// <returns>Shader specialization state</returns>
         public static ShaderSpecializationState Read(ref BinarySerializer dataReader)
         {
-<<<<<<< HEAD
             ShaderSpecializationState specState = new();
-=======
-            ShaderSpecializationState specState = new ShaderSpecializationState();
->>>>>>> 1ec71635b (sync with main branch)
 
             dataReader.Read(ref specState._queriedState);
             dataReader.Read(ref specState._compute);
@@ -885,11 +807,8 @@ namespace Ryujinx.Graphics.Gpu.Shader
             {
                 ProgramPipelineState pipelineState = default;
                 dataReader.ReadWithMagicAndSize(ref pipelineState, PgpsMagic);
-<<<<<<< HEAD
 
                 specState.PreparePipelineState(ref pipelineState);
-=======
->>>>>>> 1ec71635b (sync with main branch)
                 specState.PipelineState = pipelineState;
             }
 
@@ -911,11 +830,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
             for (int index = 0; index < count; index++)
             {
                 TextureKey textureKey = default;
-<<<<<<< HEAD
                 Box<TextureSpecializationState> textureState = new();
-=======
-                Box<TextureSpecializationState> textureState = new Box<TextureSpecializationState>();
->>>>>>> 1ec71635b (sync with main branch)
 
                 dataReader.ReadWithMagicAndSize(ref textureKey, TexkMagic);
                 dataReader.ReadWithMagicAndSize(ref textureState.Value, TexsMagic);
@@ -989,8 +904,4 @@ namespace Ryujinx.Graphics.Gpu.Shader
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

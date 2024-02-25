@@ -54,29 +54,17 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
         [MarshalAs(UnmanagedType.I1)]
         public bool IsDspRunningBehind;
 
-<<<<<<< HEAD
         public readonly int GetEntryCount()
-=======
-        public int GetEntryCount()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return EntryCount;
         }
 
-<<<<<<< HEAD
         public readonly int GetEntryCountOffset()
-=======
-        public int GetEntryCountOffset()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return 4;
         }
 
-<<<<<<< HEAD
         public readonly int GetEntryDetailCount()
-=======
-        public int GetEntryDetailCount()
->>>>>>> 1ec71635b (sync with main branch)
         {
             return EntryDetailCount;
         }
@@ -126,8 +114,4 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
             VoiceDropCount = voiceCount;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

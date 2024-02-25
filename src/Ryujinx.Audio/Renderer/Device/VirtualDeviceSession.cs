@@ -24,8 +24,4 @@ namespace Ryujinx.Audio.Renderer.Device
             Device = virtualDevice;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

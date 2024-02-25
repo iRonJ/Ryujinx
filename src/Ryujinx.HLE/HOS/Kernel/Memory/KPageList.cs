@@ -23,11 +23,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
 
                     if (lastNode.Address + lastNode.PagesCount * KPageTableBase.PageSize == address)
                     {
-<<<<<<< HEAD
                         address = lastNode.Address;
-=======
-                        address     = lastNode.Address;
->>>>>>> 1ec71635b (sync with main branch)
                         pagesCount += lastNode.PagesCount;
 
                         Nodes.RemoveLast();
@@ -54,30 +50,18 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
 
         public bool IsEqual(KPageList other)
         {
-<<<<<<< HEAD
             LinkedListNode<KPageNode> thisNode = Nodes.First;
-=======
-            LinkedListNode<KPageNode> thisNode  = Nodes.First;
->>>>>>> 1ec71635b (sync with main branch)
             LinkedListNode<KPageNode> otherNode = other.Nodes.First;
 
             while (thisNode != null && otherNode != null)
             {
-<<<<<<< HEAD
                 if (thisNode.Value.Address != otherNode.Value.Address ||
-=======
-                if (thisNode.Value.Address    != otherNode.Value.Address ||
->>>>>>> 1ec71635b (sync with main branch)
                     thisNode.Value.PagesCount != otherNode.Value.PagesCount)
                 {
                     return false;
                 }
 
-<<<<<<< HEAD
                 thisNode = thisNode.Next;
-=======
-                thisNode  = thisNode.Next;
->>>>>>> 1ec71635b (sync with main branch)
                 otherNode = otherNode.Next;
             }
 
@@ -110,8 +94,4 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
             return GetEnumerator();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

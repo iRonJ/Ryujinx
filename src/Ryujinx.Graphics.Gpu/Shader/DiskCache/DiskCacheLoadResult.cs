@@ -43,11 +43,7 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         /// <summary>
         /// File might be valid, but is incompatible with the current emulator version.
         /// </summary>
-<<<<<<< HEAD
         IncompatibleVersion,
-=======
-        IncompatibleVersion
->>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class DiskCacheLoadResultExtensions
@@ -69,16 +65,8 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
                 DiskCacheLoadResult.FileCorruptedInvalidMagic => "Magic check failed, the cache file is corrupted.",
                 DiskCacheLoadResult.FileCorruptedInvalidLength => "Length check failed, the cache file is corrupted.",
                 DiskCacheLoadResult.IncompatibleVersion => "The version of the disk cache is not compatible with this version of the emulator.",
-<<<<<<< HEAD
                 _ => "Unknown error.",
             };
         }
     }
 }
-=======
-                _ => "Unknown error."
-            };
-        }
-    }
-}
->>>>>>> 1ec71635b (sync with main branch)

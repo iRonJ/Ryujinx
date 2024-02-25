@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 using Avalonia.Data.Core;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Markup.Xaml.MarkupExtensions.CompiledBindings;
-=======
-﻿using Avalonia.Data;
-using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.MarkupExtensions;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Ava.Common.Locale
@@ -25,7 +19,6 @@ namespace Ryujinx.Ava.Common.Locale
         {
             LocaleKeys keyToUse = Key;
 
-<<<<<<< HEAD
             var builder = new CompiledBindingPathBuilder();
 
             builder.SetRawSource(LocaleManager.Instance)
@@ -40,19 +33,8 @@ namespace Ryujinx.Ava.Common.Locale
             var path = builder.Build();
 
             var binding = new CompiledBindingExtension(path);
-=======
-            ReflectionBindingExtension binding = new($"[{keyToUse}]")
-            {
-                Mode   = BindingMode.OneWay,
-                Source = LocaleManager.Instance
-            };
->>>>>>> 1ec71635b (sync with main branch)
 
             return binding.ProvideValue(serviceProvider);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

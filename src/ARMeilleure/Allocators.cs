@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using ARMeilleure.Common;
-=======
-﻿using ARMeilleure.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.CompilerServices;
 
@@ -27,14 +23,7 @@ namespace ARMeilleure
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static ArenaAllocator GetAllocator(ref ArenaAllocator alloc, uint pageSize, uint pageCount)
         {
-<<<<<<< HEAD
             alloc ??= new ArenaAllocator(pageSize, pageCount);
-=======
-            if (alloc == null)
-            {
-                alloc = new ArenaAllocator(pageSize, pageCount);
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             return alloc;
         }

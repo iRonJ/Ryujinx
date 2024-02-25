@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 using ARMeilleure.Memory;
 using ARMeilleure.Translation;
 using Ryujinx.Cpu.Signal;
 using Ryujinx.Memory;
-=======
-﻿using ARMeilleure.Memory;
-using ARMeilleure.Translation;
->>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Cpu.Jit
 {
@@ -18,7 +13,6 @@ namespace Ryujinx.Cpu.Jit
         public JitCpuContext(ITickSource tickSource, IMemoryManager memory, bool for64Bit)
         {
             _tickSource = tickSource;
-<<<<<<< HEAD
             _translator = new Translator(new JitMemoryAllocator(forJit: true), memory, for64Bit);
 
             if (memory.Type.IsHostMapped())
@@ -26,9 +20,6 @@ namespace Ryujinx.Cpu.Jit
                 NativeSignalHandler.InitializeSignalHandler(MemoryBlock.GetPageSize());
             }
 
-=======
-            _translator = new Translator(new JitMemoryAllocator(), memory, for64Bit);
->>>>>>> 1ec71635b (sync with main branch)
             memory.UnmapEvent += UnmapHandler;
         }
 
@@ -66,12 +57,9 @@ namespace Ryujinx.Cpu.Jit
         {
             _translator.PrepareCodeRange(address, size);
         }
-<<<<<<< HEAD
 
         public void Dispose()
         {
         }
-=======
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

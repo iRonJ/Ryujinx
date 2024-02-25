@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Device;
-=======
-﻿using Ryujinx.Graphics.Device;
-using Ryujinx.Graphics.Gpu.Memory;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Vic.Image;
 using Ryujinx.Graphics.Vic.Types;
 using System;
@@ -13,7 +8,6 @@ namespace Ryujinx.Graphics.Vic
 {
     public class VicDevice : IDeviceState
     {
-<<<<<<< HEAD
         private readonly DeviceMemoryManager _mm;
         private readonly ResourceManager _rm;
         private readonly DeviceState<VicRegisters> _state;
@@ -25,19 +19,6 @@ namespace Ryujinx.Graphics.Vic
             _state = new DeviceState<VicRegisters>(new Dictionary<string, RwCallback>
             {
                 { nameof(VicRegisters.Execute), new RwCallback(Execute, null) },
-=======
-        private readonly MemoryManager _gmm;
-        private readonly ResourceManager _rm;
-        private readonly DeviceState<VicRegisters> _state;
-
-        public VicDevice(MemoryManager gmm)
-        {
-            _gmm = gmm;
-            _rm = new ResourceManager(gmm, new BufferPool<Pixel>(), new BufferPool<byte>());
-            _state = new DeviceState<VicRegisters>(new Dictionary<string, RwCallback>
-            {
-                { nameof(VicRegisters.Execute), new RwCallback(Execute, null) }
->>>>>>> 1ec71635b (sync with main branch)
             });
         }
 
@@ -48,11 +29,7 @@ namespace Ryujinx.Graphics.Vic
         {
             ConfigStruct config = ReadIndirect<ConfigStruct>(_state.State.SetConfigStructOffset);
 
-<<<<<<< HEAD
             using Surface output = new(
-=======
-            using Surface output = new Surface(
->>>>>>> 1ec71635b (sync with main branch)
                 _rm.SurfacePool,
                 config.OutputSurfaceConfig.OutSurfaceWidth + 1,
                 config.OutputSurfaceConfig.OutSurfaceHeight + 1);
@@ -80,11 +57,7 @@ namespace Ryujinx.Graphics.Vic
                 int targetW = Math.Min(output.Width - targetX, Math.Abs(x2 - x1));
                 int targetH = Math.Min(output.Height - targetY, Math.Abs(y2 - y1));
 
-<<<<<<< HEAD
                 Rectangle targetRect = new(targetX, targetY, targetW, targetH);
-=======
-                Rectangle targetRect = new Rectangle(targetX, targetY, targetW, targetH);
->>>>>>> 1ec71635b (sync with main branch)
 
                 Blender.BlendOne(output, src, ref slot, targetRect);
             }
@@ -94,11 +67,7 @@ namespace Ryujinx.Graphics.Vic
 
         private T ReadIndirect<T>(uint offset) where T : unmanaged
         {
-<<<<<<< HEAD
             return _mm.Read<T>((ulong)offset << 8);
-=======
-            return _gmm.Read<T>((ulong)offset << 8);
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

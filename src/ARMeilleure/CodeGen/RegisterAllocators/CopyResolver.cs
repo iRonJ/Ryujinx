@@ -1,10 +1,6 @@
 using ARMeilleure.IntermediateRepresentation;
 using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
 using static ARMeilleure.IntermediateRepresentation.Operation.Factory;
 
@@ -16,26 +12,16 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
         {
             private readonly struct Copy
             {
-<<<<<<< HEAD
                 public Register Dest { get; }
-=======
-                public Register Dest   { get; }
->>>>>>> 1ec71635b (sync with main branch)
                 public Register Source { get; }
 
                 public OperandType Type { get; }
 
                 public Copy(Register dest, Register source, OperandType type)
                 {
-<<<<<<< HEAD
                     Dest = dest;
                     Source = source;
                     Type = type;
-=======
-                    Dest   = dest;
-                    Source = source;
-                    Type   = type;
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -55,7 +41,6 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
 
             public void Sequence(List<Operation> sequence)
             {
-<<<<<<< HEAD
                 Dictionary<Register, Register> locations = new();
                 Dictionary<Register, Register> sources = new();
 
@@ -63,26 +48,12 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
 
                 Queue<Register> pendingQueue = new();
                 Queue<Register> readyQueue = new();
-=======
-                Dictionary<Register, Register> locations = new Dictionary<Register, Register>();
-                Dictionary<Register, Register> sources   = new Dictionary<Register, Register>();
-
-                Dictionary<Register, OperandType> types = new Dictionary<Register, OperandType>();
-
-                Queue<Register> pendingQueue = new Queue<Register>();
-                Queue<Register> readyQueue   = new Queue<Register>();
->>>>>>> 1ec71635b (sync with main branch)
 
                 foreach (Copy copy in _copies)
                 {
                     locations[copy.Source] = copy.Source;
-<<<<<<< HEAD
                     sources[copy.Dest] = copy.Source;
                     types[copy.Dest] = copy.Type;
-=======
-                    sources[copy.Dest]     = copy.Source;
-                    types[copy.Dest]       = copy.Type;
->>>>>>> 1ec71635b (sync with main branch)
 
                     pendingQueue.Enqueue(copy.Dest);
                 }
@@ -119,11 +90,7 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
                         }
                     }
 
-<<<<<<< HEAD
                     copyDest = current;
-=======
-                    copyDest   = current;
->>>>>>> 1ec71635b (sync with main branch)
                     origSource = sources[copyDest];
                     copySource = locations[origSource];
 
@@ -218,14 +185,7 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
 
         private void AddSplitFill(LiveInterval left, LiveInterval right, OperandType type)
         {
-<<<<<<< HEAD
             _fillQueue ??= new Queue<Operation>();
-=======
-            if (_fillQueue == null)
-            {
-                _fillQueue = new Queue<Operation>();
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             Operand register = GetRegister(right.Register, type);
             Operand offset = Const(left.SpillOffset);
@@ -237,14 +197,7 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
 
         private void AddSplitSpill(LiveInterval left, LiveInterval right, OperandType type)
         {
-<<<<<<< HEAD
             _spillQueue ??= new Queue<Operation>();
-=======
-            if (_spillQueue == null)
-            {
-                _spillQueue = new Queue<Operation>();
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             Operand offset = Const(right.SpillOffset);
             Operand register = GetRegister(left.Register, type);
@@ -256,14 +209,7 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
 
         private void AddSplitCopy(LiveInterval left, LiveInterval right, OperandType type)
         {
-<<<<<<< HEAD
             _parallelCopy ??= new ParallelCopy();
-=======
-            if (_parallelCopy == null)
-            {
-                _parallelCopy = new ParallelCopy();
-            }
->>>>>>> 1ec71635b (sync with main branch)
 
             _parallelCopy.AddCopy(right.Register, left.Register, type);
 
@@ -272,11 +218,7 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
 
         public Operation[] Sequence()
         {
-<<<<<<< HEAD
             List<Operation> sequence = new();
-=======
-            List<Operation> sequence = new List<Operation>();
->>>>>>> 1ec71635b (sync with main branch)
 
             if (_spillQueue != null)
             {
@@ -304,8 +246,4 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
             return Register(reg.Index, reg.Type, type);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

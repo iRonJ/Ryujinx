@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Audio.Common;
-=======
-﻿using Ryujinx.Audio.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Audio.Integration;
 using Ryujinx.Common.Logging;
 using Ryujinx.Memory;
@@ -11,10 +7,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
 using System.Threading;
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Audio.Integration.IHardwareDeviceDriver;
 using static SDL2.SDL;
 
@@ -26,7 +18,6 @@ namespace Ryujinx.Audio.Backends.SDL2
         private readonly ManualResetEvent _pauseEvent;
         private readonly ConcurrentDictionary<SDL2HardwareDeviceSession, byte> _sessions;
 
-<<<<<<< HEAD
         private readonly bool _supportSurroundConfiguration;
 
         public float Volume { get; set; }
@@ -37,14 +28,6 @@ namespace Ryujinx.Audio.Backends.SDL2
         [DllImport("SDL2")]
         private static extern int SDL_GetDefaultAudioInfo(IntPtr name, out SDL_AudioSpec spec, int isCapture);
 #pragma warning restore SYSLIB1054
-=======
-        private bool _supportSurroundConfiguration;
-
-        // TODO: Add this to SDL2-CS
-        // NOTE: We use a DllImport here because of marshaling issue for spec.
-        [DllImport("SDL2")]
-        private static extern int SDL_GetDefaultAudioInfo(IntPtr name, out SDL_AudioSpec spec, int isCapture);
->>>>>>> 1ec71635b (sync with main branch)
 
         public SDL2HardwareDeviceDriver()
         {
@@ -65,15 +48,10 @@ namespace Ryujinx.Audio.Backends.SDL2
             }
             else
             {
-<<<<<<< HEAD
                 _supportSurroundConfiguration = spec.channels >= 6;
             }
 
             Volume = 1f;
-=======
-                _supportSurroundConfiguration = spec.channels == 6;
-            }
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static bool IsSupported => IsSupportedInternal();
@@ -100,11 +78,7 @@ namespace Ryujinx.Audio.Backends.SDL2
             return _pauseEvent;
         }
 
-<<<<<<< HEAD
         public IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount)
-=======
-        public IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount, float volume)
->>>>>>> 1ec71635b (sync with main branch)
         {
             if (channelCount == 0)
             {
@@ -121,11 +95,7 @@ namespace Ryujinx.Audio.Backends.SDL2
                 throw new NotImplementedException("Input direction is currently not implemented on SDL2 backend!");
             }
 
-<<<<<<< HEAD
             SDL2HardwareDeviceSession session = new(this, memoryManager, sampleFormat, sampleRate, channelCount);
-=======
-            SDL2HardwareDeviceSession session = new SDL2HardwareDeviceSession(this, memoryManager, sampleFormat, sampleRate, channelCount, volume);
->>>>>>> 1ec71635b (sync with main branch)
 
             _sessions.TryAdd(session, 0);
 
@@ -144,11 +114,7 @@ namespace Ryujinx.Audio.Backends.SDL2
                 channels = (byte)requestedChannelCount,
                 format = GetSDL2Format(requestedSampleFormat),
                 freq = (int)requestedSampleRate,
-<<<<<<< HEAD
                 samples = (ushort)sampleCount,
-=======
-                samples = (ushort)sampleCount
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -174,12 +140,7 @@ namespace Ryujinx.Audio.Backends.SDL2
 
             if (device == 0)
             {
-<<<<<<< HEAD
                 Logger.Error?.Print(LogClass.Application, $"SDL2 open audio device initialization failed with error \"{SDL_GetError()}\"");
-=======
-                Logger.Error?.Print(LogClass.Application, 
-                    $"SDL2 open audio device initialization failed with error \"{SDL_GetError()}\"");
->>>>>>> 1ec71635b (sync with main branch)
 
                 return 0;
             }
@@ -199,10 +160,7 @@ namespace Ryujinx.Audio.Backends.SDL2
 
         public void Dispose()
         {
-<<<<<<< HEAD
             GC.SuppressFinalize(this);
-=======
->>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
 

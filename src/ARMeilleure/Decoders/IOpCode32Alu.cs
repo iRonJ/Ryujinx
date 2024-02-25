@@ -5,8 +5,4 @@ namespace ARMeilleure.Decoders
         int Rd { get; }
         int Rn { get; }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

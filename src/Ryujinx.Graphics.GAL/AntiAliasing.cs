@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL
-=======
-﻿namespace Ryujinx.Graphics.GAL
->>>>>>> 1ec71635b (sync with main branch)
 {
     public enum AntiAliasing
     {
@@ -11,10 +7,6 @@ namespace Ryujinx.Graphics.GAL
         SmaaLow,
         SmaaMedium,
         SmaaHigh,
-<<<<<<< HEAD
         SmaaUltra,
-=======
-        SmaaUltra
->>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS;
 using Ryujinx.HLE.HOS.Ipc;
 using Ryujinx.HLE.HOS.Services;
@@ -39,11 +35,6 @@ namespace Ryujinx.HLE.Exceptions
             Request = context.Request;
         }
 
-<<<<<<< HEAD
-=======
-        protected ServiceNotImplementedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
-
->>>>>>> 1ec71635b (sync with main branch)
         public override string Message
         {
             get
@@ -54,11 +45,7 @@ namespace Ryujinx.HLE.Exceptions
 
         private string BuildMessage()
         {
-<<<<<<< HEAD
             StringBuilder sb = new();
-=======
-            StringBuilder sb = new StringBuilder();
->>>>>>> 1ec71635b (sync with main branch)
 
             // Print the IPC command details (service name, command ID, and handler)
             (Type callingType, MethodBase callingMethod) = WalkStackTrace(new StackTrace(this));
@@ -69,15 +56,9 @@ namespace Ryujinx.HLE.Exceptions
                 var ipcCommands = Request.Type > IpcMessageType.TipcCloseSession ? Service.TipcCommands : Service.CmifCommands;
 
                 // Find the handler for the method called
-<<<<<<< HEAD
                 var ipcHandler = ipcCommands.FirstOrDefault(x => x.Value == callingMethod);
                 var ipcCommandId = ipcHandler.Key;
                 var ipcMethod = ipcHandler.Value;
-=======
-                var ipcHandler   = ipcCommands.FirstOrDefault(x => x.Value == callingMethod);
-                var ipcCommandId = ipcHandler.Key;
-                var ipcMethod    = ipcHandler.Value;
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (ipcMethod != null)
                 {
@@ -90,15 +71,9 @@ namespace Ryujinx.HLE.Exceptions
             sb.AppendLine(Context.Thread.GetGuestStackTrace());
 
             // Print buffer information
-<<<<<<< HEAD
             if (Request.PtrBuff.Count > 0 ||
                 Request.SendBuff.Count > 0 ||
                 Request.ReceiveBuff.Count > 0 ||
-=======
-            if (Request.PtrBuff.Count      > 0 ||
-                Request.SendBuff.Count     > 0 ||
-                Request.ReceiveBuff.Count  > 0 ||
->>>>>>> 1ec71635b (sync with main branch)
                 Request.ExchangeBuff.Count > 0 ||
                 Request.RecvListBuff.Count > 0)
             {
@@ -172,11 +147,7 @@ namespace Ryujinx.HLE.Exceptions
             // Find the IIpcService method that threw this exception
             while ((frame = trace.GetFrame(i++)) != null)
             {
-<<<<<<< HEAD
                 var method = frame.GetMethod();
-=======
-                var method   = frame.GetMethod();
->>>>>>> 1ec71635b (sync with main branch)
                 var declType = method.DeclaringType;
 
                 if (typeof(IpcService).IsAssignableFrom(declType))
@@ -188,8 +159,4 @@ namespace Ryujinx.HLE.Exceptions
             return (null, null);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

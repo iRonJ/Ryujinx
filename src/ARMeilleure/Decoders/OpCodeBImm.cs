@@ -8,8 +8,4 @@ namespace ARMeilleure.Decoders
 
         public OpCodeBImm(InstDescriptor inst, ulong address, int opCode) : base(inst, address, opCode) { }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

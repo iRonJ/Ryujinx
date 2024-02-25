@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common;
-=======
-﻿using Ryujinx.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Cpu;
 using Ryujinx.HLE.HOS.Services.Account.Acc;
 using Ryujinx.HLE.HOS.Services.Sdb.Pdm.QueryService.Types;
@@ -13,30 +9,17 @@ using System.Runtime.CompilerServices;
 
 namespace Ryujinx.HLE.HOS.Services.Sdb.Pdm.QueryService
 {
-<<<<<<< HEAD
     class QueryPlayStatisticsManager
     {
         private static readonly Dictionary<UserId, ApplicationPlayStatistics> _applicationPlayStatistics = new();
-=======
-    static class QueryPlayStatisticsManager
-    {
-        private static Dictionary<UserId, ApplicationPlayStatistics> applicationPlayStatistics = new Dictionary<UserId, ApplicationPlayStatistics>();
->>>>>>> 1ec71635b (sync with main branch)
 
         internal static ResultCode GetPlayStatistics(ServiceCtx context, bool byUserId = false)
         {
             ulong inputPosition = context.Request.SendBuff[0].Position;
-<<<<<<< HEAD
             ulong inputSize = context.Request.SendBuff[0].Size;
 
             ulong outputPosition = context.Request.ReceiveBuff[0].Position;
             ulong outputSize = context.Request.ReceiveBuff[0].Size;
-=======
-            ulong inputSize     = context.Request.SendBuff[0].Size;
-
-            ulong outputPosition = context.Request.ReceiveBuff[0].Position;
-            ulong outputSize     = context.Request.ReceiveBuff[0].Size;
->>>>>>> 1ec71635b (sync with main branch)
 
             UserId userId = byUserId ? context.RequestData.ReadStruct<UserId>() : new UserId();
 
@@ -50,11 +33,7 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pdm.QueryService
 
             PlayLogQueryCapability queryCapability = (PlayLogQueryCapability)context.Device.Processes.ActiveApplication.ApplicationControlProperties.PlayLogQueryCapability;
 
-<<<<<<< HEAD
             List<ulong> titleIds = new();
-=======
-            List<ulong> titleIds = new List<ulong>();
->>>>>>> 1ec71635b (sync with main branch)
 
             for (ulong i = 0; i < inputSize / sizeof(ulong); i++)
             {
@@ -76,11 +55,7 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pdm.QueryService
             MemoryHelper.FillWithZeros(context.Memory, outputPosition, (int)outputSize);
 
             // Return ResultCode.ServiceUnavailable if data is locked by another process.
-<<<<<<< HEAD
             var filteredApplicationPlayStatistics = _applicationPlayStatistics.AsEnumerable();
-=======
-            var filteredApplicationPlayStatistics = applicationPlayStatistics.AsEnumerable();
->>>>>>> 1ec71635b (sync with main branch)
 
             if (queryCapability == PlayLogQueryCapability.None)
             {
@@ -106,8 +81,4 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pdm.QueryService
             return ResultCode.Success;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

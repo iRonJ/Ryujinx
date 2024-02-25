@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 // https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/fast-crc-computation-generic-polynomials-pclmulqdq-paper.pdf
-=======
-﻿// https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/fast-crc-computation-generic-polynomials-pclmulqdq-paper.pdf
->>>>>>> 1ec71635b (sync with main branch)
 
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
@@ -49,11 +45,7 @@ namespace ARMeilleure.Instructions
             }
             else
             {
-<<<<<<< HEAD
                 string name = (size, castagnoli) switch
-=======
-                string name = (size, castagnoli) switch 
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     (0, false) => nameof(SoftFallback.Crc32b),
                     (1, false) => nameof(SoftFallback.Crc32h),
@@ -63,11 +55,7 @@ namespace ARMeilleure.Instructions
                     (1, true) => nameof(SoftFallback.Crc32ch),
                     (2, true) => nameof(SoftFallback.Crc32cw),
                     (3, true) => nameof(SoftFallback.Crc32cx),
-<<<<<<< HEAD
                     _ => throw new ArgumentOutOfRangeException(nameof(size)),
-=======
-                    _ => throw new ArgumentOutOfRangeException(nameof(size))
->>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 return context.Call(typeof(SoftFallback).GetMethod(name), crc, value);
@@ -83,7 +71,6 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
-<<<<<<< HEAD
                 case 0:
                     data = context.VectorInsert8(context.VectorZero(), data, 0);
                     break;
@@ -93,11 +80,6 @@ namespace ARMeilleure.Instructions
                 case 2:
                     data = context.VectorInsert(context.VectorZero(), data, 0);
                     break;
-=======
-                case 0: data = context.VectorInsert8(context.VectorZero(), data, 0); break;
-                case 1: data = context.VectorInsert16(context.VectorZero(), data, 0); break;
-                case 2: data = context.VectorInsert(context.VectorZero(), data, 0); break;
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             int bitsize = 8 << size;

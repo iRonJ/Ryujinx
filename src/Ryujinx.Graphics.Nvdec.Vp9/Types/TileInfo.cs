@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Nvdec.Vp9.Common;
-=======
-﻿using Ryujinx.Graphics.Nvdec.Vp9.Common;
->>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Diagnostics;
 
@@ -25,10 +21,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
         {
             int sbCols = MiColsAlignedToSb(mis) >> Constants.MiBlockSizeLog2;
             int offset = ((idx * sbCols) >> log2) << Constants.MiBlockSizeLog2;
-<<<<<<< HEAD
 
-=======
->>>>>>> 1ec71635b (sync with main branch)
             return Math.Min(offset, mis);
         }
 
@@ -52,11 +45,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
 
         // Checks that the given miRow, miCol and search point
         // are inside the borders of the tile.
-<<<<<<< HEAD
         public readonly bool IsInside(int miCol, int miRow, int miRows, ref Position miPos)
-=======
-        public bool IsInside(int miCol, int miRow, int miRows, ref Position miPos)
->>>>>>> 1ec71635b (sync with main branch)
         {
             return !(miRow + miPos.Row < 0 ||
                      miCol + miPos.Col < MiColStart ||

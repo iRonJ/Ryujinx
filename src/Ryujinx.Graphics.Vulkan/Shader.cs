@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using Ryujinx.Common.Logging;
-=======
-﻿using Ryujinx.Common.Logging;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.Shader;
 using shaderc;
@@ -17,11 +13,7 @@ namespace Ryujinx.Graphics.Vulkan
     {
         // The shaderc.net dependency's Options constructor and dispose are not thread safe.
         // Take this lock when using them.
-<<<<<<< HEAD
         private static readonly object _shaderOptionsLock = new();
-=======
-        private static object _shaderOptionsLock = new object();
->>>>>>> 1ec71635b (sync with main branch)
 
         private static readonly IntPtr _ptrMainEntryPointName = Marshal.StringToHGlobalAnsi("main");
 
@@ -65,19 +57,11 @@ namespace Ryujinx.Graphics.Vulkan
 
                 fixed (byte* pCode = spirv)
                 {
-<<<<<<< HEAD
                     var shaderModuleCreateInfo = new ShaderModuleCreateInfo
                     {
                         SType = StructureType.ShaderModuleCreateInfo,
                         CodeSize = (uint)spirv.Length,
                         PCode = (uint*)pCode,
-=======
-                    var shaderModuleCreateInfo = new ShaderModuleCreateInfo()
-                    {
-                        SType = StructureType.ShaderModuleCreateInfo,
-                        CodeSize = (uint)spirv.Length,
-                        PCode = (uint*)pCode
->>>>>>> 1ec71635b (sync with main branch)
                     };
 
                     api.CreateShaderModule(device, shaderModuleCreateInfo, null, out _module).ThrowOnError();
@@ -96,20 +80,12 @@ namespace Ryujinx.Graphics.Vulkan
                 options = new Options(false)
                 {
                     SourceLanguage = SourceLanguage.Glsl,
-<<<<<<< HEAD
                     TargetSpirVVersion = new SpirVVersion(1, 5),
-=======
-                    TargetSpirVVersion = new SpirVVersion(1, 5)
->>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
             options.SetTargetEnvironment(TargetEnvironment.Vulkan, EnvironmentVersion.Vulkan_1_2);
-<<<<<<< HEAD
             Compiler compiler = new(options);
-=======
-            Compiler compiler = new Compiler(options);
->>>>>>> 1ec71635b (sync with main branch)
             var scr = compiler.Compile(glsl, "Ryu", GetShaderCShaderStage(stage));
 
             lock (_shaderOptionsLock)
@@ -128,11 +104,7 @@ namespace Ryujinx.Graphics.Vulkan
 
             byte[] code = new byte[(scr.CodeLength + 3) & ~3];
 
-<<<<<<< HEAD
             spirvBytes.CopyTo(code.AsSpan()[..(int)scr.CodeLength]);
-=======
-            spirvBytes.CopyTo(code.AsSpan().Slice(0, (int)scr.CodeLength));
->>>>>>> 1ec71635b (sync with main branch)
 
             return code;
         }
@@ -162,20 +134,12 @@ namespace Ryujinx.Graphics.Vulkan
 
         public unsafe PipelineShaderStageCreateInfo GetInfo()
         {
-<<<<<<< HEAD
             return new PipelineShaderStageCreateInfo
-=======
-            return new PipelineShaderStageCreateInfo()
->>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.PipelineShaderStageCreateInfo,
                 Stage = _stage,
                 Module = _module,
-<<<<<<< HEAD
                 PName = (byte*)_ptrMainEntryPointName,
-=======
-                PName = (byte*)_ptrMainEntryPointName
->>>>>>> 1ec71635b (sync with main branch)
             };
         }
 

@@ -1,16 +1,16 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
-      "Microsoft.IO.RecyclableMemoryStream/2.3.2": {
+    "net8.0": {
+      "Microsoft.IO.RecyclableMemoryStream/3.0.0": {
         "type": "package",
         "compile": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
             "related": ".xml"
           }
         }
@@ -52,15 +52,15 @@
           }
         }
       },
-      "System.CodeDom/7.0.0": {
+      "System.CodeDom/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.CodeDom.dll": {
+          "lib/net8.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
@@ -96,18 +96,18 @@
           }
         }
       },
-      "System.Management/7.0.1": {
+      "System.Management/8.0.0": {
         "type": "package",
         "dependencies": {
-          "System.CodeDom": "7.0.0"
+          "System.CodeDom": "8.0.0"
         },
         "compile": {
-          "lib/net7.0/System.Management.dll": {
+          "lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.Management.dll": {
+          "lib/net8.0/System.Management.dll": {
             "related": ".xml"
           }
         },
@@ -115,7 +115,7 @@
           "buildTransitive/net6.0/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/net7.0/System.Management.dll": {
+          "runtimes/win/lib/net8.0/System.Management.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -287,7 +287,7 @@
       },
       "ARMeilleure/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0",
           "Ryujinx.Memory": "1.0.0"
@@ -301,11 +301,11 @@
       },
       "Ryujinx.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.IO.RecyclableMemoryStream": "2.3.2",
+          "Microsoft.IO.RecyclableMemoryStream": "3.0.0",
           "MsgPack.Cli": "1.0.1",
-          "System.Management": "7.0.1"
+          "System.Management": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Ryujinx.Common.dll": {}
@@ -316,7 +316,7 @@
       },
       "Ryujinx.Memory/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ryujinx.Common": "1.0.0"
         },
@@ -330,25 +330,21 @@
     }
   },
   "libraries": {
-    "Microsoft.IO.RecyclableMemoryStream/2.3.2": {
-      "sha512": "Oh1qXXFdJFcHozvb4H6XYLf2W0meZFuG0A+TfapFPj9z5fd4vxiARGEhAaLj/6XWQaMYIv4SH/9Q6H78Hw0E2Q==",
+    "Microsoft.IO.RecyclableMemoryStream/3.0.0": {
+      "sha512": "irv0HuqoH8Ig5i2fO+8dmDNdFdsrO+DoQcedwIlb810qpZHBNQHZLW7C/AHBQDgLLpw2T96vmMAy/aE4Yj55Sg==",
       "type": "package",
-      "path": "microsoft.io.recyclablememorystream/2.3.2",
+      "path": "microsoft.io.recyclablememorystream/3.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "lib/net462/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/net462/Microsoft.IO.RecyclableMemoryStream.xml",
-        "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.xml",
-        "lib/netcoreapp2.1/Microsoft.IO.RecyclableMemoryStream.dll",
-        "lib/netcoreapp2.1/Microsoft.IO.RecyclableMemoryStream.xml",
+        "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.xml",
         "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.dll",
         "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.xml",
         "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.dll",
         "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.xml",
-        "microsoft.io.recyclablememorystream.2.3.2.nupkg.sha512",
+        "microsoft.io.recyclablememorystream.3.0.0.nupkg.sha512",
         "microsoft.io.recyclablememorystream.nuspec"
       ]
     },
@@ -415,10 +411,10 @@
         "msgpack.cli.nuspec"
       ]
     },
-    "System.CodeDom/7.0.0": {
-      "sha512": "GLltyqEsE5/3IE+zYRP5sNa1l44qKl9v+bfdMcwg+M9qnQf47wK3H0SUR/T+3N4JEQXF3vV4CSuuo0rsg+nq2A==",
+    "System.CodeDom/8.0.0": {
+      "sha512": "WTlRjL6KWIMr/pAaq3rYqh0TJlzpouaQ/W1eelssHgtlwHAH25jXTkUphTYx9HaIIf7XA6qs/0+YhtLEQRkJ+Q==",
       "type": "package",
-      "path": "system.codedom/7.0.0",
+      "path": "system.codedom/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -435,9 +431,11 @@
         "lib/net6.0/System.CodeDom.xml",
         "lib/net7.0/System.CodeDom.dll",
         "lib/net7.0/System.CodeDom.xml",
+        "lib/net8.0/System.CodeDom.dll",
+        "lib/net8.0/System.CodeDom.xml",
         "lib/netstandard2.0/System.CodeDom.dll",
         "lib/netstandard2.0/System.CodeDom.xml",
-        "system.codedom.7.0.0.nupkg.sha512",
+        "system.codedom.8.0.0.nupkg.sha512",
         "system.codedom.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -591,15 +589,16 @@
         "system.io.nuspec"
       ]
     },
-    "System.Management/7.0.1": {
-      "sha512": "pHg4hGr/dn5wYdJ+kolMY4gkCIzFDRj/HFqoPq7e5h7OGii6BCBmS2/+ysC2SSoB5WvIDS29DMM5DowxxSY/oA==",
+    "System.Management/8.0.0": {
+      "sha512": "jrK22i5LRzxZCfGb+tGmke2VH7oE0DvcDlJ1HAKYU8cPmD8XnpUT0bYn2Gy98GEhGjtfbR/sxKTVb+dE770pfA==",
       "type": "package",
-      "path": "system.management/7.0.1",
+      "path": "system.management/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
+        "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.Management.targets",
@@ -608,13 +607,17 @@
         "lib/net6.0/System.Management.xml",
         "lib/net7.0/System.Management.dll",
         "lib/net7.0/System.Management.xml",
+        "lib/net8.0/System.Management.dll",
+        "lib/net8.0/System.Management.xml",
         "lib/netstandard2.0/System.Management.dll",
         "lib/netstandard2.0/System.Management.xml",
         "runtimes/win/lib/net6.0/System.Management.dll",
         "runtimes/win/lib/net6.0/System.Management.xml",
         "runtimes/win/lib/net7.0/System.Management.dll",
         "runtimes/win/lib/net7.0/System.Management.xml",
-        "system.management.7.0.1.nupkg.sha512",
+        "runtimes/win/lib/net8.0/System.Management.dll",
+        "runtimes/win/lib/net8.0/System.Management.xml",
+        "system.management.8.0.0.nupkg.sha512",
         "system.management.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1301,7 +1304,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0": [
+    "net8.0": [
       "ARMeilleure >= 1.0.0",
       "Ryujinx.Memory >= 1.0.0"
     ]
@@ -1324,14 +1327,14 @@
         "/Users/ronj/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net8.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {
             "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/ARMeilleure/ARMeilleure.csproj": {
               "projectPath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/ARMeilleure/ARMeilleure.csproj"
@@ -1349,41 +1352,43 @@
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "centralPackageVersions": {
-          "Avalonia": "[0.10.19, )",
-          "Avalonia.Controls.DataGrid": "[0.10.19, )",
-          "Avalonia.Desktop": "[0.10.19, )",
-          "Avalonia.Diagnostics": "[0.10.19, )",
-          "Avalonia.Markup.Xaml.Loader": "[0.10.19, )",
-          "Avalonia.Svg": "[0.10.18, )",
-          "Avalonia.Svg.Skia": "[0.10.18, )",
+          "Avalonia": "[11.0.7, )",
+          "Avalonia.Controls.DataGrid": "[11.0.7, )",
+          "Avalonia.Desktop": "[11.0.7, )",
+          "Avalonia.Diagnostics": "[11.0.7, )",
+          "Avalonia.Markup.Xaml.Loader": "[11.0.7, )",
+          "Avalonia.Svg": "[11.0.0.13, )",
+          "Avalonia.Svg.Skia": "[11.0.0.13, )",
           "CommandLineParser": "[2.9.1, )",
           "Concentus": "[1.1.7, )",
-          "DiscordRichPresence": "[1.1.3.18, )",
-          "DynamicData": "[7.13.8, )",
-          "FluentAvaloniaUI": "[1.4.5, )",
+          "DiscordRichPresence": "[1.2.1.24, )",
+          "DynamicData": "[8.3.27, )",
+          "FluentAvaloniaUI": "[2.0.5, )",
           "GtkSharp.Dependencies": "[1.1.1, )",
           "GtkSharp.Dependencies.osx": "[0.0.5, )",
-          "jp2masa.Avalonia.Flexbox": "[0.2.0, )",
-          "LibHac": "[0.18.0, )",
+          "LibHac": "[0.19.0, )",
           "Microsoft.CodeAnalysis.Analyzers": "[3.3.4, )",
-          "Microsoft.CodeAnalysis.CSharp": "[4.5.0, )",
-          "Microsoft.IO.RecyclableMemoryStream": "[2.3.2, )",
-          "Microsoft.NET.Test.Sdk": "[17.5.0, )",
+          "Microsoft.CodeAnalysis.CSharp": "[4.8.0, )",
+          "Microsoft.IdentityModel.JsonWebTokens": "[7.3.0, )",
+          "Microsoft.IO.RecyclableMemoryStream": "[3.0.0, )",
+          "Microsoft.NET.Test.Sdk": "[17.9.0, )",
           "MsgPack.Cli": "[1.0.1, )",
+          "NetCoreServer": "[8.0.7, )",
           "NUnit": "[3.13.3, )",
           "NUnit3TestAdapter": "[4.1.0, )",
-          "OpenTK.Core": "[4.7.7, )",
-          "OpenTK.Graphics": "[4.7.7, )",
-          "OpenTK.OpenAL": "[4.7.7, )",
-          "OpenTK.Windowing.GraphicsLibraryFramework": "[4.7.7, )",
+          "OpenTK.Audio.OpenAL": "[4.8.2, )",
+          "OpenTK.Core": "[4.8.2, )",
+          "OpenTK.Graphics": "[4.8.2, )",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "[4.8.2, )",
           "Ryujinx.Audio.OpenAL.Dependencies": "[1.21.0.1, )",
-          "Ryujinx.Graphics.Nvdec.Dependencies": "[5.0.1-build13, )",
+          "Ryujinx.Graphics.Nvdec.Dependencies": "[5.0.3-build14, )",
           "Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK": "[1.2.0, )",
           "Ryujinx.GtkSharp": "[3.24.24.59-ryujinx, )",
-          "Ryujinx.SDL2-CS": "[2.26.3-build25, )",
+          "Ryujinx.SDL2-CS": "[2.30.0-build32, )",
+          "securifybv.ShellLink": "[0.1.0, )",
           "shaderc.net": "[0.1.0, )",
           "SharpZipLib": "[1.4.2, )",
           "Silk.NET.Vulkan": "[2.16.0, )",
@@ -1391,13 +1396,11 @@
           "Silk.NET.Vulkan.Extensions.KHR": "[2.16.0, )",
           "SixLabors.ImageSharp": "[1.0.4, )",
           "SixLabors.ImageSharp.Drawing": "[1.0.0-beta11, )",
-          "SPB": "[0.0.4-build28, )",
-          "System.Drawing.Common": "[7.0.0, )",
-          "System.IdentityModel.Tokens.Jwt": "[6.30.1, )",
-          "System.IO.Hashing": "[7.0.0, )",
-          "System.Management": "[7.0.1, )",
-          "UnicornEngine.Unicorn": "[2.0.2-rc1-fb78016, )",
-          "XamlNameReferenceGenerator": "[1.6.1, )"
+          "SPB": "[0.0.4-build32, )",
+          "System.Drawing.Common": "[8.0.2, )",
+          "System.IO.Hashing": "[8.0.0, )",
+          "System.Management": "[8.0.0, )",
+          "UnicornEngine.Unicorn": "[2.0.2-rc1-fb78016, )"
         },
         "imports": [
           "net461",
@@ -1415,7 +1418,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

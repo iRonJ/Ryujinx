@@ -1,26 +1,14 @@
-<<<<<<< HEAD
 using Ryujinx.Graphics.Shader.CodeGen;
 using Ryujinx.Graphics.Shader.CodeGen.Glsl;
-=======
-﻿using Ryujinx.Graphics.Shader.CodeGen.Glsl;
->>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Shader.CodeGen.Spirv;
 using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.StructuredIr;
-<<<<<<< HEAD
 using Ryujinx.Graphics.Shader.Translation.Optimizations;
 using Ryujinx.Graphics.Shader.Translation.Transforms;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-=======
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-
->>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 using static Ryujinx.Graphics.Shader.Translation.Translator;
 
@@ -29,7 +17,6 @@ namespace Ryujinx.Graphics.Shader.Translation
     public class TranslatorContext
     {
         private readonly DecodedProgram _program;
-<<<<<<< HEAD
         private readonly int _localMemorySize;
         private IoUsage _vertexOutput;
 
@@ -70,24 +57,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             Definitions = definitions;
             GpuAccessor = gpuAccessor;
             Options = options;
-=======
-        private ShaderConfig _config;
-
-        public ulong Address { get; }
-
-        public ShaderStage Stage => _config.Stage;
-        public int Size => _config.Size;
-        public int Cb1DataSize => _config.Cb1DataSize;
-        public bool LayerOutputWritten => _config.LayerOutputWritten;
-
-        public IGpuAccessor GpuAccessor => _config.GpuAccessor;
-
-        internal TranslatorContext(ulong address, DecodedProgram program, ShaderConfig config)
-        {
-            Address = address;
-            _program = program;
-            _config = config;
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static bool IsLoadUserDefined(Operation operation)
@@ -115,11 +84,7 @@ namespace Ryujinx.Graphics.Shader.Translation
             // temporary variable, as long that attribute is written by shader A.
             FunctionCode[] output = new FunctionCode[a.Length + b.Length - 1];
 
-<<<<<<< HEAD
             List<Operation> ops = new(a.Length + b.Length);
-=======
-            List<Operation> ops = new List<Operation>(a.Length + b.Length);
->>>>>>> 1ec71635b (sync with main branch)
 
             Operand[] temps = new Operand[AttributeConsts.UserAttributesCount * 4];
 
@@ -192,7 +157,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             return output;
         }
 
-<<<<<<< HEAD
         internal int GetDepthRegister()
         {
             // The depth register is always two registers after the last color output.
@@ -203,21 +167,10 @@ namespace Ryujinx.Graphics.Shader.Translation
         {
             LayerOutputWritten = true;
             LayerOutputAttribute = attr;
-=======
-        public void SetNextStage(TranslatorContext nextStage)
-        {
-            _config.MergeFromtNextStage(nextStage._config);
-        }
-
-        public void SetGeometryShaderLayerInputAttribute(int attr)
-        {
-            _config.SetGeometryShaderLayerInputAttribute(attr);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void SetLastInVertexPipeline()
         {
-<<<<<<< HEAD
             Definitions.LastInVertexPipeline = true;
         }
 
@@ -617,32 +570,10 @@ namespace Ryujinx.Graphics.Shader.Translation
                 resourceManager,
                 FeatureFlags.None,
                 0);
-=======
-            _config.SetLastInVertexPipeline();
-        }
-
-        public ShaderProgram Translate(TranslatorContext other = null)
-        {
-            FunctionCode[] code = EmitShader(_program, _config, initializeOutputs: other == null, out _);
-
-            if (other != null)
-            {
-                other._config.MergeOutputUserAttributes(_config.UsedOutputAttributes, Enumerable.Empty<int>());
-
-                FunctionCode[] otherCode = EmitShader(other._program, other._config, initializeOutputs: true, out int aStart);
-
-                code = Combine(otherCode, code, aStart);
-
-                _config.InheritFrom(other._config);
-            }
-
-            return Translator.Translate(code, _config);
->>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ShaderProgram GenerateGeometryPassthrough()
         {
-<<<<<<< HEAD
             int outputAttributesMask = AttributeUsage.UsedOutputAttributes;
             int layerOutputAttr = LayerOutputAttribute;
 
@@ -650,19 +581,11 @@ namespace Ryujinx.Graphics.Shader.Translation
             {
                 outputAttributesMask |= 1 << ((layerOutputAttr - AttributeConsts.UserAttributeBase) / 16);
             }
-=======
-            int outputAttributesMask = _config.UsedOutputAttributes;
-            int layerOutputAttr = _config.LayerOutputAttribute;
->>>>>>> 1ec71635b (sync with main branch)
 
             OutputTopology outputTopology;
             int maxOutputVertices;
 
-<<<<<<< HEAD
             switch (Definitions.InputTopology)
-=======
-            switch (GpuAccessor.QueryPrimitiveTopology())
->>>>>>> 1ec71635b (sync with main branch)
             {
                 case InputTopology.Points:
                     outputTopology = OutputTopology.PointList;
@@ -679,16 +602,10 @@ namespace Ryujinx.Graphics.Shader.Translation
                     break;
             }
 
-<<<<<<< HEAD
             var attributeUsage = new AttributeUsage(GpuAccessor);
             var resourceManager = new ResourceManager(ShaderStage.Geometry, GpuAccessor);
 
             var context = new EmitterContext();
-=======
-            ShaderConfig config = new ShaderConfig(ShaderStage.Geometry, outputTopology, maxOutputVertices, GpuAccessor, _config.Options);
-
-            EmitterContext context = new EmitterContext(default, config, false);
->>>>>>> 1ec71635b (sync with main branch)
 
             for (int v = 0; v < maxOutputVertices; v++)
             {
@@ -713,14 +630,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                         else
                         {
                             context.Store(StorageKind.Output, IoVariable.UserDefined, null, Const(attrIndex), Const(c), value);
-<<<<<<< HEAD
                         }
-=======
-                            config.SetOutputUserAttribute(attrIndex);
-                        }
-
-                        config.SetInputUserAttribute(attrIndex, c);
->>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
 
@@ -740,7 +650,6 @@ namespace Ryujinx.Graphics.Shader.Translation
             var cfg = ControlFlowGraph.Create(operations);
             var function = new Function(cfg.Blocks, "main", false, 0, 0);
 
-<<<<<<< HEAD
             var definitions = new ShaderDefinitions(
                 ShaderStage.Geometry,
                 GpuAccessor.QueryGraphicsState(),
@@ -757,18 +666,6 @@ namespace Ryujinx.Graphics.Shader.Translation
                 resourceManager,
                 FeatureFlags.RtLayer,
                 0);
-=======
-            var sInfo = StructuredProgram.MakeStructuredProgram(new[] { function }, config);
-
-            var info = config.CreateProgramInfo();
-
-            return config.Options.TargetLanguage switch
-            {
-                TargetLanguage.Glsl => new ShaderProgram(info, TargetLanguage.Glsl, GlslGenerator.Generate(sInfo, config)),
-                TargetLanguage.Spirv => new ShaderProgram(info, TargetLanguage.Spirv, SpirvGenerator.Generate(sInfo, config)),
-                _ => throw new NotImplementedException(config.Options.TargetLanguage.ToString())
-            };
->>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

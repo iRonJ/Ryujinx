@@ -1,8 +1,28 @@
 {
   "version": 2,
-  "dgSpecHash": "2GER/iy4RPN/uM1avXsl9x+Mrhcqy26AQvGW7j+pQ4LI01vcB2GWXEwYi+Vmk8nOakJXGGX9aMwhchwpIqqi+g==",
+  "dgSpecHash": "zI0QtGrCzUsxJVVo6Zjw+9ub4slkI53m8ABdPQBSi8qOC4BB4ypuOYVJ0U8+zyf9pi5nxYJ697RkKhJhieihqw==",
   "success": true,
   "projectFilePath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Device/Ryujinx.Graphics.Device.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/ronj/.nuget/packages/microsoft.io.recyclablememorystream/3.0.0/microsoft.io.recyclablememorystream.3.0.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/msgpack.cli/1.0.1/msgpack.cli.1.0.1.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.codedom/8.0.0/system.codedom.8.0.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.globalization/4.3.0/system.globalization.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.io/4.3.0/system.io.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.management/8.0.0/system.management.8.0.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.numerics.vectors/4.3.0/system.numerics.vectors.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.reflection/4.3.0/system.reflection.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.reflection.emit/4.3.0/system.reflection.emit.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.reflection.emit.ilgeneration/4.3.0/system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.reflection.primitives/4.3.0/system.reflection.primitives.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.resources.resourcemanager/4.3.0/system.resources.resourcemanager.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.runtime/4.3.0/system.runtime.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.runtime.extensions/4.3.0/system.runtime.extensions.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.text.encoding/4.3.0/system.text.encoding.4.3.0.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512"
+  ],
   "logs": []
 }

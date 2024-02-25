@@ -48,8 +48,4 @@ namespace Ryujinx.Ava.UI.Views.User
             _parent?.RecoverLostAccounts();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

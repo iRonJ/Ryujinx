@@ -22,11 +22,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
             // Some of those attributes are per invocation,
             // so we should ignore any primitive vertex indexing for those.
-<<<<<<< HEAD
             bool hasPrimitiveVertex = AttributeMap.HasPrimitiveVertex(context.TranslatorContext.Definitions.Stage, op.O) && !op.P;
-=======
-            bool hasPrimitiveVertex = AttributeMap.HasPrimitiveVertex(context.Config.Stage, op.O) && !op.P;
->>>>>>> 1ec71635b (sync with main branch)
 
             if (!op.Phys)
             {
@@ -37,11 +33,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
             for (int index = 0; index < (int)op.AlSize + 1; index++)
             {
-<<<<<<< HEAD
                 Register rd = new(op.Dest + index, RegisterType.Gpr);
-=======
-                Register rd = new Register(op.Dest + index, RegisterType.Gpr);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (rd.IsRZ)
                 {
@@ -60,14 +52,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 }
                 else if (op.SrcB == RegisterConsts.RegisterZeroIndex || op.P)
                 {
-<<<<<<< HEAD
                     int offset = FixedFuncToUserAttribute(context.TranslatorContext, op.Imm11 + index * 4, op.O);
-=======
-                    int offset = FixedFuncToUserAttribute(context.Config, op.Imm11 + index * 4, op.O);
-
-                    context.FlagAttributeRead(offset);
-
->>>>>>> 1ec71635b (sync with main branch)
                     bool isOutput = op.O && CanLoadOutput(offset);
 
                     if (!op.P && !isOutput && TryConvertIdToIndexForVulkan(context, offset, out Operand value))
@@ -76,7 +61,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     }
                     else
                     {
-<<<<<<< HEAD
                         value = AttributeMap.GenerateAttributeLoad(context, primVertex, offset, isOutput, op.P);
 
                         if ((!context.TranslatorContext.Definitions.SupportsScaledVertexFormats || context.VertexAsCompute) &&
@@ -102,21 +86,11 @@ namespace Ryujinx.Graphics.Shader.Instructions
                         }
 
                         context.Copy(Register(rd), value);
-=======
-                        context.Copy(Register(rd), AttributeMap.GenerateAttributeLoad(context, primVertex, offset, isOutput, op.P));
->>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
                 else
                 {
-<<<<<<< HEAD
                     int offset = FixedFuncToUserAttribute(context.TranslatorContext, op.Imm11 + index * 4, op.O);
-=======
-                    int offset = FixedFuncToUserAttribute(context.Config, op.Imm11 + index * 4, op.O);
-
-                    context.FlagAttributeRead(offset);
-
->>>>>>> 1ec71635b (sync with main branch)
                     bool isOutput = op.O && CanLoadOutput(offset);
 
                     context.Copy(Register(rd), AttributeMap.GenerateAttributeLoad(context, primVertex, offset, isOutput, false));
@@ -135,22 +109,14 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     break;
                 }
 
-<<<<<<< HEAD
                 Register rd = new(op.SrcB + index, RegisterType.Gpr);
-=======
-                Register rd = new Register(op.SrcB + index, RegisterType.Gpr);
->>>>>>> 1ec71635b (sync with main branch)
 
                 if (op.Phys)
                 {
                     Operand offset = context.ISubtract(GetSrcReg(context, op.SrcA), Const(AttributeConsts.UserAttributeBase));
                     Operand vecIndex = context.ShiftRightU32(offset, Const(4));
                     Operand elemIndex = context.BitwiseAnd(context.ShiftRightU32(offset, Const(2)), Const(3));
-<<<<<<< HEAD
                     Operand invocationId = AttributeMap.HasInvocationId(context.TranslatorContext.Definitions.Stage, isOutput: true)
-=======
-                    Operand invocationId = AttributeMap.HasInvocationId(context.Config.Stage, isOutput: true)
->>>>>>> 1ec71635b (sync with main branch)
                         ? context.Load(StorageKind.Input, IoVariable.InvocationId)
                         : null;
 
@@ -162,23 +128,12 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
                     int offset = op.Imm11 + index * 4;
 
-<<<<<<< HEAD
                     if (!context.TranslatorContext.AttributeUsage.IsUsedOutputAttribute(offset))
-=======
-                    if (!context.Config.IsUsedOutputAttribute(offset))
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         return;
                     }
 
-<<<<<<< HEAD
                     offset = FixedFuncToUserAttribute(context.TranslatorContext, offset, isOutput: true);
-=======
-                    offset = FixedFuncToUserAttribute(context.Config, offset, isOutput: true);
-
-                    context.FlagAttributeWritten(offset);
-
->>>>>>> 1ec71635b (sync with main branch)
                     AttributeMap.GenerateAttributeStore(context, offset, op.P, Register(rd));
                 }
             }
@@ -188,11 +143,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
         {
             InstIpa op = context.GetOp<InstIpa>();
 
-<<<<<<< HEAD
-=======
-            context.FlagAttributeRead(op.Imm10);
-
->>>>>>> 1ec71635b (sync with main branch)
             Operand res;
 
             bool isFixedFunc = false;
@@ -214,11 +164,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 {
                     int index = (op.Imm10 - AttributeConsts.UserAttributeBase) >> 4;
 
-<<<<<<< HEAD
                     if (context.TranslatorContext.Definitions.ImapTypes[index].GetFirstUsedType() == PixelImap.Perspective)
-=======
-                    if (context.Config.ImapTypes[index].GetFirstUsedType() == PixelImap.Perspective)
->>>>>>> 1ec71635b (sync with main branch)
                     {
                         res = context.FPMultiply(res, context.Load(StorageKind.Input, IoVariable.FragmentCoord, null, Const(3)));
                     }
@@ -228,7 +174,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     // FragCoord X/Y must be divided by the render target scale, if resolution scaling is active,
                     // because the shader code is not expecting scaled values.
                     res = context.FPDivide(res, context.Load(StorageKind.ConstantBuffer, SupportBuffer.Binding, Const((int)SupportBufferField.RenderScale), Const(0)));
-<<<<<<< HEAD
 
                     if (op.Imm10 == AttributeConsts.PositionY && context.TranslatorContext.Options.TargetApi != TargetApi.OpenGL)
                     {
@@ -247,14 +192,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     // gl_FrontFacing sometimes has incorrect (flipped) values depending how it is accessed on Intel GPUs.
                     // This weird trick makes it behave.
                     res = context.ICompareLess(context.INegate(context.FP32ConvertToS32(context.ConditionalSelect(res, ConstF(1f), ConstF(0f)))), Const(0));
-=======
-                }
-                else if (op.Imm10 == AttributeConsts.FrontFacing && context.Config.GpuAccessor.QueryHostHasFrontFacingBug())
-                {
-                    // gl_FrontFacing sometimes has incorrect (flipped) values depending how it is accessed on Intel GPUs.
-                    // This weird trick makes it behave.
-                    res = context.ICompareLess(context.INegate(context.IConvertS32ToFP32(res)), Const(0));
->>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -307,20 +244,12 @@ namespace Ryujinx.Graphics.Shader.Instructions
         {
             if (!(emit || cut))
             {
-<<<<<<< HEAD
                 context.TranslatorContext.GpuAccessor.Log("Invalid OUT encoding.");
-=======
-                context.Config.GpuAccessor.Log("Invalid OUT encoding.");
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (emit)
             {
-<<<<<<< HEAD
                 if (context.TranslatorContext.Definitions.LastInVertexPipeline)
-=======
-                if (context.Config.LastInVertexPipeline)
->>>>>>> 1ec71635b (sync with main branch)
                 {
                     context.PrepareForVertexReturn(out var tempXLocal, out var tempYLocal, out var tempZLocal);
 
@@ -373,21 +302,13 @@ namespace Ryujinx.Graphics.Shader.Instructions
             {
                 // TODO: If two sided rendering is enabled, then this should return
                 // FrontColor if the fragment is front facing, and back color otherwise.
-<<<<<<< HEAD
                 selectedAttr = GenerateIpaLoad(context, FixedFuncToUserAttribute(context.TranslatorContext, attr, isOutput: false));
-=======
-                selectedAttr = GenerateIpaLoad(context, FixedFuncToUserAttribute(context.Config, attr, isOutput: false));
->>>>>>> 1ec71635b (sync with main branch)
                 return true;
             }
             else if (attr == AttributeConsts.FogCoord)
             {
                 // TODO: We likely need to emulate the fixed-function functionality for FogCoord here.
-<<<<<<< HEAD
                 selectedAttr = GenerateIpaLoad(context, FixedFuncToUserAttribute(context.TranslatorContext, attr, isOutput: false));
-=======
-                selectedAttr = GenerateIpaLoad(context, FixedFuncToUserAttribute(context.Config, attr, isOutput: false));
->>>>>>> 1ec71635b (sync with main branch)
                 return true;
             }
             else if (attr >= AttributeConsts.BackColorDiffuseR && attr < AttributeConsts.ClipDistance0)
@@ -397,11 +318,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
             else if (attr >= AttributeConsts.TexCoordBase && attr < AttributeConsts.TexCoordEnd)
             {
-<<<<<<< HEAD
                 selectedAttr = GenerateIpaLoad(context, FixedFuncToUserAttribute(context.TranslatorContext, attr, isOutput: false));
-=======
-                selectedAttr = GenerateIpaLoad(context, FixedFuncToUserAttribute(context.Config, attr, isOutput: false));
->>>>>>> 1ec71635b (sync with main branch)
                 return true;
             }
 
@@ -414,7 +331,6 @@ namespace Ryujinx.Graphics.Shader.Instructions
             return AttributeMap.GenerateAttributeLoad(context, null, offset, isOutput: false, isPerPatch: false);
         }
 
-<<<<<<< HEAD
         private static int FixedFuncToUserAttribute(TranslatorContext translatorContext, int attr, bool isOutput)
         {
             bool supportsLayerFromVertexOrTess = translatorContext.GpuAccessor.QueryHostSupportsLayerVertexTessellation();
@@ -436,69 +352,23 @@ namespace Ryujinx.Graphics.Shader.Instructions
             else if (attr >= AttributeConsts.TexCoordBase && attr < AttributeConsts.TexCoordEnd)
             {
                 attr = FixedFuncToUserAttribute(translatorContext, attr, AttributeConsts.TexCoordBase, fixedStartAttr + 5, isOutput);
-=======
-        private static int FixedFuncToUserAttribute(ShaderConfig config, int attr, bool isOutput)
-        {
-            bool supportsLayerFromVertexOrTess = config.GpuAccessor.QueryHostSupportsLayerVertexTessellation();
-            int fixedStartAttr = supportsLayerFromVertexOrTess ? 0 : 1;
-
-            if (attr == AttributeConsts.Layer && config.Stage != ShaderStage.Geometry && !supportsLayerFromVertexOrTess)
-            {
-                attr = FixedFuncToUserAttribute(config, attr, AttributeConsts.Layer, 0, isOutput);
-                config.SetLayerOutputAttribute(attr);
-            }
-            else if (attr == AttributeConsts.FogCoord)
-            {
-                attr = FixedFuncToUserAttribute(config, attr, AttributeConsts.FogCoord, fixedStartAttr, isOutput);
-            }
-            else if (attr >= AttributeConsts.FrontColorDiffuseR && attr < AttributeConsts.ClipDistance0)
-            {
-                attr = FixedFuncToUserAttribute(config, attr, AttributeConsts.FrontColorDiffuseR, fixedStartAttr + 1, isOutput);
-            }
-            else if (attr >= AttributeConsts.TexCoordBase && attr < AttributeConsts.TexCoordEnd)
-            {
-                attr = FixedFuncToUserAttribute(config, attr, AttributeConsts.TexCoordBase, fixedStartAttr + 5, isOutput);
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return attr;
         }
 
-<<<<<<< HEAD
         private static int FixedFuncToUserAttribute(TranslatorContext translatorContext, int attr, int baseAttr, int baseIndex, bool isOutput)
         {
             int index = (attr - baseAttr) >> 4;
             int userAttrIndex = translatorContext.AttributeUsage.GetFreeUserAttribute(isOutput, baseIndex + index);
-=======
-        private static int FixedFuncToUserAttribute(ShaderConfig config, int attr, int baseAttr, int baseIndex, bool isOutput)
-        {
-            int index = (attr - baseAttr) >> 4;
-            int userAttrIndex = config.GetFreeUserAttribute(isOutput, baseIndex + index);
->>>>>>> 1ec71635b (sync with main branch)
 
             if ((uint)userAttrIndex < Constants.MaxAttributes)
             {
                 attr = AttributeConsts.UserAttributeBase + userAttrIndex * 16 + (attr & 0xf);
-<<<<<<< HEAD
             }
             else
             {
                 translatorContext.GpuAccessor.Log($"No enough user attributes for fixed attribute offset 0x{attr:X}.");
-=======
-
-                if (isOutput)
-                {
-                    config.SetOutputUserAttributeFixedFunc(userAttrIndex);
-                }
-                else
-                {
-                    config.SetInputUserAttributeFixedFunc(userAttrIndex);
-                }
-            }
-            else
-            {
-                config.GpuAccessor.Log($"No enough user attributes for fixed attribute offset 0x{attr:X}.");
->>>>>>> 1ec71635b (sync with main branch)
             }
 
             return attr;
@@ -506,11 +376,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
 
         private static bool TryConvertIdToIndexForVulkan(EmitterContext context, int attr, out Operand value)
         {
-<<<<<<< HEAD
             if (context.TranslatorContext.Options.TargetApi == TargetApi.Vulkan)
-=======
-            if (context.Config.Options.TargetApi == TargetApi.Vulkan)
->>>>>>> 1ec71635b (sync with main branch)
             {
                 if (attr == AttributeConsts.InstanceId)
                 {
@@ -530,8 +396,4 @@ namespace Ryujinx.Graphics.Shader.Instructions
             return false;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)

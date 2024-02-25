@@ -15,8 +15,4 @@ namespace ARMeilleure.Decoders
             SatImm = (opCode >> 16) & 0xf;
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1ec71635b (sync with main branch)
