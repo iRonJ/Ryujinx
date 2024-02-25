@@ -7,6 +7,12 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
     public enum AccountState
     {
         Closed,
+<<<<<<< HEAD
         Open,
     }
 }
+=======
+        Open
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

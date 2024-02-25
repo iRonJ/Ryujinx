@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -12,9 +16,15 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Model
     /// </summary>
     class CircularSpanPool
     {
+<<<<<<< HEAD
         private readonly ThreadedRenderer _renderer;
         private readonly byte[] _pool;
         private readonly int _size;
+=======
+        private ThreadedRenderer _renderer;
+        private byte[] _pool;
+        private int _size;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private int _producerPtr;
         private int _producerSkipPosition = -1;
@@ -83,7 +93,11 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Model
         {
             int size = length * Unsafe.SizeOf<T>();
 
+<<<<<<< HEAD
             _consumerPtr += size;
+=======
+            _consumerPtr = _consumerPtr + size;
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

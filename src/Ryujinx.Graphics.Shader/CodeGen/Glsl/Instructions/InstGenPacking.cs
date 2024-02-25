@@ -53,4 +53,8 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             return $".{"xy".AsSpan(index, 1)}";
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -35,4 +35,8 @@ namespace ARMeilleure.CodeGen.Linking
             return $"({nameof(Position)} = {Position}, {nameof(Symbol)} = {Symbol})";
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

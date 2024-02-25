@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
 using System;
@@ -14,7 +18,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
 
         public abstract Result ProcessMessage(ref ServiceDispatchContext context, ReadOnlySpan<byte> inRawData);
 
+<<<<<<< HEAD
         protected static Result ProcessMessageImpl(ref ServiceDispatchContext context, ReadOnlySpan<byte> inRawData, IReadOnlyDictionary<int, CommandHandler> entries, string objectName)
+=======
+        protected Result ProcessMessageImpl(ref ServiceDispatchContext context, ReadOnlySpan<byte> inRawData, IReadOnlyDictionary<int, CommandHandler> entries, string objectName)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (inRawData.Length < Unsafe.SizeOf<CmifInHeader>())
             {
@@ -44,7 +52,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
                     // If ignore missing services is enabled, just pretend that everything is fine.
                     PrepareForStubReply(ref context, out Span<byte> outRawData);
                     CommandHandler.GetCmifOutHeaderPointer(ref outHeader, ref outRawData);
+<<<<<<< HEAD
                     outHeader[0] = new CmifOutHeader { Magic = CmifMessage.CmifOutHeaderMagic, Result = Result.Success };
+=======
+                    outHeader[0] = new CmifOutHeader() { Magic = CmifMessage.CmifOutHeaderMagic, Result = Result.Success };
+>>>>>>> 1ec71635b (sync with main branch)
 
                     Logger.Warning?.Print(LogClass.Service, $"Missing service {objectName} (command ID: {commandId}) ignored");
 
@@ -80,7 +92,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
                 return commandResult;
             }
 
+<<<<<<< HEAD
             outHeader[0] = new CmifOutHeader { Magic = CmifMessage.CmifOutHeaderMagic, Result = commandResult };
+=======
+            outHeader[0] = new CmifOutHeader() { Magic = CmifMessage.CmifOutHeaderMagic, Result = commandResult };
+>>>>>>> 1ec71635b (sync with main branch)
 
             return Result.Success;
         }
@@ -91,4 +107,8 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
             outRawData = MemoryMarshal.Cast<uint, byte>(response.DataWords);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

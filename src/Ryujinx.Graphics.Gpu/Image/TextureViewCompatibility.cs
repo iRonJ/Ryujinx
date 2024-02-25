@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Gpu.Image
+=======
+﻿namespace Ryujinx.Graphics.Gpu.Image
+>>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// The level of view compatibility one texture has to another. 
@@ -10,6 +14,10 @@ namespace Ryujinx.Graphics.Gpu.Image
         LayoutIncompatible,
         CopyOnly,
         FormatAlias,
+<<<<<<< HEAD
         Full,
+=======
+        Full
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

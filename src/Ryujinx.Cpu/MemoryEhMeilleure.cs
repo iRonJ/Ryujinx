@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Cpu.Signal;
+=======
+﻿using ARMeilleure.Signal;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Memory;
 using Ryujinx.Memory.Tracking;
 using System;
@@ -10,6 +14,10 @@ namespace Ryujinx.Cpu
     {
         private delegate bool TrackingEventDelegate(ulong address, ulong size, bool write);
 
+<<<<<<< HEAD
+=======
+        private readonly MemoryTracking _tracking;
+>>>>>>> 1ec71635b (sync with main branch)
         private readonly TrackingEventDelegate _trackingEvent;
 
         private readonly ulong _baseAddress;
@@ -17,10 +25,19 @@ namespace Ryujinx.Cpu
 
         public MemoryEhMeilleure(MemoryBlock addressSpace, MemoryBlock addressSpaceMirror, MemoryTracking tracking)
         {
+<<<<<<< HEAD
             _baseAddress = (ulong)addressSpace.Pointer;
             ulong endAddress = _baseAddress + addressSpace.Size;
 
             _trackingEvent = tracking.VirtualMemoryEvent;
+=======
+            _tracking = tracking;
+
+            _baseAddress = (ulong)addressSpace.Pointer;
+            ulong endAddress = _baseAddress + addressSpace.Size;
+
+            _trackingEvent = new TrackingEventDelegate(tracking.VirtualMemoryEvent);
+>>>>>>> 1ec71635b (sync with main branch)
             bool added = NativeSignalHandler.AddTrackedRegion((nuint)_baseAddress, (nuint)endAddress, Marshal.GetFunctionPointerForDelegate(_trackingEvent));
 
             if (!added)
@@ -48,8 +65,11 @@ namespace Ryujinx.Cpu
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             NativeSignalHandler.RemoveTrackedRegion((nuint)_baseAddress);
 
             if (_mirrorAddress != 0)

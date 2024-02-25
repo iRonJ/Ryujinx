@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 using Avalonia.Controls;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Controls;
 using Ryujinx.Ava.Common.Locale;
 using Ryujinx.Ava.UI.ViewModels;
 using Ryujinx.HLE.FileSystem;
 using System;
+<<<<<<< HEAD
+=======
+using System.ComponentModel;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.Windows
 {
@@ -16,7 +23,11 @@ namespace Ryujinx.Ava.UI.Windows
         {
             Title = $"Ryujinx {Program.Version} - {LocaleManager.Instance[LocaleKeys.Settings]}";
 
+<<<<<<< HEAD
             ViewModel = new SettingsViewModel(virtualFileSystem, contentManager);
+=======
+            ViewModel   = new SettingsViewModel(virtualFileSystem, contentManager);
+>>>>>>> 1ec71635b (sync with main branch)
             DataContext = ViewModel;
 
             ViewModel.CloseWindow += Close;
@@ -28,7 +39,11 @@ namespace Ryujinx.Ava.UI.Windows
 
         public SettingsWindow()
         {
+<<<<<<< HEAD
             ViewModel = new SettingsViewModel();
+=======
+            ViewModel   = new SettingsViewModel();
+>>>>>>> 1ec71635b (sync with main branch)
             DataContext = ViewModel;
 
             InitializeComponent();
@@ -41,7 +56,11 @@ namespace Ryujinx.Ava.UI.Windows
 
             if (Owner is MainWindow window && ViewModel.DirectoryChanged)
             {
+<<<<<<< HEAD
                 window.LoadApplications();
+=======
+                window.ViewModel.LoadApplications();
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -93,11 +112,19 @@ namespace Ryujinx.Ava.UI.Windows
             }
         }
 
+<<<<<<< HEAD
         protected override void OnClosing(WindowClosingEventArgs e)
+=======
+        protected override void OnClosing(CancelEventArgs e)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             HotkeysPage.Dispose();
             InputPage.Dispose();
             base.OnClosing(e);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -4,6 +4,7 @@ namespace Ryujinx.Graphics.GAL
     {
         public bool TestEnable { get; }
 
+<<<<<<< HEAD
         public CompareOp FrontFunc { get; }
         public StencilOp FrontSFail { get; }
         public StencilOp FrontDpPass { get; }
@@ -21,17 +22,43 @@ namespace Ryujinx.Graphics.GAL
 
         public StencilTestDescriptor(
             bool testEnable,
+=======
+        public CompareOp FrontFunc     { get; }
+        public StencilOp FrontSFail    { get; }
+        public StencilOp FrontDpPass   { get; }
+        public StencilOp FrontDpFail   { get; }
+        public int       FrontFuncRef  { get; }
+        public int       FrontFuncMask { get; }
+        public int       FrontMask     { get; }
+        public CompareOp BackFunc      { get; }
+        public StencilOp BackSFail     { get; }
+        public StencilOp BackDpPass    { get; }
+        public StencilOp BackDpFail    { get; }
+        public int       BackFuncRef   { get; }
+        public int       BackFuncMask  { get; }
+        public int       BackMask      { get; }
+
+        public StencilTestDescriptor(
+            bool      testEnable,
+>>>>>>> 1ec71635b (sync with main branch)
             CompareOp frontFunc,
             StencilOp frontSFail,
             StencilOp frontDpPass,
             StencilOp frontDpFail,
+<<<<<<< HEAD
             int frontFuncRef,
             int frontFuncMask,
             int frontMask,
+=======
+            int       frontFuncRef,
+            int       frontFuncMask,
+            int       frontMask,
+>>>>>>> 1ec71635b (sync with main branch)
             CompareOp backFunc,
             StencilOp backSFail,
             StencilOp backDpPass,
             StencilOp backDpFail,
+<<<<<<< HEAD
             int backFuncRef,
             int backFuncMask,
             int backMask)
@@ -51,6 +78,27 @@ namespace Ryujinx.Graphics.GAL
             BackFuncRef = backFuncRef;
             BackFuncMask = backFuncMask;
             BackMask = backMask;
+=======
+            int       backFuncRef,
+            int       backFuncMask,
+            int       backMask)
+        {
+            TestEnable    = testEnable;
+            FrontFunc     = frontFunc;
+            FrontSFail    = frontSFail;
+            FrontDpPass   = frontDpPass;
+            FrontDpFail   = frontDpFail;
+            FrontFuncRef  = frontFuncRef;
+            FrontFuncMask = frontFuncMask;
+            FrontMask     = frontMask;
+            BackFunc      = backFunc;
+            BackSFail     = backSFail;
+            BackDpPass    = backDpPass;
+            BackDpFail    = backDpFail;
+            BackFuncRef   = backFuncRef;
+            BackFuncMask  = backFuncMask;
+            BackMask      = backMask;
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

@@ -2,13 +2,22 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE
 {
     class IStorage : IpcService
     {
+<<<<<<< HEAD
         public bool IsReadOnly { get; private set; }
         public byte[] Data { get; private set; }
+=======
+        public bool   IsReadOnly { get; private set; }
+        public byte[] Data       { get; private set; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IStorage(byte[] data, bool isReadOnly = false)
         {
             IsReadOnly = isReadOnly;
+<<<<<<< HEAD
             Data = data;
+=======
+            Data       = data;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CommandCmif(0)]
@@ -20,4 +29,8 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

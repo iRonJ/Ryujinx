@@ -11,6 +11,10 @@
     Width="500"
     Height="380"
     mc:Ignorable="d"
+<<<<<<< HEAD
+=======
+    x:CompileBindings="True"
+>>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModels:DownloadableContentManagerViewModel"
     Focusable="True">
     <Grid>
@@ -39,21 +43,34 @@
                         Name="EnableAllButton"
                         MinWidth="90"
                         Margin="5"
+<<<<<<< HEAD
                         Command="{Binding EnableAll}">
+=======
+                        Command="{ReflectionBinding EnableAll}">
+>>>>>>> 1ec71635b (sync with main branch)
                         <TextBlock Text="{locale:Locale DlcManagerEnableAllButton}" />
                     </Button>
                     <Button
                         Name="DisableAllButton"
                         MinWidth="90"
                         Margin="5"
+<<<<<<< HEAD
                         Command="{Binding DisableAll}">
+=======
+                        Command="{ReflectionBinding DisableAll}">
+>>>>>>> 1ec71635b (sync with main branch)
                         <TextBlock Text="{locale:Locale DlcManagerDisableAllButton}" />
                     </Button>
                 </StackPanel>
                 <TextBox
                     Grid.Column="2"
+<<<<<<< HEAD
                     MinHeight="29"
                     MaxHeight="29"
+=======
+                    MinHeight="27"
+                    MaxHeight="27"
+>>>>>>> 1ec71635b (sync with main branch)
                     HorizontalAlignment="Stretch"
                     Watermark="{locale:Locale Search}"
                     Text="{Binding Search}" />
@@ -70,11 +87,19 @@
             Padding="2.5">
             <ListBox
                 AutoScrollToSelectedItem="False"
+<<<<<<< HEAD
+=======
+                VirtualizationMode="None"
+>>>>>>> 1ec71635b (sync with main branch)
                 SelectionMode="Multiple, Toggle"
                 Background="Transparent"
                 SelectionChanged="OnSelectionChanged"
                 SelectedItems="{Binding SelectedDownloadableContents, Mode=TwoWay}"
+<<<<<<< HEAD
                 ItemsSource="{Binding Views}">
+=======
+                Items="{Binding Views}">
+>>>>>>> 1ec71635b (sync with main branch)
                 <ListBox.DataTemplates>
                     <DataTemplate
                         DataType="models:DownloadableContentModel">
@@ -87,8 +112,13 @@
                                 <Grid
                                     Grid.Column="0">
                                     <Grid.ColumnDefinitions>
+<<<<<<< HEAD
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
+=======
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+>>>>>>> 1ec71635b (sync with main branch)
                                     </Grid.ColumnDefinitions>
                                     <TextBlock
                                         Grid.Column="0"
@@ -157,14 +187,22 @@
                     Name="AddButton"
                     MinWidth="90"
                     Margin="5"
+<<<<<<< HEAD
                     Command="{Binding Add}">
+=======
+                    Command="{ReflectionBinding Add}">
+>>>>>>> 1ec71635b (sync with main branch)
                     <TextBlock Text="{locale:Locale SettingsTabGeneralAdd}" />
                 </Button>
                 <Button
                     Name="RemoveAllButton"
                     MinWidth="90"
                     Margin="5"
+<<<<<<< HEAD
                     Command="{Binding RemoveAll}">
+=======
+                    Command="{ReflectionBinding RemoveAll}">
+>>>>>>> 1ec71635b (sync with main branch)
                     <TextBlock Text="{locale:Locale DlcManagerRemoveAllButton}" />
                 </Button>
             </StackPanel>
@@ -189,4 +227,8 @@
             </StackPanel>
         </Panel>
     </Grid>
+<<<<<<< HEAD
 </UserControl>
+=======
+</UserControl>
+>>>>>>> 1ec71635b (sync with main branch)

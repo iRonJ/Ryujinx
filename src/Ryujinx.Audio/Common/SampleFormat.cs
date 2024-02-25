@@ -38,6 +38,12 @@ namespace Ryujinx.Audio.Common
         /// <summary>
         /// ADPCM sample format. (Also known as GC-ADPCM)
         /// </summary>
+<<<<<<< HEAD
         Adpcm = 6,
     }
 }
+=======
+        Adpcm = 6
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

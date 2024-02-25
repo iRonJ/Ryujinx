@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Silk.NET.Vulkan;
+=======
+﻿using Silk.NET.Vulkan;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Graphics.Vulkan
@@ -8,10 +12,17 @@ namespace Ryujinx.Graphics.Vulkan
     /// </summary>
     class MultiFenceHolder
     {
+<<<<<<< HEAD
         private const int BufferUsageTrackingGranularity = 4096;
 
         private readonly FenceHolder[] _fences;
         private readonly BufferUsageBitmap _bufferUsageBitmap;
+=======
+        private static int BufferUsageTrackingGranularity = 4096;
+
+        private readonly FenceHolder[] _fences;
+        private BufferUsageBitmap _bufferUsageBitmap;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Creates a new instance of the multiple fence holder.
@@ -32,11 +43,16 @@ namespace Ryujinx.Graphics.Vulkan
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Adds read/write buffer usage information to the uses list.
+=======
+        /// Adds buffer usage information to the uses list.
+>>>>>>> 1ec71635b (sync with main branch)
         /// </summary>
         /// <param name="cbIndex">Index of the command buffer where the buffer is used</param>
         /// <param name="offset">Offset of the buffer being used</param>
         /// <param name="size">Size of the buffer region being used, in bytes</param>
+<<<<<<< HEAD
         /// <param name="write">Whether the access is a write or not</param>
         public void AddBufferUse(int cbIndex, int offset, int size, bool write)
         {
@@ -46,6 +62,11 @@ namespace Ryujinx.Graphics.Vulkan
             {
                 _bufferUsageBitmap.Add(cbIndex, offset, size, true);
             }
+=======
+        public void AddBufferUse(int cbIndex, int offset, int size)
+        {
+            _bufferUsageBitmap.Add(cbIndex, offset, size);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -74,11 +95,18 @@ namespace Ryujinx.Graphics.Vulkan
         /// </summary>
         /// <param name="offset">Offset of the buffer being used</param>
         /// <param name="size">Size of the buffer region being used, in bytes</param>
+<<<<<<< HEAD
         /// <param name="write">True if only write usages should count</param>
         /// <returns>True if in use, false otherwise</returns>
         public bool IsBufferRangeInUse(int offset, int size, bool write)
         {
             return _bufferUsageBitmap.OverlapsWith(offset, size, write);
+=======
+        /// <returns>True if in use, false otherwise</returns>
+        public bool IsBufferRangeInUse(int offset, int size)
+        {
+            return _bufferUsageBitmap.OverlapsWith(offset, size);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -196,11 +224,19 @@ namespace Ryujinx.Graphics.Vulkan
 
             if (hasTimeout)
             {
+<<<<<<< HEAD
                 signaled = FenceHelper.AllSignaled(api, device, fences[..fenceCount], timeout);
             }
             else
             {
                 FenceHelper.WaitAllIndefinitely(api, device, fences[..fenceCount]);
+=======
+                signaled = FenceHelper.AllSignaled(api, device, fences.Slice(0, fenceCount), timeout);
+            }
+            else
+            {
+                FenceHelper.WaitAllIndefinitely(api, device, fences.Slice(0, fenceCount));
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             for (int i = 0; i < fenceCount; i++)

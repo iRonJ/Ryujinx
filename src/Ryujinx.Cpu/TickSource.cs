@@ -42,4 +42,8 @@ namespace Ryujinx.Cpu
             _tickCounter.Start();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

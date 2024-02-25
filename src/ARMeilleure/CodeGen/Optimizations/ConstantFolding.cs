@@ -164,7 +164,11 @@ namespace ARMeilleure.CodeGen.Optimizations
                     }
                     break;
 
+<<<<<<< HEAD
                 case Instruction.Multiply:
+=======
+                 case Instruction.Multiply:
+>>>>>>> 1ec71635b (sync with main branch)
                     if (type == OperandType.I32)
                     {
                         EvaluateBinaryI32(operation, (x, y) => x * y);
@@ -343,4 +347,8 @@ namespace ARMeilleure.CodeGen.Optimizations
             operation.TurnIntoCopy(Const(op(x, y)));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -5,7 +5,11 @@ namespace Ryujinx.Tests.Unicorn
 {
     public class UnicornAArch64 : IDisposable
     {
+<<<<<<< HEAD
         internal readonly UnicornEngine.Unicorn Uc;
+=======
+        internal readonly UnicornEngine.Unicorn uc;
+>>>>>>> 1ec71635b (sync with main branch)
         private bool _isDisposed;
 
         public IndexedProperty<int, ulong> X => new(GetX, SetX);
@@ -33,48 +37,80 @@ namespace Ryujinx.Tests.Unicorn
         public uint Pstate
         {
             get => (uint)GetRegister(Arm64.UC_ARM64_REG_PSTATE);
+<<<<<<< HEAD
             set => SetRegister(Arm64.UC_ARM64_REG_PSTATE, value);
+=======
+            set =>       SetRegister(Arm64.UC_ARM64_REG_PSTATE, value);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public int Fpcr
         {
             get => (int)GetRegister(Arm64.UC_ARM64_REG_FPCR);
+<<<<<<< HEAD
             set => SetRegister(Arm64.UC_ARM64_REG_FPCR, (uint)value);
+=======
+            set =>      SetRegister(Arm64.UC_ARM64_REG_FPCR, (uint)value);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public int Fpsr
         {
             get => (int)GetRegister(Arm64.UC_ARM64_REG_FPSR);
+<<<<<<< HEAD
             set => SetRegister(Arm64.UC_ARM64_REG_FPSR, (uint)value);
+=======
+            set =>      SetRegister(Arm64.UC_ARM64_REG_FPSR, (uint)value);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public bool OverflowFlag
         {
+<<<<<<< HEAD
             get => (Pstate & 0x10000000u) != 0;
+=======
+            get =>          (Pstate &  0x10000000u) != 0;
+>>>>>>> 1ec71635b (sync with main branch)
             set => Pstate = (Pstate & ~0x10000000u) | (value ? 0x10000000u : 0u);
         }
 
         public bool CarryFlag
         {
+<<<<<<< HEAD
             get => (Pstate & 0x20000000u) != 0;
+=======
+            get =>          (Pstate &  0x20000000u) != 0;
+>>>>>>> 1ec71635b (sync with main branch)
             set => Pstate = (Pstate & ~0x20000000u) | (value ? 0x20000000u : 0u);
         }
 
         public bool ZeroFlag
         {
+<<<<<<< HEAD
             get => (Pstate & 0x40000000u) != 0;
+=======
+            get =>          (Pstate &  0x40000000u) != 0;
+>>>>>>> 1ec71635b (sync with main branch)
             set => Pstate = (Pstate & ~0x40000000u) | (value ? 0x40000000u : 0u);
         }
 
         public bool NegativeFlag
         {
+<<<<<<< HEAD
             get => (Pstate & 0x80000000u) != 0;
+=======
+            get =>          (Pstate &  0x80000000u) != 0;
+>>>>>>> 1ec71635b (sync with main branch)
             set => Pstate = (Pstate & ~0x80000000u) | (value ? 0x80000000u : 0u);
         }
 
         public UnicornAArch64()
         {
+<<<<<<< HEAD
             Uc = new UnicornEngine.Unicorn(Common.UC_ARCH_ARM64, Common.UC_MODE_LITTLE_ENDIAN);
+=======
+            uc = new UnicornEngine.Unicorn(Common.UC_ARCH_ARM64, Common.UC_MODE_LITTLE_ENDIAN);
+>>>>>>> 1ec71635b (sync with main branch)
 
             SetRegister(Arm64.UC_ARM64_REG_CPACR_EL1, 0x00300000);
         }
@@ -94,7 +130,11 @@ namespace Ryujinx.Tests.Unicorn
         {
             if (!_isDisposed)
             {
+<<<<<<< HEAD
                 Uc.Close();
+=======
+                uc.Close();
+>>>>>>> 1ec71635b (sync with main branch)
                 _isDisposed = true;
             }
         }
@@ -102,7 +142,11 @@ namespace Ryujinx.Tests.Unicorn
         public void RunForCount(ulong count)
         {
             // FIXME: untilAddr should be 0xFFFFFFFFFFFFFFFFul
+<<<<<<< HEAD
             Uc.EmuStart((long)this.PC, -1, 0, (long)count);
+=======
+            uc.EmuStart((long)this.PC, -1, 0, (long)count);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void Step()
@@ -110,7 +154,11 @@ namespace Ryujinx.Tests.Unicorn
             RunForCount(1);
         }
 
+<<<<<<< HEAD
         private static readonly int[] _xRegisters =
+=======
+        private static int[] XRegisters =
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Arm64.UC_ARM64_REG_X0,
             Arm64.UC_ARM64_REG_X1,
@@ -145,7 +193,11 @@ namespace Ryujinx.Tests.Unicorn
             Arm64.UC_ARM64_REG_X30,
         };
 
+<<<<<<< HEAD
         private static readonly int[] _qRegisters =
+=======
+        private static int[] QRegisters =
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Arm64.UC_ARM64_REG_Q0,
             Arm64.UC_ARM64_REG_Q1,
@@ -188,7 +240,11 @@ namespace Ryujinx.Tests.Unicorn
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
+<<<<<<< HEAD
             return GetRegister(_xRegisters[index]);
+=======
+            return GetRegister(XRegisters[index]);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void SetX(int index, ulong value)
@@ -198,7 +254,11 @@ namespace Ryujinx.Tests.Unicorn
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
+<<<<<<< HEAD
             SetRegister(_xRegisters[index], value);
+=======
+            SetRegister(XRegisters[index], value);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public SimdValue GetQ(int index)
@@ -208,7 +268,11 @@ namespace Ryujinx.Tests.Unicorn
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
+<<<<<<< HEAD
             return GetVector(_qRegisters[index]);
+=======
+            return GetVector(QRegisters[index]);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void SetQ(int index, SimdValue value)
@@ -218,14 +282,22 @@ namespace Ryujinx.Tests.Unicorn
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
+<<<<<<< HEAD
             SetVector(_qRegisters[index], value);
+=======
+            SetVector(QRegisters[index], value);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private ulong GetRegister(int register)
         {
             byte[] data = new byte[8];
 
+<<<<<<< HEAD
             Uc.RegRead(register, data);
+=======
+            uc.RegRead(register, data);
+>>>>>>> 1ec71635b (sync with main branch)
 
             return BitConverter.ToUInt64(data, 0);
         }
@@ -234,14 +306,22 @@ namespace Ryujinx.Tests.Unicorn
         {
             byte[] data = BitConverter.GetBytes(value);
 
+<<<<<<< HEAD
             Uc.RegWrite(register, data);
+=======
+            uc.RegWrite(register, data);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private SimdValue GetVector(int register)
         {
             byte[] data = new byte[16];
 
+<<<<<<< HEAD
             Uc.RegRead(register, data);
+=======
+            uc.RegRead(register, data);
+>>>>>>> 1ec71635b (sync with main branch)
 
             return new SimdValue(data);
         }
@@ -250,18 +330,27 @@ namespace Ryujinx.Tests.Unicorn
         {
             byte[] data = value.ToArray();
 
+<<<<<<< HEAD
             Uc.RegWrite(register, data);
+=======
+            uc.RegWrite(register, data);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public byte[] MemoryRead(ulong address, ulong size)
         {
             byte[] value = new byte[size];
 
+<<<<<<< HEAD
             Uc.MemRead((long)address, value);
+=======
+            uc.MemRead((long)address, value);
+>>>>>>> 1ec71635b (sync with main branch)
 
             return value;
         }
 
+<<<<<<< HEAD
         public byte MemoryRead8(ulong address) => MemoryRead(address, 1)[0];
         public ushort MemoryRead16(ulong address) => BitConverter.ToUInt16(MemoryRead(address, 2), 0);
         public uint MemoryRead32(ulong address) => BitConverter.ToUInt32(MemoryRead(address, 4), 0);
@@ -278,21 +367,54 @@ namespace Ryujinx.Tests.Unicorn
         public void MemoryWrite32(ulong address, int value) => MemoryWrite(address, BitConverter.GetBytes(value));
         public void MemoryWrite32(ulong address, uint value) => MemoryWrite(address, BitConverter.GetBytes(value));
         public void MemoryWrite64(ulong address, long value) => MemoryWrite(address, BitConverter.GetBytes(value));
+=======
+        public byte   MemoryRead8 (ulong address) => MemoryRead(address, 1)[0];
+        public ushort MemoryRead16(ulong address) => BitConverter.ToUInt16(MemoryRead(address, 2), 0);
+        public uint   MemoryRead32(ulong address) => BitConverter.ToUInt32(MemoryRead(address, 4), 0);
+        public ulong  MemoryRead64(ulong address) => BitConverter.ToUInt64(MemoryRead(address, 8), 0);
+
+        public void MemoryWrite(ulong address, byte[] value)
+        {
+            uc.MemWrite((long)address, value);
+        }
+
+        public void MemoryWrite8 (ulong address, byte value)   => MemoryWrite(address, new[]{ value });
+        public void MemoryWrite16(ulong address, short value)  => MemoryWrite(address, BitConverter.GetBytes(value));
+        public void MemoryWrite16(ulong address, ushort value) => MemoryWrite(address, BitConverter.GetBytes(value));
+        public void MemoryWrite32(ulong address, int value)  => MemoryWrite(address, BitConverter.GetBytes(value));
+        public void MemoryWrite32(ulong address, uint value) => MemoryWrite(address, BitConverter.GetBytes(value));
+        public void MemoryWrite64(ulong address, long value)  => MemoryWrite(address, BitConverter.GetBytes(value));
+>>>>>>> 1ec71635b (sync with main branch)
         public void MemoryWrite64(ulong address, ulong value) => MemoryWrite(address, BitConverter.GetBytes(value));
 
         public void MemoryMap(ulong address, ulong size, MemoryPermission permissions)
         {
+<<<<<<< HEAD
             Uc.MemMap((long)address, (long)size, (int)permissions);
+=======
+            uc.MemMap((long)address, (long)size, (int)permissions);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void MemoryUnmap(ulong address, ulong size)
         {
+<<<<<<< HEAD
             Uc.MemUnmap((long)address, (long)size);
+=======
+            uc.MemUnmap((long)address, (long)size);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void MemoryProtect(ulong address, ulong size, MemoryPermission permissions)
         {
+<<<<<<< HEAD
             Uc.MemProtect((long)address, (long)size, (int)permissions);
         }
     }
 }
+=======
+            uc.MemProtect((long)address, (long)size, (int)permissions);
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

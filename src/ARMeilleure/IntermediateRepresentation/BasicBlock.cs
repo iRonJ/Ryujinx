@@ -10,7 +10,11 @@ namespace ARMeilleure.IntermediateRepresentation
 
         private int _succCount;
         private BasicBlock _succ0;
+<<<<<<< HEAD
         private readonly BasicBlock _succ1;
+=======
+        private BasicBlock _succ1;
+>>>>>>> 1ec71635b (sync with main branch)
         private HashSet<BasicBlock> _domFrontiers;
 
         public int Index { get; set; }
@@ -27,7 +31,14 @@ namespace ARMeilleure.IntermediateRepresentation
         {
             get
             {
+<<<<<<< HEAD
                 _domFrontiers ??= new HashSet<BasicBlock>();
+=======
+                if (_domFrontiers == null)
+                {
+                    _domFrontiers = new HashSet<BasicBlock>();
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return _domFrontiers;
             }
@@ -105,7 +116,11 @@ namespace ARMeilleure.IntermediateRepresentation
 
             oldBlock.Predecessors.Remove(this);
             block.Predecessors.Add(this);
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 1ec71635b (sync with main branch)
             oldBlock = block;
         }
 
@@ -153,4 +168,8 @@ namespace ARMeilleure.IntermediateRepresentation
             return base.GetHashCode();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

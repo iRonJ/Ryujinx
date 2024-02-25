@@ -1,23 +1,41 @@
+<<<<<<< HEAD
 using Ryujinx.Cpu;
+=======
+﻿using Ryujinx.Cpu;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Kernel.Threading;
 
 namespace Ryujinx.HLE.HOS.Services.Time.Clock
 {
     abstract class SystemClockCore
     {
+<<<<<<< HEAD
         private readonly SteadyClockCore _steadyClockCore;
         private SystemClockContext _context;
         private bool _isInitialized;
+=======
+        private SteadyClockCore                  _steadyClockCore;
+        private SystemClockContext               _context;
+        private bool                             _isInitialized;
+>>>>>>> 1ec71635b (sync with main branch)
         private SystemClockContextUpdateCallback _systemClockContextUpdateCallback;
 
         public SystemClockCore(SteadyClockCore steadyClockCore)
         {
             _steadyClockCore = steadyClockCore;
+<<<<<<< HEAD
             _context = new SystemClockContext();
             _isInitialized = false;
 
             _context.SteadyTimePoint.ClockSourceId = steadyClockCore.GetClockSourceId();
             _systemClockContextUpdateCallback = null;
+=======
+            _context         = new SystemClockContext();
+            _isInitialized   = false;
+
+            _context.SteadyTimePoint.ClockSourceId = steadyClockCore.GetClockSourceId();
+            _systemClockContextUpdateCallback      = null;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public virtual SteadyClockCore GetSteadyClockCore()
@@ -52,10 +70,17 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
         {
             SteadyClockTimePoint currentTimePoint = _steadyClockCore.GetCurrentTimePoint(tickSource);
 
+<<<<<<< HEAD
             SystemClockContext clockContext = new()
             {
                 Offset = posixTime - currentTimePoint.TimePoint,
                 SteadyTimePoint = currentTimePoint,
+=======
+            SystemClockContext clockContext = new SystemClockContext()
+            {
+                Offset          = posixTime - currentTimePoint.TimePoint,
+                SteadyTimePoint = currentTimePoint
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             ResultCode result = SetClockContext(clockContext);
@@ -99,7 +124,14 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
 
         public void RegisterOperationEvent(KWritableEvent writableEvent)
         {
+<<<<<<< HEAD
             _systemClockContextUpdateCallback?.RegisterOperationEvent(writableEvent);
+=======
+            if (_systemClockContextUpdateCallback != null)
+            {
+                _systemClockContextUpdateCallback.RegisterOperationEvent(writableEvent);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ResultCode SetSystemClockContext(SystemClockContext context)

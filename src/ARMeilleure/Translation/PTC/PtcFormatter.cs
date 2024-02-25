@@ -28,6 +28,7 @@ namespace ARMeilleure.Translation.PTC
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         public static Dictionary<TKey, TValue> DeserializeAndUpdateDictionary<TKey, TValue>(Stream stream, Func<Stream, TValue> valueFunc, Func<TKey, TValue, (TKey, TValue)> updateFunc) where TKey : struct
         {
             Dictionary<TKey, TValue> dictionary = new();
@@ -48,6 +49,8 @@ namespace ARMeilleure.Translation.PTC
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static List<T> DeserializeList<T>(Stream stream) where T : struct
         {
             List<T> list = new();
@@ -67,7 +70,11 @@ namespace ARMeilleure.Translation.PTC
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T DeserializeStructure<T>(Stream stream) where T : struct
         {
+<<<<<<< HEAD
             T structure = default;
+=======
+            T structure = default(T);
+>>>>>>> 1ec71635b (sync with main branch)
 
             Span<T> spanT = MemoryMarshal.CreateSpan(ref structure, 1);
             int bytesCount = stream.Read(MemoryMarshal.AsBytes(spanT));
@@ -196,4 +203,8 @@ namespace ARMeilleure.Translation.PTC
         }
         #endregion
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

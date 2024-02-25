@@ -33,4 +33,8 @@ namespace Ryujinx.Audio.Common
         /// </summary>
         public ulong DataOffset;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -12,9 +12,13 @@ namespace Ryujinx.Audio.Renderer.Dsp
         private const int SamplesPerFrame = 14;
         private const int NibblesPerFrame = SamplesPerFrame + 2;
         private const int BytesPerFrame = 8;
+<<<<<<< HEAD
 #pragma warning disable IDE0051 // Remove unused private member
         private const int BitsPerFrame = BytesPerFrame * 8;
 #pragma warning restore IDE0051
+=======
+        private const int BitsPerFrame = BytesPerFrame * 8;
+>>>>>>> 1ec71635b (sync with main branch)
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint GetAdpcmDataSize(int sampleCount)
@@ -66,6 +70,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
         private static short Saturate(int value)
         {
             if (value > short.MaxValue)
+<<<<<<< HEAD
             {
                 value = short.MaxValue;
             }
@@ -74,6 +79,12 @@ namespace Ryujinx.Audio.Renderer.Dsp
             {
                 value = short.MinValue;
             }
+=======
+                value = short.MaxValue;
+
+            if (value < short.MinValue)
+                value = short.MinValue;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return (short)value;
         }
@@ -115,7 +126,11 @@ namespace Ryujinx.Audio.Renderer.Dsp
 
             ReadOnlySpan<byte> targetInput;
 
+<<<<<<< HEAD
             targetInput = input[(nibbles / 2)..];
+=======
+            targetInput = input.Slice(nibbles / 2);
+>>>>>>> 1ec71635b (sync with main branch)
 
             while (remaining > 0)
             {
@@ -219,4 +234,8 @@ namespace Ryujinx.Audio.Renderer.Dsp
             return decodedCount;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

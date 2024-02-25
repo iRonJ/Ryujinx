@@ -12,4 +12,8 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
 
         void SetSource(int index, Operand operand);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

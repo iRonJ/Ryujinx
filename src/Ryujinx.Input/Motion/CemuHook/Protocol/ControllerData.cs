@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.Input.Motion.CemuHook.Protocol
@@ -16,6 +20,7 @@ namespace Ryujinx.Input.Motion.CemuHook.Protocol
     public struct ControllerDataResponse
     {
         public SharedResponse Shared;
+<<<<<<< HEAD
         public byte Connected;
         public uint PacketId;
         public byte ExtraButtons;
@@ -25,6 +30,17 @@ namespace Ryujinx.Input.Motion.CemuHook.Protocol
         public ushort RightStickXY;
         public uint DPadAnalog;
         public ulong MainButtonsAnalog;
+=======
+        public byte           Connected;
+        public uint           PacketId;
+        public byte           ExtraButtons;
+        public byte           MainButtons;
+        public ushort         PSExtraInput;
+        public ushort         LeftStickXY;
+        public ushort         RightStickXY;
+        public uint           DPadAnalog;
+        public ulong          MainButtonsAnalog;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public Array6<byte> Touch1;
         public Array6<byte> Touch2;
@@ -42,6 +58,12 @@ namespace Ryujinx.Input.Motion.CemuHook.Protocol
     {
         All,
         Slot,
+<<<<<<< HEAD
         Mac,
     }
 }
+=======
+        Mac
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Kernel.Threading;
 using Ryujinx.HLE.HOS.Services.SurfaceFlinger.Types;
 using System;
@@ -9,6 +13,7 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 {
     class BufferQueueCore
     {
+<<<<<<< HEAD
         public BufferSlotArray Slots;
         public int OverrideMaxBufferCount;
         public bool UseAsyncBuffer;
@@ -38,6 +43,37 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
         private readonly KEvent _waitBufferFreeEvent;
         private readonly KEvent _frameAvailableEvent;
+=======
+        public BufferSlotArray       Slots;
+        public int                   OverrideMaxBufferCount;
+        public bool                  UseAsyncBuffer;
+        public bool                  DequeueBufferCannotBlock;
+        public PixelFormat           DefaultBufferFormat;
+        public int                   DefaultWidth;
+        public int                   DefaultHeight;
+        public int                   DefaultMaxBufferCount;
+        public int                   MaxAcquiredBufferCount;
+        public bool                  BufferHasBeenQueued;
+        public ulong                 FrameCounter;
+        public NativeWindowTransform TransformHint;
+        public bool                  IsAbandoned;
+        public NativeWindowApi       ConnectedApi;
+        public bool                  IsAllocating;
+        public IProducerListener     ProducerListener;
+        public IConsumerListener     ConsumerListener;
+        public bool                  ConsumerControlledByApp;
+        public uint                  ConsumerUsageBits;
+        public List<BufferItem>      Queue;
+        public BufferInfo[]          BufferHistory;
+        public uint                  BufferHistoryPosition;
+        public bool                  EnableExternalEvent;
+        public int                   MaxBufferCountCached;
+
+        public readonly object Lock = new object();
+
+        private KEvent _waitBufferFreeEvent;
+        private KEvent _frameAvailableEvent;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ulong Owner { get; }
 
@@ -49,6 +85,7 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
         public BufferQueueCore(Switch device, ulong pid)
         {
+<<<<<<< HEAD
             Slots = new BufferSlotArray();
             IsAbandoned = false;
             OverrideMaxBufferCount = 0;
@@ -65,20 +102,47 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             ProducerListener = null;
             ConsumerListener = null;
             ConsumerUsageBits = 0;
+=======
+            Slots                    = new BufferSlotArray();
+            IsAbandoned              = false;
+            OverrideMaxBufferCount   = 0;
+            DequeueBufferCannotBlock = false;
+            UseAsyncBuffer           = false;
+            DefaultWidth             = 1;
+            DefaultHeight            = 1;
+            DefaultMaxBufferCount    = 2;
+            MaxAcquiredBufferCount   = 1;
+            FrameCounter             = 0;
+            TransformHint            = 0;
+            DefaultBufferFormat      = PixelFormat.Rgba8888;
+            IsAllocating             = false;
+            ProducerListener         = null;
+            ConsumerListener         = null;
+            ConsumerUsageBits        = 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             Queue = new List<BufferItem>();
 
             // TODO: CreateGraphicBufferAlloc?
 
+<<<<<<< HEAD
             _waitBufferFreeEvent = new KEvent(device.System.KernelContext);
+=======
+            _waitBufferFreeEvent  = new KEvent(device.System.KernelContext);
+>>>>>>> 1ec71635b (sync with main branch)
             _frameAvailableEvent = new KEvent(device.System.KernelContext);
 
             Owner = pid;
 
             Active = true;
 
+<<<<<<< HEAD
             BufferHistory = new BufferInfo[BufferHistoryArraySize];
             EnableExternalEvent = true;
+=======
+            BufferHistory        = new BufferInfo[BufferHistoryArraySize];
+            EnableExternalEvent  = true;
+>>>>>>> 1ec71635b (sync with main branch)
             MaxBufferCountCached = 0;
         }
 
@@ -220,9 +284,15 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 Slots[slot].NeedsCleanupOnRelease = true;
             }
 
+<<<<<<< HEAD
             Slots[slot].BufferState = BufferState.Free;
             Slots[slot].FrameNumber = uint.MaxValue;
             Slots[slot].AcquireCalled = false;
+=======
+            Slots[slot].BufferState      = BufferState.Free;
+            Slots[slot].FrameNumber      = uint.MaxValue;
+            Slots[slot].AcquireCalled    = false;
+>>>>>>> 1ec71635b (sync with main branch)
             Slots[slot].Fence.FenceCount = 0;
         }
 
@@ -259,7 +329,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 return;
             }
 
+<<<<<<< HEAD
             bool needBufferReleaseSignal = false;
+=======
+            bool needBufferReleaseSignal  = false;
+>>>>>>> 1ec71635b (sync with main branch)
             bool needFrameAvailableSignal = false;
 
             if (maxBufferCount > 1)

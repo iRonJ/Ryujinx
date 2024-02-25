@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 
 namespace Ryujinx.Graphics.Gpu.Shader.HashTable
@@ -40,7 +44,11 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
             }
             else if (_data.Length > length)
             {
+<<<<<<< HEAD
                 return _data[..length];
+=======
+                return _data.Slice(0, length);
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return _data;
@@ -65,7 +73,11 @@ namespace Ryujinx.Graphics.Gpu.Shader.HashTable
         /// </summary>
         /// <param name="data">Data to be hashed</param>
         /// <returns>Hash of the data</returns>
+<<<<<<< HEAD
         private readonly uint CalcHashCached(ReadOnlySpan<byte> data)
+=======
+        private uint CalcHashCached(ReadOnlySpan<byte> data)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             HashState state = default;
             bool found = false;

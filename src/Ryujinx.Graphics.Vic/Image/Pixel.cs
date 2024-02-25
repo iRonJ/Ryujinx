@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Vic.Image
+=======
+﻿namespace Ryujinx.Graphics.Vic.Image
+>>>>>>> 1ec71635b (sync with main branch)
 {
     struct Pixel
     {

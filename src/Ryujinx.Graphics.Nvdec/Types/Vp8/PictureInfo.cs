@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Video;
 
 namespace Ryujinx.Graphics.Nvdec.Types.Vp8
 {
     struct PictureInfo
     {
+<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
+=======
+#pragma warning disable CS0649
+>>>>>>> 1ec71635b (sync with main branch)
         public Array13<uint> Unknown0;
         public uint GpTimerTimeoutValue;
         public ushort FrameWidth;
@@ -68,7 +76,11 @@ namespace Ryujinx.Graphics.Nvdec.Types.Vp8
                 FirstPartSize = FirstPartSize,
                 Version = Version,
                 FrameWidth = FrameWidth,
+<<<<<<< HEAD
                 FrameHeight = FrameHeight,
+=======
+                FrameHeight = FrameHeight
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

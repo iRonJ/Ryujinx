@@ -1,15 +1,25 @@
 using Ryujinx.Common.Logging;
+<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
 using System;
 using System.IO;
 using System.Runtime.Versioning;
+=======
+using System;
+using System.IO;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Common.Configuration
 {
     public static class AppDataManager
     {
+<<<<<<< HEAD
         private const string DefaultBaseDir = "Ryujinx";
         private const string DefaultPortableDir = "portable";
+=======
+        public const string DefaultBaseDir = "Ryujinx";
+        public const string DefaultPortableDir = "portable";
+>>>>>>> 1ec71635b (sync with main branch)
 
         // The following 3 are always part of Base Directory
         private const string GamesDir = "games";
@@ -20,7 +30,11 @@ namespace Ryujinx.Common.Configuration
         {
             UserProfile,
             Portable,
+<<<<<<< HEAD
             Custom,
+=======
+            Custom
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static LaunchMode Mode { get; private set; }
@@ -31,14 +45,21 @@ namespace Ryujinx.Common.Configuration
         public static string KeysDirPath { get; private set; }
         public static string KeysDirPathUser { get; }
 
+<<<<<<< HEAD
         public static string LogsDirPath { get; private set; }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public const string DefaultNandDir = "bis";
         public const string DefaultSdcardDir = "sdcard";
         private const string DefaultModsDir = "mods";
 
         public static string CustomModsPath { get; set; }
+<<<<<<< HEAD
         public static string CustomSdModsPath { get; set; }
+=======
+        public static string CustomSdModsPath {get; set; }
+>>>>>>> 1ec71635b (sync with main branch)
         public static string CustomNandPath { get; set; } // TODO: Actually implement this into VFS
         public static string CustomSdCardPath { get; set; } // TODO: Actually implement this into VFS
 
@@ -49,7 +70,19 @@ namespace Ryujinx.Common.Configuration
 
         public static void Initialize(string baseDirPath)
         {
+<<<<<<< HEAD
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+=======
+            string appDataPath;
+            if (OperatingSystem.IsMacOS())
+            {
+                appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Library", "Application Support");
+            }
+            else
+            {
+                appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (appDataPath.Length == 0)
             {
@@ -59,6 +92,7 @@ namespace Ryujinx.Common.Configuration
             string userProfilePath = Path.Combine(appDataPath, DefaultBaseDir);
             string portablePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DefaultPortableDir);
 
+<<<<<<< HEAD
             // On macOS, check for a portable directory next to the app bundle as well.
             if (OperatingSystem.IsMacOS() && !Directory.Exists(portablePath))
             {
@@ -70,6 +104,8 @@ namespace Ryujinx.Common.Configuration
                 }
             }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             if (Directory.Exists(portablePath))
             {
                 BaseDirPath = portablePath;
@@ -96,14 +132,31 @@ namespace Ryujinx.Common.Configuration
 
             BaseDirPath = Path.GetFullPath(BaseDirPath); // convert relative paths
 
+<<<<<<< HEAD
             if (IsPathSymlink(BaseDirPath))
             {
                 Logger.Warning?.Print(LogClass.Application, $"Application data directory is a symlink. This may be unintended.");
+=======
+            // NOTE: Moves the Ryujinx folder in `~/.config` to `~/Library/Application Support` if one is found
+            // and a Ryujinx folder does not already exist in Application Support.
+            // Also creates a symlink from `~/.config/Ryujinx` to `~/Library/Application Support/Ryujinx` to preserve backwards compatibility.
+            // This should be removed in the future.
+            if (OperatingSystem.IsMacOS() && Mode == LaunchMode.UserProfile)
+            {
+                string oldConfigPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), DefaultBaseDir);
+                if (Path.Exists(oldConfigPath) && !Path.Exists(BaseDirPath))
+                {
+                    CopyDirectory(oldConfigPath, BaseDirPath);
+                    Directory.Delete(oldConfigPath, true);
+                    Directory.CreateSymbolicLink(oldConfigPath, BaseDirPath);
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             SetupBasePaths();
         }
 
+<<<<<<< HEAD
         public static string GetOrCreateLogsDir()
         {
             if (Directory.Exists(LogsDirPath))
@@ -224,11 +277,17 @@ namespace Ryujinx.Common.Configuration
         {
             Directory.CreateDirectory(BaseDirPath);
             LogsDirPath = SetUpLogsDir();
+=======
+        private static void SetupBasePaths()
+        {
+            Directory.CreateDirectory(BaseDirPath);
+>>>>>>> 1ec71635b (sync with main branch)
             Directory.CreateDirectory(GamesDirPath = Path.Combine(BaseDirPath, GamesDir));
             Directory.CreateDirectory(ProfilesDirPath = Path.Combine(BaseDirPath, ProfilesDir));
             Directory.CreateDirectory(KeysDirPath = Path.Combine(BaseDirPath, KeysDir));
         }
 
+<<<<<<< HEAD
         // Check if existing old baseDirPath is a symlink, to prevent possible errors.
         // Should be removed, when the existence of the old directory isn't checked anymore.
         private static bool IsPathSymlink(string path)
@@ -324,3 +383,37 @@ namespace Ryujinx.Common.Configuration
         public static string GetSdModsPath() => CustomSdModsPath ?? Directory.CreateDirectory(Path.Combine(BaseDirPath, DefaultSdcardDir, "atmosphere")).FullName;
     }
 }
+=======
+        private static void CopyDirectory(string sourceDir, string destinationDir)
+        {
+            var dir = new DirectoryInfo(sourceDir);
+
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+            }
+
+            DirectoryInfo[] subDirs = dir.GetDirectories();
+            Directory.CreateDirectory(destinationDir);
+
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                if (file.Name == ".DS_Store")
+                {
+                    continue;
+                }
+
+                file.CopyTo(Path.Combine(destinationDir, file.Name));
+            }
+
+            foreach (DirectoryInfo subDir in subDirs)
+            {
+                CopyDirectory(subDir.FullName, Path.Combine(destinationDir, subDir.Name));
+            }
+        }
+
+        public static string GetModsPath()   => CustomModsPath ?? Directory.CreateDirectory(Path.Combine(BaseDirPath, DefaultModsDir)).FullName;
+        public static string GetSdModsPath() => CustomSdModsPath ?? Directory.CreateDirectory(Path.Combine(BaseDirPath, DefaultSdcardDir, "atmosphere")).FullName;
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

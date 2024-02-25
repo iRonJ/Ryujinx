@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.IO;
+=======
+﻿using System.IO;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.Loaders.Npdm
 {
@@ -12,7 +16,11 @@ namespace Ryujinx.HLE.Loaders.Npdm
 
             Capabilities = new int[size / 4];
 
+<<<<<<< HEAD
             BinaryReader reader = new(stream);
+=======
+            BinaryReader reader = new BinaryReader(stream);
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int index = 0; index < Capabilities.Length; index++)
             {

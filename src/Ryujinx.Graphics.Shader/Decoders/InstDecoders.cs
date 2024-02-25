@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 using System;
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 namespace Ryujinx.Graphics.Shader.Decoders
 {
     enum AlSize
@@ -684,7 +687,11 @@ namespace Ryujinx.Graphics.Shader.Decoders
         Texture2DLodZeroMultisample = 0x6,
         Texture3DLodZero = 0x7,
         Texture2DArrayLodZero = 0x8,
+<<<<<<< HEAD
         Texture2DLodLevelOffset = 0xc,
+=======
+        Texture2DLodLevelOffset = 0xc
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     enum TexComp
@@ -713,7 +720,10 @@ namespace Ryujinx.Graphics.Shader.Decoders
         TexSamplerBorderColor = 22,
     }
 
+<<<<<<< HEAD
     [Flags]
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     enum VectorSelect
     {
         U8B0 = 0,
@@ -848,6 +858,7 @@ namespace Ryujinx.Graphics.Shader.Decoders
         S16h0 = 3,
     }
 
+<<<<<<< HEAD
     readonly struct InstConditional
     {
         private readonly ulong _opcode;
@@ -862,6 +873,22 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstAl2p(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstConditional
+    {
+        private ulong _opcode;
+        public InstConditional(ulong opcode) => _opcode = opcode;
+        public int Pred => (int)((_opcode >> 16) & 0x7);
+        public bool PredInv => (_opcode & 0x80000) != 0;
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+    }
+
+    struct InstAl2p
+    {
+        private ulong _opcode;
+        public InstAl2p(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -871,11 +898,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int DestPred => (int)((_opcode >> 44) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstAld
     {
         private readonly ulong _opcode;
         public InstAld(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstAld
+    {
+        private ulong _opcode;
+        public InstAld(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -887,12 +922,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Phys => !P && Imm11 == 0 && SrcA != RegisterConsts.RegisterZeroIndex;
     }
 
+<<<<<<< HEAD
     readonly struct InstAst
     {
         private readonly ulong _opcode;
         public InstAst(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)(_opcode & 0xFF);
+=======
+    struct InstAst
+    {
+        private ulong _opcode;
+        public InstAst(ulong opcode) => _opcode = opcode;
+        public int SrcA => (int)((_opcode >> 8) & 0xFF);
+        public int SrcB => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -902,11 +946,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Phys => !P && Imm11 == 0 && SrcA != RegisterConsts.RegisterZeroIndex;
     }
 
+<<<<<<< HEAD
     readonly struct InstAtom
     {
         private readonly ulong _opcode;
         public InstAtom(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstAtom
+    {
+        private ulong _opcode;
+        public InstAtom(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -917,11 +969,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool E => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstAtomCas
     {
         private readonly ulong _opcode;
         public InstAtomCas(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstAtomCas
+    {
+        private ulong _opcode;
+        public InstAtomCas(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -930,11 +990,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool E => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstAtoms
     {
         private readonly ulong _opcode;
         public InstAtoms(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstAtoms
+    {
+        private ulong _opcode;
+        public InstAtoms(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -944,11 +1012,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public AtomOp AtomOp => (AtomOp)((_opcode >> 52) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstAtomsCas
     {
         private readonly ulong _opcode;
         public InstAtomsCas(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstAtomsCas
+    {
+        private ulong _opcode;
+        public InstAtomsCas(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -956,11 +1032,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int AtomsBcRz => (int)((_opcode >> 28) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstB2r
     {
         private readonly ulong _opcode;
         public InstB2r(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstB2r
+    {
+        private ulong _opcode;
+        public InstB2r(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int DestPred => (int)((_opcode >> 45) & 0x7);
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -968,9 +1052,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public BarMode Mode => (BarMode)((_opcode >> 32) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstBar
     {
         private readonly ulong _opcode;
+=======
+    struct InstBar
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstBar(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm12 => (int)((_opcode >> 20) & 0xFFF);
@@ -984,11 +1074,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BFixBar => (_opcode & 0x80000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstBfeR
     {
         private readonly ulong _opcode;
         public InstBfeR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstBfeR
+    {
+        private ulong _opcode;
+        public InstBfeR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -998,11 +1096,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Brev => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstBfeI
     {
         private readonly ulong _opcode;
         public InstBfeI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstBfeI
+    {
+        private ulong _opcode;
+        public InstBfeI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1012,11 +1118,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Brev => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstBfeC
     {
         private readonly ulong _opcode;
         public InstBfeC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstBfeC
+    {
+        private ulong _opcode;
+        public InstBfeC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1027,11 +1141,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Brev => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstBfiR
     {
         private readonly ulong _opcode;
         public InstBfiR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstBfiR
+    {
+        private ulong _opcode;
+        public InstBfiR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -1040,11 +1162,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool WriteCC => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstBfiI
     {
         private readonly ulong _opcode;
         public InstBfiI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstBfiI
+    {
+        private ulong _opcode;
+        public InstBfiI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -1053,11 +1183,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool WriteCC => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstBfiC
     {
         private readonly ulong _opcode;
         public InstBfiC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstBfiC
+    {
+        private ulong _opcode;
+        public InstBfiC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1067,11 +1205,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool WriteCC => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstBfiRc
     {
         private readonly ulong _opcode;
         public InstBfiRc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstBfiRc
+    {
+        private ulong _opcode;
+        public InstBfiRc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -1081,14 +1227,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool WriteCC => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstBpt
     {
         private readonly ulong _opcode;
+=======
+    struct InstBpt
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstBpt(ulong opcode) => _opcode = opcode;
         public int Imm20 => (int)((_opcode >> 20) & 0xFFFFF);
         public Bpt Bpt => (Bpt)((_opcode >> 6) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstBra
     {
         private readonly ulong _opcode;
@@ -1096,12 +1249,22 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public Ccc Ccc => (Ccc)(_opcode & 0x1F);
+=======
+    struct InstBra
+    {
+        private ulong _opcode;
+        public InstBra(ulong opcode) => _opcode = opcode;
+        public int Pred => (int)((_opcode >> 16) & 0x7);
+        public bool PredInv => (_opcode & 0x80000) != 0;
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
         public bool Ca => (_opcode & 0x20) != 0;
         public bool Lmt => (_opcode & 0x40) != 0;
         public bool U => (_opcode & 0x80) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstBrk
     {
         private readonly ulong _opcode;
@@ -1114,28 +1277,58 @@ namespace Ryujinx.Graphics.Shader.Decoders
     readonly struct InstBrx
     {
         private readonly ulong _opcode;
+=======
+    struct InstBrk
+    {
+        private ulong _opcode;
+        public InstBrk(ulong opcode) => _opcode = opcode;
+        public int Pred => (int)((_opcode >> 16) & 0x7);
+        public bool PredInv => (_opcode & 0x80000) != 0;
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+    }
+
+    struct InstBrx
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstBrx(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
+<<<<<<< HEAD
         public Ccc Ccc => (Ccc)(_opcode & 0x1F);
+=======
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
         public bool Ca => (_opcode & 0x20) != 0;
         public bool Lmt => (_opcode & 0x40) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstCal
     {
         private readonly ulong _opcode;
+=======
+    struct InstCal
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstCal(ulong opcode) => _opcode = opcode;
         public bool Ca => (_opcode & 0x20) != 0;
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
         public bool Inc => (_opcode & 0x40) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstCctl
     {
         private readonly ulong _opcode;
+=======
+    struct InstCctl
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstCctl(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1143,28 +1336,47 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm30 => (int)((_opcode >> 22) & 0x3FFFFFFF);
         public bool E => (_opcode & 0x10000000000000) != 0;
         public CacheType Cache => (CacheType)((_opcode >> 4) & 0x7);
+<<<<<<< HEAD
         public CctlOp CctlOp => (CctlOp)(_opcode & 0xF);
     }
 
     readonly struct InstCctll
     {
         private readonly ulong _opcode;
+=======
+        public CctlOp CctlOp => (CctlOp)((_opcode >> 0) & 0xF);
+    }
+
+    struct InstCctll
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstCctll(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public int Imm22 => (int)((_opcode >> 22) & 0x3FFFFF);
         public int Cache => (int)((_opcode >> 4) & 0x3);
+<<<<<<< HEAD
         public CctlOp CctlOp => (CctlOp)(_opcode & 0xF);
     }
 
     readonly struct InstCctlt
     {
         private readonly ulong _opcode;
+=======
+        public CctlOp CctlOp => (CctlOp)((_opcode >> 0) & 0xF);
+    }
+
+    struct InstCctlt
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstCctlt(ulong opcode) => _opcode = opcode;
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public int TsIdx13 => (int)((_opcode >> 36) & 0x1FFF);
+<<<<<<< HEAD
         public CctltOp CctltOp => (CctltOp)(_opcode & 0x3);
     }
 
@@ -1190,6 +1402,33 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstCset(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+        public CctltOp CctltOp => (CctltOp)((_opcode >> 0) & 0x3);
+    }
+
+    struct InstCctltR
+    {
+        private ulong _opcode;
+        public InstCctltR(ulong opcode) => _opcode = opcode;
+        public int SrcC => (int)((_opcode >> 39) & 0xFF);
+        public CctltOp CctltOp => (CctltOp)((_opcode >> 0) & 0x3);
+    }
+
+    struct InstCont
+    {
+        private ulong _opcode;
+        public InstCont(ulong opcode) => _opcode = opcode;
+        public int Pred => (int)((_opcode >> 16) & 0x7);
+        public bool PredInv => (_opcode & 0x80000) != 0;
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+    }
+
+    struct InstCset
+    {
+        private ulong _opcode;
+        public InstCset(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public bool WriteCC => (_opcode & 0x800000000000) != 0;
@@ -1200,36 +1439,62 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public BoolOp Bop => (BoolOp)((_opcode >> 45) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstCsetp
     {
         private readonly ulong _opcode;
+=======
+    struct InstCsetp
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstCsetp(ulong opcode) => _opcode = opcode;
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public bool WriteCC => (_opcode & 0x800000000000) != 0;
         public Ccc Ccc => (Ccc)((_opcode >> 8) & 0x1F);
         public int DestPred => (int)((_opcode >> 3) & 0x7);
+<<<<<<< HEAD
         public int DestPredInv => (int)(_opcode & 0x7);
+=======
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcPred => (int)((_opcode >> 39) & 0x7);
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
         public BoolOp Bop => (BoolOp)((_opcode >> 45) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstCs2r
     {
         private readonly ulong _opcode;
         public InstCs2r(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstCs2r
+    {
+        private ulong _opcode;
+        public InstCs2r(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public SReg SReg => (SReg)((_opcode >> 20) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstDaddR
     {
         private readonly ulong _opcode;
         public InstDaddR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDaddR
+    {
+        private ulong _opcode;
+        public InstDaddR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1242,11 +1507,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public RoundMode RoundMode => (RoundMode)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstDaddI
     {
         private readonly ulong _opcode;
         public InstDaddI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDaddI
+    {
+        private ulong _opcode;
+        public InstDaddI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1259,11 +1532,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public RoundMode RoundMode => (RoundMode)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstDaddC
     {
         private readonly ulong _opcode;
         public InstDaddC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDaddC
+    {
+        private ulong _opcode;
+        public InstDaddC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1277,15 +1558,22 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public RoundMode RoundMode => (RoundMode)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstDepbar
     {
         private readonly ulong _opcode;
+=======
+    struct InstDepbar
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstDepbar(ulong opcode) => _opcode = opcode;
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public bool Le => (_opcode & 0x20000000) != 0;
         public int Sbid => (int)((_opcode >> 26) & 0x7);
         public int PendCnt => (int)((_opcode >> 20) & 0x3F);
+<<<<<<< HEAD
         public int Imm6 => (int)(_opcode & 0x3F);
     }
 
@@ -1294,6 +1582,16 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstDfmaR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+        public int Imm6 => (int)((_opcode >> 0) & 0x3F);
+    }
+
+    struct InstDfmaR
+    {
+        private ulong _opcode;
+        public InstDfmaR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -1305,11 +1603,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegA => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDfmaI
     {
         private readonly ulong _opcode;
         public InstDfmaI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDfmaI
+    {
+        private ulong _opcode;
+        public InstDfmaI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -1321,11 +1627,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegA => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDfmaC
     {
         private readonly ulong _opcode;
         public InstDfmaC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDfmaC
+    {
+        private ulong _opcode;
+        public InstDfmaC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1338,11 +1652,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegA => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDfmaRc
     {
         private readonly ulong _opcode;
         public InstDfmaRc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDfmaRc
+    {
+        private ulong _opcode;
+        public InstDfmaRc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -1355,11 +1677,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegA => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDmnmxR
     {
         private readonly ulong _opcode;
         public InstDmnmxR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDmnmxR
+    {
+        private ulong _opcode;
+        public InstDmnmxR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1373,11 +1703,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDmnmxI
     {
         private readonly ulong _opcode;
         public InstDmnmxI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDmnmxI
+    {
+        private ulong _opcode;
+        public InstDmnmxI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1391,11 +1729,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDmnmxC
     {
         private readonly ulong _opcode;
         public InstDmnmxC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDmnmxC
+    {
+        private ulong _opcode;
+        public InstDmnmxC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1410,11 +1756,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDmulR
     {
         private readonly ulong _opcode;
         public InstDmulR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDmulR
+    {
+        private ulong _opcode;
+        public InstDmulR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1424,11 +1778,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegA => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDmulI
     {
         private readonly ulong _opcode;
         public InstDmulI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDmulI
+    {
+        private ulong _opcode;
+        public InstDmulI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1438,11 +1800,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegA => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDmulC
     {
         private readonly ulong _opcode;
         public InstDmulC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDmulC
+    {
+        private ulong _opcode;
+        public InstDmulC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1453,11 +1823,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegA => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDsetR
     {
         private readonly ulong _opcode;
         public InstDsetR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDsetR
+    {
+        private ulong _opcode;
+        public InstDsetR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1474,11 +1852,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDsetI
     {
         private readonly ulong _opcode;
         public InstDsetI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDsetI
+    {
+        private ulong _opcode;
+        public InstDsetI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1495,11 +1881,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDsetC
     {
         private readonly ulong _opcode;
         public InstDsetC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstDsetC
+    {
+        private ulong _opcode;
+        public InstDsetC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1517,9 +1911,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstDsetpR
     {
         private readonly ulong _opcode;
+=======
+    struct InstDsetpR
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstDsetpR(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
@@ -1534,12 +1934,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool AbsA => (_opcode & 0x80) != 0;
         public bool NegB => (_opcode & 0x40) != 0;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
+<<<<<<< HEAD
         public int DestPredInv => (int)(_opcode & 0x7);
     }
 
     readonly struct InstDsetpI
     {
         private readonly ulong _opcode;
+=======
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+    }
+
+    struct InstDsetpI
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstDsetpI(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
@@ -1554,12 +1963,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool AbsA => (_opcode & 0x80) != 0;
         public bool NegB => (_opcode & 0x40) != 0;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
+<<<<<<< HEAD
         public int DestPredInv => (int)(_opcode & 0x7);
     }
 
     readonly struct InstDsetpC
     {
         private readonly ulong _opcode;
+=======
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+    }
+
+    struct InstDsetpC
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstDsetpC(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -1575,6 +1993,7 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool AbsA => (_opcode & 0x80) != 0;
         public bool NegB => (_opcode & 0x40) != 0;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
+<<<<<<< HEAD
         public int DestPredInv => (int)(_opcode & 0x7);
     }
 
@@ -1593,6 +2012,26 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstF2fR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+    }
+
+    struct InstExit
+    {
+        private ulong _opcode;
+        public InstExit(ulong opcode) => _opcode = opcode;
+        public int Pred => (int)((_opcode >> 16) & 0x7);
+        public bool PredInv => (_opcode & 0x80000) != 0;
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+        public bool KeepRefCnt => (_opcode & 0x20) != 0;
+    }
+
+    struct InstF2fR
+    {
+        private ulong _opcode;
+        public InstF2fR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -1607,11 +2046,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Sat => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstF2fI
     {
         private readonly ulong _opcode;
         public InstF2fI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstF2fI
+    {
+        private ulong _opcode;
+        public InstF2fI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -1626,11 +2073,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Sat => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstF2fC
     {
         private readonly ulong _opcode;
         public InstF2fC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstF2fC
+    {
+        private ulong _opcode;
+        public InstF2fC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1646,11 +2101,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Sat => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstF2iR
     {
         private readonly ulong _opcode;
         public InstF2iR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstF2iR
+    {
+        private ulong _opcode;
+        public InstF2iR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -1664,11 +2127,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public RoundMode2 RoundMode => (RoundMode2)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstF2iI
     {
         private readonly ulong _opcode;
         public InstF2iI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstF2iI
+    {
+        private ulong _opcode;
+        public InstF2iI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -1682,11 +2153,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public RoundMode2 RoundMode => (RoundMode2)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstF2iC
     {
         private readonly ulong _opcode;
         public InstF2iC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstF2iC
+    {
+        private ulong _opcode;
+        public InstF2iC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1701,11 +2180,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public RoundMode2 RoundMode => (RoundMode2)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstFaddR
     {
         private readonly ulong _opcode;
         public InstFaddR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFaddR
+    {
+        private ulong _opcode;
+        public InstFaddR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1720,11 +2207,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public RoundMode RoundMode => (RoundMode)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstFaddI
     {
         private readonly ulong _opcode;
         public InstFaddI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFaddI
+    {
+        private ulong _opcode;
+        public InstFaddI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1739,11 +2234,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public RoundMode RoundMode => (RoundMode)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstFaddC
     {
         private readonly ulong _opcode;
         public InstFaddC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFaddC
+    {
+        private ulong _opcode;
+        public InstFaddC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1759,11 +2262,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public RoundMode RoundMode => (RoundMode)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstFadd32i
     {
         private readonly ulong _opcode;
         public InstFadd32i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFadd32i
+    {
+        private ulong _opcode;
+        public InstFadd32i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -1776,9 +2287,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegB => (_opcode & 0x20000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFchkR
     {
         private readonly ulong _opcode;
+=======
+    struct InstFchkR
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstFchkR(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
@@ -1792,9 +2309,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ChkModeF ChkModeF => (ChkModeF)((_opcode >> 39) & 0x3F);
     }
 
+<<<<<<< HEAD
     readonly struct InstFchkI
     {
         private readonly ulong _opcode;
+=======
+    struct InstFchkI
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstFchkI(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
@@ -1808,9 +2331,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ChkModeF ChkModeF => (ChkModeF)((_opcode >> 39) & 0x3F);
     }
 
+<<<<<<< HEAD
     readonly struct InstFchkC
     {
         private readonly ulong _opcode;
+=======
+    struct InstFchkC
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstFchkC(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
@@ -1825,11 +2354,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ChkModeF ChkModeF => (ChkModeF)((_opcode >> 39) & 0x3F);
     }
 
+<<<<<<< HEAD
     readonly struct InstFcmpR
     {
         private readonly ulong _opcode;
         public InstFcmpR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFcmpR
+    {
+        private ulong _opcode;
+        public InstFcmpR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -1839,11 +2376,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFcmpI
     {
         private readonly ulong _opcode;
         public InstFcmpI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFcmpI
+    {
+        private ulong _opcode;
+        public InstFcmpI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -1853,11 +2398,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFcmpC
     {
         private readonly ulong _opcode;
         public InstFcmpC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFcmpC
+    {
+        private ulong _opcode;
+        public InstFcmpC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1868,11 +2421,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFcmpRc
     {
         private readonly ulong _opcode;
         public InstFcmpRc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFcmpRc
+    {
+        private ulong _opcode;
+        public InstFcmpRc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -1883,11 +2444,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFfmaR
     {
         private readonly ulong _opcode;
         public InstFfmaR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFfmaR
+    {
+        private ulong _opcode;
+        public InstFfmaR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -1901,11 +2470,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 53) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstFfmaI
     {
         private readonly ulong _opcode;
         public InstFfmaI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFfmaI
+    {
+        private ulong _opcode;
+        public InstFfmaI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -1919,11 +2496,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 53) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstFfmaC
     {
         private readonly ulong _opcode;
         public InstFfmaC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFfmaC
+    {
+        private ulong _opcode;
+        public InstFfmaC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -1938,11 +2523,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 53) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstFfmaRc
     {
         private readonly ulong _opcode;
         public InstFfmaRc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFfmaRc
+    {
+        private ulong _opcode;
+        public InstFfmaRc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -1957,11 +2550,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 53) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstFfma32i
     {
         private readonly ulong _opcode;
         public InstFfma32i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFfma32i
+    {
+        private ulong _opcode;
+        public InstFfma32i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm32 => (int)(_opcode >> 20);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -1973,11 +2574,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 53) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstFloR
     {
         private readonly ulong _opcode;
         public InstFloR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFloR
+    {
+        private ulong _opcode;
+        public InstFloR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -1987,11 +2596,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegB => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFloI
     {
         private readonly ulong _opcode;
         public InstFloI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFloI
+    {
+        private ulong _opcode;
+        public InstFloI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -2001,11 +2618,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegB => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFloC
     {
         private readonly ulong _opcode;
         public InstFloC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFloC
+    {
+        private ulong _opcode;
+        public InstFloC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2016,11 +2641,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegB => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFmnmxR
     {
         private readonly ulong _opcode;
         public InstFmnmxR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFmnmxR
+    {
+        private ulong _opcode;
+        public InstFmnmxR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2035,11 +2668,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFmnmxI
     {
         private readonly ulong _opcode;
         public InstFmnmxI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFmnmxI
+    {
+        private ulong _opcode;
+        public InstFmnmxI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2054,11 +2695,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFmnmxC
     {
         private readonly ulong _opcode;
         public InstFmnmxC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFmnmxC
+    {
+        private ulong _opcode;
+        public InstFmnmxC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2074,11 +2723,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFmulR
     {
         private readonly ulong _opcode;
         public InstFmulR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFmulR
+    {
+        private ulong _opcode;
+        public InstFmulR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2091,11 +2748,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Sat => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFmulI
     {
         private readonly ulong _opcode;
         public InstFmulI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFmulI
+    {
+        private ulong _opcode;
+        public InstFmulI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2108,11 +2773,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Sat => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFmulC
     {
         private readonly ulong _opcode;
         public InstFmulC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFmulC
+    {
+        private ulong _opcode;
+        public InstFmulC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2126,11 +2799,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Sat => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFmul32i
     {
         private readonly ulong _opcode;
         public InstFmul32i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFmul32i
+    {
+        private ulong _opcode;
+        public InstFmul32i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -2140,11 +2821,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool WriteCC => (_opcode & 0x10000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFsetR
     {
         private readonly ulong _opcode;
         public InstFsetR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFsetR
+    {
+        private ulong _opcode;
+        public InstFsetR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2162,11 +2851,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVal => (_opcode & 0x10000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFsetC
     {
         private readonly ulong _opcode;
         public InstFsetC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFsetC
+    {
+        private ulong _opcode;
+        public InstFsetC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2185,11 +2882,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVal => (_opcode & 0x10000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFsetI
     {
         private readonly ulong _opcode;
         public InstFsetI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFsetI
+    {
+        private ulong _opcode;
+        public InstFsetI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2207,12 +2912,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVal => (_opcode & 0x10000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFsetpR
     {
         private readonly ulong _opcode;
         public InstFsetpR(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int DestPredInv => (int)(_opcode & 0x7);
+=======
+    struct InstFsetpR
+    {
+        private ulong _opcode;
+        public InstFsetpR(ulong opcode) => _opcode = opcode;
+        public int DestPred => (int)((_opcode >> 3) & 0x7);
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2229,12 +2943,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFsetpI
     {
         private readonly ulong _opcode;
         public InstFsetpI(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int DestPredInv => (int)(_opcode & 0x7);
+=======
+    struct InstFsetpI
+    {
+        private ulong _opcode;
+        public InstFsetpI(ulong opcode) => _opcode = opcode;
+        public int DestPred => (int)((_opcode >> 3) & 0x7);
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2251,12 +2974,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFsetpC
     {
         private readonly ulong _opcode;
         public InstFsetpC(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int DestPredInv => (int)(_opcode & 0x7);
+=======
+    struct InstFsetpC
+    {
+        private ulong _opcode;
+        public InstFsetpC(ulong opcode) => _opcode = opcode;
+        public int DestPred => (int)((_opcode >> 3) & 0x7);
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2274,11 +3006,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstFswzadd
     {
         private readonly ulong _opcode;
         public InstFswzadd(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstFswzadd
+    {
+        private ulong _opcode;
+        public InstFswzadd(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2290,6 +3030,7 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int PnWord => (int)((_opcode >> 28) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstGetcrsptr
     {
         private readonly ulong _opcode;
@@ -2309,6 +3050,27 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstHadd2R(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstGetcrsptr
+    {
+        private ulong _opcode;
+        public InstGetcrsptr(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+    }
+
+    struct InstGetlmembase
+    {
+        private ulong _opcode;
+        public InstGetlmembase(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+    }
+
+    struct InstHadd2R
+    {
+        private ulong _opcode;
+        public InstHadd2R(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public OFmt OFmt => (OFmt)((_opcode >> 49) & 0x3);
@@ -2324,11 +3086,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstHadd2I
     {
         private readonly ulong _opcode;
         public InstHadd2I(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHadd2I
+    {
+        private ulong _opcode;
+        public InstHadd2I(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int BimmH0 => (int)((_opcode >> 20) & 0x3FF);
         public int BimmH1 => (int)((_opcode >> 47) & 0x200) | (int)((_opcode >> 30) & 0x1FF);
@@ -2342,11 +3112,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstHadd2C
     {
         private readonly ulong _opcode;
         public InstHadd2C(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHadd2C
+    {
+        private ulong _opcode;
+        public InstHadd2C(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2362,11 +3140,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstHadd232i
     {
         private readonly ulong _opcode;
         public InstHadd232i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHadd232i
+    {
+        private ulong _opcode;
+        public InstHadd232i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm => (int)(_opcode >> 20);
         public HalfSwizzle ASwizzle => (HalfSwizzle)((_opcode >> 53) & 0x3);
@@ -2377,11 +3163,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x80000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstHfma2R
     {
         private readonly ulong _opcode;
         public InstHfma2R(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHfma2R
+    {
+        private ulong _opcode;
+        public InstHfma2R(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -2397,11 +3191,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 37) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHfma2I
     {
         private readonly ulong _opcode;
         public InstHfma2I(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHfma2I
+    {
+        private ulong _opcode;
+        public InstHfma2I(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int BimmH0 => (int)((_opcode >> 20) & 0x3FF);
         public int BimmH1 => (int)((_opcode >> 47) & 0x200) | (int)((_opcode >> 30) & 0x1FF);
@@ -2416,11 +3218,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 57) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHfma2C
     {
         private readonly ulong _opcode;
         public InstHfma2C(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHfma2C
+    {
+        private ulong _opcode;
+        public InstHfma2C(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2436,11 +3246,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 57) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHfma2Rc
     {
         private readonly ulong _opcode;
         public InstHfma2Rc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHfma2Rc
+    {
+        private ulong _opcode;
+        public InstHfma2Rc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2456,11 +3274,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 57) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHfma232i
     {
         private readonly ulong _opcode;
         public InstHfma232i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHfma232i
+    {
+        private ulong _opcode;
+        public InstHfma232i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm => (int)(_opcode >> 20);
         public HalfSwizzle ASwizzle => (HalfSwizzle)((_opcode >> 47) & 0x3);
@@ -2470,11 +3296,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 57) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHmul2R
     {
         private readonly ulong _opcode;
         public InstHmul2R(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHmul2R
+    {
+        private ulong _opcode;
+        public InstHmul2R(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public OFmt OFmt => (OFmt)((_opcode >> 49) & 0x3);
@@ -2489,11 +3323,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHmul2I
     {
         private readonly ulong _opcode;
         public InstHmul2I(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHmul2I
+    {
+        private ulong _opcode;
+        public InstHmul2I(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int BimmH0 => (int)((_opcode >> 20) & 0x3FF);
         public int BimmH1 => (int)((_opcode >> 47) & 0x200) | (int)((_opcode >> 30) & 0x1FF);
@@ -2507,11 +3349,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHmul2C
     {
         private readonly ulong _opcode;
         public InstHmul2C(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHmul2C
+    {
+        private ulong _opcode;
+        public InstHmul2C(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2526,11 +3376,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHmul232i
     {
         private readonly ulong _opcode;
         public InstHmul232i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHmul232i
+    {
+        private ulong _opcode;
+        public InstHmul232i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm32 => (int)(_opcode >> 20);
         public HalfSwizzle ASwizzle => (HalfSwizzle)((_opcode >> 53) & 0x3);
@@ -2540,11 +3398,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Fmz Fmz => (Fmz)((_opcode >> 55) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHset2R
     {
         private readonly ulong _opcode;
         public InstHset2R(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHset2R
+    {
+        private ulong _opcode;
+        public InstHset2R(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public HalfSwizzle ASwizzle => (HalfSwizzle)((_opcode >> 47) & 0x3);
@@ -2563,11 +3429,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstHset2I
     {
         private readonly ulong _opcode;
         public InstHset2I(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHset2I
+    {
+        private ulong _opcode;
+        public InstHset2I(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int BimmH0 => (int)((_opcode >> 20) & 0x3FF);
         public int BimmH1 => (int)((_opcode >> 47) & 0x200) | (int)((_opcode >> 30) & 0x1FF);
@@ -2584,11 +3458,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x40000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstHset2C
     {
         private readonly ulong _opcode;
         public InstHset2C(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstHset2C
+    {
+        private ulong _opcode;
+        public InstHset2C(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2606,12 +3488,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ftz => (_opcode & 0x40000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstHsetp2R
     {
         private readonly ulong _opcode;
         public InstHsetp2R(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int DestPredInv => (int)(_opcode & 0x7);
+=======
+    struct InstHsetp2R
+    {
+        private ulong _opcode;
+        public InstHsetp2R(ulong opcode) => _opcode = opcode;
+        public int DestPred => (int)((_opcode >> 3) & 0x7);
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2630,12 +3521,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public HalfSwizzle BSwizzle => (HalfSwizzle)((_opcode >> 28) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHsetp2I
     {
         private readonly ulong _opcode;
         public InstHsetp2I(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int DestPredInv => (int)(_opcode & 0x7);
+=======
+    struct InstHsetp2I
+    {
+        private ulong _opcode;
+        public InstHsetp2I(ulong opcode) => _opcode = opcode;
+        public int DestPred => (int)((_opcode >> 3) & 0x7);
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -2652,12 +3552,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public HalfSwizzle ASwizzle => (HalfSwizzle)((_opcode >> 47) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstHsetp2C
     {
         private readonly ulong _opcode;
         public InstHsetp2C(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int DestPredInv => (int)(_opcode & 0x7);
+=======
+    struct InstHsetp2C
+    {
+        private ulong _opcode;
+        public InstHsetp2C(ulong opcode) => _opcode = opcode;
+        public int DestPred => (int)((_opcode >> 3) & 0x7);
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2676,11 +3585,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public HalfSwizzle ASwizzle => (HalfSwizzle)((_opcode >> 47) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstI2fR
     {
         private readonly ulong _opcode;
         public InstI2fR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstI2fR
+    {
+        private ulong _opcode;
+        public InstI2fR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -2693,11 +3610,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public DstFmt DstFmt => (DstFmt)((_opcode >> 8) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstI2fI
     {
         private readonly ulong _opcode;
         public InstI2fI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstI2fI
+    {
+        private ulong _opcode;
+        public InstI2fI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -2710,11 +3635,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public DstFmt DstFmt => (DstFmt)((_opcode >> 8) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstI2fC
     {
         private readonly ulong _opcode;
         public InstI2fC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstI2fC
+    {
+        private ulong _opcode;
+        public InstI2fC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2728,11 +3661,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public DstFmt DstFmt => (DstFmt)((_opcode >> 8) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstI2iR
     {
         private readonly ulong _opcode;
         public InstI2iR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstI2iR
+    {
+        private ulong _opcode;
+        public InstI2iR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -2745,11 +3686,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ISrcDstFmt ISrcFmt => (ISrcDstFmt)((int)((_opcode >> 11) & 0x4) | (int)((_opcode >> 10) & 0x3));
     }
 
+<<<<<<< HEAD
     readonly struct InstI2iI
     {
         private readonly ulong _opcode;
         public InstI2iI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstI2iI
+    {
+        private ulong _opcode;
+        public InstI2iI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -2762,11 +3711,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ISrcDstFmt ISrcFmt => (ISrcDstFmt)((int)((_opcode >> 11) & 0x4) | (int)((_opcode >> 10) & 0x3));
     }
 
+<<<<<<< HEAD
     readonly struct InstI2iC
     {
         private readonly ulong _opcode;
         public InstI2iC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstI2iC
+    {
+        private ulong _opcode;
+        public InstI2iC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2780,11 +3737,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ISrcDstFmt ISrcFmt => (ISrcDstFmt)((int)((_opcode >> 11) & 0x4) | (int)((_opcode >> 10) & 0x3));
     }
 
+<<<<<<< HEAD
     readonly struct InstIaddR
     {
         private readonly ulong _opcode;
         public InstIaddR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIaddR
+    {
+        private ulong _opcode;
+        public InstIaddR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2795,11 +3760,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool X => (_opcode & 0x80000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIaddI
     {
         private readonly ulong _opcode;
         public InstIaddI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIaddI
+    {
+        private ulong _opcode;
+        public InstIaddI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -2810,11 +3783,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool X => (_opcode & 0x80000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIaddC
     {
         private readonly ulong _opcode;
         public InstIaddC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIaddC
+    {
+        private ulong _opcode;
+        public InstIaddC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2826,11 +3807,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool X => (_opcode & 0x80000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIadd32i
     {
         private readonly ulong _opcode;
         public InstIadd32i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIadd32i
+    {
+        private ulong _opcode;
+        public InstIadd32i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -2841,11 +3830,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool X => (_opcode & 0x20000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIadd3R
     {
         private readonly ulong _opcode;
         public InstIadd3R(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIadd3R
+    {
+        private ulong _opcode;
+        public InstIadd3R(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -2862,11 +3859,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public HalfSelect Cpart => (HalfSelect)((_opcode >> 31) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstIadd3I
     {
         private readonly ulong _opcode;
         public InstIadd3I(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIadd3I
+    {
+        private ulong _opcode;
+        public InstIadd3I(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -2879,11 +3884,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool X => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIadd3C
     {
         private readonly ulong _opcode;
         public InstIadd3C(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIadd3C
+    {
+        private ulong _opcode;
+        public InstIadd3C(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2897,11 +3910,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool X => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIcmpR
     {
         private readonly ulong _opcode;
         public InstIcmpR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIcmpR
+    {
+        private ulong _opcode;
+        public InstIcmpR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -2911,11 +3932,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Signed => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIcmpI
     {
         private readonly ulong _opcode;
         public InstIcmpI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIcmpI
+    {
+        private ulong _opcode;
+        public InstIcmpI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -2925,11 +3954,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Signed => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIcmpC
     {
         private readonly ulong _opcode;
         public InstIcmpC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIcmpC
+    {
+        private ulong _opcode;
+        public InstIcmpC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2940,11 +3977,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Signed => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIcmpRc
     {
         private readonly ulong _opcode;
         public InstIcmpRc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIcmpRc
+    {
+        private ulong _opcode;
+        public InstIcmpRc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -2955,19 +4000,33 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Signed => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIde
     {
         private readonly ulong _opcode;
+=======
+    struct InstIde
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstIde(ulong opcode) => _opcode = opcode;
         public int Imm16 => (int)((_opcode >> 20) & 0xFFFF);
         public bool Di => (_opcode & 0x20) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIdpR
     {
         private readonly ulong _opcode;
         public InstIdpR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIdpR
+    {
+        private ulong _opcode;
+        public InstIdpR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -2979,11 +4038,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcBSign => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIdpC
     {
         private readonly ulong _opcode;
         public InstIdpC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIdpC
+    {
+        private ulong _opcode;
+        public InstIdpC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -2996,11 +4063,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcBSign => (_opcode & 0x800000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImadR
     {
         private readonly ulong _opcode;
         public InstImadR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImadR
+    {
+        private ulong _opcode;
+        public InstImadR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -3015,11 +4090,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool ASigned => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImadI
     {
         private readonly ulong _opcode;
         public InstImadI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImadI
+    {
+        private ulong _opcode;
+        public InstImadI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -3034,11 +4117,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool ASigned => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImadC
     {
         private readonly ulong _opcode;
         public InstImadC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImadC
+    {
+        private ulong _opcode;
+        public InstImadC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3054,11 +4145,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool ASigned => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImadRc
     {
         private readonly ulong _opcode;
         public InstImadRc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImadRc
+    {
+        private ulong _opcode;
+        public InstImadRc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -3074,11 +4173,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool ASigned => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImad32i
     {
         private readonly ulong _opcode;
         public InstImad32i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImad32i
+    {
+        private ulong _opcode;
+        public InstImad32i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3090,11 +4197,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Hilo => (_opcode & 0x20000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImadspR
     {
         private readonly ulong _opcode;
         public InstImadspR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImadspR
+    {
+        private ulong _opcode;
+        public InstImadspR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -3105,11 +4220,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ImadspASelect CSelect => (ImadspASelect)((int)((_opcode >> 50) & 0x6) | (int)((_opcode >> 48) & 0x1));
     }
 
+<<<<<<< HEAD
     readonly struct InstImadspI
     {
         private readonly ulong _opcode;
         public InstImadspI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImadspI
+    {
+        private ulong _opcode;
+        public InstImadspI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -3120,11 +4243,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ImadspASelect CSelect => (ImadspASelect)((int)((_opcode >> 50) & 0x6) | (int)((_opcode >> 48) & 0x1));
     }
 
+<<<<<<< HEAD
     readonly struct InstImadspC
     {
         private readonly ulong _opcode;
         public InstImadspC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImadspC
+    {
+        private ulong _opcode;
+        public InstImadspC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3136,11 +4267,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ImadspASelect CSelect => (ImadspASelect)((int)((_opcode >> 50) & 0x6) | (int)((_opcode >> 48) & 0x1));
     }
 
+<<<<<<< HEAD
     readonly struct InstImadspRc
     {
         private readonly ulong _opcode;
         public InstImadspRc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImadspRc
+    {
+        private ulong _opcode;
+        public InstImadspRc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -3152,11 +4291,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public ImadspASelect CSelect => (ImadspASelect)((int)((_opcode >> 50) & 0x6) | (int)((_opcode >> 48) & 0x1));
     }
 
+<<<<<<< HEAD
     readonly struct InstImnmxR
     {
         private readonly ulong _opcode;
         public InstImnmxR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImnmxR
+    {
+        private ulong _opcode;
+        public InstImnmxR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3168,11 +4315,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImnmxI
     {
         private readonly ulong _opcode;
         public InstImnmxI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImnmxI
+    {
+        private ulong _opcode;
+        public InstImnmxI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3184,11 +4339,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImnmxC
     {
         private readonly ulong _opcode;
         public InstImnmxC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImnmxC
+    {
+        private ulong _opcode;
+        public InstImnmxC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3201,11 +4364,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImulR
     {
         private readonly ulong _opcode;
         public InstImulR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImulR
+    {
+        private ulong _opcode;
+        public InstImulR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3216,11 +4387,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Hilo => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImulI
     {
         private readonly ulong _opcode;
         public InstImulI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImulI
+    {
+        private ulong _opcode;
+        public InstImulI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3231,11 +4410,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Hilo => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImulC
     {
         private readonly ulong _opcode;
         public InstImulC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImulC
+    {
+        private ulong _opcode;
+        public InstImulC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3247,11 +4434,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Hilo => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstImul32i
     {
         private readonly ulong _opcode;
         public InstImul32i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstImul32i
+    {
+        private ulong _opcode;
+        public InstImul32i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3262,11 +4457,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool WriteCC => (_opcode & 0x10000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIpa
     {
         private readonly ulong _opcode;
         public InstIpa(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIpa
+    {
+        private ulong _opcode;
+        public InstIpa(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -3281,11 +4484,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIsberd
     {
         private readonly ulong _opcode;
         public InstIsberd(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIsberd
+    {
+        private ulong _opcode;
+        public InstIsberd(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3295,11 +4506,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool P => (_opcode & 0x80000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIscaddR
     {
         private readonly ulong _opcode;
         public InstIscaddR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIscaddR
+    {
+        private ulong _opcode;
+        public InstIscaddR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3309,11 +4528,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public AvgMode AvgMode => (AvgMode)((_opcode >> 48) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstIscaddI
     {
         private readonly ulong _opcode;
         public InstIscaddI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIscaddI
+    {
+        private ulong _opcode;
+        public InstIscaddI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3323,11 +4550,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public AvgMode AvgMode => (AvgMode)((_opcode >> 48) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstIscaddC
     {
         private readonly ulong _opcode;
         public InstIscaddC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIscaddC
+    {
+        private ulong _opcode;
+        public InstIscaddC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3338,11 +4573,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public AvgMode AvgMode => (AvgMode)((_opcode >> 48) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstIscadd32i
     {
         private readonly ulong _opcode;
         public InstIscadd32i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIscadd32i
+    {
+        private ulong _opcode;
+        public InstIscadd32i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3351,11 +4594,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm5 => (int)((_opcode >> 53) & 0x1F);
     }
 
+<<<<<<< HEAD
     readonly struct InstIsetR
     {
         private readonly ulong _opcode;
         public InstIsetR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIsetR
+    {
+        private ulong _opcode;
+        public InstIsetR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3370,11 +4621,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool X => (_opcode & 0x80000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIsetI
     {
         private readonly ulong _opcode;
         public InstIsetI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIsetI
+    {
+        private ulong _opcode;
+        public InstIsetI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3389,11 +4648,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool X => (_opcode & 0x80000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIsetC
     {
         private readonly ulong _opcode;
         public InstIsetC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstIsetC
+    {
+        private ulong _opcode;
+        public InstIsetC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3409,9 +4676,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool X => (_opcode & 0x80000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstIsetpR
     {
         private readonly ulong _opcode;
+=======
+    struct InstIsetpR
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstIsetpR(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
@@ -3424,12 +4697,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int SrcPred => (int)((_opcode >> 39) & 0x7);
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
+<<<<<<< HEAD
         public int DestPredInv => (int)(_opcode & 0x7);
     }
 
     readonly struct InstIsetpI
     {
         private readonly ulong _opcode;
+=======
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+    }
+
+    struct InstIsetpI
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstIsetpI(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
@@ -3442,12 +4724,21 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int SrcPred => (int)((_opcode >> 39) & 0x7);
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
+<<<<<<< HEAD
         public int DestPredInv => (int)(_opcode & 0x7);
     }
 
     readonly struct InstIsetpC
     {
         private readonly ulong _opcode;
+=======
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+    }
+
+    struct InstIsetpC
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstIsetpC(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -3461,45 +4752,75 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int SrcPred => (int)((_opcode >> 39) & 0x7);
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
+<<<<<<< HEAD
         public int DestPredInv => (int)(_opcode & 0x7);
     }
 
     readonly struct InstJcal
     {
         private readonly ulong _opcode;
+=======
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+    }
+
+    struct InstJcal
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstJcal(ulong opcode) => _opcode = opcode;
         public int Imm32 => (int)(_opcode >> 20);
         public bool Ca => (_opcode & 0x20) != 0;
         public bool Inc => (_opcode & 0x40) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstJmp
     {
         private readonly ulong _opcode;
+=======
+    struct InstJmp
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstJmp(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
+<<<<<<< HEAD
         public Ccc Ccc => (Ccc)(_opcode & 0x1F);
+=======
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+>>>>>>> 1ec71635b (sync with main branch)
         public bool Ca => (_opcode & 0x20) != 0;
         public int Imm32 => (int)(_opcode >> 20);
         public bool Lmt => (_opcode & 0x40) != 0;
         public bool U => (_opcode & 0x80) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstJmx
     {
         private readonly ulong _opcode;
+=======
+    struct InstJmx
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstJmx(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
+<<<<<<< HEAD
         public Ccc Ccc => (Ccc)(_opcode & 0x1F);
+=======
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+>>>>>>> 1ec71635b (sync with main branch)
         public bool Ca => (_opcode & 0x20) != 0;
         public int Imm32 => (int)(_opcode >> 20);
         public bool Lmt => (_opcode & 0x40) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstKil
     {
         private readonly ulong _opcode;
@@ -3514,6 +4835,22 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstLd(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstKil
+    {
+        private ulong _opcode;
+        public InstKil(ulong opcode) => _opcode = opcode;
+        public int Pred => (int)((_opcode >> 16) & 0x7);
+        public bool PredInv => (_opcode & 0x80000) != 0;
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+    }
+
+    struct InstLd
+    {
+        private ulong _opcode;
+        public InstLd(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3524,11 +4861,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm32 => (int)(_opcode >> 20);
     }
 
+<<<<<<< HEAD
     readonly struct InstLdc
     {
         private readonly ulong _opcode;
         public InstLdc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLdc
+    {
+        private ulong _opcode;
+        public InstLdc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3538,11 +4883,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int CbufOffset => (int)((_opcode >> 20) & 0xFFFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstLdg
     {
         private readonly ulong _opcode;
         public InstLdg(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLdg
+    {
+        private ulong _opcode;
+        public InstLdg(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3552,11 +4905,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstLdl
     {
         private readonly ulong _opcode;
         public InstLdl(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLdl
+    {
+        private ulong _opcode;
+        public InstLdl(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3565,11 +4926,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstLds
     {
         private readonly ulong _opcode;
         public InstLds(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLds
+    {
+        private ulong _opcode;
+        public InstLds(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3578,11 +4947,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstLeaR
     {
         private readonly ulong _opcode;
         public InstLeaR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLeaR
+    {
+        private ulong _opcode;
+        public InstLeaR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3594,11 +4971,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int DestPred => (int)((_opcode >> 48) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstLeaI
     {
         private readonly ulong _opcode;
         public InstLeaI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLeaI
+    {
+        private ulong _opcode;
+        public InstLeaI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3610,11 +4995,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int DestPred => (int)((_opcode >> 48) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstLeaC
     {
         private readonly ulong _opcode;
         public InstLeaC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLeaC
+    {
+        private ulong _opcode;
+        public InstLeaC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3627,11 +5020,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int DestPred => (int)((_opcode >> 48) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstLeaHiR
     {
         private readonly ulong _opcode;
         public InstLeaHiR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLeaHiR
+    {
+        private ulong _opcode;
+        public InstLeaHiR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -3644,11 +5045,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int DestPred => (int)((_opcode >> 48) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstLeaHiC
     {
         private readonly ulong _opcode;
         public InstLeaHiC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLeaHiC
+    {
+        private ulong _opcode;
+        public InstLeaHiC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3662,6 +5071,7 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int DestPred => (int)((_opcode >> 48) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstLepc
     {
 #pragma warning disable IDE0052 // Remove unread private member
@@ -3682,6 +5092,26 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstLopR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLepc
+    {
+        private ulong _opcode;
+        public InstLepc(ulong opcode) => _opcode = opcode;
+    }
+
+    struct InstLongjmp
+    {
+        private ulong _opcode;
+        public InstLongjmp(ulong opcode) => _opcode = opcode;
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+    }
+
+    struct InstLopR
+    {
+        private ulong _opcode;
+        public InstLopR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3695,11 +5125,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegB => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstLopI
     {
         private readonly ulong _opcode;
         public InstLopI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLopI
+    {
+        private ulong _opcode;
+        public InstLopI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3713,11 +5151,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegB => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstLopC
     {
         private readonly ulong _opcode;
         public InstLopC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLopC
+    {
+        private ulong _opcode;
+        public InstLopC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3732,11 +5178,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegB => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstLop3R
     {
         private readonly ulong _opcode;
         public InstLop3R(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLop3R
+    {
+        private ulong _opcode;
+        public InstLop3R(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -3749,11 +5203,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm => (int)((_opcode >> 28) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstLop3I
     {
         private readonly ulong _opcode;
         public InstLop3I(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLop3I
+    {
+        private ulong _opcode;
+        public InstLop3I(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -3764,11 +5226,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm => (int)((_opcode >> 48) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstLop3C
     {
         private readonly ulong _opcode;
         public InstLop3C(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLop3C
+    {
+        private ulong _opcode;
+        public InstLop3C(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3780,11 +5250,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm => (int)((_opcode >> 48) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstLop32i
     {
         private readonly ulong _opcode;
         public InstLop32i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstLop32i
+    {
+        private ulong _opcode;
+        public InstLop32i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3796,13 +5274,20 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegB => (_opcode & 0x100000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstMembar
     {
         private readonly ulong _opcode;
+=======
+    struct InstMembar
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstMembar(ulong opcode) => _opcode = opcode;
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public Membar Membar => (Membar)((_opcode >> 8) & 0x3);
+<<<<<<< HEAD
         public Ivall Ivall => (Ivall)(_opcode & 0x3);
     }
 
@@ -3811,28 +5296,54 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstMovR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+        public Ivall Ivall => (Ivall)((_opcode >> 0) & 0x3);
+    }
+
+    struct InstMovR
+    {
+        private ulong _opcode;
+        public InstMovR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public int QuadMask => (int)((_opcode >> 39) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstMovI
     {
         private readonly ulong _opcode;
         public InstMovI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstMovI
+    {
+        private ulong _opcode;
+        public InstMovI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public int QuadMask => (int)((_opcode >> 39) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstMovC
     {
         private readonly ulong _opcode;
         public InstMovC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstMovC
+    {
+        private ulong _opcode;
+        public InstMovC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3840,22 +5351,38 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int QuadMask => (int)((_opcode >> 39) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstMov32i
     {
         private readonly ulong _opcode;
         public InstMov32i(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstMov32i
+    {
+        private ulong _opcode;
+        public InstMov32i(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm32 => (int)(_opcode >> 20);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public int QuadMask => (int)((_opcode >> 12) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstMufu
     {
         private readonly ulong _opcode;
         public InstMufu(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstMufu
+    {
+        private ulong _opcode;
+        public InstMufu(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3865,9 +5392,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Sat => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstNop
     {
         private readonly ulong _opcode;
+=======
+    struct InstNop
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstNop(ulong opcode) => _opcode = opcode;
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3876,11 +5409,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public Ccc Ccc => (Ccc)((_opcode >> 8) & 0x1F);
     }
 
+<<<<<<< HEAD
     readonly struct InstOutR
     {
         private readonly ulong _opcode;
         public InstOutR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstOutR
+    {
+        private ulong _opcode;
+        public InstOutR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3888,11 +5429,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public OutType OutType => (OutType)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstOutI
     {
         private readonly ulong _opcode;
         public InstOutI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstOutI
+    {
+        private ulong _opcode;
+        public InstOutI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3900,11 +5449,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public OutType OutType => (OutType)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstOutC
     {
         private readonly ulong _opcode;
         public InstOutC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstOutC
+    {
+        private ulong _opcode;
+        public InstOutC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3913,11 +5470,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public OutType OutType => (OutType)((_opcode >> 39) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstP2rR
     {
         private readonly ulong _opcode;
         public InstP2rR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstP2rR
+    {
+        private ulong _opcode;
+        public InstP2rR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3926,11 +5491,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ccpr => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstP2rI
     {
         private readonly ulong _opcode;
         public InstP2rI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstP2rI
+    {
+        private ulong _opcode;
+        public InstP2rI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -3939,11 +5512,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ccpr => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstP2rC
     {
         private readonly ulong _opcode;
         public InstP2rC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstP2rC
+    {
+        private ulong _opcode;
+        public InstP2rC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -3953,34 +5534,60 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ccpr => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstPbk
     {
         private readonly ulong _opcode;
+=======
+    struct InstPbk
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstPbk(ulong opcode) => _opcode = opcode;
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
         public bool Ca => (_opcode & 0x20) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstPcnt
     {
         private readonly ulong _opcode;
+=======
+    struct InstPcnt
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstPcnt(ulong opcode) => _opcode = opcode;
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
         public bool Ca => (_opcode & 0x20) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstPexit
     {
         private readonly ulong _opcode;
+=======
+    struct InstPexit
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstPexit(ulong opcode) => _opcode = opcode;
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstPixld
     {
         private readonly ulong _opcode;
         public InstPixld(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstPixld
+    {
+        private ulong _opcode;
+        public InstPixld(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -3989,41 +5596,71 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm8 => (int)((_opcode >> 20) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstPlongjmp
     {
         private readonly ulong _opcode;
+=======
+    struct InstPlongjmp
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstPlongjmp(ulong opcode) => _opcode = opcode;
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
         public bool Ca => (_opcode & 0x20) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstPopcR
     {
         private readonly ulong _opcode;
         public InstPopcR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstPopcR
+    {
+        private ulong _opcode;
+        public InstPopcR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public bool NegB => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstPopcI
     {
         private readonly ulong _opcode;
         public InstPopcI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstPopcI
+    {
+        private ulong _opcode;
+        public InstPopcI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public bool NegB => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstPopcC
     {
         private readonly ulong _opcode;
         public InstPopcC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstPopcC
+    {
+        private ulong _opcode;
+        public InstPopcC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4031,20 +5668,34 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool NegB => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstPret
     {
         private readonly ulong _opcode;
+=======
+    struct InstPret
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstPret(ulong opcode) => _opcode = opcode;
         public bool Ca => (_opcode & 0x20) != 0;
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
         public bool Inc => (_opcode & 0x40) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstPrmtR
     {
         private readonly ulong _opcode;
         public InstPrmtR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstPrmtR
+    {
+        private ulong _opcode;
+        public InstPrmtR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -4053,11 +5704,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public PMode PMode => (PMode)((_opcode >> 48) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstPrmtI
     {
         private readonly ulong _opcode;
         public InstPrmtI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstPrmtI
+    {
+        private ulong _opcode;
+        public InstPrmtI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -4066,11 +5725,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public PMode PMode => (PMode)((_opcode >> 48) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstPrmtC
     {
         private readonly ulong _opcode;
         public InstPrmtC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstPrmtC
+    {
+        private ulong _opcode;
+        public InstPrmtC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -4080,11 +5747,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public PMode PMode => (PMode)((_opcode >> 48) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstPrmtRc
     {
         private readonly ulong _opcode;
         public InstPrmtRc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstPrmtRc
+    {
+        private ulong _opcode;
+        public InstPrmtRc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -4094,11 +5769,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public PMode PMode => (PMode)((_opcode >> 48) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstPset
     {
         private readonly ulong _opcode;
         public InstPset(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstPset
+    {
+        private ulong _opcode;
+        public InstPset(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public bool WriteCC => (_opcode & 0x800000000000) != 0;
@@ -4113,14 +5796,24 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVal => (_opcode & 0x100000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstPsetp
     {
         private readonly ulong _opcode;
+=======
+    struct InstPsetp
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstPsetp(ulong opcode) => _opcode = opcode;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
+<<<<<<< HEAD
         public int DestPredInv => (int)(_opcode & 0x7);
+=======
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Src2Pred => (int)((_opcode >> 12) & 0x7);
         public bool Src2PredInv => (_opcode & 0x8000) != 0;
         public int Src1Pred => (int)((_opcode >> 29) & 0x7);
@@ -4131,9 +5824,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public BoolOp BoolOpC => (BoolOp)((_opcode >> 45) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstR2b
     {
         private readonly ulong _opcode;
+=======
+    struct InstR2b
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstR2b(ulong opcode) => _opcode = opcode;
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4142,9 +5841,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Name => (int)((_opcode >> 28) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstR2pR
     {
         private readonly ulong _opcode;
+=======
+    struct InstR2pR
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstR2pR(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
@@ -4154,9 +5859,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ccpr => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstR2pI
     {
         private readonly ulong _opcode;
+=======
+    struct InstR2pI
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstR2pI(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
@@ -4166,9 +5877,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ccpr => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstR2pC
     {
         private readonly ulong _opcode;
+=======
+    struct InstR2pC
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstR2pC(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -4179,6 +5896,7 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ccpr => (_opcode & 0x10000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstRam
     {
 #pragma warning disable IDE0052 // Remove unread private member
@@ -4193,6 +5911,20 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public InstRed(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)(_opcode & 0xFF);
+=======
+    struct InstRam
+    {
+        private ulong _opcode;
+        public InstRam(ulong opcode) => _opcode = opcode;
+    }
+
+    struct InstRed
+    {
+        private ulong _opcode;
+        public InstRed(ulong opcode) => _opcode = opcode;
+        public int SrcA => (int)((_opcode >> 8) & 0xFF);
+        public int SrcB => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public int Imm20 => (int)((_opcode >> 28) & 0xFFFFF);
@@ -4201,6 +5933,7 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool E => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstRet
     {
         private readonly ulong _opcode;
@@ -4215,6 +5948,22 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstRroR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstRet
+    {
+        private ulong _opcode;
+        public InstRet(ulong opcode) => _opcode = opcode;
+        public int Pred => (int)((_opcode >> 16) & 0x7);
+        public bool PredInv => (_opcode & 0x80000) != 0;
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+    }
+
+    struct InstRroR
+    {
+        private ulong _opcode;
+        public InstRroR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4223,11 +5972,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool RroOp => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstRroI
     {
         private readonly ulong _opcode;
         public InstRroI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstRroI
+    {
+        private ulong _opcode;
+        public InstRroI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4236,11 +5993,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool RroOp => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstRroC
     {
         private readonly ulong _opcode;
         public InstRroC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstRroC
+    {
+        private ulong _opcode;
+        public InstRroC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4250,6 +6015,7 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool RroOp => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstRtt
     {
 #pragma warning disable IDE0052 // Remove unread private member
@@ -4263,11 +6029,25 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstS2r(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstRtt
+    {
+        private ulong _opcode;
+        public InstRtt(ulong opcode) => _opcode = opcode;
+    }
+
+    struct InstS2r
+    {
+        private ulong _opcode;
+        public InstS2r(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public SReg SReg => (SReg)((_opcode >> 20) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstSam
     {
 #pragma warning disable IDE0052 // Remove unread private member
@@ -4281,6 +6061,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstSelR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSam
+    {
+        private ulong _opcode;
+        public InstSam(ulong opcode) => _opcode = opcode;
+    }
+
+    struct InstSelR
+    {
+        private ulong _opcode;
+        public InstSelR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4289,11 +6082,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSelI
     {
         private readonly ulong _opcode;
         public InstSelI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSelI
+    {
+        private ulong _opcode;
+        public InstSelI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4302,11 +6103,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSelC
     {
         private readonly ulong _opcode;
         public InstSelC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSelC
+    {
+        private ulong _opcode;
+        public InstSelC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -4316,25 +6125,45 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSetcrsptr
     {
         private readonly ulong _opcode;
+=======
+    struct InstSetcrsptr
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstSetcrsptr(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstSetlmembase
     {
         private readonly ulong _opcode;
+=======
+    struct InstSetlmembase
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstSetlmembase(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstShfLR
     {
         private readonly ulong _opcode;
         public InstShfLR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShfLR
+    {
+        private ulong _opcode;
+        public InstShfLR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -4346,11 +6175,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public MaxShift MaxShift => (MaxShift)((_opcode >> 37) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstShfRR
     {
         private readonly ulong _opcode;
         public InstShfRR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShfRR
+    {
+        private ulong _opcode;
+        public InstShfRR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -4362,11 +6199,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public MaxShift MaxShift => (MaxShift)((_opcode >> 37) & 0x3);
     }
 
+<<<<<<< HEAD
     readonly struct InstShfLI
     {
         private readonly ulong _opcode;
         public InstShfLI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShfLI
+    {
+        private ulong _opcode;
+        public InstShfLI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4378,11 +6223,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm6 => (int)((_opcode >> 20) & 0x3F);
     }
 
+<<<<<<< HEAD
     readonly struct InstShfRI
     {
         private readonly ulong _opcode;
         public InstShfRI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShfRI
+    {
+        private ulong _opcode;
+        public InstShfRI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4394,11 +6247,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm6 => (int)((_opcode >> 20) & 0x3F);
     }
 
+<<<<<<< HEAD
     readonly struct InstShfl
     {
         private readonly ulong _opcode;
         public InstShfl(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShfl
+    {
+        private ulong _opcode;
+        public InstShfl(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -4412,11 +6273,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int DestPred => (int)((_opcode >> 48) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstShlR
     {
         private readonly ulong _opcode;
         public InstShlR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShlR
+    {
+        private ulong _opcode;
+        public InstShlR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4426,11 +6295,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool M => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstShlI
     {
         private readonly ulong _opcode;
         public InstShlI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShlI
+    {
+        private ulong _opcode;
+        public InstShlI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4440,11 +6317,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool M => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstShlC
     {
         private readonly ulong _opcode;
         public InstShlC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShlC
+    {
+        private ulong _opcode;
+        public InstShlC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -4455,11 +6340,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool M => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstShrR
     {
         private readonly ulong _opcode;
         public InstShrR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShrR
+    {
+        private ulong _opcode;
+        public InstShrR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4471,11 +6364,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool M => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstShrI
     {
         private readonly ulong _opcode;
         public InstShrI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShrI
+    {
+        private ulong _opcode;
+        public InstShrI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Imm20 => (int)((_opcode >> 37) & 0x80000) | (int)((_opcode >> 20) & 0x7FFFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4487,11 +6388,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool M => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstShrC
     {
         private readonly ulong _opcode;
         public InstShrC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstShrC
+    {
+        private ulong _opcode;
+        public InstShrC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -4504,19 +6413,33 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool M => (_opcode & 0x8000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSsy
     {
         private readonly ulong _opcode;
+=======
+    struct InstSsy
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstSsy(ulong opcode) => _opcode = opcode;
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
         public bool Ca => (_opcode & 0x20) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSt
     {
         private readonly ulong _opcode;
         public InstSt(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSt
+    {
+        private ulong _opcode;
+        public InstSt(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4527,11 +6450,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm32 => (int)(_opcode >> 20);
     }
 
+<<<<<<< HEAD
     readonly struct InstStg
     {
         private readonly ulong _opcode;
         public InstStg(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstStg
+    {
+        private ulong _opcode;
+        public InstStg(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4541,11 +6472,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstStl
     {
         private readonly ulong _opcode;
         public InstStl(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstStl
+    {
+        private ulong _opcode;
+        public InstStl(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4554,19 +6493,33 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstStp
     {
         private readonly ulong _opcode;
+=======
+    struct InstStp
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstStp(ulong opcode) => _opcode = opcode;
         public bool Wait => (_opcode & 0x80000000) != 0;
         public int Imm8 => (int)((_opcode >> 20) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstSts
     {
         private readonly ulong _opcode;
         public InstSts(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSts
+    {
+        private ulong _opcode;
+        public InstSts(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4574,11 +6527,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm24 => (int)((_opcode >> 20) & 0xFFFFFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstSuatomB
     {
         private readonly ulong _opcode;
         public InstSuatomB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuatomB
+    {
+        private ulong _opcode;
+        public InstSuatomB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -4591,11 +6552,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ba => (_opcode & 0x10000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSuatom
     {
         private readonly ulong _opcode;
         public InstSuatom(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuatom
+    {
+        private ulong _opcode;
+        public InstSuatom(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4608,11 +6577,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ba => (_opcode & 0x10000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSuatomB2
     {
         private readonly ulong _opcode;
         public InstSuatomB2(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuatomB2
+    {
+        private ulong _opcode;
+        public InstSuatomB2(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -4626,11 +6603,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ba => (_opcode & 0x10000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSuatomCasB
     {
         private readonly ulong _opcode;
         public InstSuatomCasB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuatomCasB
+    {
+        private ulong _opcode;
+        public InstSuatomCasB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -4643,11 +6628,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ba => (_opcode & 0x10000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSuatomCas
     {
         private readonly ulong _opcode;
         public InstSuatomCas(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuatomCas
+    {
+        private ulong _opcode;
+        public InstSuatomCas(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4660,11 +6653,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Ba => (_opcode & 0x10000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstSuldDB
     {
         private readonly ulong _opcode;
         public InstSuldDB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuldDB
+    {
+        private ulong _opcode;
+        public InstSuldDB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4677,11 +6678,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuSize Size => (SuSize)((_opcode >> 20) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstSuldD
     {
         private readonly ulong _opcode;
         public InstSuldD(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuldD
+    {
+        private ulong _opcode;
+        public InstSuldD(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4694,11 +6703,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuSize Size => (SuSize)((_opcode >> 20) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstSuldB
     {
         private readonly ulong _opcode;
         public InstSuldB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuldB
+    {
+        private ulong _opcode;
+        public InstSuldB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4710,11 +6727,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuRgba Rgba => (SuRgba)((_opcode >> 20) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstSuld
     {
         private readonly ulong _opcode;
         public InstSuld(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuld
+    {
+        private ulong _opcode;
+        public InstSuld(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4726,11 +6751,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuRgba Rgba => (SuRgba)((_opcode >> 20) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstSuredB
     {
         private readonly ulong _opcode;
         public InstSuredB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSuredB
+    {
+        private ulong _opcode;
+        public InstSuredB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4742,11 +6775,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuatomSize Size => (SuatomSize)((_opcode >> 20) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstSured
     {
         private readonly ulong _opcode;
         public InstSured(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSured
+    {
+        private ulong _opcode;
+        public InstSured(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4758,11 +6799,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuatomSize Size => (SuatomSize)((_opcode >> 20) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstSustDB
     {
         private readonly ulong _opcode;
         public InstSustDB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSustDB
+    {
+        private ulong _opcode;
+        public InstSustDB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4774,11 +6823,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuSize Size => (SuSize)((_opcode >> 20) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstSustD
     {
         private readonly ulong _opcode;
         public InstSustD(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSustD
+    {
+        private ulong _opcode;
+        public InstSustD(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4790,11 +6847,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuSize Size => (SuSize)((_opcode >> 20) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstSustB
     {
         private readonly ulong _opcode;
         public InstSustB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSustB
+    {
+        private ulong _opcode;
+        public InstSustB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4805,11 +6870,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuRgba Rgba => (SuRgba)((_opcode >> 20) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstSust
     {
         private readonly ulong _opcode;
         public InstSust(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSust
+    {
+        private ulong _opcode;
+        public InstSust(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -4820,6 +6893,7 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public SuRgba Rgba => (SuRgba)((_opcode >> 20) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstSync
     {
         private readonly ulong _opcode;
@@ -4834,6 +6908,22 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstTex(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstSync
+    {
+        private ulong _opcode;
+        public InstSync(ulong opcode) => _opcode = opcode;
+        public int Pred => (int)((_opcode >> 16) & 0x7);
+        public bool PredInv => (_opcode & 0x80000) != 0;
+        public Ccc Ccc => (Ccc)((_opcode >> 0) & 0x1F);
+    }
+
+    struct InstTex
+    {
+        private ulong _opcode;
+        public InstTex(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4850,11 +6940,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Nodep => (_opcode & 0x2000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstTexB
     {
         private readonly ulong _opcode;
         public InstTexB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTexB
+    {
+        private ulong _opcode;
+        public InstTexB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4870,11 +6968,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Nodep => (_opcode & 0x2000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstTexs
     {
         private readonly ulong _opcode;
         public InstTexs(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTexs
+    {
+        private ulong _opcode;
+        public InstTexs(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4886,11 +6992,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Dest2 => (int)((_opcode >> 28) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstTld
     {
         private readonly ulong _opcode;
         public InstTld(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTld
+    {
+        private ulong _opcode;
+        public InstTld(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4906,11 +7020,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public TexDim Dim => (TexDim)((_opcode >> 28) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstTldB
     {
         private readonly ulong _opcode;
         public InstTldB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTldB
+    {
+        private ulong _opcode;
+        public InstTldB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4925,11 +7047,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public TexDim Dim => (TexDim)((_opcode >> 28) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstTlds
     {
         private readonly ulong _opcode;
         public InstTlds(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTlds
+    {
+        private ulong _opcode;
+        public InstTlds(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4941,11 +7071,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Dest2 => (int)((_opcode >> 28) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstTld4
     {
         private readonly ulong _opcode;
         public InstTld4(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTld4
+    {
+        private ulong _opcode;
+        public InstTld4(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4962,11 +7100,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Nodep => (_opcode & 0x2000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstTld4B
     {
         private readonly ulong _opcode;
         public InstTld4B(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTld4B
+    {
+        private ulong _opcode;
+        public InstTld4B(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4982,11 +7128,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Nodep => (_opcode & 0x2000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstTld4s
     {
         private readonly ulong _opcode;
         public InstTld4s(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTld4s
+    {
+        private ulong _opcode;
+        public InstTld4s(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -4999,11 +7153,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Dest2 => (int)((_opcode >> 28) & 0xFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstTmml
     {
         private readonly ulong _opcode;
         public InstTmml(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTmml
+    {
+        private ulong _opcode;
+        public InstTmml(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -5015,11 +7177,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public TexDim Dim => (TexDim)((_opcode >> 28) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstTmmlB
     {
         private readonly ulong _opcode;
         public InstTmmlB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTmmlB
+    {
+        private ulong _opcode;
+        public InstTmmlB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -5030,11 +7200,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public TexDim Dim => (TexDim)((_opcode >> 28) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstTxa
     {
         private readonly ulong _opcode;
         public InstTxa(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTxa
+    {
+        private ulong _opcode;
+        public InstTxa(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -5044,11 +7222,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int WMask => (int)((_opcode >> 31) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstTxd
     {
         private readonly ulong _opcode;
         public InstTxd(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTxd
+    {
+        private ulong _opcode;
+        public InstTxd(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -5062,11 +7248,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public TexDim Dim => (TexDim)((_opcode >> 28) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstTxdB
     {
         private readonly ulong _opcode;
         public InstTxdB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTxdB
+    {
+        private ulong _opcode;
+        public InstTxdB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -5079,11 +7273,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public TexDim Dim => (TexDim)((_opcode >> 28) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstTxq
     {
         private readonly ulong _opcode;
         public InstTxq(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTxq
+    {
+        private ulong _opcode;
+        public InstTxq(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -5093,11 +7295,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public TexQuery TexQuery => (TexQuery)((_opcode >> 22) & 0x3F);
     }
 
+<<<<<<< HEAD
     readonly struct InstTxqB
     {
         private readonly ulong _opcode;
         public InstTxqB(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstTxqB
+    {
+        private ulong _opcode;
+        public InstTxqB(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -5106,11 +7316,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public TexQuery TexQuery => (TexQuery)((_opcode >> 22) & 0x3F);
     }
 
+<<<<<<< HEAD
     readonly struct InstVabsdiff
     {
         private readonly ulong _opcode;
         public InstVabsdiff(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstVabsdiff
+    {
+        private ulong _opcode;
+        public InstVabsdiff(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -5125,11 +7343,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVideo => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstVabsdiff4
     {
         private readonly ulong _opcode;
         public InstVabsdiff4(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstVabsdiff4
+    {
+        private ulong _opcode;
+        public InstVabsdiff4(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -5146,11 +7372,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public BSelect4 Bsel4 => (BSelect4)((_opcode >> 28) & 0xF);
     }
 
+<<<<<<< HEAD
     readonly struct InstVadd
     {
         private readonly ulong _opcode;
         public InstVadd(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstVadd
+    {
+        private ulong _opcode;
+        public InstVadd(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -5167,11 +7401,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVideo => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstVmad
     {
         private readonly ulong _opcode;
         public InstVmad(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstVmad
+    {
+        private ulong _opcode;
+        public InstVmad(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -5187,11 +7429,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVideo => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstVmnmx
     {
         private readonly ulong _opcode;
         public InstVmnmx(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstVmnmx
+    {
+        private ulong _opcode;
+        public InstVmnmx(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -5208,11 +7458,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVideo => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstVote
     {
         private readonly ulong _opcode;
         public InstVote(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstVote
+    {
+        private ulong _opcode;
+        public InstVote(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
         public int SrcPred => (int)((_opcode >> 39) & 0x7);
@@ -5221,9 +7479,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int VpDest => (int)((_opcode >> 45) & 0x7);
     }
 
+<<<<<<< HEAD
     readonly struct InstVotevtg
     {
         private readonly ulong _opcode;
+=======
+    struct InstVotevtg
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstVotevtg(ulong opcode) => _opcode = opcode;
         public int Pred => (int)((_opcode >> 16) & 0x7);
         public bool PredInv => (_opcode & 0x80000) != 0;
@@ -5231,11 +7495,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int Imm28 => (int)((_opcode >> 20) & 0xFFFFFFF);
     }
 
+<<<<<<< HEAD
     readonly struct InstVset
     {
         private readonly ulong _opcode;
         public InstVset(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstVset
+    {
+        private ulong _opcode;
+        public InstVset(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -5249,9 +7521,15 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVideo => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstVsetp
     {
         private readonly ulong _opcode;
+=======
+    struct InstVsetp
+    {
+        private ulong _opcode;
+>>>>>>> 1ec71635b (sync with main branch)
         public InstVsetp(ulong opcode) => _opcode = opcode;
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
@@ -5265,6 +7543,7 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public int SrcPred => (int)((_opcode >> 39) & 0x7);
         public bool SrcPredInv => (_opcode & 0x40000000000) != 0;
         public int DestPred => (int)((_opcode >> 3) & 0x7);
+<<<<<<< HEAD
         public int DestPredInv => (int)(_opcode & 0x7);
         public bool BVideo => (_opcode & 0x4000000000000) != 0;
     }
@@ -5274,6 +7553,17 @@ namespace Ryujinx.Graphics.Shader.Decoders
         private readonly ulong _opcode;
         public InstVshl(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+        public int DestPredInv => (int)((_opcode >> 0) & 0x7);
+        public bool BVideo => (_opcode & 0x4000000000000) != 0;
+    }
+
+    struct InstVshl
+    {
+        private ulong _opcode;
+        public InstVshl(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -5289,11 +7579,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVideo => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstVshr
     {
         private readonly ulong _opcode;
         public InstVshr(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstVshr
+    {
+        private ulong _opcode;
+        public InstVshr(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -5309,11 +7607,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BVideo => (_opcode & 0x4000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstXmadR
     {
         private readonly ulong _opcode;
         public InstXmadR(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstXmadR
+    {
+        private ulong _opcode;
+        public InstXmadR(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcB => (int)((_opcode >> 20) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
@@ -5330,11 +7636,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool HiloB => (_opcode & 0x800000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstXmadI
     {
         private readonly ulong _opcode;
         public InstXmadI(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstXmadI
+    {
+        private ulong _opcode;
+        public InstXmadI(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int Pred => (int)((_opcode >> 16) & 0x7);
@@ -5350,11 +7664,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool Psl => (_opcode & 0x1000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstXmadC
     {
         private readonly ulong _opcode;
         public InstXmadC(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstXmadC
+    {
+        private ulong _opcode;
+        public InstXmadC(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
         public int CbufOffset => (int)((_opcode >> 20) & 0x3FFF);
@@ -5372,11 +7694,19 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool ASigned => (_opcode & 0x1000000000000) != 0;
     }
 
+<<<<<<< HEAD
     readonly struct InstXmadRc
     {
         private readonly ulong _opcode;
         public InstXmadRc(ulong opcode) => _opcode = opcode;
         public int Dest => (int)(_opcode & 0xFF);
+=======
+    struct InstXmadRc
+    {
+        private ulong _opcode;
+        public InstXmadRc(ulong opcode) => _opcode = opcode;
+        public int Dest => (int)((_opcode >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public int SrcA => (int)((_opcode >> 8) & 0xFF);
         public int SrcC => (int)((_opcode >> 39) & 0xFF);
         public int CbufSlot => (int)((_opcode >> 34) & 0x1F);
@@ -5391,4 +7721,8 @@ namespace Ryujinx.Graphics.Shader.Decoders
         public bool BSigned => (_opcode & 0x2000000000000) != 0;
         public bool ASigned => (_opcode & 0x1000000000000) != 0;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

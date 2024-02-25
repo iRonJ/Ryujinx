@@ -45,4 +45,8 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
             Result = result;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

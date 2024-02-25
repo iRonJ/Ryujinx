@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Ipc;
 using Ryujinx.HLE.HOS.Kernel.Threading;
 using Ryujinx.Horizon.Common;
@@ -8,6 +12,7 @@ namespace Ryujinx.HLE.HOS.Services.BluetoothManager.BtmUser
     class IBtmUserCore : IpcService
     {
         public KEvent _bleScanEvent;
+<<<<<<< HEAD
         public int _bleScanEventHandle;
 
         public KEvent _bleConnectionEvent;
@@ -18,6 +23,18 @@ namespace Ryujinx.HLE.HOS.Services.BluetoothManager.BtmUser
 
         public KEvent _bleMtuConfigEvent;
         public int _bleMtuConfigEventHandle;
+=======
+        public int    _bleScanEventHandle;
+
+        public KEvent _bleConnectionEvent;
+        public int    _bleConnectionEventHandle;
+
+        public KEvent _bleServiceDiscoveryEvent;
+        public int    _bleServiceDiscoveryEventHandle;
+
+        public KEvent _bleMtuConfigEvent;
+        public int    _bleMtuConfigEventHandle;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IBtmUserCore() { }
 
@@ -125,4 +142,8 @@ namespace Ryujinx.HLE.HOS.Services.BluetoothManager.BtmUser
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

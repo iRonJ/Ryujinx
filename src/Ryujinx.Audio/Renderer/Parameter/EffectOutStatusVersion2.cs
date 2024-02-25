@@ -23,6 +23,12 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// </summary>
         public EffectResultState ResultState;
 
+<<<<<<< HEAD
         EffectState IEffectOutStatus.State { readonly get => State; set => State = value; }
     }
 }
+=======
+        EffectState IEffectOutStatus.State { get => State; set => State = value; }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

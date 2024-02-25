@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetLineParametersCommand : IGALCommand, IGALCommand<SetLineParametersCommand>
     {
         public readonly CommandType CommandType => CommandType.SetLineParameters;
+=======
+﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
+{
+    struct SetLineParametersCommand : IGALCommand, IGALCommand<SetLineParametersCommand>
+    {
+        public CommandType CommandType => CommandType.SetLineParameters;
+>>>>>>> 1ec71635b (sync with main branch)
         private float _width;
         private bool _smooth;
 

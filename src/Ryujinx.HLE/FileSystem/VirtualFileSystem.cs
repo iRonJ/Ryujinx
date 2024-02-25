@@ -7,7 +7,10 @@ using LibHac.Fs.Shim;
 using LibHac.FsSrv;
 using LibHac.FsSystem;
 using LibHac.Ncm;
+<<<<<<< HEAD
 using LibHac.Sdmmc;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Spl;
 using LibHac.Tools.Es;
 using LibHac.Tools.Fs;
@@ -22,11 +25,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using Path = System.IO.Path;
+<<<<<<< HEAD
+=======
+using RightsId = LibHac.Fs.RightsId;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.FileSystem
 {
     public class VirtualFileSystem : IDisposable
     {
+<<<<<<< HEAD
         public static readonly string SafeNandPath = Path.Combine(AppDataManager.DefaultNandDir, "safe");
         public static readonly string SystemNandPath = Path.Combine(AppDataManager.DefaultNandDir, "system");
         public static readonly string UserNandPath = Path.Combine(AppDataManager.DefaultNandDir, "user");
@@ -35,6 +43,16 @@ namespace Ryujinx.HLE.FileSystem
         public EmulatedGameCard GameCard { get; private set; }
         public SdmmcApi SdCard { get; private set; }
         public ModLoader ModLoader { get; private set; }
+=======
+        public static string SafeNandPath   = Path.Combine(AppDataManager.DefaultNandDir, "safe");
+        public static string SystemNandPath = Path.Combine(AppDataManager.DefaultNandDir, "system");
+        public static string UserNandPath   = Path.Combine(AppDataManager.DefaultNandDir, "user");
+
+        public KeySet           KeySet    { get; private set; }
+        public EmulatedGameCard GameCard  { get; private set; }
+        public EmulatedSdCard   SdCard    { get; private set; }
+        public ModLoader        ModLoader { get; private set; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly ConcurrentDictionary<ulong, Stream> _romFsByPid;
 
@@ -86,6 +104,7 @@ namespace Ryujinx.HLE.FileSystem
             return _romFsByPid[pid];
         }
 
+<<<<<<< HEAD
         public static string GetFullPath(string basePath, string fileName)
         {
             if (fileName.StartsWith("//"))
@@ -95,6 +114,17 @@ namespace Ryujinx.HLE.FileSystem
             else if (fileName.StartsWith('/'))
             {
                 fileName = fileName[1..];
+=======
+        public string GetFullPath(string basePath, string fileName)
+        {
+            if (fileName.StartsWith("//"))
+            {
+                fileName = fileName.Substring(2);
+            }
+            else if (fileName.StartsWith('/'))
+            {
+                fileName = fileName.Substring(1);
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -111,10 +141,17 @@ namespace Ryujinx.HLE.FileSystem
             return fullPath;
         }
 
+<<<<<<< HEAD
         internal static string GetSdCardPath() => MakeFullPath(AppDataManager.DefaultSdcardDir);
         public static string GetNandPath() => MakeFullPath(AppDataManager.DefaultNandDir);
 
         public static string SwitchPathToSystemPath(string switchPath)
+=======
+        internal string GetSdCardPath() => MakeFullPath(AppDataManager.DefaultSdcardDir);
+        public string GetNandPath() => MakeFullPath(AppDataManager.DefaultNandDir);
+
+        public string SwitchPathToSystemPath(string switchPath)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             string[] parts = switchPath.Split(":");
 
@@ -126,7 +163,11 @@ namespace Ryujinx.HLE.FileSystem
             return GetFullPath(MakeFullPath(parts[0]), parts[1]);
         }
 
+<<<<<<< HEAD
         public static string SystemPathToSwitchPath(string systemPath)
+=======
+        public string SystemPathToSwitchPath(string systemPath)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             string baseSystemPath = AppDataManager.BaseDirPath + Path.DirectorySeparatorChar;
 
@@ -149,7 +190,11 @@ namespace Ryujinx.HLE.FileSystem
             return null;
         }
 
+<<<<<<< HEAD
         private static string MakeFullPath(string path, bool isDirectory = true)
+=======
+        private string MakeFullPath(string path, bool isDirectory = true)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // Handles Common Switch Content Paths
             switch (path)
@@ -186,12 +231,16 @@ namespace Ryujinx.HLE.FileSystem
 
         public void InitializeFsServer(LibHac.Horizon horizon, out HorizonClient fsServerClient)
         {
+<<<<<<< HEAD
             LocalFileSystem serverBaseFs = new(useUnixTimeStamps: true);
             Result result = serverBaseFs.Initialize(AppDataManager.BaseDirPath, LocalFileSystem.PathMode.DefaultCaseSensitivity, ensurePathExists: true);
             if (result.IsFailure())
             {
                 throw new HorizonResultException(result, "Error creating LocalFileSystem.");
             }
+=======
+            LocalFileSystem serverBaseFs = new LocalFileSystem(AppDataManager.BaseDirPath);
+>>>>>>> 1ec71635b (sync with main branch)
 
             fsServerClient = horizon.CreatePrivilegedHorizonClient();
             var fsServer = new FileSystemServer(fsServerClient);
@@ -204,6 +253,7 @@ namespace Ryujinx.HLE.FileSystem
             fsServerObjects.FsCreators.EncryptedFileSystemCreator = new EncryptedFileSystemCreator();
 
             GameCard = fsServerObjects.GameCard;
+<<<<<<< HEAD
             SdCard = fsServerObjects.Sdmmc;
 
             SdCard.SetSdCardInserted(true);
@@ -214,6 +264,18 @@ namespace Ryujinx.HLE.FileSystem
                 FsCreators = fsServerObjects.FsCreators,
                 StorageDeviceManagerFactory = fsServerObjects.StorageDeviceManagerFactory,
                 RandomGenerator = randomGenerator,
+=======
+            SdCard = fsServerObjects.SdCard;
+
+            SdCard.SetSdCardInsertionStatus(true);
+
+            var fsServerConfig = new FileSystemServerConfig
+            {
+                DeviceOperator = fsServerObjects.DeviceOperator,
+                ExternalKeySet = KeySet.ExternalKeySet,
+                FsCreators = fsServerObjects.FsCreators,
+                RandomGenerator = randomGenerator
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             FileSystemServerInitializer.InitializeWithConfig(fsServerClient, fsServer, fsServerConfig);
@@ -269,6 +331,7 @@ namespace Ryujinx.HLE.FileSystem
 
                 if (result.IsSuccess())
                 {
+<<<<<<< HEAD
                     // When reading a file from a Sha256PartitionFileSystem, you can't start a read in the middle
                     // of the hashed portion (usually the first 0x200 bytes) of the file and end the read after
                     // the end of the hashed portion, so we read the ticket file using a single read.
@@ -279,6 +342,9 @@ namespace Ryujinx.HLE.FileSystem
                         continue;
 
                     Ticket ticket = new(new MemoryStream(ticketData));
+=======
+                    Ticket ticket = new(ticketFile.Get.AsStream());
+>>>>>>> 1ec71635b (sync with main branch)
                     var titleKey = ticket.GetTitleKey(KeySet);
 
                     if (titleKey != null)
@@ -297,6 +363,7 @@ namespace Ryujinx.HLE.FileSystem
         public static Result FixExtraData(HorizonClient hos)
         {
             Result rc = GetSystemSaveList(hos, out List<ulong> systemSaveIds);
+<<<<<<< HEAD
             if (rc.IsFailure())
             {
                 return rc;
@@ -319,6 +386,18 @@ namespace Ryujinx.HLE.FileSystem
             {
                 return rc;
             }
+=======
+            if (rc.IsFailure()) return rc;
+
+            rc = FixUnindexedSystemSaves(hos, systemSaveIds);
+            if (rc.IsFailure()) return rc;
+
+            rc = FixExtraDataInSpaceId(hos, SaveDataSpaceId.System);
+            if (rc.IsFailure()) return rc;
+
+            rc = FixExtraDataInSpaceId(hos, SaveDataSpaceId.User);
+            if (rc.IsFailure()) return rc;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return Result.Success;
         }
@@ -330,14 +409,19 @@ namespace Ryujinx.HLE.FileSystem
             using var iterator = new UniqueRef<SaveDataIterator>();
 
             Result rc = hos.Fs.OpenSaveDataIterator(ref iterator.Ref, spaceId);
+<<<<<<< HEAD
             if (rc.IsFailure())
             {
                 return rc;
             }
+=======
+            if (rc.IsFailure()) return rc;
+>>>>>>> 1ec71635b (sync with main branch)
 
             while (true)
             {
                 rc = iterator.Get.ReadSaveDataInfo(out long count, info);
+<<<<<<< HEAD
                 if (rc.IsFailure())
                 {
                     return rc;
@@ -347,6 +431,12 @@ namespace Ryujinx.HLE.FileSystem
                 {
                     return Result.Success;
                 }
+=======
+                if (rc.IsFailure()) return rc;
+
+                if (count == 0)
+                    return Result.Success;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 for (int i = 0; i < count; i++)
                 {
@@ -386,17 +476,25 @@ namespace Ryujinx.HLE.FileSystem
         private static Result CreateSaveDataDirectory(HorizonClient hos, in SaveDataInfo info)
         {
             if (info.SpaceId != SaveDataSpaceId.User && info.SpaceId != SaveDataSpaceId.System)
+<<<<<<< HEAD
             {
                 return Result.Success;
             }
 
             const string MountName = "SaveDir";
             var mountNameU8 = MountName.ToU8Span();
+=======
+                return Result.Success;
+
+            const string mountName = "SaveDir";
+            var mountNameU8 = mountName.ToU8Span();
+>>>>>>> 1ec71635b (sync with main branch)
 
             BisPartitionId partitionId = info.SpaceId switch
             {
                 SaveDataSpaceId.System => BisPartitionId.System,
                 SaveDataSpaceId.User => BisPartitionId.User,
+<<<<<<< HEAD
                 _ => throw new ArgumentOutOfRangeException(nameof(info), info.SpaceId, null),
             };
 
@@ -409,6 +507,16 @@ namespace Ryujinx.HLE.FileSystem
             try
             {
                 var path = $"{MountName}:/save/{info.SaveDataId:x16}".ToU8Span();
+=======
+                _ => throw new ArgumentOutOfRangeException()
+            };
+
+            Result rc = hos.Fs.MountBis(mountNameU8, partitionId);
+            if (rc.IsFailure()) return rc;
+            try
+            {
+                var path = $"{mountName}:/save/{info.SaveDataId:x16}".ToU8Span();
+>>>>>>> 1ec71635b (sync with main branch)
 
                 rc = hos.Fs.GetEntryType(out _, path);
 
@@ -432,11 +540,16 @@ namespace Ryujinx.HLE.FileSystem
 
             var mountName = "system".ToU8Span();
             DirectoryHandle handle = default;
+<<<<<<< HEAD
             List<ulong> localList = new();
+=======
+            List<ulong> localList = new List<ulong>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             try
             {
                 Result rc = hos.Fs.MountBis(mountName, BisPartitionId.System);
+<<<<<<< HEAD
                 if (rc.IsFailure())
                 {
                     return rc;
@@ -449,10 +562,19 @@ namespace Ryujinx.HLE.FileSystem
                 }
 
                 DirectoryEntry entry = new();
+=======
+                if (rc.IsFailure()) return rc;
+
+                rc = hos.Fs.OpenDirectory(out handle, "system:/save".ToU8Span(), OpenDirectoryMode.All);
+                if (rc.IsFailure()) return rc;
+
+                DirectoryEntry entry = new DirectoryEntry();
+>>>>>>> 1ec71635b (sync with main branch)
 
                 while (true)
                 {
                     rc = hos.Fs.ReadDirectory(out long readCount, SpanHelpers.AsSpan(ref entry), handle);
+<<<<<<< HEAD
                     if (rc.IsFailure())
                     {
                         return rc;
@@ -464,6 +586,15 @@ namespace Ryujinx.HLE.FileSystem
                     }
 
                     if (Utf8Parser.TryParse(entry.Name, out ulong saveDataId, out int bytesRead, 'x') && bytesRead == 16 && (long)saveDataId < 0)
+=======
+                    if (rc.IsFailure()) return rc;
+
+                    if (readCount == 0)
+                        break;
+
+                    if (Utf8Parser.TryParse(entry.Name, out ulong saveDataId, out int bytesRead, 'x') &&
+                        bytesRead == 16 && (long)saveDataId < 0)
+>>>>>>> 1ec71635b (sync with main branch)
                     {
                         localList.Add(saveDataId);
                     }
@@ -491,7 +622,11 @@ namespace Ryujinx.HLE.FileSystem
         // Only save data IDs added to SystemExtraDataFixInfo will be fixed.
         private static Result FixUnindexedSystemSaves(HorizonClient hos, List<ulong> existingSaveIds)
         {
+<<<<<<< HEAD
             foreach (var fixInfo in _systemExtraDataFixInfo)
+=======
+            foreach (var fixInfo in SystemExtraDataFixInfo)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 if (!existingSaveIds.Contains(fixInfo.StaticSaveDataId))
                 {
@@ -523,9 +658,13 @@ namespace Ryujinx.HLE.FileSystem
             if (!rc.IsSuccess())
             {
                 if (!ResultFs.TargetNotFound.Includes(rc))
+<<<<<<< HEAD
                 {
                     return rc;
                 }
+=======
+                    return rc;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 // We'll reach this point only if the save data directory exists but it's not in the save data indexer.
                 // Creating the save will add it to the indexer while leaving its existing contents intact.
@@ -545,7 +684,11 @@ namespace Ryujinx.HLE.FileSystem
                 OwnerId = info.OwnerId,
                 Flags = info.Flags,
                 DataSize = info.DataSize,
+<<<<<<< HEAD
                 JournalSize = info.JournalSize,
+=======
+                JournalSize = info.JournalSize
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             // Make a mask for writing the entire extra data
@@ -560,11 +703,17 @@ namespace Ryujinx.HLE.FileSystem
         {
             wasFixNeeded = true;
 
+<<<<<<< HEAD
             Result rc = hos.Fs.Impl.ReadSaveDataFileSystemExtraData(out SaveDataExtraData extraData, info.SpaceId, info.SaveDataId);
             if (rc.IsFailure())
             {
                 return rc;
             }
+=======
+            Result rc = hos.Fs.Impl.ReadSaveDataFileSystemExtraData(out SaveDataExtraData extraData, info.SpaceId,
+                info.SaveDataId);
+            if (rc.IsFailure()) return rc;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // The extra data should have program ID or static save data ID set if it's valid.
             // We only try to fix the extra data if the info from the save data indexer has a program ID or static save data ID.
@@ -598,7 +747,11 @@ namespace Ryujinx.HLE.FileSystem
             else
             {
                 // Try to match the system save with one of the known saves
+<<<<<<< HEAD
                 foreach (ExtraDataFixInfo fixInfo in _systemExtraDataFixInfo)
+=======
+                foreach (ExtraDataFixInfo fixInfo in SystemExtraDataFixInfo)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     if (extraData.Attribute.StaticSaveDataId == fixInfo.StaticSaveDataId)
                     {
@@ -628,7 +781,11 @@ namespace Ryujinx.HLE.FileSystem
             public long JournalSize;
         }
 
+<<<<<<< HEAD
         private static readonly ExtraDataFixInfo[] _systemExtraDataFixInfo =
+=======
+        private static readonly ExtraDataFixInfo[] SystemExtraDataFixInfo =
+>>>>>>> 1ec71635b (sync with main branch)
         {
             new ExtraDataFixInfo()
             {
@@ -636,7 +793,11 @@ namespace Ryujinx.HLE.FileSystem
                 OwnerId = 0x010000000000001F,
                 Flags = SaveDataFlags.KeepAfterResettingSystemSaveDataWithoutUserSaveData,
                 DataSize = 0x10000,
+<<<<<<< HEAD
                 JournalSize = 0x10000,
+=======
+                JournalSize = 0x10000
+>>>>>>> 1ec71635b (sync with main branch)
             },
             new ExtraDataFixInfo()
             {
@@ -644,13 +805,21 @@ namespace Ryujinx.HLE.FileSystem
                 OwnerId = 0x0100000000001009,
                 Flags = SaveDataFlags.None,
                 DataSize = 0xC000,
+<<<<<<< HEAD
                 JournalSize = 0xC000,
             },
+=======
+                JournalSize = 0xC000
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         };
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
 
@@ -667,4 +836,8 @@ namespace Ryujinx.HLE.FileSystem
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

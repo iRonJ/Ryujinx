@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Input.HLE
 {
@@ -25,7 +29,11 @@ namespace Ryujinx.Input.HLE
         {
             return new NpadManager(KeyboardDriver, GamepadDriver, MouseDriver);
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 1ec71635b (sync with main branch)
         public TouchScreenManager CreateTouchScreenManager()
         {
             if (MouseDriver == null)
@@ -48,7 +56,10 @@ namespace Ryujinx.Input.HLE
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
     }

@@ -11,7 +11,10 @@ using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 using System.IO;
+<<<<<<< HEAD
 using Image = SixLabors.ImageSharp.Image;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.Views.User
 {
@@ -71,7 +74,11 @@ namespace Ryujinx.Ava.UI.Views.User
             if (ViewModel.SelectedImage != null)
             {
                 MemoryStream streamJpg = new();
+<<<<<<< HEAD
                 Image avatarImage = Image.Load(ViewModel.SelectedImage, new PngDecoder());
+=======
+                SixLabors.ImageSharp.Image avatarImage = SixLabors.ImageSharp.Image.Load(ViewModel.SelectedImage, new PngDecoder());
+>>>>>>> 1ec71635b (sync with main branch)
 
                 avatarImage.Mutate(x => x.BackgroundColor(new Rgba32(
                     ViewModel.BackgroundColor.R,
@@ -86,4 +93,8 @@ namespace Ryujinx.Ava.UI.Views.User
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

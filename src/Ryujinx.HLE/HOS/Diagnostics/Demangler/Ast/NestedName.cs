@@ -4,7 +4,11 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class NestedName : ParentNode
     {
+<<<<<<< HEAD
         private readonly BaseNode _name;
+=======
+        private BaseNode _name;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public NestedName(BaseNode name, BaseNode type) : base(NodeType.NestedName, type)
         {
@@ -23,4 +27,8 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             _name.Print(writer);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

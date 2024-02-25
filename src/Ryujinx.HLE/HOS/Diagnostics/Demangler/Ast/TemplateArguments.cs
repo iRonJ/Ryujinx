@@ -9,6 +9,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 
         public override void PrintLeft(TextWriter writer)
         {
+<<<<<<< HEAD
             string paramsString = string.Join<BaseNode>(", ", Nodes.ToArray());
 
             writer.Write("<");
@@ -16,6 +17,15 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             writer.Write(paramsString);
 
             if (paramsString.EndsWith('>'))
+=======
+            string Params = string.Join<BaseNode>(", ", Nodes.ToArray());
+
+            writer.Write("<");
+
+            writer.Write(Params);
+
+            if (Params.EndsWith(">"))
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 writer.Write(" ");
             }

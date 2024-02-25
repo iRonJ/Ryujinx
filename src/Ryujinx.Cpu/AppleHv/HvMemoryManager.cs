@@ -7,7 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+<<<<<<< HEAD
 using System.Runtime.Versioning;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 
 namespace Ryujinx.Cpu.AppleHv
@@ -15,7 +18,10 @@ namespace Ryujinx.Cpu.AppleHv
     /// <summary>
     /// Represents a CPU memory manager which maps guest virtual memory directly onto the Hypervisor page table.
     /// </summary>
+<<<<<<< HEAD
     [SupportedOSPlatform("macos")]
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     public class HvMemoryManager : MemoryManagerBase, IMemoryManager, IVirtualMemoryManagerTracked, IWritableBlock
     {
         public const int PageBits = 12;
@@ -34,7 +40,11 @@ namespace Ryujinx.Cpu.AppleHv
 
             MappedReplicated = 0x5555555555555555,
             WriteTrackedReplicated = 0xaaaaaaaaaaaaaaaa,
+<<<<<<< HEAD
             ReadWriteTrackedReplicated = ulong.MaxValue,
+=======
+            ReadWriteTrackedReplicated = ulong.MaxValue
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private readonly InvalidAccessHandler _invalidAccessHandler;
@@ -128,6 +138,22 @@ namespace Ryujinx.Cpu.AppleHv
             }
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// Ensures the combination of virtual address and size is part of the addressable space and fully mapped.
+        /// </summary>
+        /// <param name="va">Virtual address of the range</param>
+        /// <param name="size">Size of the range in bytes</param>
+        private void AssertMapped(ulong va, ulong size)
+        {
+            if (!ValidateAddressAndSize(va, size) || !IsRangeMappedImpl(va, size))
+            {
+                throw new InvalidMemoryRegionException($"Not mapped: va=0x{va:X16}, size=0x{size:X16}");
+            }
+        }
+
+>>>>>>> 1ec71635b (sync with main branch)
         /// <inheritdoc/>
         public void Map(ulong va, ulong pa, ulong size, MemoryMapFlags flags)
         {
@@ -295,7 +321,11 @@ namespace Ryujinx.Cpu.AppleHv
 
                         size = Math.Min(data.Length, PageSize - (int)(va & PageMask));
 
+<<<<<<< HEAD
                         data[..size].CopyTo(_backingMemory.GetSpan(pa, size));
+=======
+                        data.Slice(0, size).CopyTo(_backingMemory.GetSpan(pa, size));
+>>>>>>> 1ec71635b (sync with main branch)
 
                         offset += size;
                     }
@@ -417,7 +447,11 @@ namespace Ryujinx.Cpu.AppleHv
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         private static void GetPageBlockRange(ulong pageStart, ulong pageEnd, out ulong startMask, out ulong endMask, out int pageIndex, out int pageEndIndex)
+=======
+        private void GetPageBlockRange(ulong pageStart, ulong pageEnd, out ulong startMask, out ulong endMask, out int pageIndex, out int pageEndIndex)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             startMask = ulong.MaxValue << ((int)(pageStart & 31) << 1);
             endMask = ulong.MaxValue >> (64 - ((int)(pageEnd & 31) << 1));
@@ -595,7 +629,11 @@ namespace Ryujinx.Cpu.AppleHv
 
                     size = Math.Min(data.Length, PageSize - (int)(va & PageMask));
 
+<<<<<<< HEAD
                     _backingMemory.GetSpan(pa, size).CopyTo(data[..size]);
+=======
+                    _backingMemory.GetSpan(pa, size).CopyTo(data.Slice(0, size));
+>>>>>>> 1ec71635b (sync with main branch)
 
                     offset += size;
                 }
@@ -712,7 +750,11 @@ namespace Ryujinx.Cpu.AppleHv
         /// <param name="startVa">The virtual address of the beginning of the first page</param>
         /// <remarks>This function does not differentiate between allocated and unallocated pages.</remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         private static int GetPagesCount(ulong va, ulong size, out ulong startVa)
+=======
+        private int GetPagesCount(ulong va, ulong size, out ulong startVa)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // WARNING: Always check if ulong does not overflow during the operations.
             startVa = va & ~(ulong)PageMask;
@@ -722,12 +764,15 @@ namespace Ryujinx.Cpu.AppleHv
         }
 
         /// <inheritdoc/>
+<<<<<<< HEAD
         public void Reprotect(ulong va, ulong size, MemoryPermission protection)
         {
             // TODO
         }
 
         /// <inheritdoc/>
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public void TrackingReprotect(ulong va, ulong size, MemoryPermission protection)
         {
             // Protection is inverted on software pages, since the default value is 0.
@@ -809,7 +854,11 @@ namespace Ryujinx.Cpu.AppleHv
             {
                 MemoryPermission.None => MemoryPermission.ReadAndWrite,
                 MemoryPermission.Write => MemoryPermission.Read,
+<<<<<<< HEAD
                 _ => MemoryPermission.None,
+=======
+                _ => MemoryPermission.None
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             _addressSpace.ReprotectUser(va, size, protection);
@@ -938,4 +987,8 @@ namespace Ryujinx.Cpu.AppleHv
 
         private static void ThrowInvalidMemoryRegionException(string message) => throw new InvalidMemoryRegionException(message);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

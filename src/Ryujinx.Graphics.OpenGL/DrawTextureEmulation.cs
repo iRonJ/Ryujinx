@@ -65,12 +65,24 @@ void main()
 
             if (x0 > x1)
             {
+<<<<<<< HEAD
                 (s1, s0) = (s0, s1);
+=======
+                float temp = s0;
+                s0 = s1;
+                s1 = temp;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (y0 > y1)
             {
+<<<<<<< HEAD
                 (t1, t0) = (t0, t1);
+=======
+                float temp = t0;
+                t0 = t1;
+                t1 = temp;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             GL.Uniform1(_uniformSrcX0Location, s0);

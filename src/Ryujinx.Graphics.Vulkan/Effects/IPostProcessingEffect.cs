@@ -7,4 +7,8 @@ namespace Ryujinx.Graphics.Vulkan.Effects
         const int LocalGroupSize = 64;
         TextureView Run(TextureView view, CommandBufferScoped cbs, int width, int height);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

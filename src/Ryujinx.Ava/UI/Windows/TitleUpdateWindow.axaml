@@ -11,6 +11,10 @@
     Width="500"
     Height="300"
     mc:Ignorable="d"
+<<<<<<< HEAD
+=======
+    x:CompileBindings="True"
+>>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModels:TitleUpdateViewModel"
     Focusable="True">
     <Grid>
@@ -28,9 +32,16 @@
             CornerRadius="5"
             Padding="2.5">
             <ListBox
+<<<<<<< HEAD
                 Background="Transparent"
                 SelectedItem="{Binding SelectedUpdate, Mode=TwoWay}"
                 ItemsSource="{Binding Views}">
+=======
+                VirtualizationMode="None"
+                Background="Transparent"
+                SelectedItem="{Binding SelectedUpdate, Mode=TwoWay}"
+                Items="{Binding Views}">
+>>>>>>> 1ec71635b (sync with main branch)
                 <ListBox.DataTemplates>
                     <DataTemplate
                         DataType="models:TitleUpdateModel">
@@ -101,7 +112,11 @@
                 <Button
                     Name="AddButton"
                     MinWidth="90"
+<<<<<<< HEAD
                     Command="{Binding Add}">
+=======
+                    Command="{ReflectionBinding Add}">
+>>>>>>> 1ec71635b (sync with main branch)
                     <TextBlock Text="{locale:Locale SettingsTabGeneralAdd}" />
                 </Button>
                 <Button
@@ -130,4 +145,8 @@
             </StackPanel>
         </Panel>
     </Grid>
+<<<<<<< HEAD
 </UserControl>
+=======
+</UserControl>
+>>>>>>> 1ec71635b (sync with main branch)

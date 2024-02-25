@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Audio.Backends.SoundIo.Native
+=======
+﻿namespace Ryujinx.Audio.Backends.SoundIo.Native
+>>>>>>> 1ec71635b (sync with main branch)
 {
     public enum SoundIoError
     {

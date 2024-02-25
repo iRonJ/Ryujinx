@@ -40,7 +40,10 @@ namespace ARMeilleure.Instructions
 
             long offset = 0;
 
+<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             for (int rep   = 0; rep   < op.Reps;   rep++)
             for (int elem  = 0; elem  < op.Elems;  elem++)
             for (int sElem = 0; sElem < op.SElems; sElem++)
@@ -67,7 +70,10 @@ namespace ARMeilleure.Instructions
 
                 offset += 1 << op.Size;
             }
+<<<<<<< HEAD
 #pragma warning restore IDE0055
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (op.WBack)
             {
@@ -159,4 +165,8 @@ namespace ARMeilleure.Instructions
             context.Copy(n, context.Add(n, m));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

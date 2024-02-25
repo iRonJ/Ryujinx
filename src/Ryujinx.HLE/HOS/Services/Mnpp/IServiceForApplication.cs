@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using Ryujinx.Cpu;
 using Ryujinx.HLE.HOS.Services.Account.Acc;
@@ -32,7 +36,11 @@ namespace Ryujinx.HLE.HOS.Services.Mnpp
         public ResultCode SendRawTelemetryData(ServiceCtx context)
         {
             ulong titleIdInputPosition = context.Request.SendBuff[0].Position;
+<<<<<<< HEAD
             ulong titleIdInputSize = context.Request.SendBuff[0].Size;
+=======
+            ulong titleIdInputSize     = context.Request.SendBuff[0].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             UserId userId = context.RequestData.ReadStruct<UserId>();
 
@@ -60,4 +68,8 @@ namespace Ryujinx.HLE.HOS.Services.Mnpp
             return ResultCode.InvalidBufferSize;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

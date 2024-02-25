@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Silk.NET.Vulkan;
+=======
+﻿using Silk.NET.Vulkan;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.Serialization;
 
@@ -6,6 +10,7 @@ namespace Ryujinx.Graphics.Vulkan
 {
     static class ResultExtensions
     {
+<<<<<<< HEAD
         public static bool IsError(this Result result)
         {
             // Only negative result codes are errors.
@@ -16,6 +21,12 @@ namespace Ryujinx.Graphics.Vulkan
         {
             // Only negative result codes are errors.
             if (result.IsError())
+=======
+        public static void ThrowOnError(this Result result)
+        {
+            // Only negative result codes are errors.
+            if ((int)result < (int)Result.Success)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 throw new VulkanException(result);
             }
@@ -39,5 +50,12 @@ namespace Ryujinx.Graphics.Vulkan
         public VulkanException(string message, Exception innerException) : base(message, innerException)
         {
         }
+<<<<<<< HEAD
+=======
+
+        protected VulkanException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

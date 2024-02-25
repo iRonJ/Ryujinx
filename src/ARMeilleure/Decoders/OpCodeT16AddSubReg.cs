@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace ARMeilleure.Decoders
+=======
+﻿namespace ARMeilleure.Decoders
+>>>>>>> 1ec71635b (sync with main branch)
 {
     class OpCodeT16AddSubReg : OpCodeT16, IOpCode32AluReg
     {

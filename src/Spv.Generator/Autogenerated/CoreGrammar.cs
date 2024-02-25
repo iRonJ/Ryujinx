@@ -180,7 +180,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction Decorate(Instruction target, Decoration decoration, IOperand parameter)
+=======
+        public Instruction Decorate(Instruction target, Decoration decoration, Operand parameter)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpDecorate);
 
@@ -192,7 +196,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction Decorate(Instruction target, Decoration decoration, params IOperand[] parameters)
+=======
+        public Instruction Decorate(Instruction target, Decoration decoration, params Operand[] parameters)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpDecorate);
 
@@ -216,7 +224,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction MemberDecorate(Instruction structureType, LiteralInteger member, Decoration decoration, IOperand parameter)
+=======
+        public Instruction MemberDecorate(Instruction structureType, LiteralInteger member, Decoration decoration, Operand parameter)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpMemberDecorate);
 
@@ -229,7 +241,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction MemberDecorate(Instruction structureType, LiteralInteger member, Decoration decoration, params IOperand[] parameters)
+=======
+        public Instruction MemberDecorate(Instruction structureType, LiteralInteger member, Decoration decoration, params Operand[] parameters)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpMemberDecorate);
 
@@ -262,7 +278,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction GroupMemberDecorate(Instruction decorationGroup, params IOperand[] targets)
+=======
+        public Instruction GroupMemberDecorate(Instruction decorationGroup, params Operand[] targets)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpGroupMemberDecorate);
 
@@ -273,7 +293,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction DecorateId(Instruction target, Decoration decoration, params IOperand[] parameters)
+=======
+        public Instruction DecorateId(Instruction target, Decoration decoration, params Operand[] parameters)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpDecorateId);
 
@@ -285,7 +309,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction DecorateString(Instruction target, Decoration decoration, params IOperand[] parameters)
+=======
+        public Instruction DecorateString(Instruction target, Decoration decoration, params Operand[] parameters)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpDecorateString);
 
@@ -297,7 +325,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction DecorateStringGOOGLE(Instruction target, Decoration decoration, params IOperand[] parameters)
+=======
+        public Instruction DecorateStringGOOGLE(Instruction target, Decoration decoration, params Operand[] parameters)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpDecorateStringGOOGLE);
 
@@ -309,7 +341,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction MemberDecorateString(Instruction structType, LiteralInteger member, Decoration decoration, params IOperand[] parameters)
+=======
+        public Instruction MemberDecorateString(Instruction structType, LiteralInteger member, Decoration decoration, params Operand[] parameters)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpMemberDecorateString);
 
@@ -322,7 +358,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction MemberDecorateStringGOOGLE(Instruction structType, LiteralInteger member, Decoration decoration, params IOperand[] parameters)
+=======
+        public Instruction MemberDecorateStringGOOGLE(Instruction structType, LiteralInteger member, Decoration decoration, params Operand[] parameters)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpMemberDecorateStringGOOGLE);
 
@@ -2815,7 +2855,11 @@ namespace Spv.Generator
             return result;
         }
 
+<<<<<<< HEAD
         public Instruction Switch(Instruction selector, Instruction defaultObj, params IOperand[] target)
+=======
+        public Instruction Switch(Instruction selector, Instruction defaultObj, params Operand[] target)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpSwitch);
 

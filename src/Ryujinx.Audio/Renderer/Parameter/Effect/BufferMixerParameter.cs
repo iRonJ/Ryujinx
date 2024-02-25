@@ -29,4 +29,8 @@ namespace Ryujinx.Audio.Renderer.Parameter.Effect
         /// </summary>
         public uint MixesCount;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

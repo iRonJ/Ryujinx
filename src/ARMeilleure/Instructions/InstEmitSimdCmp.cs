@@ -3,6 +3,10 @@ using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation;
 using System;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
@@ -492,7 +496,11 @@ namespace ARMeilleure.Instructions
             OpCodeSimdFcond op = (OpCodeSimdFcond)context.CurrOp;
 
             Operand lblTrue = Label();
+<<<<<<< HEAD
             Operand lblEnd = Label();
+=======
+            Operand lblEnd  = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
             context.BranchIfTrue(lblTrue, InstEmitFlowHelper.GetCondTrue(context, op.Cond));
 
@@ -509,7 +517,11 @@ namespace ARMeilleure.Instructions
 
         private static void EmitSetNzcv(ArmEmitterContext context, int nzcv)
         {
+<<<<<<< HEAD
             static Operand Extract(int value, int bit)
+=======
+            Operand Extract(int value, int bit)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 if (bit != 0)
                 {
@@ -531,7 +543,11 @@ namespace ARMeilleure.Instructions
         {
             OpCodeSimdReg op = (OpCodeSimdReg)context.CurrOp;
 
+<<<<<<< HEAD
             bool cmpWithZero = op is not OpCodeSimdFcond && op.Bit3;
+=======
+            bool cmpWithZero = !(op is OpCodeSimdFcond) ? op.Bit3 : false;
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (Optimizations.FastFP && (signalNaNs ? Optimizations.UseAvx : Optimizations.UseSse2))
             {

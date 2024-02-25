@@ -61,6 +61,11 @@ namespace Ryujinx.Graphics.Gpu.Image
 
         private int _textureBufferIndex;
 
+<<<<<<< HEAD
+=======
+        private readonly float[] _scales;
+        private bool _scaleChanged;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _lastFragmentTotal;
 
         /// <summary>
@@ -70,12 +75,20 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// <param name="channel">The GPU channel that the texture bindings manager belongs to</param>
         /// <param name="texturePoolCache">Texture pools cache used to get texture pools from</param>
         /// <param name="samplerPoolCache">Sampler pools cache used to get sampler pools from</param>
+<<<<<<< HEAD
+=======
+        /// <param name="scales">Array where the scales for the currently bound textures are stored</param>
+>>>>>>> 1ec71635b (sync with main branch)
         /// <param name="isCompute">True if the bindings manager is used for the compute engine</param>
         public TextureBindingsManager(
             GpuContext context,
             GpuChannel channel,
             TexturePoolCache texturePoolCache,
             SamplerPoolCache samplerPoolCache,
+<<<<<<< HEAD
+=======
+            float[] scales,
+>>>>>>> 1ec71635b (sync with main branch)
             bool isCompute)
         {
             _context = context;
@@ -83,15 +96,26 @@ namespace Ryujinx.Graphics.Gpu.Image
             _texturePoolCache = texturePoolCache;
             _samplerPoolCache = samplerPoolCache;
 
+<<<<<<< HEAD
+=======
+            _scales = scales;
+>>>>>>> 1ec71635b (sync with main branch)
             _isCompute = isCompute;
 
             int stages = isCompute ? 1 : Constants.ShaderStages;
 
             _textureBindings = new TextureBindingInfo[stages][];
+<<<<<<< HEAD
             _imageBindings = new TextureBindingInfo[stages][];
 
             _textureState = new TextureState[InitialTextureStateSize];
             _imageState = new TextureState[InitialImageStateSize];
+=======
+            _imageBindings   = new TextureBindingInfo[stages][];
+
+            _textureState = new TextureState[InitialTextureStateSize];
+            _imageState   = new TextureState[InitialImageStateSize];
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int stage = 0; stage < stages; stage++)
             {
@@ -234,7 +258,16 @@ namespace Ryujinx.Graphics.Gpu.Image
                 }
             }
 
+<<<<<<< HEAD
             _context.SupportBufferUpdater.UpdateRenderScale(index, result);
+=======
+            if (result != _scales[index])
+            {
+                _scaleChanged = true;
+
+                _scales[index] = result;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
 
             return changed;
         }
@@ -280,6 +313,14 @@ namespace Ryujinx.Graphics.Gpu.Image
                 // - Vertex stage has bindings that require scale.
                 // - Fragment stage binding count has been updated since last render scale update.
 
+<<<<<<< HEAD
+=======
+                _scaleChanged = true;
+            }
+
+            if (_scaleChanged)
+            {
+>>>>>>> 1ec71635b (sync with main branch)
                 if (!_isCompute)
                 {
                     total += fragmentTotal; // Add the fragment bindings to the total.
@@ -287,7 +328,13 @@ namespace Ryujinx.Graphics.Gpu.Image
 
                 _lastFragmentTotal = fragmentTotal;
 
+<<<<<<< HEAD
                 _context.SupportBufferUpdater.UpdateRenderScaleFragmentCount(total, fragmentTotal);
+=======
+                _context.Renderer.Pipeline.UpdateRenderScale(_scales, total, fragmentTotal);
+
+                _scaleChanged = false;
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -382,7 +429,11 @@ namespace Ryujinx.Graphics.Gpu.Image
             {
                 ref BufferBounds bounds = ref _channel.BufferManager.GetUniformBufferBounds(_isCompute, stageIndex, textureBufferIndex);
 
+<<<<<<< HEAD
                 cachedTextureBuffer = MemoryMarshal.Cast<byte, int>(_channel.MemoryManager.Physical.GetSpan(bounds.Range));
+=======
+                cachedTextureBuffer = MemoryMarshal.Cast<byte, int>(_channel.MemoryManager.Physical.GetSpan(bounds.Address, (int)bounds.Size));
+>>>>>>> 1ec71635b (sync with main branch)
                 cachedTextureBufferIndex = textureBufferIndex;
 
                 if (samplerBufferIndex == textureBufferIndex)
@@ -396,12 +447,19 @@ namespace Ryujinx.Graphics.Gpu.Image
             {
                 ref BufferBounds bounds = ref _channel.BufferManager.GetUniformBufferBounds(_isCompute, stageIndex, samplerBufferIndex);
 
+<<<<<<< HEAD
                 cachedSamplerBuffer = MemoryMarshal.Cast<byte, int>(_channel.MemoryManager.Physical.GetSpan(bounds.Range));
+=======
+                cachedSamplerBuffer = MemoryMarshal.Cast<byte, int>(_channel.MemoryManager.Physical.GetSpan(bounds.Address, (int)bounds.Size));
+>>>>>>> 1ec71635b (sync with main branch)
                 cachedSamplerBufferIndex = samplerBufferIndex;
             }
         }
 
+<<<<<<< HEAD
 #pragma warning disable IDE0051 // Remove unused private member
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         /// <summary>
         /// Counts the total number of texture bindings used by all shader stages.
         /// </summary>
@@ -410,17 +468,28 @@ namespace Ryujinx.Graphics.Gpu.Image
         {
             int count = 0;
 
+<<<<<<< HEAD
             foreach (TextureBindingInfo[] textureInfo in _textureBindings)
             {
                 if (textureInfo != null)
                 {
                     count += textureInfo.Length;
+=======
+            for (int i = 0; i < _textureBindings.Length; i++)
+            {
+                if (_textureBindings[i] != null)
+                {
+                    count += _textureBindings[i].Length;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
             return count;
         }
+<<<<<<< HEAD
 #pragma warning restore IDE0051
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Ensures that the texture bindings are visible to the host GPU.
@@ -524,7 +593,11 @@ namespace Ryujinx.Graphics.Gpu.Image
                     // Ensure that the buffer texture is using the correct buffer as storage.
                     // Buffers are frequently re-created to accommodate larger data, so we need to re-bind
                     // to ensure we're not using a old buffer that was already deleted.
+<<<<<<< HEAD
                     _channel.BufferManager.SetBufferTextureStorage(stage, hostTexture, texture.Range, bindingInfo, bindingInfo.Format, false);
+=======
+                    _channel.BufferManager.SetBufferTextureStorage(stage, hostTexture, texture.Range.GetSubRange(0).Address, texture.Size, bindingInfo, bindingInfo.Format, false);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     // Cache is not used for buffer texture, it must always rebind.
                     state.CachedTexture = null;
@@ -634,7 +707,11 @@ namespace Ryujinx.Graphics.Gpu.Image
                         state.Texture = hostTextureRebind;
                         state.ImageFormat = format;
 
+<<<<<<< HEAD
                         _context.Renderer.Pipeline.SetImage(stage, bindingInfo.Binding, hostTextureRebind, format);
+=======
+                        _context.Renderer.Pipeline.SetImage(bindingInfo.Binding, hostTextureRebind, format);
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     continue;
@@ -661,7 +738,11 @@ namespace Ryujinx.Graphics.Gpu.Image
                         format = texture.Format;
                     }
 
+<<<<<<< HEAD
                     _channel.BufferManager.SetBufferTextureStorage(stage, hostTexture, texture.Range, bindingInfo, format, true);
+=======
+                    _channel.BufferManager.SetBufferTextureStorage(stage, hostTexture, texture.Range.GetSubRange(0).Address, texture.Size, bindingInfo, format, true);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     // Cache is not used for buffer texture, it must always rebind.
                     state.CachedTexture = null;
@@ -692,7 +773,11 @@ namespace Ryujinx.Graphics.Gpu.Image
 
                         state.ImageFormat = format;
 
+<<<<<<< HEAD
                         _context.Renderer.Pipeline.SetImage(stage, bindingInfo.Binding, hostTexture, format);
+=======
+                        _context.Renderer.Pipeline.SetImage(bindingInfo.Binding, hostTexture, format);
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     state.CachedTexture = texture;

@@ -6,4 +6,8 @@ namespace Ryujinx.Graphics.Shader.Decoders
         Gpr,
         Predicate,
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

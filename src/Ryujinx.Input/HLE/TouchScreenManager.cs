@@ -31,7 +31,11 @@ namespace Ryujinx.Input.HLE
                     MouseStateSnapshot snapshot = IMouse.GetMouseStateSnapshot(_mouse);
                     var touchPosition = IMouse.GetScreenPosition(snapshot.Position, _mouse.ClientSize, aspectRatio);
 
+<<<<<<< HEAD
                     TouchPoint currentPoint = new()
+=======
+                    TouchPoint currentPoint = new TouchPoint
+>>>>>>> 1ec71635b (sync with main branch)
                     {
                         Attribute = TouchAttribute.End,
 
@@ -41,7 +45,11 @@ namespace Ryujinx.Input.HLE
                         // Placeholder values till more data is acquired
                         DiameterX = 10,
                         DiameterY = 10,
+<<<<<<< HEAD
                         Angle = 90,
+=======
+                        Angle = 90
+>>>>>>> 1ec71635b (sync with main branch)
                     };
 
                     _device.Hid.Touchscreen.Update(currentPoint);
@@ -71,7 +79,11 @@ namespace Ryujinx.Input.HLE
                     attribute = TouchAttribute.End;
                 }
 
+<<<<<<< HEAD
                 TouchPoint currentPoint = new()
+=======
+                TouchPoint currentPoint = new TouchPoint
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     Attribute = attribute,
 
@@ -81,7 +93,11 @@ namespace Ryujinx.Input.HLE
                     // Placeholder values till more data is acquired
                     DiameterX = 10,
                     DiameterY = 10,
+<<<<<<< HEAD
                     Angle = 90,
+=======
+                    Angle = 90
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 _device.Hid.Touchscreen.Update(currentPoint);
@@ -94,9 +110,15 @@ namespace Ryujinx.Input.HLE
             return false;
         }
 
+<<<<<<< HEAD
         public void Dispose()
         {
             GC.SuppressFinalize(this);
         }
     }
 }
+=======
+        public void Dispose() { }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

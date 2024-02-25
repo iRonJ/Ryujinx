@@ -5,15 +5,26 @@ using System;
 
 namespace Ryujinx.Cpu
 {
+<<<<<<< HEAD
     public class AddressSpace : IDisposable
     {
+=======
+    class AddressSpace : IDisposable
+    {
+        private const ulong PageSize = 0x1000;
+
+>>>>>>> 1ec71635b (sync with main branch)
         private const int DefaultBlockAlignment = 1 << 20;
 
         private enum MappingType : byte
         {
             None,
             Private,
+<<<<<<< HEAD
             Shared,
+=======
+            Shared
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private class Mapping : IntrusiveRedBlackTreeNode<Mapping>, IComparable<Mapping>
@@ -35,7 +46,11 @@ namespace Ryujinx.Cpu
                 ulong leftSize = splitAddress - Address;
                 ulong rightSize = EndAddress - splitAddress;
 
+<<<<<<< HEAD
                 Mapping left = new(Address, leftSize, Type);
+=======
+                Mapping left = new Mapping(Address, leftSize, Type);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Address = splitAddress;
                 Size = rightSize;
@@ -91,7 +106,11 @@ namespace Ryujinx.Cpu
 
                 (var leftAllocation, PrivateAllocation) = PrivateAllocation.Split(leftSize);
 
+<<<<<<< HEAD
                 PrivateMapping left = new(Address, leftSize, leftAllocation);
+=======
+                PrivateMapping left = new PrivateMapping(Address, leftSize, leftAllocation);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Address = splitAddress;
                 Size = rightSize;
@@ -152,9 +171,13 @@ namespace Ryujinx.Cpu
         public MemoryBlock Base { get; }
         public MemoryBlock Mirror { get; }
 
+<<<<<<< HEAD
         public ulong AddressSpaceSize { get; }
 
         public AddressSpace(MemoryBlock backingMemory, MemoryBlock baseMemory, MemoryBlock mirrorMemory, ulong addressSpaceSize, bool supports4KBPages)
+=======
+        public AddressSpace(MemoryBlock backingMemory, ulong asSize, bool supports4KBPages)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (!supports4KBPages)
             {
@@ -163,13 +186,19 @@ namespace Ryujinx.Cpu
                 _privateTree = new IntrusiveRedBlackTree<PrivateMapping>();
                 _treeLock = new object();
 
+<<<<<<< HEAD
                 _mappingTree.Add(new Mapping(0UL, addressSpaceSize, MappingType.None));
                 _privateTree.Add(new PrivateMapping(0UL, addressSpaceSize, default));
+=======
+                _mappingTree.Add(new Mapping(0UL, asSize, MappingType.None));
+                _privateTree.Add(new PrivateMapping(0UL, asSize, default));
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             _backingMemory = backingMemory;
             _supports4KBPages = supports4KBPages;
 
+<<<<<<< HEAD
             Base = baseMemory;
             Mirror = mirrorMemory;
             AddressSpaceSize = addressSpaceSize;
@@ -205,6 +234,12 @@ namespace Ryujinx.Cpu
             }
 
             return addressSpace != null;
+=======
+            MemoryAllocationFlags asFlags = MemoryAllocationFlags.Reserve | MemoryAllocationFlags.ViewCompatible;
+
+            Base = new MemoryBlock(asSize, asFlags);
+            Mirror = new MemoryBlock(asSize, asFlags);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void Map(ulong va, ulong pa, ulong size, MemoryMapFlags flags)
@@ -389,6 +424,11 @@ namespace Ryujinx.Cpu
             ulong vaAligned = BitUtils.AlignDown(va, alignment);
             ulong endAddressAligned = BitUtils.AlignUp(endAddress, alignment);
 
+<<<<<<< HEAD
+=======
+            ulong sizeAligned = endAddressAligned - vaAligned;
+
+>>>>>>> 1ec71635b (sync with main branch)
             PrivateMapping map = _privateTree.GetNode(new PrivateMapping(va, 1UL, default));
 
             for (; map != null; map = map.Successor)
@@ -432,6 +472,11 @@ namespace Ryujinx.Cpu
                 return;
             }
 
+<<<<<<< HEAD
+=======
+            ulong alignedSize = endAddressAligned - vaAligned;
+
+>>>>>>> 1ec71635b (sync with main branch)
             PrivateMapping map = _privateTree.GetNode(new PrivateMapping(va, 1UL, default));
 
             for (; map != null; map = map.Successor)
@@ -489,11 +534,18 @@ namespace Ryujinx.Cpu
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             _privateMemoryAllocator?.Dispose();
             Base.Dispose();
             Mirror.Dispose();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

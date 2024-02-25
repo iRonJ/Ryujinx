@@ -58,4 +58,8 @@ namespace Ryujinx.Graphics.Gpu.Shader
             ResourceCounts = new ResourceCounts();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

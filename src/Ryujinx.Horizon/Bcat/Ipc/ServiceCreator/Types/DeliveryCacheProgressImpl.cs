@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Runtime.InteropServices;
+=======
+﻿using System.Runtime.InteropServices;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Horizon.Bcat.Ipc.Types
 {
@@ -8,11 +12,19 @@ namespace Ryujinx.Horizon.Bcat.Ipc.Types
         public enum Status
         {
             // TODO: determine other values
+<<<<<<< HEAD
             Done = 9,
         }
 
         public Status State;
         public uint Result;
+=======
+            Done = 9
+        }
+
+        public Status State;
+        public uint   Result;
+>>>>>>> 1ec71635b (sync with main branch)
         // TODO: reverse the rest of the structure
     }
 }

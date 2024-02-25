@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using LibHac;
+=======
+﻿using LibHac;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using LibHac.Fs;
 using LibHac.Fs.Fsa;
@@ -23,7 +27,11 @@ namespace Ryujinx.HLE.HOS.Services.Ssl
     {
         private const long CertStoreTitleId = 0x0100000000000800;
 
+<<<<<<< HEAD
         private const string CertStoreTitleMissingErrorMessage = "CertStore system title not found! SSL CA retrieving will not work, provide the system archive to fix this error. (See https://github.com/Ryujinx/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide#initial-setup-continued---installation-of-firmware for more information)";
+=======
+        private readonly string CertStoreTitleMissingErrorMessage = "CertStore system title not found! SSL CA retrieving will not work, provide the system archive to fix this error. (See https://github.com/Ryujinx/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide#initial-setup-continued---installation-of-firmware for more information)";
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static BuiltInCertificateManager _instance;
 
@@ -31,12 +39,20 @@ namespace Ryujinx.HLE.HOS.Services.Ssl
         {
             get
             {
+<<<<<<< HEAD
                 _instance ??= new BuiltInCertificateManager();
+=======
+                if (_instance == null)
+                {
+                    _instance = new BuiltInCertificateManager();
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return _instance;
             }
         }
 
+<<<<<<< HEAD
         private VirtualFileSystem _virtualFileSystem;
         private IntegrityCheckLevel _fsIntegrityCheckLevel;
         private ContentManager _contentManager;
@@ -44,17 +60,34 @@ namespace Ryujinx.HLE.HOS.Services.Ssl
         private Dictionary<CaCertificateId, CertStoreEntry> _certificates;
 
         private readonly object _lock = new();
+=======
+        private VirtualFileSystem   _virtualFileSystem;
+        private IntegrityCheckLevel _fsIntegrityCheckLevel;
+        private ContentManager      _contentManager;
+        private bool                _initialized;
+        private Dictionary<CaCertificateId, CertStoreEntry> _certificates;
+
+        private object _lock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
 
         private struct CertStoreFileHeader
         {
             private const uint ValidMagic = 0x546C7373;
 
+<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
+=======
+#pragma warning disable CS0649
+>>>>>>> 1ec71635b (sync with main branch)
             public uint Magic;
             public uint EntriesCount;
 #pragma warning restore CS0649
 
+<<<<<<< HEAD
             public readonly bool IsValid()
+=======
+            public bool IsValid()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return Magic == ValidMagic;
             }
@@ -62,7 +95,11 @@ namespace Ryujinx.HLE.HOS.Services.Ssl
 
         private struct CertStoreFileEntry
         {
+<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
+=======
+#pragma warning disable CS0649
+>>>>>>> 1ec71635b (sync with main branch)
             public CaCertificateId Id;
             public TrustedCertStatus Status;
             public uint DataSize;
@@ -106,7 +143,11 @@ namespace Ryujinx.HLE.HOS.Services.Ssl
             {
                 Id = entry.Id,
                 Status = entry.Status,
+<<<<<<< HEAD
                 Data = data,
+=======
+                Data = data
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -122,9 +163,15 @@ namespace Ryujinx.HLE.HOS.Services.Ssl
 
                 if (HasCertStoreTitle())
                 {
+<<<<<<< HEAD
                     using LocalStorage ncaFile = new(VirtualFileSystem.SwitchPathToSystemPath(GetCertStoreTitleContentPath()), FileAccess.Read, FileMode.Open);
 
                     Nca nca = new(_virtualFileSystem.KeySet, ncaFile);
+=======
+                    using LocalStorage ncaFile = new LocalStorage(_virtualFileSystem.SwitchPathToSystemPath(GetCertStoreTitleContentPath()), FileAccess.Read, FileMode.Open);
+
+                    Nca nca = new Nca(_virtualFileSystem.KeySet, ncaFile);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     IFileSystem romfs = nca.OpenFileSystem(NcaSectionType.Data, _fsIntegrityCheckLevel);
 

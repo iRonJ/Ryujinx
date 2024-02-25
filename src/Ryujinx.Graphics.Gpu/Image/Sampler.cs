@@ -40,16 +40,27 @@ namespace Ryujinx.Graphics.Gpu.Image
             AddressMode addressP = descriptor.UnpackAddressP();
 
             CompareMode compareMode = descriptor.UnpackCompareMode();
+<<<<<<< HEAD
             CompareOp compareOp = descriptor.UnpackCompareOp();
 
             ColorF color = new(
+=======
+            CompareOp   compareOp   = descriptor.UnpackCompareOp();
+
+            ColorF color = new ColorF(
+>>>>>>> 1ec71635b (sync with main branch)
                 descriptor.BorderColorR,
                 descriptor.BorderColorG,
                 descriptor.BorderColorB,
                 descriptor.BorderColorA);
 
+<<<<<<< HEAD
             float minLod = descriptor.UnpackMinLod();
             float maxLod = descriptor.UnpackMaxLod();
+=======
+            float minLod     = descriptor.UnpackMinLod();
+            float maxLod     = descriptor.UnpackMaxLod();
+>>>>>>> 1ec71635b (sync with main branch)
             float mipLodBias = descriptor.UnpackMipLodBias();
 
             float maxRequestedAnisotropy = descriptor.UnpackMaxAnisotropy();
@@ -112,4 +123,8 @@ namespace Ryujinx.Graphics.Gpu.Image
             _anisoSampler?.Dispose();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

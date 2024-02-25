@@ -1690,7 +1690,11 @@ namespace Ryujinx.Horizon.Common
             { 0x821AC, "InvalidPackage1" },
             { 0x823AC, "InvalidPackage1SectionSize" },
             { 0x825AC, "InvalidPackage1MarikoBodySize" },
+<<<<<<< HEAD
             { 0x827AC, "InvalidPackage1Pk11Size" },
+=======
+            { 0x827AC, "InvalidPackage1Pk11Size" }
+>>>>>>> 1ec71635b (sync with main branch)
         };
 
         public static bool TryGet(int errorCode, out string name)
@@ -1698,4 +1702,8 @@ namespace Ryujinx.Horizon.Common
             return _names.TryGetValue(errorCode, out name);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -10,4 +10,8 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// </summary>
         EffectState State { get; set; }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

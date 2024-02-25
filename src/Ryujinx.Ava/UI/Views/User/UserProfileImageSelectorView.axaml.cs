@@ -1,6 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+<<<<<<< HEAD
 using Avalonia.Platform.Storage;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using Avalonia.VisualTree;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Navigation;
@@ -11,7 +14,10 @@ using Ryujinx.Ava.UI.ViewModels;
 using Ryujinx.HLE.FileSystem;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using System.IO;
 using Image = SixLabors.ImageSharp.Image;
 
@@ -65,6 +71,7 @@ namespace Ryujinx.Ava.UI.Views.User
 
         private async void Import_OnClick(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             var window = this.GetVisualRoot() as Window;
             var result = await window.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
             {
@@ -84,6 +91,35 @@ namespace Ryujinx.Ava.UI.Views.User
             {
                 _profile.Image = ProcessProfileImage(File.ReadAllBytes(result[0].Path.LocalPath));
                 _parent.GoBack();
+=======
+            OpenFileDialog dialog = new();
+            dialog.Filters.Add(new FileDialogFilter
+            {
+                Name = LocaleManager.Instance[LocaleKeys.AllSupportedFormats],
+                Extensions = { "jpg", "jpeg", "png", "bmp" }
+            });
+            dialog.Filters.Add(new FileDialogFilter { Name = "JPEG", Extensions = { "jpg", "jpeg" } });
+            dialog.Filters.Add(new FileDialogFilter { Name = "PNG", Extensions = { "png" } });
+            dialog.Filters.Add(new FileDialogFilter { Name = "BMP", Extensions = { "bmp" } });
+
+            dialog.AllowMultiple = false;
+
+            string[] image = await dialog.ShowAsync(((TopLevel)_parent.GetVisualRoot()) as Window);
+
+            if (image != null)
+            {
+                if (image.Length > 0)
+                {
+                    string imageFile = image[0];
+
+                    _profile.Image = ProcessProfileImage(File.ReadAllBytes(imageFile));
+
+                    if (_profile.Image != null)
+                    {
+                        _parent.GoBack();
+                    }
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -102,6 +138,7 @@ namespace Ryujinx.Ava.UI.Views.User
 
         private static byte[] ProcessProfileImage(byte[] buffer)
         {
+<<<<<<< HEAD
             using Image image = Image.Load(buffer);
 
             image.Mutate(x => x.Resize(256, 256));
@@ -114,3 +151,19 @@ namespace Ryujinx.Ava.UI.Views.User
         }
     }
 }
+=======
+            using (Image image = Image.Load(buffer))
+            {
+                image.Mutate(x => x.Resize(256, 256));
+
+                using (MemoryStream streamJpg = new())
+                {
+                    image.SaveAsJpeg(streamJpg);
+
+                    return streamJpg.ToArray();
+                }
+            }
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Configuration;
+=======
+﻿using Ryujinx.Common.Configuration;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using Ryujinx.Input.HLE;
 using Ryujinx.SDL2.Common;
@@ -10,7 +14,11 @@ namespace Ryujinx.Headless.SDL2.Vulkan
 {
     class VulkanWindow : WindowBase
     {
+<<<<<<< HEAD
         private readonly GraphicsDebugLevel _glLogLevel;
+=======
+        private GraphicsDebugLevel _glLogLevel;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public VulkanWindow(
             InputManager inputManager,
@@ -29,6 +37,7 @@ namespace Ryujinx.Headless.SDL2.Vulkan
 
         protected override void InitializeRenderer()
         {
+<<<<<<< HEAD
             if (IsExclusiveFullscreen)
             {
                 Renderer?.Window.SetSize(ExclusiveFullscreenWidth, ExclusiveFullscreenHeight);
@@ -42,15 +51,30 @@ namespace Ryujinx.Headless.SDL2.Vulkan
         }
 
         private static void BasicInvoke(Action action)
+=======
+            Renderer?.Window.SetSize(DefaultWidth, DefaultHeight);
+            MouseDriver.SetClientSize(DefaultWidth, DefaultHeight);
+        }
+
+        private void BasicInvoke(Action action)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             action();
         }
 
+<<<<<<< HEAD
         public IntPtr CreateWindowSurface(IntPtr instance)
         {
             ulong surfaceHandle = 0;
 
             void CreateSurface()
+=======
+        public unsafe IntPtr CreateWindowSurface(IntPtr instance)
+        {
+            ulong surfaceHandle = 0;
+
+            Action createSurface = () =>
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 if (SDL_Vulkan_CreateSurface(WindowHandle, instance, out surfaceHandle) == SDL_bool.SDL_FALSE)
                 {
@@ -60,6 +84,7 @@ namespace Ryujinx.Headless.SDL2.Vulkan
 
                     throw new Exception(errorMessage);
                 }
+<<<<<<< HEAD
             }
 
             if (SDL2Driver.MainThreadDispatcher != null)
@@ -69,6 +94,17 @@ namespace Ryujinx.Headless.SDL2.Vulkan
             else
             {
                 CreateSurface();
+=======
+            };
+
+            if (SDL2Driver.MainThreadDispatcher != null)
+            {
+                SDL2Driver.MainThreadDispatcher(createSurface);
+            }
+            else
+            {
+                createSurface();
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return (IntPtr)surfaceHandle;
@@ -109,4 +145,8 @@ namespace Ryujinx.Headless.SDL2.Vulkan
 
         protected override void SwapBuffers() { }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

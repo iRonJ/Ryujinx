@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -13,7 +17,14 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
         {
             get
             {
+<<<<<<< HEAD
                 _instance ??= new ManagedSocketPollManager();
+=======
+                if (_instance == null)
+                {
+                    _instance = new ManagedSocketPollManager();
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return _instance;
             }
@@ -26,9 +37,15 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
 
         public LinuxError Poll(List<PollEvent> events, int timeoutMilliseconds, out int updatedCount)
         {
+<<<<<<< HEAD
             List<Socket> readEvents = new();
             List<Socket> writeEvents = new();
             List<Socket> errorEvents = new();
+=======
+            List<Socket> readEvents = new List<Socket>();
+            List<Socket> writeEvents = new List<Socket>();
+            List<Socket> errorEvents = new List<Socket>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             updatedCount = 0;
 
@@ -171,4 +188,8 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             return LinuxError.SUCCESS;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

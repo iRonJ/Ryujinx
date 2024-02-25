@@ -46,4 +46,8 @@ namespace Ryujinx.HLE.HOS.Services.Sm
             _serviceRegistrationEvent.WaitOne();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

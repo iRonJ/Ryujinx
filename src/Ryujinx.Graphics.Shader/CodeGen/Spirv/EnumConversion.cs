@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using static Spv.Specification;
 
 namespace Ryujinx.Graphics.Shader.CodeGen.Spirv
@@ -15,7 +19,11 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Spirv
                 ShaderStage.TessellationEvaluation => ExecutionModel.TessellationEvaluation,
                 ShaderStage.Geometry => ExecutionModel.Geometry,
                 ShaderStage.Fragment => ExecutionModel.Fragment,
+<<<<<<< HEAD
                 _ => throw new ArgumentException($"Invalid shader stage \"{stage}\"."),
+=======
+                _ => throw new ArgumentException($"Invalid shader stage \"{stage}\".")
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

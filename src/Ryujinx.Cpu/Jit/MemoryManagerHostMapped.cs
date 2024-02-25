@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using ARMeilleure.Memory;
+=======
+﻿using ARMeilleure.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Memory;
 using Ryujinx.Memory.Range;
 using Ryujinx.Memory.Tracking;
@@ -31,15 +35,23 @@ namespace Ryujinx.Cpu.Jit
 
             MappedReplicated = 0x5555555555555555,
             WriteTrackedReplicated = 0xaaaaaaaaaaaaaaaa,
+<<<<<<< HEAD
             ReadWriteTrackedReplicated = ulong.MaxValue,
+=======
+            ReadWriteTrackedReplicated = ulong.MaxValue
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private readonly InvalidAccessHandler _invalidAccessHandler;
         private readonly bool _unsafeMode;
 
         private readonly AddressSpace _addressSpace;
+<<<<<<< HEAD
 
         public ulong AddressSpaceSize { get; }
+=======
+        private readonly ulong _addressSpaceSize;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly PageTable<ulong> _pageTable;
 
@@ -63,6 +75,7 @@ namespace Ryujinx.Cpu.Jit
         /// <summary>
         /// Creates a new instance of the host mapped memory manager.
         /// </summary>
+<<<<<<< HEAD
         /// <param name="addressSpace">Address space instance to use</param>
         /// <param name="unsafeMode">True if unmanaged access should not be masked (unsafe), false otherwise.</param>
         /// <param name="invalidAccessHandler">Optional function to handle invalid memory accesses</param>
@@ -73,11 +86,27 @@ namespace Ryujinx.Cpu.Jit
             _invalidAccessHandler = invalidAccessHandler;
             _unsafeMode = unsafeMode;
             AddressSpaceSize = addressSpace.AddressSpaceSize;
+=======
+        /// <param name="backingMemory">Physical backing memory where virtual memory will be mapped to</param>
+        /// <param name="addressSpaceSize">Size of the address space</param>
+        /// <param name="unsafeMode">True if unmanaged access should not be masked (unsafe), false otherwise.</param>
+        /// <param name="invalidAccessHandler">Optional function to handle invalid memory accesses</param>
+        public MemoryManagerHostMapped(MemoryBlock backingMemory, ulong addressSpaceSize, bool unsafeMode, InvalidAccessHandler invalidAccessHandler = null)
+        {
+            _pageTable = new PageTable<ulong>();
+            _invalidAccessHandler = invalidAccessHandler;
+            _unsafeMode = unsafeMode;
+            _addressSpaceSize = addressSpaceSize;
+>>>>>>> 1ec71635b (sync with main branch)
 
             ulong asSize = PageSize;
             int asBits = PageBits;
 
+<<<<<<< HEAD
             while (asSize < AddressSpaceSize)
+=======
+            while (asSize < addressSpaceSize)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 asSize <<= 1;
                 asBits++;
@@ -87,6 +116,11 @@ namespace Ryujinx.Cpu.Jit
 
             _pageBitmap = new ulong[1 << (AddressSpaceBits - (PageBits + PageToPteShift))];
 
+<<<<<<< HEAD
+=======
+            _addressSpace = new AddressSpace(backingMemory, asSize, Supports4KBPages);
+
+>>>>>>> 1ec71635b (sync with main branch)
             Tracking = new MemoryTracking(this, (int)MemoryBlock.GetPageSize(), invalidAccessHandler);
             _memoryEh = new MemoryEhMeilleure(_addressSpace.Base, _addressSpace.Mirror, Tracking);
         }
@@ -98,7 +132,11 @@ namespace Ryujinx.Cpu.Jit
         /// <returns>True if the virtual address is part of the addressable space</returns>
         private bool ValidateAddress(ulong va)
         {
+<<<<<<< HEAD
             return va < AddressSpaceSize;
+=======
+            return va < _addressSpaceSize;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -110,7 +148,11 @@ namespace Ryujinx.Cpu.Jit
         private bool ValidateAddressAndSize(ulong va, ulong size)
         {
             ulong endVa = va + size;
+<<<<<<< HEAD
             return endVa >= va && endVa >= size && endVa <= AddressSpaceSize;
+=======
+            return endVa >= va && endVa >= size && endVa <= _addressSpaceSize;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -404,7 +446,11 @@ namespace Ryujinx.Cpu.Jit
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         private static void GetPageBlockRange(ulong pageStart, ulong pageEnd, out ulong startMask, out ulong endMask, out int pageIndex, out int pageEndIndex)
+=======
+        private void GetPageBlockRange(ulong pageStart, ulong pageEnd, out ulong startMask, out ulong endMask, out int pageIndex, out int pageEndIndex)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             startMask = ulong.MaxValue << ((int)(pageStart & 31) << 1);
             endMask = ulong.MaxValue >> (64 - ((int)(pageEnd & 31) << 1));
@@ -606,7 +652,11 @@ namespace Ryujinx.Cpu.Jit
         /// <param name="startVa">The virtual address of the beginning of the first page</param>
         /// <remarks>This function does not differentiate between allocated and unallocated pages.</remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         private static int GetPagesCount(ulong va, ulong size, out ulong startVa)
+=======
+        private int GetPagesCount(ulong va, ulong size, out ulong startVa)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // WARNING: Always check if ulong does not overflow during the operations.
             startVa = va & ~(ulong)PageMask;
@@ -616,12 +666,15 @@ namespace Ryujinx.Cpu.Jit
         }
 
         /// <inheritdoc/>
+<<<<<<< HEAD
         public void Reprotect(ulong va, ulong size, MemoryPermission protection)
         {
             // TODO
         }
 
         /// <inheritdoc/>
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public void TrackingReprotect(ulong va, ulong size, MemoryPermission protection)
         {
             // Protection is inverted on software pages, since the default value is 0.
@@ -703,7 +756,11 @@ namespace Ryujinx.Cpu.Jit
             {
                 MemoryPermission.None => MemoryPermission.ReadAndWrite,
                 MemoryPermission.Write => MemoryPermission.Read,
+<<<<<<< HEAD
                 _ => MemoryPermission.None,
+=======
+                _ => MemoryPermission.None
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             _addressSpace.Base.Reprotect(va, size, protection, false);

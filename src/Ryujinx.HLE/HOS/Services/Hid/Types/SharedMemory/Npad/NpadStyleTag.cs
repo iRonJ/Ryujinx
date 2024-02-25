@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
 {
@@ -71,6 +75,10 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
         /// <summary>
         /// Generic controller.
         /// </summary>
+<<<<<<< HEAD
         System = 1 << 30,
+=======
+        System = 1 << 30
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -10,9 +10,13 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Focusable="True"
+<<<<<<< HEAD
     mc:Ignorable="d"
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     x:DataType="viewModels:MainWindowViewModel">
+=======
+    mc:Ignorable="d">
+>>>>>>> 1ec71635b (sync with main branch)
     <UserControl.Resources>
         <helpers:BitmapArrayValueConverter x:Key="ByteImage" />
         <controls:ApplicationContextMenu x:Key="ApplicationContextMenu" />
@@ -29,7 +33,11 @@
             VerticalAlignment="Stretch"
             ContextFlyout="{StaticResource ApplicationContextMenu}"
             DoubleTapped="GameList_DoubleTapped"
+<<<<<<< HEAD
             ItemsSource="{Binding AppsObservableList}"
+=======
+            Items="{Binding AppsObservableList}"
+>>>>>>> 1ec71635b (sync with main branch)
             SelectionChanged="GameList_SelectionChanged">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -41,8 +49,13 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.Styles>
+<<<<<<< HEAD
                 <Style Selector="ListBoxItem:selected /template/ Rectangle#SelectionIndicator">
                     <Setter Property="MinHeight" Value="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).ListItemSelectorSize}" />
+=======
+                <Style Selector="ListBoxItem:selected /template/ Border#SelectionIndicator">
+                    <Setter Property="MinHeight" Value="{Binding $parent[UserControl].DataContext.ListItemSelectorSize}" />
+>>>>>>> 1ec71635b (sync with main branch)
                 </Style>
             </ListBox.Styles>
             <ListBox.ItemTemplate>
@@ -67,10 +80,17 @@
                                     Grid.RowSpan="3"
                                     Grid.Column="0"
                                     Margin="0"
+<<<<<<< HEAD
                                     Classes.huge="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).IsGridHuge}"
                                     Classes.large="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).IsGridLarge}"
                                     Classes.normal="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).IsGridMedium}"
                                     Classes.small="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).IsGridSmall}"
+=======
+                                    Classes.huge="{Binding $parent[UserControl].DataContext.IsGridHuge}"
+                                    Classes.large="{Binding $parent[UserControl].DataContext.IsGridLarge}"
+                                    Classes.normal="{Binding $parent[UserControl].DataContext.IsGridMedium}"
+                                    Classes.small="{Binding $parent[UserControl].DataContext.IsGridSmall}"
+>>>>>>> 1ec71635b (sync with main branch)
                                     Source="{Binding Icon, Converter={StaticResource ByteImage}}" />
                                 <Border
                                     Grid.Column="2"
@@ -86,17 +106,29 @@
                                             HorizontalAlignment="Stretch"
                                             FontWeight="Bold"
                                             Text="{Binding TitleName}"
+<<<<<<< HEAD
                                             TextAlignment="Start"
+=======
+                                            TextAlignment="Left"
+>>>>>>> 1ec71635b (sync with main branch)
                                             TextWrapping="Wrap" />
                                         <TextBlock
                                             HorizontalAlignment="Stretch"
                                             Text="{Binding Developer}"
+<<<<<<< HEAD
                                             TextAlignment="Start"
+=======
+                                            TextAlignment="Left"
+>>>>>>> 1ec71635b (sync with main branch)
                                             TextWrapping="Wrap" />
                                         <TextBlock
                                             HorizontalAlignment="Stretch"
                                             Text="{Binding Version}"
+<<<<<<< HEAD
                                             TextAlignment="Start"
+=======
+                                            TextAlignment="Left"
+>>>>>>> 1ec71635b (sync with main branch)
                                             TextWrapping="Wrap" />
                                     </StackPanel>
                                 </Border>
@@ -110,12 +142,20 @@
                                     <TextBlock
                                         HorizontalAlignment="Stretch"
                                         Text="{Binding TitleId}"
+<<<<<<< HEAD
                                         TextAlignment="Start"
+=======
+                                        TextAlignment="Left"
+>>>>>>> 1ec71635b (sync with main branch)
                                         TextWrapping="Wrap" />
                                     <TextBlock
                                         HorizontalAlignment="Stretch"
                                         Text="{Binding FileExtension}"
+<<<<<<< HEAD
                                         TextAlignment="Start"
+=======
+                                        TextAlignment="Left"
+>>>>>>> 1ec71635b (sync with main branch)
                                         TextWrapping="Wrap" />
                                 </StackPanel>
                                 <StackPanel
@@ -126,6 +166,7 @@
                                     Spacing="5">
                                     <TextBlock
                                         HorizontalAlignment="Stretch"
+<<<<<<< HEAD
                                         Text="{Binding TimePlayedString}"
                                         TextAlignment="End"
                                         TextWrapping="Wrap" />
@@ -138,6 +179,20 @@
                                         HorizontalAlignment="Stretch"
                                         Text="{Binding FileSizeString}"
                                         TextAlignment="End"
+=======
+                                        Text="{Binding TimePlayed}"
+                                        TextAlignment="Right"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock
+                                        HorizontalAlignment="Stretch"
+                                        Text="{Binding LastPlayed, Converter={helpers:NullableDateTimeConverter}}"
+                                        TextAlignment="Right"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock
+                                        HorizontalAlignment="Stretch"
+                                        Text="{Binding FileSize}"
+                                        TextAlignment="Right"
+>>>>>>> 1ec71635b (sync with main branch)
                                         TextWrapping="Wrap" />
                                 </StackPanel>
                                 <ui:SymbolIcon
@@ -157,4 +212,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
+<<<<<<< HEAD
 </UserControl>
+=======
+</UserControl>
+>>>>>>> 1ec71635b (sync with main branch)

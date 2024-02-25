@@ -45,4 +45,8 @@ namespace Ryujinx.Graphics.Shader.Decoders
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

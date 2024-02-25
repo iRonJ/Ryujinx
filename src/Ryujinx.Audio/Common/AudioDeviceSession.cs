@@ -23,7 +23,11 @@ namespace Ryujinx.Audio.Common
         /// <summary>
         /// Array of all buffers currently used or released.
         /// </summary>
+<<<<<<< HEAD
         private readonly AudioBuffer[] _buffers;
+=======
+        private AudioBuffer[] _buffers;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The server index inside <see cref="_buffers"/> (appended but not queued to device driver).
@@ -58,17 +62,29 @@ namespace Ryujinx.Audio.Common
         /// <summary>
         /// The released buffer event.
         /// </summary>
+<<<<<<< HEAD
         private readonly IWritableEvent _bufferEvent;
+=======
+        private IWritableEvent _bufferEvent;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The session on the device driver.
         /// </summary>
+<<<<<<< HEAD
         private readonly IHardwareDeviceSession _hardwareDeviceSession;
+=======
+        private IHardwareDeviceSession _hardwareDeviceSession;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Max number of buffers that can be registered to the device driver at a time.
         /// </summary>
+<<<<<<< HEAD
         private readonly uint _bufferRegisteredLimit;
+=======
+        private uint _bufferRegisteredLimit;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Create a new <see cref="AudioDeviceSession"/>.
@@ -311,9 +327,15 @@ namespace Ryujinx.Audio.Common
             return false;
         }
 
+<<<<<<< HEAD
         public static bool AppendUacBuffer(AudioBuffer buffer, uint handle)
         {
             // NOTE: On hardware, there is another RegisterBuffer method taking a handle.
+=======
+        public bool AppendUacBuffer(AudioBuffer buffer, uint handle)
+        {
+            // NOTE: On hardware, there is another RegisterBuffer method taking an handle.
+>>>>>>> 1ec71635b (sync with main branch)
             // This variant of the call always return false (stubbed?) as a result this logic will never succeed.
 
             return false;
@@ -425,8 +447,15 @@ namespace Ryujinx.Audio.Common
             {
                 return 0;
             }
+<<<<<<< HEAD
 
             return _hardwareDeviceSession.GetPlayedSampleCount();
+=======
+            else
+            {
+                return _hardwareDeviceSession.GetPlayedSampleCount();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -513,4 +542,8 @@ namespace Ryujinx.Audio.Common
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

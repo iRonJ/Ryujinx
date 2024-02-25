@@ -5,6 +5,10 @@ using Ryujinx.Graphics.OpenGL.Image;
 using Ryujinx.Graphics.OpenGL.Queries;
 using Ryujinx.Graphics.Shader;
 using System;
+<<<<<<< HEAD
+=======
+using System.Runtime.CompilerServices;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.OpenGL
 {
@@ -43,9 +47,17 @@ namespace Ryujinx.Graphics.OpenGL
 
         private CounterQueueEvent _activeConditionalRender;
 
+<<<<<<< HEAD
         private readonly Vector4<int>[] _fpIsBgra = new Vector4<int>[SupportBuffer.FragmentIsBgraCount];
 
         private readonly (TextureBase, Format)[] _images;
+=======
+        private Vector4<int>[] _fpIsBgra = new Vector4<int>[SupportBuffer.FragmentIsBgraCount];
+        private Vector4<float>[] _renderScale = new Vector4<float>[73];
+        private int _fragmentScaleCount;
+
+        private (TextureBase, Format)[] _images;
+>>>>>>> 1ec71635b (sync with main branch)
         private TextureBase _unit0Texture;
         private Sampler _unit0Sampler;
 
@@ -63,6 +75,10 @@ namespace Ryujinx.Graphics.OpenGL
         private bool _tfEnabled;
         private TransformFeedbackPrimitiveType _tfTopology;
 
+<<<<<<< HEAD
+=======
+        private SupportBufferUpdater _supportBuffer;
+>>>>>>> 1ec71635b (sync with main branch)
         private readonly BufferHandle[] _tfbs;
         private readonly BufferRange[] _tfbTargets;
 
@@ -80,10 +96,28 @@ namespace Ryujinx.Graphics.OpenGL
 
             _images = new (TextureBase, Format)[SavedImages];
 
+<<<<<<< HEAD
+=======
+            var defaultScale = new Vector4<float> { X = 1f, Y = 0f, Z = 0f, W = 0f };
+            new Span<Vector4<float>>(_renderScale).Fill(defaultScale);
+
+>>>>>>> 1ec71635b (sync with main branch)
             _tfbs = new BufferHandle[Constants.MaxTransformFeedbackBuffers];
             _tfbTargets = new BufferRange[Constants.MaxTransformFeedbackBuffers];
         }
 
+<<<<<<< HEAD
+=======
+        public void Initialize(OpenGLRenderer renderer)
+        {
+            _supportBuffer = new SupportBufferUpdater(renderer);
+            GL.BindBufferBase(BufferRangeTarget.UniformBuffer, 0, Unsafe.As<BufferHandle, int>(ref _supportBuffer.Handle));
+
+            _supportBuffer.UpdateFragmentIsBgra(_fpIsBgra, 0, SupportBuffer.FragmentIsBgraCount);
+            _supportBuffer.UpdateRenderScale(_renderScale, 0, SupportBuffer.RenderScaleMaxCount);
+        }
+
+>>>>>>> 1ec71635b (sync with main branch)
         public void Barrier()
         {
             GL.MemoryBarrier(MemoryBarrierFlags.AllBarrierBits);
@@ -244,7 +278,11 @@ namespace Ryujinx.Graphics.OpenGL
             PostDraw();
         }
 
+<<<<<<< HEAD
         private static void DrawQuadsImpl(
+=======
+        private void DrawQuadsImpl(
+>>>>>>> 1ec71635b (sync with main branch)
             int vertexCount,
             int instanceCount,
             int firstVertex,
@@ -269,7 +307,11 @@ namespace Ryujinx.Graphics.OpenGL
                 quadsCount);
         }
 
+<<<<<<< HEAD
         private static void DrawQuadStripImpl(
+=======
+        private void DrawQuadStripImpl(
+>>>>>>> 1ec71635b (sync with main branch)
             int vertexCount,
             int instanceCount,
             int firstVertex,
@@ -350,12 +392,17 @@ namespace Ryujinx.Graphics.OpenGL
 
             switch (_elementsType)
             {
+<<<<<<< HEAD
                 case DrawElementsType.UnsignedShort:
                     indexElemSize = 2;
                     break;
                 case DrawElementsType.UnsignedInt:
                     indexElemSize = 4;
                     break;
+=======
+                case DrawElementsType.UnsignedShort: indexElemSize = 2; break;
+                case DrawElementsType.UnsignedInt: indexElemSize = 4; break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             IntPtr indexBaseOffset = _indexBaseOffset + firstIndex * indexElemSize;
@@ -668,6 +715,11 @@ namespace Ryujinx.Graphics.OpenGL
         {
             if (texture is TextureView view && sampler is Sampler samp)
             {
+<<<<<<< HEAD
+=======
+                _supportBuffer.Commit();
+
+>>>>>>> 1ec71635b (sync with main branch)
                 if (HwCapabilities.SupportsDrawTexture)
                 {
                     GL.NV.DrawTexture(
@@ -759,6 +811,19 @@ namespace Ryujinx.Graphics.OpenGL
             _tfEnabled = false;
         }
 
+<<<<<<< HEAD
+=======
+        public double GetCounterDivisor(CounterType type)
+        {
+            if (type == CounterType.SamplesPassed)
+            {
+                return _renderScale[0].X * _renderScale[0].X;
+            }
+
+            return 1;
+        }
+
+>>>>>>> 1ec71635b (sync with main branch)
         public void SetAlphaTest(bool enable, float reference, CompareOp op)
         {
             if (!enable)
@@ -935,7 +1000,11 @@ namespace Ryujinx.Graphics.OpenGL
             SetFrontFace(_frontFace = frontFace.Convert());
         }
 
+<<<<<<< HEAD
         public void SetImage(ShaderStage stage, int binding, ITexture texture, Format imageFormat)
+=======
+        public void SetImage(int binding, ITexture texture, Format imageFormat)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if ((uint)binding < SavedImages)
             {
@@ -1117,7 +1186,11 @@ namespace Ryujinx.Graphics.OpenGL
                 prg.Bind();
             }
 
+<<<<<<< HEAD
             if (_fragmentOutputMap != (uint)prg.FragmentOutputMap)
+=======
+            if (prg.HasFragmentShader && _fragmentOutputMap != (uint)prg.FragmentOutputMap)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 _fragmentOutputMap = (uint)prg.FragmentOutputMap;
 
@@ -1144,6 +1217,15 @@ namespace Ryujinx.Graphics.OpenGL
             _rasterizerDiscard = discard;
         }
 
+<<<<<<< HEAD
+=======
+        public void SetRenderTargetScale(float scale)
+        {
+            _renderScale[0].X = scale;
+            _supportBuffer.UpdateRenderScale(_renderScale, 0, 1); // Just the first element.
+        }
+
+>>>>>>> 1ec71635b (sync with main branch)
         public void SetRenderTargetColorMasks(ReadOnlySpan<uint> componentMasks)
         {
             _componentMasks = 0;
@@ -1160,6 +1242,11 @@ namespace Ryujinx.Graphics.OpenGL
         {
             EnsureFramebuffer();
 
+<<<<<<< HEAD
+=======
+            bool isBgraChanged = false;
+
+>>>>>>> 1ec71635b (sync with main branch)
             for (int index = 0; index < colors.Length; index++)
             {
                 TextureView color = (TextureView)colors[index];
@@ -1173,12 +1260,24 @@ namespace Ryujinx.Graphics.OpenGL
                     if (_fpIsBgra[index].X != isBgra)
                     {
                         _fpIsBgra[index].X = isBgra;
+<<<<<<< HEAD
+=======
+                        isBgraChanged = true;
+>>>>>>> 1ec71635b (sync with main branch)
 
                         RestoreComponentMask(index);
                     }
                 }
             }
 
+<<<<<<< HEAD
+=======
+            if (isBgraChanged)
+            {
+                _supportBuffer.UpdateFragmentIsBgra(_fpIsBgra, 0, SupportBuffer.FragmentIsBgraCount);
+            }
+
+>>>>>>> 1ec71635b (sync with main branch)
             TextureView depthStencilView = (TextureView)depthStencil;
 
             _framebuffer.AttachDepthStencil(depthStencilView);
@@ -1369,7 +1468,11 @@ namespace Ryujinx.Graphics.OpenGL
             _vertexArray.SetVertexBuffers(vertexBuffers);
         }
 
+<<<<<<< HEAD
         public void SetViewports(ReadOnlySpan<Viewport> viewports)
+=======
+        public void SetViewports(ReadOnlySpan<Viewport> viewports, bool disableTransform)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Array.Resize(ref _viewportArray, viewports.Length * 4);
             Array.Resize(ref _depthRangeArray, viewports.Length * 2);
@@ -1408,6 +1511,22 @@ namespace Ryujinx.Graphics.OpenGL
 
             GL.ViewportArray(0, viewports.Length, viewportArray);
             GL.DepthRangeArray(0, viewports.Length, depthRangeArray);
+<<<<<<< HEAD
+=======
+
+            float disableTransformF = disableTransform ? 1.0f : 0.0f;
+            if (_supportBuffer.Data.ViewportInverse.W != disableTransformF || disableTransform)
+            {
+                float scale = _renderScale[0].X;
+                _supportBuffer.UpdateViewportInverse(new Vector4<float>
+                {
+                    X = scale * 2f / viewports[0].Region.Width,
+                    Y = scale * 2f / viewports[0].Region.Height,
+                    Z = 1,
+                    W = disableTransformF
+                });
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void TextureBarrier()
@@ -1420,7 +1539,11 @@ namespace Ryujinx.Graphics.OpenGL
             GL.MemoryBarrier(MemoryBarrierFlags.TextureFetchBarrierBit);
         }
 
+<<<<<<< HEAD
         private static void SetBuffers(ReadOnlySpan<BufferAssignment> buffers, bool isStorage)
+=======
+        private void SetBuffers(ReadOnlySpan<BufferAssignment> buffers, bool isStorage)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             BufferRangeTarget target = isStorage ? BufferRangeTarget.ShaderStorageBuffer : BufferRangeTarget.UniformBuffer;
 
@@ -1497,9 +1620,42 @@ namespace Ryujinx.Graphics.OpenGL
             return (_boundDrawFramebuffer, _boundReadFramebuffer);
         }
 
+<<<<<<< HEAD
         private void PrepareForDispatch()
         {
             _unit0Texture?.Bind(0);
+=======
+        public void UpdateRenderScale(ReadOnlySpan<float> scales, int totalCount, int fragmentCount)
+        {
+            bool changed = false;
+
+            for (int index = 0; index < totalCount; index++)
+            {
+                if (_renderScale[1 + index].X != scales[index])
+                {
+                    _renderScale[1 + index].X = scales[index];
+                    changed = true;
+                }
+            }
+
+            // Only update fragment count if there are scales after it for the vertex stage.
+            if (fragmentCount != totalCount && fragmentCount != _fragmentScaleCount)
+            {
+                _fragmentScaleCount = fragmentCount;
+                _supportBuffer.UpdateFragmentRenderScaleCount(_fragmentScaleCount);
+            }
+
+            if (changed)
+            {
+                _supportBuffer.UpdateRenderScale(_renderScale, 0, 1 + totalCount);
+            }
+        }
+
+        private void PrepareForDispatch()
+        {
+            _unit0Texture?.Bind(0);
+            _supportBuffer.Commit();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void PreDraw(int vertexCount)
@@ -1519,6 +1675,10 @@ namespace Ryujinx.Graphics.OpenGL
             DrawCount++;
 
             _unit0Texture?.Bind(0);
+<<<<<<< HEAD
+=======
+            _supportBuffer.Commit();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void PostDraw()
@@ -1622,9 +1782,17 @@ namespace Ryujinx.Graphics.OpenGL
 
         public bool TryHostConditionalRendering(ICounterEvent value, ulong compare, bool isEqual)
         {
+<<<<<<< HEAD
             // Compare an event and a constant value.
             if (value is CounterQueueEvent evt)
             {
+=======
+            if (value is CounterQueueEvent)
+            {
+                // Compare an event and a constant value.
+                CounterQueueEvent evt = (CounterQueueEvent)value;
+
+>>>>>>> 1ec71635b (sync with main branch)
                 // Easy host conditional rendering when the check matches what GL can do:
                 //  - Event is of type samples passed.
                 //  - Result is not a combination of multiple queries.
@@ -1669,6 +1837,11 @@ namespace Ryujinx.Graphics.OpenGL
 
         public void Dispose()
         {
+<<<<<<< HEAD
+=======
+            _supportBuffer?.Dispose();
+
+>>>>>>> 1ec71635b (sync with main branch)
             for (int i = 0; i < Constants.MaxTransformFeedbackBuffers; i++)
             {
                 if (_tfbs[i] != BufferHandle.Null)

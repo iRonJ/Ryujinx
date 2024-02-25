@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Microsoft.CodeAnalysis;
+=======
+﻿using Microsoft.CodeAnalysis;
+>>>>>>> 1ec71635b (sync with main branch)
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections.Generic;
@@ -36,10 +40,17 @@ namespace Ryujinx.Horizon.Generators.Hipc
             None,
             Ref,
             Out,
+<<<<<<< HEAD
             In,
         }
 
         private readonly struct OutParameter
+=======
+            In
+        }
+
+        private struct OutParameter
+>>>>>>> 1ec71635b (sync with main branch)
         {
             public readonly string Name;
             public readonly string TypeName;
@@ -74,7 +85,10 @@ namespace Ryujinx.Horizon.Generators.Hipc
                 generator.AppendLine("using Ryujinx.Horizon.Sdk.Sf.Cmif;");
                 generator.AppendLine("using Ryujinx.Horizon.Sdk.Sf.Hipc;");
                 generator.AppendLine("using System;");
+<<<<<<< HEAD
                 generator.AppendLine("using System.Collections.Frozen;");
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 generator.AppendLine("using System.Collections.Generic;");
                 generator.AppendLine("using System.Runtime.CompilerServices;");
                 generator.AppendLine("using System.Runtime.InteropServices;");
@@ -94,7 +108,11 @@ namespace Ryujinx.Horizon.Generators.Hipc
                 generator.LeaveScope();
                 generator.LeaveScope();
 
+<<<<<<< HEAD
                 context.AddSource($"{GetNamespaceName(commandInterface.ClassDeclarationSyntax)}.{className}.g.cs", generator.ToString());
+=======
+                context.AddSource($"{className}.g.cs", generator.ToString());
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -116,6 +134,7 @@ namespace Ryujinx.Horizon.Generators.Hipc
         private static void GenerateMethodTable(CodeGenerator generator, Compilation compilation, CommandInterface commandInterface)
         {
             generator.EnterScope($"public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()");
+<<<<<<< HEAD
 
             if (commandInterface.CommandImplementations.Count == 0)
             {
@@ -186,6 +205,69 @@ namespace Ryujinx.Horizon.Generators.Hipc
         }
 
         private static IEnumerable<string> GetAttributeArguments(Compilation compilation, SyntaxNode syntaxNode, string attributeName, int argIndex)
+=======
+            generator.EnterScope($"return new Dictionary<int, CommandHandler>()");
+
+            foreach (var method in commandInterface.CommandImplementations)
+            {
+                foreach (var commandId in GetAttributeAguments(compilation, method, TypeCommandAttribute, 0))
+                {
+                    string[] args = new string[method.ParameterList.Parameters.Count];
+
+                    if (args.Length == 0)
+                    {
+                        generator.AppendLine($"{{ {commandId}, new CommandHandler({method.Identifier.Text}, Array.Empty<CommandArg>()) }},");
+                    }
+                    else
+                    {
+                        int index = 0;
+
+                        foreach (var parameter in method.ParameterList.Parameters)
+                        {
+                            string canonicalTypeName = GetCanonicalTypeNameWithGenericArguments(compilation, parameter.Type);
+                            CommandArgType argType = GetCommandArgType(compilation, parameter);
+
+                            string arg;
+
+                            if (argType == CommandArgType.Buffer)
+                            {
+                                string bufferFlags = GetFirstAttributeAgument(compilation, parameter, TypeBufferAttribute, 0);
+                                string bufferFixedSize = GetFirstAttributeAgument(compilation, parameter, TypeBufferAttribute, 1);
+
+                                if (bufferFixedSize != null)
+                                {
+                                    arg = $"new CommandArg({bufferFlags} | HipcBufferFlags.FixedSize, {bufferFixedSize})";
+                                }
+                                else
+                                {
+                                    arg = $"new CommandArg({bufferFlags})";
+                                }
+                            }
+                            else if (argType == CommandArgType.InArgument || argType == CommandArgType.OutArgument)
+                            {
+                                string alignment = GetTypeAlignmentExpression(compilation, parameter.Type);
+
+                                arg = $"new CommandArg(CommandArgType.{argType}, Unsafe.SizeOf<{canonicalTypeName}>(), {alignment})";
+                            }
+                            else
+                            {
+                                arg = $"new CommandArg(CommandArgType.{argType})";
+                            }
+
+                            args[index++] = arg;
+                        }
+
+                        generator.AppendLine($"{{ {commandId}, new CommandHandler({method.Identifier.Text}, {string.Join(", ", args)}) }},");
+                    }
+                }
+            }
+
+            generator.LeaveScope(";");
+            generator.LeaveScope();
+        }
+
+        private static IEnumerable<string> GetAttributeAguments(Compilation compilation, SyntaxNode syntaxNode, string attributeName, int argIndex)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             ISymbol symbol = compilation.GetSemanticModel(syntaxNode.SyntaxTree).GetDeclaredSymbol(syntaxNode);
 
@@ -198,9 +280,15 @@ namespace Ryujinx.Horizon.Generators.Hipc
             }
         }
 
+<<<<<<< HEAD
         private static string GetFirstAttributeArgument(Compilation compilation, SyntaxNode syntaxNode, string attributeName, int argIndex)
         {
             return GetAttributeArguments(compilation, syntaxNode, attributeName, argIndex).FirstOrDefault();
+=======
+        private static string GetFirstAttributeAgument(Compilation compilation, SyntaxNode syntaxNode, string attributeName, int argIndex)
+        {
+            return GetAttributeAguments(compilation, syntaxNode, attributeName, argIndex).FirstOrDefault();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void GenerateMethod(CodeGenerator generator, Compilation compilation, MethodDeclarationSyntax method)
@@ -243,7 +331,11 @@ namespace Ryujinx.Horizon.Generators.Hipc
 
                 if (buffersCount != 0)
                 {
+<<<<<<< HEAD
                     generator.AppendLine($"Span<bool> {IsBufferMapAliasVariableName} = stackalloc bool[{method.ParameterList.Parameters.Count}];");
+=======
+                    generator.AppendLine($"bool[] {IsBufferMapAliasVariableName} = new bool[{method.ParameterList.Parameters.Count}];");
+>>>>>>> 1ec71635b (sync with main branch)
                     generator.AppendLine();
 
                     generator.AppendLine($"{ResultVariableName} = processor.ProcessBuffers(ref context, {IsBufferMapAliasVariableName}, runtimeMetadata);");
@@ -296,13 +388,21 @@ namespace Ryujinx.Horizon.Generators.Hipc
                 {
                     if (IsNonSpanOutBuffer(compilation, parameter))
                     {
+<<<<<<< HEAD
                         generator.AppendLine($"using var {argName} = CommandSerialization.GetWritableRegion(processor.GetBufferRange({index}));");
+=======
+                        generator.AppendLine($"using var {argName} = CommandSerialization.GetWritableRegion(processor.GetBufferRange({outArgIndex++}));");
+>>>>>>> 1ec71635b (sync with main branch)
 
                         argName = $"out {GenerateSpanCastElement0(canonicalTypeName, $"{argName}.Memory.Span")}";
                     }
                     else
                     {
+<<<<<<< HEAD
                         outParameters.Add(new OutParameter(argName, canonicalTypeName, outArgIndex++, argType));
+=======
+                        outParameters.Add(new OutParameter(argName, canonicalTypeName, index, argType));
+>>>>>>> 1ec71635b (sync with main branch)
 
                         argName = $"out {canonicalTypeName} {argName}";
                     }
@@ -351,7 +451,11 @@ namespace Ryujinx.Horizon.Generators.Hipc
                         generator.AppendLine($"using var {argName} = {value};");
 
                         string spanGenericTypeName = GetCanonicalTypeNameOfGenericArgument(compilation, parameter.Type, 0);
+<<<<<<< HEAD
                         argName = GenerateSpanCast(spanGenericTypeName, $"{argName}.Memory.Span");
+=======
+                        argName = GenerateSpanCast(spanGenericTypeName, $"{argName}.Memory.Span"); ;
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                     else if (isNonSpanBuffer)
                     {
@@ -614,7 +718,11 @@ namespace Ryujinx.Horizon.Generators.Hipc
             return type;
         }
 
+<<<<<<< HEAD
         private static bool IsArgument(Compilation compilation, ParameterSyntax parameter)
+=======
+        private static bool IsArgument(Compilation compilation,ParameterSyntax parameter)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return !IsBuffer(compilation, parameter) &&
                    !IsHandle(compilation, parameter) &&
@@ -729,9 +837,13 @@ namespace Ryujinx.Horizon.Generators.Hipc
 
         private static string GenerateSpanCast(string targetType, string input)
         {
+<<<<<<< HEAD
             return targetType == "byte"
                 ? input
                 : $"MemoryMarshal.Cast<byte, {targetType}>({input})";
+=======
+            return $"MemoryMarshal.Cast<byte, {targetType}>({input})";
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static bool HasAttribute(Compilation compilation, ParameterSyntax parameterSyntax, string fullAttributeName)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Tamper
+=======
+﻿namespace Ryujinx.HLE.HOS.Tamper
+>>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// The opcodes specified for the Atmosphere Cheat VM.
@@ -105,6 +109,10 @@ namespace Ryujinx.HLE.HOS.Tamper
         /// <summary>
         /// Code type 0xFFF writes a debug log.
         /// </summary>
+<<<<<<< HEAD
         DebugLog = 0xFFF,
+=======
+        DebugLog = 0xFFF
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

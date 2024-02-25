@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 using LibHac;
+=======
+﻿using LibHac;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using LibHac.Ncm;
 using LibHac.Ns;
 using System;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using ApplicationId = LibHac.ApplicationId;
 
 namespace Ryujinx.HLE.HOS.Services.Arp
@@ -16,7 +24,11 @@ namespace Ryujinx.HLE.HOS.Services.Arp
             launchProperty = new LibHac.Arp.ApplicationLaunchProperty
             {
                 StorageId = StorageId.BuiltInUser,
+<<<<<<< HEAD
                 ApplicationId = ApplicationId,
+=======
+                ApplicationId = ApplicationId
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             return Result.Success;
@@ -29,7 +41,11 @@ namespace Ryujinx.HLE.HOS.Services.Arp
             launchProperty = new LibHac.Arp.ApplicationLaunchProperty
             {
                 StorageId = StorageId.BuiltInUser,
+<<<<<<< HEAD
                 ApplicationId = applicationId,
+=======
+                ApplicationId = applicationId
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             return Result.Success;
@@ -72,4 +88,8 @@ namespace Ryujinx.HLE.HOS.Services.Arp
             return Result.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

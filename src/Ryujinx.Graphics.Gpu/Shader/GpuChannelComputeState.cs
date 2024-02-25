@@ -62,4 +62,8 @@ namespace Ryujinx.Graphics.Gpu.Shader
             HasUnalignedStorageBuffer = hasUnalignedStorageBuffer;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

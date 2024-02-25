@@ -54,4 +54,8 @@ namespace Ryujinx.Common.Utilities
             return (value & ~mask) | ((toInsert << lsb) & mask);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

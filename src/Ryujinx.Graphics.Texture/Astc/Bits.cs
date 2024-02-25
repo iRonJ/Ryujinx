@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Texture.Astc
+=======
+﻿namespace Ryujinx.Graphics.Texture.Astc
+>>>>>>> 1ec71635b (sync with main branch)
 {
     internal static class Bits
     {
@@ -29,6 +33,7 @@ namespace Ryujinx.Graphics.Texture.Astc
 
         public static int Replicate(int value, int numberBits, int toBit)
         {
+<<<<<<< HEAD
             if (numberBits == 0)
             {
                 return 0;
@@ -38,6 +43,10 @@ namespace Ryujinx.Graphics.Texture.Astc
             {
                 return 0;
             }
+=======
+            if (numberBits == 0) return 0;
+            if (toBit == 0) return 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             int tempValue = value & ((1 << numberBits) - 1);
             int retValue = tempValue;
@@ -67,10 +76,14 @@ namespace Ryujinx.Graphics.Texture.Astc
             b |= a & 0x80;
             a >>= 1;
             a &= 0x3F;
+<<<<<<< HEAD
             if ((a & 0x20) != 0)
             {
                 a -= 0x40;
             }
+=======
+            if ((a & 0x20) != 0) a -= 0x40;
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

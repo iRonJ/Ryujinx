@@ -18,9 +18,15 @@ namespace ARMeilleure.Instructions
 
                 Operand round2 = context.AddIntrinsic(Intrinsic.X86Sha256Rnds2, src1, src2, w);
                 Operand round4 = context.AddIntrinsic(Intrinsic.X86Sha256Rnds2, src2, round2, w2);
+<<<<<<< HEAD
 
                 Operand res = context.AddIntrinsic(Intrinsic.X86Shufps, round4, round2, Const(part2 ? 0x11 : 0xbb));
 
+=======
+                
+                Operand res = context.AddIntrinsic(Intrinsic.X86Shufps, round4, round2, Const(part2 ? 0x11 : 0xbb));
+                
+>>>>>>> 1ec71635b (sync with main branch)
                 return res;
             }
 
@@ -53,4 +59,8 @@ namespace ARMeilleure.Instructions
             return context.Call(typeof(SoftFallback).GetMethod(nameof(SoftFallback.Sha256SchedulePart2)), x, y, z);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

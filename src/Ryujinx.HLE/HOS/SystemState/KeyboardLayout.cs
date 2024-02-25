@@ -20,6 +20,10 @@ namespace Ryujinx.HLE.HOS.SystemState
         ChineseTraditional,
 
         Min = Default,
+<<<<<<< HEAD
         Max = ChineseTraditional,
+=======
+        Max = ChineseTraditional
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

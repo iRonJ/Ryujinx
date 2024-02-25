@@ -2,7 +2,10 @@ using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.StructuredIr;
 using Ryujinx.Graphics.Shader.Translation;
 using System;
+<<<<<<< HEAD
 using System.Text;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
 using static Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions.InstGenBallot;
 using static Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions.InstGenCall;
@@ -10,7 +13,10 @@ using static Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions.InstGenFSI;
 using static Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions.InstGenHelper;
 using static Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions.InstGenMemory;
 using static Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions.InstGenPacking;
+<<<<<<< HEAD
 using static Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions.InstGenShuffle;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions.InstGenVector;
 using static Ryujinx.Graphics.Shader.StructuredIr.InstructionInfo;
 
@@ -68,6 +74,7 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
 
                 int arity = (int)(info.Type & InstType.ArityMask);
 
+<<<<<<< HEAD
                 StringBuilder builder = new();
 
                 if (atomic && (operation.StorageKind == StorageKind.StorageBuffer || operation.StorageKind == StorageKind.SharedMemory))
@@ -99,6 +106,44 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
                 }
 
                 return $"{info.OpName}({builder})";
+=======
+                string args = string.Empty;
+
+                for (int argIndex = 0; argIndex < arity; argIndex++)
+                {
+                    // For shared memory access, the second argument is unused and should be ignored.
+                    // It is there to make both storage and shared access have the same number of arguments.
+                    // For storage, both inputs are consumed when the argument index is 0, so we should skip it here.
+                    if (argIndex == 1 && (atomic || operation.StorageKind == StorageKind.SharedMemory))
+                    {
+                        continue;
+                    }
+
+                    if (argIndex != 0)
+                    {
+                        args += ", ";
+                    }
+
+                    if (argIndex == 0 && atomic)
+                    {
+                        switch (operation.StorageKind)
+                        {
+                            case StorageKind.SharedMemory: args += LoadShared(context, operation); break;
+                            case StorageKind.StorageBuffer: args += LoadStorage(context, operation); break;
+
+                            default: throw new InvalidOperationException($"Invalid storage kind \"{operation.StorageKind}\".");
+                        }
+                    }
+                    else
+                    {
+                        AggregateType dstType = GetSrcVarType(inst, argIndex);
+
+                        args += GetSoureExpr(context, operation.GetSource(argIndex), dstType);
+                    }
+                }
+
+                return info.OpName + '(' + args + ')';
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else if ((info.Type & InstType.Op) != 0)
             {
@@ -164,6 +209,18 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
                     case Instruction.Load:
                         return Load(context, operation);
 
+<<<<<<< HEAD
+=======
+                    case Instruction.LoadLocal:
+                        return LoadLocal(context, operation);
+
+                    case Instruction.LoadShared:
+                        return LoadShared(context, operation);
+
+                    case Instruction.LoadStorage:
+                        return LoadStorage(context, operation);
+
+>>>>>>> 1ec71635b (sync with main branch)
                     case Instruction.Lod:
                         return Lod(context, operation);
 
@@ -176,6 +233,7 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
                     case Instruction.PackHalf2x16:
                         return PackHalf2x16(context, operation);
 
+<<<<<<< HEAD
                     case Instruction.Shuffle:
                         return Shuffle(context, operation);
 
@@ -190,6 +248,37 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
 
                     case Instruction.TextureQuerySize:
                         return TextureQuerySize(context, operation);
+=======
+                    case Instruction.Store:
+                        return Store(context, operation);
+
+                    case Instruction.StoreLocal:
+                        return StoreLocal(context, operation);
+
+                    case Instruction.StoreShared:
+                        return StoreShared(context, operation);
+
+                    case Instruction.StoreShared16:
+                        return StoreShared16(context, operation);
+
+                    case Instruction.StoreShared8:
+                        return StoreShared8(context, operation);
+
+                    case Instruction.StoreStorage:
+                        return StoreStorage(context, operation);
+
+                    case Instruction.StoreStorage16:
+                        return StoreStorage16(context, operation);
+
+                    case Instruction.StoreStorage8:
+                        return StoreStorage8(context, operation);
+
+                    case Instruction.TextureSample:
+                        return TextureSample(context, operation);
+
+                    case Instruction.TextureSize:
+                        return TextureSize(context, operation);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     case Instruction.UnpackDouble2x32:
                         return UnpackDouble2x32(context, operation);
@@ -205,4 +294,8 @@ namespace Ryujinx.Graphics.Shader.CodeGen.Glsl.Instructions
             throw new InvalidOperationException($"Unexpected instruction type \"{info.Type}\".");
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

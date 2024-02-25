@@ -250,7 +250,11 @@ namespace Ryujinx.Graphics.Gpu.Memory
         X8C24 = 0xfc,
         PitchNoSwizzle = 0xfd,
         SmSkedMessage = 0xca,
+<<<<<<< HEAD
         SmHostMessage = 0xcb,
+=======
+        SmHostMessage = 0xcb
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class PteKindExtensions
@@ -265,4 +269,8 @@ namespace Ryujinx.Graphics.Gpu.Memory
             return kind == PteKind.Pitch || kind == PteKind.PitchNoSwizzle;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

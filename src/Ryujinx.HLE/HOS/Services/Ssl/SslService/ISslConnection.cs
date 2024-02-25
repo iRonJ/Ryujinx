@@ -15,7 +15,11 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
         private bool _skipDefaultVerify;
         private bool _enableAlpn;
 
+<<<<<<< HEAD
         private readonly SslVersion _sslVersion;
+=======
+        private SslVersion _sslVersion;
+>>>>>>> 1ec71635b (sync with main branch)
         private IoMode _ioMode;
         private VerifyOption _verifyOption;
         private SessionCacheMode _sessionCacheMode;
@@ -206,12 +210,22 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
             {
                 if (_getServerCertChain)
                 {
+<<<<<<< HEAD
                     using WritableRegion region = context.Memory.GetWritableRegion(context.Request.ReceiveBuff[0].Position, (int)context.Request.ReceiveBuff[0].Size);
 
                     result = _connection.GetServerCertificate(_hostName, region.Memory.Span, out uint bufferSize, out uint certificateCount);
 
                     context.ResponseData.Write(bufferSize);
                     context.ResponseData.Write(certificateCount);
+=======
+                    using (WritableRegion region = context.Memory.GetWritableRegion(context.Request.ReceiveBuff[0].Position, (int)context.Request.ReceiveBuff[0].Size))
+                    {
+                        result = _connection.GetServerCertificate(_hostName, region.Memory.Span, out uint bufferSize, out uint certificateCount);
+
+                        context.ResponseData.Write(bufferSize);
+                        context.ResponseData.Write(certificateCount);
+                    }
+>>>>>>> 1ec71635b (sync with main branch)
                 }
                 else
                 {
@@ -234,6 +248,7 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
 
             ResultCode result;
 
+<<<<<<< HEAD
             using WritableRegion region = context.Memory.GetWritableRegion(context.Request.ReceiveBuff[0].Position, (int)context.Request.ReceiveBuff[0].Size);
             // TODO: Better error management.
             result = _connection.Read(out int readCount, region.Memory);
@@ -241,6 +256,17 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
             if (result == ResultCode.Success)
             {
                 context.ResponseData.Write(readCount);
+=======
+            using (WritableRegion region = context.Memory.GetWritableRegion(context.Request.ReceiveBuff[0].Position, (int)context.Request.ReceiveBuff[0].Size))
+            {
+                // TODO: Better error management.
+                result = _connection.Read(out int readCount, region.Memory);
+
+                if (result == ResultCode.Success)
+                {
+                    context.ResponseData.Write(readCount);
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return result;
@@ -294,6 +320,7 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
 
             ResultCode result;
 
+<<<<<<< HEAD
             using WritableRegion region = context.Memory.GetWritableRegion(context.Request.ReceiveBuff[0].Position, (int)context.Request.ReceiveBuff[0].Size);
 
 
@@ -303,6 +330,17 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
             if (result == ResultCode.Success)
             {
                 context.ResponseData.Write(peekCount);
+=======
+            using (WritableRegion region = context.Memory.GetWritableRegion(context.Request.ReceiveBuff[0].Position, (int)context.Request.ReceiveBuff[0].Size))
+            {
+                // TODO: Better error management.
+                result = _connection.Peek(out int peekCount, region.Memory);
+
+                if (result == ResultCode.Success)
+                {
+                    context.ResponseData.Write(peekCount);
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return result;
@@ -378,7 +416,11 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
         // SetOption(b8 value, nn::ssl::sf::OptionType option)
         public ResultCode SetOption(ServiceCtx context)
         {
+<<<<<<< HEAD
             bool value = context.RequestData.ReadUInt32() != 0;
+=======
+            bool       value  = context.RequestData.ReadUInt32() != 0;
+>>>>>>> 1ec71635b (sync with main branch)
             OptionType option = (OptionType)context.RequestData.ReadUInt32();
 
             Logger.Stub?.PrintStub(LogClass.ServiceSsl, new { option, value });
@@ -513,4 +555,8 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
             _connection?.Dispose();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

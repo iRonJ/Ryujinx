@@ -4,8 +4,13 @@ namespace ARMeilleure.Decoders
     {
         public long WMask { get; }
         public long TMask { get; }
+<<<<<<< HEAD
         public int Pos { get; }
         public int Shift { get; }
+=======
+        public int  Pos   { get; }
+        public int  Shift { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public new static OpCode Create(InstDescriptor inst, ulong address, int opCode) => new OpCodeBfm(inst, address, opCode);
 
@@ -22,8 +27,16 @@ namespace ARMeilleure.Decoders
 
             WMask = bm.WMask;
             TMask = bm.TMask;
+<<<<<<< HEAD
             Pos = bm.Pos;
             Shift = bm.Shift;
         }
     }
 }
+=======
+            Pos   = bm.Pos;
+            Shift = bm.Shift;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+using ARMeilleure.CodeGen.RegisterAllocators;
+>>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
 using System;
@@ -30,7 +34,11 @@ namespace ARMeilleure.CodeGen.Arm64
             }
         }
 
+<<<<<<< HEAD
         public static void RunPass(CompilerContext cctx, out int maxCallArgs)
+=======
+        public static void RunPass(CompilerContext cctx, StackAllocator stackAlloc, out int maxCallArgs)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             maxCallArgs = -1;
 
@@ -40,7 +48,11 @@ namespace ARMeilleure.CodeGen.Arm64
 
             for (BasicBlock block = cctx.Cfg.Blocks.First; block != null; block = block.ListNext)
             {
+<<<<<<< HEAD
                 ConstantDict constants = new();
+=======
+                ConstantDict constants = new ConstantDict();
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Operation nextNode;
 
@@ -91,7 +103,11 @@ namespace ARMeilleure.CodeGen.Arm64
                             InsertReturnCopy(block.Operations, node);
                             break;
                         case Instruction.Tailcall:
+<<<<<<< HEAD
                             InsertTailcallCopies(constants, block.Operations, node, node);
+=======
+                            InsertTailcallCopies(constants, block.Operations, stackAlloc, node, node);
+>>>>>>> 1ec71635b (sync with main branch)
                             break;
                     }
                 }
@@ -137,7 +153,14 @@ namespace ARMeilleure.CodeGen.Arm64
                     {
                         src2 = node.GetSource(1);
 
+<<<<<<< HEAD
                         (src2, src1) = (src1, src2);
+=======
+                        Operand temp = src1;
+
+                        src1 = src2;
+                        src2 = temp;
+>>>>>>> 1ec71635b (sync with main branch)
 
                         node.SetSource(0, src1);
                         node.SetSource(1, src2);
@@ -261,9 +284,15 @@ namespace ARMeilleure.CodeGen.Arm64
 
             Operand dest = operation.Destination;
 
+<<<<<<< HEAD
             List<Operand> sources = new()
             {
                 operation.GetSource(0),
+=======
+            List<Operand> sources = new List<Operand>
+            {
+                operation.GetSource(0)
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             int argsCount = operation.SourcesCount - 1;
@@ -298,10 +327,17 @@ namespace ARMeilleure.CodeGen.Arm64
                 if (source.Type == OperandType.V128 && passOnReg)
                 {
                     // V128 is a struct, we pass each half on a GPR if possible.
+<<<<<<< HEAD
                     Operand argReg = Gpr(CallingConvention.GetIntArgumentRegister(intCount++), OperandType.I64);
                     Operand argReg2 = Gpr(CallingConvention.GetIntArgumentRegister(intCount++), OperandType.I64);
 
                     nodes.AddBefore(node, Operation(Instruction.VectorExtract, argReg, source, Const(0)));
+=======
+                    Operand argReg  = Gpr(CallingConvention.GetIntArgumentRegister(intCount++), OperandType.I64);
+                    Operand argReg2 = Gpr(CallingConvention.GetIntArgumentRegister(intCount++), OperandType.I64);
+
+                    nodes.AddBefore(node, Operation(Instruction.VectorExtract, argReg,  source, Const(0)));
+>>>>>>> 1ec71635b (sync with main branch)
                     nodes.AddBefore(node, Operation(Instruction.VectorExtract, argReg2, source, Const(1)));
 
                     continue;
@@ -335,7 +371,11 @@ namespace ARMeilleure.CodeGen.Arm64
             {
                 if (dest.Type == OperandType.V128)
                 {
+<<<<<<< HEAD
                     Operand retLReg = Gpr(CallingConvention.GetIntReturnRegister(), OperandType.I64);
+=======
+                    Operand retLReg = Gpr(CallingConvention.GetIntReturnRegister(),     OperandType.I64);
+>>>>>>> 1ec71635b (sync with main branch)
                     Operand retHReg = Gpr(CallingConvention.GetIntReturnRegisterHigh(), OperandType.I64);
 
                     node = nodes.AddAfter(node, Operation(Instruction.VectorCreateScalar, dest, retLReg));
@@ -360,6 +400,7 @@ namespace ARMeilleure.CodeGen.Arm64
             operation.SetSources(sources.ToArray());
         }
 
+<<<<<<< HEAD
         private static void InsertTailcallCopies(ConstantDict constants,
             IntrusiveList<Operation> nodes,
             Operation node,
@@ -368,6 +409,18 @@ namespace ARMeilleure.CodeGen.Arm64
             List<Operand> sources = new()
             {
                 operation.GetSource(0),
+=======
+        private static void InsertTailcallCopies(
+            ConstantDict constants,
+            IntrusiveList<Operation> nodes,
+            StackAllocator stackAlloc,
+            Operation node,
+            Operation operation)
+        {
+            List<Operand> sources = new List<Operand>
+            {
+                operation.GetSource(0)
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             int argsCount = operation.SourcesCount - 1;
@@ -397,7 +450,11 @@ namespace ARMeilleure.CodeGen.Arm64
                 if (source.Type == OperandType.V128 && passOnReg)
                 {
                     // V128 is a struct, we pass each half on a GPR if possible.
+<<<<<<< HEAD
                     Operand argReg = Gpr(CallingConvention.GetIntArgumentRegister(intCount++), OperandType.I64);
+=======
+                    Operand argReg  = Gpr(CallingConvention.GetIntArgumentRegister(intCount++), OperandType.I64);
+>>>>>>> 1ec71635b (sync with main branch)
                     Operand argReg2 = Gpr(CallingConvention.GetIntArgumentRegister(intCount++), OperandType.I64);
 
                     nodes.AddBefore(node, Operation(Instruction.VectorExtract, argReg, source, Const(0)));
@@ -513,7 +570,11 @@ namespace ARMeilleure.CodeGen.Arm64
 
             if (source.Type == OperandType.V128)
             {
+<<<<<<< HEAD
                 Operand retLReg = Gpr(CallingConvention.GetIntReturnRegister(), OperandType.I64);
+=======
+                Operand retLReg = Gpr(CallingConvention.GetIntReturnRegister(),     OperandType.I64);
+>>>>>>> 1ec71635b (sync with main branch)
                 Operand retHReg = Gpr(CallingConvention.GetIntReturnRegisterHigh(), OperandType.I64);
 
                 nodes.AddBefore(node, Operation(Instruction.VectorExtract, retLReg, source, Const(0)));
@@ -740,7 +801,10 @@ namespace ARMeilleure.CodeGen.Arm64
                    info.Type == IntrinsicType.ScalarTernaryFPRdByElem ||
                    info.Type == IntrinsicType.ScalarTernaryShlRd ||
                    info.Type == IntrinsicType.ScalarTernaryShrRd ||
+<<<<<<< HEAD
                    info.Type == IntrinsicType.Vector128BinaryRd ||
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                    info.Type == IntrinsicType.VectorBinaryRd ||
                    info.Type == IntrinsicType.VectorInsertByElem ||
                    info.Type == IntrinsicType.VectorTernaryRd ||

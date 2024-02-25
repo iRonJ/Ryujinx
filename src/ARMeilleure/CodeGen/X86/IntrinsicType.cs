@@ -13,6 +13,12 @@ namespace ARMeilleure.CodeGen.X86
         Crc32,
         Ternary,
         TernaryImm,
+<<<<<<< HEAD
         Fma,
     }
 }
+=======
+        Fma
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

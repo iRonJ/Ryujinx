@@ -3,6 +3,10 @@ using Ryujinx.Graphics.Shader.Translation;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.StructuredIr.AstHelper;
 
 namespace Ryujinx.Graphics.Shader.StructuredIr
@@ -28,6 +32,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         public StructuredProgramInfo Info { get; }
 
+<<<<<<< HEAD
         public ShaderDefinitions Definitions { get; }
         public ResourceManager ResourceManager { get; }
         public bool DebugMode { get; }
@@ -47,6 +52,19 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             if (definitions.GpPassthrough)
             {
                 int passthroughAttributes = attributeUsage.PassthroughAttributes;
+=======
+        public ShaderConfig Config { get; }
+
+        public StructuredProgramContext(ShaderConfig config)
+        {
+            Info = new StructuredProgramInfo();
+
+            Config = config;
+
+            if (config.GpPassthrough)
+            {
+                int passthroughAttributes = config.PassthroughAttributes;
+>>>>>>> 1ec71635b (sync with main branch)
                 while (passthroughAttributes != 0)
                 {
                     int index = BitOperations.TrailingZeroCount(passthroughAttributes);
@@ -60,6 +78,14 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 Info.IoDefinitions.Add(new IoDefinition(StorageKind.Input, IoVariable.PointSize));
                 Info.IoDefinitions.Add(new IoDefinition(StorageKind.Input, IoVariable.ClipDistance));
             }
+<<<<<<< HEAD
+=======
+            else if (config.Stage == ShaderStage.Fragment)
+            {
+                // Potentially used for texture coordinate scaling.
+                Info.IoDefinitions.Add(new IoDefinition(StorageKind.Input, IoVariable.FragmentCoord));
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void EnterFunction(
@@ -167,7 +193,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             // this is not valid as the loop condition would be evaluated,
             // and it could erroneously jump back to the start of the loop.
             bool inRange =
+<<<<<<< HEAD
                 block.Branch.Index < _currEndIndex ||
+=======
+                block.Branch.Index <  _currEndIndex ||
+>>>>>>> 1ec71635b (sync with main branch)
                (block.Branch.Index == _currEndIndex && block.Branch.Index < _loopEndIndex);
 
             bool isLoop = block.Branch.Index <= block.Index;
@@ -186,11 +216,19 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
                 AddNode(Assign(gotoTempAsg.Destination, cond));
 
+<<<<<<< HEAD
                 AstOperation branch = new(branchOp.Inst);
 
                 AddNode(branch);
 
                 GotoStatement gotoStmt = new(branch, gotoTempAsg, isLoop);
+=======
+                AstOperation branch = new AstOperation(branchOp.Inst);
+
+                AddNode(branch);
+
+                GotoStatement gotoStmt = new GotoStatement(branch, gotoTempAsg, isLoop);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 _gotos.Add(gotoStmt);
             }
@@ -238,13 +276,21 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         private void NewBlock(AstBlockType type, IAstNode cond, int endIndex)
         {
+<<<<<<< HEAD
             AstBlock childBlock = new(type, cond);
+=======
+            AstBlock childBlock = new AstBlock(type, cond);
+>>>>>>> 1ec71635b (sync with main branch)
 
             AddNode(childBlock);
 
             _blockStack.Push((_currBlock, _currEndIndex, _loopEndIndex));
 
+<<<<<<< HEAD
             _currBlock = childBlock;
+=======
+            _currBlock    = childBlock;
+>>>>>>> 1ec71635b (sync with main branch)
             _currEndIndex = endIndex;
 
             if (type == AstBlockType.DoWhile)
@@ -307,18 +353,30 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 int cbufSlot = operand.GetCbufSlot();
                 int cbufOffset = operand.GetCbufOffset();
 
+<<<<<<< HEAD
                 int binding = ResourceManager.GetConstantBufferBinding(cbufSlot);
                 int vecIndex = cbufOffset >> 2;
                 int elemIndex = cbufOffset & 3;
 
                 ResourceManager.SetUsedConstantBufferBinding(binding);
+=======
+                int binding = Config.ResourceManager.GetConstantBufferBinding(cbufSlot);
+                int vecIndex = cbufOffset >> 2;
+                int elemIndex = cbufOffset & 3;
+
+                Config.ResourceManager.SetUsedConstantBufferBinding(binding);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 IAstNode[] sources = new IAstNode[]
                 {
                     new AstOperand(OperandType.Constant, binding),
                     new AstOperand(OperandType.Constant, 0),
                     new AstOperand(OperandType.Constant, vecIndex),
+<<<<<<< HEAD
                     new AstOperand(OperandType.Constant, elemIndex),
+=======
+                    new AstOperand(OperandType.Constant, elemIndex)
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 return new AstOperation(Instruction.Load, StorageKind.ConstantBuffer, false, sources, sources.Length);
@@ -351,4 +409,8 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             return astOperand;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

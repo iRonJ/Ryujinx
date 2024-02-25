@@ -27,4 +27,8 @@ namespace Ryujinx.Graphics.Gpu.Image
             return new SamplerPool(context, channel.MemoryManager.Physical, address, maximumId);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

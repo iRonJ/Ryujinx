@@ -2,9 +2,15 @@ namespace Ryujinx.HLE.HOS.Tamper.Operations
 {
     class OpAdd<T> : IOperation where T : unmanaged
     {
+<<<<<<< HEAD
         readonly IOperand _destination;
         readonly IOperand _lhs;
         readonly IOperand _rhs;
+=======
+        IOperand _destination;
+        IOperand _lhs;
+        IOperand _rhs;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public OpAdd(IOperand destination, IOperand lhs, IOperand rhs)
         {

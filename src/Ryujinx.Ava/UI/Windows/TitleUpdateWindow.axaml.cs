@@ -7,7 +7,11 @@ using Ryujinx.Ava.UI.Helpers;
 using Ryujinx.Ava.UI.Models;
 using Ryujinx.Ava.UI.ViewModels;
 using Ryujinx.HLE.FileSystem;
+<<<<<<< HEAD
 using Ryujinx.UI.Common.Helper;
+=======
+using Ryujinx.Ui.Common.Helper;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Threading.Tasks;
 using Button = Avalonia.Controls.Button;
 
@@ -24,9 +28,15 @@ namespace Ryujinx.Ava.UI.Windows
             InitializeComponent();
         }
 
+<<<<<<< HEAD
         public TitleUpdateWindow(VirtualFileSystem virtualFileSystem, ulong titleId)
         {
             DataContext = ViewModel = new TitleUpdateViewModel(virtualFileSystem, titleId);
+=======
+        public TitleUpdateWindow(VirtualFileSystem virtualFileSystem, ulong titleId, string titleName)
+        {
+            DataContext = ViewModel = new TitleUpdateViewModel(virtualFileSystem, titleId, titleName);
+>>>>>>> 1ec71635b (sync with main branch)
 
             InitializeComponent();
         }
@@ -35,11 +45,19 @@ namespace Ryujinx.Ava.UI.Windows
         {
             ContentDialog contentDialog = new()
             {
+<<<<<<< HEAD
                 PrimaryButtonText = "",
                 SecondaryButtonText = "",
                 CloseButtonText = "",
                 Content = new TitleUpdateWindow(virtualFileSystem, titleId),
                 Title = LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.GameUpdateWindowHeading, titleName, titleId.ToString("X16")),
+=======
+                PrimaryButtonText   = "",
+                SecondaryButtonText = "",
+                CloseButtonText     = "",
+                Content             = new TitleUpdateWindow(virtualFileSystem, titleId, titleName),
+                Title               = LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.GameUpdateWindowHeading, titleName, titleId.ToString("X16"))
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             Style bottomBorder = new(x => x.OfType<Grid>().Name("DialogSpace").Child().OfType<Border>());
@@ -61,7 +79,11 @@ namespace Ryujinx.Ava.UI.Windows
 
             if (VisualRoot is MainWindow window)
             {
+<<<<<<< HEAD
                 window.LoadApplications();
+=======
+                window.ViewModel.LoadApplications();
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             ((ContentDialog)Parent).Hide();
@@ -93,4 +115,8 @@ namespace Ryujinx.Ava.UI.Windows
             ViewModel.SortUpdates();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

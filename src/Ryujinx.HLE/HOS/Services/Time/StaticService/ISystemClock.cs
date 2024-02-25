@@ -10,6 +10,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
 {
     class ISystemClock : IpcService
     {
+<<<<<<< HEAD
         private readonly SystemClockCore _clockCore;
         private readonly bool _writePermission;
         private readonly bool _bypassUninitializedClock;
@@ -20,6 +21,18 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
             _clockCore = clockCore;
             _writePermission = writePermission;
             _bypassUninitializedClock = bypassUninitializedClock;
+=======
+        private SystemClockCore _clockCore;
+        private bool            _writePermission;
+        private bool            _bypassUninitializedClock;
+        private int             _operationEventReadableHandle;
+
+        public ISystemClock(SystemClockCore clockCore, bool writePermission, bool bypassUninitializedClock)
+        {
+            _clockCore                    = clockCore;
+            _writePermission              = writePermission;
+            _bypassUninitializedClock     = bypassUninitializedClock;
+>>>>>>> 1ec71635b (sync with main branch)
             _operationEventReadableHandle = 0;
         }
 
@@ -113,7 +126,11 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
         {
             if (_operationEventReadableHandle == 0)
             {
+<<<<<<< HEAD
                 KEvent kEvent = new(context.Device.System.KernelContext);
+=======
+                KEvent kEvent = new KEvent(context.Device.System.KernelContext);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 _clockCore.RegisterOperationEvent(kEvent.WritableEvent);
 
@@ -128,4 +145,8 @@ namespace Ryujinx.HLE.HOS.Services.Time.StaticService
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

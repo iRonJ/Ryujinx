@@ -3,7 +3,11 @@ Version=1.0
 Name=Ryujinx
 Type=Application
 Icon=Ryujinx
+<<<<<<< HEAD
 Exec=Ryujinx.sh %f
+=======
+Exec=env DOTNET_EnableAlternateStackCheck=1 Ryujinx %f
+>>>>>>> 1ec71635b (sync with main branch)
 Comment=A Nintendo Switch Emulator
 GenericName=Nintendo Switch Emulator
 Terminal=false

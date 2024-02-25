@@ -12,4 +12,8 @@ namespace Ryujinx.HLE.HOS.Services.Caps
             return context.Device.System.CaptureManager.SetShimLibraryVersion(context);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

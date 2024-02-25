@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Nvdec.Vp9.Common;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -117,7 +121,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
             if (Sse41.IsSupported && UseIntrinsics && xStepQ4 == 1 << SubpelBits)
             {
                 ConvolveHorizSse41(src, srcStride, dst, dstStride, xFilters, x0Q4, w, h);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 return;
             }
 
@@ -262,7 +269,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
             if (Avx2.IsSupported && UseIntrinsics && yStepQ4 == 1 << SubpelBits)
             {
                 ConvolveVertAvx2(src, srcStride, dst, dstStride, yFilters, y0Q4, w, h);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 return;
             }
 
@@ -778,7 +788,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
             Debug.Assert(yStepQ4 <= 32);
             Debug.Assert(xStepQ4 <= 32);
 
+<<<<<<< HEAD
             HighbdConvolveHoriz(src - srcStride * (SubpelTaps / 2 - 1), srcStride, temp, 64, filter, x0Q4, xStepQ4, w, intermediateHeight, bd);
+=======
+            HighbdConvolveHoriz(src - srcStride * (SubpelTaps / 2 - 1), srcStride, temp, 64, filter, x0Q4, xStepQ4, w,  intermediateHeight, bd);
+>>>>>>> 1ec71635b (sync with main branch)
             HighbdConvolveVert(temp + 64 * (SubpelTaps / 2 - 1), 64, dst, dstStride, filter, y0Q4, yStepQ4, w, h, bd);
         }
 
@@ -813,7 +827,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
             int h,
             int bd)
         {
+<<<<<<< HEAD
             HighbdConvolveAvgHoriz(src, srcStride, dst, dstStride, filter, x0Q4, xStepQ4, w, h, bd);
+=======
+            HighbdConvolveAvgHoriz(src, srcStride, dst, dstStride, filter, x0Q4,  xStepQ4, w, h, bd);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static unsafe void HighbdConvolve8Vert(

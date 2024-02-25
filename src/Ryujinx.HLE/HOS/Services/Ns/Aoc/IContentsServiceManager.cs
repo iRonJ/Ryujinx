@@ -4,4 +4,8 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
     {
         public IContentsServiceManager() { }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

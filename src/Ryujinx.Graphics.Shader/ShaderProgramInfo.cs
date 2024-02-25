@@ -10,11 +10,17 @@ namespace Ryujinx.Graphics.Shader
         public ReadOnlyCollection<TextureDescriptor> Textures { get; }
         public ReadOnlyCollection<TextureDescriptor> Images { get; }
 
+<<<<<<< HEAD
         public ShaderStage Stage { get; }
         public int GeometryVerticesPerPrimitive { get; }
         public int GeometryMaxOutputVertices { get; }
         public int ThreadsPerInputPrimitive { get; }
         public bool UsesFragCoord { get; }
+=======
+        public ShaderIdentification Identification { get; }
+        public int GpLayerInputAttribute { get; }
+        public ShaderStage Stage { get; }
+>>>>>>> 1ec71635b (sync with main branch)
         public bool UsesInstanceId { get; }
         public bool UsesDrawParameters { get; }
         public bool UsesRtLayer { get; }
@@ -26,11 +32,17 @@ namespace Ryujinx.Graphics.Shader
             BufferDescriptor[] sBuffers,
             TextureDescriptor[] textures,
             TextureDescriptor[] images,
+<<<<<<< HEAD
             ShaderStage stage,
             int geometryVerticesPerPrimitive,
             int geometryMaxOutputVertices,
             int threadsPerInputPrimitive,
             bool usesFragCoord,
+=======
+            ShaderIdentification identification,
+            int gpLayerInputAttribute,
+            ShaderStage stage,
+>>>>>>> 1ec71635b (sync with main branch)
             bool usesInstanceId,
             bool usesDrawParameters,
             bool usesRtLayer,
@@ -42,11 +54,17 @@ namespace Ryujinx.Graphics.Shader
             Textures = Array.AsReadOnly(textures);
             Images = Array.AsReadOnly(images);
 
+<<<<<<< HEAD
             Stage = stage;
             GeometryVerticesPerPrimitive = geometryVerticesPerPrimitive;
             GeometryMaxOutputVertices = geometryMaxOutputVertices;
             ThreadsPerInputPrimitive = threadsPerInputPrimitive;
             UsesFragCoord = usesFragCoord;
+=======
+            Identification = identification;
+            GpLayerInputAttribute = gpLayerInputAttribute;
+            Stage = stage;
+>>>>>>> 1ec71635b (sync with main branch)
             UsesInstanceId = usesInstanceId;
             UsesDrawParameters = usesDrawParameters;
             UsesRtLayer = usesRtLayer;
@@ -54,4 +72,8 @@ namespace Ryujinx.Graphics.Shader
             FragmentOutputMap = fragmentOutputMap;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -4,6 +4,12 @@ namespace Ryujinx.Graphics.GAL
     {
         SamplesPassed,
         PrimitivesGenerated,
+<<<<<<< HEAD
         TransformFeedbackPrimitivesWritten,
     }
 }
+=======
+        TransformFeedbackPrimitivesWritten
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

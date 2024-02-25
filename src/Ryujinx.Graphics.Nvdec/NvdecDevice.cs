@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
 using Ryujinx.Graphics.Device;
+=======
+﻿using Ryujinx.Common.Logging;
+using Ryujinx.Graphics.Device;
+using Ryujinx.Graphics.Gpu.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Nvdec.Image;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,6 +19,7 @@ namespace Ryujinx.Graphics.Nvdec
         private readonly DeviceState<NvdecRegisters> _state;
 
         private long _currentId;
+<<<<<<< HEAD
         private readonly ConcurrentDictionary<long, NvdecDecoderContext> _contexts;
         private NvdecDecoderContext _currentContext;
 
@@ -22,6 +29,17 @@ namespace Ryujinx.Graphics.Nvdec
             _state = new DeviceState<NvdecRegisters>(new Dictionary<string, RwCallback>
             {
                 { nameof(NvdecRegisters.Execute), new RwCallback(Execute, null) },
+=======
+        private ConcurrentDictionary<long, NvdecDecoderContext> _contexts;
+        private NvdecDecoderContext _currentContext;
+
+        public NvdecDevice(MemoryManager gmm)
+        {
+            _rm = new ResourceManager(gmm, new SurfaceCache(gmm));
+            _state = new DeviceState<NvdecRegisters>(new Dictionary<string, RwCallback>
+            {
+                { nameof(NvdecRegisters.Execute), new RwCallback(Execute, null) }
+>>>>>>> 1ec71635b (sync with main branch)
             });
             _contexts = new ConcurrentDictionary<long, NvdecDecoderContext>();
         }

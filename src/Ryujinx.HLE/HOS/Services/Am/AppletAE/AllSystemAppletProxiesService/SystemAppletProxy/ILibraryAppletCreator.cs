@@ -11,10 +11,15 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
         // CreateLibraryApplet(u32, u32) -> object<nn::am::service::ILibraryAppletAccessor>
         public ResultCode CreateLibraryApplet(ServiceCtx context)
         {
+<<<<<<< HEAD
             AppletId appletId = (AppletId)context.RequestData.ReadInt32();
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             int libraryAppletMode = context.RequestData.ReadInt32();
 #pragma warning restore IDE0059
+=======
+            AppletId appletId          = (AppletId)context.RequestData.ReadInt32();
+            int      libraryAppletMode = context.RequestData.ReadInt32();
+>>>>>>> 1ec71635b (sync with main branch)
 
             MakeObject(context, new ILibraryAppletAccessor(appletId, context.Device.System));
 
@@ -44,8 +49,13 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
         public ResultCode CreateTransferMemoryStorage(ServiceCtx context)
         {
             bool isReadOnly = (context.RequestData.ReadInt64() & 1) == 0;
+<<<<<<< HEAD
             long size = context.RequestData.ReadInt64();
             int handle = context.Request.HandleDesc.ToCopy[0];
+=======
+            long size       = context.RequestData.ReadInt64();
+            int  handle     = context.Request.HandleDesc.ToCopy[0];
+>>>>>>> 1ec71635b (sync with main branch)
 
             KTransferMemory transferMem = context.Process.HandleTable.GetObject<KTransferMemory>(handle);
 
@@ -69,8 +79,13 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
         // CreateHandleStorage(u64, handle<copy>) -> object<nn::am::service::IStorage>
         public ResultCode CreateHandleStorage(ServiceCtx context)
         {
+<<<<<<< HEAD
             long size = context.RequestData.ReadInt64();
             int handle = context.Request.HandleDesc.ToCopy[0];
+=======
+            long size   = context.RequestData.ReadInt64();
+            int  handle = context.Request.HandleDesc.ToCopy[0];
+>>>>>>> 1ec71635b (sync with main branch)
 
             KTransferMemory transferMem = context.Process.HandleTable.GetObject<KTransferMemory>(handle);
 
@@ -90,4 +105,8 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

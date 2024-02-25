@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Common;
 using Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.DebugPad;
 using Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Keyboard;
@@ -47,7 +51,11 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory
 
         public static SharedMemory Create()
         {
+<<<<<<< HEAD
             SharedMemory result = new()
+=======
+            SharedMemory result = new SharedMemory
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 DebugPad = RingLifo<DebugPadState>.Create(),
                 TouchScreen = RingLifo<TouchScreenState>.Create(),

@@ -4,6 +4,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class EnclosedExpression : BaseNode
     {
+<<<<<<< HEAD
         private readonly string _prefix;
         private readonly BaseNode _expression;
         private readonly string _postfix;
@@ -13,6 +14,17 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             _prefix = prefix;
             _expression = expression;
             _postfix = postfix;
+=======
+        private string   _prefix;
+        private BaseNode _expression;
+        private string   _postfix;
+
+        public EnclosedExpression(string prefix, BaseNode expression, string postfix) : base(NodeType.EnclosedExpression)
+        {
+            _prefix     = prefix;
+            _expression = expression;
+            _postfix    = postfix;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void PrintLeft(TextWriter writer)
@@ -22,4 +34,8 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             writer.Write(_postfix);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

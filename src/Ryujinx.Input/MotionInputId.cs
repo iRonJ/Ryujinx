@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Input
+=======
+﻿namespace Ryujinx.Input
+>>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Represent a motion sensor on a gamepad.
@@ -20,6 +24,10 @@ namespace Ryujinx.Input
         /// Gyroscope.
         /// </summary>
         /// <remarks>Values are in degrees</remarks>
+<<<<<<< HEAD
         Gyroscope,
+=======
+        Gyroscope
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

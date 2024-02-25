@@ -16,7 +16,11 @@ namespace Ryujinx.Graphics.Gpu.Image
         Texture2DArray,
         TextureBuffer,
         Texture2DRect,
+<<<<<<< HEAD
         CubemapArray,
+=======
+        CubemapArray
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class TextureTargetConverter
@@ -33,16 +37,22 @@ namespace Ryujinx.Graphics.Gpu.Image
             {
                 switch (target)
                 {
+<<<<<<< HEAD
                     case TextureTarget.Texture2D:
                         return Target.Texture2DMultisample;
                     case TextureTarget.Texture2DArray:
                         return Target.Texture2DMultisampleArray;
+=======
+                    case TextureTarget.Texture2D:      return Target.Texture2DMultisample;
+                    case TextureTarget.Texture2DArray: return Target.Texture2DMultisampleArray;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
             else
             {
                 switch (target)
                 {
+<<<<<<< HEAD
                     case TextureTarget.Texture1D:
                         return Target.Texture1D;
                     case TextureTarget.Texture2D:
@@ -61,6 +71,17 @@ namespace Ryujinx.Graphics.Gpu.Image
                         return Target.CubemapArray;
                     case TextureTarget.TextureBuffer:
                         return Target.TextureBuffer;
+=======
+                    case TextureTarget.Texture1D:       return Target.Texture1D;
+                    case TextureTarget.Texture2D:       return Target.Texture2D;
+                    case TextureTarget.Texture2DRect:   return Target.Texture2D;
+                    case TextureTarget.Texture3D:       return Target.Texture3D;
+                    case TextureTarget.Texture1DArray:  return Target.Texture1DArray;
+                    case TextureTarget.Texture2DArray:  return Target.Texture2DArray;
+                    case TextureTarget.Cubemap:         return Target.Cubemap;
+                    case TextureTarget.CubemapArray:    return Target.CubemapArray;
+                    case TextureTarget.TextureBuffer:   return Target.TextureBuffer;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -76,6 +97,7 @@ namespace Ryujinx.Graphics.Gpu.Image
         {
             return target switch
             {
+<<<<<<< HEAD
                 TextureTarget.Texture1D => SamplerType.Texture1D,
                 TextureTarget.Texture2D => SamplerType.Texture2D,
                 TextureTarget.Texture3D => SamplerType.Texture3D,
@@ -90,3 +112,19 @@ namespace Ryujinx.Graphics.Gpu.Image
         }
     }
 }
+=======
+                TextureTarget.Texture1D      => SamplerType.Texture1D,
+                TextureTarget.Texture2D      => SamplerType.Texture2D,
+                TextureTarget.Texture3D      => SamplerType.Texture3D,
+                TextureTarget.Cubemap        => SamplerType.TextureCube,
+                TextureTarget.Texture1DArray => SamplerType.Texture1D | SamplerType.Array,
+                TextureTarget.Texture2DArray => SamplerType.Texture2D | SamplerType.Array,
+                TextureTarget.TextureBuffer  => SamplerType.TextureBuffer,
+                TextureTarget.Texture2DRect  => SamplerType.Texture2D,
+                TextureTarget.CubemapArray   => SamplerType.TextureCube | SamplerType.Array,
+                _                            => SamplerType.Texture2D
+            };
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -27,25 +27,41 @@ namespace ARMeilleure.IntermediateRepresentation
 
         private Data* _data;
 
+<<<<<<< HEAD
         public readonly OperandKind Kind
+=======
+        public OperandKind Kind
+>>>>>>> 1ec71635b (sync with main branch)
         {
             get => (OperandKind)_data->Kind;
             private set => _data->Kind = (byte)value;
         }
 
+<<<<<<< HEAD
         public readonly OperandType Type
+=======
+        public OperandType Type
+>>>>>>> 1ec71635b (sync with main branch)
         {
             get => (OperandType)_data->Type;
             private set => _data->Type = (byte)value;
         }
 
+<<<<<<< HEAD
         public readonly ulong Value
+=======
+        public ulong Value
+>>>>>>> 1ec71635b (sync with main branch)
         {
             get => _data->Value;
             private set => _data->Value = value;
         }
 
+<<<<<<< HEAD
         public readonly Symbol Symbol
+=======
+        public Symbol Symbol
+>>>>>>> 1ec71635b (sync with main branch)
         {
             get
             {
@@ -69,7 +85,11 @@ namespace ARMeilleure.IntermediateRepresentation
             }
         }
 
+<<<<<<< HEAD
         public readonly ReadOnlySpan<Operation> Assignments
+=======
+        public ReadOnlySpan<Operation> Assignments
+>>>>>>> 1ec71635b (sync with main branch)
         {
             get
             {
@@ -79,7 +99,11 @@ namespace ARMeilleure.IntermediateRepresentation
             }
         }
 
+<<<<<<< HEAD
         public readonly ReadOnlySpan<Operation> Uses
+=======
+        public ReadOnlySpan<Operation> Uses
+>>>>>>> 1ec71635b (sync with main branch)
         {
             get
             {
@@ -89,6 +113,7 @@ namespace ARMeilleure.IntermediateRepresentation
             }
         }
 
+<<<<<<< HEAD
         public readonly int UsesCount => (int)_data->UsesCount;
         public readonly int AssignmentsCount => _data->AssignmentsCount;
 
@@ -96,6 +121,15 @@ namespace ARMeilleure.IntermediateRepresentation
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public readonly Register GetRegister()
+=======
+        public int UsesCount => (int)_data->UsesCount;
+        public int AssignmentsCount => _data->AssignmentsCount;
+
+        public bool Relocatable => Symbol.Type != SymbolType.None;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public Register GetRegister()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Debug.Assert(Kind == OperandKind.Register);
 
@@ -103,52 +137,88 @@ namespace ARMeilleure.IntermediateRepresentation
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         public readonly MemoryOperand GetMemory()
+=======
+        public MemoryOperand GetMemory()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Debug.Assert(Kind == OperandKind.Memory);
 
             return new MemoryOperand(this);
         }
 
+<<<<<<< HEAD
         public readonly int GetLocalNumber()
+=======
+        public int GetLocalNumber()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Debug.Assert(Kind == OperandKind.LocalVariable);
 
             return (int)Value;
         }
 
+<<<<<<< HEAD
         public readonly byte AsByte()
+=======
+        public byte AsByte()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return (byte)Value;
         }
 
+<<<<<<< HEAD
         public readonly short AsInt16()
+=======
+        public short AsInt16()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return (short)Value;
         }
 
+<<<<<<< HEAD
         public readonly int AsInt32()
+=======
+        public int AsInt32()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return (int)Value;
         }
 
+<<<<<<< HEAD
         public readonly long AsInt64()
+=======
+        public long AsInt64()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return (long)Value;
         }
 
+<<<<<<< HEAD
         public readonly float AsFloat()
+=======
+        public float AsFloat()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return BitConverter.Int32BitsToSingle((int)Value);
         }
 
+<<<<<<< HEAD
         public readonly double AsDouble()
+=======
+        public double AsDouble()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return BitConverter.Int64BitsToDouble((long)Value);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         internal readonly ref ulong GetValueUnsafe()
+=======
+        internal ref ulong GetValueUnsafe()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return ref _data->Value;
         }
@@ -163,7 +233,11 @@ namespace ARMeilleure.IntermediateRepresentation
             Value = (ulong)number;
         }
 
+<<<<<<< HEAD
         public readonly void AddAssignment(Operation operation)
+=======
+        public void AddAssignment(Operation operation)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (Kind == OperandKind.LocalVariable)
             {
@@ -187,7 +261,11 @@ namespace ARMeilleure.IntermediateRepresentation
             }
         }
 
+<<<<<<< HEAD
         public readonly void RemoveAssignment(Operation operation)
+=======
+        public void RemoveAssignment(Operation operation)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (Kind == OperandKind.LocalVariable)
             {
@@ -211,7 +289,11 @@ namespace ARMeilleure.IntermediateRepresentation
             }
         }
 
+<<<<<<< HEAD
         public readonly void AddUse(Operation operation)
+=======
+        public void AddUse(Operation operation)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (Kind == OperandKind.LocalVariable)
             {
@@ -235,7 +317,11 @@ namespace ARMeilleure.IntermediateRepresentation
             }
         }
 
+<<<<<<< HEAD
         public readonly void RemoveUse(Operation operation)
+=======
+        public void RemoveUse(Operation operation)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (Kind == OperandKind.LocalVariable)
             {
@@ -259,7 +345,11 @@ namespace ARMeilleure.IntermediateRepresentation
             }
         }
 
+<<<<<<< HEAD
         public readonly Span<Operation> GetUses(ref Span<Operation> buffer)
+=======
+        public Span<Operation> GetUses(ref Span<Operation> buffer)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             ReadOnlySpan<Operation> uses = Uses;
 
@@ -270,7 +360,11 @@ namespace ARMeilleure.IntermediateRepresentation
 
             uses.CopyTo(buffer);
 
+<<<<<<< HEAD
             return buffer[..uses.Length];
+=======
+            return buffer.Slice(0, uses.Length);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void New<T>(ref T* data, ref ushort count, ref ushort capacity, ushort initialCapacity) where T : unmanaged
@@ -360,7 +454,11 @@ namespace ARMeilleure.IntermediateRepresentation
                 {
                     if (i + 1 < count)
                     {
+<<<<<<< HEAD
                         span[(i + 1)..].CopyTo(span[i..]);
+=======
+                        span.Slice(i + 1).CopyTo(span.Slice(i));
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     count--;
@@ -380,7 +478,11 @@ namespace ARMeilleure.IntermediateRepresentation
                 {
                     if (i + 1 < count)
                     {
+<<<<<<< HEAD
                         span[(i + 1)..].CopyTo(span[i..]);
+=======
+                        span.Slice(i + 1).CopyTo(span.Slice(i));
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     count--;
@@ -390,17 +492,29 @@ namespace ARMeilleure.IntermediateRepresentation
             }
         }
 
+<<<<<<< HEAD
         public readonly override int GetHashCode()
+=======
+        public override int GetHashCode()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return ((ulong)_data).GetHashCode();
         }
 
+<<<<<<< HEAD
         public readonly bool Equals(Operand operand)
+=======
+        public bool Equals(Operand operand)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return operand._data == _data;
         }
 
+<<<<<<< HEAD
         public readonly override bool Equals(object obj)
+=======
+        public override bool Equals(object obj)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is Operand operand && Equals(operand);
         }
@@ -453,10 +567,15 @@ namespace ARMeilleure.IntermediateRepresentation
                     // Look in the next InternTableProbeLength slots for a match.
                     for (uint i = 0; i < InternTableProbeLength; i++)
                     {
+<<<<<<< HEAD
                         Operand interned = new()
                         {
                             _data = &InternTable[(hash + i) % InternTableSize],
                         };
+=======
+                        Operand interned = new();
+                        interned._data = &InternTable[(hash + i) % InternTableSize];
+>>>>>>> 1ec71635b (sync with main branch)
 
                         // If slot matches the allocation request then return that slot.
                         if (interned.Kind == kind && interned.Type == type && interned.Value == value && interned.Symbol == symbol)
@@ -481,6 +600,7 @@ namespace ARMeilleure.IntermediateRepresentation
 
                 *data = default;
 
+<<<<<<< HEAD
                 Operand result = new()
                 {
                     _data = data,
@@ -488,6 +608,13 @@ namespace ARMeilleure.IntermediateRepresentation
                     Kind = kind,
                     Type = type,
                 };
+=======
+                Operand result = new();
+                result._data = data;
+                result.Value = value;
+                result.Kind = kind;
+                result.Type = type;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 if (kind != OperandKind.Memory)
                 {
@@ -595,4 +722,8 @@ namespace ARMeilleure.IntermediateRepresentation
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

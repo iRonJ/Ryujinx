@@ -98,6 +98,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
         public bool DualSourceBlendEnable;
 
         /// <summary>
+<<<<<<< HEAD
         /// Indicates whether Y negate of the fragment coordinates is enabled.
         /// </summary>
         public bool YNegateEnabled;
@@ -181,3 +182,63 @@ namespace Ryujinx.Graphics.Gpu.Shader
         }
     }
 }
+=======
+        /// Creates a new GPU graphics state.
+        /// </summary>
+        /// <param name="earlyZForce">Early Z force enable</param>
+        /// <param name="topology">Primitive topology</param>
+        /// <param name="tessellationMode">Tessellation mode</param>
+        /// <param name="alphaToCoverageEnable">Indicates whether alpha-to-coverage is enabled</param>
+        /// <param name="alphaToCoverageDitherEnable">Indicates whether alpha-to-coverage dithering is enabled</param>
+        /// <param name="viewportTransformDisable">Indicates whether the viewport transform is disabled</param>
+        /// <param name="depthMode">Depth mode zero to one or minus one to one</param>
+        /// <param name="programPointSizeEnable">Indicates if the point size is set on the shader or is fixed</param>
+        /// <param name="pointSize">Point size if not set from shader</param>
+        /// <param name="alphaTestEnable">Indicates whether alpha test is enabled</param>
+        /// <param name="alphaTestCompare">When alpha test is enabled, indicates the comparison that decides if the fragment should be discarded</param>
+        /// <param name="alphaTestReference">When alpha test is enabled, indicates the value to compare with the fragment output alpha</param>
+        /// <param name="attributeTypes">Type of the vertex attributes consumed by the shader</param>
+        /// <param name="hasConstantBufferDrawParameters">Indicates that the draw is writing the base vertex, base instance and draw index to Constant Buffer 0</param>
+        /// <param name="hasUnalignedStorageBuffer">Indicates that any storage buffer use is unaligned</param>
+        /// <param name="fragmentOutputTypes">Type of the fragment shader outputs</param>
+        /// <param name="dualSourceBlendEnable">Type of the vertex attributes consumed by the shader</param>
+        public GpuChannelGraphicsState(
+            bool earlyZForce,
+            PrimitiveTopology topology,
+            TessMode tessellationMode,
+            bool alphaToCoverageEnable,
+            bool alphaToCoverageDitherEnable,
+            bool viewportTransformDisable,
+            bool depthMode,
+            bool programPointSizeEnable,
+            float pointSize,
+            bool alphaTestEnable,
+            CompareOp alphaTestCompare,
+            float alphaTestReference,
+            ref Array32<AttributeType> attributeTypes,
+            bool hasConstantBufferDrawParameters,
+            bool hasUnalignedStorageBuffer,
+            ref Array8<AttributeType> fragmentOutputTypes,
+            bool dualSourceBlendEnable)
+        {
+            EarlyZForce = earlyZForce;
+            Topology = topology;
+            TessellationMode = tessellationMode;
+            AlphaToCoverageEnable = alphaToCoverageEnable;
+            AlphaToCoverageDitherEnable = alphaToCoverageDitherEnable;
+            ViewportTransformDisable = viewportTransformDisable;
+            DepthMode = depthMode;
+            ProgramPointSizeEnable = programPointSizeEnable;
+            PointSize = pointSize;
+            AlphaTestEnable = alphaTestEnable;
+            AlphaTestCompare = alphaTestCompare;
+            AlphaTestReference = alphaTestReference;
+            AttributeTypes = attributeTypes;
+            HasConstantBufferDrawParameters = hasConstantBufferDrawParameters;
+            HasUnalignedStorageBuffer = hasUnalignedStorageBuffer;
+            FragmentOutputTypes = fragmentOutputTypes;
+            DualSourceBlendEnable = dualSourceBlendEnable;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 using ARMeilleure.Common;
 using ARMeilleure.Instructions;
+=======
+﻿using ARMeilleure.Instructions;
+>>>>>>> 1ec71635b (sync with main branch)
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation.Cache;
@@ -15,11 +19,19 @@ namespace ARMeilleure.Translation
     /// </summary>
     class TranslatorStubs : IDisposable
     {
+<<<<<<< HEAD
         private readonly Lazy<IntPtr> _slowDispatchStub;
 
         private bool _disposed;
 
         private readonly AddressTable<ulong> _functionTable;
+=======
+        private static readonly Lazy<IntPtr> _slowDispatchStub = new(GenerateSlowDispatchStub, isThreadSafe: true);
+
+        private bool _disposed;
+
+        private readonly Translator _translator;
+>>>>>>> 1ec71635b (sync with main branch)
         private readonly Lazy<IntPtr> _dispatchStub;
         private readonly Lazy<DispatcherFunction> _dispatchLoop;
         private readonly Lazy<WrapperFunction> _contextWrapper;
@@ -84,6 +96,7 @@ namespace ARMeilleure.Translation
         /// Initializes a new instance of the <see cref="TranslatorStubs"/> class with the specified
         /// <see cref="Translator"/> instance.
         /// </summary>
+<<<<<<< HEAD
         /// <param name="functionTable">Function table used to store pointers to the functions that the guest code will call</param>
         /// <exception cref="ArgumentNullException"><paramref name="translator"/> is null</exception>
         public TranslatorStubs(AddressTable<ulong> functionTable)
@@ -92,6 +105,15 @@ namespace ARMeilleure.Translation
 
             _functionTable = functionTable;
             _slowDispatchStub = new(GenerateSlowDispatchStub, isThreadSafe: true);
+=======
+        /// <param name="translator"><see cref="Translator"/> instance to use</param>
+        /// <exception cref="ArgumentNullException"><paramref name="translator"/> is null</exception>
+        public TranslatorStubs(Translator translator)
+        {
+            ArgumentNullException.ThrowIfNull(translator);
+
+            _translator = translator;
+>>>>>>> 1ec71635b (sync with main branch)
             _dispatchStub = new(GenerateDispatchStub, isThreadSafe: true);
             _dispatchLoop = new(GenerateDispatchLoop, isThreadSafe: true);
             _contextWrapper = new(GenerateContextWrapper, isThreadSafe: true);
@@ -153,6 +175,7 @@ namespace ARMeilleure.Translation
                 context.Add(nativeContext, Const((ulong)NativeContext.GetDispatchAddressOffset())));
 
             // Check if guest address is within range of the AddressTable.
+<<<<<<< HEAD
             Operand masked = context.BitwiseAnd(guestAddress, Const(~_functionTable.Mask));
             context.BranchIfTrue(lblFallback, masked);
 
@@ -162,6 +185,17 @@ namespace ARMeilleure.Translation
             for (int i = 0; i < _functionTable.Levels.Length; i++)
             {
                 ref var level = ref _functionTable.Levels[i];
+=======
+            Operand masked = context.BitwiseAnd(guestAddress, Const(~_translator.FunctionTable.Mask));
+            context.BranchIfTrue(lblFallback, masked);
+
+            Operand index = default;
+            Operand page = Const((long)_translator.FunctionTable.Base);
+
+            for (int i = 0; i < _translator.FunctionTable.Levels.Length; i++)
+            {
+                ref var level = ref _translator.FunctionTable.Levels[i];
+>>>>>>> 1ec71635b (sync with main branch)
 
                 // level.Mask is not used directly because it is more often bigger than 32-bits, so it will not
                 // be encoded as an immediate on x86's bitwise and operation.
@@ -169,7 +203,11 @@ namespace ARMeilleure.Translation
 
                 index = context.BitwiseAnd(context.ShiftRightUI(guestAddress, Const(level.Index)), mask);
 
+<<<<<<< HEAD
                 if (i < _functionTable.Levels.Length - 1)
+=======
+                if (i < _translator.FunctionTable.Levels.Length - 1)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     page = context.Load(OperandType.I64, context.Add(page, context.ShiftLeft(index, Const(3))));
                     context.BranchIfFalse(lblFallback, page);
@@ -198,7 +236,11 @@ namespace ARMeilleure.Translation
         /// Generates a <see cref="SlowDispatchStub"/>.
         /// </summary>
         /// <returns>Generated <see cref="SlowDispatchStub"/></returns>
+<<<<<<< HEAD
         private IntPtr GenerateSlowDispatchStub()
+=======
+        private static IntPtr GenerateSlowDispatchStub()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             var context = new EmitterContext();
 
@@ -207,7 +249,12 @@ namespace ARMeilleure.Translation
             Operand guestAddress = context.Load(OperandType.I64,
                 context.Add(nativeContext, Const((ulong)NativeContext.GetDispatchAddressOffset())));
 
+<<<<<<< HEAD
             Operand hostAddress = context.Call(typeof(NativeInterface).GetMethod(nameof(NativeInterface.GetFunctionAddress)), guestAddress);
+=======
+            MethodInfo getFuncAddress = typeof(NativeInterface).GetMethod(nameof(NativeInterface.GetFunctionAddress));
+            Operand hostAddress = context.Call(getFuncAddress, guestAddress);
+>>>>>>> 1ec71635b (sync with main branch)
             context.Tailcall(hostAddress, nativeContext);
 
             var cfg = context.GetControlFlowGraph();
@@ -225,7 +272,11 @@ namespace ARMeilleure.Translation
         /// <param name="context">Emitter context for the method</param>
         /// <param name="nativeContext">Pointer to the native context</param>
         /// <param name="enter">True if entering guest code, false otherwise</param>
+<<<<<<< HEAD
         private static void EmitSyncFpContext(EmitterContext context, Operand nativeContext, bool enter)
+=======
+        private void EmitSyncFpContext(EmitterContext context, Operand nativeContext, bool enter)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (enter)
             {

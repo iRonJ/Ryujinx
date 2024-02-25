@@ -37,4 +37,8 @@ namespace Ryujinx.Audio.Renderer.Server.Voice
             Mix.AsSpan().CopyTo(PreviousMix.AsSpan());
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

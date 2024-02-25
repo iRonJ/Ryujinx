@@ -21,6 +21,7 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
 
         private BiquadFilterParameter _parameter;
 
+<<<<<<< HEAD
         public BiquadFilterCommand(
             int baseIndex,
             ref BiquadFilterParameter filter,
@@ -29,6 +30,9 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             int outputBufferOffset,
             bool needInitialization,
             int nodeId)
+=======
+        public BiquadFilterCommand(int baseIndex, ref BiquadFilterParameter filter, Memory<BiquadFilterState> biquadFilterStateMemory, int inputBufferOffset, int outputBufferOffset, bool needInitialization, int nodeId)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             _parameter = filter;
             BiquadFilterState = biquadFilterStateMemory;
@@ -55,4 +59,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             BiquadFilterHelper.ProcessBiquadFilter(ref _parameter, ref state, outputBuffer, inputBuffer, context.SampleCount);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

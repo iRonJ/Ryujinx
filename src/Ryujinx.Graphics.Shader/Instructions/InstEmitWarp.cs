@@ -1,6 +1,10 @@
 using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 
@@ -38,7 +42,11 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 ShflMode.Up => context.ShuffleUp(srcA, srcB, srcC),
                 ShflMode.Down => context.ShuffleDown(srcA, srcB, srcC),
                 ShflMode.Bfly => context.ShuffleXor(srcA, srcB, srcC),
+<<<<<<< HEAD
                 _ => (null, null),
+=======
+                _ => (null, null)
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             context.Copy(GetDest(op.Dest), res);
@@ -50,7 +58,24 @@ namespace Ryujinx.Graphics.Shader.Instructions
             InstVote op = context.GetOp<InstVote>();
 
             Operand pred = GetPredicate(context, op.SrcPred, op.SrcPredInv);
+<<<<<<< HEAD
             Operand res = EmitVote(context, op.VoteMode, pred);
+=======
+            Operand res = null;
+
+            switch (op.VoteMode)
+            {
+                case VoteMode.All:
+                    res = context.VoteAll(pred);
+                    break;
+                case VoteMode.Any:
+                    res = context.VoteAny(pred);
+                    break;
+                case VoteMode.Eq:
+                    res = context.VoteAllEqual(pred);
+                    break;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (res != null)
             {
@@ -58,11 +83,16 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
             else
             {
+<<<<<<< HEAD
                 context.TranslatorContext.GpuAccessor.Log($"Invalid vote operation: {op.VoteMode}.");
+=======
+                context.Config.GpuAccessor.Log($"Invalid vote operation: {op.VoteMode}.");
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (op.Dest != RegisterConsts.RegisterZeroIndex)
             {
+<<<<<<< HEAD
                 context.Copy(GetDest(op.Dest), EmitBallot(context, pred));
             }
         }
@@ -142,3 +172,10 @@ namespace Ryujinx.Graphics.Shader.Instructions
         }
     }
 }
+=======
+                context.Copy(GetDest(op.Dest), context.Ballot(pred));
+            }
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -27,4 +27,8 @@ namespace Ryujinx.HLE.HOS.Services.Ns
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

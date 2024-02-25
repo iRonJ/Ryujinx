@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using LibHac.Common;
+=======
+﻿using LibHac.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Fs;
 using LibHac.Fs.Fsa;
 using LibHac.Loader;
@@ -8,7 +12,10 @@ using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.Loaders.Executables;
 using Ryujinx.Memory;
+<<<<<<< HEAD
 using System;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Linq;
 using static Ryujinx.HLE.HOS.ModLoader;
 
@@ -34,7 +41,11 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
             return metaLoader;
         }
 
+<<<<<<< HEAD
         public static ProcessResult Load(this IFileSystem exeFs, Switch device, BlitStruct<ApplicationControlProperty> nacpData, MetaLoader metaLoader, byte programIndex, bool isHomebrew = false)
+=======
+        public static ProcessResult Load(this IFileSystem exeFs, Switch device, BlitStruct<ApplicationControlProperty> nacpData, MetaLoader metaLoader, bool isHomebrew = false)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             ulong programId = metaLoader.GetProgramId();
 
@@ -86,9 +97,18 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
             bool enablePtc = device.System.EnablePtc && !modLoadResult.Modified;
             if (!enablePtc)
             {
+<<<<<<< HEAD
                 Logger.Warning?.Print(LogClass.Ptc, "Detected unsupported ExeFs modifications. PTC disabled.");
             }
 
+=======
+                Logger.Warning?.Print(LogClass.Ptc, $"Detected unsupported ExeFs modifications. PTC disabled.");
+            }
+
+            // We allow it for nx-hbloader because it can be used to launch homebrew.
+            bool allowCodeMemoryForJit = programId == 0x010000000000100DUL || isHomebrew;
+
+>>>>>>> 1ec71635b (sync with main branch)
             string programName = "";
 
             if (!isHomebrew && programId > 0x010000000000FFFF)
@@ -97,7 +117,11 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
 
                 if (string.IsNullOrWhiteSpace(programName))
                 {
+<<<<<<< HEAD
                     programName = Array.Find(nacpData.Value.Title.ItemsRo.ToArray(), x => x.Name[0] != 0).NameString.ToString();
+=======
+                    programName = nacpData.Value.Title.ItemsRo.ToArray().FirstOrDefault(x => x.Name[0] != 0).NameString.ToString();
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -116,10 +140,16 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
                 metaLoader,
                 nacpData,
                 enablePtc,
+<<<<<<< HEAD
                 true,
                 programName,
                 metaLoader.GetProgramId(),
                 programIndex,
+=======
+                allowCodeMemoryForJit,
+                programName,
+                metaLoader.GetProgramId(),
+>>>>>>> 1ec71635b (sync with main branch)
                 null,
                 nsoExecutables);
 
@@ -129,4 +159,8 @@ namespace Ryujinx.HLE.Loaders.Processes.Extensions
             return processResult;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

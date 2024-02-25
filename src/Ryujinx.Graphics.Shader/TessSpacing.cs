@@ -4,7 +4,11 @@ namespace Ryujinx.Graphics.Shader
     {
         EqualSpacing = 0,
         FractionalEventSpacing = 1,
+<<<<<<< HEAD
         FractionalOddSpacing = 2,
+=======
+        FractionalOddSpacing = 2
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class TessSpacingExtensions
@@ -15,8 +19,16 @@ namespace Ryujinx.Graphics.Shader
             {
                 TessSpacing.FractionalEventSpacing => "fractional_even_spacing",
                 TessSpacing.FractionalOddSpacing => "fractional_odd_spacing",
+<<<<<<< HEAD
                 _ => "equal_spacing",
             };
         }
     }
 }
+=======
+                _ => "equal_spacing"
+            };
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

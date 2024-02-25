@@ -67,4 +67,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
             context.CriticalSection.Leave();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

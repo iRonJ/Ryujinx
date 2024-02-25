@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Horizon.Bcat.Ipc;
+=======
+﻿using Ryujinx.Horizon.Bcat.Ipc;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Bcat.Types;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
@@ -17,6 +21,7 @@ namespace Ryujinx.Horizon.Bcat
         {
             return (BcatPortIndex)portIndex switch
             {
+<<<<<<< HEAD
                 BcatPortIndex.Admin => AcceptImpl(server, new ServiceCreator("bcat:a", BcatServicePermissionLevel.Admin)),
                 BcatPortIndex.Manager => AcceptImpl(server, new ServiceCreator("bcat:m", BcatServicePermissionLevel.Manager)),
                 BcatPortIndex.User => AcceptImpl(server, new ServiceCreator("bcat:u", BcatServicePermissionLevel.User)),
@@ -26,3 +31,14 @@ namespace Ryujinx.Horizon.Bcat
         }
     }
 }
+=======
+                BcatPortIndex.Admin   => AcceptImpl(server, new ServiceCreator("bcat:a", BcatServicePermissionLevel.Admin)),
+                BcatPortIndex.Manager => AcceptImpl(server, new ServiceCreator("bcat:m", BcatServicePermissionLevel.Manager)),
+                BcatPortIndex.User    => AcceptImpl(server, new ServiceCreator("bcat:u", BcatServicePermissionLevel.User)),
+                BcatPortIndex.System  => AcceptImpl(server, new ServiceCreator("bcat:s", BcatServicePermissionLevel.System)),
+                _                     => throw new ArgumentOutOfRangeException(nameof(portIndex)),
+            };
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using ARMeilleure.State;
+=======
+﻿using ARMeilleure.State;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace ARMeilleure.Decoders
 {

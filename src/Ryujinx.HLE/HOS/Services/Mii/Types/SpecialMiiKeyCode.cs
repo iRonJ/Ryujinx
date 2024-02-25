@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Runtime.InteropServices;
+=======
+﻿using System.Runtime.InteropServices;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Mii.Types
 {
@@ -9,7 +13,11 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         public uint RawValue;
 
+<<<<<<< HEAD
         public readonly bool IsEnabledSpecialMii()
+=======
+        public bool IsEnabledSpecialMii()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return RawValue == SpecialMiiMagic;
         }

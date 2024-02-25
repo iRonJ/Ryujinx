@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Cpu;
+=======
+﻿using Ryujinx.Cpu;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Memory;
 using System;
 
@@ -8,12 +12,18 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
     {
         public IVirtualMemoryManager AddressSpace { get; }
 
+<<<<<<< HEAD
         public ulong AddressSpaceSize { get; }
 
         public ProcessContext(IVirtualMemoryManager asManager, ulong addressSpaceSize)
         {
             AddressSpace = asManager;
             AddressSpaceSize = addressSpaceSize;
+=======
+        public ProcessContext(IVirtualMemoryManager asManager)
+        {
+            AddressSpace = asManager;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public IExecutionContext CreateExecutionContext(ExceptionCallbacks exceptionCallbacks)

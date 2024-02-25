@@ -7,8 +7,16 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
 
         public KEvent(KernelContext context)
         {
+<<<<<<< HEAD
             ReadableEvent = new KReadableEvent(context);
             WritableEvent = new KWritableEvent(context, this);
         }
     }
 }
+=======
+            ReadableEvent = new KReadableEvent(context, this);
+            WritableEvent = new KWritableEvent(context, this);
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

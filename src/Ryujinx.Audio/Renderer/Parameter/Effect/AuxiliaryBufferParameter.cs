@@ -81,4 +81,8 @@ namespace Ryujinx.Audio.Renderer.Parameter.Effect
         /// <remarks>This is unused.</remarks>
         public uint MixBufferSampleCount;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Runtime.InteropServices;
+=======
+﻿using System.Runtime.InteropServices;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Common.GraphicsDriver.NVAPI
 {
@@ -19,7 +23,11 @@ namespace Ryujinx.Common.GraphicsDriver.NVAPI
     }
 
     [StructLayout(LayoutKind.Explicit, Size = 0x3020)]
+<<<<<<< HEAD
     struct NvdrsSetting
+=======
+    unsafe struct NvdrsSetting
+>>>>>>> 1ec71635b (sync with main branch)
     {
         [FieldOffset(0x0)]
         public uint Version;

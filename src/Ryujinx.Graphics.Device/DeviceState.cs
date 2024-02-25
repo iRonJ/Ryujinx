@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -13,7 +17,11 @@ namespace Ryujinx.Graphics.Device
 
         public TState State;
 
+<<<<<<< HEAD
         private static uint Size => (uint)(Unsafe.SizeOf<TState>() + RegisterSize - 1) / RegisterSize;
+=======
+        private uint Size => (uint)(Unsafe.SizeOf<TState>() + RegisterSize - 1) / RegisterSize;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly Func<int>[] _readCallbacks;
         private readonly Action<int>[] _writeCallbacks;

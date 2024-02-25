@@ -1,4 +1,5 @@
 using LibHac;
+<<<<<<< HEAD
 using Ryujinx.Audio.Integration;
 using Ryujinx.Cpu;
 using Ryujinx.Horizon.Sdk.Account;
@@ -32,6 +33,23 @@ namespace Ryujinx.Horizon
             AccountManager = accountManager;
             AudioDeviceDriver = audioDeviceDriver;
             TickSource = tickSource;
+=======
+
+namespace Ryujinx.Horizon
+{
+    public struct HorizonOptions
+    {
+        public bool IgnoreMissingServices    { get; }
+        public bool ThrowOnInvalidCommandIds { get; }
+
+        public HorizonClient BcatClient { get; }
+
+        public HorizonOptions(bool ignoreMissingServices, HorizonClient bcatClient)
+        {
+            IgnoreMissingServices    = ignoreMissingServices;
+            ThrowOnInvalidCommandIds = true;
+            BcatClient               = bcatClient;
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

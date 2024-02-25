@@ -2,12 +2,18 @@ using ARMeilleure.State;
 using Ryujinx.Cpu.AppleHv.Arm;
 using Ryujinx.Memory.Tracking;
 using System;
+<<<<<<< HEAD
 using System.Runtime.Versioning;
 using System.Threading;
 
 namespace Ryujinx.Cpu.AppleHv
 {
     [SupportedOSPlatform("macos")]
+=======
+
+namespace Ryujinx.Cpu.AppleHv
+{
+>>>>>>> 1ec71635b (sync with main branch)
     class HvExecutionContext : IExecutionContext
     {
         /// <inheritdoc/>
@@ -70,8 +76,11 @@ namespace Ryujinx.Cpu.AppleHv
 
         private readonly ExceptionCallbacks _exceptionCallbacks;
 
+<<<<<<< HEAD
         private int _interruptRequested;
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public HvExecutionContext(ICounter counter, ExceptionCallbacks exceptionCallbacks)
         {
             _counter = counter;
@@ -116,6 +125,7 @@ namespace Ryujinx.Cpu.AppleHv
         /// <inheritdoc/>
         public void RequestInterrupt()
         {
+<<<<<<< HEAD
             if (Interlocked.Exchange(ref _interruptRequested, 1) == 0 && _impl is HvExecutionContextVcpu impl)
             {
                 impl.RequestInterrupt();
@@ -125,6 +135,9 @@ namespace Ryujinx.Cpu.AppleHv
         private bool GetAndClearInterruptRequested()
         {
             return Interlocked.Exchange(ref _interruptRequested, 0) != 0;
+=======
+            _impl.RequestInterrupt();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <inheritdoc/>
@@ -138,17 +151,29 @@ namespace Ryujinx.Cpu.AppleHv
         {
             HvVcpu vcpu = HvVcpuPool.Instance.Create(memoryManager.AddressSpace, _shadowContext, SwapContext);
 
+<<<<<<< HEAD
             HvApi.hv_vcpu_set_reg(vcpu.Handle, HvReg.PC, address).ThrowOnError();
+=======
+            HvApi.hv_vcpu_set_reg(vcpu.Handle, hv_reg_t.HV_REG_PC, address).ThrowOnError();
+>>>>>>> 1ec71635b (sync with main branch)
 
             while (Running)
             {
                 HvApi.hv_vcpu_run(vcpu.Handle).ThrowOnError();
 
+<<<<<<< HEAD
                 HvExitReason reason = vcpu.ExitInfo->Reason;
 
                 if (reason == HvExitReason.Exception)
                 {
                     uint hvEsr = (uint)vcpu.ExitInfo->Exception.Syndrome;
+=======
+                uint reason = vcpu.ExitInfo->reason;
+
+                if (reason == 1)
+                {
+                    uint hvEsr = (uint)vcpu.ExitInfo->exception.syndrome;
+>>>>>>> 1ec71635b (sync with main branch)
                     ExceptionClass hvEc = (ExceptionClass)(hvEsr >> 26);
 
                     if (hvEc != ExceptionClass.HvcAarch64)
@@ -157,16 +182,25 @@ namespace Ryujinx.Cpu.AppleHv
                     }
 
                     address = SynchronousException(memoryManager, ref vcpu);
+<<<<<<< HEAD
                     HvApi.hv_vcpu_set_reg(vcpu.Handle, HvReg.PC, address).ThrowOnError();
                 }
                 else if (reason == HvExitReason.Canceled || reason == HvExitReason.VTimerActivated)
                 {
                     if (GetAndClearInterruptRequested())
+=======
+                    HvApi.hv_vcpu_set_reg(vcpu.Handle, hv_reg_t.HV_REG_PC, address).ThrowOnError();
+                }
+                else if (reason == 0)
+                {
+                    if (_impl.GetAndClearInterruptRequested())
+>>>>>>> 1ec71635b (sync with main branch)
                     {
                         ReturnToPool(vcpu);
                         InterruptHandler();
                         vcpu = RentFromPool(memoryManager.AddressSpace, vcpu);
                     }
+<<<<<<< HEAD
 
                     if (reason == HvExitReason.VTimerActivated)
                     {
@@ -175,6 +209,8 @@ namespace Ryujinx.Cpu.AppleHv
                         // Unmask VTimer interrupts.
                         HvApi.hv_vcpu_set_vtimer_mask(vcpu.Handle, false).ThrowOnError();
                     }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 }
                 else
                 {
@@ -189,8 +225,13 @@ namespace Ryujinx.Cpu.AppleHv
         {
             ulong vcpuHandle = vcpu.Handle;
 
+<<<<<<< HEAD
             HvApi.hv_vcpu_get_sys_reg(vcpuHandle, HvSysReg.ELR_EL1, out ulong elr).ThrowOnError();
             HvApi.hv_vcpu_get_sys_reg(vcpuHandle, HvSysReg.ESR_EL1, out ulong esr).ThrowOnError();
+=======
+            HvApi.hv_vcpu_get_sys_reg(vcpuHandle, hv_sys_reg_t.HV_SYS_REG_ELR_EL1, out ulong elr).ThrowOnError();
+            HvApi.hv_vcpu_get_sys_reg(vcpuHandle, hv_sys_reg_t.HV_SYS_REG_ESR_EL1, out ulong esr).ThrowOnError();
+>>>>>>> 1ec71635b (sync with main branch)
 
             ExceptionClass ec = (ExceptionClass)((uint)esr >> 26);
 
@@ -201,7 +242,11 @@ namespace Ryujinx.Cpu.AppleHv
                     break;
                 case ExceptionClass.TrappedMsrMrsSystem:
                     InstructionTrap((uint)esr);
+<<<<<<< HEAD
                     HvApi.hv_vcpu_set_sys_reg(vcpuHandle, HvSysReg.ELR_EL1, elr + 4UL).ThrowOnError();
+=======
+                    HvApi.hv_vcpu_set_sys_reg(vcpuHandle, hv_sys_reg_t.HV_SYS_REG_ELR_EL1, elr + 4UL).ThrowOnError();
+>>>>>>> 1ec71635b (sync with main branch)
                     break;
                 case ExceptionClass.SvcAarch64:
                     ReturnToPool(vcpu);
@@ -225,7 +270,11 @@ namespace Ryujinx.Cpu.AppleHv
             }
         }
 
+<<<<<<< HEAD
         private static void DataAbort(MemoryTracking tracking, ulong vcpu, uint esr)
+=======
+        private void DataAbort(MemoryTracking tracking, ulong vcpu, uint esr)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             bool write = (esr & (1u << 6)) != 0;
             bool farValid = (esr & (1u << 10)) == 0;
@@ -233,7 +282,11 @@ namespace Ryujinx.Cpu.AppleHv
 
             if (farValid)
             {
+<<<<<<< HEAD
                 HvApi.hv_vcpu_get_sys_reg(vcpu, HvSysReg.FAR_EL1, out ulong far).ThrowOnError();
+=======
+                HvApi.hv_vcpu_get_sys_reg(vcpu, hv_sys_reg_t.HV_SYS_REG_FAR_EL1, out ulong far).ThrowOnError();
+>>>>>>> 1ec71635b (sync with main branch)
 
                 ulong size = 1UL << accessSizeLog2;
 
@@ -302,4 +355,8 @@ namespace Ryujinx.Cpu.AppleHv
         {
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

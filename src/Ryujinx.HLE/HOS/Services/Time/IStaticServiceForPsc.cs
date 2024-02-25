@@ -18,12 +18,21 @@ namespace Ryujinx.HLE.HOS.Services.Time
     [Service("time:su", TimePermissions.SystemUpdate)]
     class IStaticServiceForPsc : IpcService
     {
+<<<<<<< HEAD
         private readonly TimeManager _timeManager;
         private readonly TimePermissions _permissions;
 
         private int _timeSharedMemoryNativeHandle = 0;
 
         public IStaticServiceForPsc(ServiceCtx context, TimePermissions permissions) : this(TimeManager.Instance, permissions) { }
+=======
+        private TimeManager     _timeManager;
+        private TimePermissions _permissions;
+
+        private int _timeSharedMemoryNativeHandle = 0;
+
+        public IStaticServiceForPsc(ServiceCtx context, TimePermissions permissions) : this(TimeManager.Instance, permissions) {}
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IStaticServiceForPsc(TimeManager manager, TimePermissions permissions)
         {
@@ -149,8 +158,13 @@ namespace Ryujinx.HLE.HOS.Services.Time
         // SetStandardUserSystemClockAutomaticCorrectionEnabled(b8)
         public ResultCode SetStandardUserSystemClockAutomaticCorrectionEnabled(ServiceCtx context)
         {
+<<<<<<< HEAD
             SteadyClockCore steadyClock = _timeManager.StandardSteadyClock;
             StandardUserSystemClockCore userClock = _timeManager.StandardUserSystemClock;
+=======
+            SteadyClockCore             steadyClock = _timeManager.StandardSteadyClock;
+            StandardUserSystemClockCore userClock   = _timeManager.StandardUserSystemClock;
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (!userClock.IsInitialized() || !steadyClock.IsInitialized())
             {
@@ -229,7 +243,11 @@ namespace Ryujinx.HLE.HOS.Services.Time
 
             ITickSource tickSource = context.Device.System.TickSource;
 
+<<<<<<< HEAD
             SystemClockContext otherContext = context.RequestData.ReadStruct<SystemClockContext>();
+=======
+            SystemClockContext   otherContext     = context.RequestData.ReadStruct<SystemClockContext>();
+>>>>>>> 1ec71635b (sync with main branch)
             SteadyClockTimePoint currentTimePoint = steadyClock.GetCurrentTimePoint(tickSource);
 
             ResultCode result = ResultCode.TimeMismatch;
@@ -237,7 +255,11 @@ namespace Ryujinx.HLE.HOS.Services.Time
             if (currentTimePoint.ClockSourceId == otherContext.SteadyTimePoint.ClockSourceId)
             {
                 TimeSpanType ticksTimeSpan = TimeSpanType.FromTicks(tickSource.Counter, tickSource.Frequency);
+<<<<<<< HEAD
                 long baseTimePoint = otherContext.Offset + currentTimePoint.TimePoint - ticksTimeSpan.ToSeconds();
+=======
+                long         baseTimePoint = otherContext.Offset + currentTimePoint.TimePoint - ticksTimeSpan.ToSeconds();
+>>>>>>> 1ec71635b (sync with main branch)
 
                 context.ResponseData.Write(baseTimePoint);
 
@@ -287,7 +309,11 @@ namespace Ryujinx.HLE.HOS.Services.Time
 
             context.RequestData.BaseStream.Position += 7;
 
+<<<<<<< HEAD
             SystemClockContext userContext = context.RequestData.ReadStruct<SystemClockContext>();
+=======
+            SystemClockContext userContext    = context.RequestData.ReadStruct<SystemClockContext>();
+>>>>>>> 1ec71635b (sync with main branch)
             SystemClockContext networkContext = context.RequestData.ReadStruct<SystemClockContext>();
 
             ITickSource tickSource = context.Device.System.TickSource;
@@ -308,7 +334,11 @@ namespace Ryujinx.HLE.HOS.Services.Time
         {
             ClockSnapshot clockSnapshotA = ReadClockSnapshotFromBuffer(context, context.Request.PtrBuff[0]);
             ClockSnapshot clockSnapshotB = ReadClockSnapshotFromBuffer(context, context.Request.PtrBuff[1]);
+<<<<<<< HEAD
             TimeSpanType difference = TimeSpanType.FromSeconds(clockSnapshotB.UserContext.Offset - clockSnapshotA.UserContext.Offset);
+=======
+            TimeSpanType  difference     = TimeSpanType.FromSeconds(clockSnapshotB.UserContext.Offset - clockSnapshotA.UserContext.Offset);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (clockSnapshotB.UserContext.SteadyTimePoint.ClockSourceId != clockSnapshotA.UserContext.SteadyTimePoint.ClockSourceId || (clockSnapshotB.IsAutomaticCorrectionEnabled && clockSnapshotA.IsAutomaticCorrectionEnabled))
             {
@@ -337,7 +367,11 @@ namespace Ryujinx.HLE.HOS.Services.Time
 
                 if (clockSnapshotA.NetworkTime != 0 && clockSnapshotB.NetworkTime != 0)
                 {
+<<<<<<< HEAD
                     result = TimeSpanType.FromSeconds(clockSnapshotB.NetworkTime - clockSnapshotA.NetworkTime);
+=======
+                    result     = TimeSpanType.FromSeconds(clockSnapshotB.NetworkTime - clockSnapshotA.NetworkTime);
+>>>>>>> 1ec71635b (sync with main branch)
                     resultCode = ResultCode.Success;
                 }
                 else
@@ -359,6 +393,7 @@ namespace Ryujinx.HLE.HOS.Services.Time
         {
             clockSnapshot = new ClockSnapshot();
 
+<<<<<<< HEAD
             SteadyClockCore steadyClockCore = _timeManager.StandardSteadyClock;
             SteadyClockTimePoint currentTimePoint = steadyClockCore.GetCurrentTimePoint(tickSource);
 
@@ -366,6 +401,15 @@ namespace Ryujinx.HLE.HOS.Services.Time
             clockSnapshot.UserContext = userContext;
             clockSnapshot.NetworkContext = networkContext;
             clockSnapshot.SteadyClockTimePoint = currentTimePoint;
+=======
+            SteadyClockCore      steadyClockCore  = _timeManager.StandardSteadyClock;
+            SteadyClockTimePoint currentTimePoint = steadyClockCore.GetCurrentTimePoint(tickSource);
+
+            clockSnapshot.IsAutomaticCorrectionEnabled = _timeManager.StandardUserSystemClock.IsAutomaticCorrectionEnabled();
+            clockSnapshot.UserContext                  = userContext;
+            clockSnapshot.NetworkContext               = networkContext;
+            clockSnapshot.SteadyClockTimePoint         = currentTimePoint;
+>>>>>>> 1ec71635b (sync with main branch)
 
             ResultCode result = _timeManager.TimeZone.Manager.GetDeviceLocationName(out string deviceLocationName);
 
@@ -386,7 +430,11 @@ namespace Ryujinx.HLE.HOS.Services.Time
 
                 if (result == ResultCode.Success)
                 {
+<<<<<<< HEAD
                     clockSnapshot.UserCalendarTime = userCalendarInfo.Time;
+=======
+                    clockSnapshot.UserCalendarTime           = userCalendarInfo.Time;
+>>>>>>> 1ec71635b (sync with main branch)
                     clockSnapshot.UserCalendarAdditionalTime = userCalendarInfo.AdditionalInfo;
 
                     if (ClockSnapshot.GetCurrentTime(out clockSnapshot.NetworkTime, currentTimePoint, clockSnapshot.NetworkContext) != ResultCode.Success)
@@ -398,9 +446,15 @@ namespace Ryujinx.HLE.HOS.Services.Time
 
                     if (result == ResultCode.Success)
                     {
+<<<<<<< HEAD
                         clockSnapshot.NetworkCalendarTime = networkCalendarInfo.Time;
                         clockSnapshot.NetworkCalendarAdditionalTime = networkCalendarInfo.AdditionalInfo;
                         clockSnapshot.Type = type;
+=======
+                        clockSnapshot.NetworkCalendarTime           = networkCalendarInfo.Time;
+                        clockSnapshot.NetworkCalendarAdditionalTime = networkCalendarInfo.AdditionalInfo;
+                        clockSnapshot.Type                          = type;
+>>>>>>> 1ec71635b (sync with main branch)
 
                         // Probably a version field?
                         clockSnapshot.Unknown = 0;
@@ -419,9 +473,16 @@ namespace Ryujinx.HLE.HOS.Services.Time
 
             context.Memory.Read(ipcDesc.Position, temp);
 
+<<<<<<< HEAD
             using BinaryReader bufferReader = new(new MemoryStream(temp));
 
             return bufferReader.ReadStruct<ClockSnapshot>();
+=======
+            using (BinaryReader bufferReader = new BinaryReader(new MemoryStream(temp)))
+            {
+                return bufferReader.ReadStruct<ClockSnapshot>();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void WriteClockSnapshotFromBuffer(ServiceCtx context, IpcRecvListBuffDesc ipcDesc, ClockSnapshot clockSnapshot)
@@ -429,4 +490,8 @@ namespace Ryujinx.HLE.HOS.Services.Time
             MemoryHelper.Write(context.Memory, ipcDesc.Position, clockSnapshot);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

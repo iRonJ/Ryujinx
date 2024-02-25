@@ -2,6 +2,10 @@ using ARMeilleure.Decoders;
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitAluHelper;
 using static ARMeilleure.Instructions.InstEmitFlowHelper;
 using static ARMeilleure.Instructions.InstEmitHelper;
@@ -19,7 +23,11 @@ namespace ARMeilleure.Instructions
             OpCodeCcmp op = (OpCodeCcmp)context.CurrOp;
 
             Operand lblTrue = Label();
+<<<<<<< HEAD
             Operand lblEnd = Label();
+=======
+            Operand lblEnd  = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
             EmitCondBranch(context, lblTrue, op.Cond);
 
@@ -57,4 +65,8 @@ namespace ARMeilleure.Instructions
             context.MarkLabel(lblEnd);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

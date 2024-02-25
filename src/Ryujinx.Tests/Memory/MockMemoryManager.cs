@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using ARMeilleure.Memory;
+=======
+﻿using ARMeilleure.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Tests.Memory
@@ -11,7 +15,11 @@ namespace Ryujinx.Tests.Memory
 
         public MemoryManagerType Type => MemoryManagerType.HostMappedUnsafe;
 
+<<<<<<< HEAD
 #pragma warning disable CS0067 // The event is never used
+=======
+#pragma warning disable CS0067
+>>>>>>> 1ec71635b (sync with main branch)
         public event Action<ulong, ulong> UnmapEvent;
 #pragma warning restore CS0067
 

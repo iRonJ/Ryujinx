@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Shader
 {
@@ -14,6 +18,10 @@ namespace Ryujinx.Graphics.Shader
         ResScaleUnsupported = 1 << 0,
         NeedsScaleValue = 1 << 1,
         ImageStore = 1 << 2,
+<<<<<<< HEAD
         ImageCoherent = 1 << 3,
+=======
+        ImageCoherent = 1 << 3
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

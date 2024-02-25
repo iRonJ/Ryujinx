@@ -2,6 +2,10 @@ using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
 using System;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitAluHelper;
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
@@ -219,9 +223,13 @@ namespace Ryujinx.Graphics.Shader.Instructions
             else
             {
                 res = context.ISubtract(srcA, srcB);
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
                 res = context.IAdd(res, context.BitwiseNot(GetCF()));
 #pragma warning restore IDE0059
+=======
+                res = context.IAdd(res, context.BitwiseNot(GetCF()));
+>>>>>>> 1ec71635b (sync with main branch)
 
                 switch (cond)
                 {
@@ -288,13 +296,18 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     IComp.Gt => Instruction.CompareGreaterU32,
                     IComp.Ne => Instruction.CompareNotEqual,
                     IComp.Ge => Instruction.CompareGreaterOrEqualU32,
+<<<<<<< HEAD
                     _ => throw new InvalidOperationException($"Unexpected condition \"{cond}\"."),
+=======
+                    _ => throw new InvalidOperationException($"Unexpected condition \"{cond}\".")
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 if (isSigned)
                 {
                     switch (cond)
                     {
+<<<<<<< HEAD
                         case IComp.Lt:
                             inst = Instruction.CompareLess;
                             break;
@@ -307,6 +320,12 @@ namespace Ryujinx.Graphics.Shader.Instructions
                         case IComp.Ge:
                             inst = Instruction.CompareGreaterOrEqual;
                             break;
+=======
+                        case IComp.Lt: inst = Instruction.CompareLess; break;
+                        case IComp.Le: inst = Instruction.CompareLessOrEqual; break;
+                        case IComp.Gt: inst = Instruction.CompareGreater; break;
+                        case IComp.Ge: inst = Instruction.CompareGreaterOrEqual; break;
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
 
@@ -316,4 +335,8 @@ namespace Ryujinx.Graphics.Shader.Instructions
             return res;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

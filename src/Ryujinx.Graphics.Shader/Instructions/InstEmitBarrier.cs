@@ -16,15 +16,23 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
             else
             {
+<<<<<<< HEAD
                 context.TranslatorContext.GpuAccessor.Log($"Invalid barrier mode: {op.BarOp}.");
+=======
+                context.Config.GpuAccessor.Log($"Invalid barrier mode: {op.BarOp}.");
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
         public static void Depbar(EmitterContext context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             InstDepbar op = context.GetOp<InstDepbar>();
 #pragma warning restore IDE0059
+=======
+            InstDepbar op = context.GetOp<InstDepbar>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             // No operation.
         }
@@ -43,4 +51,8 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

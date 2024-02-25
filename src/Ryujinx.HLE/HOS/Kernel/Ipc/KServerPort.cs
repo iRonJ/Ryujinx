@@ -5,7 +5,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 {
     class KServerPort : KSynchronizationObject
     {
+<<<<<<< HEAD
         private readonly LinkedList<KServerSession> _incomingConnections;
+=======
+        private readonly LinkedList<KServerSession>      _incomingConnections;
+>>>>>>> 1ec71635b (sync with main branch)
         private readonly LinkedList<KLightServerSession> _lightIncomingConnections;
 
         private readonly KPort _parent;
@@ -16,7 +20,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         {
             _parent = parent;
 
+<<<<<<< HEAD
             _incomingConnections = new LinkedList<KServerSession>();
+=======
+            _incomingConnections      = new LinkedList<KServerSession>();
+>>>>>>> 1ec71635b (sync with main branch)
             _lightIncomingConnections = new LinkedList<KLightServerSession>();
         }
 
@@ -84,4 +92,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -9,8 +9,13 @@ namespace Ryujinx.Tests.Cpu
     {
 #if AluRs32
 
+<<<<<<< HEAD
         #region "ValueSource (Opcodes)"
         private static uint[] Opcodes()
+=======
+#region "ValueSource (Opcodes)"
+        private static uint[] _opcodes()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return new[]
             {
@@ -30,12 +35,20 @@ namespace Ryujinx.Tests.Cpu
                 0xe2500000u, // SUBS R0, R0, #0
             };
         }
+<<<<<<< HEAD
         #endregion
+=======
+#endregion
+>>>>>>> 1ec71635b (sync with main branch)
 
         private const int RndCnt = 2;
 
         [Test, Pairwise]
+<<<<<<< HEAD
         public void TestCpuTestAluImm32([ValueSource(nameof(Opcodes))] uint opcode,
+=======
+        public void TestCpuTestAluImm32([ValueSource(nameof(_opcodes))] uint opcode,
+>>>>>>> 1ec71635b (sync with main branch)
                                         [Values(0u, 13u)] uint rd,
                                         [Values(1u, 13u)] uint rn,
                                         [Random(RndCnt)] uint imm,
@@ -52,4 +65,8 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

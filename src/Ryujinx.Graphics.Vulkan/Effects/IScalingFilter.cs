@@ -17,4 +17,8 @@ namespace Ryujinx.Graphics.Vulkan.Effects
             Extent2D source,
             Extent2D destination);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

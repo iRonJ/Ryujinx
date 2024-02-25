@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Buffers.Binary;
 using System.IO;
 using System.Runtime.InteropServices;

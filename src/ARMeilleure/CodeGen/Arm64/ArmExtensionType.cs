@@ -9,6 +9,10 @@ namespace ARMeilleure.CodeGen.Arm64
         Sxtb = 4,
         Sxth = 5,
         Sxtw = 6,
+<<<<<<< HEAD
         Sxtx = 7,
+=======
+        Sxtx = 7
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Memory.Range;
+=======
+﻿using Ryujinx.Memory.Range;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Memory.Tracking
 {

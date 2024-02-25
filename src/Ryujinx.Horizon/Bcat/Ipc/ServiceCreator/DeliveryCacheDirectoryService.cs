@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using LibHac.Bcat;
+=======
+﻿using LibHac.Bcat;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Bcat;
@@ -26,7 +30,11 @@ namespace Ryujinx.Horizon.Bcat.Ipc
         }
 
         [CmifCommand(1)]
+<<<<<<< HEAD
         public Result Read(out int entriesRead, [Buffer(HipcBufferFlags.Out | HipcBufferFlags.MapAlias)] Span<DeliveryCacheDirectoryEntry> entriesBuffer)
+=======
+        public Result Read(out int entriesRead, [Buffer(Sdk.Sf.Hipc.HipcBufferFlags.Out | HipcBufferFlags.MapAlias)] Span<DeliveryCacheDirectoryEntry> entriesBuffer)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _libHacService.Get.Read(out entriesRead, entriesBuffer).ToHorizonResult();
         }

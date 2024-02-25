@@ -108,9 +108,15 @@ namespace ARMeilleure.Translation
 
         protected static OperandType GetOperandType(Type type)
         {
+<<<<<<< HEAD
             if (type == typeof(bool) || type == typeof(byte) ||
                 type == typeof(char) || type == typeof(short) ||
                 type == typeof(int) || type == typeof(sbyte) ||
+=======
+            if (type == typeof(bool)   || type == typeof(byte)  ||
+                type == typeof(char)   || type == typeof(short) ||
+                type == typeof(int)    || type == typeof(sbyte) ||
+>>>>>>> 1ec71635b (sync with main branch)
                 type == typeof(ushort) || type == typeof(uint))
             {
                 return OperandType.I32;
@@ -635,7 +641,11 @@ namespace ARMeilleure.Translation
 
         private void NewNextBlock()
         {
+<<<<<<< HEAD
             BasicBlock block = new(_irBlocks.Count);
+=======
+            BasicBlock block = new BasicBlock(_irBlocks.Count);
+>>>>>>> 1ec71635b (sync with main branch)
 
             _irBlocks.AddLast(block);
 

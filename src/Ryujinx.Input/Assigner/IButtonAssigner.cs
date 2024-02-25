@@ -33,4 +33,8 @@ namespace Ryujinx.Input.Assigner
         /// <returns>The pressed button that was read</returns>
         string GetPressedButton();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

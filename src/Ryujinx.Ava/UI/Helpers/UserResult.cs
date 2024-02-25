@@ -9,4 +9,8 @@ namespace Ryujinx.Ava.UI.Helpers
         Cancel,
         None,
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

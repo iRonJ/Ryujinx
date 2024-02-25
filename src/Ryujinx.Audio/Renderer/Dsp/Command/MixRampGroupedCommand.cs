@@ -48,7 +48,11 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         private static float ProcessMixRampGrouped(Span<float> outputBuffer, ReadOnlySpan<float> inputBuffer, float volume0, float volume1, int sampleCount)
+=======
+        private float ProcessMixRampGrouped(Span<float> outputBuffer, ReadOnlySpan<float> inputBuffer, float volume0, float volume1, int sampleCount)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             float ramp = (volume1 - volume0) / sampleCount;
             float volume = volume0;
@@ -88,4 +92,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -87,8 +87,12 @@ namespace Ryujinx.Ava.UI.Models
 
         private void UpdateBackground()
         {
+<<<<<<< HEAD
             var currentApplication = Avalonia.Application.Current;
             currentApplication.Styles.TryGetResource("ControlFillColorSecondary", currentApplication.ActualThemeVariant, out object color);
+=======
+            Avalonia.Application.Current.Styles.TryGetResource("ControlFillColorSecondary", out object color);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (color is not null)
             {
@@ -101,4 +105,8 @@ namespace Ryujinx.Ava.UI.Models
             _owner.Navigate(typeof(UserEditorView), (_owner, userProfile, true));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

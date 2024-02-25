@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Configuration.Hid;
+=======
+﻿using Ryujinx.Common.Configuration.Hid;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Memory;
 using System;
 using System.Numerics;

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu;
 using Ryujinx.Graphics.Gpu.Memory;
 using Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel.Types;
@@ -19,11 +23,17 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 
         private const uint MaxModuleSyncpoint = 16;
 
+<<<<<<< HEAD
 #pragma warning disable IDE0052 // Remove unread private member
         private uint _timeout;
         private uint _submitTimeout;
         private uint _timeslice;
 #pragma warning restore IDE0052
+=======
+        private uint _timeout;
+        private uint _submitTimeout;
+        private uint _timeslice;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly Switch _device;
 
@@ -36,7 +46,11 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
         public enum ResourcePolicy
         {
             Device,
+<<<<<<< HEAD
             Channel,
+=======
+            Channel
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         protected static uint[] DeviceSyncpoints = new uint[MaxModuleSyncpoint];
@@ -49,6 +63,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 
         public NvHostChannelDeviceFile(ServiceCtx context, IVirtualMemoryManager memory, ulong owner) : base(context, owner)
         {
+<<<<<<< HEAD
             _device = context.Device;
             _memory = memory;
             _timeout = 3000;
@@ -57,6 +72,16 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
             _host1xContext = GetHost1XContext(context.Device.Gpu, owner);
             _contextId = _host1xContext.Host1x.CreateContext();
             Channel = _device.Gpu.CreateChannel();
+=======
+            _device        = context.Device;
+            _memory        = memory;
+            _timeout       = 3000;
+            _submitTimeout = 0;
+            _timeslice     = 0;
+            _host1xContext = GetHost1XContext(context.Device.Gpu, owner);
+            _contextId     = _host1xContext.Host1x.CreateContext();
+            Channel        = _device.Gpu.CreateChannel();
+>>>>>>> 1ec71635b (sync with main branch)
 
             ChannelInitialization.InitializeState(Channel);
 
@@ -145,6 +170,7 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 
         private NvInternalResult Submit(Span<byte> arguments)
         {
+<<<<<<< HEAD
             SubmitArguments submitHeader = GetSpanAndSkip<SubmitArguments>(ref arguments, 1)[0];
             Span<CommandBuffer> commandBuffers = GetSpanAndSkip<CommandBuffer>(ref arguments, submitHeader.CmdBufsCount);
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
@@ -153,6 +179,14 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 #pragma warning restore IDE0059
             Span<SyncptIncr> syncptIncrs = GetSpanAndSkip<SyncptIncr>(ref arguments, submitHeader.SyncptIncrsCount);
             Span<uint> fenceThresholds = GetSpanAndSkip<uint>(ref arguments, submitHeader.FencesCount);
+=======
+            SubmitArguments     submitHeader    = GetSpanAndSkip<SubmitArguments>(ref arguments, 1)[0];
+            Span<CommandBuffer> commandBuffers  = GetSpanAndSkip<CommandBuffer>(ref arguments, submitHeader.CmdBufsCount);
+            Span<Reloc>         relocs          = GetSpanAndSkip<Reloc>(ref arguments, submitHeader.RelocsCount);
+            Span<uint>          relocShifts     = GetSpanAndSkip<uint>(ref arguments, submitHeader.RelocsCount);
+            Span<SyncptIncr>    syncptIncrs     = GetSpanAndSkip<SyncptIncr>(ref arguments, submitHeader.SyncptIncrsCount);
+            Span<uint>          fenceThresholds = GetSpanAndSkip<uint>(ref arguments, submitHeader.FencesCount);
+>>>>>>> 1ec71635b (sync with main branch)
 
             lock (_device)
             {
@@ -180,9 +214,15 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 
         private Span<T> GetSpanAndSkip<T>(ref Span<byte> arguments, int count) where T : unmanaged
         {
+<<<<<<< HEAD
             Span<T> output = MemoryMarshal.Cast<byte, T>(arguments)[..count];
 
             arguments = arguments[(Unsafe.SizeOf<T>() * count)..];
+=======
+            Span<T> output = MemoryMarshal.Cast<byte, T>(arguments).Slice(0, count);
+
+            arguments = arguments.Slice(Unsafe.SizeOf<T>() * count);
+>>>>>>> 1ec71635b (sync with main branch)
 
             return output;
         }
@@ -231,9 +271,15 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 
         private NvInternalResult MapCommandBuffer(Span<byte> arguments)
         {
+<<<<<<< HEAD
             int headerSize = Unsafe.SizeOf<MapCommandBufferArguments>();
             MapCommandBufferArguments commandBufferHeader = MemoryMarshal.Cast<byte, MapCommandBufferArguments>(arguments)[0];
             Span<CommandBufferHandle> commandBufferEntries = MemoryMarshal.Cast<byte, CommandBufferHandle>(arguments[headerSize..])[..commandBufferHeader.NumEntries];
+=======
+            int                       headerSize           = Unsafe.SizeOf<MapCommandBufferArguments>();
+            MapCommandBufferArguments commandBufferHeader  = MemoryMarshal.Cast<byte, MapCommandBufferArguments>(arguments)[0];
+            Span<CommandBufferHandle> commandBufferEntries = MemoryMarshal.Cast<byte, CommandBufferHandle>(arguments.Slice(headerSize)).Slice(0, commandBufferHeader.NumEntries);
+>>>>>>> 1ec71635b (sync with main branch)
 
             foreach (ref CommandBufferHandle commandBufferEntry in commandBufferEntries)
             {
@@ -250,12 +296,21 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
                 {
                     if (map.DmaMapAddress == 0)
                     {
+<<<<<<< HEAD
                         ulong va = _host1xContext.MemoryAllocator.GetFreeAddress(map.Size, out ulong freeAddressStartPosition, 1, MemoryManager.PageSize);
 
                         if (va != NvMemoryAllocator.PteUnmapped && va <= uint.MaxValue && (va + map.Size) <= uint.MaxValue)
                         {
                             _host1xContext.MemoryAllocator.AllocateRange(va, map.Size, freeAddressStartPosition);
                             _host1xContext.Smmu.Map(map.Address, va, map.Size);
+=======
+                        ulong va = _host1xContext.MemoryAllocator.GetFreeAddress((ulong)map.Size, out ulong freeAddressStartPosition, 1, MemoryManager.PageSize);
+
+                        if (va != NvMemoryAllocator.PteUnmapped && va <= uint.MaxValue && (va + (uint)map.Size) <= uint.MaxValue)
+                        {
+                            _host1xContext.MemoryAllocator.AllocateRange(va, (uint)map.Size, freeAddressStartPosition);
+                            _host1xContext.Smmu.Map(map.Address, va, (uint)map.Size, PteKind.Pitch); // FIXME: This should not use the GMMU.
+>>>>>>> 1ec71635b (sync with main branch)
                             map.DmaMapAddress = va;
                         }
                         else
@@ -273,9 +328,15 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 
         private NvInternalResult UnmapCommandBuffer(Span<byte> arguments)
         {
+<<<<<<< HEAD
             int headerSize = Unsafe.SizeOf<MapCommandBufferArguments>();
             MapCommandBufferArguments commandBufferHeader = MemoryMarshal.Cast<byte, MapCommandBufferArguments>(arguments)[0];
             Span<CommandBufferHandle> commandBufferEntries = MemoryMarshal.Cast<byte, CommandBufferHandle>(arguments[headerSize..])[..commandBufferHeader.NumEntries];
+=======
+            int                       headerSize           = Unsafe.SizeOf<MapCommandBufferArguments>();
+            MapCommandBufferArguments commandBufferHeader  = MemoryMarshal.Cast<byte, MapCommandBufferArguments>(arguments)[0];
+            Span<CommandBufferHandle> commandBufferEntries = MemoryMarshal.Cast<byte, CommandBufferHandle>(arguments.Slice(headerSize)).Slice(0, commandBufferHeader.NumEntries);
+>>>>>>> 1ec71635b (sync with main branch)
 
             foreach (ref CommandBufferHandle commandBufferEntry in commandBufferEntries)
             {
@@ -324,9 +385,15 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
 
         private NvInternalResult SubmitGpfifo(Span<byte> arguments)
         {
+<<<<<<< HEAD
             int headerSize = Unsafe.SizeOf<SubmitGpfifoArguments>();
             SubmitGpfifoArguments gpfifoSubmissionHeader = MemoryMarshal.Cast<byte, SubmitGpfifoArguments>(arguments)[0];
             Span<ulong> gpfifoEntries = MemoryMarshal.Cast<byte, ulong>(arguments[headerSize..])[..gpfifoSubmissionHeader.NumEntries];
+=======
+            int                   headerSize             = Unsafe.SizeOf<SubmitGpfifoArguments>();
+            SubmitGpfifoArguments gpfifoSubmissionHeader = MemoryMarshal.Cast<byte, SubmitGpfifoArguments>(arguments)[0];
+            Span<ulong>           gpfifoEntries          = MemoryMarshal.Cast<byte, ulong>(arguments.Slice(headerSize)).Slice(0, gpfifoSubmissionHeader.NumEntries);
+>>>>>>> 1ec71635b (sync with main branch)
 
             return SubmitGpfifo(ref gpfifoSubmissionHeader, gpfifoEntries);
         }
@@ -477,7 +544,11 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostChannel
             return ChannelSyncpoints[index];
         }
 
+<<<<<<< HEAD
         public uint GetSyncpointDevice(NvHostSyncpt syncpointManager, uint index, bool isClientManaged)
+=======
+        public static uint GetSyncpointDevice(NvHostSyncpt syncpointManager, uint index, bool isClientManaged)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (DeviceSyncpoints[index] != 0)
             {

@@ -1,13 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+<<<<<<< HEAD
     <TargetFramework>net8.0</TargetFramework>
     <RuntimeIdentifiers>win-x64;osx-x64;linux-x64</RuntimeIdentifiers>
+=======
+    <TargetFramework>net7.0</TargetFramework>
+    <RuntimeIdentifiers>win10-x64;osx-x64;linux-x64</RuntimeIdentifiers>
+>>>>>>> 1ec71635b (sync with main branch)
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Version>1.0.0-dirty</Version>
     <DefineConstants Condition=" '$(ExtraDefineConstants)' != '' ">$(DefineConstants);$(ExtraDefineConstants)</DefineConstants>
+<<<<<<< HEAD
     <SigningCertificate Condition=" '$(SigningCertificate)' == '' ">-</SigningCertificate>
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     <TieredPGO>true</TieredPGO>
   </PropertyGroup>
 
@@ -16,10 +24,13 @@
     <PackageReference Include="Ryujinx.Graphics.Nvdec.Dependencies" />
   </ItemGroup>
 
+<<<<<<< HEAD
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="$([MSBuild]::IsOSPlatform('OSX'))">
     <Exec Command="codesign --entitlements '$(ProjectDir)..\..\distribution\macos\entitlements.xml' -f --deep -s $(SigningCertificate) '$(TargetDir)$(TargetName)'" />
   </Target>
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   <ItemGroup>
     <ProjectReference Include="..\Ryujinx.Graphics.Vulkan\Ryujinx.Graphics.Vulkan.csproj" />
     <ProjectReference Include="..\Ryujinx.Input\Ryujinx.Input.csproj" />
@@ -34,7 +45,10 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" />
+<<<<<<< HEAD
     <PackageReference Include="Ryujinx.Graphics.Vulkan.Dependencies.MoltenVK" Condition="'$(RuntimeIdentifier)' != 'linux-x64' AND '$(RuntimeIdentifier)' != 'linux-arm64' AND '$(RuntimeIdentifier)' != 'win-x64'" />
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   </ItemGroup>
 
   <ItemGroup>
@@ -48,7 +62,11 @@
     </Content>
   </ItemGroup>
 
+<<<<<<< HEAD
   <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64' OR '$(RuntimeIdentifier)' == 'linux-arm64'">
+=======
+  <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
+>>>>>>> 1ec71635b (sync with main branch)
     <Content Include="..\..\distribution\linux\Ryujinx.sh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

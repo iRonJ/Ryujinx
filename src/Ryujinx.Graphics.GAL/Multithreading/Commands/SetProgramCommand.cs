@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Model;
+=======
+﻿using Ryujinx.Graphics.GAL.Multithreading.Model;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL.Multithreading.Resources;
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetProgramCommand : IGALCommand, IGALCommand<SetProgramCommand>
     {
+<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.SetProgram;
+=======
+        public CommandType CommandType => CommandType.SetProgram;
+>>>>>>> 1ec71635b (sync with main branch)
         private TableRef<IProgram> _program;
 
         public void Set(TableRef<IProgram> program)

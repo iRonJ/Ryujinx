@@ -7,6 +7,7 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
 {
     static class Optimizer
     {
+<<<<<<< HEAD
         public static void RunPass(TransformContext context)
         {
             RunOptimizationPasses(context.Blocks, context.ResourceManager);
@@ -41,6 +42,36 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
         }
 
         private static void RunOptimizationPasses(BasicBlock[] blocks, ResourceManager resourceManager)
+=======
+        public static void RunPass(BasicBlock[] blocks, ShaderConfig config)
+        {
+            RunOptimizationPasses(blocks, config);
+
+            int sbUseMask = 0;
+            int ubeUseMask = 0;
+
+            // Those passes are looking for specific patterns and only needs to run once.
+            for (int blkIndex = 0; blkIndex < blocks.Length; blkIndex++)
+            {
+                GlobalToStorage.RunPass(blocks[blkIndex], config, ref sbUseMask, ref ubeUseMask);
+                BindlessToIndexed.RunPass(blocks[blkIndex], config);
+                BindlessElimination.RunPass(blocks[blkIndex], config);
+
+                // FragmentCoord only exists on fragment shaders, so we don't need to check other stages.
+                if (config.Stage == ShaderStage.Fragment)
+                {
+                    EliminateMultiplyByFragmentCoordW(blocks[blkIndex]);
+                }
+            }
+
+            config.SetAccessibleBufferMasks(sbUseMask, ubeUseMask);
+
+            // Run optimizations one last time to remove any code that is now optimizable after above passes.
+            RunOptimizationPasses(blocks, config);
+        }
+
+        private static void RunOptimizationPasses(BasicBlock[] blocks, ShaderConfig config)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             bool modified;
 
@@ -60,7 +91,11 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
 
                         bool isUnused = IsUnused(node.Value);
 
+<<<<<<< HEAD
                         if (node.Value is not Operation operation || isUnused)
+=======
+                        if (!(node.Value is Operation operation) || isUnused)
+>>>>>>> 1ec71635b (sync with main branch)
                         {
                             if (node.Value is PhiNode phi && !isUnused)
                             {
@@ -79,7 +114,11 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                             continue;
                         }
 
+<<<<<<< HEAD
                         ConstantFolding.RunPass(resourceManager, operation);
+=======
+                        ConstantFolding.RunPass(config, operation);
+>>>>>>> 1ec71635b (sync with main branch)
                         Simplification.RunPass(operation);
 
                         if (DestIsLocalVar(operation))
@@ -93,7 +132,11 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                                 modified = true;
                             }
                             else if ((operation.Inst == Instruction.PackHalf2x16 && PropagatePack(operation)) ||
+<<<<<<< HEAD
                                      (operation.Inst == Instruction.ShuffleXor && MatchDdxOrDdy(operation)))
+=======
+                                     (operation.Inst == Instruction.ShuffleXor   && MatchDdxOrDdy(operation)))
+>>>>>>> 1ec71635b (sync with main branch)
                             {
                                 if (DestHasNoUses(operation))
                                 {
@@ -124,7 +167,11 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             // the destination operand.
 
             Operand dest = copyOp.Dest;
+<<<<<<< HEAD
             Operand src = copyOp.GetSource(0);
+=======
+            Operand src  = copyOp.GetSource(0);
+>>>>>>> 1ec71635b (sync with main branch)
 
             INode[] uses = dest.UseOps.ToArray();
 
@@ -199,7 +246,11 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
 
             foreach (INode useNode in uses)
             {
+<<<<<<< HEAD
                 if (useNode is not Operation operation || operation.Inst != Instruction.UnpackHalf2x16)
+=======
+                if (!(useNode is Operation operation) || operation.Inst != Instruction.UnpackHalf2x16)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     continue;
                 }
@@ -248,12 +299,20 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
 
             foreach (INode use in uses)
             {
+<<<<<<< HEAD
                 if (use is not Operation test)
+=======
+                if (!(use is Operation test))
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     continue;
                 }
 
+<<<<<<< HEAD
                 if (use is not Operation useOp || useOp.Inst != Instruction.SwizzleAdd)
+=======
+                if (!(use is Operation useOp) || useOp.Inst != Instruction.SwizzleAdd)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     continue;
                 }
@@ -323,7 +382,11 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             Operand rhs = operation.GetSource(1);
 
             // Check LHS of the the main multiplication operation. We expect an input being multiplied by gl_FragCoord.w.
+<<<<<<< HEAD
             if (lhs.AsgOp is not Operation attrMulOp || attrMulOp.Inst != (Instruction.FP32 | Instruction.Multiply))
+=======
+            if (!(lhs.AsgOp is Operation attrMulOp) || attrMulOp.Inst != (Instruction.FP32 | Instruction.Multiply))
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return;
             }
@@ -338,7 +401,11 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             }
 
             // RHS of the main multiplication should be a reciprocal operation (1.0 / x).
+<<<<<<< HEAD
             if (rhs.AsgOp is not Operation reciprocalOp || reciprocalOp.Inst != (Instruction.FP32 | Instruction.Divide))
+=======
+            if (!(rhs.AsgOp is Operation reciprocalOp) || reciprocalOp.Inst != (Instruction.FP32 | Instruction.Divide))
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return;
             }
@@ -368,7 +435,11 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             // from all the use lists on the operands that this node uses.
             block.Operations.Remove(llNode);
 
+<<<<<<< HEAD
             Queue<INode> nodes = new();
+=======
+            Queue<INode> nodes = new Queue<INode>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             nodes.Enqueue(llNode.Value);
 
@@ -457,4 +528,8 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             return true;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

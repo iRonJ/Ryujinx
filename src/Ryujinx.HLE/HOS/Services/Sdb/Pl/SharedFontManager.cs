@@ -19,10 +19,17 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
 {
     class SharedFontManager
     {
+<<<<<<< HEAD
         private const uint FontKey = 0x06186249;
         private const uint BFTTFMagic = 0x18029a7f;
 
         private readonly Switch _device;
+=======
+        private static readonly uint FontKey    = 0x06186249;
+        private static readonly uint BFTTFMagic = 0x18029a7f;
+
+        private readonly Switch              _device;
+>>>>>>> 1ec71635b (sync with main branch)
         private readonly SharedMemoryStorage _storage;
 
         private struct FontInfo
@@ -33,7 +40,11 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
             public FontInfo(int offset, int size)
             {
                 Offset = offset;
+<<<<<<< HEAD
                 Size = size;
+=======
+                Size   = size;
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -41,7 +52,11 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
 
         public SharedFontManager(Switch device, SharedMemoryStorage storage)
         {
+<<<<<<< HEAD
             _device = device;
+=======
+            _device  = device;
+>>>>>>> 1ec71635b (sync with main branch)
             _storage = storage;
         }
 
@@ -65,7 +80,11 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
                     if (contentManager.TryGetFontTitle(name, out ulong fontTitle) && contentManager.TryGetFontFilename(name, out string fontFilename))
                     {
                         string contentPath = contentManager.GetInstalledContentPath(fontTitle, StorageId.BuiltInSystem, NcaContentType.Data);
+<<<<<<< HEAD
                         string fontPath = VirtualFileSystem.SwitchPathToSystemPath(contentPath);
+=======
+                        string fontPath    = _device.FileSystem.SwitchPathToSystemPath(contentPath);
+>>>>>>> 1ec71635b (sync with main branch)
 
                         if (!string.IsNullOrWhiteSpace(fontPath))
                         {
@@ -73,7 +92,11 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
 
                             using (IStorage ncaFileStream = new LocalStorage(fontPath, FileAccess.Read, FileMode.Open))
                             {
+<<<<<<< HEAD
                                 Nca nca = new(_device.System.KeySet, ncaFileStream);
+=======
+                                Nca         nca   = new Nca(_device.System.KeySet, ncaFileStream);
+>>>>>>> 1ec71635b (sync with main branch)
                                 IFileSystem romfs = nca.OpenFileSystem(NcaSectionType.Data, _device.System.FsIntegrityCheckLevel);
 
                                 using var fontFile = new UniqueRef<IFile>();
@@ -83,7 +106,11 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
                                 data = DecryptFont(fontFile.Get.AsStream());
                             }
 
+<<<<<<< HEAD
                             FontInfo info = new((int)fontOffset, data.Length);
+=======
+                            FontInfo info = new FontInfo((int)fontOffset, data.Length);
+>>>>>>> 1ec71635b (sync with main branch)
 
                             WriteMagicAndSize(fontOffset, data.Length);
 
@@ -121,7 +148,11 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
                     { SharedFontType.SimplifiedChineseEx, CreateFont("FontExtendedChineseSimplified") },
                     { SharedFontType.TraditionalChinese,  CreateFont("FontChineseTraditional")        },
                     { SharedFontType.Korean,              CreateFont("FontKorean")                    },
+<<<<<<< HEAD
                     { SharedFontType.NintendoEx,          CreateFont("FontNintendoExtended")          },
+=======
+                    { SharedFontType.NintendoEx,          CreateFont("FontNintendoExtended")          }
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 if (fontOffset > Horizon.FontSize)
@@ -134,9 +165,15 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
 
         private void WriteMagicAndSize(ulong offset, int size)
         {
+<<<<<<< HEAD
             const int Key = 0x49621806;
 
             int encryptedSize = BinaryPrimitives.ReverseEndianness(size ^ Key);
+=======
+            const int key = 0x49621806;
+
+            int encryptedSize = BinaryPrimitives.ReverseEndianness(size ^ key);
+>>>>>>> 1ec71635b (sync with main branch)
 
             _storage.GetRef<int>(offset + 0) = (int)BFTTFMagic;
             _storage.GetRef<int>(offset + 4) = encryptedSize;
@@ -156,6 +193,7 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
             return _fontData[fontType].Offset + 8;
         }
 
+<<<<<<< HEAD
         private byte[] DecryptFont(Stream bfttfStream)
         {
             static uint KXor(uint data) => data ^ FontKey;
@@ -180,3 +218,30 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pl
         }
     }
 }
+=======
+        private static byte[] DecryptFont(Stream bfttfStream)
+        {
+            static uint KXor(uint data) => data ^ FontKey;
+
+            using (BinaryReader reader    = new BinaryReader(bfttfStream))
+            using (MemoryStream ttfStream = MemoryStreamManager.Shared.GetStream())
+            using (BinaryWriter output    = new BinaryWriter(ttfStream))
+            {
+                if (KXor(reader.ReadUInt32()) != BFTTFMagic)
+                {
+                    throw new InvalidDataException("Error: Input file is not in BFTTF format!");
+                }
+
+                bfttfStream.Position += 4;
+
+                for (int i = 0; i < (bfttfStream.Length - 8) / 4; i++)
+                {
+                    output.Write(KXor(reader.ReadUInt32()));
+                }
+
+                return ttfStream.ToArray();
+            }
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

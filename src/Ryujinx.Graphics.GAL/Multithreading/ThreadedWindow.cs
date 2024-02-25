@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Commands.Window;
+=======
+﻿using Ryujinx.Graphics.GAL.Multithreading.Commands.Window;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL.Multithreading.Model;
 using Ryujinx.Graphics.GAL.Multithreading.Resources;
 using System;
@@ -7,8 +11,13 @@ namespace Ryujinx.Graphics.GAL.Multithreading
 {
     public class ThreadedWindow : IWindow
     {
+<<<<<<< HEAD
         private readonly ThreadedRenderer _renderer;
         private readonly IRenderer _impl;
+=======
+        private ThreadedRenderer _renderer;
+        private IRenderer _impl;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ThreadedWindow(ThreadedRenderer renderer, IRenderer impl)
         {
@@ -38,7 +47,10 @@ namespace Ryujinx.Graphics.GAL.Multithreading
         public void SetScalingFilter(ScalingFilter type) { }
 
         public void SetScalingFilterLevel(float level) { }
+<<<<<<< HEAD
 
         public void SetColorSpacePassthrough(bool colorSpacePassthroughEnabled) { }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

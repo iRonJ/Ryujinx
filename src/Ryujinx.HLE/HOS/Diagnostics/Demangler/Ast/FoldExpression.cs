@@ -4,6 +4,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class FoldExpression : BaseNode
     {
+<<<<<<< HEAD
         private readonly bool _isLeftFold;
         private readonly string _operatorName;
         private readonly BaseNode _expression;
@@ -15,6 +16,19 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             _operatorName = operatorName;
             _expression = expression;
             _initializer = initializer;
+=======
+        private bool     _isLeftFold;
+        private string   _operatorName;
+        private BaseNode _expression;
+        private BaseNode _initializer;
+
+        public FoldExpression(bool isLeftFold, string operatorName, BaseNode expression, BaseNode initializer) : base(NodeType.FunctionParameter)
+        {
+            _isLeftFold   = isLeftFold;
+            _operatorName = operatorName;
+            _expression   = expression;
+            _initializer  = initializer;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void PrintLeft(TextWriter writer)
@@ -45,4 +59,8 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             writer.Write(")");
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

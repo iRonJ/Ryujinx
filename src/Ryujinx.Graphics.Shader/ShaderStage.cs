@@ -9,7 +9,11 @@ namespace Ryujinx.Graphics.Shader
         Geometry,
         Fragment,
 
+<<<<<<< HEAD
         Count,
+=======
+        Count
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     public static class ShaderStageExtensions
@@ -23,6 +27,7 @@ namespace Ryujinx.Graphics.Shader
         {
             return stage == ShaderStage.Vertex || stage == ShaderStage.Fragment || stage == ShaderStage.Compute;
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Checks if the shader stage is vertex, tessellation or geometry.
@@ -38,3 +43,7 @@ namespace Ryujinx.Graphics.Shader
         }
     }
 }
+=======
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

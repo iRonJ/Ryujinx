@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Apm
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Apm
+>>>>>>> 1ec71635b (sync with main branch)
 {
     [Service("apm:sys")]
     class SystemManagerServer : ISystemManager
@@ -25,4 +29,8 @@ namespace Ryujinx.HLE.HOS.Services.Apm
             return _context.Device.System.PerformanceState.GetCurrentPerformanceConfiguration(_context.Device.System.PerformanceState.PerformanceMode);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

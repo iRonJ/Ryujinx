@@ -1,6 +1,10 @@
 using LibHac;
 using LibHac.Common;
 using LibHac.Sf;
+<<<<<<< HEAD
+=======
+using Ryujinx.HLE.HOS.Ipc;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
 {
@@ -18,7 +22,11 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
         public ResultCode Read(ServiceCtx context)
         {
             ulong offset = context.RequestData.ReadUInt64();
+<<<<<<< HEAD
             ulong size = context.RequestData.ReadUInt64();
+=======
+            ulong size   = context.RequestData.ReadUInt64();
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (context.Request.ReceiveBuff.Count > 0)
             {
@@ -31,10 +39,19 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
                     size = bufferLen;
                 }
 
+<<<<<<< HEAD
                 using var region = context.Memory.GetWritableRegion(bufferAddress, (int)bufferLen, true);
                 Result result = _baseStorage.Get.Read((long)offset, new OutBuffer(region.Memory.Span), (long)size);
 
                 return (ResultCode)result.Value;
+=======
+                using (var region = context.Memory.GetWritableRegion(bufferAddress, (int)bufferLen, true))
+                {
+                    Result result = _baseStorage.Get.Read((long)offset, new OutBuffer(region.Memory.Span), (long)size);
+
+                    return (ResultCode)result.Value;
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return ResultCode.Success;
@@ -59,4 +76,8 @@ namespace Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

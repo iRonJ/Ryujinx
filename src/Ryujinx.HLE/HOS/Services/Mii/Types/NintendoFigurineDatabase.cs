@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
+=======
+﻿using Ryujinx.Common.Utilities;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -25,19 +29,31 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         // Set to true to allow fixing database with invalid storedata device crc instead of deleting them.
         private const bool AcceptInvalidDeviceCrc = true;
 
+<<<<<<< HEAD
         public readonly int Length => _figurineCount;
+=======
+        public int Length => _figurineCount;
+>>>>>>> 1ec71635b (sync with main branch)
 
         [StructLayout(LayoutKind.Sequential, Size = FigurineArraySize)]
         private struct FigurineStorageStruct { }
 
         private Span<StoreData> Figurines => SpanHelpers.AsSpan<FigurineStorageStruct, StoreData>(ref _figurineStorage);
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 1ec71635b (sync with main branch)
         public StoreData Get(int index)
         {
             return Figurines[index];
         }
 
+<<<<<<< HEAD
         public readonly bool IsFull()
+=======
+        public bool IsFull()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return Length >= MaxMii;
         }
@@ -74,14 +90,24 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
             if (newIndex < oldIndex)
             {
+<<<<<<< HEAD
                 targetLength = oldIndex - newIndex;
                 sourceIndex = newIndex;
+=======
+                targetLength     = oldIndex - newIndex;
+                sourceIndex      = newIndex;
+>>>>>>> 1ec71635b (sync with main branch)
                 destinationIndex = newIndex + 1;
             }
             else
             {
+<<<<<<< HEAD
                 targetLength = newIndex - oldIndex;
                 sourceIndex = oldIndex + 1;
+=======
+                targetLength     = newIndex - oldIndex;
+                sourceIndex      = oldIndex + 1;
+>>>>>>> 1ec71635b (sync with main branch)
                 destinationIndex = oldIndex;
             }
 
@@ -113,8 +139,13 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             // If this isn't the only element in the list, move the data in it.
             if (index < newCount)
             {
+<<<<<<< HEAD
                 int targetLength = newCount - index;
                 int sourceIndex = index + 1;
+=======
+                int targetLength     = newCount - index;
+                int sourceIndex      = index + 1;
+>>>>>>> 1ec71635b (sync with main branch)
                 int destinationIndex = index;
 
                 Figurines.Slice(sourceIndex, targetLength).CopyTo(Figurines.Slice(destinationIndex, targetLength));
@@ -204,12 +235,21 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         public void Format()
         {
+<<<<<<< HEAD
             _magic = DatabaseMagic;
             _version = CurrentVersion;
             _figurineCount = 0;
 
             // Fill with empty data
             Figurines.Clear();
+=======
+            _magic         = DatabaseMagic;
+            _version       = CurrentVersion;
+            _figurineCount = 0;
+
+            // Fill with empty data
+            Figurines.Fill(new StoreData());
+>>>>>>> 1ec71635b (sync with main branch)
 
             UpdateCrc();
         }
@@ -248,7 +288,11 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         private ReadOnlySpan<byte> AsSpanWithoutCrc()
         {
+<<<<<<< HEAD
             return AsReadOnlySpan()[..(Unsafe.SizeOf<NintendoFigurineDatabase>() - 2)];
+=======
+            return AsReadOnlySpan().Slice(0, Unsafe.SizeOf<NintendoFigurineDatabase>() - 2);
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

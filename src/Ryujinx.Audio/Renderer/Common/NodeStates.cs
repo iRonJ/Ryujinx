@@ -53,17 +53,28 @@ namespace Ryujinx.Audio.Renderer.Common
         }
 
         private int _nodeCount;
+<<<<<<< HEAD
         private readonly EdgeMatrix _discovered;
         private readonly EdgeMatrix _finished;
         private Memory<int> _resultArray;
         private readonly Stack _stack;
+=======
+        private EdgeMatrix _discovered;
+        private EdgeMatrix _finished;
+        private Memory<int> _resultArray;
+        private Stack _stack;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _tsortResultIndex;
 
         private enum NodeState : byte
         {
             Unknown,
             Discovered,
+<<<<<<< HEAD
             Finished,
+=======
+            Finished
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public NodeStates()
@@ -88,6 +99,7 @@ namespace Ryujinx.Audio.Renderer.Common
 
             int edgeMatrixWorkBufferSize = EdgeMatrix.GetWorkBufferSize(nodeCount);
 
+<<<<<<< HEAD
             _discovered.Initialize(nodeStatesWorkBuffer[..edgeMatrixWorkBufferSize], nodeCount);
             _finished.Initialize(nodeStatesWorkBuffer.Slice(edgeMatrixWorkBufferSize, edgeMatrixWorkBufferSize), nodeCount);
 
@@ -98,6 +110,18 @@ namespace Ryujinx.Audio.Renderer.Common
             nodeStatesWorkBuffer = nodeStatesWorkBuffer[(sizeof(int) * nodeCount)..];
 
             Memory<int> stackWorkBuffer = SpanMemoryManager<int>.Cast(nodeStatesWorkBuffer[..Stack.CalcBufferSize(nodeCount * nodeCount)]);
+=======
+            _discovered.Initialize(nodeStatesWorkBuffer.Slice(0, edgeMatrixWorkBufferSize), nodeCount);
+            _finished.Initialize(nodeStatesWorkBuffer.Slice(edgeMatrixWorkBufferSize, edgeMatrixWorkBufferSize), nodeCount);
+
+            nodeStatesWorkBuffer = nodeStatesWorkBuffer.Slice(edgeMatrixWorkBufferSize * 2);
+
+            _resultArray = SpanMemoryManager<int>.Cast(nodeStatesWorkBuffer.Slice(0, sizeof(int) * nodeCount));
+
+            nodeStatesWorkBuffer = nodeStatesWorkBuffer.Slice(sizeof(int) * nodeCount);
+
+            Memory<int> stackWorkBuffer = SpanMemoryManager<int>.Cast(nodeStatesWorkBuffer.Slice(0, Stack.CalcBufferSize(nodeCount * nodeCount)));
+>>>>>>> 1ec71635b (sync with main branch)
 
             _stack.Reset(stackWorkBuffer, nodeCount * nodeCount);
         }
@@ -120,8 +144,12 @@ namespace Ryujinx.Audio.Renderer.Common
 
                 return NodeState.Discovered;
             }
+<<<<<<< HEAD
 
             if (_finished.Test(index))
+=======
+            else if (_finished.Test(index))
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 Debug.Assert(!_discovered.Test(index));
 
@@ -159,7 +187,11 @@ namespace Ryujinx.Audio.Renderer.Common
 
         public ReadOnlySpan<int> GetTsortResult()
         {
+<<<<<<< HEAD
             return _resultArray.Span[.._tsortResultIndex];
+=======
+            return _resultArray.Span.Slice(0, _tsortResultIndex);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public bool Sort(EdgeMatrix edgeMatrix)
@@ -227,4 +259,8 @@ namespace Ryujinx.Audio.Renderer.Common
             return true;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

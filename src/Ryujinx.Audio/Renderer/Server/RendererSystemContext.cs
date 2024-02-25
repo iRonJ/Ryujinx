@@ -45,4 +45,8 @@ namespace Ryujinx.Audio.Renderer.Server
         /// </remarks>
         public Memory<float> DepopBuffer;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

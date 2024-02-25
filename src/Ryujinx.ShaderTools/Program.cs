@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using CommandLine;
+=======
+﻿using CommandLine;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Shader;
 using Ryujinx.Graphics.Shader.Translation;
 using System;
@@ -20,7 +24,11 @@ namespace Ryujinx.ShaderTools
 
             public ReadOnlySpan<ulong> GetCode(ulong address, int minimumSize)
             {
+<<<<<<< HEAD
                 return MemoryMarshal.Cast<byte, ulong>(new ReadOnlySpan<byte>(_data)[(int)address..]);
+=======
+                return MemoryMarshal.Cast<byte, ulong>(new ReadOnlySpan<byte>(_data).Slice((int)address));
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -29,12 +37,15 @@ namespace Ryujinx.ShaderTools
             [Option("compute", Required = false, Default = false, HelpText = "Indicate that the shader is a compute shader.")]
             public bool Compute { get; set; }
 
+<<<<<<< HEAD
             [Option("vertex-as-compute", Required = false, Default = false, HelpText = "Indicate that the shader is a vertex shader and should be converted to compute.")]
             public bool VertexAsCompute { get; set; }
 
             [Option("vertex-passthrough", Required = false, Default = false, HelpText = "Indicate that the shader is a vertex passthrough shader for compute output.")]
             public bool VertexPassthrough { get; set; }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             [Option("target-language", Required = false, Default = TargetLanguage.Glsl, HelpText = "Indicate the target shader language to use.")]
             public TargetLanguage TargetLanguage { get; set; }
 
@@ -59,6 +70,7 @@ namespace Ryujinx.ShaderTools
 
             byte[] data = File.ReadAllBytes(options.InputPath);
 
+<<<<<<< HEAD
             TranslationOptions translationOptions = new(options.TargetLanguage, options.TargetApi, flags);
             TranslatorContext translatorContext = Translator.CreateContext(0, new GpuAccessor(data), translationOptions);
 
@@ -72,6 +84,11 @@ namespace Ryujinx.ShaderTools
             {
                 program = translatorContext.Translate(options.VertexAsCompute);
             }
+=======
+            TranslationOptions translationOptions = new TranslationOptions(options.TargetLanguage, options.TargetApi, flags);
+
+            ShaderProgram program = Translator.CreateContext(0, new GpuAccessor(data), translationOptions).Translate();
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (options.OutputPath == null)
             {
@@ -106,4 +123,8 @@ namespace Ryujinx.ShaderTools
                 .WithNotParsed(errors => errors.Output());
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

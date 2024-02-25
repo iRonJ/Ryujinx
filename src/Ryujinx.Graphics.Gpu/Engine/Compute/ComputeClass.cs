@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.Device;
 using Ryujinx.Graphics.Gpu.Engine.InlineToMemory;
 using Ryujinx.Graphics.Gpu.Engine.Threed;
 using Ryujinx.Graphics.Gpu.Engine.Types;
+=======
+﻿using Ryujinx.Graphics.Device;
+using Ryujinx.Graphics.GAL;
+using Ryujinx.Graphics.Gpu.Engine.InlineToMemory;
+using Ryujinx.Graphics.Gpu.Engine.Threed;
+using Ryujinx.Graphics.Gpu.Engine.Types;
+using Ryujinx.Graphics.Gpu.Image;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu.Shader;
 using Ryujinx.Graphics.Shader;
 using System;
@@ -37,7 +46,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
             {
                 { nameof(ComputeClassState.LaunchDma), new RwCallback(LaunchDma, null) },
                 { nameof(ComputeClassState.LoadInlineData), new RwCallback(LoadInlineData, null) },
+<<<<<<< HEAD
                 { nameof(ComputeClassState.SendSignalingPcasB), new RwCallback(SendSignalingPcasB, null) },
+=======
+                { nameof(ComputeClassState.SendSignalingPcasB), new RwCallback(SendSignalingPcasB, null) }
+>>>>>>> 1ec71635b (sync with main branch)
             });
 
             _i2mClass = new InlineToMemoryClass(context, channel, initializeState: false);
@@ -126,12 +139,20 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
             ulong samplerPoolGpuVa = ((ulong)_state.State.SetTexSamplerPoolAOffsetUpper << 32) | _state.State.SetTexSamplerPoolB;
             ulong texturePoolGpuVa = ((ulong)_state.State.SetTexHeaderPoolAOffsetUpper << 32) | _state.State.SetTexHeaderPoolB;
 
+<<<<<<< HEAD
             GpuChannelPoolState poolState = new(
+=======
+            GpuChannelPoolState poolState = new GpuChannelPoolState(
+>>>>>>> 1ec71635b (sync with main branch)
                 texturePoolGpuVa,
                 _state.State.SetTexHeaderPoolCMaximumIndex,
                 _state.State.SetBindlessTextureConstantBufferSlotSelect);
 
+<<<<<<< HEAD
             GpuChannelComputeState computeState = new(
+=======
+            GpuChannelComputeState computeState = new GpuChannelComputeState(
+>>>>>>> 1ec71635b (sync with main branch)
                 qmd.CtaThreadDimension0,
                 qmd.CtaThreadDimension1,
                 qmd.CtaThreadDimension2,
@@ -149,6 +170,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
 
             ShaderProgramInfo info = cs.Shaders[0].Info;
 
+<<<<<<< HEAD
+=======
+            bool hasUnaligned = _channel.BufferManager.HasUnalignedStorageBuffers;
+
+>>>>>>> 1ec71635b (sync with main branch)
             for (int index = 0; index < info.SBuffers.Count; index++)
             {
                 BufferDescriptor sb = info.SBuffers[index];
@@ -173,6 +199,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
                 _channel.BufferManager.SetComputeStorageBuffer(sb.Slot, sbDescriptor.PackAddress(), size, sb.Flags);
             }
 
+<<<<<<< HEAD
             if (_channel.BufferManager.HasUnalignedStorageBuffers != computeState.HasUnalignedStorageBuffer)
             {
                 // Refetch the shader, as assumptions about storage buffer alignment have changed.
@@ -187,6 +214,40 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
                 cs = memoryManager.Physical.ShaderCache.GetComputeShader(_channel, poolState, computeState, shaderGpuVa);
 
                 _context.Renderer.Pipeline.SetProgram(cs.HostProgram);
+=======
+            if ((_channel.BufferManager.HasUnalignedStorageBuffers) != hasUnaligned)
+            {
+                // Refetch the shader, as assumptions about storage buffer alignment have changed.
+                cs = memoryManager.Physical.ShaderCache.GetComputeShader(_channel, poolState, computeState, shaderGpuVa);
+
+                _context.Renderer.Pipeline.SetProgram(cs.HostProgram);
+
+                info = cs.Shaders[0].Info;
+            }
+
+            for (int index = 0; index < info.CBuffers.Count; index++)
+            {
+                BufferDescriptor cb = info.CBuffers[index];
+
+                // NVN uses the "hardware" constant buffer for anything that is less than 8,
+                // and those are already bound above.
+                // Anything greater than or equal to 8 uses the emulated constant buffers.
+                // They are emulated using global memory loads.
+                if (cb.Slot < 8)
+                {
+                    continue;
+                }
+
+                ulong cbDescAddress = _channel.BufferManager.GetComputeUniformBufferAddress(0);
+
+                int cbDescOffset = 0x260 + (cb.Slot - 8) * 0x10;
+
+                cbDescAddress += (ulong)cbDescOffset;
+
+                SbDescriptor cbDescriptor = _channel.MemoryManager.Physical.Read<SbDescriptor>(cbDescAddress);
+
+                _channel.BufferManager.SetComputeUniformBuffer(cb.Slot, cbDescriptor.PackAddress(), (uint)cbDescriptor.Size);
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             _channel.BufferManager.SetComputeBufferBindings(cs.Bindings);

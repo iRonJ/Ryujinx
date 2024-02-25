@@ -14,17 +14,29 @@ namespace Ryujinx.Audio.Output
     /// </summary>
     public class AudioOutputManager : IDisposable
     {
+<<<<<<< HEAD
         private readonly object _lock = new();
+=======
+        private object _lock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Lock used for session allocation.
         /// </summary>
+<<<<<<< HEAD
         private readonly object _sessionLock = new();
+=======
+        private object _sessionLock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The session ids allocation table.
         /// </summary>
+<<<<<<< HEAD
         private readonly int[] _sessionIds;
+=======
+        private int[] _sessionIds;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The device driver.
@@ -39,7 +51,11 @@ namespace Ryujinx.Audio.Output
         /// <summary>
         /// The <see cref="AudioOutputSystem"/> session instances.
         /// </summary>
+<<<<<<< HEAD
         private readonly AudioOutputSystem[] _sessions;
+=======
+        private AudioOutputSystem[] _sessions;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The count of active sessions.
@@ -167,7 +183,11 @@ namespace Ryujinx.Audio.Output
         /// <returns>The list of all audio outputs name</returns>
         public string[] ListAudioOuts()
         {
+<<<<<<< HEAD
             return new[] { Constants.DefaultDeviceOutputName };
+=======
+            return new string[] { Constants.DefaultDeviceOutputName };
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -180,6 +200,11 @@ namespace Ryujinx.Audio.Output
         /// <param name="inputDeviceName">The input device name wanted by the user</param>
         /// <param name="sampleFormat">The sample format to use</param>
         /// <param name="parameter">The user configuration</param>
+<<<<<<< HEAD
+=======
+        /// <param name="appletResourceUserId">The applet resource user id of the application</param>
+        /// <param name="processHandle">The process handle of the application</param>
+>>>>>>> 1ec71635b (sync with main branch)
         /// <returns>A <see cref="ResultCode"/> reporting an error or a success</returns>
         public ResultCode OpenAudioOut(out string outputDeviceName,
                                        out AudioOutputConfiguration outputConfiguration,
@@ -187,15 +212,28 @@ namespace Ryujinx.Audio.Output
                                        IVirtualMemoryManager memoryManager,
                                        string inputDeviceName,
                                        SampleFormat sampleFormat,
+<<<<<<< HEAD
                                        ref AudioInputConfiguration parameter)
+=======
+                                       ref AudioInputConfiguration parameter,
+                                       ulong appletResourceUserId,
+                                       uint processHandle,
+                                       float volume)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             int sessionId = AcquireSessionId();
 
             _sessionsBufferEvents[sessionId].Clear();
 
+<<<<<<< HEAD
             IHardwareDeviceSession deviceSession = _deviceDriver.OpenDeviceSession(IHardwareDeviceDriver.Direction.Output, memoryManager, sampleFormat, parameter.SampleRate, parameter.ChannelCount);
 
             AudioOutputSystem audioOut = new(this, _lock, deviceSession, _sessionsBufferEvents[sessionId]);
+=======
+            IHardwareDeviceSession deviceSession = _deviceDriver.OpenDeviceSession(IHardwareDeviceDriver.Direction.Output, memoryManager, sampleFormat, parameter.SampleRate, parameter.ChannelCount, volume);
+
+            AudioOutputSystem audioOut = new AudioOutputSystem(this, _lock, deviceSession, _sessionsBufferEvents[sessionId]);
+>>>>>>> 1ec71635b (sync with main branch)
 
             ResultCode result = audioOut.Initialize(inputDeviceName, sampleFormat, ref parameter, sessionId);
 
@@ -226,10 +264,50 @@ namespace Ryujinx.Audio.Output
             return result;
         }
 
+<<<<<<< HEAD
         public void Dispose()
         {
             GC.SuppressFinalize(this);
 
+=======
+        /// <summary>
+        /// Sets the volume for all output devices.
+        /// </summary>
+        /// <param name="volume">The volume to set.</param>
+        public void SetVolume(float volume)
+        {
+            if (_sessions != null)
+            {
+                foreach (AudioOutputSystem session in _sessions)
+                {
+                    session?.SetVolume(volume);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the volume for all output devices.
+        /// </summary>
+        /// <returns>A float indicating the volume level.</returns>
+        public float GetVolume()
+        {
+            if (_sessions != null)
+            {
+                foreach (AudioOutputSystem session in _sessions)
+                {
+                    if (session != null)
+                    {
+                        return session.GetVolume();
+                    }
+                }
+            }
+
+            return 0.0f;
+        }
+
+        public void Dispose()
+        {
+>>>>>>> 1ec71635b (sync with main branch)
             if (Interlocked.CompareExchange(ref _disposeState, 1, 0) == 0)
             {
                 Dispose(true);
@@ -255,4 +333,8 @@ namespace Ryujinx.Audio.Output
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

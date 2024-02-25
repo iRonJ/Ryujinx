@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Model;
+=======
+﻿using Ryujinx.Graphics.GAL.Multithreading.Model;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetStorageBuffersCommand : IGALCommand, IGALCommand<SetStorageBuffersCommand>
     {
+<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.SetStorageBuffers;
+=======
+        public CommandType CommandType => CommandType.SetStorageBuffers;
+>>>>>>> 1ec71635b (sync with main branch)
         private SpanRef<BufferAssignment> _buffers;
 
         public void Set(SpanRef<BufferAssignment> buffers)

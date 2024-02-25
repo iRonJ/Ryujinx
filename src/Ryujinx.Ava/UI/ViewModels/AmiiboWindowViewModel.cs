@@ -9,7 +9,11 @@ using Ryujinx.Common;
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Logging;
 using Ryujinx.Common.Utilities;
+<<<<<<< HEAD
 using Ryujinx.UI.Common.Models.Amiibo;
+=======
+using Ryujinx.Ui.Common.Models.Amiibo;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,8 +21,13 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+<<<<<<< HEAD
 using System.Text.Json;
 using System.Threading.Tasks;
+=======
+using System.Threading.Tasks;
+using AmiiboJsonSerializerContext = Ryujinx.Ui.Common.Models.Amiibo.AmiiboJsonSerializerContext;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.ViewModels
 {
@@ -44,7 +53,11 @@ namespace Ryujinx.Ava.UI.ViewModels
         private bool _useRandomUuid;
         private string _usage;
 
+<<<<<<< HEAD
         private static readonly AmiiboJsonSerializerContext _serializerContext = new(JsonHelper.GetDefaultSerializerOptions());
+=======
+        private static readonly AmiiboJsonSerializerContext SerializerContext = new(JsonHelper.GetDefaultSerializerOptions());
+>>>>>>> 1ec71635b (sync with main branch)
 
         public AmiiboWindowViewModel(StyleableWindow owner, string lastScannedAmiiboId, string titleId)
         {
@@ -52,7 +65,11 @@ namespace Ryujinx.Ava.UI.ViewModels
 
             _httpClient = new HttpClient
             {
+<<<<<<< HEAD
                 Timeout = TimeSpan.FromSeconds(30),
+=======
+                Timeout = TimeSpan.FromSeconds(30)
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             LastScannedAmiiboId = lastScannedAmiiboId;
@@ -65,7 +82,11 @@ namespace Ryujinx.Ava.UI.ViewModels
             _amiiboSeries = new ObservableCollection<string>();
             _amiibos = new AvaloniaList<AmiiboApi>();
 
+<<<<<<< HEAD
             _amiiboLogoBytes = EmbeddedResources.Read("Ryujinx.UI.Common/Resources/Logo_Amiibo.png");
+=======
+            _amiiboLogoBytes = EmbeddedResources.Read("Ryujinx.Ui.Common/Resources/Logo_Amiibo.png");
+>>>>>>> 1ec71635b (sync with main branch)
 
             _ = LoadContentAsync();
         }
@@ -185,6 +206,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
             _httpClient.Dispose();
         }
@@ -266,6 +288,40 @@ namespace Ryujinx.Ava.UI.ViewModels
             AmiiboJson amiiboJson = await GetMostRecentAmiiboListOrDefaultJson();
 
             _amiiboList = amiiboJson.Amiibo.OrderBy(amiibo => amiibo.AmiiboSeries).ToList();
+=======
+            _httpClient.Dispose();
+        }
+
+        private async Task LoadContentAsync()
+        {
+            string amiiboJsonString = DefaultJson;
+
+            if (File.Exists(_amiiboJsonPath))
+            {
+                amiiboJsonString = await File.ReadAllTextAsync(_amiiboJsonPath);
+
+                if (await NeedsUpdate(JsonHelper.Deserialize(amiiboJsonString, SerializerContext.AmiiboJson).LastUpdated))
+                {
+                    amiiboJsonString = await DownloadAmiiboJson();
+                }
+            }
+            else
+            {
+                try
+                {
+                    amiiboJsonString = await DownloadAmiiboJson();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error?.Print(LogClass.Application, $"Failed to download amiibo data: {ex}");
+
+                    ShowInfoDialog();
+                }
+            }
+
+            _amiiboList = JsonHelper.Deserialize(amiiboJsonString, SerializerContext.AmiiboJson).Amiibo;
+            _amiiboList = _amiiboList.OrderBy(amiibo => amiibo.AmiiboSeries).ToList();
+>>>>>>> 1ec71635b (sync with main branch)
 
             ParseAmiiboData();
         }
@@ -313,7 +369,11 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         private void SelectLastScannedAmiibo()
         {
+<<<<<<< HEAD
             AmiiboApi scanned = _amiiboList.Find(amiibo => amiibo.GetId() == LastScannedAmiiboId);
+=======
+            AmiiboApi scanned = _amiiboList.FirstOrDefault(amiibo => amiibo.GetId() == LastScannedAmiiboId);
+>>>>>>> 1ec71635b (sync with main branch)
 
             SeriesSelectedIndex = AmiiboSeries.IndexOf(scanned.AmiiboSeries);
             AmiiboSelectedIndex = AmiiboList.IndexOf(scanned);
@@ -374,9 +434,15 @@ namespace Ryujinx.Ava.UI.ViewModels
 
             AmiiboApi selected = _amiibos[_amiiboSelectedIndex];
 
+<<<<<<< HEAD
             string imageUrl = _amiiboList.Find(amiibo => amiibo.Equals(selected)).Image;
 
             StringBuilder usageStringBuilder = new();
+=======
+            string imageUrl = _amiiboList.FirstOrDefault(amiibo => amiibo.Equals(selected)).Image;
+
+            string usageString = "";
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < _amiiboList.Count; i++)
             {
@@ -390,19 +456,33 @@ namespace Ryujinx.Ava.UI.ViewModels
                         {
                             foreach (AmiiboApiUsage usageItem in item.AmiiboUsage)
                             {
+<<<<<<< HEAD
                                 usageStringBuilder.Append($"{Environment.NewLine}- {usageItem.Usage.Replace("/", Environment.NewLine + "-")}");
+=======
+                                usageString += Environment.NewLine +
+                                               $"- {usageItem.Usage.Replace("/", Environment.NewLine + "-")}";
+>>>>>>> 1ec71635b (sync with main branch)
 
                                 writable = usageItem.Write;
                             }
                         }
                     }
 
+<<<<<<< HEAD
                     if (usageStringBuilder.Length == 0)
                     {
                         usageStringBuilder.Append($"{LocaleManager.Instance[LocaleKeys.Unknown]}.");
                     }
 
                     Usage = $"{LocaleManager.Instance[LocaleKeys.Usage]} {(writable ? $" ({LocaleManager.Instance[LocaleKeys.Writable]})" : "")} : {usageStringBuilder}";
+=======
+                    if (usageString.Length == 0)
+                    {
+                        usageString = LocaleManager.Instance[LocaleKeys.Unknown] + ".";
+                    }
+
+                    Usage = $"{LocaleManager.Instance[LocaleKeys.Usage]} {(writable ? $" ({LocaleManager.Instance[LocaleKeys.Writable]})" : "")} : {usageString}";
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -413,6 +493,7 @@ namespace Ryujinx.Ava.UI.ViewModels
         {
             try
             {
+<<<<<<< HEAD
                 HttpResponseMessage response = await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Head, "https://amiibo.ryujinx.org/"));
 
                 if (response.IsSuccessStatusCode)
@@ -426,10 +507,31 @@ namespace Ryujinx.Ava.UI.ViewModels
             }
 
             return false;
+=======
+                HttpResponseMessage response =
+                    await _httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Head, "https://amiibo.ryujinx.org/"));
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.Headers.LastModified != new DateTimeOffset(oldLastModified.Ticks - (oldLastModified.Ticks % TimeSpan.TicksPerSecond), TimeSpan.Zero);
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error?.Print(LogClass.Application, $"Failed to check for amiibo updates: {ex}");
+
+                ShowInfoDialog();
+
+                return false;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private async Task<string> DownloadAmiiboJson()
         {
+<<<<<<< HEAD
             try
             {
                 HttpResponseMessage response = await _httpClient.GetAsync("https://amiibo.ryujinx.org/");
@@ -458,13 +560,37 @@ namespace Ryujinx.Ava.UI.ViewModels
                 Logger.Error?.Print(LogClass.Application, $"Failed to request amiibo data: {exception}");
             }
 
+=======
+            HttpResponseMessage response = await _httpClient.GetAsync("https://amiibo.ryujinx.org/");
+
+            if (response.IsSuccessStatusCode)
+            {
+                string amiiboJsonString = await response.Content.ReadAsStringAsync();
+
+                using (FileStream amiiboJsonStream = File.Create(_amiiboJsonPath, 4096, FileOptions.WriteThrough))
+                {
+                    amiiboJsonStream.Write(Encoding.UTF8.GetBytes(amiiboJsonString));
+                }
+
+                return amiiboJsonString;
+            }
+
+            Logger.Error?.Print(LogClass.Application, $"Failed to download amiibo data. Response status code: {response.StatusCode}");
+
+>>>>>>> 1ec71635b (sync with main branch)
             await ContentDialogHelper.CreateInfoDialog(LocaleManager.Instance[LocaleKeys.DialogAmiiboApiTitle],
                 LocaleManager.Instance[LocaleKeys.DialogAmiiboApiFailFetchMessage],
                 LocaleManager.Instance[LocaleKeys.InputDialogOk],
                 "",
                 LocaleManager.Instance[LocaleKeys.RyujinxInfo]);
 
+<<<<<<< HEAD
             return null;
+=======
+            Close();
+
+            return DefaultJson;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void Close()
@@ -479,6 +605,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             if (response.IsSuccessStatusCode)
             {
                 byte[] amiiboPreviewBytes = await response.Content.ReadAsByteArrayAsync();
+<<<<<<< HEAD
                 using MemoryStream memoryStream = new(amiiboPreviewBytes);
 
                 Bitmap bitmap = new(memoryStream);
@@ -490,6 +617,20 @@ namespace Ryujinx.Ava.UI.ViewModels
                 int resizeWidth = (int)(bitmap.Size.Width * ratio);
 
                 AmiiboImage = bitmap.CreateScaledBitmap(new PixelSize(resizeWidth, resizeHeight));
+=======
+                using (MemoryStream memoryStream = new(amiiboPreviewBytes))
+                {
+                    Bitmap bitmap = new(memoryStream);
+
+                    double ratio = Math.Min(AmiiboImageSize / bitmap.Size.Width,
+                        AmiiboImageSize / bitmap.Size.Height);
+
+                    int resizeHeight = (int)(bitmap.Size.Height * ratio);
+                    int resizeWidth = (int)(bitmap.Size.Width * ratio);
+
+                    AmiiboImage = bitmap.CreateScaledBitmap(new PixelSize(resizeWidth, resizeHeight));
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -499,6 +640,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         private void ResetAmiiboPreview()
         {
+<<<<<<< HEAD
             using MemoryStream memoryStream = new(_amiiboLogoBytes);
 
             Bitmap bitmap = new(memoryStream);
@@ -507,6 +649,17 @@ namespace Ryujinx.Ava.UI.ViewModels
         }
 
         private static async void ShowInfoDialog()
+=======
+            using (MemoryStream memoryStream = new(_amiiboLogoBytes))
+            {
+                Bitmap bitmap = new(memoryStream);
+
+                AmiiboImage = bitmap;
+            }
+        }
+
+        private async void ShowInfoDialog()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             await ContentDialogHelper.CreateInfoDialog(LocaleManager.Instance[LocaleKeys.DialogAmiiboApiTitle],
                 LocaleManager.Instance[LocaleKeys.DialogAmiiboApiConnectErrorMessage],
@@ -515,4 +668,8 @@ namespace Ryujinx.Ava.UI.ViewModels
                 LocaleManager.Instance[LocaleKeys.RyujinxInfo]);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

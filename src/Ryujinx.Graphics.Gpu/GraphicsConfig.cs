@@ -1,6 +1,9 @@
 namespace Ryujinx.Graphics.Gpu
 {
+<<<<<<< HEAD
 #pragma warning disable CA2211 // Non-constant fields should not be visible
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     /// <summary>
     /// General GPU and graphics configuration.
     /// </summary>
@@ -67,6 +70,7 @@ namespace Ryujinx.Graphics.Gpu
         /// Enables or disables recompression of compressed textures that are not natively supported by the host.
         /// </summary>
         public static bool EnableTextureRecompression = false;
+<<<<<<< HEAD
 
         /// <summary>
         /// Enables or disables color space passthrough, if available.
@@ -75,3 +79,7 @@ namespace Ryujinx.Graphics.Gpu
     }
 #pragma warning restore CA2211
 }
+=======
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

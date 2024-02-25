@@ -37,4 +37,8 @@ namespace Ryujinx.Audio.Renderer.Server
         uint Estimate(CaptureBufferCommand command);
         uint Estimate(CompressorCommand command);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

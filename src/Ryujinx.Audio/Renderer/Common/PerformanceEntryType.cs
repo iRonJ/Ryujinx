@@ -6,6 +6,12 @@ namespace Ryujinx.Audio.Renderer.Common
         Voice,
         SubMix,
         FinalMix,
+<<<<<<< HEAD
         Sink,
     }
 }
+=======
+        Sink
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

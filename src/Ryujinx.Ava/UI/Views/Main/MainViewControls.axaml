@@ -3,27 +3,41 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+<<<<<<< HEAD
     xmlns:controls="clr-namespace:Ryujinx.Ava.UI.Controls"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:helpers="clr-namespace:Ryujinx.Ava.UI.Helpers"
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
     x:Class="Ryujinx.Ava.UI.Views.Main.MainViewControls"
+<<<<<<< HEAD
+=======
+    x:CompileBindings="True"
+>>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModels:MainWindowViewModel">
     <Design.DataContext>
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
     <DockPanel
         Margin="0,0,0,5"
+<<<<<<< HEAD
         Height="35"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         HorizontalAlignment="Stretch">
         <Button
             Width="40"
             MinWidth="40"
             Margin="5,2,0,2"
             VerticalAlignment="Stretch"
+<<<<<<< HEAD
             Command="{Binding SetListMode}"
+=======
+            Command="{ReflectionBinding SetListMode}"
+>>>>>>> 1ec71635b (sync with main branch)
             IsEnabled="{Binding IsGrid}">
             <ui:FontIcon
                 Margin="0"
@@ -37,7 +51,11 @@
             MinWidth="40"
             Margin="5,2,5,2"
             VerticalAlignment="Stretch"
+<<<<<<< HEAD
             Command="{Binding SetGridMode}"
+=======
+            Command="{ReflectionBinding SetGridMode}"
+>>>>>>> 1ec71635b (sync with main branch)
             IsEnabled="{Binding IsList}">
             <ui:FontIcon
                 Margin="0"
@@ -51,13 +69,20 @@
             VerticalAlignment="Center"
             Text="{locale:Locale IconSize}"
             ToolTip.Tip="{locale:Locale IconSizeTooltip}" />
+<<<<<<< HEAD
         <controls:SliderScroll
+=======
+        <Slider
+>>>>>>> 1ec71635b (sync with main branch)
             Width="150"
             Height="35"
             Margin="5,-10,5,0"
             VerticalAlignment="Center"
             IsSnapToTickEnabled="True"
+<<<<<<< HEAD
             SmallChange="1"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Maximum="4"
             Minimum="1"
             TickFrequency="1"
@@ -80,13 +105,21 @@
             KeyUp="SearchBox_OnKeyUp"
             Text="{Binding SearchText}"
             Watermark="{locale:Locale MenuSearch}" />
+<<<<<<< HEAD
         <DropDownButton
+=======
+        <ui:DropDownButton
+>>>>>>> 1ec71635b (sync with main branch)
             Width="150"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Content="{Binding SortName}"
             DockPanel.Dock="Right">
+<<<<<<< HEAD
             <DropDownButton.Flyout>
+=======
+            <ui:DropDownButton.Flyout>
+>>>>>>> 1ec71635b (sync with main branch)
                 <Flyout Placement="Bottom">
                     <StackPanel
                         Margin="0"
@@ -165,8 +198,13 @@
                             Tag="Descending" />
                     </StackPanel>
                 </Flyout>
+<<<<<<< HEAD
             </DropDownButton.Flyout>
         </DropDownButton>
+=======
+            </ui:DropDownButton.Flyout>
+        </ui:DropDownButton>
+>>>>>>> 1ec71635b (sync with main branch)
         <TextBlock
             Margin="10,0"
             HorizontalAlignment="Right"
@@ -174,4 +212,8 @@
             DockPanel.Dock="Right"
             Text="{locale:Locale CommonSort}" />
     </DockPanel>
+<<<<<<< HEAD
 </UserControl>
+=======
+</UserControl>
+>>>>>>> 1ec71635b (sync with main branch)

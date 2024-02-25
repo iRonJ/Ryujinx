@@ -9,7 +9,11 @@ namespace ARMeilleure.Translation
     {
         public static void Rename(ControlFlowGraph cfg)
         {
+<<<<<<< HEAD
             Dictionary<Register, Operand> registerToLocalMap = new();
+=======
+            Dictionary<Register, Operand> registerToLocalMap = new Dictionary<Register, Operand>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Operand GetLocal(Operand op)
             {
@@ -49,4 +53,8 @@ namespace ARMeilleure.Translation
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

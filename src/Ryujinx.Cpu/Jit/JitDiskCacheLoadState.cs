@@ -23,7 +23,11 @@ namespace Ryujinx.Cpu.Jit
                 PtcLoadingState.Start => LoadState.Unloaded,
                 PtcLoadingState.Loading => LoadState.Loading,
                 PtcLoadingState.Loaded => LoadState.Loaded,
+<<<<<<< HEAD
                 _ => throw new ArgumentException($"Invalid load state \"{newState}\"."),
+=======
+                _ => throw new ArgumentException($"Invalid load state \"{newState}\".")
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             StateChanged?.Invoke(state, current, total);
@@ -35,4 +39,8 @@ namespace Ryujinx.Cpu.Jit
             _loadState.Continue();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

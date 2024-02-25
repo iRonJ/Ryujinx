@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Gpu.Image
+=======
+﻿namespace Ryujinx.Graphics.Gpu.Image
+>>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// The scale mode for a given texture.
@@ -11,6 +15,10 @@ namespace Ryujinx.Graphics.Gpu.Image
         Eligible = 0,
         Scaled = 1,
         Blacklisted = 2,
+<<<<<<< HEAD
         Undesired = 3,
+=======
+        Undesired = 3
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

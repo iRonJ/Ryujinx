@@ -1,0 +1,10 @@
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/bin/Debug/netstandard2.0/Ryujinx.Horizon.Generators.deps.json
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/bin/Debug/netstandard2.0/Ryujinx.Horizon.Generators.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/bin/Debug/netstandard2.0/Ryujinx.Horizon.Generators.pdb
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/obj/Debug/netstandard2.0/Ryujinx.Horizon.Generators.csproj.AssemblyReference.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/obj/Debug/netstandard2.0/Ryujinx.Horizon.Generators.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/obj/Debug/netstandard2.0/Ryujinx.Horizon.Generators.AssemblyInfoInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/obj/Debug/netstandard2.0/Ryujinx.Horizon.Generators.AssemblyInfo.cs
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/obj/Debug/netstandard2.0/Ryujinx.Horizon.Generators.csproj.CoreCompileInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/obj/Debug/netstandard2.0/Ryujinx.Horizon.Generators.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Horizon.Generators/obj/Debug/netstandard2.0/Ryujinx.Horizon.Generators.pdb

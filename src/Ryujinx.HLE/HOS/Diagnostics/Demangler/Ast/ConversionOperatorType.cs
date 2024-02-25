@@ -12,4 +12,8 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             Child.Print(writer);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

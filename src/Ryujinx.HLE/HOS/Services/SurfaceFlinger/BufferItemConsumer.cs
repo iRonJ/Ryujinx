@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.Gpu;
+=======
+﻿using Ryujinx.Graphics.Gpu;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 {
     class BufferItemConsumer : ConsumerBase
     {
+<<<<<<< HEAD
         private readonly GpuContext _gpuContext;
+=======
+        private GpuContext _gpuContext;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public BufferItemConsumer(Switch device,
             BufferQueueConsumer consumer,

@@ -31,11 +31,16 @@ namespace Ryujinx.Audio.Backends.CompatLayer
         private const int Minus6dBInQ15 = (int)(0.501f * RawQ15One);
         private const int Minus12dBInQ15 = (int)(0.251f * RawQ15One);
 
+<<<<<<< HEAD
         private static readonly long[] _defaultSurroundToStereoCoefficients = new long[4]
+=======
+        private static readonly int[] DefaultSurroundToStereoCoefficients = new int[4]
+>>>>>>> 1ec71635b (sync with main branch)
         {
             RawQ15One,
             Minus3dBInQ15,
             Minus12dBInQ15,
+<<<<<<< HEAD
             Minus3dBInQ15,
         };
 
@@ -43,6 +48,15 @@ namespace Ryujinx.Audio.Backends.CompatLayer
         {
             Minus6dBInQ15,
             Minus6dBInQ15,
+=======
+            Minus3dBInQ15
+        };
+
+        private static readonly int[] DefaultStereoToMonoCoefficients = new int[2]
+        {
+            Minus6dBInQ15,
+            Minus6dBInQ15
+>>>>>>> 1ec71635b (sync with main branch)
         };
 
         private const int SurroundChannelCount = 6;
@@ -62,6 +76,7 @@ namespace Ryujinx.Audio.Backends.CompatLayer
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         private static short DownMixStereoToMono(ReadOnlySpan<long> coefficients, short left, short right)
         {
             return (short)Math.Clamp((left * coefficients[0] + right * coefficients[1]) >> Q15Bits, short.MinValue, short.MaxValue);
@@ -79,6 +94,21 @@ namespace Ryujinx.Audio.Backends.CompatLayer
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static short[] DownMixSurroundToStereo(ReadOnlySpan<long> coefficients, ReadOnlySpan<short> data)
+=======
+        private static short DownMixStereoToMono(ReadOnlySpan<int> coefficients, short left, short right)
+        {
+            return (short)((left * coefficients[0] + right * coefficients[1]) >> Q15Bits);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static short DownMixSurroundToStereo(ReadOnlySpan<int> coefficients, short back, short lfe, short center, short front)
+        {
+            return (short)((coefficients[3] * back + coefficients[2] * lfe + coefficients[1] * center + coefficients[0] * front + RawQ15HalfOne) >> Q15Bits);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static short[] DownMixSurroundToStereo(ReadOnlySpan<int> coefficients, ReadOnlySpan<short> data)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             int samplePerChannelCount = data.Length / SurroundChannelCount;
 
@@ -98,7 +128,11 @@ namespace Ryujinx.Audio.Backends.CompatLayer
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         private static short[] DownMixStereoToMono(ReadOnlySpan<long> coefficients, ReadOnlySpan<short> data)
+=======
+        private static short[] DownMixStereoToMono(ReadOnlySpan<int> coefficients, ReadOnlySpan<short> data)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             int samplePerChannelCount = data.Length / StereoChannelCount;
 
@@ -118,12 +152,23 @@ namespace Ryujinx.Audio.Backends.CompatLayer
 
         public static short[] DownMixStereoToMono(ReadOnlySpan<short> data)
         {
+<<<<<<< HEAD
             return DownMixStereoToMono(_defaultStereoToMonoCoefficients, data);
+=======
+            return DownMixStereoToMono(DefaultStereoToMonoCoefficients, data);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static short[] DownMixSurroundToStereo(ReadOnlySpan<short> data)
         {
+<<<<<<< HEAD
             return DownMixSurroundToStereo(_defaultSurroundToStereoCoefficients, data);
         }
     }
 }
+=======
+            return DownMixSurroundToStereo(DefaultSurroundToStereoCoefficients, data);
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

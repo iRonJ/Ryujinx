@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services
 {
@@ -10,8 +14,16 @@ namespace Ryujinx.HLE.HOS.Services
 
         public ServiceAttribute(string name, object parameter = null)
         {
+<<<<<<< HEAD
             Name = name;
             Parameter = parameter;
         }
     }
 }
+=======
+            Name      = name;
+            Parameter = parameter;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

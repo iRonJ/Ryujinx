@@ -179,6 +179,7 @@ namespace ARMeilleure.CodeGen.Arm64
                         (uint)operation.GetSource(2).AsInt32());
                     break;
 
+<<<<<<< HEAD
                 case IntrinsicType.Vector128Unary:
                     GenerateVectorUnary(
                         context,
@@ -208,6 +209,8 @@ namespace ARMeilleure.CodeGen.Arm64
                         operation.GetSource(1));
                     break;
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 case IntrinsicType.VectorUnary:
                     GenerateVectorUnary(
                         context,
@@ -688,4 +691,8 @@ namespace ARMeilleure.CodeGen.Arm64
             context.Assembler.WriteInstruction(instruction, rd, rn);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

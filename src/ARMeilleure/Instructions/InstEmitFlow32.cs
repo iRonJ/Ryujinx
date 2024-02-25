@@ -82,7 +82,11 @@ namespace ARMeilleure.Instructions
         }
 
         public static void Cbnz(ArmEmitterContext context) => EmitCb(context, onNotZero: true);
+<<<<<<< HEAD
         public static void Cbz(ArmEmitterContext context) => EmitCb(context, onNotZero: false);
+=======
+        public static void Cbz(ArmEmitterContext context)  => EmitCb(context, onNotZero: false);
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static void EmitCb(ArmEmitterContext context, bool onNotZero)
         {
@@ -109,7 +113,11 @@ namespace ARMeilleure.Instructions
         }
 
         public static void Tbb(ArmEmitterContext context) => EmitTb(context, halfword: false);
+<<<<<<< HEAD
         public static void Tbh(ArmEmitterContext context) => EmitTb(context, halfword: true);
+=======
+        public static void Tbh(ArmEmitterContext context)  => EmitTb(context, halfword: true);
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static void EmitTb(ArmEmitterContext context, bool halfword)
         {
@@ -133,4 +141,8 @@ namespace ARMeilleure.Instructions
             EmitVirtualJump(context, targetAddress, isReturn: false);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

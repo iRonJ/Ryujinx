@@ -10,7 +10,11 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// <summary>
         /// A default, generic RGBA8 texture format.
         /// </summary>
+<<<<<<< HEAD
         public static FormatInfo Default { get; } = new(Format.R8G8B8A8Unorm, 1, 1, 4, 4);
+=======
+        public static FormatInfo Default { get; } = new FormatInfo(Format.R8G8B8A8Unorm, 1, 1, 4, 4);
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The format of the texture data.
@@ -57,6 +61,7 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// <param name="bytesPerPixel">The number of bytes occupied by a single pixel in memory of the texture data</param>
         public FormatInfo(
             Format format,
+<<<<<<< HEAD
             int blockWidth,
             int blockHeight,
             int bytesPerPixel,
@@ -70,3 +75,18 @@ namespace Ryujinx.Graphics.Gpu.Image
         }
     }
 }
+=======
+            int    blockWidth,
+            int    blockHeight,
+            int    bytesPerPixel,
+            int    components)
+        {
+            Format        = format;
+            BlockWidth    = blockWidth;
+            BlockHeight   = blockHeight;
+            BytesPerPixel = bytesPerPixel;
+            Components    = components;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

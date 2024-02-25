@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
@@ -19,15 +23,25 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
 
             public SleepSubstepData(int sleepMilliseconds)
             {
+<<<<<<< HEAD
                 SleepMilliseconds = Math.Min(sleepMilliseconds, MaxThreadSleep);
                 SleepCount = sleepMilliseconds / SleepMilliseconds;
+=======
+                SleepMilliseconds          = Math.Min(sleepMilliseconds, MaxThreadSleep);
+                SleepCount                 = sleepMilliseconds / SleepMilliseconds;
+>>>>>>> 1ec71635b (sync with main branch)
                 SleepRemainderMilliseconds = sleepMilliseconds - SleepCount * SleepMilliseconds;
             }
         }
 
         private TRef<bool> _cancelled = null;
+<<<<<<< HEAD
         private Thread _thread = null;
         private readonly object _lock = new();
+=======
+        private Thread     _thread    = null;
+        private object     _lock      = new object();
+>>>>>>> 1ec71635b (sync with main branch)
 
         public bool IsRunning
         {

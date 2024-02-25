@@ -94,4 +94,8 @@ namespace Ryujinx.Audio.Renderer.Utils.Math
             M66 = m66;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

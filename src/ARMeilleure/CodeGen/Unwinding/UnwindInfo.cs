@@ -13,4 +13,8 @@ namespace ARMeilleure.CodeGen.Unwinding
             PrologSize = prologSize;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

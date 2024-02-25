@@ -228,7 +228,10 @@ namespace ARMeilleure.Instructions
         Fmaxnmp_S,
         Fmaxnmp_V,
         Fmaxnmv_V,
+<<<<<<< HEAD
         Fmaxp_S,
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         Fmaxp_V,
         Fmaxv_V,
         Fmin_S,
@@ -238,7 +241,10 @@ namespace ARMeilleure.Instructions
         Fminnmp_S,
         Fminnmp_V,
         Fminnmv_V,
+<<<<<<< HEAD
         Fminp_S,
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         Fminp_V,
         Fminv_V,
         Fmla_Se,
@@ -384,9 +390,13 @@ namespace ARMeilleure.Instructions
         Sqrshrn_V,
         Sqrshrun_S,
         Sqrshrun_V,
+<<<<<<< HEAD
         Sqshl_Si,
         Sqshl_V,
         Sqshl_Vi,
+=======
+        Sqshl_V,
+>>>>>>> 1ec71635b (sync with main branch)
         Sqshrn_S,
         Sqshrn_V,
         Sqshrun_S,
@@ -637,7 +647,10 @@ namespace ARMeilleure.Instructions
         Vorn,
         Vorr,
         Vpadd,
+<<<<<<< HEAD
         Vpadal,
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         Vpaddl,
         Vpmax,
         Vpmin,
@@ -657,7 +670,10 @@ namespace ARMeilleure.Instructions
         Vrintm,
         Vrintn,
         Vrintp,
+<<<<<<< HEAD
         Vrintr,
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         Vrintx,
         Vrshr,
         Vrshrn,

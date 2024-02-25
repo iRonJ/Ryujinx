@@ -12,4 +12,8 @@ namespace Ryujinx.Graphics.Vulkan.Effects
         public float Width;
         public float Height;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

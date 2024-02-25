@@ -1,6 +1,10 @@
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Threading;
+<<<<<<< HEAD
+=======
+using DynamicData;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Tools.FsSystem;
 using Ryujinx.Audio.Backends.OpenAL;
 using Ryujinx.Audio.Backends.SDL2;
@@ -10,22 +14,37 @@ using Ryujinx.Ava.UI.Helpers;
 using Ryujinx.Ava.UI.Windows;
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Configuration.Hid;
+<<<<<<< HEAD
 using Ryujinx.Common.Configuration.Multiplayer;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.GraphicsDriver;
 using Ryujinx.Common.Logging;
 using Ryujinx.Graphics.Vulkan;
 using Ryujinx.HLE.FileSystem;
 using Ryujinx.HLE.HOS.Services.Time.TimeZone;
+<<<<<<< HEAD
 using Ryujinx.UI.Common.Configuration;
 using Ryujinx.UI.Common.Configuration.System;
+=======
+using Ryujinx.Ui.Common.Configuration;
+using Ryujinx.Ui.Common.Configuration.System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+<<<<<<< HEAD
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using TimeZone = Ryujinx.Ava.UI.Models.TimeZone;
+=======
+using System.Runtime.InteropServices;
+using System.Net.NetworkInformation;
+using TimeZone = Ryujinx.Ava.UI.Models.TimeZone;
+using Silk.NET.Vulkan;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.ViewModels
 {
@@ -45,16 +64,26 @@ namespace Ryujinx.Ava.UI.ViewModels
         private float _volume;
         private bool _isVulkanAvailable = true;
         private bool _directoryChanged;
+<<<<<<< HEAD
         private readonly List<string> _gpuIds = new();
         private KeyboardHotkeys _keyboardHotkeys;
         private int _graphicsBackendIndex;
+=======
+        private List<string> _gpuIds = new();
+        private KeyboardHotkeys _keyboardHotkeys;
+        private int _graphicsBackendIndex;
+        private string _customThemePath;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _scalingFilter;
         private int _scalingFilterLevel;
 
         public event Action CloseWindow;
         public event Action SaveSettingsEvent;
         private int _networkInterfaceIndex;
+<<<<<<< HEAD
         private int _multiplayerModeIndex;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         public int ResolutionScale
         {
@@ -77,6 +106,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
                 if (_graphicsBackendMultithreadingIndex != (int)ConfigurationState.Instance.Graphics.BackendThreading.Value)
                 {
+<<<<<<< HEAD
                     Dispatcher.UIThread.InvokeAsync(() =>
                          ContentDialogHelper.CreateInfoDialog(LocaleManager.Instance[LocaleKeys.DialogSettingsBackendThreadingWarningMessage],
                             "",
@@ -84,6 +114,16 @@ namespace Ryujinx.Ava.UI.ViewModels
                             LocaleManager.Instance[LocaleKeys.InputDialogOk],
                             LocaleManager.Instance[LocaleKeys.DialogSettingsBackendThreadingWarningTitle])
                     );
+=======
+                    Dispatcher.UIThread.Post(async () =>
+                    {
+                        await ContentDialogHelper.CreateInfoDialog(LocaleManager.Instance[LocaleKeys.DialogSettingsBackendThreadingWarningMessage],
+                            "",
+                            "",
+                            LocaleManager.Instance[LocaleKeys.InputDialogOk],
+                            LocaleManager.Instance[LocaleKeys.DialogSettingsBackendThreadingWarningTitle]);
+                    });
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 OnPropertyChanged();
@@ -145,8 +185,11 @@ namespace Ryujinx.Ava.UI.ViewModels
         public bool EnableShaderCache { get; set; }
         public bool EnableTextureRecompression { get; set; }
         public bool EnableMacroHLE { get; set; }
+<<<<<<< HEAD
         public bool EnableColorSpacePassthrough { get; set; }
         public bool ColorSpacePassthroughAvailable => IsMacOS;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public bool EnableFileLog { get; set; }
         public bool EnableStub { get; set; }
         public bool EnableInfo { get; set; }
@@ -159,6 +202,10 @@ namespace Ryujinx.Ava.UI.ViewModels
         public bool IsOpenAlEnabled { get; set; }
         public bool IsSoundIoEnabled { get; set; }
         public bool IsSDL2Enabled { get; set; }
+<<<<<<< HEAD
+=======
+        public bool EnableCustomTheme { get; set; }
+>>>>>>> 1ec71635b (sync with main branch)
         public bool IsCustomResolutionScaleActive => _resolutionScale == 4;
         public bool IsScalingFilterActive => _scalingFilter == (int)Ryujinx.Common.Configuration.ScalingFilter.Fsr;
 
@@ -168,6 +215,23 @@ namespace Ryujinx.Ava.UI.ViewModels
         public string TimeZone { get; set; }
         public string ShaderDumpPath { get; set; }
 
+<<<<<<< HEAD
+=======
+        public string CustomThemePath
+        {
+            get
+            {
+                return _customThemePath;
+            }
+            set
+            {
+                _customThemePath = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+>>>>>>> 1ec71635b (sync with main branch)
         public int Language { get; set; }
         public int Region { get; set; }
         public int FsGlobalAccessLogMode { get; set; }
@@ -234,12 +298,16 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         public AvaloniaList<string> NetworkInterfaceList
         {
+<<<<<<< HEAD
             get => new(_networkInterfaces.Keys);
         }
 
         public AvaloniaList<string> MultiplayerModes
         {
             get => new(Enum.GetNames<MultiplayerMode>());
+=======
+            get => new AvaloniaList<string>(_networkInterfaces.Keys);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public KeyboardHotkeys KeyboardHotkeys
@@ -263,6 +331,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             }
         }
 
+<<<<<<< HEAD
         public int MultiplayerModeIndex
         {
             get => _multiplayerModeIndex;
@@ -273,13 +342,19 @@ namespace Ryujinx.Ava.UI.ViewModels
             }
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public SettingsViewModel(VirtualFileSystem virtualFileSystem, ContentManager contentManager) : this()
         {
             _virtualFileSystem = virtualFileSystem;
             _contentManager = contentManager;
             if (Program.PreviewerDetached)
             {
+<<<<<<< HEAD
                 Task.Run(LoadTimeZones);
+=======
+                LoadTimeZones();
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -291,21 +366,35 @@ namespace Ryujinx.Ava.UI.ViewModels
             _validTzRegions = new List<string>();
             _networkInterfaces = new Dictionary<string, string>();
 
+<<<<<<< HEAD
             Task.Run(CheckSoundBackends);
             Task.Run(PopulateNetworkInterfaces);
 
             if (Program.PreviewerDetached)
             {
                 Task.Run(LoadAvailableGpus);
+=======
+            CheckSoundBackends();
+            PopulateNetworkInterfaces();
+
+            if (Program.PreviewerDetached)
+            {
+                LoadAvailableGpus();
+>>>>>>> 1ec71635b (sync with main branch)
                 LoadCurrentConfiguration();
             }
         }
 
+<<<<<<< HEAD
         public async Task CheckSoundBackends()
+=======
+        public void CheckSoundBackends()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             IsOpenAlEnabled = OpenALHardwareDeviceDriver.IsSupported;
             IsSoundIoEnabled = SoundIoHardwareDeviceDriver.IsSupported;
             IsSDL2Enabled = SDL2HardwareDeviceDriver.IsSupported;
+<<<<<<< HEAD
 
             await Dispatcher.UIThread.InvokeAsync(() =>
             {
@@ -319,6 +408,14 @@ namespace Ryujinx.Ava.UI.ViewModels
         {
             AvailableGpus.Clear();
 
+=======
+        }
+
+        private void LoadAvailableGpus()
+        {
+            _gpuIds = new List<string>();
+            List<string> names = new();
+>>>>>>> 1ec71635b (sync with main branch)
             var devices = VulkanRenderer.GetPhysicalDevices();
 
             if (devices.Length == 0)
@@ -330,6 +427,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             {
                 foreach (var device in devices)
                 {
+<<<<<<< HEAD
                     await Dispatcher.UIThread.InvokeAsync(() =>
                     {
                         _gpuIds.Add(device.Id);
@@ -347,6 +445,18 @@ namespace Ryujinx.Ava.UI.ViewModels
         }
 
         public async Task LoadTimeZones()
+=======
+                    _gpuIds.Add(device.Id);
+                    names.Add($"{device.Name} {(device.IsDiscrete ? "(dGPU)" : "")}");
+                }
+            }
+
+            AvailableGpus.Clear();
+            AvailableGpus.AddRange(names.Select(x => new ComboBoxItem { Content = x }));
+        }
+
+        public void LoadTimeZones()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             _timeZoneContentManager = new TimeZoneContentManager();
 
@@ -359,6 +469,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
                 string abbr2 = abbr.StartsWith('+') || abbr.StartsWith('-') ? string.Empty : abbr;
 
+<<<<<<< HEAD
                 await Dispatcher.UIThread.InvokeAsync(() =>
                 {
                     TimeZones.Add(new TimeZone($"UTC{hours:+0#;-0#;+00}:{minutes:D2}", location, abbr2));
@@ -371,12 +482,22 @@ namespace Ryujinx.Ava.UI.ViewModels
         }
 
         private async Task PopulateNetworkInterfaces()
+=======
+                TimeZones.Add(new TimeZone($"UTC{hours:+0#;-0#;+00}:{minutes:D2}", location, abbr2));
+
+                _validTzRegions.Add(location);
+            }
+        }
+
+        private void PopulateNetworkInterfaces()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             _networkInterfaces.Clear();
             _networkInterfaces.Add(LocaleManager.Instance[LocaleKeys.NetworkInterfaceDefault], "0");
 
             foreach (NetworkInterface networkInterface in NetworkInterface.GetAllNetworkInterfaces())
             {
+<<<<<<< HEAD
                 await Dispatcher.UIThread.InvokeAsync(() =>
                 {
                     _networkInterfaces.Add(networkInterface.Name, networkInterface.Id);
@@ -387,6 +508,10 @@ namespace Ryujinx.Ava.UI.ViewModels
             NetworkInterfaceIndex = _networkInterfaces.Values.ToList().IndexOf(ConfigurationState.Instance.Multiplayer.LanInterfaceId.Value);
 
             Dispatcher.UIThread.Post(() => OnPropertyChanged(nameof(NetworkInterfaceIndex)));
+=======
+                _networkInterfaces.Add(networkInterface.Name, networkInterface.Id);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void ValidateAndSetTimeZone(string location)
@@ -408,9 +533,17 @@ namespace Ryujinx.Ava.UI.ViewModels
             HideCursor = (int)config.HideCursor.Value;
 
             GameDirectories.Clear();
+<<<<<<< HEAD
             GameDirectories.AddRange(config.UI.GameDirs.Value);
 
             BaseStyleIndex = config.UI.BaseStyle == "Light" ? 0 : 1;
+=======
+            GameDirectories.AddRange(config.Ui.GameDirs.Value);
+
+            EnableCustomTheme = config.Ui.EnableCustomTheme;
+            CustomThemePath = config.Ui.CustomThemePath;
+            BaseStyleIndex = config.Ui.BaseStyle == "Light" ? 0 : 1;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // Input
             EnableDockedMode = config.System.EnableDockedMode;
@@ -442,11 +575,18 @@ namespace Ryujinx.Ava.UI.ViewModels
 
             // Graphics
             GraphicsBackendIndex = (int)config.Graphics.GraphicsBackend.Value;
+<<<<<<< HEAD
             // Physical devices are queried asynchronously hence the prefered index config value is loaded in LoadAvailableGpus().
             EnableShaderCache = config.Graphics.EnableShaderCache;
             EnableTextureRecompression = config.Graphics.EnableTextureRecompression;
             EnableMacroHLE = config.Graphics.EnableMacroHLE;
             EnableColorSpacePassthrough = config.Graphics.EnableColorSpacePassthrough;
+=======
+            PreferredGpuIndex = _gpuIds.Contains(config.Graphics.PreferredGpu) ? _gpuIds.IndexOf(config.Graphics.PreferredGpu) : 0;
+            EnableShaderCache = config.Graphics.EnableShaderCache;
+            EnableTextureRecompression = config.Graphics.EnableTextureRecompression;
+            EnableMacroHLE = config.Graphics.EnableMacroHLE;
+>>>>>>> 1ec71635b (sync with main branch)
             ResolutionScale = config.Graphics.ResScale == -1 ? 4 : config.Graphics.ResScale - 1;
             CustomResolutionScale = config.Graphics.ResScaleCustom;
             MaxAnisotropy = config.Graphics.MaxAnisotropy == -1 ? 0 : (int)(MathF.Log2(config.Graphics.MaxAnisotropy));
@@ -463,7 +603,10 @@ namespace Ryujinx.Ava.UI.ViewModels
 
             // Network
             EnableInternetAccess = config.System.EnableInternetAccess;
+<<<<<<< HEAD
             // LAN interface index is loaded asynchronously in PopulateNetworkInterfaces()
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
             // Logging
             EnableFileLog = config.Logger.EnableFileLog;
@@ -478,7 +621,11 @@ namespace Ryujinx.Ava.UI.ViewModels
             FsGlobalAccessLogMode = config.System.FsGlobalAccessLogMode;
             OpenglDebugLevel = (int)config.Logger.GraphicsDebugLevel.Value;
 
+<<<<<<< HEAD
             MultiplayerModeIndex = (int)config.Multiplayer.Mode.Value;
+=======
+            NetworkInterfaceIndex = _networkInterfaces.Values.ToList().IndexOf(config.Multiplayer.LanInterfaceId.Value);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void SaveSettings()
@@ -494,10 +641,19 @@ namespace Ryujinx.Ava.UI.ViewModels
             if (_directoryChanged)
             {
                 List<string> gameDirs = new(GameDirectories);
+<<<<<<< HEAD
                 config.UI.GameDirs.Value = gameDirs;
             }
 
             config.UI.BaseStyle.Value = BaseStyleIndex == 0 ? "Light" : "Dark";
+=======
+                config.Ui.GameDirs.Value = gameDirs;
+            }
+
+            config.Ui.EnableCustomTheme.Value = EnableCustomTheme;
+            config.Ui.CustomThemePath.Value = CustomThemePath;
+            config.Ui.BaseStyle.Value = BaseStyleIndex == 0 ? "Light" : "Dark";
+>>>>>>> 1ec71635b (sync with main branch)
 
             // Input
             config.System.EnableDockedMode.Value = EnableDockedMode;
@@ -533,7 +689,10 @@ namespace Ryujinx.Ava.UI.ViewModels
             config.Graphics.EnableShaderCache.Value = EnableShaderCache;
             config.Graphics.EnableTextureRecompression.Value = EnableTextureRecompression;
             config.Graphics.EnableMacroHLE.Value = EnableMacroHLE;
+<<<<<<< HEAD
             config.Graphics.EnableColorSpacePassthrough.Value = EnableColorSpacePassthrough;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             config.Graphics.ResScale.Value = ResolutionScale == 4 ? -1 : ResolutionScale + 1;
             config.Graphics.ResScaleCustom.Value = CustomResolutionScale;
             config.Graphics.MaxAnisotropy.Value = MaxAnisotropy == 0 ? -1 : MathF.Pow(2, MaxAnisotropy);
@@ -578,7 +737,10 @@ namespace Ryujinx.Ava.UI.ViewModels
             config.Logger.GraphicsDebugLevel.Value = (GraphicsDebugLevel)OpenglDebugLevel;
 
             config.Multiplayer.LanInterfaceId.Value = _networkInterfaces[NetworkInterfaceList[NetworkInterfaceIndex]];
+<<<<<<< HEAD
             config.Multiplayer.Mode.Value = (MultiplayerMode)MultiplayerModeIndex;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
             config.ToFileFormat().SaveConfig(Program.ConfigurationPath);
 
@@ -589,7 +751,11 @@ namespace Ryujinx.Ava.UI.ViewModels
             _directoryChanged = false;
         }
 
+<<<<<<< HEAD
         private static void RevertIfNotSaved()
+=======
+        public void RevertIfNotSaved()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Program.ReloadConfig();
         }
@@ -611,4 +777,8 @@ namespace Ryujinx.Ava.UI.ViewModels
             CloseWindow?.Invoke();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

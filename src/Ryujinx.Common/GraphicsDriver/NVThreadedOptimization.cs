@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.GraphicsDriver.NVAPI;
+=======
+﻿using Ryujinx.Common.GraphicsDriver.NVAPI;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -97,6 +101,7 @@ namespace Ryujinx.Common.GraphicsDriver
 
             Check(NvAPI_DRS_LoadSettings(handle));
 
+<<<<<<< HEAD
             // Check if the profile already exists.
 
             int status = NvAPI_DRS_FindProfileByName(handle, new NvapiUnicodeString(ProfileName), out nint profileHandle);
@@ -108,15 +113,37 @@ namespace Ryujinx.Common.GraphicsDriver
                     Version = MakeVersion<NvdrsProfile>(1),
                     IsPredefined = 0,
                     GpuSupport = uint.MaxValue,
+=======
+            IntPtr profileHandle;
+
+            // Check if the profile already exists.
+
+            int status = NvAPI_DRS_FindProfileByName(handle, new NvapiUnicodeString(ProfileName), out profileHandle);
+
+            if (status != 0)
+            {
+                NvdrsProfile profile = new NvdrsProfile { 
+                    Version = MakeVersion<NvdrsProfile>(1), 
+                    IsPredefined = 0, 
+                    GpuSupport = uint.MaxValue 
+>>>>>>> 1ec71635b (sync with main branch)
                 };
                 profile.ProfileName.Set(ProfileName);
                 Check(NvAPI_DRS_CreateProfile(handle, ref profile, out profileHandle));
 
+<<<<<<< HEAD
                 NvdrsApplicationV4 application = new()
                 {
                     Version = MakeVersion<NvdrsApplicationV4>(4),
                     IsPredefined = 0,
                     Flags = 3, // IsMetro, IsCommandLine
+=======
+                NvdrsApplicationV4 application = new NvdrsApplicationV4
+                {
+                    Version = MakeVersion<NvdrsApplicationV4>(4),
+                    IsPredefined = 0,
+                    Flags = 3 // IsMetro, IsCommandLine
+>>>>>>> 1ec71635b (sync with main branch)
                 };
                 application.AppName.Set("Ryujinx.exe");
                 application.UserFriendlyName.Set("Ryujinx");
@@ -126,7 +153,11 @@ namespace Ryujinx.Common.GraphicsDriver
                 Check(NvAPI_DRS_CreateApplication(handle, profileHandle, ref application));
             }
 
+<<<<<<< HEAD
             NvdrsSetting setting = new()
+=======
+            NvdrsSetting setting = new NvdrsSetting
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 Version = MakeVersion<NvdrsSetting>(1),
                 SettingId = Nvapi.OglThreadControlId,
@@ -135,7 +166,11 @@ namespace Ryujinx.Common.GraphicsDriver
                 IsCurrentPredefined = 0,
                 IsPredefinedValid = 0,
                 CurrentValue = targetValue,
+<<<<<<< HEAD
                 PredefinedValue = targetValue,
+=======
+                PredefinedValue = targetValue
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             Check(NvAPI_DRS_SetSetting(handle, profileHandle, ref setting));
@@ -153,8 +188,15 @@ namespace Ryujinx.Common.GraphicsDriver
             {
                 return Marshal.GetDelegateForFunctionPointer<T>(ptr);
             }
+<<<<<<< HEAD
 
             return null;
+=======
+            else
+            {
+                return null;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

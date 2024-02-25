@@ -22,10 +22,17 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
 
         public KResourceLimit(KernelContext context) : base(context)
         {
+<<<<<<< HEAD
             _current = new long[(int)LimitableResource.Count];
             _limit = new long[(int)LimitableResource.Count];
             _current2 = new long[(int)LimitableResource.Count];
             _peak = new long[(int)LimitableResource.Count];
+=======
+            _current  = new long[(int)LimitableResource.Count];
+            _limit    = new long[(int)LimitableResource.Count];
+            _current2 = new long[(int)LimitableResource.Count];
+            _peak     = new long[(int)LimitableResource.Count];
+>>>>>>> 1ec71635b (sync with main branch)
 
             _lock = new object();
 
@@ -185,4 +192,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Common
             return (int)resource;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -34,4 +34,8 @@ namespace Ryujinx.Audio.Common
         /// </summary>
         public AudioDeviceState AudioOutState;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

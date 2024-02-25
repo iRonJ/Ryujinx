@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
 
 namespace Ryujinx.Graphics.Vic.Types
@@ -6,6 +7,16 @@ namespace Ryujinx.Graphics.Vic.Types
     {
         private readonly long _word0;
         private readonly long _word1;
+=======
+﻿using Ryujinx.Common.Utilities;
+
+namespace Ryujinx.Graphics.Vic.Types
+{
+    struct SlotSurfaceConfig
+    {
+        private long _word0;
+        private long _word1;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public PixelFormat SlotPixelFormat => (PixelFormat)_word0.Extract(0, 7);
         public int SlotChromaLocHoriz => (int)_word0.Extract(7, 2);

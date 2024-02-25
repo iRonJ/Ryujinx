@@ -11,4 +11,8 @@ namespace Ryujinx.HLE.HOS.Services.Hid
         public uint DiameterY;
         public uint Angle;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

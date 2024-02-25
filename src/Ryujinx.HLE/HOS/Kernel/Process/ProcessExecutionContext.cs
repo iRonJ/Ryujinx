@@ -7,6 +7,12 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
     {
         public ulong Pc => 0UL;
 
+<<<<<<< HEAD
+=======
+        public ulong CntfrqEl0 { get; set; }
+        public ulong CntpctEl0 => 0UL;
+
+>>>>>>> 1ec71635b (sync with main branch)
         public long TpidrEl0 { get; set; }
         public long TpidrroEl0 { get; set; }
 
@@ -40,4 +46,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
         {
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

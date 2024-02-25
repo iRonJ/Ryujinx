@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.HLE.HOS.Services.Time.Clock
@@ -8,7 +12,11 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
     {
         private const long NanoSecondsPerSecond = 1000000000;
 
+<<<<<<< HEAD
         public static readonly TimeSpanType Zero = new(0);
+=======
+        public static readonly TimeSpanType Zero = new TimeSpanType(0);
+>>>>>>> 1ec71635b (sync with main branch)
 
         public long NanoSeconds;
 
@@ -17,17 +25,29 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
             NanoSeconds = nanoSeconds;
         }
 
+<<<<<<< HEAD
         public readonly long ToSeconds()
+=======
+        public long ToSeconds()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return NanoSeconds / NanoSecondsPerSecond;
         }
 
+<<<<<<< HEAD
         public readonly TimeSpanType AddSeconds(long seconds)
+=======
+        public TimeSpanType AddSeconds(long seconds)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return new TimeSpanType(NanoSeconds + (seconds * NanoSecondsPerSecond));
         }
 
+<<<<<<< HEAD
         public readonly bool IsDaylightSavingTime()
+=======
+        public bool IsDaylightSavingTime()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return DateTime.UnixEpoch.AddSeconds(ToSeconds()).ToLocalTime().IsDaylightSavingTime();
         }
@@ -47,4 +67,8 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
             return FromSeconds((long)ticks / (long)frequency);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

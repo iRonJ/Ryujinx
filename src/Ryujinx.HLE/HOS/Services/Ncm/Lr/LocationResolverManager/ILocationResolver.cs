@@ -1,14 +1,26 @@
+<<<<<<< HEAD
 using LibHac.Ncm;
 using LibHac.Tools.FsSystem.NcaUtils;
 using Ryujinx.HLE.FileSystem;
 using System.Text;
+=======
+﻿using LibHac.Ncm;
+using LibHac.Tools.FsSystem.NcaUtils;
+using Ryujinx.HLE.FileSystem;
+using System.Text;
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.HLE.Utilities.StringUtils;
 
 namespace Ryujinx.HLE.HOS.Services.Ncm.Lr.LocationResolverManager
 {
     class ILocationResolver : IpcService
     {
+<<<<<<< HEAD
         private readonly StorageId _storageId;
+=======
+        private StorageId _storageId;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ILocationResolver(StorageId storageId)
         {
@@ -214,8 +226,13 @@ namespace Ryujinx.HLE.HOS.Services.Ncm.Lr.LocationResolverManager
 
         private void RedirectPath(ServiceCtx context, ulong titleId, int flag, NcaContentType contentType)
         {
+<<<<<<< HEAD
             string contentPath = ReadUtf8String(context);
             LocationEntry newLocation = new(contentPath, flag, titleId, contentType);
+=======
+            string        contentPath = ReadUtf8String(context);
+            LocationEntry newLocation = new LocationEntry(contentPath, flag, titleId, contentType);
+>>>>>>> 1ec71635b (sync with main branch)
 
             context.Device.System.ContentManager.RedirectLocation(newLocation, _storageId);
         }
@@ -223,14 +240,22 @@ namespace Ryujinx.HLE.HOS.Services.Ncm.Lr.LocationResolverManager
         private bool ResolvePath(ServiceCtx context, ulong titleId, NcaContentType contentType)
         {
             ContentManager contentManager = context.Device.System.ContentManager;
+<<<<<<< HEAD
             string contentPath = contentManager.GetInstalledContentPath(titleId, _storageId, NcaContentType.Program);
+=======
+            string         contentPath    = contentManager.GetInstalledContentPath(titleId, _storageId, NcaContentType.Program);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (!string.IsNullOrWhiteSpace(contentPath))
             {
                 ulong position = context.Request.RecvListBuff[0].Position;
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
                 ulong size = context.Request.RecvListBuff[0].Size;
 #pragma warning restore IDE0059
+=======
+                ulong size     = context.Request.RecvListBuff[0].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 byte[] contentPathBuffer = Encoding.UTF8.GetBytes(contentPath);
 
@@ -247,9 +272,13 @@ namespace Ryujinx.HLE.HOS.Services.Ncm.Lr.LocationResolverManager
         private void DeleteContentPath(ServiceCtx context, ulong titleId, NcaContentType contentType)
         {
             ContentManager contentManager = context.Device.System.ContentManager;
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             string contentPath = contentManager.GetInstalledContentPath(titleId, _storageId, NcaContentType.Manual);
 #pragma warning restore IDE0059
+=======
+            string         contentPath    = contentManager.GetInstalledContentPath(titleId, _storageId, NcaContentType.Manual);
+>>>>>>> 1ec71635b (sync with main branch)
 
             contentManager.ClearEntry(titleId, NcaContentType.Manual, _storageId);
         }

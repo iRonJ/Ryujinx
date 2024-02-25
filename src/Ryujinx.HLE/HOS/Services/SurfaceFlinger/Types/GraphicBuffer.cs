@@ -9,6 +9,7 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
     struct GraphicBuffer : IFlattenable
     {
         public GraphicBufferHeader Header;
+<<<<<<< HEAD
         public NvGraphicBuffer Buffer;
 
         public readonly int Width => Header.Width;
@@ -17,6 +18,16 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         public readonly int Usage => Header.Usage;
 
         public readonly Rect ToRect()
+=======
+        public NvGraphicBuffer     Buffer;
+
+        public int Width => Header.Width;
+        public int Height => Header.Height;
+        public PixelFormat Format => Header.Format;
+        public int Usage => Header.Usage;
+
+        public Rect ToRect()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return new Rect(Width, Height);
         }
@@ -41,34 +52,62 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             Buffer = parcel.ReadUnmanagedType<NvGraphicBuffer>();
         }
 
+<<<<<<< HEAD
         public readonly void IncrementNvMapHandleRefCount(ulong pid)
         {
             NvMapDeviceFile.IncrementMapRefCount(pid, Buffer.NvMapId);
 
             for (int i = 0; i < NvGraphicBufferSurfaceArray.Length; i++)
+=======
+        public void IncrementNvMapHandleRefCount(ulong pid)
+        {
+            NvMapDeviceFile.IncrementMapRefCount(pid, Buffer.NvMapId);
+
+            for (int i = 0; i < Buffer.Surfaces.Length; i++)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 NvMapDeviceFile.IncrementMapRefCount(pid, Buffer.Surfaces[i].NvMapHandle);
             }
         }
 
+<<<<<<< HEAD
         public readonly void DecrementNvMapHandleRefCount(ulong pid)
         {
             NvMapDeviceFile.DecrementMapRefCount(pid, Buffer.NvMapId);
 
             for (int i = 0; i < NvGraphicBufferSurfaceArray.Length; i++)
+=======
+        public void DecrementNvMapHandleRefCount(ulong pid)
+        {
+            NvMapDeviceFile.DecrementMapRefCount(pid, Buffer.NvMapId);
+
+            for (int i = 0; i < Buffer.Surfaces.Length; i++)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 NvMapDeviceFile.DecrementMapRefCount(pid, Buffer.Surfaces[i].NvMapHandle);
             }
         }
 
+<<<<<<< HEAD
         public readonly uint GetFlattenedSize()
+=======
+        public uint GetFlattenedSize()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return (uint)Unsafe.SizeOf<GraphicBuffer>();
         }
 
+<<<<<<< HEAD
         public readonly uint GetFdCount()
+=======
+        public uint GetFdCount()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return 0;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

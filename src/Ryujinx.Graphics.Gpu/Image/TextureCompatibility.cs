@@ -2,8 +2,11 @@ using Ryujinx.Common;
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.Texture;
 using System;
+<<<<<<< HEAD
 using System.Diagnostics;
 using System.Numerics;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Gpu.Image
 {
@@ -37,7 +40,11 @@ namespace Ryujinx.Graphics.Gpu.Image
             Astc10x8,
             Astc10x10,
             Astc12x10,
+<<<<<<< HEAD
             Astc12x12,
+=======
+            Astc12x12
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -228,7 +235,11 @@ namespace Ryujinx.Graphics.Gpu.Image
         {
             // D32F and R32F texture have the same representation internally,
             // however the R32F format is used to sample from depth textures.
+<<<<<<< HEAD
             if (IsValidDepthAsColorAlias(lhs.FormatInfo.Format, rhs.FormatInfo.Format) && (forSampler || depthAlias))
+=======
+            if (lhs.FormatInfo.Format == Format.D32Float && rhs.FormatInfo.Format == Format.R32Float && (forSampler || depthAlias))
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return TextureMatchQuality.FormatAlias;
             }
@@ -241,9 +252,20 @@ namespace Ryujinx.Graphics.Gpu.Image
                 {
                     return TextureMatchQuality.FormatAlias;
                 }
+<<<<<<< HEAD
                 else if ((lhs.FormatInfo.Format == Format.D24UnormS8Uint ||
                           lhs.FormatInfo.Format == Format.S8UintD24Unorm ||
                           lhs.FormatInfo.Format == Format.X8UintD24Unorm) && rhs.FormatInfo.Format == Format.B8G8R8A8Unorm)
+=======
+
+                if (lhs.FormatInfo.Format == Format.D16Unorm && rhs.FormatInfo.Format == Format.R16Unorm)
+                {
+                    return TextureMatchQuality.FormatAlias;
+                }
+
+                if ((lhs.FormatInfo.Format == Format.D24UnormS8Uint ||
+                     lhs.FormatInfo.Format == Format.S8UintD24Unorm) && rhs.FormatInfo.Format == Format.B8G8R8A8Unorm)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     return TextureMatchQuality.FormatAlias;
                 }
@@ -342,6 +364,7 @@ namespace Ryujinx.Graphics.Gpu.Image
 
             if (lhs.FormatInfo.BytesPerPixel != rhs.FormatInfo.BytesPerPixel && IsIncompatibleFormatAliasingAllowed(lhs.FormatInfo, rhs.FormatInfo))
             {
+<<<<<<< HEAD
                 // If the formats are incompatible, but the texture strides match,
                 // we might allow them to be copy compatible depending on the format.
                 // The strides are aligned because the format with higher bytes per pixel
@@ -356,6 +379,9 @@ namespace Ryujinx.Graphics.Gpu.Image
                 int rhsStride = BitUtils.AlignUp(rhsSize.Width * rhs.FormatInfo.BytesPerPixel, alignment);
 
                 alignedWidthMatches = lhsStride == rhsStride;
+=======
+                alignedWidthMatches = lhsSize.Width * lhs.FormatInfo.BytesPerPixel == rhsSize.Width * rhs.FormatInfo.BytesPerPixel;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             TextureViewCompatibility result = TextureViewCompatibility.Full;
@@ -384,6 +410,7 @@ namespace Ryujinx.Graphics.Gpu.Image
 
                 return stride == rhs.Stride ? TextureViewCompatibility.CopyOnly : TextureViewCompatibility.LayoutIncompatible;
             }
+<<<<<<< HEAD
             else if (lhs.Target.IsMultisample() != rhs.Target.IsMultisample() && alignedWidthMatches && lhsAlignedSize.Height == rhsAlignedSize.Height)
             {
                 // Copy between multisample and non-multisample textures with mismatching size is allowed,
@@ -391,6 +418,8 @@ namespace Ryujinx.Graphics.Gpu.Image
 
                 return TextureViewCompatibility.CopyOnly;
             }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             else
             {
                 return TextureViewCompatibility.LayoutIncompatible;
@@ -558,8 +587,12 @@ namespace Ryujinx.Graphics.Gpu.Image
                     depth,
                     lhs.FormatInfo.BlockHeight,
                     lhs.GobBlocksInY,
+<<<<<<< HEAD
                     lhs.GobBlocksInZ,
                     level);
+=======
+                    lhs.GobBlocksInZ);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return gobBlocksInY == rhs.GobBlocksInY &&
                        gobBlocksInZ == rhs.GobBlocksInZ;
@@ -605,8 +638,12 @@ namespace Ryujinx.Graphics.Gpu.Image
                     lhsDepth,
                     lhs.FormatInfo.BlockHeight,
                     lhs.GobBlocksInY,
+<<<<<<< HEAD
                     lhs.GobBlocksInZ,
                     lhsLevel);
+=======
+                    lhs.GobBlocksInZ);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 int rhsHeight = Math.Max(1, rhs.Height >> rhsLevel);
                 int rhsDepth = Math.Max(1, rhs.GetDepth() >> rhsLevel);
@@ -616,8 +653,12 @@ namespace Ryujinx.Graphics.Gpu.Image
                     rhsDepth,
                     rhs.FormatInfo.BlockHeight,
                     rhs.GobBlocksInY,
+<<<<<<< HEAD
                     rhs.GobBlocksInZ,
                     rhsLevel);
+=======
+                    rhs.GobBlocksInZ);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return lhsGobBlocksInY == rhsGobBlocksInY &&
                        lhsGobBlocksInZ == rhsGobBlocksInZ;
@@ -642,6 +683,7 @@ namespace Ryujinx.Graphics.Gpu.Image
 
             if (lhsFormat.Format.IsDepthOrStencil() || rhsFormat.Format.IsDepthOrStencil())
             {
+<<<<<<< HEAD
                 bool forSampler = flags.HasFlag(TextureSearchFlags.ForSampler);
                 bool depthAlias = flags.HasFlag(TextureSearchFlags.DepthAlias);
 
@@ -663,6 +705,14 @@ namespace Ryujinx.Graphics.Gpu.Image
                 {
                     return TextureViewCompatibility.Incompatible;
                 }
+=======
+                return FormatMatches(lhs, rhs, flags.HasFlag(TextureSearchFlags.ForSampler), flags.HasFlag(TextureSearchFlags.DepthAlias)) switch
+                {
+                    TextureMatchQuality.Perfect => TextureViewCompatibility.Full,
+                    TextureMatchQuality.FormatAlias => TextureViewCompatibility.FormatAlias,
+                    _ => TextureViewCompatibility.Incompatible
+                };
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (IsFormatHostIncompatible(lhs, caps) || IsFormatHostIncompatible(rhs, caps))
@@ -692,6 +742,7 @@ namespace Ryujinx.Graphics.Gpu.Image
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Checks if it's valid to alias a color format as a depth format.
         /// </summary>
         /// <param name="lhsFormat">Source format to be checked</param>
@@ -716,6 +767,8 @@ namespace Ryujinx.Graphics.Gpu.Image
         }
 
         /// <summary>
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         /// Checks if aliasing of two formats that would normally be considered incompatible be allowed,
         /// using copy dependencies.
         /// </summary>
@@ -734,8 +787,12 @@ namespace Ryujinx.Graphics.Gpu.Image
                 (lhsFormat, rhsFormat) = (rhsFormat, lhsFormat);
             }
 
+<<<<<<< HEAD
             return (lhsFormat.Format == Format.R8G8B8A8Unorm && rhsFormat.Format == Format.R32G32B32A32Float) ||
                    (lhsFormat.Format == Format.R8Unorm && rhsFormat.Format == Format.R8G8B8A8Unorm);
+=======
+            return lhsFormat.Format == Format.R8Unorm && rhsFormat.Format == Format.R8G8B8A8Unorm;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -840,6 +897,7 @@ namespace Ryujinx.Graphics.Gpu.Image
         /// <returns>Format class</returns>
         private static FormatClass GetFormatClass(Format format)
         {
+<<<<<<< HEAD
             return format switch
             {
                 Format.Bc1RgbaSrgb or Format.Bc1RgbaUnorm => FormatClass.Bc1Rgba,
@@ -870,3 +928,82 @@ namespace Ryujinx.Graphics.Gpu.Image
         }
     }
 }
+=======
+            switch (format)
+            {
+                case Format.Bc1RgbaSrgb:
+                case Format.Bc1RgbaUnorm:
+                    return FormatClass.Bc1Rgba;
+                case Format.Bc2Srgb:
+                case Format.Bc2Unorm:
+                    return FormatClass.Bc2;
+                case Format.Bc3Srgb:
+                case Format.Bc3Unorm:
+                    return FormatClass.Bc3;
+                case Format.Bc4Snorm:
+                case Format.Bc4Unorm:
+                    return FormatClass.Bc4;
+                case Format.Bc5Snorm:
+                case Format.Bc5Unorm:
+                    return FormatClass.Bc5;
+                case Format.Bc6HSfloat:
+                case Format.Bc6HUfloat:
+                    return FormatClass.Bc6;
+                case Format.Bc7Srgb:
+                case Format.Bc7Unorm:
+                    return FormatClass.Bc7;
+                case Format.Etc2RgbSrgb:
+                case Format.Etc2RgbUnorm:
+                    return FormatClass.Etc2Rgb;
+                case Format.Etc2RgbaSrgb:
+                case Format.Etc2RgbaUnorm:
+                    return FormatClass.Etc2Rgba;
+                case Format.Astc4x4Srgb:
+                case Format.Astc4x4Unorm:
+                    return FormatClass.Astc4x4;
+                case Format.Astc5x4Srgb:
+                case Format.Astc5x4Unorm:
+                    return FormatClass.Astc5x4;
+                case Format.Astc5x5Srgb:
+                case Format.Astc5x5Unorm:
+                    return FormatClass.Astc5x5;
+                case Format.Astc6x5Srgb:
+                case Format.Astc6x5Unorm:
+                    return FormatClass.Astc6x5;
+                case Format.Astc6x6Srgb:
+                case Format.Astc6x6Unorm:
+                    return FormatClass.Astc6x6;
+                case Format.Astc8x5Srgb:
+                case Format.Astc8x5Unorm:
+                    return FormatClass.Astc8x5;
+                case Format.Astc8x6Srgb:
+                case Format.Astc8x6Unorm:
+                    return FormatClass.Astc8x6;
+                case Format.Astc8x8Srgb:
+                case Format.Astc8x8Unorm:
+                    return FormatClass.Astc8x8;
+                case Format.Astc10x5Srgb:
+                case Format.Astc10x5Unorm:
+                    return FormatClass.Astc10x5;
+                case Format.Astc10x6Srgb:
+                case Format.Astc10x6Unorm:
+                    return FormatClass.Astc10x6;
+                case Format.Astc10x8Srgb:
+                case Format.Astc10x8Unorm:
+                    return FormatClass.Astc10x8;
+                case Format.Astc10x10Srgb:
+                case Format.Astc10x10Unorm:
+                    return FormatClass.Astc10x10;
+                case Format.Astc12x10Srgb:
+                case Format.Astc12x10Unorm:
+                    return FormatClass.Astc12x10;
+                case Format.Astc12x12Srgb:
+                case Format.Astc12x12Unorm:
+                    return FormatClass.Astc12x12;
+            }
+
+            return FormatClass.Unclassified;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 #nullable enable
 using Ryujinx.Common.Logging;
+=======
+﻿#nullable enable
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -19,6 +23,7 @@ namespace Ryujinx.Common.Utilities
         public override TEnum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var enumValue = reader.GetString();
+<<<<<<< HEAD
 
             if (Enum.TryParse(enumValue, out TEnum value))
             {
@@ -27,6 +32,14 @@ namespace Ryujinx.Common.Utilities
 
             Logger.Warning?.Print(LogClass.Configuration, $"Failed to parse enum value \"{enumValue}\" for {typeof(TEnum)}, using default \"{default(TEnum)}\"");
             return default;
+=======
+            if (string.IsNullOrEmpty(enumValue))
+            {
+                return default;
+            }
+
+            return Enum.Parse<TEnum>(enumValue);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void Write(Utf8JsonWriter writer, TEnum value, JsonSerializerOptions options)

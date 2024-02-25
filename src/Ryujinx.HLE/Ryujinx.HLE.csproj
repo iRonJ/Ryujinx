@@ -1,7 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+<<<<<<< HEAD
     <TargetFramework>net8.0</TargetFramework>
+=======
+    <TargetFramework>net7.0</TargetFramework>
+>>>>>>> 1ec71635b (sync with main branch)
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="LibHac" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" />
     <PackageReference Include="MsgPack.Cli" />
@@ -29,6 +34,21 @@
     <PackageReference Include="NetCoreServer" />
   </ItemGroup>
 
+=======
+    <PackageReference Include="Concentus" />
+    <PackageReference Include="LibHac" />
+    <PackageReference Include="MsgPack.Cli" />
+    <PackageReference Include="SixLabors.ImageSharp" />
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
+  </ItemGroup>
+
+  <!-- Due to Concentus. -->
+  <PropertyGroup>
+    <NoWarn>NU1605</NoWarn>
+  </PropertyGroup>
+
+>>>>>>> 1ec71635b (sync with main branch)
   <ItemGroup>
     <None Remove="Homebrew.npdm" />
     <None Remove="HOS\Applets\SoftwareKeyboard\Resources\Logo_Ryujinx.png" />

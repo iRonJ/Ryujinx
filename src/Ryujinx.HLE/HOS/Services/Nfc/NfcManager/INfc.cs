@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Nfc.NfcManager
 {
     class INfc : IpcService
     {
+<<<<<<< HEAD
         private readonly NfcPermissionLevel _permissionLevel;
+=======
+        private NfcPermissionLevel _permissionLevel;
+>>>>>>> 1ec71635b (sync with main branch)
         private State _state;
 
         public INfc(NfcPermissionLevel permissionLevel)
@@ -40,7 +48,11 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.NfcManager
         [CommandCmif(2)]
         [CommandCmif(402)] // 4.0.0+
         // GetState() -> u32
+<<<<<<< HEAD
         public ResultCode GetState(ServiceCtx context)
+=======
+        public ResultCode GetState(ServiceCtx context) 
+>>>>>>> 1ec71635b (sync with main branch)
         {
             context.ResponseData.Write((int)_state);
 
@@ -60,4 +72,8 @@ namespace Ryujinx.HLE.HOS.Services.Nfc.NfcManager
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

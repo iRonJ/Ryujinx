@@ -26,7 +26,11 @@ namespace ARMeilleure.Instructions
             SetIntOrZR(context, op.Rd, Const(address));
         }
 
+<<<<<<< HEAD
         public static void Ldr(ArmEmitterContext context) => EmitLdr(context, signed: false);
+=======
+        public static void Ldr(ArmEmitterContext context)  => EmitLdr(context, signed: false);
+>>>>>>> 1ec71635b (sync with main branch)
         public static void Ldrs(ArmEmitterContext context) => EmitLdr(context, signed: true);
 
         private static void EmitLdr(ArmEmitterContext context, bool signed)
@@ -89,7 +93,11 @@ namespace ARMeilleure.Instructions
             Operand address = GetAddress(context);
             Operand address2 = GetAddress(context, 1L << op.Size);
 
+<<<<<<< HEAD
             EmitLoad(op.Rt, address);
+=======
+            EmitLoad(op.Rt,  address);
+>>>>>>> 1ec71635b (sync with main branch)
             EmitLoad(op.Rt2, address2);
 
             EmitWBackIfNeeded(context, address);
@@ -113,7 +121,11 @@ namespace ARMeilleure.Instructions
             Operand address = GetAddress(context);
             Operand address2 = GetAddress(context, 1L << op.Size);
 
+<<<<<<< HEAD
             EmitStore(context, address, op.Rt, op.Size);
+=======
+            EmitStore(context, address,  op.Rt,  op.Size);
+>>>>>>> 1ec71635b (sync with main branch)
             EmitStore(context, address2, op.Rt2, op.Size);
 
             EmitWBackIfNeeded(context, address);
@@ -126,6 +138,7 @@ namespace ARMeilleure.Instructions
             switch (context.CurrOp)
             {
                 case OpCodeMemImm op:
+<<<<<<< HEAD
                     {
                         address = context.Copy(GetIntOrSP(context, op.Rn));
 
@@ -162,6 +175,44 @@ namespace ARMeilleure.Instructions
 
                         break;
                     }
+=======
+                {
+                    address = context.Copy(GetIntOrSP(context, op.Rn));
+
+                    // Pre-indexing.
+                    if (!op.PostIdx)
+                    {
+                        address = context.Add(address, Const(op.Immediate + addend));
+                    }
+                    else if (addend != 0)
+                    {
+                        address = context.Add(address, Const(addend));
+                    }
+
+                    break;
+                }
+
+                case OpCodeMemReg op:
+                {
+                    Operand n = GetIntOrSP(context, op.Rn);
+
+                    Operand m = GetExtendedM(context, op.Rm, op.IntType);
+
+                    if (op.Shift)
+                    {
+                        m = context.ShiftLeft(m, Const(op.Size));
+                    }
+
+                    address = context.Add(n, m);
+
+                    if (addend != 0)
+                    {
+                        address = context.Add(address, Const(addend));
+                    }
+
+                    break;
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return address;
@@ -181,4 +232,8 @@ namespace ARMeilleure.Instructions
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

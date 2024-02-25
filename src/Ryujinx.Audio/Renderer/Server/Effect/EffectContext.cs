@@ -120,4 +120,8 @@ namespace Ryujinx.Audio.Renderer.Server.Effect
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using OpenTK.Graphics.OpenGL;
+=======
+﻿using OpenTK.Graphics.OpenGL;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Memory;
 using Ryujinx.Graphics.GAL;
 using System;
@@ -7,7 +11,11 @@ namespace Ryujinx.Graphics.OpenGL.Image
 {
     class TextureBuffer : TextureBase, ITexture
     {
+<<<<<<< HEAD
         private readonly OpenGLRenderer _renderer;
+=======
+        private OpenGLRenderer _renderer;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _bufferOffset;
         private int _bufferSize;
         private int _bufferCount;
@@ -58,7 +66,11 @@ namespace Ryujinx.Graphics.OpenGL.Image
         {
             var dataSpan = data.AsSpan();
 
+<<<<<<< HEAD
             Buffer.SetData(_buffer, _bufferOffset, dataSpan[..Math.Min(dataSpan.Length, _bufferSize)]);
+=======
+            Buffer.SetData(_buffer, _bufferOffset, dataSpan.Slice(0, Math.Min(dataSpan.Length, _bufferSize)));
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void SetData(SpanOrArray<byte> data, int layer, int level)

@@ -16,7 +16,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Common
             public bool InUse;
         }
 
+<<<<<<< HEAD
         private readonly PoolItem[] _pool = new PoolItem[PoolEntries];
+=======
+        private PoolItem[] _pool = new PoolItem[PoolEntries];
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ArrayPtr<T> Allocate<T>(int length) where T : unmanaged
         {
@@ -91,4 +95,8 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Common
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

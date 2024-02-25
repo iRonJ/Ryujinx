@@ -4,7 +4,11 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class FunctionParameter : BaseNode
     {
+<<<<<<< HEAD
         private readonly string _number;
+=======
+        private string _number;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public FunctionParameter(string number) : base(NodeType.FunctionParameter)
         {
@@ -21,4 +25,8 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

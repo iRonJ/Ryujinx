@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 namespace Ryujinx.Horizon.Sdk.Ncm
 {
     public readonly struct ApplicationId
+=======
+﻿namespace Ryujinx.Horizon.Sdk.Ncm
+{
+    readonly struct ApplicationId
+>>>>>>> 1ec71635b (sync with main branch)
     {
         public readonly ulong Id;
 
@@ -49,4 +55,8 @@ namespace Ryujinx.Horizon.Sdk.Ncm
             return $"0x{Id:x}";
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

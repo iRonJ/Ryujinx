@@ -15,4 +15,8 @@ namespace Ryujinx.Common.Utilities
             return new UInt128((ulong)Random.Shared.NextInt64(), (ulong)Random.Shared.NextInt64());
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

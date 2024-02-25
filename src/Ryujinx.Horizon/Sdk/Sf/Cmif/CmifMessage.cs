@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
+=======
+﻿using Ryujinx.Horizon.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
 using System;
 using System.Runtime.CompilerServices;
@@ -8,7 +12,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
 {
     static class CmifMessage
     {
+<<<<<<< HEAD
         public const uint CmifInHeaderMagic = 0x49434653; // SFCI
+=======
+        public const uint CmifInHeaderMagic  = 0x49434653; // SFCI
+>>>>>>> 1ec71635b (sync with main branch)
         public const uint CmifOutHeaderMagic = 0x4f434653; // SFCO
 
         public static CmifRequest CreateRequest(Span<byte> output, CmifRequestFormat format)
@@ -21,10 +29,17 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
             }
 
             totalSize += Unsafe.SizeOf<CmifInHeader>() + format.DataSize;
+<<<<<<< HEAD
             totalSize = (totalSize + 1) & ~1;
 
             int outPointerSizeTableOffset = totalSize;
             int outPointerSizeTableSize = format.OutAutoBuffersCount + format.OutPointersCount;
+=======
+            totalSize  = (totalSize + 1) & ~1;
+
+            int outPointerSizeTableOffset = totalSize;
+            int outPointerSizeTableSize   = format.OutAutoBuffersCount + format.OutPointersCount;
+>>>>>>> 1ec71635b (sync with main branch)
 
             totalSize += sizeof(ushort) * outPointerSizeTableSize;
 
@@ -32,6 +47,7 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
 
             CmifRequest request = new()
             {
+<<<<<<< HEAD
                 Hipc = HipcMessage.WriteMessage(output, new HipcMetadata
                 {
                     Type = format.Context != 0 ? (int)CommandType.RequestWithContext : (int)CommandType.Request,
@@ -45,6 +61,21 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
                     CopyHandlesCount = format.HandlesCount,
                     MoveHandlesCount = 0,
                 }),
+=======
+                Hipc = HipcMessage.WriteMessage(output, new HipcMetadata()
+                {
+                    Type                 = format.Context != 0 ? (int)CommandType.RequestWithContext : (int)CommandType.Request,
+                    SendStaticsCount     = format.InAutoBuffersCount + format.InPointersCount,
+                    SendBuffersCount     = format.InAutoBuffersCount + format.InBuffersCount,
+                    ReceiveBuffersCount  = format.OutAutoBuffersCount + format.OutBuffersCount,
+                    ExchangeBuffersCount = format.InOutBuffersCount,
+                    DataWordsCount       = rawDataSizeInWords,
+                    ReceiveStaticsCount  = outPointerSizeTableSize + format.OutFixedPointersCount,
+                    SendPid              = format.SendPid,
+                    CopyHandlesCount     = format.HandlesCount,
+                    MoveHandlesCount     = 0
+                })
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             Span<uint> data = request.Hipc.DataWords;
@@ -55,6 +86,7 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
 
                 int payloadSize = Unsafe.SizeOf<CmifInHeader>() + format.DataSize;
 
+<<<<<<< HEAD
                 domainHeader = new CmifDomainInHeader
                 {
                     Type = CmifDomainRequestType.SendMessage,
@@ -63,6 +95,16 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
                     ObjectId = format.ObjectId,
                     Padding = 0,
                     Token = format.Context,
+=======
+                domainHeader = new CmifDomainInHeader()
+                {
+                    Type         = CmifDomainRequestType.SendMessage,
+                    ObjectsCount = (byte)format.ObjectsCount,
+                    DataSize     = (ushort)payloadSize,
+                    ObjectId     = format.ObjectId,
+                    Padding      = 0,
+                    Token        = format.Context
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 data = data[(Unsafe.SizeOf<CmifDomainInHeader>() / sizeof(uint))..];
@@ -72,12 +114,21 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
 
             ref CmifInHeader header = ref MemoryMarshal.Cast<uint, CmifInHeader>(data)[0];
 
+<<<<<<< HEAD
             header = new CmifInHeader
             {
                 Magic = CmifInHeaderMagic,
                 Version = format.Context != 0 ? 1u : 0u,
                 CommandId = format.RequestId,
                 Token = format.ObjectId != 0 ? 0u : format.Context,
+=======
+            header = new CmifInHeader()
+            {
+                Magic     = CmifInHeaderMagic,
+                Version   = format.Context != 0 ? 1u : 0u,
+                CommandId = format.RequestId,
+                Token     = format.ObjectId != 0 ? 0u : format.Context
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             request.Data = MemoryMarshal.Cast<uint, byte>(data)[Unsafe.SizeOf<CmifInHeader>()..];
@@ -86,7 +137,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
 
             Span<byte> outPointerTable = MemoryMarshal.Cast<uint, byte>(request.Hipc.DataWords)[(outPointerSizeTableOffset - paddingSizeBefore)..];
 
+<<<<<<< HEAD
             request.OutPointerSizes = MemoryMarshal.Cast<byte, ushort>(outPointerTable);
+=======
+            request.OutPointerSizes   = MemoryMarshal.Cast<byte, ushort>(outPointerTable);
+>>>>>>> 1ec71635b (sync with main branch)
             request.ServerPointerSize = format.ServerPointerSize;
 
             return request;
@@ -96,12 +151,20 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
         {
             HipcMessage responseMessage = new(input);
 
+<<<<<<< HEAD
             Span<byte> data = MemoryMarshal.Cast<uint, byte>(responseMessage.Data.DataWords);
+=======
+            Span<byte> data    = MemoryMarshal.Cast<uint, byte>(responseMessage.Data.DataWords);
+>>>>>>> 1ec71635b (sync with main branch)
             Span<uint> objects = Span<uint>.Empty;
 
             if (isDomain)
             {
+<<<<<<< HEAD
                 data = data[Unsafe.SizeOf<CmifDomainOutHeader>()..];
+=======
+                data    = data[Unsafe.SizeOf<CmifDomainOutHeader>()..];
+>>>>>>> 1ec71635b (sync with main branch)
                 objects = MemoryMarshal.Cast<byte, uint>(data[(Unsafe.SizeOf<CmifOutHeader>() + size)..]);
             }
 
@@ -121,15 +184,28 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
                 return header.Result;
             }
 
+<<<<<<< HEAD
             response = new CmifResponse
             {
                 Data = data[Unsafe.SizeOf<CmifOutHeader>()..],
                 Objects = objects,
                 CopyHandles = responseMessage.Data.CopyHandles,
                 MoveHandles = responseMessage.Data.MoveHandles,
+=======
+            response = new CmifResponse()
+            {
+                Data        = data[Unsafe.SizeOf<CmifOutHeader>()..],
+                Objects     = objects,
+                CopyHandles = responseMessage.Data.CopyHandles,
+                MoveHandles = responseMessage.Data.MoveHandles
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             return Result.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

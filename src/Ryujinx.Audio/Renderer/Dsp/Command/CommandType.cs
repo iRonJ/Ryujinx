@@ -32,6 +32,12 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
         LimiterVersion2,
         GroupedBiquadFilter,
         CaptureBuffer,
+<<<<<<< HEAD
         Compressor,
     }
 }
+=======
+        Compressor
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -3,6 +3,10 @@ using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
 using System;
 using System.Diagnostics;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitMemoryExHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
@@ -14,10 +18,17 @@ namespace ARMeilleure.Instructions
         [Flags]
         private enum AccessType
         {
+<<<<<<< HEAD
             None = 0,
             Ordered = 1,
             Exclusive = 2,
             OrderedEx = Ordered | Exclusive,
+=======
+            None      = 0,
+            Ordered   = 1,
+            Exclusive = 2,
+            OrderedEx = Ordered | Exclusive
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void Clrex(ArmEmitterContext context)
@@ -33,10 +44,17 @@ namespace ARMeilleure.Instructions
         public static void Dmb(ArmEmitterContext context) => EmitBarrier(context);
         public static void Dsb(ArmEmitterContext context) => EmitBarrier(context);
 
+<<<<<<< HEAD
         public static void Ldar(ArmEmitterContext context) => EmitLdr(context, AccessType.Ordered);
         public static void Ldaxr(ArmEmitterContext context) => EmitLdr(context, AccessType.OrderedEx);
         public static void Ldxr(ArmEmitterContext context) => EmitLdr(context, AccessType.Exclusive);
         public static void Ldxp(ArmEmitterContext context) => EmitLdp(context, AccessType.Exclusive);
+=======
+        public static void Ldar(ArmEmitterContext context)  => EmitLdr(context, AccessType.Ordered);
+        public static void Ldaxr(ArmEmitterContext context) => EmitLdr(context, AccessType.OrderedEx);
+        public static void Ldxr(ArmEmitterContext context)  => EmitLdr(context, AccessType.Exclusive);
+        public static void Ldxp(ArmEmitterContext context)  => EmitLdp(context, AccessType.Exclusive);
+>>>>>>> 1ec71635b (sync with main branch)
         public static void Ldaxp(ArmEmitterContext context) => EmitLdp(context, AccessType.OrderedEx);
 
         private static void EmitLdr(ArmEmitterContext context, AccessType accType)
@@ -53,7 +71,11 @@ namespace ARMeilleure.Instructions
         {
             OpCodeMemEx op = (OpCodeMemEx)context.CurrOp;
 
+<<<<<<< HEAD
             bool ordered = (accType & AccessType.Ordered) != 0;
+=======
+            bool ordered   = (accType & AccessType.Ordered)   != 0;
+>>>>>>> 1ec71635b (sync with main branch)
             bool exclusive = (accType & AccessType.Exclusive) != 0;
 
             if (ordered)
@@ -79,17 +101,28 @@ namespace ARMeilleure.Instructions
 
                     Operand valueHigh = context.ShiftRightUI(value, Const(32));
 
+<<<<<<< HEAD
                     SetIntOrZR(context, op.Rt, valueLow);
+=======
+                    SetIntOrZR(context, op.Rt,  valueLow);
+>>>>>>> 1ec71635b (sync with main branch)
                     SetIntOrZR(context, op.Rt2, valueHigh);
                 }
                 else if (op.Size == 3)
                 {
                     Operand value = EmitLoadExclusive(context, address, exclusive, 4);
 
+<<<<<<< HEAD
                     Operand valueLow = context.VectorExtract(OperandType.I64, value, 0);
                     Operand valueHigh = context.VectorExtract(OperandType.I64, value, 1);
 
                     SetIntOrZR(context, op.Rt, valueLow);
+=======
+                    Operand valueLow  = context.VectorExtract(OperandType.I64, value, 0);
+                    Operand valueHigh = context.VectorExtract(OperandType.I64, value, 1);
+
+                    SetIntOrZR(context, op.Rt,  valueLow);
+>>>>>>> 1ec71635b (sync with main branch)
                     SetIntOrZR(context, op.Rt2, valueHigh);
                 }
                 else
@@ -111,10 +144,17 @@ namespace ARMeilleure.Instructions
             // Memory Prefetch, execute as no-op.
         }
 
+<<<<<<< HEAD
         public static void Stlr(ArmEmitterContext context) => EmitStr(context, AccessType.Ordered);
         public static void Stlxr(ArmEmitterContext context) => EmitStr(context, AccessType.OrderedEx);
         public static void Stxr(ArmEmitterContext context) => EmitStr(context, AccessType.Exclusive);
         public static void Stxp(ArmEmitterContext context) => EmitStp(context, AccessType.Exclusive);
+=======
+        public static void Stlr(ArmEmitterContext context)  => EmitStr(context, AccessType.Ordered);
+        public static void Stlxr(ArmEmitterContext context) => EmitStr(context, AccessType.OrderedEx);
+        public static void Stxr(ArmEmitterContext context)  => EmitStr(context, AccessType.Exclusive);
+        public static void Stxp(ArmEmitterContext context)  => EmitStp(context, AccessType.Exclusive);
+>>>>>>> 1ec71635b (sync with main branch)
         public static void Stlxp(ArmEmitterContext context) => EmitStp(context, AccessType.OrderedEx);
 
         private static void EmitStr(ArmEmitterContext context, AccessType accType)
@@ -131,7 +171,11 @@ namespace ARMeilleure.Instructions
         {
             OpCodeMemEx op = (OpCodeMemEx)context.CurrOp;
 
+<<<<<<< HEAD
             bool ordered = (accType & AccessType.Ordered) != 0;
+=======
+            bool ordered   = (accType & AccessType.Ordered)   != 0;
+>>>>>>> 1ec71635b (sync with main branch)
             bool exclusive = (accType & AccessType.Exclusive) != 0;
 
             Operand address = context.Copy(GetIntOrSP(context, op.Rn));
@@ -152,8 +196,13 @@ namespace ARMeilleure.Instructions
                 }
                 else /* if (op.Size == 3) */
                 {
+<<<<<<< HEAD
                     value = context.VectorInsert(context.VectorZero(), t, 0);
                     value = context.VectorInsert(value, t2, 1);
+=======
+                    value = context.VectorInsert(context.VectorZero(), t,  0);
+                    value = context.VectorInsert(value,                t2, 1);
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 EmitStoreExclusive(context, address, value, exclusive, op.Size + 1, op.Rs, a32: false);
@@ -174,4 +223,8 @@ namespace ARMeilleure.Instructions
             context.MemoryBarrier();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

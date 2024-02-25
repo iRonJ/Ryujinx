@@ -19,6 +19,12 @@ namespace Ryujinx.HLE.HOS.SystemState
         LatinAmericanSpanish,
         SimplifiedChinese,
         TraditionalChinese,
+<<<<<<< HEAD
         BrazilianPortuguese,
     }
 }
+=======
+        BrazilianPortuguese
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

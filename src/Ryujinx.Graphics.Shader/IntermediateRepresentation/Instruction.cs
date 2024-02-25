@@ -79,6 +79,13 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         ImageAtomic,
         IsNan,
         Load,
+<<<<<<< HEAD
+=======
+        LoadGlobal,
+        LoadLocal,
+        LoadShared,
+        LoadStorage,
+>>>>>>> 1ec71635b (sync with main branch)
         Lod,
         LogarithmB2,
         LogicalAnd,
@@ -113,11 +120,28 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         Sine,
         SquareRoot,
         Store,
+<<<<<<< HEAD
         Subtract,
         SwizzleAdd,
         TextureSample,
         TextureQuerySamples,
         TextureQuerySize,
+=======
+        StoreGlobal,
+        StoreGlobal16,
+        StoreGlobal8,
+        StoreLocal,
+        StoreShared,
+        StoreShared16,
+        StoreShared8,
+        StoreStorage,
+        StoreStorage16,
+        StoreStorage8,
+        Subtract,
+        SwizzleAdd,
+        TextureSample,
+        TextureSize,
+>>>>>>> 1ec71635b (sync with main branch)
         Truncate,
         UnpackDouble2x32,
         UnpackHalf2x16,
@@ -131,7 +155,11 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         FP32 = 1 << 16,
         FP64 = 1 << 17,
 
+<<<<<<< HEAD
         Mask = 0xffff,
+=======
+        Mask = 0xffff
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class InstructionExtensions
@@ -159,7 +187,14 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         public static bool IsTextureQuery(this Instruction inst)
         {
             inst &= Instruction.Mask;
+<<<<<<< HEAD
             return inst == Instruction.Lod || inst == Instruction.TextureQuerySamples || inst == Instruction.TextureQuerySize;
         }
     }
 }
+=======
+            return inst == Instruction.Lod || inst == Instruction.TextureSize;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

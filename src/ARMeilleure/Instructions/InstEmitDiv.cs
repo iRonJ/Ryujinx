@@ -1,6 +1,10 @@
 using ARMeilleure.Decoders;
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
 
@@ -22,7 +26,11 @@ namespace ARMeilleure.Instructions
             Operand divisorIsZero = context.ICompareEqual(m, Const(m.Type, 0));
 
             Operand lblBadDiv = Label();
+<<<<<<< HEAD
             Operand lblEnd = Label();
+=======
+            Operand lblEnd    = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
             context.BranchIfTrue(lblBadDiv, divisorIsZero);
 
@@ -32,7 +40,11 @@ namespace ARMeilleure.Instructions
                 bool is32Bits = op.RegisterSize == RegisterSize.Int32;
 
                 Operand intMin = is32Bits ? Const(int.MinValue) : Const(long.MinValue);
+<<<<<<< HEAD
                 Operand minus1 = is32Bits ? Const(-1) : Const(-1L);
+=======
+                Operand minus1 = is32Bits ? Const(-1)           : Const(-1L);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Operand nIsIntMin = context.ICompareEqual(n, intMin);
                 Operand mIsMinus1 = context.ICompareEqual(m, minus1);
@@ -50,7 +62,11 @@ namespace ARMeilleure.Instructions
 
             Operand d = unsigned
                 ? context.DivideUI(n, m)
+<<<<<<< HEAD
                 : context.Divide(n, m);
+=======
+                : context.Divide  (n, m);
+>>>>>>> 1ec71635b (sync with main branch)
 
             SetAluDOrZR(context, d);
 

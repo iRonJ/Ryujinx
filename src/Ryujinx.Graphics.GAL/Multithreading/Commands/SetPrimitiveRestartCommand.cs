@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetPrimitiveRestartCommand : IGALCommand, IGALCommand<SetPrimitiveRestartCommand>
     {
         public readonly CommandType CommandType => CommandType.SetPrimitiveRestart;
+=======
+﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
+{
+    struct SetPrimitiveRestartCommand : IGALCommand, IGALCommand<SetPrimitiveRestartCommand>
+    {
+        public CommandType CommandType => CommandType.SetPrimitiveRestart;
+>>>>>>> 1ec71635b (sync with main branch)
         private bool _enable;
         private int _index;
 

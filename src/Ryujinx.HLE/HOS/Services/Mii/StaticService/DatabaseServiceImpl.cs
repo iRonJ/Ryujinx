@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Mii.Types;
+=======
+﻿using Ryujinx.HLE.HOS.Services.Mii.Types;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Settings;
 using System;
 
@@ -6,9 +10,15 @@ namespace Ryujinx.HLE.HOS.Services.Mii.StaticService
 {
     class DatabaseServiceImpl : IDatabaseService
     {
+<<<<<<< HEAD
         private readonly DatabaseImpl _database;
         private readonly DatabaseSessionMetadata _metadata;
         private readonly bool _isSystem;
+=======
+        private DatabaseImpl            _database;
+        private DatabaseSessionMetadata _metadata;
+        private bool                    _isSystem;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public DatabaseServiceImpl(DatabaseImpl database, bool isSystem, SpecialMiiKeyCode miiKeyCode)
         {

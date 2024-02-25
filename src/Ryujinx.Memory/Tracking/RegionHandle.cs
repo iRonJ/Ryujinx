@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Linq;
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 
 namespace Ryujinx.Memory.Tracking
@@ -49,9 +56,15 @@ namespace Ryujinx.Memory.Tracking
 
         internal IMultiRegionHandle Parent { get; set; }
 
+<<<<<<< HEAD
         private event Action OnDirty;
 
         private readonly object _preActionLock = new();
+=======
+        private event Action _onDirty;
+
+        private object _preActionLock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
         private RegionSignal _preAction; // Action to perform before a read or write. This will block the memory access.
         private PreciseRegionSignal _preciseAction; // Action to perform on a precise read or write.
         private readonly List<VirtualRegion> _regions;
@@ -268,7 +281,11 @@ namespace Ryujinx.Memory.Tracking
                 Dirty = true;
                 if (!oldDirty)
                 {
+<<<<<<< HEAD
                     OnDirty?.Invoke();
+=======
+                    _onDirty?.Invoke();
+>>>>>>> 1ec71635b (sync with main branch)
                 }
                 Parent?.SignalWrite();
             }
@@ -310,10 +327,14 @@ namespace Ryujinx.Memory.Tracking
         /// <param name="consecutiveCheck">True if this reprotect is the result of consecutive dirty checks</param>
         public void Reprotect(bool asDirty, bool consecutiveCheck = false)
         {
+<<<<<<< HEAD
             if (_volatile)
             {
                 return;
             }
+=======
+            if (_volatile) return;
+>>>>>>> 1ec71635b (sync with main branch)
 
             Dirty = asDirty;
 
@@ -405,7 +426,11 @@ namespace Ryujinx.Memory.Tracking
         /// <param name="action">Action to call on dirty</param>
         public void RegisterDirtyEvent(Action action)
         {
+<<<<<<< HEAD
             OnDirty += action;
+=======
+            _onDirty += action;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -463,8 +488,11 @@ namespace Ryujinx.Memory.Tracking
         {
             ObjectDisposedException.ThrowIf(_disposed, this);
 
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             _disposed = true;
 
             lock (_tracking.TrackingLock)

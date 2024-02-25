@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
+=======
+﻿using Ryujinx.Common.Utilities;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.InteropServices;
 
@@ -53,4 +57,8 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 
         public int DefaultType;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

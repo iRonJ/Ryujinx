@@ -1,20 +1,35 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.Shader;
 using Ryujinx.Graphics.Shader.Translation;
 using Silk.NET.Vulkan;
 using System;
+<<<<<<< HEAD
 using SamplerCreateInfo = Ryujinx.Graphics.GAL.SamplerCreateInfo;
 
 namespace Ryujinx.Graphics.Vulkan.Effects
 {
     internal class FxaaPostProcessingEffect : IPostProcessingEffect
+=======
+
+namespace Ryujinx.Graphics.Vulkan.Effects
+{
+    internal partial class FxaaPostProcessingEffect : IPostProcessingEffect
+>>>>>>> 1ec71635b (sync with main branch)
     {
         private readonly VulkanRenderer _renderer;
         private ISampler _samplerLinear;
         private ShaderCollection _shaderProgram;
 
+<<<<<<< HEAD
         private readonly PipelineHelperShader _pipeline;
+=======
+        private PipelineHelperShader _pipeline;
+>>>>>>> 1ec71635b (sync with main branch)
         private TextureView _texture;
 
         public FxaaPostProcessingEffect(VulkanRenderer renderer, Device device)
@@ -44,11 +59,19 @@ namespace Ryujinx.Graphics.Vulkan.Effects
                 .Add(ResourceStages.Compute, ResourceType.TextureAndSampler, 1)
                 .Add(ResourceStages.Compute, ResourceType.Image, 0).Build();
 
+<<<<<<< HEAD
             _samplerLinear = _renderer.CreateSampler(SamplerCreateInfo.Create(MinFilter.Linear, MagFilter.Linear));
 
             _shaderProgram = _renderer.CreateProgramWithMinimalLayout(new[]
             {
                 new ShaderSource(shader, ShaderStage.Compute, TargetLanguage.Spirv),
+=======
+            _samplerLinear = _renderer.CreateSampler(GAL.SamplerCreateInfo.Create(MinFilter.Linear, MagFilter.Linear));
+
+            _shaderProgram = _renderer.CreateProgramWithMinimalLayout(new[]
+            {
+                new ShaderSource(shader, ShaderStage.Compute, TargetLanguage.Spirv)
+>>>>>>> 1ec71635b (sync with main branch)
             }, resourceLayout);
         }
 
@@ -57,7 +80,32 @@ namespace Ryujinx.Graphics.Vulkan.Effects
             if (_texture == null || _texture.Width != view.Width || _texture.Height != view.Height)
             {
                 _texture?.Dispose();
+<<<<<<< HEAD
                 _texture = _renderer.CreateTexture(view.Info) as TextureView;
+=======
+
+                var info = view.Info;
+
+                if (view.Info.Format.IsBgr())
+                {
+                    info = new TextureCreateInfo(info.Width,
+                        info.Height,
+                        info.Depth,
+                        info.Levels,
+                        info.Samples,
+                        info.BlockWidth,
+                        info.BlockHeight,
+                        info.BytesPerPixel,
+                        info.Format,
+                        info.DepthStencilMode,
+                        info.Target,
+                        info.SwizzleB,
+                        info.SwizzleG,
+                        info.SwizzleR,
+                        info.SwizzleA);
+                }
+                _texture = _renderer.CreateTexture(info, view.ScaleFactor) as TextureView;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             _pipeline.SetCommandBuffer(cbs);
@@ -66,18 +114,34 @@ namespace Ryujinx.Graphics.Vulkan.Effects
 
             ReadOnlySpan<float> resolutionBuffer = stackalloc float[] { view.Width, view.Height };
             int rangeSize = resolutionBuffer.Length * sizeof(float);
+<<<<<<< HEAD
             using var buffer = _renderer.BufferManager.ReserveOrCreate(_renderer, cbs, rangeSize);
 
             buffer.Holder.SetDataUnchecked(buffer.Offset, resolutionBuffer);
 
             _pipeline.SetUniformBuffers(stackalloc[] { new BufferAssignment(2, buffer.Range) });
+=======
+            var bufferHandle = _renderer.BufferManager.CreateWithHandle(_renderer, rangeSize);
+
+            _renderer.BufferManager.SetData(bufferHandle, 0, resolutionBuffer);
+
+            var bufferRanges = new BufferRange(bufferHandle, 0, rangeSize);
+            _pipeline.SetUniformBuffers(stackalloc[] { new BufferAssignment(2, bufferRanges) });
+>>>>>>> 1ec71635b (sync with main branch)
 
             var dispatchX = BitUtils.DivRoundUp(view.Width, IPostProcessingEffect.LocalGroupSize);
             var dispatchY = BitUtils.DivRoundUp(view.Height, IPostProcessingEffect.LocalGroupSize);
 
+<<<<<<< HEAD
             _pipeline.SetImage(ShaderStage.Compute, 0, _texture, FormatTable.ConvertRgba8SrgbToUnorm(view.Info.Format));
             _pipeline.DispatchCompute(dispatchX, dispatchY, 1);
 
+=======
+            _pipeline.SetImage(0, _texture, GAL.Format.R8G8B8A8Unorm);
+            _pipeline.DispatchCompute(dispatchX, dispatchY, 1);
+
+            _renderer.BufferManager.Delete(bufferHandle);
+>>>>>>> 1ec71635b (sync with main branch)
             _pipeline.ComputeBarrier();
 
             _pipeline.Finish();
@@ -85,4 +149,8 @@ namespace Ryujinx.Graphics.Vulkan.Effects
             return _texture;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

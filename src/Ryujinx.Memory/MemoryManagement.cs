@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Memory
 {
@@ -36,6 +40,7 @@ namespace Ryujinx.Memory
             }
         }
 
+<<<<<<< HEAD
         public static void Commit(IntPtr address, ulong size, bool forJit)
         {
             if (OperatingSystem.IsWindows())
@@ -45,6 +50,17 @@ namespace Ryujinx.Memory
             else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
             {
                 MemoryManagementUnix.Commit(address, size, forJit);
+=======
+        public static bool Commit(IntPtr address, ulong size, bool forJit)
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                return MemoryManagementWindows.Commit(address, (IntPtr)size);
+            }
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
+            {
+                return MemoryManagementUnix.Commit(address, size, forJit);
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -52,6 +68,7 @@ namespace Ryujinx.Memory
             }
         }
 
+<<<<<<< HEAD
         public static void Decommit(IntPtr address, ulong size)
         {
             if (OperatingSystem.IsWindows())
@@ -61,6 +78,17 @@ namespace Ryujinx.Memory
             else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
             {
                 MemoryManagementUnix.Decommit(address, size);
+=======
+        public static bool Decommit(IntPtr address, ulong size)
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                return MemoryManagementWindows.Decommit(address, (IntPtr)size);
+            }
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
+            {
+                return MemoryManagementUnix.Decommit(address, size);
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -203,4 +231,8 @@ namespace Ryujinx.Memory
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

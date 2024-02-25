@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Device;
 using System.Collections.Generic;
 
@@ -12,7 +16,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         /// <summary>
         /// Arguments FIFO.
         /// </summary>
+<<<<<<< HEAD
         public Queue<FifoWord> Fifo { get; } = new();
+=======
+        public Queue<FifoWord> Fifo { get; } = new Queue<FifoWord>();
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Fetches a arguments from the arguments FIFO.

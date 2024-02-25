@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
 using Ryujinx.Graphics.Device;
+=======
+﻿using Ryujinx.Common;
+using Ryujinx.Graphics.Gpu.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Texture;
 using Ryujinx.Graphics.Video;
 using System;
@@ -11,13 +16,21 @@ namespace Ryujinx.Graphics.Nvdec.Image
 {
     static class SurfaceReader
     {
+<<<<<<< HEAD
         public static void Read(DeviceMemoryManager mm, ISurface surface, uint lumaOffset, uint chromaOffset)
+=======
+        public static void Read(MemoryManager gmm, ISurface surface, uint lumaOffset, uint chromaOffset)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             int width = surface.Width;
             int height = surface.Height;
             int stride = surface.Stride;
 
+<<<<<<< HEAD
             ReadOnlySpan<byte> luma = mm.DeviceGetSpan(lumaOffset, GetBlockLinearSize(width, height, 1));
+=======
+            ReadOnlySpan<byte> luma = gmm.DeviceGetSpan(lumaOffset, GetBlockLinearSize(width, height, 1));
+>>>>>>> 1ec71635b (sync with main branch)
 
             ReadLuma(surface.YPlane.AsSpan(), luma, stride, width, height);
 
@@ -25,7 +38,11 @@ namespace Ryujinx.Graphics.Nvdec.Image
             int uvHeight = surface.UvHeight;
             int uvStride = surface.UvStride;
 
+<<<<<<< HEAD
             ReadOnlySpan<byte> chroma = mm.DeviceGetSpan(chromaOffset, GetBlockLinearSize(uvWidth, uvHeight, 2));
+=======
+            ReadOnlySpan<byte> chroma = gmm.DeviceGetSpan(chromaOffset, GetBlockLinearSize(uvWidth, uvHeight, 2));
+>>>>>>> 1ec71635b (sync with main branch)
 
             ReadChroma(surface.UPlane.AsSpan(), surface.VPlane.AsSpan(), chroma, uvStride, uvWidth, uvHeight);
         }
@@ -43,7 +60,11 @@ namespace Ryujinx.Graphics.Nvdec.Image
             int width,
             int height)
         {
+<<<<<<< HEAD
             OffsetCalculator calc = new(width, height, 0, false, 2, 2);
+=======
+            OffsetCalculator calc = new OffsetCalculator(width, height, 0, false, 2, 2);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (Sse2.IsSupported)
             {

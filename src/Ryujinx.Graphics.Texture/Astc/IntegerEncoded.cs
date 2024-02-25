@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Numerics;
 
 namespace Ryujinx.Graphics.Texture.Astc
@@ -6,16 +10,27 @@ namespace Ryujinx.Graphics.Texture.Astc
     internal struct IntegerEncoded
     {
         internal const int StructSize = 8;
+<<<<<<< HEAD
         private static readonly IntegerEncoded[] _encodings;
+=======
+        private static readonly IntegerEncoded[] Encodings;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public enum EIntegerEncoding : byte
         {
             JustBits,
             Quint,
+<<<<<<< HEAD
             Trit,
         }
 
         readonly EIntegerEncoding _encoding;
+=======
+            Trit
+        }
+
+        EIntegerEncoding _encoding;
+>>>>>>> 1ec71635b (sync with main branch)
         public byte NumberBits { get; private set; }
         public byte TritValue { get; private set; }
         public byte QuintValue { get; private set; }
@@ -23,11 +38,19 @@ namespace Ryujinx.Graphics.Texture.Astc
 
         static IntegerEncoded()
         {
+<<<<<<< HEAD
             _encodings = new IntegerEncoded[0x100];
 
             for (int i = 0; i < _encodings.Length; i++)
             {
                 _encodings[i] = CreateEncodingCalc(i);
+=======
+            Encodings = new IntegerEncoded[0x100];
+
+            for (int i = 0; i < Encodings.Length; i++)
+            {
+                Encodings[i] = CreateEncodingCalc(i);
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -40,17 +63,29 @@ namespace Ryujinx.Graphics.Texture.Astc
             QuintValue = 0;
         }
 
+<<<<<<< HEAD
         public readonly bool MatchesEncoding(IntegerEncoded other)
+=======
+        public bool MatchesEncoding(IntegerEncoded other)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _encoding == other._encoding && NumberBits == other.NumberBits;
         }
 
+<<<<<<< HEAD
         public readonly EIntegerEncoding GetEncoding()
+=======
+        public EIntegerEncoding GetEncoding()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _encoding;
         }
 
+<<<<<<< HEAD
         public readonly int GetBitLength(int numberVals)
+=======
+        public int GetBitLength(int numberVals)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             int totalBits = NumberBits * numberVals;
             if (_encoding == EIntegerEncoding.Trit)
@@ -66,7 +101,11 @@ namespace Ryujinx.Graphics.Texture.Astc
 
         public static IntegerEncoded CreateEncoding(int maxVal)
         {
+<<<<<<< HEAD
             return _encodings[maxVal];
+=======
+            return Encodings[maxVal];
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static IntegerEncoded CreateEncodingCalc(int maxVal)
@@ -122,7 +161,11 @@ namespace Ryujinx.Graphics.Texture.Astc
 
             ReadOnlySpan<byte> encodings = GetTritEncoding(encoded);
 
+<<<<<<< HEAD
             IntegerEncoded intEncoded = new(EIntegerEncoding.Trit, numberBitsPerValue);
+=======
+            IntegerEncoded intEncoded = new IntegerEncoded(EIntegerEncoding.Trit, numberBitsPerValue);
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < 5; i++)
             {
@@ -159,10 +202,17 @@ namespace Ryujinx.Graphics.Texture.Astc
 
             for (int i = 0; i < 3; i++)
             {
+<<<<<<< HEAD
                 IntegerEncoded intEncoded = new(EIntegerEncoding.Quint, numberBitsPerValue)
                 {
                     BitValue = m[i],
                     QuintValue = encodings[i],
+=======
+                IntegerEncoded intEncoded = new IntegerEncoded(EIntegerEncoding.Quint, numberBitsPerValue)
+                {
+                    BitValue = m[i],
+                    QuintValue = encodings[i]
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 listIntegerEncoded.Add(ref intEncoded);
@@ -185,6 +235,7 @@ namespace Ryujinx.Graphics.Texture.Astc
                 switch (intEncoded.GetEncoding())
                 {
                     case EIntegerEncoding.Quint:
+<<<<<<< HEAD
                         {
                             DecodeQuintBlock(ref bitStream, ref decodeIntegerSequence, intEncoded.NumberBits);
                             numberValuesDecoded += 3;
@@ -208,6 +259,31 @@ namespace Ryujinx.Graphics.Texture.Astc
 
                             break;
                         }
+=======
+                    {
+                        DecodeQuintBlock(ref bitStream, ref decodeIntegerSequence, intEncoded.NumberBits);
+                        numberValuesDecoded += 3;
+
+                        break;
+                    }
+
+                    case EIntegerEncoding.Trit:
+                    {
+                        DecodeTritBlock(ref bitStream, ref decodeIntegerSequence, intEncoded.NumberBits);
+                        numberValuesDecoded += 5;
+
+                        break;
+                    }
+
+                    case EIntegerEncoding.JustBits:
+                    {
+                        intEncoded.BitValue = bitStream.ReadBits(intEncoded.NumberBits);
+                        decodeIntegerSequence.Add(ref intEncoded);
+                        numberValuesDecoded++;
+
+                        break;
+                    }
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
         }
@@ -309,7 +385,11 @@ namespace Ryujinx.Graphics.Texture.Astc
             2, 1, 1, 1, 2, 1, 1, 2, 1, 2, 0, 2, 1, 1, 2,
             1, 2, 1, 1, 2, 2, 2, 1, 1, 2, 2, 1, 2, 1, 2,
             0, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+<<<<<<< HEAD
             2, 1, 2, 2, 2,
+=======
+            2, 1, 2, 2, 2
+>>>>>>> 1ec71635b (sync with main branch)
         };
 
         private static ReadOnlySpan<byte> QuintEncodings => new byte[]
@@ -339,7 +419,11 @@ namespace Ryujinx.Graphics.Texture.Astc
             0, 1, 4, 1, 1, 4, 0, 2, 3, 1, 2, 3, 2, 2, 3,
             3, 2, 3, 4, 2, 3, 2, 4, 3, 0, 2, 4, 1, 2, 4,
             0, 3, 3, 1, 3, 3, 2, 3, 3, 3, 3, 3, 4, 3, 3,
+<<<<<<< HEAD
             3, 4, 3, 0, 3, 4, 1, 3, 4,
+=======
+            3, 4, 3, 0, 3, 4, 1, 3, 4
+>>>>>>> 1ec71635b (sync with main branch)
         };
     }
 }

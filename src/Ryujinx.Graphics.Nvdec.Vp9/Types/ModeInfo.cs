@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Diagnostics;
 
 namespace Ryujinx.Graphics.Nvdec.Vp9.Types
@@ -11,7 +15,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
         public TxSize TxSize;
         public sbyte Skip;
         public sbyte SegmentId;
+<<<<<<< HEAD
         public sbyte SegIdPredicted; // Valid only when TemporalUpdate is enabled
+=======
+        public sbyte SegIdPredicted;  // Valid only when TemporalUpdate is enabled
+>>>>>>> 1ec71635b (sync with main branch)
 
         // Only for Intra blocks
         public PredictionMode UvMode;
@@ -32,11 +40,18 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
             return SbType < BlockSize.Block8x8 ? Bmi[block].Mode : Mode;
         }
 
+<<<<<<< HEAD
         public readonly TxSize GetUvTxSize(ref MacroBlockDPlane pd)
         {
             Debug.Assert(SbType < BlockSize.Block8x8 ||
                 Luts.SsSizeLookup[(int)SbType][pd.SubsamplingX][pd.SubsamplingY] != BlockSize.BlockInvalid);
 
+=======
+        public TxSize GetUvTxSize(ref MacroBlockDPlane pd)
+        {
+            Debug.Assert(SbType < BlockSize.Block8x8 ||
+                Luts.SsSizeLookup[(int)SbType][pd.SubsamplingX][pd.SubsamplingY] != BlockSize.BlockInvalid);
+>>>>>>> 1ec71635b (sync with main branch)
             return Luts.UvTxsizeLookup[(int)SbType][(int)TxSize][pd.SubsamplingX][pd.SubsamplingY];
         }
 
@@ -50,8 +65,14 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
             return RefFrame[1] > Constants.IntraFrame;
         }
 
+<<<<<<< HEAD
         private static readonly int[][] _idxNColumnToSubblock = {
             new[] { 1, 2 }, new[] { 1, 3 }, new[] { 3, 2 }, new[] { 3, 3 },
+=======
+        private static readonly int[][] IdxNColumnToSubblock = new int[][]
+        {
+            new int[] { 1, 2 }, new int[] { 1, 3 }, new int[] { 3, 2 }, new int[] { 3, 3 }
+>>>>>>> 1ec71635b (sync with main branch)
         };
 
         // This function returns either the appropriate sub block or block's mv
@@ -59,7 +80,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Types
         public Mv GetSubBlockMv(int whichMv, int searchCol, int blockIdx)
         {
             return blockIdx >= 0 && SbType < BlockSize.Block8x8
+<<<<<<< HEAD
                 ? Bmi[_idxNColumnToSubblock[blockIdx][searchCol == 0 ? 1 : 0]].Mv[whichMv]
+=======
+                ? Bmi[IdxNColumnToSubblock[blockIdx][searchCol == 0 ? 1 : 0]].Mv[whichMv]
+>>>>>>> 1ec71635b (sync with main branch)
                 : Mv[whichMv];
         }
     }

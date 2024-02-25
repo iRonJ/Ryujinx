@@ -47,10 +47,15 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
         {
             CertificateFormat certificateFormat = (CertificateFormat)context.RequestData.ReadUInt32();
 
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong certificateDataPosition = context.Request.SendBuff[0].Position;
             ulong certificateDataSize = context.Request.SendBuff[0].Size;
 #pragma warning restore IDE0059
+=======
+            ulong certificateDataPosition = context.Request.SendBuff[0].Position;
+            ulong certificateDataSize     = context.Request.SendBuff[0].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             context.ResponseData.Write(_serverCertificateId++);
 
@@ -63,6 +68,7 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
         // ImportClientPki(buffer<bytes, 5> certificate, buffer<bytes, 5> ascii_password) -> u64 certificateId
         public ResultCode ImportClientPki(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong certificateDataPosition = context.Request.SendBuff[0].Position;
             ulong certificateDataSize = context.Request.SendBuff[0].Size;
@@ -70,6 +76,13 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
 
             ulong asciiPasswordDataPosition = context.Request.SendBuff[1].Position;
             ulong asciiPasswordDataSize = context.Request.SendBuff[1].Size;
+=======
+            ulong certificateDataPosition = context.Request.SendBuff[0].Position;
+            ulong certificateDataSize     = context.Request.SendBuff[0].Size;
+
+            ulong asciiPasswordDataPosition = context.Request.SendBuff[1].Position;
+            ulong asciiPasswordDataSize     = context.Request.SendBuff[1].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             byte[] asciiPasswordData = new byte[asciiPasswordDataSize];
 
@@ -84,4 +97,8 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.SslService
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

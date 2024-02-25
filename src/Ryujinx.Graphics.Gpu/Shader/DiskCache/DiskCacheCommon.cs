@@ -54,4 +54,8 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
             return CompressionAlgorithm.Deflate;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

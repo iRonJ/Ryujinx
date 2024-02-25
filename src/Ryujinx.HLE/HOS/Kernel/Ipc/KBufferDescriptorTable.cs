@@ -9,6 +9,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
     {
         private const int MaxInternalBuffersCount = 8;
 
+<<<<<<< HEAD
         private readonly List<KBufferDescriptor> _sendBufferDescriptors;
         private readonly List<KBufferDescriptor> _receiveBufferDescriptors;
         private readonly List<KBufferDescriptor> _exchangeBufferDescriptors;
@@ -17,6 +18,16 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         {
             _sendBufferDescriptors = new List<KBufferDescriptor>(MaxInternalBuffersCount);
             _receiveBufferDescriptors = new List<KBufferDescriptor>(MaxInternalBuffersCount);
+=======
+        private List<KBufferDescriptor> _sendBufferDescriptors;
+        private List<KBufferDescriptor> _receiveBufferDescriptors;
+        private List<KBufferDescriptor> _exchangeBufferDescriptors;
+
+        public KBufferDescriptorTable()
+        {
+            _sendBufferDescriptors     = new List<KBufferDescriptor>(MaxInternalBuffersCount);
+            _receiveBufferDescriptors  = new List<KBufferDescriptor>(MaxInternalBuffersCount);
+>>>>>>> 1ec71635b (sync with main branch)
             _exchangeBufferDescriptors = new List<KBufferDescriptor>(MaxInternalBuffersCount);
         }
 
@@ -35,7 +46,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return Add(_exchangeBufferDescriptors, src, dst, size, state);
         }
 
+<<<<<<< HEAD
         private static Result Add(List<KBufferDescriptor> list, ulong src, ulong dst, ulong size, MemoryState state)
+=======
+        private Result Add(List<KBufferDescriptor> list, ulong src, ulong dst, ulong size, MemoryState state)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (list.Count < MaxInternalBuffersCount)
             {
@@ -59,7 +74,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return CopyToClient(memoryManager, _exchangeBufferDescriptors);
         }
 
+<<<<<<< HEAD
         private static Result CopyToClient(KPageTableBase memoryManager, List<KBufferDescriptor> list)
+=======
+        private Result CopyToClient(KPageTableBase memoryManager, List<KBufferDescriptor> list)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             foreach (KBufferDescriptor desc in list)
             {
@@ -67,6 +86,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 
                 switch (desc.State)
                 {
+<<<<<<< HEAD
                     case MemoryState.IpcBuffer0:
                         stateMask = MemoryState.IpcSendAllowedType0;
                         break;
@@ -78,6 +98,13 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                         break;
                     default:
                         return KernelResult.InvalidCombination;
+=======
+                    case MemoryState.IpcBuffer0: stateMask = MemoryState.IpcSendAllowedType0; break;
+                    case MemoryState.IpcBuffer1: stateMask = MemoryState.IpcSendAllowedType1; break;
+                    case MemoryState.IpcBuffer3: stateMask = MemoryState.IpcSendAllowedType3; break;
+
+                    default: return KernelResult.InvalidCombination;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 MemoryAttribute attributeMask = MemoryAttribute.Borrowed | MemoryAttribute.Uncached;
@@ -88,7 +115,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 }
 
                 ulong clientAddrTruncated = BitUtils.AlignDown<ulong>(desc.ClientAddress, KPageTableBase.PageSize);
+<<<<<<< HEAD
                 ulong clientAddrRounded = BitUtils.AlignUp<ulong>(desc.ClientAddress, KPageTableBase.PageSize);
+=======
+                ulong clientAddrRounded   = BitUtils.AlignUp<ulong>(desc.ClientAddress, KPageTableBase.PageSize);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 // Check if address is not aligned, in this case we need to perform 2 copies.
                 if (clientAddrTruncated != clientAddrRounded)
@@ -120,7 +151,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 ulong serverEndAddr = desc.ServerAddress + desc.Size;
 
                 ulong clientEndAddrTruncated = BitUtils.AlignDown<ulong>(clientEndAddr, (ulong)KPageTableBase.PageSize);
+<<<<<<< HEAD
                 ulong clientEndAddrRounded = BitUtils.AlignUp<ulong>(clientEndAddr, KPageTableBase.PageSize);
+=======
+                ulong clientEndAddrRounded   = BitUtils.AlignUp<ulong>(clientEndAddr, KPageTableBase.PageSize);
+>>>>>>> 1ec71635b (sync with main branch)
                 ulong serverEndAddrTruncated = BitUtils.AlignDown<ulong>(serverEndAddr, (ulong)KPageTableBase.PageSize);
 
                 if (clientEndAddrTruncated < clientEndAddrRounded &&
@@ -165,7 +200,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return UnmapServer(memoryManager, _exchangeBufferDescriptors);
         }
 
+<<<<<<< HEAD
         private static Result UnmapServer(KPageTableBase memoryManager, List<KBufferDescriptor> list)
+=======
+        private Result UnmapServer(KPageTableBase memoryManager, List<KBufferDescriptor> list)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             foreach (KBufferDescriptor descriptor in list)
             {
@@ -202,7 +241,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return RestoreClient(memoryManager, _exchangeBufferDescriptors);
         }
 
+<<<<<<< HEAD
         private static Result RestoreClient(KPageTableBase memoryManager, List<KBufferDescriptor> list)
+=======
+        private Result RestoreClient(KPageTableBase memoryManager, List<KBufferDescriptor> list)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             foreach (KBufferDescriptor descriptor in list)
             {
@@ -220,4 +263,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return Result.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

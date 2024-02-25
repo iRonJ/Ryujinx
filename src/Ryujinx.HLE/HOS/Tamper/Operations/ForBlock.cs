@@ -4,9 +4,15 @@ namespace Ryujinx.HLE.HOS.Tamper.Operations
 {
     class ForBlock : IOperation
     {
+<<<<<<< HEAD
         private readonly ulong _count;
         private readonly Register _register;
         private readonly IEnumerable<IOperation> _operations;
+=======
+        private ulong _count;
+        private Register _register;
+        private IEnumerable<IOperation> _operations;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ForBlock(ulong count, Register register, IEnumerable<IOperation> operations)
         {

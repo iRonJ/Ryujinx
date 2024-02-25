@@ -41,4 +41,8 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             return $"{StorageKind}.{IoVariable}.{Location}.{Component}";
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

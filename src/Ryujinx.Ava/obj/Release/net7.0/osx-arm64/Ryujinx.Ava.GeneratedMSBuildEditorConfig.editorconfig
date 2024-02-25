@@ -1,0 +1,136 @@
+is_global = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = true
+build_property.IncludeAllContentForSelfExtract = 
+build_property.RootNamespace = Ryujinx.Ava
+build_property.ProjectDir = /Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/Assets/Locales/en_US.json]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Applet/ErrorAppletWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Applet/SwkbdAppletDialog.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Controls/ApplicationContextMenu.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Controls/ApplicationGridView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Controls/ApplicationListView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Controls/NavigationDialogHost.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Controls/UpdateWaitWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Renderer/RendererHost.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Main/MainMenuBarView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Main/MainStatusBarView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Main/MainViewControls.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Settings/SettingsAudioView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Settings/SettingsCPUView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Settings/SettingsGraphicsView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Settings/SettingsHotkeysView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Settings/SettingsInputView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Settings/SettingsLoggingView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Settings/SettingsNetworkView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Settings/SettingsSystemView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/Settings/SettingsUIView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/User/UserEditorView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/User/UserFirmwareAvatarSelectorView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/User/UserProfileImageSelectorView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/User/UserRecovererView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/User/UserSaveManagerView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Views/User/UserSelectorView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/AboutWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/AmiiboWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/CheatWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/ContentDialogOverlayWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/ControllerSettingsWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/DownloadableContentManagerWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/MotionSettingsWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/RumbleSettingsWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/SettingsWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Ava/UI/Windows/TitleUpdateWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

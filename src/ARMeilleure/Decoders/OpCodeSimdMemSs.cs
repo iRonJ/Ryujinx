@@ -2,21 +2,37 @@ namespace ARMeilleure.Decoders
 {
     class OpCodeSimdMemSs : OpCodeMemReg, IOpCodeSimd
     {
+<<<<<<< HEAD
         public int SElems { get; }
         public int Index { get; }
         public bool Replicate { get; }
         public bool WBack { get; }
+=======
+        public int  SElems    { get; }
+        public int  Index     { get; }
+        public bool Replicate { get; }
+        public bool WBack     { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public new static OpCode Create(InstDescriptor inst, ulong address, int opCode) => new OpCodeSimdMemSs(inst, address, opCode);
 
         public OpCodeSimdMemSs(InstDescriptor inst, ulong address, int opCode) : base(inst, address, opCode)
         {
+<<<<<<< HEAD
             int size = (opCode >> 10) & 3;
             int s = (opCode >> 12) & 1;
             int sElems = (opCode >> 12) & 2;
             int scale = (opCode >> 14) & 3;
             int l = (opCode >> 22) & 1;
             int q = (opCode >> 30) & 1;
+=======
+            int size   = (opCode >> 10) & 3;
+            int s      = (opCode >> 12) & 1;
+            int sElems = (opCode >> 12) & 2;
+            int scale  = (opCode >> 14) & 3;
+            int l      = (opCode >> 22) & 1;
+            int q      = (opCode >> 30) & 1;
+>>>>>>> 1ec71635b (sync with main branch)
 
             sElems |= (opCode >> 21) & 1;
 
@@ -27,6 +43,7 @@ namespace ARMeilleure.Decoders
             switch (scale)
             {
                 case 1:
+<<<<<<< HEAD
                     {
                         if ((size & 1) != 0)
                         {
@@ -84,6 +101,65 @@ namespace ARMeilleure.Decoders
             Index = index;
             SElems = sElems;
             Size = scale;
+=======
+                {
+                    if ((size & 1) != 0)
+                    {
+                        Instruction = InstDescriptor.Undefined;
+
+                        return;
+                    }
+
+                    index >>= 1;
+
+                    break;
+                }
+
+                case 2:
+                {
+                    if ((size & 2) != 0 ||
+                       ((size & 1) != 0 && s != 0))
+                    {
+                        Instruction = InstDescriptor.Undefined;
+
+                        return;
+                    }
+
+                    if ((size & 1) != 0)
+                    {
+                        index >>= 3;
+
+                        scale = 3;
+                    }
+                    else
+                    {
+                        index >>= 2;
+                    }
+
+                    break;
+                }
+
+                case 3:
+                {
+                    if (l == 0 || s != 0)
+                    {
+                        Instruction = InstDescriptor.Undefined;
+
+                        return;
+                    }
+
+                    scale = size;
+
+                    Replicate = true;
+
+                    break;
+                }
+            }
+
+            Index  = index;
+            SElems = sElems;
+            Size   = scale;
+>>>>>>> 1ec71635b (sync with main branch)
 
             Extend64 = false;
 
@@ -94,4 +170,8 @@ namespace ARMeilleure.Decoders
                 : RegisterSize.Simd64;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

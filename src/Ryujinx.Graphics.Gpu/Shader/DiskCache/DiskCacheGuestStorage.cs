@@ -205,10 +205,17 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
 
             if (guestCode == null || cb1Data == null)
             {
+<<<<<<< HEAD
                 BinarySerializer tocReader = new(tocFileStream);
                 tocFileStream.Seek(Unsafe.SizeOf<TocHeader>() + index * Unsafe.SizeOf<TocEntry>(), SeekOrigin.Begin);
 
                 TocEntry entry = new();
+=======
+                BinarySerializer tocReader = new BinarySerializer(tocFileStream);
+                tocFileStream.Seek(Unsafe.SizeOf<TocHeader>() + index * Unsafe.SizeOf<TocEntry>(), SeekOrigin.Begin);
+
+                TocEntry entry = new TocEntry();
+>>>>>>> 1ec71635b (sync with main branch)
                 tocReader.Read(ref entry);
 
                 guestCode = new byte[entry.CodeSize];
@@ -261,7 +268,11 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
             using var tocFileStream = DiskCacheCommon.OpenFile(_basePath, TocFileName, writable: true);
             using var dataFileStream = DiskCacheCommon.OpenFile(_basePath, DataFileName, writable: true);
 
+<<<<<<< HEAD
             TocHeader header = new();
+=======
+            TocHeader header = new TocHeader();
+>>>>>>> 1ec71635b (sync with main branch)
 
             LoadOrCreateToc(tocFileStream, ref header);
 
@@ -299,7 +310,11 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         /// <param name="header">Set to the TOC file header</param>
         private void LoadOrCreateToc(Stream tocFileStream, ref TocHeader header)
         {
+<<<<<<< HEAD
             BinarySerializer reader = new(tocFileStream);
+=======
+            BinarySerializer reader = new BinarySerializer(tocFileStream);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (!reader.TryRead(ref header) || header.Magic != TocMagic || header.Version != VersionPacked)
             {
@@ -322,9 +337,15 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         /// </summary>
         /// <param name="tocFileStream">Guest TOC file stream</param>
         /// <param name="header">Set to the TOC header</param>
+<<<<<<< HEAD
         private static void CreateToc(Stream tocFileStream, ref TocHeader header)
         {
             BinarySerializer writer = new(tocFileStream);
+=======
+        private void CreateToc(Stream tocFileStream, ref TocHeader header)
+        {
+            BinarySerializer writer = new BinarySerializer(tocFileStream);
+>>>>>>> 1ec71635b (sync with main branch)
 
             header.Magic = TocMagic;
             header.Version = VersionPacked;
@@ -352,7 +373,11 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
         {
             _toc = new Dictionary<uint, List<TocMemoryEntry>>();
 
+<<<<<<< HEAD
             TocEntry entry = new();
+=======
+            TocEntry entry = new TocEntry();
+>>>>>>> 1ec71635b (sync with main branch)
             int index = 0;
 
             while (tocFileStream.Position < tocFileStream.Length)
@@ -386,7 +411,11 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
             ReadOnlySpan<byte> cb1Data,
             uint hash)
         {
+<<<<<<< HEAD
             BinarySerializer tocWriter = new(tocFileStream);
+=======
+            BinarySerializer tocWriter = new BinarySerializer(tocFileStream);
+>>>>>>> 1ec71635b (sync with main branch)
 
             dataFileStream.Seek(0, SeekOrigin.End);
             uint dataOffset = checked((uint)dataFileStream.Position);
@@ -399,12 +428,20 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
             tocFileStream.Seek(0, SeekOrigin.Begin);
             tocWriter.Write(ref header);
 
+<<<<<<< HEAD
             TocEntry entry = new()
+=======
+            TocEntry entry = new TocEntry()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 Offset = dataOffset,
                 CodeSize = codeSize,
                 Cb1DataSize = cb1DataSize,
+<<<<<<< HEAD
                 Hash = hash,
+=======
+                Hash = hash
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             tocFileStream.Seek(0, SeekOrigin.End);
@@ -456,4 +493,8 @@ namespace Ryujinx.Graphics.Gpu.Shader.DiskCache
             return (uint)XXHash128.ComputeHash(data).Low;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -20,7 +20,10 @@ namespace ARMeilleure.CodeGen.X86
         {
             if (GetCurrentCallConv() == CallConvName.Windows)
             {
+<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 return (1 << (int)X86Register.Rax) |
                        (1 << (int)X86Register.Rcx) |
                        (1 << (int)X86Register.Rdx) |
@@ -40,7 +43,10 @@ namespace ARMeilleure.CodeGen.X86
                        (1 << (int)X86Register.R9)  |
                        (1 << (int)X86Register.R10) |
                        (1 << (int)X86Register.R11);
+<<<<<<< HEAD
 #pragma warning restore IDE0055
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -92,6 +98,7 @@ namespace ARMeilleure.CodeGen.X86
             {
                 switch (index)
                 {
+<<<<<<< HEAD
                     case 0:
                         return X86Register.Rcx;
                     case 1:
@@ -100,12 +107,19 @@ namespace ARMeilleure.CodeGen.X86
                         return X86Register.R8;
                     case 3:
                         return X86Register.R9;
+=======
+                    case 0: return X86Register.Rcx;
+                    case 1: return X86Register.Rdx;
+                    case 2: return X86Register.R8;
+                    case 3: return X86Register.R9;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
             else /* if (GetCurrentCallConv() == CallConvName.SystemV) */
             {
                 switch (index)
                 {
+<<<<<<< HEAD
                     case 0:
                         return X86Register.Rdi;
                     case 1:
@@ -118,6 +132,14 @@ namespace ARMeilleure.CodeGen.X86
                         return X86Register.R8;
                     case 5:
                         return X86Register.R9;
+=======
+                    case 0: return X86Register.Rdi;
+                    case 1: return X86Register.Rsi;
+                    case 2: return X86Register.Rdx;
+                    case 3: return X86Register.Rcx;
+                    case 4: return X86Register.R8;
+                    case 5: return X86Register.R9;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -167,4 +189,8 @@ namespace ARMeilleure.CodeGen.X86
                 : CallConvName.SystemV;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

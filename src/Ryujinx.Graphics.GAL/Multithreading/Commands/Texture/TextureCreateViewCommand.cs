@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Model;
+=======
+﻿using Ryujinx.Graphics.GAL.Multithreading.Model;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL.Multithreading.Resources;
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands.Texture
 {
     struct TextureCreateViewCommand : IGALCommand, IGALCommand<TextureCreateViewCommand>
     {
+<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.TextureCreateView;
+=======
+        public CommandType CommandType => CommandType.TextureCreateView;
+>>>>>>> 1ec71635b (sync with main branch)
         private TableRef<ThreadedTexture> _texture;
         private TableRef<ThreadedTexture> _destination;
         private TextureCreateInfo _info;

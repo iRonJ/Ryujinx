@@ -3,6 +3,10 @@ using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.State;
 using ARMeilleure.Translation;
 using System;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitMemoryHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
@@ -11,18 +15,31 @@ namespace ARMeilleure.Instructions
 {
     static partial class InstEmit32
     {
+<<<<<<< HEAD
         private const int ByteSizeLog2 = 0;
         private const int HWordSizeLog2 = 1;
         private const int WordSizeLog2 = 2;
+=======
+        private const int ByteSizeLog2  = 0;
+        private const int HWordSizeLog2 = 1;
+        private const int WordSizeLog2  = 2;
+>>>>>>> 1ec71635b (sync with main branch)
         private const int DWordSizeLog2 = 3;
 
         [Flags]
         enum AccessType
         {
+<<<<<<< HEAD
             Store = 0,
             Signed = 1,
             Load = 2,
             Ordered = 4,
+=======
+            Store     = 0,
+            Signed    = 1,
+            Load      = 2,
+            Ordered   = 4,
+>>>>>>> 1ec71635b (sync with main branch)
             Exclusive = 8,
 
             LoadZx = Load,
@@ -46,7 +63,11 @@ namespace ARMeilleure.Instructions
                 SetIntA32(context, op.Rn, context.Add(n, Const(op.PostOffset)));
             }
 
+<<<<<<< HEAD
             int mask = op.RegisterMask;
+=======
+            int mask   = op.RegisterMask;
+>>>>>>> 1ec71635b (sync with main branch)
             int offset = 0;
 
             for (int register = 0; mask != 0; mask >>= 1, register++)
@@ -100,7 +121,11 @@ namespace ARMeilleure.Instructions
 
             Operand baseAddress = context.Add(n, Const(op.Offset));
 
+<<<<<<< HEAD
             int mask = op.RegisterMask;
+=======
+            int mask   = op.RegisterMask;
+>>>>>>> 1ec71635b (sync with main branch)
             int offset = 0;
 
             for (int register = 0; mask != 0; mask >>= 1, register++)
@@ -160,7 +185,11 @@ namespace ARMeilleure.Instructions
             if (op.Index || op.WBack)
             {
                 temp = op.Add
+<<<<<<< HEAD
                     ? context.Add(n, m)
+=======
+                    ? context.Add     (n, m)
+>>>>>>> 1ec71635b (sync with main branch)
                     : context.Subtract(n, m);
             }
 
@@ -199,7 +228,11 @@ namespace ARMeilleure.Instructions
                 if (size == DWordSizeLog2)
                 {
                     Operand lblBigEndian = Label();
+<<<<<<< HEAD
                     Operand lblEnd = Label();
+=======
+                    Operand lblEnd       = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
                     context.BranchIfTrue(lblBigEndian, GetFlag(PState.EFlag));
 
@@ -232,7 +265,11 @@ namespace ARMeilleure.Instructions
                 if (size == DWordSizeLog2)
                 {
                     Operand lblBigEndian = Label();
+<<<<<<< HEAD
                     Operand lblEnd = Label();
+=======
+                    Operand lblEnd       = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
                     context.BranchIfTrue(lblBigEndian, GetFlag(PState.EFlag));
 
@@ -261,4 +298,8 @@ namespace ARMeilleure.Instructions
             SetIntA32(context, op.Rd, Const(op.Immediate));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 {
     enum ColorSwizzle
     {
 #pragma warning disable IDE0055 // Disable formatting
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
+{
+    enum ColorSwizzle
+    {
+>>>>>>> 1ec71635b (sync with main branch)
         XYZW = 0x688 << ColorShift.Swizzle,
         ZYXW = 0x60a << ColorShift.Swizzle,
         WZYX = 0x053 << ColorShift.Swizzle,
@@ -27,7 +34,13 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
        _000X = 0x124 << ColorShift.Swizzle,
        _0XY0 = 0x844 << ColorShift.Swizzle,
         XXXY = 0x200 << ColorShift.Swizzle,
+<<<<<<< HEAD
         YYYX = 0x049 << ColorShift.Swizzle,
 #pragma warning restore IDE0055
     }
 }
+=======
+        YYYX = 0x049 << ColorShift.Swizzle
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

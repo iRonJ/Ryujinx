@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Nim.Ntc.StaticService;
 
 namespace Ryujinx.HLE.HOS.Services.Nim.Ntc
@@ -21,4 +25,8 @@ namespace Ryujinx.HLE.HOS.Services.Nim.Ntc
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

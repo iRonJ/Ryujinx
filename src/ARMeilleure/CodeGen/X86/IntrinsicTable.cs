@@ -5,13 +5,20 @@ namespace ARMeilleure.CodeGen.X86
 {
     static class IntrinsicTable
     {
+<<<<<<< HEAD
         private static readonly IntrinsicInfo[] _intrinTable;
+=======
+        private static IntrinsicInfo[] _intrinTable;
+>>>>>>> 1ec71635b (sync with main branch)
 
         static IntrinsicTable()
         {
             _intrinTable = new IntrinsicInfo[EnumUtils.GetCount(typeof(Intrinsic))];
 
+<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Add(Intrinsic.X86Addpd,         new IntrinsicInfo(X86Instruction.Addpd,         IntrinsicType.Binary));
             Add(Intrinsic.X86Addps,         new IntrinsicInfo(X86Instruction.Addps,         IntrinsicType.Binary));
             Add(Intrinsic.X86Addsd,         new IntrinsicInfo(X86Instruction.Addsd,         IntrinsicType.Binary));
@@ -186,7 +193,10 @@ namespace ARMeilleure.CodeGen.X86
             Add(Intrinsic.X86Vpternlogd,    new IntrinsicInfo(X86Instruction.Vpternlogd,    IntrinsicType.TernaryImm));
             Add(Intrinsic.X86Xorpd,         new IntrinsicInfo(X86Instruction.Xorpd,         IntrinsicType.Binary));
             Add(Intrinsic.X86Xorps,         new IntrinsicInfo(X86Instruction.Xorps,         IntrinsicType.Binary));
+<<<<<<< HEAD
 #pragma warning restore IDE0055
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void Add(Intrinsic intrin, IntrinsicInfo info)
@@ -199,4 +209,8 @@ namespace ARMeilleure.CodeGen.X86
             return _intrinTable[(int)intrin];
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.Texture.Utils;
+=======
+﻿using Ryujinx.Graphics.Texture.Utils;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Diagnostics;
 using System.Numerics;
@@ -27,7 +31,11 @@ namespace Ryujinx.Graphics.Texture
                     int x2 = x * 4;
                     int bw = Math.Min(4, width - x2);
 
+<<<<<<< HEAD
                     DecodeBlock(blocks[y * wInBlocks + x], output32[(y2 * width + x2)..], bw, bh, width);
+=======
+                    DecodeBlock(blocks[y * wInBlocks + x], output32.Slice(y2 * width + x2), bw, bh, width);
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
         }
@@ -177,6 +185,7 @@ namespace Ryujinx.Graphics.Texture
 
                         switch (rotation)
                         {
+<<<<<<< HEAD
                             case 1:
                                 color.A = color.R;
                                 color.R = a;
@@ -189,6 +198,11 @@ namespace Ryujinx.Graphics.Texture
                                 color.A = color.B;
                                 color.B = a;
                                 break;
+=======
+                            case 1: color.A = color.R; color.R = a; break;
+                            case 2: color.A = color.G; color.G = a; break;
+                            case 3: color.A = color.B; color.B = a; break;
+>>>>>>> 1ec71635b (sync with main branch)
                         }
                     }
 

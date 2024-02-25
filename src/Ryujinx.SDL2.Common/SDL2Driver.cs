@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Configuration;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using System;
 using System.Collections.Concurrent;
@@ -13,11 +17,23 @@ namespace Ryujinx.SDL2.Common
     {
         private static SDL2Driver _instance;
 
+<<<<<<< HEAD
+=======
+        public static bool IsInitialized => _instance != null;
+
+>>>>>>> 1ec71635b (sync with main branch)
         public static SDL2Driver Instance
         {
             get
             {
+<<<<<<< HEAD
                 _instance ??= new SDL2Driver();
+=======
+                if (_instance == null)
+                {
+                    _instance = new SDL2Driver();
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return _instance;
             }
@@ -36,9 +52,15 @@ namespace Ryujinx.SDL2.Common
 
         private ConcurrentDictionary<uint, Action<SDL_Event>> _registeredWindowHandlers;
 
+<<<<<<< HEAD
         private readonly object _lock = new();
 
         private SDL2Driver() { }
+=======
+        private object _lock = new object();
+
+        private SDL2Driver() {}
+>>>>>>> 1ec71635b (sync with main branch)
 
         private const string SDL_HINT_JOYSTICK_HIDAPI_COMBINE_JOY_CONS = "SDL_JOYSTICK_HIDAPI_COMBINE_JOY_CONS";
 
@@ -75,6 +97,7 @@ namespace Ryujinx.SDL2.Common
                 }
 
                 // First ensure that we only enable joystick events (for connected/disconnected).
+<<<<<<< HEAD
                 if (SDL_GameControllerEventState(SDL_IGNORE) != SDL_IGNORE)
                 {
                     Logger.Error?.PrintMsg(LogClass.Application, "Couldn't change the state of game controller events.");
@@ -84,6 +107,10 @@ namespace Ryujinx.SDL2.Common
                 {
                     Logger.Error?.PrintMsg(LogClass.Application, $"Failed to enable joystick event polling: {SDL_GetError()}");
                 }
+=======
+                SDL_GameControllerEventState(SDL_DISABLE);
+                SDL_JoystickEventState(SDL_ENABLE);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 // Disable all joysticks information, we don't need them no need to flood the event queue for that.
                 SDL_EventState(SDL_EventType.SDL_JOYAXISMOTION, SDL_DISABLE);
@@ -94,7 +121,11 @@ namespace Ryujinx.SDL2.Common
 
                 SDL_EventState(SDL_EventType.SDL_CONTROLLERSENSORUPDATE, SDL_DISABLE);
 
+<<<<<<< HEAD
                 string gamepadDbPath = Path.Combine(AppDataManager.BaseDirPath, "SDL_GameControllerDB.txt");
+=======
+                string gamepadDbPath = Path.Combine(ReleaseInformation.GetBaseApplicationDirectory(), "SDL_GameControllerDB.txt");
+>>>>>>> 1ec71635b (sync with main branch)
 
                 if (File.Exists(gamepadDbPath))
                 {
@@ -155,7 +186,11 @@ namespace Ryujinx.SDL2.Common
         {
             const int WaitTimeMs = 10;
 
+<<<<<<< HEAD
             using ManualResetEventSlim waitHandle = new(false);
+=======
+            using ManualResetEventSlim waitHandle = new ManualResetEventSlim(false);
+>>>>>>> 1ec71635b (sync with main branch)
 
             while (_isRunning)
             {
@@ -201,7 +236,10 @@ namespace Ryujinx.SDL2.Common
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
     }

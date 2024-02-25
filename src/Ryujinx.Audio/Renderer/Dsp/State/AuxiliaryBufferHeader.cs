@@ -71,4 +71,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.State
         public AuxiliaryBufferInfo CpuBufferInfo;
         public AuxiliaryBufferInfo DspBufferInfo;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

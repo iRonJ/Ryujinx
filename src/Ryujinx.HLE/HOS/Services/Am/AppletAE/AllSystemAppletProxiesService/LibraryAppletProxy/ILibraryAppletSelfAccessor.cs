@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.LibraryAppletProxy
 {
     class ILibraryAppletSelfAccessor : IpcService
     {
+<<<<<<< HEAD
         private readonly AppletStandalone _appletStandalone = new();
+=======
+        private AppletStandalone _appletStandalone = new AppletStandalone();
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ILibraryAppletSelfAccessor(ServiceCtx context)
         {
@@ -14,8 +22,13 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Lib
                 // Create MiiEdit data.
                 _appletStandalone = new AppletStandalone()
                 {
+<<<<<<< HEAD
                     AppletId = AppletId.MiiEdit,
                     LibraryAppletMode = LibraryAppletMode.AllForeground,
+=======
+                    AppletId          = AppletId.MiiEdit,
+                    LibraryAppletMode = LibraryAppletMode.AllForeground
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 byte[] miiEditInputData = new byte[0x100];
@@ -49,10 +62,17 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Lib
         // GetLibraryAppletInfo() -> nn::am::service::LibraryAppletInfo
         public ResultCode GetLibraryAppletInfo(ServiceCtx context)
         {
+<<<<<<< HEAD
             LibraryAppletInfo libraryAppletInfo = new()
             {
                 AppletId = _appletStandalone.AppletId,
                 LibraryAppletMode = _appletStandalone.LibraryAppletMode,
+=======
+            LibraryAppletInfo libraryAppletInfo = new LibraryAppletInfo()
+            {
+                AppletId          = _appletStandalone.AppletId,
+                LibraryAppletMode = _appletStandalone.LibraryAppletMode
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             context.ResponseData.WriteStruct(libraryAppletInfo);
@@ -64,10 +84,17 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Lib
         // GetCallerAppletIdentityInfo() -> nn::am::service::AppletIdentityInfo
         public ResultCode GetCallerAppletIdentityInfo(ServiceCtx context)
         {
+<<<<<<< HEAD
             AppletIdentifyInfo appletIdentifyInfo = new()
             {
                 AppletId = AppletId.QLaunch,
                 TitleId = 0x0100000000001000,
+=======
+            AppletIdentifyInfo appletIdentifyInfo = new AppletIdentifyInfo()
+            {
+                AppletId = AppletId.QLaunch,
+                TitleId  = 0x0100000000001000
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             context.ResponseData.WriteStruct(appletIdentifyInfo);
@@ -75,4 +102,8 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Lib
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

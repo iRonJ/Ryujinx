@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using NUnit.Framework;
+=======
+﻿using NUnit.Framework;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Time.TimeZone;
 using System.Runtime.CompilerServices;
 

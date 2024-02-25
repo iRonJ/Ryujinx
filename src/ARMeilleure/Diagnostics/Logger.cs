@@ -8,7 +8,11 @@ namespace ARMeilleure.Diagnostics
     {
         private static long _startTime;
 
+<<<<<<< HEAD
         private static readonly long[] _accumulatedTime;
+=======
+        private static long[] _accumulatedTime;
+>>>>>>> 1ec71635b (sync with main branch)
 
         static Logger()
         {
@@ -53,4 +57,8 @@ namespace ARMeilleure.Diagnostics
             Console.WriteLine(text);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

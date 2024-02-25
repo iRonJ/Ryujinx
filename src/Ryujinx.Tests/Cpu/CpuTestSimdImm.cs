@@ -11,7 +11,11 @@ namespace Ryujinx.Tests.Cpu
     {
 #if SimdImm
 
+<<<<<<< HEAD
         #region "Helper methods"
+=======
+#region "Helper methods"
+>>>>>>> 1ec71635b (sync with main branch)
         // abcdefgh -> aaaaaaaabbbbbbbbccccccccddddddddeeeeeeeeffffffffgggggggghhhhhhhh
         private static ulong ExpandImm8(byte imm8)
         {
@@ -43,6 +47,7 @@ namespace Ryujinx.Tests.Cpu
 
             return imm8;
         }
+<<<<<<< HEAD
         #endregion
 
         #region "ValueSource (Types)"
@@ -52,14 +57,28 @@ namespace Ryujinx.Tests.Cpu
                 0x0000000000000000ul, 0x7FFFFFFF7FFFFFFFul,
                 0x8000000080000000ul, 0xFFFFFFFFFFFFFFFFul,
             };
+=======
+#endregion
+
+#region "ValueSource (Types)"
+        private static ulong[] _2S_()
+        {
+            return new[] { 0x0000000000000000ul, 0x7FFFFFFF7FFFFFFFul,
+                           0x8000000080000000ul, 0xFFFFFFFFFFFFFFFFul };
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static ulong[] _4H_()
         {
+<<<<<<< HEAD
             return new[] {
                 0x0000000000000000ul, 0x7FFF7FFF7FFF7FFFul,
                 0x8000800080008000ul, 0xFFFFFFFFFFFFFFFFul,
             };
+=======
+            return new[] { 0x0000000000000000ul, 0x7FFF7FFF7FFF7FFFul,
+                           0x8000800080008000ul, 0xFFFFFFFFFFFFFFFFul };
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static IEnumerable<byte> _8BIT_IMM_()
@@ -91,15 +110,25 @@ namespace Ryujinx.Tests.Cpu
                 yield return ExpandImm8(imm8);
             }
         }
+<<<<<<< HEAD
         #endregion
 
         #region "ValueSource (Opcodes)"
+=======
+#endregion
+
+#region "ValueSource (Opcodes)"
+>>>>>>> 1ec71635b (sync with main branch)
         private static uint[] _Bic_Orr_Vi_16bit_()
         {
             return new[]
             {
                 0x2F009400u, // BIC V0.4H, #0
+<<<<<<< HEAD
                 0x0F009400u, // ORR V0.4H, #0
+=======
+                0x0F009400u  // ORR V0.4H, #0
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -108,7 +137,11 @@ namespace Ryujinx.Tests.Cpu
             return new[]
             {
                 0x2F001400u, // BIC V0.2S, #0
+<<<<<<< HEAD
                 0x0F001400u, // ORR V0.2S, #0
+=======
+                0x0F001400u  // ORR V0.2S, #0
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -116,7 +149,11 @@ namespace Ryujinx.Tests.Cpu
         {
             return new[]
             {
+<<<<<<< HEAD
                 0x0F00F400u, // FMOV V0.2S, #2.0
+=======
+                0x0F00F400u // FMOV V0.2S, #2.0
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -124,7 +161,11 @@ namespace Ryujinx.Tests.Cpu
         {
             return new[]
             {
+<<<<<<< HEAD
                 0x4F00F400u, // FMOV V0.4S, #2.0
+=======
+                0x4F00F400u // FMOV V0.4S, #2.0
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -132,7 +173,11 @@ namespace Ryujinx.Tests.Cpu
         {
             return new[]
             {
+<<<<<<< HEAD
                 0x6F00F400u, // FMOV V0.2D, #2.0
+=======
+                0x6F00F400u // FMOV V0.2D, #2.0
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -140,7 +185,11 @@ namespace Ryujinx.Tests.Cpu
         {
             return new[]
             {
+<<<<<<< HEAD
                 0x0F00E400u, // MOVI V0.8B, #0
+=======
+                0x0F00E400u // MOVI V0.8B, #0
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -149,7 +198,11 @@ namespace Ryujinx.Tests.Cpu
             return new[]
             {
                 0x0F008400u, // MOVI V0.4H, #0
+<<<<<<< HEAD
                 0x2F008400u, // MVNI V0.4H, #0
+=======
+                0x2F008400u  // MVNI V0.4H, #0
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -158,7 +211,11 @@ namespace Ryujinx.Tests.Cpu
             return new[]
             {
                 0x0F000400u, // MOVI V0.2S, #0
+<<<<<<< HEAD
                 0x2F000400u, // MVNI V0.2S, #0
+=======
+                0x2F000400u  // MVNI V0.2S, #0
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -167,7 +224,11 @@ namespace Ryujinx.Tests.Cpu
             return new[]
             {
                 0x0F00C400u, // MOVI V0.2S, #0, MSL #8
+<<<<<<< HEAD
                 0x2F00C400u, // MVNI V0.2S, #0, MSL #8
+=======
+                0x2F00C400u  // MVNI V0.2S, #0, MSL #8
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -175,7 +236,11 @@ namespace Ryujinx.Tests.Cpu
         {
             return new[]
             {
+<<<<<<< HEAD
                 0x2F00E400u, // MOVI D0, #0
+=======
+                0x2F00E400u // MOVI D0, #0
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -183,12 +248,21 @@ namespace Ryujinx.Tests.Cpu
         {
             return new[]
             {
+<<<<<<< HEAD
                 0x6F00E400u, // MOVI V0.2D, #0
             };
         }
         #endregion
 
         private const int RndCntImm8 = 2;
+=======
+                0x6F00E400u // MOVI V0.2D, #0
+            };
+        }
+#endregion
+
+        private const int RndCntImm8  = 2;
+>>>>>>> 1ec71635b (sync with main branch)
         private const int RndCntImm64 = 2;
 
         [Test, Pairwise]
@@ -198,7 +272,11 @@ namespace Ryujinx.Tests.Cpu
                                      [Values(0b0u, 0b1u)] uint amount, // <0, 8>
                                      [Values(0b0u, 0b1u)] uint q)      // <4H, 8H>
         {
+<<<<<<< HEAD
             uint abc = (imm8 & 0xE0u) >> 5;
+=======
+            uint abc   = (imm8 & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (imm8 & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -219,7 +297,11 @@ namespace Ryujinx.Tests.Cpu
                                      [Values(0b00u, 0b01u, 0b10u, 0b11u)] uint amount, // <0, 8, 16, 24>
                                      [Values(0b0u, 0b1u)] uint q)                      // <2S, 4S>
         {
+<<<<<<< HEAD
             uint abc = (imm8 & 0xE0u) >> 5;
+=======
+            uint abc   = (imm8 & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (imm8 & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -233,12 +315,20 @@ namespace Ryujinx.Tests.Cpu
             CompareAgainstUnicorn();
         }
 
+<<<<<<< HEAD
         [Test, Pairwise]
         [Explicit]
         public void F_Mov_Vi_2S([ValueSource(nameof(_F_Mov_Vi_2S_))] uint opcodes,
                                 [Range(0u, 255u, 1u)] uint abcdefgh)
         {
             uint abc = (abcdefgh & 0xE0u) >> 5;
+=======
+        [Test, Pairwise] [Explicit]
+        public void F_Mov_Vi_2S([ValueSource(nameof(_F_Mov_Vi_2S_))] uint opcodes,
+                                [Range(0u, 255u, 1u)] uint abcdefgh)
+        {
+            uint abc   = (abcdefgh & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (abcdefgh & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -251,12 +341,20 @@ namespace Ryujinx.Tests.Cpu
             CompareAgainstUnicorn();
         }
 
+<<<<<<< HEAD
         [Test, Pairwise]
         [Explicit]
         public void F_Mov_Vi_4S([ValueSource(nameof(_F_Mov_Vi_4S_))] uint opcodes,
                                 [Range(0u, 255u, 1u)] uint abcdefgh)
         {
             uint abc = (abcdefgh & 0xE0u) >> 5;
+=======
+        [Test, Pairwise] [Explicit]
+        public void F_Mov_Vi_4S([ValueSource(nameof(_F_Mov_Vi_4S_))] uint opcodes,
+                                [Range(0u, 255u, 1u)] uint abcdefgh)
+        {
+            uint abc   = (abcdefgh & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (abcdefgh & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -266,12 +364,20 @@ namespace Ryujinx.Tests.Cpu
             CompareAgainstUnicorn();
         }
 
+<<<<<<< HEAD
         [Test, Pairwise]
         [Explicit]
         public void F_Mov_Vi_2D([ValueSource(nameof(_F_Mov_Vi_2D_))] uint opcodes,
                                 [Range(0u, 255u, 1u)] uint abcdefgh)
         {
             uint abc = (abcdefgh & 0xE0u) >> 5;
+=======
+        [Test, Pairwise] [Explicit]
+        public void F_Mov_Vi_2D([ValueSource(nameof(_F_Mov_Vi_2D_))] uint opcodes,
+                                [Range(0u, 255u, 1u)] uint abcdefgh)
+        {
+            uint abc   = (abcdefgh & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (abcdefgh & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -286,7 +392,11 @@ namespace Ryujinx.Tests.Cpu
                                 [ValueSource(nameof(_8BIT_IMM_))] byte imm8,
                                 [Values(0b0u, 0b1u)] uint q) // <8B, 16B>
         {
+<<<<<<< HEAD
             uint abc = (imm8 & 0xE0u) >> 5;
+=======
+            uint abc   = (imm8 & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (imm8 & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -306,7 +416,11 @@ namespace Ryujinx.Tests.Cpu
                                                   [Values(0b0u, 0b1u)] uint amount, // <0, 8>
                                                   [Values(0b0u, 0b1u)] uint q)      // <4H, 8H>
         {
+<<<<<<< HEAD
             uint abc = (imm8 & 0xE0u) >> 5;
+=======
+            uint abc   = (imm8 & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (imm8 & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -327,7 +441,11 @@ namespace Ryujinx.Tests.Cpu
                                                   [Values(0b00u, 0b01u, 0b10u, 0b11u)] uint amount, // <0, 8, 16, 24>
                                                   [Values(0b0u, 0b1u)] uint q)                      // <2S, 4S>
         {
+<<<<<<< HEAD
             uint abc = (imm8 & 0xE0u) >> 5;
+=======
+            uint abc   = (imm8 & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (imm8 & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -348,7 +466,11 @@ namespace Ryujinx.Tests.Cpu
                                                     [Values(0b0u, 0b1u)] uint amount, // <8, 16>
                                                     [Values(0b0u, 0b1u)] uint q)      // <2S, 4S>
         {
+<<<<<<< HEAD
             uint abc = (imm8 & 0xE0u) >> 5;
+=======
+            uint abc   = (imm8 & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (imm8 & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -369,7 +491,11 @@ namespace Ryujinx.Tests.Cpu
         {
             byte imm8 = ShrinkImm64(imm);
 
+<<<<<<< HEAD
             uint abc = (imm8 & 0xE0u) >> 5;
+=======
+            uint abc   = (imm8 & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (imm8 & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -388,7 +514,11 @@ namespace Ryujinx.Tests.Cpu
         {
             byte imm8 = ShrinkImm64(imm);
 
+<<<<<<< HEAD
             uint abc = (imm8 & 0xE0u) >> 5;
+=======
+            uint abc   = (imm8 & 0xE0u) >> 5;
+>>>>>>> 1ec71635b (sync with main branch)
             uint defgh = (imm8 & 0x1Fu);
 
             opcodes |= (abc << 16) | (defgh << 5);
@@ -399,4 +529,8 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

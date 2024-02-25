@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
+=======
+﻿using Ryujinx.Graphics.GAL;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.OpenGL.Image
 {

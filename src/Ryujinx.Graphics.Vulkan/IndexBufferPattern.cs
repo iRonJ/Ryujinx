@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
+=======
+﻿using Ryujinx.Graphics.GAL;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -14,7 +18,11 @@ namespace Ryujinx.Graphics.Vulkan
         public int IndexStride { get; }
         public bool RepeatStart { get; }
 
+<<<<<<< HEAD
         private readonly VulkanRenderer _gd;
+=======
+        private VulkanRenderer _gd;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _currentSize;
         private BufferHandle _repeatingBuffer;
 

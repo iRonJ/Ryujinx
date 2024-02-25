@@ -9,4 +9,8 @@ namespace ARMeilleure.Decoders
             Size = ((opCode >> 13) & 3) + 1;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

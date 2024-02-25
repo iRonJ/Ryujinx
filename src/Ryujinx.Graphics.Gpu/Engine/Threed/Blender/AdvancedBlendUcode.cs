@@ -5,12 +5,20 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
     /// <summary>
     /// Fixed function alpha state used for a advanced blend function.
     /// </summary>
+<<<<<<< HEAD
     readonly struct FixedFunctionAlpha
+=======
+    struct FixedFunctionAlpha
+>>>>>>> 1ec71635b (sync with main branch)
     {
         /// <summary>
         /// Fixed function alpha state with alpha blending disabled.
         /// </summary>
+<<<<<<< HEAD
         public static FixedFunctionAlpha Disabled => new(BlendUcodeEnable.EnableRGBA, default, default, default);
+=======
+        public static FixedFunctionAlpha Disabled => new FixedFunctionAlpha(BlendUcodeEnable.EnableRGBA, default, default, default);
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Individual enable bits for the RGB and alpha components.
@@ -68,7 +76,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
     /// <summary>
     /// Advanced blend microcode state.
     /// </summary>
+<<<<<<< HEAD
     readonly struct AdvancedBlendUcode
+=======
+    struct AdvancedBlendUcode
+>>>>>>> 1ec71635b (sync with main branch)
     {
         /// <summary>
         /// Advanced blend operation.
@@ -117,10 +129,18 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
             Overlap = overlap;
             SrcPreMultiplied = srcPreMultiplied;
 
+<<<<<<< HEAD
             UcodeAssembler asm = new();
+=======
+            UcodeAssembler asm = new UcodeAssembler();
+>>>>>>> 1ec71635b (sync with main branch)
             Alpha = genFunc(ref asm);
             Code = asm.GetCode();
             Constants = asm.GetConstants();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

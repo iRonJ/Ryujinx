@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using ARMeilleure.Instructions;
+=======
+﻿using ARMeilleure.Instructions;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Numerics;
 
@@ -27,7 +31,11 @@ namespace ARMeilleure.Decoders
             {
                 InstName.Ldm => true,
                 InstName.Stm => false,
+<<<<<<< HEAD
                 _ => throw new InvalidOperationException(),
+=======
+                _ => throw new InvalidOperationException()
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

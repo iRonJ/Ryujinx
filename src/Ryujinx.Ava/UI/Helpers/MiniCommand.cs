@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -8,7 +12,11 @@ namespace Ryujinx.Ava.UI.Helpers
     {
         private readonly Action<T> _callback;
         private bool _busy;
+<<<<<<< HEAD
         private readonly Func<T, Task> _asyncCallback;
+=======
+        private Func<T, Task> _asyncCallback;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public MiniCommand(Action<T> callback)
         {
@@ -68,4 +76,8 @@ namespace Ryujinx.Ava.UI.Helpers
         public abstract void Execute(object parameter);
         public abstract event EventHandler CanExecuteChanged;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

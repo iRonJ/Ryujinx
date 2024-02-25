@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
+=======
+﻿namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
+>>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Identifies the software keyboard state.
@@ -23,6 +27,12 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
         /// <summary>
         /// swkbd has completed.
         /// </summary>
+<<<<<<< HEAD
         Complete,
     }
 }
+=======
+        Complete
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

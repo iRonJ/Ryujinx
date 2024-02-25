@@ -37,7 +37,11 @@ namespace Ryujinx.Graphics.OpenGL.Effects
             }
         }
 
+<<<<<<< HEAD
         public FsrScalingFilter(OpenGLRenderer renderer)
+=======
+        public FsrScalingFilter(OpenGLRenderer renderer, IPostProcessingEffect filter)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Initialize();
 
@@ -114,7 +118,11 @@ namespace Ryujinx.Graphics.OpenGL.Effects
                     originalInfo.SwizzleB,
                     originalInfo.SwizzleA);
 
+<<<<<<< HEAD
                 _intermediaryTexture = new TextureStorage(_renderer, info);
+=======
+                _intermediaryTexture = new TextureStorage(_renderer, info, view.ScaleFactor);
+>>>>>>> 1ec71635b (sync with main branch)
                 _intermediaryTexture.CreateDefaultView();
             }
 
@@ -174,4 +182,8 @@ namespace Ryujinx.Graphics.OpenGL.Effects
             GL.ActiveTexture((TextureUnit)previousUnit);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

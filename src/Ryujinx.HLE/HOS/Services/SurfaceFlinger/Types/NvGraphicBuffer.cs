@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Runtime.InteropServices;
+=======
+﻿using System.Runtime.InteropServices;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 {
@@ -38,4 +42,8 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         [FieldOffset(0x34)]
         public NvGraphicBufferSurfaceArray Surfaces;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

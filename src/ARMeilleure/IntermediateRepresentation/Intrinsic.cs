@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System;
 using System.Diagnostics.CodeAnalysis;
 
@@ -5,6 +6,10 @@ namespace ARMeilleure.IntermediateRepresentation
 {
     [Flags]
     [SuppressMessage("Design", "CA1069: Enums values should not be duplicated")]
+=======
+namespace ARMeilleure.IntermediateRepresentation
+{
+>>>>>>> 1ec71635b (sync with main branch)
     enum Intrinsic : ushort
     {
         // X86 (SSE and AVX)
@@ -636,6 +641,12 @@ namespace ARMeilleure.IntermediateRepresentation
         Arm64VByte = 0 << Arm64VSizeShift,
         Arm64VHWord = 1 << Arm64VSizeShift,
         Arm64VWord = 2 << Arm64VSizeShift,
+<<<<<<< HEAD
         Arm64VDWord = 3 << Arm64VSizeShift,
     }
 }
+=======
+        Arm64VDWord = 3 << Arm64VSizeShift
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

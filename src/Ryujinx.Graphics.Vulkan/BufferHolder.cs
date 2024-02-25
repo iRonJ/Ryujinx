@@ -1,17 +1,28 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Silk.NET.Vulkan;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+<<<<<<< HEAD
 using System.Runtime.InteropServices;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 using VkBuffer = Silk.NET.Vulkan.Buffer;
 using VkFormat = Silk.NET.Vulkan.Format;
 
 namespace Ryujinx.Graphics.Vulkan
 {
+<<<<<<< HEAD
     class BufferHolder : IDisposable, IMirrorable<DisposableBuffer>, IMirrorable<DisposableBufferView>
+=======
+    class BufferHolder : IDisposable
+>>>>>>> 1ec71635b (sync with main branch)
     {
         private const int MaxUpdateBufferSize = 0x10000;
 
@@ -34,7 +45,11 @@ namespace Ryujinx.Graphics.Vulkan
         private MemoryAllocation _allocation;
         private Auto<DisposableBuffer> _buffer;
         private Auto<MemoryAllocation> _allocationAuto;
+<<<<<<< HEAD
         private readonly bool _allocationImported;
+=======
+        private bool _allocationImported;
+>>>>>>> 1ec71635b (sync with main branch)
         private ulong _bufferHandle;
 
         private CacheByRange<BufferHolder> _cachedConvertedBuffers;
@@ -59,17 +74,24 @@ namespace Ryujinx.Graphics.Vulkan
         private int _flushTemp;
         private int _lastFlushWrite = -1;
 
+<<<<<<< HEAD
         private readonly ReaderWriterLockSlim _flushLock;
+=======
+        private ReaderWriterLock _flushLock;
+>>>>>>> 1ec71635b (sync with main branch)
         private FenceHolder _flushFence;
         private int _flushWaiting;
 
         private List<Action> _swapActions;
 
+<<<<<<< HEAD
         private byte[] _pendingData;
         private BufferMirrorRangeList _pendingDataRanges;
         private Dictionary<ulong, StagingBufferReserved> _mirrors;
         private bool _useMirrors;
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public BufferHolder(VulkanRenderer gd, Device device, VkBuffer buffer, MemoryAllocation allocation, int size, BufferAllocationType type, BufferAllocationType currentType)
         {
             _gd = gd;
@@ -77,7 +99,11 @@ namespace Ryujinx.Graphics.Vulkan
             _allocation = allocation;
             _allocationAuto = new Auto<MemoryAllocation>(allocation);
             _waitable = new MultiFenceHolder(size);
+<<<<<<< HEAD
             _buffer = new Auto<DisposableBuffer>(new DisposableBuffer(gd.Api, device, buffer), this, _waitable, _allocationAuto);
+=======
+            _buffer = new Auto<DisposableBuffer>(new DisposableBuffer(gd.Api, device, buffer), _waitable, _allocationAuto);
+>>>>>>> 1ec71635b (sync with main branch)
             _bufferHandle = buffer.Handle;
             Size = size;
             _map = allocation.HostPointer;
@@ -86,8 +112,12 @@ namespace Ryujinx.Graphics.Vulkan
             _currentType = currentType;
             DesiredType = currentType;
 
+<<<<<<< HEAD
             _flushLock = new ReaderWriterLockSlim();
             _useMirrors = gd.IsTBDR;
+=======
+            _flushLock = new ReaderWriterLock();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public BufferHolder(VulkanRenderer gd, Device device, VkBuffer buffer, Auto<MemoryAllocation> allocation, int size, BufferAllocationType type, BufferAllocationType currentType, int offset)
@@ -98,7 +128,11 @@ namespace Ryujinx.Graphics.Vulkan
             _allocationAuto = allocation;
             _allocationImported = true;
             _waitable = new MultiFenceHolder(size);
+<<<<<<< HEAD
             _buffer = new Auto<DisposableBuffer>(new DisposableBuffer(gd.Api, device, buffer), this, _waitable, _allocationAuto);
+=======
+            _buffer = new Auto<DisposableBuffer>(new DisposableBuffer(gd.Api, device, buffer), _waitable, _allocationAuto);
+>>>>>>> 1ec71635b (sync with main branch)
             _bufferHandle = buffer.Handle;
             Size = size;
             _map = _allocation.HostPointer + offset;
@@ -107,6 +141,7 @@ namespace Ryujinx.Graphics.Vulkan
             _currentType = currentType;
             DesiredType = currentType;
 
+<<<<<<< HEAD
             _flushLock = new ReaderWriterLockSlim();
         }
 
@@ -124,6 +159,9 @@ namespace Ryujinx.Graphics.Vulkan
             DesiredType = BufferAllocationType.Sparse;
 
             _flushLock = new ReaderWriterLockSlim();
+=======
+            _flushLock = new ReaderWriterLock();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public bool TryBackingSwap(ref CommandBufferScoped? cbs)
@@ -133,12 +171,17 @@ namespace Ryujinx.Graphics.Vulkan
                 // Only swap if the buffer is not used in any queued command buffer.
                 bool isRented = _buffer.HasRentedCommandBufferDependency(_gd.CommandBufferPool);
 
+<<<<<<< HEAD
                 if (!isRented && _gd.CommandBufferPool.OwnedByCurrentThread && !_flushLock.IsReadLockHeld && (_pendingData == null || cbs != null))
+=======
+                if (!isRented && _gd.CommandBufferPool.OwnedByCurrentThread && !_flushLock.IsReaderLockHeld)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     var currentAllocation = _allocationAuto;
                     var currentBuffer = _buffer;
                     IntPtr currentMap = _map;
 
+<<<<<<< HEAD
                     (VkBuffer buffer, MemoryAllocation allocation, BufferAllocationType resultType) = _gd.BufferManager.CreateBacking(_gd, Size, DesiredType, false, false, _currentType);
 
                     if (buffer.Handle != 0)
@@ -149,6 +192,13 @@ namespace Ryujinx.Graphics.Vulkan
                         }
 
                         _flushLock.EnterWriteLock();
+=======
+                    (VkBuffer buffer, MemoryAllocation allocation, BufferAllocationType resultType) = _gd.BufferManager.CreateBacking(_gd, Size, DesiredType, false, _currentType);
+
+                    if (buffer.Handle != 0)
+                    {
+                        _flushLock.AcquireWriterLock(Timeout.Infinite);
+>>>>>>> 1ec71635b (sync with main branch)
 
                         ClearFlushFence();
 
@@ -156,7 +206,11 @@ namespace Ryujinx.Graphics.Vulkan
 
                         _allocation = allocation;
                         _allocationAuto = new Auto<MemoryAllocation>(allocation);
+<<<<<<< HEAD
                         _buffer = new Auto<DisposableBuffer>(new DisposableBuffer(_gd.Api, _device, buffer), this, _waitable, _allocationAuto);
+=======
+                        _buffer = new Auto<DisposableBuffer>(new DisposableBuffer(_gd.Api, _device, buffer), _waitable, _allocationAuto);
+>>>>>>> 1ec71635b (sync with main branch)
                         _bufferHandle = buffer.Handle;
                         _map = allocation.HostPointer;
 
@@ -171,7 +225,14 @@ namespace Ryujinx.Graphics.Vulkan
                         }
                         else
                         {
+<<<<<<< HEAD
                             cbs ??= _gd.CommandBufferPool.Rent();
+=======
+                            if (cbs == null)
+                            {
+                                cbs = _gd.CommandBufferPool.Rent();
+                            }
+>>>>>>> 1ec71635b (sync with main branch)
 
                             CommandBufferScoped cbsV = cbs.Value;
 
@@ -202,13 +263,18 @@ namespace Ryujinx.Graphics.Vulkan
 
                         _gd.PipelineInternal.SwapBuffer(currentBuffer, _buffer);
 
+<<<<<<< HEAD
                         _flushLock.ExitWriteLock();
+=======
+                        _flushLock.ReleaseWriterLock();
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     _swapQueued = false;
 
                     return true;
                 }
+<<<<<<< HEAD
 
                 return false;
             }
@@ -216,6 +282,19 @@ namespace Ryujinx.Graphics.Vulkan
             _swapQueued = false;
 
             return true;
+=======
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                _swapQueued = false;
+
+                return true;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void ConsiderBackingSwap()
@@ -270,6 +349,7 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
+<<<<<<< HEAD
         public void Pin()
         {
             if (_baseType == BufferAllocationType.Auto)
@@ -281,19 +361,32 @@ namespace Ryujinx.Graphics.Vulkan
         public unsafe Auto<DisposableBufferView> CreateView(VkFormat format, int offset, int size, Action invalidateView)
         {
             var bufferViewCreateInfo = new BufferViewCreateInfo
+=======
+        public unsafe Auto<DisposableBufferView> CreateView(VkFormat format, int offset, int size, Action invalidateView)
+        {
+            var bufferViewCreateInfo = new BufferViewCreateInfo()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.BufferViewCreateInfo,
                 Buffer = new VkBuffer(_bufferHandle),
                 Format = format,
                 Offset = (uint)offset,
+<<<<<<< HEAD
                 Range = (uint)size,
+=======
+                Range = (uint)size
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             _gd.Api.CreateBufferView(_device, bufferViewCreateInfo, null, out var bufferView).ThrowOnError();
 
             (_swapActions ??= new List<Action>()).Add(invalidateView);
 
+<<<<<<< HEAD
             return new Auto<DisposableBufferView>(new DisposableBufferView(_gd.Api, _device, bufferView), this, _waitable, _buffer);
+=======
+            return new Auto<DisposableBufferView>(new DisposableBufferView(_gd.Api, _device, bufferView), _waitable, _buffer);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void InheritMetrics(BufferHolder other)
@@ -317,11 +410,19 @@ namespace Ryujinx.Graphics.Vulkan
 
             if (needsBarrier)
             {
+<<<<<<< HEAD
                 MemoryBarrier memoryBarrier = new()
                 {
                     SType = StructureType.MemoryBarrier,
                     SrcAccessMask = DefaultAccessFlags,
                     DstAccessMask = DefaultAccessFlags,
+=======
+                MemoryBarrier memoryBarrier = new MemoryBarrier()
+                {
+                    SType = StructureType.MemoryBarrier,
+                    SrcAccessMask = DefaultAccessFlags,
+                    DstAccessMask = DefaultAccessFlags
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 _gd.Api.CmdPipelineBarrier(
@@ -338,6 +439,7 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
+<<<<<<< HEAD
         private static ulong ToMirrorKey(int offset, int size)
         {
             return ((ulong)offset << 32) | (uint)size;
@@ -414,6 +516,8 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Auto<DisposableBuffer> GetBuffer()
         {
             return _buffer;
@@ -451,6 +555,7 @@ namespace Ryujinx.Graphics.Vulkan
             return _buffer;
         }
 
+<<<<<<< HEAD
         public Auto<DisposableBuffer> GetMirrorable(CommandBufferScoped cbs, ref int offset, int size, out bool mirrored)
         {
             if (_pendingData != null && TryGetMirror(cbs, ref offset, size, out Auto<DisposableBuffer> result))
@@ -541,6 +646,8 @@ namespace Ryujinx.Graphics.Vulkan
             return (_allocation.Memory, _allocation.Offset);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public void SignalWrite(int offset, int size)
         {
             ConsiderBackingSwap();
@@ -561,14 +668,22 @@ namespace Ryujinx.Graphics.Vulkan
             return Unsafe.As<ulong, BufferHandle>(ref handle);
         }
 
+<<<<<<< HEAD
         public IntPtr Map(int offset, int mappingSize)
+=======
+        public unsafe IntPtr Map(int offset, int mappingSize)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _map;
         }
 
         private void ClearFlushFence()
         {
+<<<<<<< HEAD
             // Assumes _flushLock is held as writer.
+=======
+            // Asusmes _flushLock is held as writer.
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (_flushFence != null)
             {
@@ -583,6 +698,7 @@ namespace Ryujinx.Graphics.Vulkan
 
         private void WaitForFlushFence()
         {
+<<<<<<< HEAD
             if (_flushFence == null)
             {
                 return;
@@ -621,6 +737,44 @@ namespace Ryujinx.Graphics.Vulkan
         public PinnedSpan<byte> GetData(int offset, int size)
         {
             _flushLock.EnterReadLock();
+=======
+            // Assumes the _flushLock is held as reader, returns in same state.
+
+            if (_flushFence != null)
+            {
+                // If storage has changed, make sure the fence has been reached so that the data is in place.
+
+                var cookie = _flushLock.UpgradeToWriterLock(Timeout.Infinite);
+
+                if (_flushFence != null)
+                {
+                    var fence = _flushFence;
+                    Interlocked.Increment(ref _flushWaiting);
+
+                    // Don't wait in the lock.
+
+                    var restoreCookie = _flushLock.ReleaseLock();
+
+                    fence.Wait();
+
+                    _flushLock.RestoreLock(ref restoreCookie);
+
+                    if (Interlocked.Decrement(ref _flushWaiting) == 0)
+                    {
+                        fence.Put();
+                    }
+
+                    _flushFence = null;
+                }
+
+                _flushLock.DowngradeFromWriterLock(ref cookie);
+            }
+        }
+
+        public unsafe PinnedSpan<byte> GetData(int offset, int size)
+        {
+            _flushLock.AcquireReaderLock(Timeout.Infinite);
+>>>>>>> 1ec71635b (sync with main branch)
 
             WaitForFlushFence();
 
@@ -640,6 +794,7 @@ namespace Ryujinx.Graphics.Vulkan
                 // Need to be careful here, the buffer can't be unmapped while the data is being used.
                 _buffer.IncrementReferenceCount();
 
+<<<<<<< HEAD
                 _flushLock.ExitReadLock();
 
                 return PinnedSpan<byte>.UnsafeFromSpan(result, _buffer.DecrementReferenceCount);
@@ -662,6 +817,32 @@ namespace Ryujinx.Graphics.Vulkan
 
             // Flush buffer is pinned until the next GetBufferData on the thread, which is fine for current uses.
             return PinnedSpan<byte>.UnsafeFromSpan(result);
+=======
+                _flushLock.ReleaseReaderLock();
+
+                return PinnedSpan<byte>.UnsafeFromSpan(result, _buffer.DecrementReferenceCount);
+            }
+            else
+            {
+                BackgroundResource resource = _gd.BackgroundResources.Get();
+
+                if (_gd.CommandBufferPool.OwnedByCurrentThread)
+                {
+                    _gd.FlushAllCommands();
+
+                    result = resource.GetFlushBuffer().GetBufferData(_gd.CommandBufferPool, this, offset, size);
+                }
+                else
+                {
+                    result = resource.GetFlushBuffer().GetBufferData(resource.GetPool(), this, offset, size);
+                }
+
+                _flushLock.ReleaseReaderLock();
+
+                // Flush buffer is pinned until the next GetBufferData on the thread, which is fine for current uses.
+                return PinnedSpan<byte>.UnsafeFromSpan(result);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public unsafe Span<byte> GetDataStorage(int offset, int size)
@@ -676,6 +857,7 @@ namespace Ryujinx.Graphics.Vulkan
             throw new InvalidOperationException("The buffer is not host mapped.");
         }
 
+<<<<<<< HEAD
         public bool RemoveOverlappingMirrors(int offset, int size)
         {
             List<ulong> toRemove = null;
@@ -704,6 +886,9 @@ namespace Ryujinx.Graphics.Vulkan
         }
 
         public unsafe void SetData(int offset, ReadOnlySpan<byte> data, CommandBufferScoped? cbs = null, Action endRenderPass = null, bool allowCbsWait = true)
+=======
+        public unsafe void SetData(int offset, ReadOnlySpan<byte> data, CommandBufferScoped? cbs = null, Action endRenderPass = null)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             int dataSize = Math.Min(data.Length, Size - offset);
             if (dataSize == 0)
@@ -712,7 +897,10 @@ namespace Ryujinx.Graphics.Vulkan
             }
 
             _setCount++;
+<<<<<<< HEAD
             bool allowMirror = _useMirrors && allowCbsWait && cbs != null && _currentType <= BufferAllocationType.HostMapped;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (_map != IntPtr.Zero)
             {
@@ -720,12 +908,17 @@ namespace Ryujinx.Graphics.Vulkan
                 bool isRented = _buffer.HasRentedCommandBufferDependency(_gd.CommandBufferPool);
 
                 // If the buffer is rented, take a little more time and check if the use overlaps this handle.
+<<<<<<< HEAD
                 bool needsFlush = isRented && _waitable.IsBufferRangeInUse(offset, dataSize, false);
+=======
+                bool needsFlush = isRented && _waitable.IsBufferRangeInUse(offset, dataSize);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 if (!needsFlush)
                 {
                     WaitForFences(offset, dataSize);
 
+<<<<<<< HEAD
                     data[..dataSize].CopyTo(new Span<byte>((void*)(_map + offset), dataSize));
 
                     if (_pendingData != null)
@@ -737,6 +930,9 @@ namespace Ryujinx.Graphics.Vulkan
                             _gd.PipelineInternal.Rebind(_buffer, offset, dataSize);
                         }
                     }
+=======
+                    data.Slice(0, dataSize).CopyTo(new Span<byte>((void*)(_map + offset), dataSize));
+>>>>>>> 1ec71635b (sync with main branch)
 
                     SignalWrite(offset, dataSize);
 
@@ -744,6 +940,7 @@ namespace Ryujinx.Graphics.Vulkan
                 }
             }
 
+<<<<<<< HEAD
             // If the buffer does not have an in-flight write (including an inline update), then upload data to a pendingCopy.
             if (allowMirror && !_waitable.IsBufferRangeInUse(offset, dataSize, true))
             {
@@ -770,6 +967,8 @@ namespace Ryujinx.Graphics.Vulkan
                 _pendingDataRanges.Remove(offset, dataSize);
             }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             if (cbs != null &&
                 _gd.PipelineInternal.RenderPassActive &&
                 !(_buffer.HasCommandBufferDependency(cbs.Value) &&
@@ -787,6 +986,7 @@ namespace Ryujinx.Graphics.Vulkan
                 data.Length > MaxUpdateBufferSize ||
                 !TryPushData(cbs.Value, endRenderPass, offset, data))
             {
+<<<<<<< HEAD
                 if (allowCbsWait)
                 {
                     _gd.BufferManager.StagingBuffer.PushData(_gd.CommandBufferPool, cbs, endRenderPass, this, offset, data);
@@ -818,6 +1018,9 @@ namespace Ryujinx.Graphics.Vulkan
                         cbs.Value.Dispose();
                     }
                 }
+=======
+                _gd.BufferManager.StagingBuffer.PushData(_gd.CommandBufferPool, cbs, endRenderPass, this, offset, data);
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -831,7 +1034,11 @@ namespace Ryujinx.Graphics.Vulkan
 
             if (_map != IntPtr.Zero)
             {
+<<<<<<< HEAD
                 data[..dataSize].CopyTo(new Span<byte>((void*)(_map + offset), dataSize));
+=======
+                data.Slice(0, dataSize).CopyTo(new Span<byte>((void*)(_map + offset), dataSize));
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -839,11 +1046,14 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
+<<<<<<< HEAD
         public unsafe void SetDataUnchecked<T>(int offset, ReadOnlySpan<T> data) where T : unmanaged
         {
             SetDataUnchecked(offset, MemoryMarshal.AsBytes(data));
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public void SetDataInline(CommandBufferScoped cbs, Action endRenderPass, int dstOffset, ReadOnlySpan<byte> data)
         {
             if (!TryPushData(cbs, endRenderPass, dstOffset, data))
@@ -861,7 +1071,11 @@ namespace Ryujinx.Graphics.Vulkan
 
             endRenderPass?.Invoke();
 
+<<<<<<< HEAD
             var dstBuffer = GetBuffer(cbs.CommandBuffer, dstOffset, data.Length, true).Get(cbs, dstOffset, data.Length, true).Value;
+=======
+            var dstBuffer = GetBuffer(cbs.CommandBuffer, dstOffset, data.Length, true).Get(cbs, dstOffset, data.Length).Value;
+>>>>>>> 1ec71635b (sync with main branch)
 
             _writeCount--;
 
@@ -911,7 +1125,11 @@ namespace Ryujinx.Graphics.Vulkan
             bool registerSrcUsage = true)
         {
             var srcBuffer = registerSrcUsage ? src.Get(cbs, srcOffset, size).Value : src.GetUnsafe().Value;
+<<<<<<< HEAD
             var dstBuffer = dst.Get(cbs, dstOffset, size, true).Value;
+=======
+            var dstBuffer = dst.Get(cbs, dstOffset, size).Value;
+>>>>>>> 1ec71635b (sync with main branch)
 
             InsertBufferBarrier(
                 gd,
@@ -951,7 +1169,11 @@ namespace Ryujinx.Graphics.Vulkan
             int offset,
             int size)
         {
+<<<<<<< HEAD
             BufferMemoryBarrier memoryBarrier = new()
+=======
+            BufferMemoryBarrier memoryBarrier = new BufferMemoryBarrier()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.BufferMemoryBarrier,
                 SrcAccessMask = srcAccessMask,
@@ -960,7 +1182,11 @@ namespace Ryujinx.Graphics.Vulkan
                 DstQueueFamilyIndex = Vk.QueueFamilyIgnored,
                 Buffer = buffer,
                 Offset = (ulong)offset,
+<<<<<<< HEAD
                 Size = (ulong)size,
+=======
+                Size = (ulong)size
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             gd.Api.CmdPipelineBarrier(
@@ -1009,7 +1235,11 @@ namespace Ryujinx.Graphics.Vulkan
 
             if (!_cachedConvertedBuffers.TryGetValue(offset, size, key, out var holder))
             {
+<<<<<<< HEAD
                 holder = _gd.BufferManager.Create(_gd, (size * 2 + 3) & ~3, baseType: BufferAllocationType.DeviceLocal);
+=======
+                holder = _gd.BufferManager.Create(_gd, (size * 2 + 3) & ~3);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 _gd.PipelineInternal.EndRenderPass();
                 _gd.HelperShader.ConvertI8ToI16(_gd, cbs, this, holder, offset, size);
@@ -1035,7 +1265,11 @@ namespace Ryujinx.Graphics.Vulkan
             {
                 int alignedStride = (stride + (alignment - 1)) & -alignment;
 
+<<<<<<< HEAD
                 holder = _gd.BufferManager.Create(_gd, (size / stride) * alignedStride, baseType: BufferAllocationType.DeviceLocal);
+=======
+                holder = _gd.BufferManager.Create(_gd, (size / stride) * alignedStride);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 _gd.PipelineInternal.EndRenderPass();
                 _gd.HelperShader.ChangeStride(_gd, cbs, this, holder, offset, size, stride, alignedStride);
@@ -1065,7 +1299,11 @@ namespace Ryujinx.Graphics.Vulkan
 
                 int convertedCount = pattern.GetConvertedCount(indexCount);
 
+<<<<<<< HEAD
                 holder = _gd.BufferManager.Create(_gd, convertedCount * 4, baseType: BufferAllocationType.DeviceLocal);
+=======
+                holder = _gd.BufferManager.Create(_gd, convertedCount * 4);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 _gd.PipelineInternal.EndRenderPass();
                 _gd.HelperShader.ConvertIndexBuffer(_gd, cbs, this, holder, pattern, indexSize, offset, indexCount);
@@ -1112,6 +1350,7 @@ namespace Ryujinx.Graphics.Vulkan
             }
             else
             {
+<<<<<<< HEAD
                 _allocationAuto?.Dispose();
             }
 
@@ -1120,6 +1359,16 @@ namespace Ryujinx.Graphics.Vulkan
             ClearFlushFence();
 
             _flushLock.ExitWriteLock();
+=======
+                _allocationAuto.Dispose();
+            }
+
+            _flushLock.AcquireWriterLock(Timeout.Infinite);
+
+            ClearFlushFence();
+
+            _flushLock.ReleaseWriterLock();
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

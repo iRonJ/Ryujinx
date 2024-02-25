@@ -13,6 +13,10 @@ namespace ARMeilleure.State
         Idc = 1u << 7,
         Qc = 1u << 27,
 
+<<<<<<< HEAD
         Mask = Qc | Idc | Ixc | Ufc | Ofc | Dzc | Ioc, // 0x0800009Fu
+=======
+        Mask = Qc | Idc | Ixc | Ufc | Ofc | Dzc | Ioc // 0x0800009Fu
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

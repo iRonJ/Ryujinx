@@ -6,7 +6,11 @@ namespace Ryujinx.HLE.HOS.Tamper
     class Register : IOperand
     {
         private ulong _register = 0;
+<<<<<<< HEAD
         private readonly string _alias;
+=======
+        private string _alias;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public Register(string alias)
         {

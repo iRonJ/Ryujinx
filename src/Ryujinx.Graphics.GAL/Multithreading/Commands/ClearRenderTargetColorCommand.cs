@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct ClearRenderTargetColorCommand : IGALCommand, IGALCommand<ClearRenderTargetColorCommand>
     {
         public readonly CommandType CommandType => CommandType.ClearRenderTargetColor;
+=======
+﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
+{
+    struct ClearRenderTargetColorCommand : IGALCommand, IGALCommand<ClearRenderTargetColorCommand>
+    {
+        public CommandType CommandType => CommandType.ClearRenderTargetColor;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _index;
         private int _layer;
         private int _layerCount;

@@ -4,4 +4,8 @@ namespace ARMeilleure.Decoders
     {
         int Size { get; }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

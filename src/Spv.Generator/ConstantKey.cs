@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Diagnostics.CodeAnalysis;
 
 namespace Spv.Generator
 {
+<<<<<<< HEAD
     internal readonly struct ConstantKey : IEquatable<ConstantKey>
     {
         private readonly Instruction _constant;
+=======
+    internal struct ConstantKey : IEquatable<ConstantKey>
+    {
+        private Instruction _constant;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ConstantKey(Instruction constant)
         {
@@ -24,7 +34,11 @@ namespace Spv.Generator
 
         public override bool Equals([NotNullWhen(true)] object obj)
         {
+<<<<<<< HEAD
             return obj is ConstantKey key && Equals(key);
+=======
+            return obj is ConstantKey && Equals((ConstantKey)obj);
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

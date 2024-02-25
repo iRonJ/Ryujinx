@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
@@ -6,6 +7,13 @@ namespace Ryujinx.Memory
 {
     [SupportedOSPlatform("linux")]
     [SupportedOSPlatform("macos")]
+=======
+﻿using System;
+using System.Runtime.InteropServices;
+
+namespace Ryujinx.Memory
+{
+>>>>>>> 1ec71635b (sync with main branch)
     public static partial class MemoryManagerUnixHelper
     {
         [Flags]
@@ -14,7 +22,11 @@ namespace Ryujinx.Memory
             PROT_NONE = 0,
             PROT_READ = 1,
             PROT_WRITE = 2,
+<<<<<<< HEAD
             PROT_EXEC = 4,
+=======
+            PROT_EXEC = 4
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [Flags]
@@ -26,7 +38,11 @@ namespace Ryujinx.Memory
             MAP_NORESERVE = 8,
             MAP_FIXED = 16,
             MAP_UNLOCKED = 32,
+<<<<<<< HEAD
             MAP_JIT_DARWIN = 0x800,
+=======
+            MAP_JIT_DARWIN = 0x800
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [Flags]
@@ -44,8 +60,11 @@ namespace Ryujinx.Memory
             O_SYNC = 256,
         }
 
+<<<<<<< HEAD
         public const IntPtr MAP_FAILED = -1;
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         private const int MAP_ANONYMOUS_LINUX_GENERIC = 0x20;
         private const int MAP_NORESERVE_LINUX_GENERIC = 0x4000;
         private const int MAP_UNLOCKED_LINUX_GENERIC = 0x80000;
@@ -164,9 +183,17 @@ namespace Ryujinx.Memory
             return result;
         }
 
+<<<<<<< HEAD
         public static IntPtr Mmap(IntPtr address, ulong length, MmapProts prot, MmapFlags flags, int fd, long offset)
+=======
+        public static IntPtr mmap(IntPtr address, ulong length, MmapProts prot, MmapFlags flags, int fd, long offset)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return Internal_mmap(address, length, prot, MmapFlagsToSystemFlags(flags), fd, offset);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

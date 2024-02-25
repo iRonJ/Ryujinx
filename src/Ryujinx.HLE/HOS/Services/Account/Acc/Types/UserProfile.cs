@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Account.Acc
 {
@@ -47,7 +51,11 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             }
         }
 
+<<<<<<< HEAD
         private AccountState _onlinePlayState;
+=======
+        public AccountState _onlinePlayState;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public AccountState OnlinePlayState
         {
@@ -63,10 +71,17 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
         public UserProfile(UserId userId, string name, byte[] image, long lastModifiedTimestamp = 0)
         {
             UserId = userId;
+<<<<<<< HEAD
             Name = name;
             Image = image;
 
             AccountState = AccountState.Closed;
+=======
+            Name   = name;
+            Image  = image;
+
+            AccountState    = AccountState.Closed;
+>>>>>>> 1ec71635b (sync with main branch)
             OnlinePlayState = AccountState.Closed;
 
             if (lastModifiedTimestamp != 0)
@@ -84,4 +99,8 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             LastModifiedTimestamp = (long)(DateTime.Now - DateTime.UnixEpoch).TotalSeconds;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

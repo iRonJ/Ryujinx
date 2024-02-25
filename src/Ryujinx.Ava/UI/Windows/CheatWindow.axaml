@@ -11,7 +11,10 @@
     Height="500"
     MinWidth="500"
     MinHeight="500"
+<<<<<<< HEAD
     x:DataType="window:CheatWindow"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d"
     Focusable="True">
@@ -78,7 +81,11 @@
                 MinHeight="300"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
+<<<<<<< HEAD
                 ItemsSource="{Binding LoadedCheats}">
+=======
+                Items="{Binding LoadedCheats}">
+>>>>>>> 1ec71635b (sync with main branch)
                 <TreeView.Styles>
                     <Styles>
                         <Style Selector="TreeViewItem:empty /template/ ItemsPresenter">
@@ -86,6 +93,7 @@
                         </Style>
                     </Styles>
                 </TreeView.Styles>
+<<<<<<< HEAD
                 <TreeView.ItemTemplate>
                     <TreeDataTemplate ItemsSource="{Binding SubNodes}">
                         <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
@@ -96,6 +104,30 @@
                         </StackPanel>
                     </TreeDataTemplate>
                 </TreeView.ItemTemplate>
+=======
+                <TreeView.DataTemplates>
+                    <TreeDataTemplate DataType="model:CheatsList" ItemsSource="{Binding}">
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                            <CheckBox MinWidth="20" IsChecked="{Binding IsEnabled}" />
+                            <TextBlock Width="150" Text="{Binding BuildId}" />
+                            <TextBlock Text="{Binding Path}" />
+                        </StackPanel>
+                    </TreeDataTemplate>
+                    <DataTemplate x:DataType="model:CheatModel">
+                        <StackPanel
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                            <CheckBox
+                                MinWidth="20"
+                                Margin="5,0"
+                                Padding="0"
+                                IsChecked="{Binding IsEnabled}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding CleanName}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </TreeView.DataTemplates>
+>>>>>>> 1ec71635b (sync with main branch)
             </TreeView>
         </Border>
         <DockPanel
@@ -123,4 +155,8 @@
             </DockPanel>
         </DockPanel>
     </Grid>
+<<<<<<< HEAD
 </window:StyleableWindow>
+=======
+</window:StyleableWindow>
+>>>>>>> 1ec71635b (sync with main branch)

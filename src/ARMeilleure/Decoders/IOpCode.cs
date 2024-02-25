@@ -14,4 +14,8 @@ namespace ARMeilleure.Decoders
 
         OperandType GetOperandType();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

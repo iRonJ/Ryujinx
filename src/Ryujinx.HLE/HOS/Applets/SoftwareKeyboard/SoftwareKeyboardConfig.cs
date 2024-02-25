@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Runtime.InteropServices;
+=======
+﻿using System.Runtime.InteropServices;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
 {
@@ -8,10 +12,17 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     struct SoftwareKeyboardConfig
     {
+<<<<<<< HEAD
         private const int SubmitTextLength = 8;
         private const int HeaderTextLength = 64;
         private const int SubtitleTextLength = 128;
         private const int GuideTextLength = 256;
+=======
+        private const int SubmitTextLength   = 8;
+        private const int HeaderTextLength   = 64;        
+        private const int SubtitleTextLength = 128;
+        private const int GuideTextLength    = 256;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Type of keyboard.

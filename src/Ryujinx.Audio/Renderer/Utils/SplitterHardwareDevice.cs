@@ -5,8 +5,13 @@ namespace Ryujinx.Audio.Renderer.Utils
 {
     public class SplitterHardwareDevice : IHardwareDevice
     {
+<<<<<<< HEAD
         private readonly IHardwareDevice _baseDevice;
         private readonly IHardwareDevice _secondaryDevice;
+=======
+        private IHardwareDevice _baseDevice;
+        private IHardwareDevice _secondaryDevice;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public SplitterHardwareDevice(IHardwareDevice baseDevice, IHardwareDevice secondaryDevice)
         {
@@ -43,7 +48,10 @@ namespace Ryujinx.Audio.Renderer.Utils
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
 
@@ -56,4 +64,8 @@ namespace Ryujinx.Audio.Renderer.Utils
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

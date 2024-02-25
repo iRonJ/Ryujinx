@@ -15,7 +15,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         /// </summary>
         public Queue<FifoWord> Fifo { get; }
 
+<<<<<<< HEAD
         private readonly int[] _gprs;
+=======
+        private int[] _gprs;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private int _methAddr;
         private int _methIncr;
@@ -291,6 +295,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
 
                     return (int)result;
 
+<<<<<<< HEAD
                 case AluRegOperation.BitwiseExclusiveOr:
                     return a ^ b;
                 case AluRegOperation.BitwiseOr:
@@ -301,6 +306,13 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
                     return a & ~b;
                 case AluRegOperation.BitwiseNotAnd:
                     return ~(a & b);
+=======
+                case AluRegOperation.BitwiseExclusiveOr: return a ^ b;
+                case AluRegOperation.BitwiseOr: return a | b;
+                case AluRegOperation.BitwiseAnd: return a & b;
+                case AluRegOperation.BitwiseAndNot: return a & ~b;
+                case AluRegOperation.BitwiseNotAnd: return ~(a & b);
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             throw new InvalidOperationException($"Invalid operation \"{aluOp}\" on instruction 0x{_opCode:X8}.");
@@ -385,7 +397,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         /// <param name="state">Current GPU state</param>
         /// <param name="reg">Register offset to read</param>
         /// <returns>GPU register value</returns>
+<<<<<<< HEAD
         private static int Read(IDeviceState state, int reg)
+=======
+        private int Read(IDeviceState state, int reg)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return state.Read(reg * 4);
         }
@@ -402,4 +418,8 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
             _methAddr += _methIncr;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

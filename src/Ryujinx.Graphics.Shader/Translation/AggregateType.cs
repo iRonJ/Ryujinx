@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System;
 using System.Diagnostics.CodeAnalysis;
 
@@ -5,6 +6,10 @@ namespace Ryujinx.Graphics.Shader.Translation
 {
     [Flags]
     [SuppressMessage("Design", "CA1069: Enums values should not be duplicated")]
+=======
+﻿namespace Ryujinx.Graphics.Shader.Translation
+{
+>>>>>>> 1ec71635b (sync with main branch)
     enum AggregateType
     {
         Invalid,
@@ -25,7 +30,11 @@ namespace Ryujinx.Graphics.Shader.Translation
         Vector3 = 2 << ElementCountShift,
         Vector4 = 3 << ElementCountShift,
 
+<<<<<<< HEAD
         Array = 1 << 10,
+=======
+        Array  = 1 << 10
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class AggregateTypeExtensions
@@ -39,7 +48,11 @@ namespace Ryujinx.Graphics.Shader.Translation
                 AggregateType.S32 or
                 AggregateType.U32 => 4,
                 AggregateType.FP64 => 8,
+<<<<<<< HEAD
                 _ => 0,
+=======
+                _ => 0
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             switch (type & AggregateType.ElementCountMask)

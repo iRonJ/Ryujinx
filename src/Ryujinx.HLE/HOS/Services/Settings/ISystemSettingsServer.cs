@@ -30,7 +30,11 @@ namespace Ryujinx.HLE.HOS.Services.Settings
         // GetFirmwareVersion2() -> buffer<nn::settings::system::FirmwareVersion, 0x1a, 0x100>
         public ResultCode GetFirmwareVersion2(ServiceCtx context)
         {
+<<<<<<< HEAD
             ulong replyPos = context.Request.RecvListBuff[0].Position;
+=======
+            ulong replyPos  = context.Request.RecvListBuff[0].Position;
+>>>>>>> 1ec71635b (sync with main branch)
 
             context.Response.PtrBuff[0] = context.Response.PtrBuff[0].WithSize(0x100L);
 
@@ -43,6 +47,7 @@ namespace Ryujinx.HLE.HOS.Services.Settings
                 return ResultCode.Success;
             }
 
+<<<<<<< HEAD
             const byte MajorFwVersion = 0x03;
             const byte MinorFwVersion = 0x00;
             const byte MicroFwVersion = 0x00;
@@ -82,6 +87,48 @@ namespace Ryujinx.HLE.HOS.Services.Settings
             writer.Write(Encoding.ASCII.GetBytes(Build));
 
             context.Memory.Write(replyPos, ms.ToArray());
+=======
+            const byte majorFwVersion = 0x03;
+            const byte minorFwVersion = 0x00;
+            const byte microFwVersion = 0x00;
+            const byte unknown        = 0x00; //Build?
+
+            const int revisionNumber = 0x0A;
+
+            const string platform   = "NX";
+            const string unknownHex = "7fbde2b0bba4d14107bf836e4643043d9f6c8e47";
+            const string version    = "3.0.0";
+            const string build      = "NintendoSDK Firmware for NX 3.0.0-10.0";
+
+            // http://switchbrew.org/index.php?title=System_Version_Title
+            using (MemoryStream ms = new MemoryStream(0x100))
+            {
+                BinaryWriter writer = new BinaryWriter(ms);
+
+                writer.Write(majorFwVersion);
+                writer.Write(minorFwVersion);
+                writer.Write(microFwVersion);
+                writer.Write(unknown);
+
+                writer.Write(revisionNumber);
+
+                writer.Write(Encoding.ASCII.GetBytes(platform));
+
+                ms.Seek(0x28, SeekOrigin.Begin);
+
+                writer.Write(Encoding.ASCII.GetBytes(unknownHex));
+
+                ms.Seek(0x68, SeekOrigin.Begin);
+
+                writer.Write(Encoding.ASCII.GetBytes(version));
+
+                ms.Seek(0x80, SeekOrigin.Begin);
+
+                writer.Write(Encoding.ASCII.GetBytes(build));
+
+                context.Memory.Write(replyPos, ms.ToArray());
+            }
+>>>>>>> 1ec71635b (sync with main branch)
 
             return ResultCode.Success;
         }
@@ -110,10 +157,17 @@ namespace Ryujinx.HLE.HOS.Services.Settings
         // GetSettingsItemValueSize(buffer<nn::settings::SettingsName, 0x19>, buffer<nn::settings::SettingsItemKey, 0x19>) -> u64
         public ResultCode GetSettingsItemValueSize(ServiceCtx context)
         {
+<<<<<<< HEAD
             ulong classPos = context.Request.PtrBuff[0].Position;
             ulong classSize = context.Request.PtrBuff[0].Size;
 
             ulong namePos = context.Request.PtrBuff[1].Position;
+=======
+            ulong classPos  = context.Request.PtrBuff[0].Position;
+            ulong classSize = context.Request.PtrBuff[0].Size;
+
+            ulong namePos  = context.Request.PtrBuff[1].Position;
+>>>>>>> 1ec71635b (sync with main branch)
             ulong nameSize = context.Request.PtrBuff[1].Size;
 
             byte[] classBuffer = new byte[classSize];
@@ -159,6 +213,7 @@ namespace Ryujinx.HLE.HOS.Services.Settings
         // GetSettingsItemValue(buffer<nn::settings::SettingsName, 0x19, 0x48>, buffer<nn::settings::SettingsItemKey, 0x19, 0x48>) -> (u64, buffer<unknown, 6, 0>)
         public ResultCode GetSettingsItemValue(ServiceCtx context)
         {
+<<<<<<< HEAD
             ulong classPos = context.Request.PtrBuff[0].Position;
             ulong classSize = context.Request.PtrBuff[0].Size;
 
@@ -166,6 +221,15 @@ namespace Ryujinx.HLE.HOS.Services.Settings
             ulong nameSize = context.Request.PtrBuff[1].Size;
 
             ulong replyPos = context.Request.ReceiveBuff[0].Position;
+=======
+            ulong classPos  = context.Request.PtrBuff[0].Position;
+            ulong classSize = context.Request.PtrBuff[0].Size;
+
+            ulong namePos  = context.Request.PtrBuff[1].Position;
+            ulong nameSize = context.Request.PtrBuff[1].Size;
+
+            ulong replyPos  = context.Request.ReceiveBuff[0].Position;
+>>>>>>> 1ec71635b (sync with main branch)
             ulong replySize = context.Request.ReceiveBuff[0].Size;
 
             byte[] classBuffer = new byte[classSize];
@@ -249,7 +313,11 @@ namespace Ryujinx.HLE.HOS.Services.Settings
         public ResultCode GetDeviceNickName(ServiceCtx context)
         {
             ulong deviceNickNameBufferPosition = context.Request.ReceiveBuff[0].Position;
+<<<<<<< HEAD
             ulong deviceNickNameBufferSize = context.Request.ReceiveBuff[0].Size;
+=======
+            ulong deviceNickNameBufferSize     = context.Request.ReceiveBuff[0].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (deviceNickNameBufferPosition == 0)
             {
@@ -271,7 +339,11 @@ namespace Ryujinx.HLE.HOS.Services.Settings
         public ResultCode SetDeviceNickName(ServiceCtx context)
         {
             ulong deviceNickNameBufferPosition = context.Request.SendBuff[0].Position;
+<<<<<<< HEAD
             ulong deviceNickNameBufferSize = context.Request.SendBuff[0].Size;
+=======
+            ulong deviceNickNameBufferSize     = context.Request.SendBuff[0].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             byte[] deviceNickNameBuffer = new byte[deviceNickNameBufferSize];
 
@@ -305,6 +377,7 @@ namespace Ryujinx.HLE.HOS.Services.Settings
                 return null;
             }
 
+<<<<<<< HEAD
             string firmwareTitlePath = FileSystem.VirtualFileSystem.SwitchPathToSystemPath(contentPath);
 
             using IStorage firmwareStorage = new LocalStorage(firmwareTitlePath, FileAccess.Read);
@@ -340,6 +413,45 @@ namespace Ryujinx.HLE.HOS.Services.Settings
             }
 
             return data;
+=======
+            string firmwareTitlePath = device.FileSystem.SwitchPathToSystemPath(contentPath);
+
+            using(IStorage firmwareStorage = new LocalStorage(firmwareTitlePath, FileAccess.Read))
+            {
+                Nca firmwareContent = new Nca(device.System.KeySet, firmwareStorage);
+
+                if (!firmwareContent.CanOpenSection(NcaSectionType.Data))
+                {
+                    return null;
+                }
+
+                IFileSystem firmwareRomFs = firmwareContent.OpenFileSystem(NcaSectionType.Data, device.System.FsIntegrityCheckLevel);
+
+                using var firmwareFile = new UniqueRef<IFile>();
+
+                Result result = firmwareRomFs.OpenFile(ref firmwareFile.Ref, "/file".ToU8Span(), OpenMode.Read);
+                if (result.IsFailure())
+                {
+                    return null;
+                }
+
+                result = firmwareFile.Get.GetSize(out long fileSize);
+                if (result.IsFailure())
+                {
+                    return null;
+                }
+
+                byte[] data = new byte[fileSize];
+
+                result = firmwareFile.Get.Read(out _, 0, data);
+                if (result.IsFailure())
+                {
+                    return null;
+                }
+
+                return data;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

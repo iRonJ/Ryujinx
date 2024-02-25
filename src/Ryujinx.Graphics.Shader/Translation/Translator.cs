@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using System;
+=======
+using Ryujinx.Graphics.Shader.CodeGen.Glsl;
+using Ryujinx.Graphics.Shader.CodeGen.Spirv;
+using Ryujinx.Graphics.Shader.Decoders;
+using Ryujinx.Graphics.Shader.IntermediateRepresentation;
+using Ryujinx.Graphics.Shader.StructuredIr;
+using Ryujinx.Graphics.Shader.Translation.Optimizations;
+using System;
+using System.Collections.Generic;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Linq;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 
@@ -8,7 +19,10 @@ namespace Ryujinx.Graphics.Shader.Translation
 {
     public static class Translator
     {
+<<<<<<< HEAD
         private const int ThreadsPerWarp = 32;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         private const int HeaderSize = 0x50;
 
         internal readonly struct FunctionCode
@@ -26,6 +40,7 @@ namespace Ryujinx.Graphics.Shader.Translation
             return DecodeShader(address, gpuAccessor, options);
         }
 
+<<<<<<< HEAD
         private static TranslatorContext DecodeShader(ulong address, IGpuAccessor gpuAccessor, TranslationOptions options)
         {
             int localMemorySize;
@@ -51,6 +66,96 @@ namespace Ryujinx.Graphics.Shader.Translation
 
             ulong maxEndAddress = 0;
 
+=======
+        internal static ShaderProgram Translate(FunctionCode[] functions, ShaderConfig config)
+        {
+            var cfgs = new ControlFlowGraph[functions.Length];
+            var frus = new RegisterUsage.FunctionRegisterUsage[functions.Length];
+
+            for (int i = 0; i < functions.Length; i++)
+            {
+                cfgs[i] = ControlFlowGraph.Create(functions[i].Code);
+
+                if (i != 0)
+                {
+                    frus[i] = RegisterUsage.RunPass(cfgs[i]);
+                }
+            }
+
+            List<Function> funcs = new List<Function>(functions.Length);
+
+            for (int i = 0; i < functions.Length; i++)
+            {
+                funcs.Add(null);
+            }
+
+            HelperFunctionManager hfm = new HelperFunctionManager(funcs, config.Stage);
+
+            for (int i = 0; i < functions.Length; i++)
+            {
+                var cfg = cfgs[i];
+
+                int inArgumentsCount = 0;
+                int outArgumentsCount = 0;
+
+                if (i != 0)
+                {
+                    var fru = frus[i];
+
+                    inArgumentsCount  = fru.InArguments.Length;
+                    outArgumentsCount = fru.OutArguments.Length;
+                }
+
+                if (cfg.Blocks.Length != 0)
+                {
+                    RegisterUsage.FixupCalls(cfg.Blocks, frus);
+
+                    Dominance.FindDominators(cfg);
+                    Dominance.FindDominanceFrontiers(cfg.Blocks);
+
+                    Ssa.Rename(cfg.Blocks);
+
+                    Optimizer.RunPass(cfg.Blocks, config);
+                    Rewriter.RunPass(hfm, cfg.Blocks, config);
+                }
+
+                funcs[i] = new Function(cfg.Blocks, $"fun{i}", false, inArgumentsCount, outArgumentsCount);
+            }
+
+            var identification = ShaderIdentifier.Identify(funcs, config);
+
+            var sInfo = StructuredProgram.MakeStructuredProgram(funcs, config);
+
+            var info = config.CreateProgramInfo(identification);
+
+            return config.Options.TargetLanguage switch
+            {
+                TargetLanguage.Glsl => new ShaderProgram(info, TargetLanguage.Glsl, GlslGenerator.Generate(sInfo, config)),
+                TargetLanguage.Spirv => new ShaderProgram(info, TargetLanguage.Spirv, SpirvGenerator.Generate(sInfo, config)),
+                _ => throw new NotImplementedException(config.Options.TargetLanguage.ToString())
+            };
+        }
+
+        private static TranslatorContext DecodeShader(ulong address, IGpuAccessor gpuAccessor, TranslationOptions options)
+        {
+            ShaderConfig config;
+            DecodedProgram program;
+            ulong maxEndAddress = 0;
+
+            if (options.Flags.HasFlag(TranslationFlags.Compute))
+            {
+                config = new ShaderConfig(ShaderStage.Compute, gpuAccessor, options);
+
+                program = Decoder.Decode(config, address);
+            }
+            else
+            {
+                config = new ShaderConfig(new ShaderHeader(gpuAccessor, address), gpuAccessor, options);
+
+                program = Decoder.Decode(config, address + HeaderSize);
+            }
+
+>>>>>>> 1ec71635b (sync with main branch)
             foreach (DecodedFunction function in program)
             {
                 foreach (Block block in function.Blocks)
@@ -62,6 +167,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                 }
             }
 
+<<<<<<< HEAD
             int size = (int)maxEndAddress + (options.Flags.HasFlag(TranslationFlags.Compute) ? 0 : HeaderSize);
 
             return new TranslatorContext(address, size, localMemorySize, definitions, gpuAccessor, options, program);
@@ -140,12 +246,24 @@ namespace Ryujinx.Graphics.Shader.Translation
             bool vertexAsCompute,
             bool initializeOutputs,
             out int initializationOperations)
+=======
+            config.SizeAdd((int)maxEndAddress + (options.Flags.HasFlag(TranslationFlags.Compute) ? 0 : HeaderSize));
+
+            return new TranslatorContext(address, program, config);
+        }
+
+        internal static FunctionCode[] EmitShader(DecodedProgram program, ShaderConfig config, bool initializeOutputs, out int initializationOperations)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             initializationOperations = 0;
 
             FunctionMatch.RunPass(program);
 
+<<<<<<< HEAD
             foreach (DecodedFunction function in program.Where(x => !x.IsCompilerGenerated).OrderBy(x => x.Address))
+=======
+            foreach (DecodedFunction function in program.OrderBy(x => x.Address).Where(x => !x.IsCompilerGenerated))
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 program.AddFunctionAndSetId(function);
             }
@@ -154,11 +272,19 @@ namespace Ryujinx.Graphics.Shader.Translation
 
             for (int index = 0; index < functions.Length; index++)
             {
+<<<<<<< HEAD
                 EmitterContext context = new(translatorContext, resourceManager, program, vertexAsCompute, index != 0);
 
                 if (initializeOutputs && index == 0)
                 {
                     EmitOutputsInitialization(context, translatorContext.AttributeUsage, translatorContext.GpuAccessor, translatorContext.Stage);
+=======
+                EmitterContext context = new EmitterContext(program, config, index != 0);
+
+                if (initializeOutputs && index == 0)
+                {
+                    EmitOutputsInitialization(context, config);
+>>>>>>> 1ec71635b (sync with main branch)
                     initializationOperations = context.OperationsCount;
                 }
 
@@ -173,27 +299,47 @@ namespace Ryujinx.Graphics.Shader.Translation
                     EmitOps(context, block);
                 }
 
+<<<<<<< HEAD
                 functions[index] = new(context.GetOperations());
+=======
+                functions[index] = new FunctionCode(context.GetOperations());
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return functions;
         }
 
+<<<<<<< HEAD
         private static void EmitOutputsInitialization(EmitterContext context, AttributeUsage attributeUsage, IGpuAccessor gpuAccessor, ShaderStage stage)
         {
             // Compute has no output attributes, and fragment is the last stage, so we
             // don't need to initialize outputs on those stages.
             if (stage == ShaderStage.Compute || stage == ShaderStage.Fragment)
+=======
+        private static void EmitOutputsInitialization(EmitterContext context, ShaderConfig config)
+        {
+            // Compute has no output attributes, and fragment is the last stage, so we
+            // don't need to initialize outputs on those stages.
+            if (config.Stage == ShaderStage.Compute || config.Stage == ShaderStage.Fragment)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return;
             }
 
+<<<<<<< HEAD
             if (stage == ShaderStage.Vertex)
+=======
+            if (config.Stage == ShaderStage.Vertex)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 InitializePositionOutput(context);
             }
 
+<<<<<<< HEAD
             UInt128 usedAttributes = context.TranslatorContext.AttributeUsage.NextInputAttributesComponents;
+=======
+            UInt128 usedAttributes = context.Config.NextInputAttributesComponents;
+>>>>>>> 1ec71635b (sync with main branch)
             while (usedAttributes != UInt128.Zero)
             {
                 int index = (int)UInt128.TrailingZeroCount(usedAttributes);
@@ -202,7 +348,11 @@ namespace Ryujinx.Graphics.Shader.Translation
                 usedAttributes &= ~(UInt128.One << index);
 
                 // We don't need to initialize passthrough attributes.
+<<<<<<< HEAD
                 if ((context.TranslatorContext.AttributeUsage.PassthroughAttributes & (1 << vecIndex)) != 0)
+=======
+                if ((context.Config.PassthroughAttributes & (1 << vecIndex)) != 0)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     continue;
                 }
@@ -210,28 +360,49 @@ namespace Ryujinx.Graphics.Shader.Translation
                 InitializeOutputComponent(context, vecIndex, index & 3, perPatch: false);
             }
 
+<<<<<<< HEAD
             if (context.TranslatorContext.AttributeUsage.NextUsedInputAttributesPerPatch != null)
             {
                 foreach (int vecIndex in context.TranslatorContext.AttributeUsage.NextUsedInputAttributesPerPatch.Order())
+=======
+            if (context.Config.NextUsedInputAttributesPerPatch != null)
+            {
+                foreach (int vecIndex in context.Config.NextUsedInputAttributesPerPatch.Order())
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     InitializeOutput(context, vecIndex, perPatch: true);
                 }
             }
 
+<<<<<<< HEAD
             if (attributeUsage.NextUsesFixedFuncAttributes)
             {
                 bool supportsLayerFromVertexOrTess = gpuAccessor.QueryHostSupportsLayerVertexTessellation();
+=======
+            if (config.NextUsesFixedFuncAttributes)
+            {
+                bool supportsLayerFromVertexOrTess = config.GpuAccessor.QueryHostSupportsLayerVertexTessellation();
+>>>>>>> 1ec71635b (sync with main branch)
                 int fixedStartAttr = supportsLayerFromVertexOrTess ? 0 : 1;
 
                 for (int i = fixedStartAttr; i < fixedStartAttr + 5 + AttributeConsts.TexCoordCount; i++)
                 {
+<<<<<<< HEAD
                     int index = attributeUsage.GetFreeUserAttribute(isOutput: true, i);
+=======
+                    int index = config.GetFreeUserAttribute(isOutput: true, i);
+>>>>>>> 1ec71635b (sync with main branch)
                     if (index < 0)
                     {
                         break;
                     }
 
                     InitializeOutput(context, index, perPatch: false);
+<<<<<<< HEAD
+=======
+
+                    config.SetOutputUserAttributeFixedFunc(index);
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
         }
@@ -256,11 +427,19 @@ namespace Ryujinx.Graphics.Shader.Translation
         {
             StorageKind storageKind = perPatch ? StorageKind.OutputPerPatch : StorageKind.Output;
 
+<<<<<<< HEAD
             if (context.TranslatorContext.Definitions.OaIndexing)
             {
                 Operand invocationId = null;
 
                 if (context.TranslatorContext.Definitions.Stage == ShaderStage.TessellationControl && !perPatch)
+=======
+            if (context.Config.UsedFeatures.HasFlag(FeatureFlags.OaIndexing))
+            {
+                Operand invocationId = null;
+
+                if (context.Config.Stage == ShaderStage.TessellationControl && !perPatch)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     invocationId = context.Load(StorageKind.Input, IoVariable.InvocationId);
                 }
@@ -271,7 +450,11 @@ namespace Ryujinx.Graphics.Shader.Translation
             }
             else
             {
+<<<<<<< HEAD
                 if (context.TranslatorContext.Definitions.Stage == ShaderStage.TessellationControl && !perPatch)
+=======
+                if (context.Config.Stage == ShaderStage.TessellationControl && !perPatch)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     Operand invocationId = context.Load(StorageKind.Input, IoVariable.InvocationId);
                     context.Store(storageKind, IoVariable.UserDefined, Const(location), invocationId, Const(c), ConstF(c == 3 ? 1f : 0f));
@@ -289,7 +472,11 @@ namespace Ryujinx.Graphics.Shader.Translation
             {
                 InstOp op = block.OpCodes[opIndex];
 
+<<<<<<< HEAD
                 if (context.TranslatorContext.Options.Flags.HasFlag(TranslationFlags.DebugMode))
+=======
+                if (context.Config.Options.Flags.HasFlag(TranslationFlags.DebugMode))
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     string instName;
 
@@ -301,7 +488,11 @@ namespace Ryujinx.Graphics.Shader.Translation
                     {
                         instName = "???";
 
+<<<<<<< HEAD
                         context.TranslatorContext.GpuAccessor.Log($"Invalid instruction at 0x{op.Address:X6} (0x{op.RawOpCode:X16}).");
+=======
+                        context.Config.GpuAccessor.Log($"Invalid instruction at 0x{op.Address:X6} (0x{op.RawOpCode:X16}).");
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     string dbgComment = $"0x{op.Address:X6}: 0x{op.RawOpCode:X16} {instName}";
@@ -309,7 +500,11 @@ namespace Ryujinx.Graphics.Shader.Translation
                     context.Add(new CommentNode(dbgComment));
                 }
 
+<<<<<<< HEAD
                 InstConditional opConditional = new(op.RawOpCode);
+=======
+                InstConditional opConditional = new InstConditional(op.RawOpCode);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 bool noPred = op.Props.HasFlag(InstProps.NoPred);
                 if (!noPred && opConditional.Pred == RegisterConsts.PredicateTrueIndex && opConditional.PredInv)
@@ -370,4 +565,8 @@ namespace Ryujinx.Graphics.Shader.Translation
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

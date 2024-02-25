@@ -26,7 +26,11 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
             /// <summary>
             /// <see cref="MemoryPoolState"/> located on the DSP side for system use.
             /// </summary>
+<<<<<<< HEAD
             Dsp,
+=======
+            Dsp
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -69,7 +73,11 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
                 CpuAddress = 0,
                 DspAddress = 0,
                 Size = 0,
+<<<<<<< HEAD
                 Location = location,
+=======
+                Location = location
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -90,7 +98,11 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
         /// <param name="targetCpuAddress">The <see cref="CpuAddress"/>.</param>
         /// <param name="size">The size.</param>
         /// <returns>True if the <see cref="CpuAddress"/> is contained inside the <see cref="MemoryPoolState"/>.</returns>
+<<<<<<< HEAD
         public readonly bool Contains(CpuAddress targetCpuAddress, ulong size)
+=======
+        public bool Contains(CpuAddress targetCpuAddress, ulong size)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (CpuAddress <= targetCpuAddress && size + targetCpuAddress <= Size + CpuAddress)
             {
@@ -106,7 +118,11 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
         /// <param name="targetCpuAddress">The <see cref="CpuAddress"/>.</param>
         /// <param name="size">The size.</param>
         /// <returns>the target DSP address.</returns>
+<<<<<<< HEAD
         public readonly DspAddress Translate(CpuAddress targetCpuAddress, ulong size)
+=======
+        public DspAddress Translate(CpuAddress targetCpuAddress, ulong size)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (Contains(targetCpuAddress, size) && IsMapped())
             {
@@ -122,9 +138,17 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
         /// Is the <see cref="MemoryPoolState"/> mapped on the DSP?
         /// </summary>
         /// <returns>Returns true if the <see cref="MemoryPoolState"/> is mapped on the DSP.</returns>
+<<<<<<< HEAD
         public readonly bool IsMapped()
+=======
+        public bool IsMapped()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return DspAddress != 0;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

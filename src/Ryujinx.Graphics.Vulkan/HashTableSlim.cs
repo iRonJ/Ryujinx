@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+=======
+﻿using System;
+using System.Collections.Generic;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Vulkan
 {
@@ -9,7 +14,11 @@ namespace Ryujinx.Graphics.Vulkan
         bool Equals(ref T other);
     }
 
+<<<<<<< HEAD
     class HashTableSlim<TKey, TValue> where TKey : IRefEquatable<TKey>
+=======
+    class HashTableSlim<K, V> where K : IRefEquatable<K>
+>>>>>>> 1ec71635b (sync with main branch)
     {
         private const int TotalBuckets = 16; // Must be power of 2
         private const int TotalBucketsMask = TotalBuckets - 1;
@@ -17,6 +26,7 @@ namespace Ryujinx.Graphics.Vulkan
         private struct Entry
         {
             public int Hash;
+<<<<<<< HEAD
             public TKey Key;
             public TValue Value;
         }
@@ -44,11 +54,32 @@ namespace Ryujinx.Graphics.Vulkan
                     for (int i = 0; i < bucket.Length; i++)
                     {
                         yield return bucket.Entries[i].Key;
+=======
+            public K Key;
+            public V Value;
+        }
+
+        private readonly Entry[][] _hashTable = new Entry[TotalBuckets][];
+
+        public IEnumerable<K> Keys
+        {
+            get
+            {
+                foreach (Entry[] bucket in _hashTable)
+                {
+                    if (bucket != null)
+                    {
+                        foreach (Entry entry in bucket)
+                        {
+                            yield return entry.Key;
+                        }
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
             }
         }
 
+<<<<<<< HEAD
         public IEnumerable<TValue> Values
         {
             get
@@ -58,11 +89,26 @@ namespace Ryujinx.Graphics.Vulkan
                     for (int i = 0; i < bucket.Length; i++)
                     {
                         yield return bucket.Entries[i].Value;
+=======
+        public IEnumerable<V> Values
+        {
+            get
+            {
+                foreach (Entry[] bucket in _hashTable)
+                {
+                    if (bucket != null)
+                    {
+                        foreach (Entry entry in bucket)
+                        {
+                            yield return entry.Value;
+                        }
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
             }
         }
 
+<<<<<<< HEAD
         public void Add(ref TKey key, TValue value)
         {
             var entry = new Entry
@@ -70,11 +116,21 @@ namespace Ryujinx.Graphics.Vulkan
                 Hash = key.GetHashCode(),
                 Key = key,
                 Value = value,
+=======
+        public void Add(ref K key, V value)
+        {
+            var entry = new Entry()
+            {
+                Hash = key.GetHashCode(),
+                Key = key,
+                Value = value
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             int hashCode = key.GetHashCode();
             int bucketIndex = hashCode & TotalBucketsMask;
 
+<<<<<<< HEAD
             ref var bucket = ref _hashTable[bucketIndex];
             if (bucket.Entries != null)
             {
@@ -133,6 +189,42 @@ namespace Ryujinx.Graphics.Vulkan
                 {
                     value = entry.Value;
                     return true;
+=======
+            var bucket = _hashTable[bucketIndex];
+            if (bucket != null)
+            {
+                int index = bucket.Length;
+
+                Array.Resize(ref _hashTable[bucketIndex], index + 1);
+
+                _hashTable[bucketIndex][index] = entry;
+            }
+            else
+            {
+                _hashTable[bucketIndex] = new Entry[]
+                {
+                    entry
+                };
+            }
+        }
+
+        public bool TryGetValue(ref K key, out V value)
+        {
+            int hashCode = key.GetHashCode();
+
+            var bucket = _hashTable[hashCode & TotalBucketsMask];
+            if (bucket != null)
+            {
+                for (int i = 0; i < bucket.Length; i++)
+                {
+                    ref var entry = ref bucket[i];
+
+                    if (entry.Hash == hashCode && entry.Key.Equals(ref key))
+                    {
+                        value = entry.Value;
+                        return true;
+                    }
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 

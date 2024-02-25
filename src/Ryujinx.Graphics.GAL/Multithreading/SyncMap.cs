@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Threading;
 
@@ -6,8 +10,13 @@ namespace Ryujinx.Graphics.GAL.Multithreading
 {
     class SyncMap : IDisposable
     {
+<<<<<<< HEAD
         private readonly HashSet<ulong> _inFlight = new();
         private readonly AutoResetEvent _inFlightChanged = new(false);
+=======
+        private HashSet<ulong> _inFlight = new HashSet<ulong>();
+        private AutoResetEvent _inFlightChanged = new AutoResetEvent(false);
+>>>>>>> 1ec71635b (sync with main branch)
 
         internal void CreateSyncHandle(ulong id)
         {

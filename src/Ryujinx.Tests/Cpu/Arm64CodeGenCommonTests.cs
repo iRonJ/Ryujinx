@@ -31,7 +31,11 @@ namespace Ryujinx.Tests.Cpu
             new() { Value = 0xffff8fffffff8fff, Valid = true, ImmN = 0, ImmS = 0x1c, ImmR = 17 },
             new() { Value = 0x000000000ffff800, Valid = true, ImmN = 1, ImmS = 0x10, ImmR = 53 },
         };
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 1ec71635b (sync with main branch)
         [Test]
         public void BitImmTests([ValueSource(nameof(TestCases))] TestCase test)
         {
@@ -43,4 +47,8 @@ namespace Ryujinx.Tests.Cpu
             Assert.That(immR, Is.EqualTo(test.ImmR));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

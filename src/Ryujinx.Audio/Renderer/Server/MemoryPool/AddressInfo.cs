@@ -27,9 +27,15 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
         /// </summary>
         public DspAddress ForceMappedDspAddress;
 
+<<<<<<< HEAD
         private readonly unsafe ref MemoryPoolState MemoryPoolState => ref *_memoryPools;
 
         public readonly unsafe bool HasMemoryPoolState => (IntPtr)_memoryPools != IntPtr.Zero;
+=======
+        private unsafe ref MemoryPoolState MemoryPoolState => ref *_memoryPools;
+
+        public unsafe bool HasMemoryPoolState => (IntPtr)_memoryPools != IntPtr.Zero;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Create an new empty <see cref="AddressInfo"/>.
@@ -55,7 +61,11 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
                     CpuAddress = cpuAddress,
                     _memoryPools = MemoryPoolState.Null,
                     Size = size,
+<<<<<<< HEAD
                     ForceMappedDspAddress = 0,
+=======
+                    ForceMappedDspAddress = 0
+>>>>>>> 1ec71635b (sync with main branch)
                 };
             }
         }
@@ -105,7 +115,11 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
         /// Check if the <see cref="MemoryPoolState"/> is mapped.
         /// </summary>
         /// <returns>Returns true if the <see cref="MemoryPoolState"/> is mapped.</returns>
+<<<<<<< HEAD
         public readonly bool HasMappedMemoryPool()
+=======
+        public bool HasMappedMemoryPool()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return HasMemoryPoolState && MemoryPoolState.IsMapped();
         }
@@ -115,7 +129,11 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
         /// </summary>
         /// <param name="markUsed">If true, mark the <see cref="MemoryPoolState"/> as used.</param>
         /// <returns>Returns the DSP address associated to the <see cref="AddressInfo"/>.</returns>
+<<<<<<< HEAD
         public readonly DspAddress GetReference(bool markUsed)
+=======
+        public DspAddress GetReference(bool markUsed)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (!HasMappedMemoryPool())
             {
@@ -130,4 +148,8 @@ namespace Ryujinx.Audio.Renderer.Server.MemoryPool
             return MemoryPoolState.Translate(CpuAddress, Size);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

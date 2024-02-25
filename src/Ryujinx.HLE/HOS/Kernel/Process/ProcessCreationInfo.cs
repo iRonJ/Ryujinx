@@ -34,4 +34,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             SystemResourcePagesCount = systemResourcePagesCount;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

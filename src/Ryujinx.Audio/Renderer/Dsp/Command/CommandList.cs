@@ -71,13 +71,21 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
                 return (IntPtr)((float*)_buffersMemoryHandle.Pointer + index * _sampleCount);
             }
 
+<<<<<<< HEAD
             throw new ArgumentOutOfRangeException(nameof(index), index, null);
+=======
+            throw new ArgumentOutOfRangeException();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public unsafe void ClearBuffer(int index)
         {
+<<<<<<< HEAD
             Unsafe.InitBlock((void*)GetBufferPointer(index), 0, SampleCount * sizeof(float));
+=======
+            Unsafe.InitBlock((void*)GetBufferPointer(index), 0, SampleCount);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -89,7 +97,11 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public unsafe void CopyBuffer(int outputBufferIndex, int inputBufferIndex)
         {
+<<<<<<< HEAD
             Unsafe.CopyBlock((void*)GetBufferPointer(outputBufferIndex), (void*)GetBufferPointer(inputBufferIndex), SampleCount * sizeof(float));
+=======
+            Unsafe.CopyBlock((void*)GetBufferPointer(outputBufferIndex), (void*)GetBufferPointer(inputBufferIndex), SampleCount);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -149,8 +161,15 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
             _buffersMemoryHandle.Dispose();
         }
     }
 }
+=======
+            _buffersMemoryHandle.Dispose();
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

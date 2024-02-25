@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 using static Ryujinx.Audio.Backends.SoundIo.Native.SoundIo;
 

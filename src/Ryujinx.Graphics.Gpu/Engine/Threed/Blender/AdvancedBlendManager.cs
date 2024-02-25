@@ -54,12 +54,20 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
         /// <returns>True if the function was found, false otherwise</returns>
         public bool TryGetAdvancedBlend(out AdvancedBlendDescriptor descriptor)
         {
+<<<<<<< HEAD
             Span<uint> currentCode = new(_code);
+=======
+            Span<uint> currentCode = new Span<uint>(_code);
+>>>>>>> 1ec71635b (sync with main branch)
             byte codeLength = (byte)_state.State.BlendUcodeSize;
 
             if (currentCode.Length > codeLength)
             {
+<<<<<<< HEAD
                 currentCode = currentCode[..codeLength];
+=======
+                currentCode = currentCode.Slice(0, codeLength);
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             Hash128 hash = XXHash128.ComputeHash(MemoryMarshal.Cast<uint, byte>(currentCode));
@@ -112,4 +120,8 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
             return true;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

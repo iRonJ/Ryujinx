@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Ipc;
+=======
+﻿using Ryujinx.HLE.HOS.Ipc;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Kernel;
 using Ryujinx.HLE.HOS.Kernel.Process;
 using Ryujinx.Horizon.Common;
@@ -46,4 +50,8 @@ namespace Ryujinx.HLE.HOS.Services.Pm
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

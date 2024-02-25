@@ -17,6 +17,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         public ulong CustomCmdBuffSize { get; }
 
         public KSessionRequest(
+<<<<<<< HEAD
             KThread clientThread,
             ulong customCmdBuffAddr,
             ulong customCmdBuffSize,
@@ -26,8 +27,23 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             CustomCmdBuffAddr = customCmdBuffAddr;
             CustomCmdBuffSize = customCmdBuffSize;
             AsyncEvent = asyncEvent;
+=======
+            KThread        clientThread,
+            ulong          customCmdBuffAddr,
+            ulong          customCmdBuffSize,
+            KWritableEvent asyncEvent = null)
+        {
+            ClientThread      = clientThread;
+            CustomCmdBuffAddr = customCmdBuffAddr;
+            CustomCmdBuffSize = customCmdBuffSize;
+            AsyncEvent        = asyncEvent;
+>>>>>>> 1ec71635b (sync with main branch)
 
             BufferDescriptorTable = new KBufferDescriptorTable();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

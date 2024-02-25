@@ -12,6 +12,10 @@
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     xmlns:helpers="clr-namespace:Ryujinx.Ava.UI.Helpers"
+<<<<<<< HEAD
+=======
+    x:CompileBindings="True"
+>>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModels:UserFirmwareAvatarSelectorViewModel"
     Focusable="True">
     <Design.DataContext>
@@ -35,7 +39,11 @@
             BorderThickness="0"
             SelectedIndex="{Binding SelectedIndex}"
             Height="400"
+<<<<<<< HEAD
             ItemsSource="{Binding Images}"
+=======
+            Items="{Binding Images}"
+>>>>>>> 1ec71635b (sync with main branch)
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center">
             <ListBox.ItemsPanel>
@@ -53,7 +61,11 @@
                     <Setter Property="MaxWidth" Value="85" />
                     <Setter Property="MinWidth" Value="85" />
                 </Style>
+<<<<<<< HEAD
                 <Style Selector="ListBoxItem /template/ Rectangle#SelectionIndicator">
+=======
+                <Style Selector="ListBoxItem /template/ Border#SelectionIndicator">
+>>>>>>> 1ec71635b (sync with main branch)
                     <Setter Property="MinHeight" Value="70" />
                 </Style>
             </ListBox.Styles>

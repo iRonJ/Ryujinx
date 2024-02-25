@@ -4,7 +4,11 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
     {
         public int IntUsedRegisters { get; }
         public int VecUsedRegisters { get; }
+<<<<<<< HEAD
         public int SpillRegionSize { get; }
+=======
+        public int SpillRegionSize  { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public AllocationResult(
             int intUsedRegisters,
@@ -13,7 +17,14 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
         {
             IntUsedRegisters = intUsedRegisters;
             VecUsedRegisters = vecUsedRegisters;
+<<<<<<< HEAD
             SpillRegionSize = spillRegionSize;
         }
     }
 }
+=======
+            SpillRegionSize  = spillRegionSize;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

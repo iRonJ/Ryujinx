@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.ComponentModel;
+=======
+﻿using System.ComponentModel;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 
 namespace Ryujinx.Ava.UI.ViewModels
@@ -12,4 +16,8 @@ namespace Ryujinx.Ava.UI.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -8,7 +8,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestCheckFeature()
         {
+<<<<<<< HEAD
             int latestRevision = BehaviourContext.BaseRevisionMagic + BehaviourContext.LastRevision;
+=======
+            int latestRevision   = BehaviourContext.BaseRevisionMagic + BehaviourContext.LastRevision;
+>>>>>>> 1ec71635b (sync with main branch)
             int previousRevision = BehaviourContext.BaseRevisionMagic + (BehaviourContext.LastRevision - 1);
             int invalidRevision = BehaviourContext.BaseRevisionMagic + (BehaviourContext.LastRevision + 1);
 
@@ -22,7 +26,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestsMemoryPoolForceMappingEnabled()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision1);
 
@@ -36,7 +44,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision1()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision1);
 
@@ -62,7 +74,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision2()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision2);
 
@@ -88,7 +104,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision3()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision3);
 
@@ -114,7 +134,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision4()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision4);
 
@@ -140,7 +164,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision5()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision5);
 
@@ -166,7 +194,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision6()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision6);
 
@@ -192,7 +224,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision7()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision7);
 
@@ -218,7 +254,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision8()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision8);
 
@@ -244,7 +284,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision9()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision9);
 
@@ -270,7 +314,11 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
         [Test]
         public void TestRevision10()
         {
+<<<<<<< HEAD
             BehaviourContext behaviourContext = new();
+=======
+            BehaviourContext behaviourContext = new BehaviourContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             behaviourContext.SetUserRevision(BehaviourContext.BaseRevisionMagic + BehaviourContext.Revision10);
 
@@ -293,4 +341,8 @@ namespace Ryujinx.Tests.Audio.Renderer.Server
             Assert.AreEqual(2, behaviourContext.GetPerformanceMetricsDataFormat());
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

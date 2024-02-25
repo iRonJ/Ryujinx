@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Memory.Range;
+=======
+﻿using Ryujinx.Memory.Range;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 
 namespace Ryujinx.Memory.Tracking
@@ -8,7 +12,11 @@ namespace Ryujinx.Memory.Tracking
     /// </summary>
     class VirtualRegion : AbstractRegion
     {
+<<<<<<< HEAD
         public List<RegionHandle> Handles = new();
+=======
+        public List<RegionHandle> Handles = new List<RegionHandle>();
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly MemoryTracking _tracking;
         private MemoryPermission _lastPermission;
@@ -86,10 +94,14 @@ namespace Ryujinx.Memory.Tracking
             foreach (var handle in Handles)
             {
                 result &= handle.RequiredPermission;
+<<<<<<< HEAD
                 if (result == 0)
                 {
                     return result;
                 }
+=======
+                if (result == 0) return result;
+>>>>>>> 1ec71635b (sync with main branch)
             }
             return result;
         }
@@ -131,7 +143,11 @@ namespace Ryujinx.Memory.Tracking
 
         public override INonOverlappingRange Split(ulong splitAddress)
         {
+<<<<<<< HEAD
             VirtualRegion newRegion = new(_tracking, splitAddress, EndAddress - splitAddress, _lastPermission);
+=======
+            VirtualRegion newRegion = new VirtualRegion(_tracking, splitAddress, EndAddress - splitAddress, _lastPermission);
+>>>>>>> 1ec71635b (sync with main branch)
             Size = splitAddress - Address;
 
             // The new region inherits all of our parents.

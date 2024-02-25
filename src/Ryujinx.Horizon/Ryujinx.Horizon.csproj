@@ -1,11 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+<<<<<<< HEAD
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Ryujinx.Audio\Ryujinx.Audio.csproj" />
+=======
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+>>>>>>> 1ec71635b (sync with main branch)
     <ProjectReference Include="..\Ryujinx.Common\Ryujinx.Common.csproj" />
     <ProjectReference Include="..\Ryujinx.Horizon.Common\Ryujinx.Horizon.Common.csproj" />
     <ProjectReference Include="..\Ryujinx.Horizon.Generators\Ryujinx.Horizon.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
@@ -13,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Concentus" />
     <PackageReference Include="LibHac" />
   </ItemGroup>
@@ -22,4 +30,9 @@
     <NoWarn>NU1605</NoWarn>
   </PropertyGroup>
 
+=======
+    <PackageReference Include="LibHac" />
+  </ItemGroup>
+
+>>>>>>> 1ec71635b (sync with main branch)
 </Project>

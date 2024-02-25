@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.Input.Motion.CemuHook.Protocol
@@ -12,4 +16,8 @@ namespace Ryujinx.Input.Motion.CemuHook.Protocol
         public Array4<byte> Crc32;
         public uint Id;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

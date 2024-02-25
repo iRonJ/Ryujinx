@@ -55,6 +55,7 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
 
                 return -depopValue;
             }
+<<<<<<< HEAD
 
             for (int i = 0; i < sampleCount; i++)
             {
@@ -64,6 +65,19 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             }
 
             return depopValue;
+=======
+            else
+            {
+                for (int i = 0; i < sampleCount; i++)
+                {
+                    depopValue = FloatingPointHelper.MultiplyRoundDown(Decay, depopValue);
+
+                    buffer[i] += depopValue;
+                }
+
+                return depopValue;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void Process(CommandList context)
@@ -87,4 +101,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

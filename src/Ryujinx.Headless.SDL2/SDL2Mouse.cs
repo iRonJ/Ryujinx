@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Configuration.Hid;
+=======
+﻿using Ryujinx.Common.Configuration.Hid;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Input;
 using System;
 using System.Drawing;
@@ -87,4 +91,8 @@ namespace Ryujinx.Headless.SDL2
             _driver = null;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

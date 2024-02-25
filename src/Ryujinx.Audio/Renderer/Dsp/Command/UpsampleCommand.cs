@@ -67,4 +67,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

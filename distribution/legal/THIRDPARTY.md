@@ -681,6 +681,7 @@
 
                        END OF TERMS AND CONDITIONS
   ```
+<<<<<<< HEAD
 </details>
 
 # ShellLink (MIT)
@@ -711,3 +712,6 @@
   SOFTWARE.
   ```
 </details>
+=======
+</details>
+>>>>>>> 1ec71635b (sync with main branch)

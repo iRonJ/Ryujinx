@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using LibHac.Bcat;
+=======
+﻿using LibHac.Bcat;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Bcat;
@@ -28,7 +32,11 @@ namespace Ryujinx.Horizon.Bcat.Ipc
         [CmifCommand(1)]
         public Result Read(long offset, out long bytesRead, [Buffer(HipcBufferFlags.Out | HipcBufferFlags.MapAlias)] Span<byte> data)
         {
+<<<<<<< HEAD
             return _libHacService.Get.Read(out bytesRead, offset, data).ToHorizonResult();
+=======
+            return _libHacService.Get.Read(out bytesRead, offset, data).ToHorizonResult(); 
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CmifCommand(2)]

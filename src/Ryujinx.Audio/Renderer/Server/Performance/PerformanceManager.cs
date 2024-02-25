@@ -22,12 +22,20 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
                                                  PerformanceEntryVersion2,
                                                  PerformanceDetailVersion2>.GetRequiredBufferSizeForPerformanceMetricsPerFrame(ref parameter);
             }
+<<<<<<< HEAD
 
             if (version == 1)
             {
                 return (ulong)PerformanceManagerGeneric<PerformanceFrameHeaderVersion1,
                     PerformanceEntryVersion1,
                     PerformanceDetailVersion1>.GetRequiredBufferSizeForPerformanceMetricsPerFrame(ref parameter);
+=======
+            else if (version == 1)
+            {
+                return (ulong)PerformanceManagerGeneric<PerformanceFrameHeaderVersion1,
+                                                 PerformanceEntryVersion1,
+                                                 PerformanceDetailVersion1>.GetRequiredBufferSizeForPerformanceMetricsPerFrame(ref parameter);
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             throw new NotImplementedException($"Unknown Performance metrics data format version {version}");
@@ -91,6 +99,7 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
         {
             uint version = behaviourContext.GetPerformanceMetricsDataFormat();
 
+<<<<<<< HEAD
             return version switch
             {
                 1 => new PerformanceManagerGeneric<PerformanceFrameHeaderVersion1, PerformanceEntryVersion1, PerformanceDetailVersion1>(performanceBuffer, ref parameter),
@@ -100,3 +109,19 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
         }
     }
 }
+=======
+            switch (version)
+            {
+                case 1:
+                    return new PerformanceManagerGeneric<PerformanceFrameHeaderVersion1, PerformanceEntryVersion1, PerformanceDetailVersion1>(performanceBuffer,
+                                                                                                                                              ref parameter);
+                case 2:
+                    return new PerformanceManagerGeneric<PerformanceFrameHeaderVersion2, PerformanceEntryVersion2, PerformanceDetailVersion2>(performanceBuffer,
+                                                                                                                                              ref parameter);
+                default:
+                    throw new NotImplementedException($"Unknown Performance metrics data format version {version}");
+            }
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -35,9 +35,15 @@ namespace ARMeilleure.CodeGen
         /// <param name="relocInfo">Relocation info</param>
         internal CompiledFunction(byte[] code, UnwindInfo unwindInfo, RelocInfo relocInfo)
         {
+<<<<<<< HEAD
             Code = code;
             UnwindInfo = unwindInfo;
             RelocInfo = relocInfo;
+=======
+            Code       = code;
+            UnwindInfo = unwindInfo;
+            RelocInfo  = relocInfo;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -65,4 +71,8 @@ namespace ARMeilleure.CodeGen
             return Marshal.GetDelegateForFunctionPointer<T>(codePointer);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

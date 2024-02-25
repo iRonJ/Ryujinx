@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -47,7 +51,11 @@ namespace Ryujinx.Graphics.Texture.Astc
             Components[index] = (short)value;
         }
 
+<<<<<<< HEAD
         public readonly int Pack()
+=======
+        public int Pack()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return A << 24 |
                    B << 16 |

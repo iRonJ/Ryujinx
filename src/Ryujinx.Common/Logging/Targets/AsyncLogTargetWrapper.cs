@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
 
 namespace Ryujinx.Common.Logging.Targets
+=======
+﻿using System;
+using System.Collections.Concurrent;
+using System.Threading;
+
+namespace Ryujinx.Common.Logging
+>>>>>>> 1ec71635b (sync with main branch)
 {
     public enum AsyncLogTargetOverflowAction
     {
@@ -14,16 +22,28 @@ namespace Ryujinx.Common.Logging.Targets
         /// <summary>
         /// Discard the overflowing item
         /// </summary>
+<<<<<<< HEAD
         Discard = 1,
+=======
+        Discard = 1
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     public class AsyncLogTargetWrapper : ILogTarget
     {
+<<<<<<< HEAD
         private readonly ILogTarget _target;
 
         private readonly Thread _messageThread;
 
         private readonly BlockingCollection<LogEventArgs> _messageQueue;
+=======
+        private ILogTarget _target;
+
+        private Thread _messageThread;
+
+        private BlockingCollection<LogEventArgs> _messageQueue;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly int _overflowTimeout;
 
@@ -35,12 +55,20 @@ namespace Ryujinx.Common.Logging.Targets
 
         public AsyncLogTargetWrapper(ILogTarget target, int queueLimit, AsyncLogTargetOverflowAction overflowAction)
         {
+<<<<<<< HEAD
             _target = target;
             _messageQueue = new BlockingCollection<LogEventArgs>(queueLimit);
             _overflowTimeout = overflowAction == AsyncLogTargetOverflowAction.Block ? -1 : 0;
 
             _messageThread = new Thread(() =>
             {
+=======
+            _target          = target;
+            _messageQueue    = new BlockingCollection<LogEventArgs>(queueLimit);
+            _overflowTimeout = overflowAction == AsyncLogTargetOverflowAction.Block ? -1 : 0;
+
+            _messageThread = new Thread(() => {
+>>>>>>> 1ec71635b (sync with main branch)
                 while (!_messageQueue.IsCompleted)
                 {
                     try
@@ -56,11 +84,18 @@ namespace Ryujinx.Common.Logging.Targets
                         // on the next iteration.
                     }
                 }
+<<<<<<< HEAD
             })
             {
                 Name = "Logger.MessageThread",
                 IsBackground = true,
             };
+=======
+            });
+
+            _messageThread.Name         = "Logger.MessageThread";
+            _messageThread.IsBackground = true;
+>>>>>>> 1ec71635b (sync with main branch)
             _messageThread.Start();
         }
 
@@ -74,9 +109,16 @@ namespace Ryujinx.Common.Logging.Targets
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             _messageQueue.CompleteAdding();
             _messageThread.Join();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

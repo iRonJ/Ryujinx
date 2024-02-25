@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Ptm.Ts.Types;
 
 namespace Ryujinx.HLE.HOS.Services.Ptm.Ts
@@ -36,4 +40,8 @@ namespace Ryujinx.HLE.HOS.Services.Ptm.Ts
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

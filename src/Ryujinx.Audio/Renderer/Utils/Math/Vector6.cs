@@ -53,4 +53,8 @@ namespace Ryujinx.Audio.Renderer.Utils.Math
             return left * new Vector6(right);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

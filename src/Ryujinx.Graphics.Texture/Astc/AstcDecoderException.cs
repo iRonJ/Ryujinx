@@ -6,4 +6,8 @@ namespace Ryujinx.Graphics.Texture.Astc
     {
         public AstcDecoderException(string exMsg) : base(exMsg) { }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

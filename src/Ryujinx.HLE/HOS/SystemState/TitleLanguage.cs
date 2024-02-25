@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.SystemState
+=======
+﻿namespace Ryujinx.HLE.HOS.SystemState
+>>>>>>> 1ec71635b (sync with main branch)
 {
     public enum TitleLanguage
     {
@@ -17,6 +21,10 @@ namespace Ryujinx.HLE.HOS.SystemState
         Korean,
         TraditionalChinese,
         SimplifiedChinese,
+<<<<<<< HEAD
         BrazilianPortuguese,
+=======
+        BrazilianPortuguese
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

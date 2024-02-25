@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
+=======
+﻿using Ryujinx.Common.Utilities;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Text.Json.Serialization;
 
 namespace Ryujinx.Common.Configuration.Hid.Controller
@@ -53,6 +57,12 @@ namespace Ryujinx.Common.Configuration.Hid.Controller
         SingleLeftTrigger1,
         SingleRightTrigger1,
 
+<<<<<<< HEAD
         Count,
     }
 }
+=======
+        Count
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

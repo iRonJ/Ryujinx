@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Vic.Types
+=======
+﻿namespace Ryujinx.Graphics.Vic.Types
+>>>>>>> 1ec71635b (sync with main branch)
 {
     enum PixelFormat
     {
@@ -76,6 +80,10 @@ namespace Ryujinx.Graphics.Vic.Types
         Y8___U8___V8_N422R,
         Y8___U8___V8_N420,
         U8,
+<<<<<<< HEAD
         V8,
+=======
+        V8
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

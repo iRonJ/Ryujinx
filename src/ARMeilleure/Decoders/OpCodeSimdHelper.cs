@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace ARMeilleure.Decoders
+=======
+﻿namespace ARMeilleure.Decoders
+>>>>>>> 1ec71635b (sync with main branch)
 {
     public static class OpCodeSimdHelper
     {
@@ -52,20 +56,32 @@ namespace ARMeilleure.Decoders
             else if ((modeHigh & 0b110) == 0b100)
             {
                 // 16-bits shifted Immediate.
+<<<<<<< HEAD
                 size = 1;
                 imm <<= (modeHigh & 1) << 3;
+=======
+                size = 1; imm <<= (modeHigh & 1) << 3;
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else if ((modeHigh & 0b100) == 0b000)
             {
                 // 32-bits shifted Immediate.
+<<<<<<< HEAD
                 size = 2;
                 imm <<= modeHigh << 3;
+=======
+                size = 2; imm <<= modeHigh << 3;
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else if ((modeHigh & 0b111) == 0b110)
             {
                 // 32-bits shifted Immediate (fill with ones).
+<<<<<<< HEAD
                 size = 2;
                 imm = ShlOnes(imm, 8 << modeLow);
+=======
+                size = 2; imm = ShlOnes(imm, 8 << modeLow);
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {

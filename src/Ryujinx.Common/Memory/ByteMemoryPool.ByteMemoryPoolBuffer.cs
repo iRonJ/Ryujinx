@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Buffers;
 using System.Threading;
 
@@ -30,7 +34,11 @@ namespace Ryujinx.Common.Memory
                 get
                 {
                     byte[] array = _array;
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 1ec71635b (sync with main branch)
                     ObjectDisposedException.ThrowIf(array is null, this);
 
                     return new Memory<byte>(array, 0, _length);
@@ -40,7 +48,11 @@ namespace Ryujinx.Common.Memory
             public void Dispose()
             {
                 var array = Interlocked.Exchange(ref _array, null);
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 1ec71635b (sync with main branch)
                 if (array != null)
                 {
                     ArrayPool<byte>.Shared.Return(array);

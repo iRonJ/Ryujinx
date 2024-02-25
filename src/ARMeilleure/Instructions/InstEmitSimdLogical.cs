@@ -3,6 +3,10 @@ using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
 using System;
 using System.Diagnostics;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
@@ -79,11 +83,18 @@ namespace ARMeilleure.Instructions
                 int eSize = 8 << op.Size;
 
                 Operand d = GetVec(op.Rd);
+<<<<<<< HEAD
                 Operand imm = eSize switch
                 {
                     16 => X86GetAllElements(context, (short)~op.Immediate),
                     32 => X86GetAllElements(context, (int)~op.Immediate),
                     _ => throw new InvalidOperationException($"Invalid element size {eSize}."),
+=======
+                Operand imm = eSize switch {
+                    16 => X86GetAllElements(context, (short)~op.Immediate),
+                    32 => X86GetAllElements(context, (int)~op.Immediate),
+                    _ => throw new InvalidOperationException($"Invalid element size {eSize}.")
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 Operand res = context.AddIntrinsic(Intrinsic.X86Pand, d, imm);
@@ -380,11 +391,18 @@ namespace ARMeilleure.Instructions
                 int eSize = 8 << op.Size;
 
                 Operand d = GetVec(op.Rd);
+<<<<<<< HEAD
                 Operand imm = eSize switch
                 {
                     16 => X86GetAllElements(context, (short)op.Immediate),
                     32 => X86GetAllElements(context, (int)op.Immediate),
                     _ => throw new InvalidOperationException($"Invalid element size {eSize}."),
+=======
+                Operand imm = eSize switch {
+                    16 => X86GetAllElements(context, (short)op.Immediate),
+                    32 => X86GetAllElements(context, (int)op.Immediate),
+                    _ => throw new InvalidOperationException($"Invalid element size {eSize}.")
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 Operand res = context.AddIntrinsic(Intrinsic.X86Por, d, imm);
@@ -408,17 +426,28 @@ namespace ARMeilleure.Instructions
 
             if (Optimizations.UseGfni)
             {
+<<<<<<< HEAD
                 const long BitMatrix =
+=======
+                const long bitMatrix =
+>>>>>>> 1ec71635b (sync with main branch)
                     (0b10000000L << 56) |
                     (0b01000000L << 48) |
                     (0b00100000L << 40) |
                     (0b00010000L << 32) |
                     (0b00001000L << 24) |
                     (0b00000100L << 16) |
+<<<<<<< HEAD
                     (0b00000010L << 8) |
                     (0b00000001L << 0);
 
                 Operand vBitMatrix = X86GetAllElements(context, BitMatrix);
+=======
+                    (0b00000010L <<  8) |
+                    (0b00000001L <<  0);
+
+                Operand vBitMatrix = X86GetAllElements(context, bitMatrix);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Operand res = context.AddIntrinsic(Intrinsic.X86Gf2p8affineqb, GetVec(op.Rn), vBitMatrix, Const(0));
 
@@ -452,6 +481,7 @@ namespace ARMeilleure.Instructions
             Debug.Assert(op.Type == OperandType.I64);
 
             Operand val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(op, Const(0xaaul)), Const(1)),
+<<<<<<< HEAD
                                             context.ShiftLeft(context.BitwiseAnd(op, Const(0x55ul)), Const(1)));
 
             val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(val, Const(0xccul)), Const(2)),
@@ -459,6 +489,15 @@ namespace ARMeilleure.Instructions
 
             return context.BitwiseOr(context.ShiftRightUI(val, Const(4)),
                                      context.ShiftLeft(context.BitwiseAnd(val, Const(0x0ful)), Const(4)));
+=======
+                                            context.ShiftLeft   (context.BitwiseAnd(op, Const(0x55ul)), Const(1)));
+
+            val = context.BitwiseOr(context.ShiftRightUI(context.BitwiseAnd(val, Const(0xccul)), Const(2)),
+                                    context.ShiftLeft   (context.BitwiseAnd(val, Const(0x33ul)), Const(2)));
+
+            return context.BitwiseOr(context.ShiftRightUI(val, Const(4)),
+                                     context.ShiftLeft   (context.BitwiseAnd(val, Const(0x0ful)), Const(4)));
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void Rev16_V(ArmEmitterContext context)
@@ -469,12 +508,21 @@ namespace ARMeilleure.Instructions
 
                 Operand n = GetVec(op.Rn);
 
+<<<<<<< HEAD
                 const long MaskE0 = 06L << 56 | 07L << 48 | 04L << 40 | 05L << 32 | 02L << 24 | 03L << 16 | 00L << 8 | 01L << 0;
                 const long MaskE1 = 14L << 56 | 15L << 48 | 12L << 40 | 13L << 32 | 10L << 24 | 11L << 16 | 08L << 8 | 09L << 0;
 
                 Operand mask = X86GetScalar(context, MaskE0);
 
                 mask = EmitVectorInsert(context, mask, Const(MaskE1), 1, 3);
+=======
+                const long maskE0 = 06L << 56 | 07L << 48 | 04L << 40 | 05L << 32 | 02L << 24 | 03L << 16 | 00L << 8 | 01L << 0;
+                const long maskE1 = 14L << 56 | 15L << 48 | 12L << 40 | 13L << 32 | 10L << 24 | 11L << 16 | 08L << 8 | 09L << 0;
+
+                Operand mask = X86GetScalar(context, maskE0);
+
+                mask = EmitVectorInsert(context, mask, Const(maskE1), 1, 3);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Operand res = context.AddIntrinsic(Intrinsic.X86Pshufb, n, mask);
 
@@ -503,6 +551,7 @@ namespace ARMeilleure.Instructions
 
                 if (op.Size == 0)
                 {
+<<<<<<< HEAD
                     const long MaskE0 = 04L << 56 | 05L << 48 | 06L << 40 | 07L << 32 | 00L << 24 | 01L << 16 | 02L << 8 | 03L << 0;
                     const long MaskE1 = 12L << 56 | 13L << 48 | 14L << 40 | 15L << 32 | 08L << 24 | 09L << 16 | 10L << 8 | 11L << 0;
 
@@ -518,6 +567,23 @@ namespace ARMeilleure.Instructions
                     mask = X86GetScalar(context, MaskE0);
 
                     mask = EmitVectorInsert(context, mask, Const(MaskE1), 1, 3);
+=======
+                    const long maskE0 = 04L << 56 | 05L << 48 | 06L << 40 | 07L << 32 | 00L << 24 | 01L << 16 | 02L << 8 | 03L << 0;
+                    const long maskE1 = 12L << 56 | 13L << 48 | 14L << 40 | 15L << 32 | 08L << 24 | 09L << 16 | 10L << 8 | 11L << 0;
+
+                    mask = X86GetScalar(context, maskE0);
+
+                    mask = EmitVectorInsert(context, mask, Const(maskE1), 1, 3);
+                }
+                else /* if (op.Size == 1) */
+                {
+                    const long maskE0 = 05L << 56 | 04L << 48 | 07L << 40 | 06L << 32 | 01L << 24 | 00L << 16 | 03L << 8 | 02L << 0;
+                    const long maskE1 = 13L << 56 | 12L << 48 | 15L << 40 | 14L << 32 | 09L << 24 | 08L << 16 | 11L << 8 | 10L << 0;
+
+                    mask = X86GetScalar(context, maskE0);
+
+                    mask = EmitVectorInsert(context, mask, Const(maskE1), 1, 3);
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 Operand res = context.AddIntrinsic(Intrinsic.X86Pshufb, n, mask);
@@ -547,6 +613,7 @@ namespace ARMeilleure.Instructions
 
                 if (op.Size == 0)
                 {
+<<<<<<< HEAD
                     const long MaskE0 = 00L << 56 | 01L << 48 | 02L << 40 | 03L << 32 | 04L << 24 | 05L << 16 | 06L << 8 | 07L << 0;
                     const long MaskE1 = 08L << 56 | 09L << 48 | 10L << 40 | 11L << 32 | 12L << 24 | 13L << 16 | 14L << 8 | 15L << 0;
 
@@ -571,6 +638,32 @@ namespace ARMeilleure.Instructions
                     mask = X86GetScalar(context, MaskE0);
 
                     mask = EmitVectorInsert(context, mask, Const(MaskE1), 1, 3);
+=======
+                    const long maskE0 = 00L << 56 | 01L << 48 | 02L << 40 | 03L << 32 | 04L << 24 | 05L << 16 | 06L << 8 | 07L << 0;
+                    const long maskE1 = 08L << 56 | 09L << 48 | 10L << 40 | 11L << 32 | 12L << 24 | 13L << 16 | 14L << 8 | 15L << 0;
+
+                    mask = X86GetScalar(context, maskE0);
+
+                    mask = EmitVectorInsert(context, mask, Const(maskE1), 1, 3);
+                }
+                else if (op.Size == 1)
+                {
+                    const long maskE0 = 01L << 56 | 00L << 48 | 03L << 40 | 02L << 32 | 05L << 24 | 04L << 16 | 07L << 8 | 06L << 0;
+                    const long maskE1 = 09L << 56 | 08L << 48 | 11L << 40 | 10L << 32 | 13L << 24 | 12L << 16 | 15L << 8 | 14L << 0;
+
+                    mask = X86GetScalar(context, maskE0);
+
+                    mask = EmitVectorInsert(context, mask, Const(maskE1), 1, 3);
+                }
+                else /* if (op.Size == 2) */
+                {
+                    const long maskE0 = 03L << 56 | 02L << 48 | 01L << 40 | 00L << 32 | 07L << 24 | 06L << 16 | 05L << 8 | 04L << 0;
+                    const long maskE1 = 11L << 56 | 10L << 48 | 09L << 40 | 08L << 32 | 15L << 24 | 14L << 16 | 13L << 8 | 12L << 0;
+
+                    mask = X86GetScalar(context, maskE0);
+
+                    mask = EmitVectorInsert(context, mask, Const(maskE1), 1, 3);
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 Operand res = context.AddIntrinsic(Intrinsic.X86Pshufb, n, mask);

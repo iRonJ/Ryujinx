@@ -10,7 +10,11 @@ namespace Ryujinx.Ava.UI.Views.Input
 {
     public partial class RumbleInputView : UserControl
     {
+<<<<<<< HEAD
         private readonly RumbleInputViewModel _viewModel;
+=======
+        private RumbleInputViewModel _viewModel;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public RumbleInputView()
         {
@@ -24,11 +28,19 @@ namespace Ryujinx.Ava.UI.Views.Input
             _viewModel = new RumbleInputViewModel
             {
                 StrongRumble = config.StrongRumble,
+<<<<<<< HEAD
                 WeakRumble = config.WeakRumble,
             };
 
             InitializeComponent();
 
+=======
+                WeakRumble = config.WeakRumble
+            };
+
+            InitializeComponent();
+            
+>>>>>>> 1ec71635b (sync with main branch)
             DataContext = _viewModel;
         }
 
@@ -55,4 +67,8 @@ namespace Ryujinx.Ava.UI.Views.Input
             await contentDialog.ShowAsync();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

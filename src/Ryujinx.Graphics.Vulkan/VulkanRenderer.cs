@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Configuration;
+=======
+﻿using Ryujinx.Common.Configuration;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using Ryujinx.Graphics.GAL;
 using Ryujinx.Graphics.Shader;
@@ -11,9 +15,12 @@ using Silk.NET.Vulkan.Extensions.KHR;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+<<<<<<< HEAD
 using Format = Ryujinx.Graphics.GAL.Format;
 using PrimitiveTopology = Ryujinx.Graphics.GAL.PrimitiveTopology;
 using SamplerCreateInfo = Ryujinx.Graphics.GAL.SamplerCreateInfo;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Vulkan
 {
@@ -68,8 +75,11 @@ namespace Ryujinx.Graphics.Vulkan
         internal HelperShader HelperShader { get; private set; }
         internal PipelineFull PipelineInternal => _pipeline;
 
+<<<<<<< HEAD
         internal BarrierBatch Barriers { get; private set; }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public IPipeline Pipeline => _pipeline;
 
         public IWindow Window => _window;
@@ -78,20 +88,29 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly Func<string[]> _getRequiredExtensions;
         private readonly string _preferredGpuId;
 
+<<<<<<< HEAD
         private int[] _pdReservedBindings;
         private readonly static int[] _pdReservedBindingsNvn = { 3, 18, 21, 36, 30 };
         private readonly static int[] _pdReservedBindingsOgl = { 17, 18, 34, 35, 36 };
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         internal Vendor Vendor { get; private set; }
         internal bool IsAmdWindows { get; private set; }
         internal bool IsIntelWindows { get; private set; }
         internal bool IsAmdGcn { get; private set; }
+<<<<<<< HEAD
         internal bool IsNvidiaPreTuring { get; private set; }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         internal bool IsMoltenVk { get; private set; }
         internal bool IsTBDR { get; private set; }
         internal bool IsSharedMemory { get; private set; }
         public string GpuVendor { get; private set; }
+<<<<<<< HEAD
         public string GpuDriver { get; private set; }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public string GpuRenderer { get; private set; }
         public string GpuVersion { get; private set; }
 
@@ -154,6 +173,7 @@ namespace Ryujinx.Graphics.Vulkan
                 BackgroundQueueLock = new object();
             }
 
+<<<<<<< HEAD
             PhysicalDeviceProperties2 properties2 = new()
             {
                 SType = StructureType.PhysicalDeviceProperties2,
@@ -170,6 +190,16 @@ namespace Ryujinx.Graphics.Vulkan
             PhysicalDeviceBlendOperationAdvancedPropertiesEXT propertiesBlendOperationAdvanced = new()
             {
                 SType = StructureType.PhysicalDeviceBlendOperationAdvancedPropertiesExt,
+=======
+            PhysicalDeviceProperties2 properties2 = new PhysicalDeviceProperties2()
+            {
+                SType = StructureType.PhysicalDeviceProperties2
+            };
+
+            PhysicalDeviceBlendOperationAdvancedPropertiesEXT propertiesBlendOperationAdvanced = new PhysicalDeviceBlendOperationAdvancedPropertiesEXT()
+            {
+                SType = StructureType.PhysicalDeviceBlendOperationAdvancedPropertiesExt
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             bool supportsBlendOperationAdvanced = _physicalDevice.IsDeviceExtensionPresent("VK_EXT_blend_operation_advanced");
@@ -180,11 +210,31 @@ namespace Ryujinx.Graphics.Vulkan
                 properties2.PNext = &propertiesBlendOperationAdvanced;
             }
 
+<<<<<<< HEAD
             bool supportsTransformFeedback = _physicalDevice.IsDeviceExtensionPresent(ExtTransformFeedback.ExtensionName);
 
             PhysicalDeviceTransformFeedbackPropertiesEXT propertiesTransformFeedback = new()
             {
                 SType = StructureType.PhysicalDeviceTransformFeedbackPropertiesExt,
+=======
+            PhysicalDeviceSubgroupSizeControlPropertiesEXT propertiesSubgroupSizeControl = new PhysicalDeviceSubgroupSizeControlPropertiesEXT()
+            {
+                SType = StructureType.PhysicalDeviceSubgroupSizeControlPropertiesExt
+            };
+
+            bool supportsSubgroupSizeControl = _physicalDevice.IsDeviceExtensionPresent("VK_EXT_subgroup_size_control");
+
+            if (supportsSubgroupSizeControl)
+            {
+                properties2.PNext = &propertiesSubgroupSizeControl;
+            }
+
+            bool supportsTransformFeedback = _physicalDevice.IsDeviceExtensionPresent(ExtTransformFeedback.ExtensionName);
+
+            PhysicalDeviceTransformFeedbackPropertiesEXT propertiesTransformFeedback = new PhysicalDeviceTransformFeedbackPropertiesEXT()
+            {
+                SType = StructureType.PhysicalDeviceTransformFeedbackPropertiesExt
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             if (supportsTransformFeedback)
@@ -193,6 +243,7 @@ namespace Ryujinx.Graphics.Vulkan
                 properties2.PNext = &propertiesTransformFeedback;
             }
 
+<<<<<<< HEAD
             PhysicalDevicePortabilitySubsetPropertiesKHR propertiesPortabilitySubset = new()
             {
                 SType = StructureType.PhysicalDevicePortabilitySubsetPropertiesKhr,
@@ -244,6 +295,41 @@ namespace Ryujinx.Graphics.Vulkan
             PhysicalDevicePortabilitySubsetFeaturesKHR featuresPortabilitySubset = new()
             {
                 SType = StructureType.PhysicalDevicePortabilitySubsetFeaturesKhr,
+=======
+            PhysicalDevicePortabilitySubsetPropertiesKHR propertiesPortabilitySubset = new PhysicalDevicePortabilitySubsetPropertiesKHR()
+            {
+                SType = StructureType.PhysicalDevicePortabilitySubsetPropertiesKhr
+            };
+
+            PhysicalDeviceFeatures2 features2 = new PhysicalDeviceFeatures2()
+            {
+                SType = StructureType.PhysicalDeviceFeatures2
+            };
+
+            PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT featuresPrimitiveTopologyListRestart = new PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT()
+            {
+                SType = StructureType.PhysicalDevicePrimitiveTopologyListRestartFeaturesExt
+            };
+
+            PhysicalDeviceRobustness2FeaturesEXT featuresRobustness2 = new PhysicalDeviceRobustness2FeaturesEXT()
+            {
+                SType = StructureType.PhysicalDeviceRobustness2FeaturesExt
+            };
+
+            PhysicalDeviceShaderFloat16Int8FeaturesKHR featuresShaderInt8 = new PhysicalDeviceShaderFloat16Int8FeaturesKHR()
+            {
+                SType = StructureType.PhysicalDeviceShaderFloat16Int8Features
+            };
+
+            PhysicalDeviceCustomBorderColorFeaturesEXT featuresCustomBorderColor = new PhysicalDeviceCustomBorderColorFeaturesEXT()
+            {
+                SType = StructureType.PhysicalDeviceCustomBorderColorFeaturesExt
+            };
+
+            PhysicalDevicePortabilitySubsetFeaturesKHR featuresPortabilitySubset = new PhysicalDevicePortabilitySubsetFeaturesKHR()
+            {
+                SType = StructureType.PhysicalDevicePortabilitySubsetFeaturesKhr
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             if (_physicalDevice.IsDeviceExtensionPresent("VK_EXT_primitive_topology_list_restart"))
@@ -269,6 +355,7 @@ namespace Ryujinx.Graphics.Vulkan
                 features2.PNext = &featuresCustomBorderColor;
             }
 
+<<<<<<< HEAD
             bool supportsDepthClipControl = _physicalDevice.IsDeviceExtensionPresent("VK_EXT_depth_clip_control");
 
             if (supportsDepthClipControl)
@@ -277,6 +364,8 @@ namespace Ryujinx.Graphics.Vulkan
                 features2.PNext = &featuresDepthClipControl;
             }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             bool usePortability = _physicalDevice.IsDeviceExtensionPresent("VK_KHR_portability_subset");
 
             if (usePortability)
@@ -310,6 +399,7 @@ namespace Ryujinx.Graphics.Vulkan
 
             ref var properties = ref properties2.Properties;
 
+<<<<<<< HEAD
             ulong minResourceAlignment = Math.Max(
                 Math.Max(
                     properties.Limits.MinStorageBufferOffsetAlignment,
@@ -317,6 +407,8 @@ namespace Ryujinx.Graphics.Vulkan
                 properties.Limits.MinTexelBufferOffsetAlignment
             );
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             SampleCountFlags supportedSampleCounts =
                 properties.Limits.FramebufferColorSampleCounts &
                 properties.Limits.FramebufferDepthSampleCounts &
@@ -332,16 +424,26 @@ namespace Ryujinx.Graphics.Vulkan
                 _physicalDevice.IsDeviceExtensionPresent(KhrDrawIndirectCount.ExtensionName),
                 _physicalDevice.IsDeviceExtensionPresent("VK_EXT_fragment_shader_interlock"),
                 _physicalDevice.IsDeviceExtensionPresent("VK_NV_geometry_shader_passthrough"),
+<<<<<<< HEAD
                 features2.Features.ShaderFloat64,
+=======
+                supportsSubgroupSizeControl,
+>>>>>>> 1ec71635b (sync with main branch)
                 featuresShaderInt8.ShaderInt8,
                 _physicalDevice.IsDeviceExtensionPresent("VK_EXT_shader_stencil_export"),
                 features2.Features.ShaderStorageImageMultisample,
                 _physicalDevice.IsDeviceExtensionPresent(ExtConditionalRendering.ExtensionName),
                 _physicalDevice.IsDeviceExtensionPresent(ExtExtendedDynamicState.ExtensionName),
+<<<<<<< HEAD
                 features2.Features.MultiViewport && !(IsMoltenVk && Vendor == Vendor.Amd), // Workaround for AMD on MoltenVK issue
                 featuresRobustness2.NullDescriptor || IsMoltenVk,
                 supportsPushDescriptors && !IsMoltenVk,
                 propertiesPushDescriptor.MaxPushDescriptors,
+=======
+                features2.Features.MultiViewport,
+                featuresRobustness2.NullDescriptor || IsMoltenVk,
+                _physicalDevice.IsDeviceExtensionPresent(KhrPushDescriptor.ExtensionName),
+>>>>>>> 1ec71635b (sync with main branch)
                 featuresPrimitiveTopologyListRestart.PrimitiveTopologyListRestart,
                 featuresPrimitiveTopologyListRestart.PrimitiveTopologyPatchListRestart,
                 supportsTransformFeedback,
@@ -349,6 +451,7 @@ namespace Ryujinx.Graphics.Vulkan
                 features2.Features.OcclusionQueryPrecise,
                 _physicalDevice.PhysicalDeviceFeatures.PipelineStatisticsQuery,
                 _physicalDevice.PhysicalDeviceFeatures.GeometryShader,
+<<<<<<< HEAD
                 _physicalDevice.PhysicalDeviceFeatures.TessellationShader,
                 _physicalDevice.IsDeviceExtensionPresent("VK_NV_viewport_array2"),
                 _physicalDevice.IsDeviceExtensionPresent(ExtExternalMemoryHost.ExtensionName),
@@ -359,6 +462,17 @@ namespace Ryujinx.Graphics.Vulkan
                 vertexBufferAlignment,
                 properties.Limits.SubTexelPrecisionBits,
                 minResourceAlignment);
+=======
+                _physicalDevice.IsDeviceExtensionPresent("VK_NV_viewport_array2"),
+                _physicalDevice.IsDeviceExtensionPresent(ExtExternalMemoryHost.ExtensionName),
+                propertiesSubgroupSizeControl.MinSubgroupSize,
+                propertiesSubgroupSizeControl.MaxSubgroupSize,
+                propertiesSubgroupSizeControl.RequiredSubgroupSizeStages,
+                supportedSampleCounts,
+                portabilityFlags,
+                vertexBufferAlignment,
+                properties.Limits.SubTexelPrecisionBits);
+>>>>>>> 1ec71635b (sync with main branch)
 
             IsSharedMemory = MemoryAllocator.IsDeviceMemoryShared(_physicalDevice);
 
@@ -369,7 +483,11 @@ namespace Ryujinx.Graphics.Vulkan
 
             CommandBufferPool = new CommandBufferPool(Api, _device, Queue, QueueLock, queueFamilyIndex);
 
+<<<<<<< HEAD
             DescriptorSetManager = new DescriptorSetManager(_device, PipelineBase.DescriptorSetLayouts);
+=======
+            DescriptorSetManager = new DescriptorSetManager(_device);
+>>>>>>> 1ec71635b (sync with main branch)
 
             PipelineLayoutCache = new PipelineLayoutCache();
 
@@ -383,12 +501,19 @@ namespace Ryujinx.Graphics.Vulkan
 
             HelperShader = new HelperShader(this, _device);
 
+<<<<<<< HEAD
             Barriers = new BarrierBatch(this);
 
             _counters = new Counters(this, _device, _pipeline);
         }
 
         private void SetupContext(GraphicsDebugLevel logLevel)
+=======
+            _counters = new Counters(this, _device, _pipeline);
+        }
+
+        private unsafe void SetupContext(GraphicsDebugLevel logLevel)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             _instance = VulkanInitialization.CreateInstance(Api, logLevel, _getRequiredExtensions());
             _debugMessenger = new VulkanDebugMessenger(Api, _instance.Instance, logLevel);
@@ -416,13 +541,17 @@ namespace Ryujinx.Graphics.Vulkan
 
             LoadFeatures(maxQueueCount, queueFamilyIndex);
 
+<<<<<<< HEAD
             QueueFamilyIndex = queueFamilyIndex;
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             _window = new Window(this, _surface, _physicalDevice.PhysicalDevice, _device);
 
             _initialized = true;
         }
 
+<<<<<<< HEAD
         internal int[] GetPushDescriptorReservedBindings(bool isOgl)
         {
             // The first call of this method determines what push descriptor layout is used for all shaders on this renderer.
@@ -450,6 +579,16 @@ namespace Ryujinx.Graphics.Vulkan
         public BufferHandle CreateBuffer(int size, BufferAccess access, BufferHandle storageHint)
         {
             return BufferManager.CreateWithHandle(this, size, access.HasFlag(BufferAccess.SparseCompatible), access.Convert(), storageHint);
+=======
+        public BufferHandle CreateBuffer(int size, BufferAccess access)
+        {
+            return BufferManager.CreateWithHandle(this, size, access.Convert());
+        }
+
+        public BufferHandle CreateBuffer(int size, BufferHandle storageHint)
+        {
+            return BufferManager.CreateWithHandle(this, size, BufferAllocationType.Auto, storageHint);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public BufferHandle CreateBuffer(nint pointer, int size)
@@ -457,11 +596,14 @@ namespace Ryujinx.Graphics.Vulkan
             return BufferManager.CreateHostImported(this, pointer, size);
         }
 
+<<<<<<< HEAD
         public BufferHandle CreateBufferSparse(ReadOnlySpan<BufferRange> storageBuffers)
         {
             return BufferManager.CreateSparse(this, storageBuffers);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public IProgram CreateProgram(ShaderSource[] sources, ShaderInfo info)
         {
             bool isCompute = sources.Length == 1 && sources[0].Stage == ShaderStage.Compute;
@@ -470,8 +612,15 @@ namespace Ryujinx.Graphics.Vulkan
             {
                 return new ShaderCollection(this, _device, sources, info.ResourceLayout, info.State ?? default, info.FromCache);
             }
+<<<<<<< HEAD
 
             return new ShaderCollection(this, _device, sources, info.ResourceLayout);
+=======
+            else
+            {
+                return new ShaderCollection(this, _device, sources, info.ResourceLayout);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         internal ShaderCollection CreateProgramWithMinimalLayout(ShaderSource[] sources, ResourceLayout resourceLayout, SpecDescription[] specDescription = null)
@@ -479,11 +628,16 @@ namespace Ryujinx.Graphics.Vulkan
             return new ShaderCollection(this, _device, sources, resourceLayout, specDescription, isMinimal: true);
         }
 
+<<<<<<< HEAD
         public ISampler CreateSampler(SamplerCreateInfo info)
+=======
+        public ISampler CreateSampler(GAL.SamplerCreateInfo info)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return new SamplerHolder(this, _device, info);
         }
 
+<<<<<<< HEAD
         public ITexture CreateTexture(TextureCreateInfo info)
         {
             if (info.Target == Target.TextureBuffer)
@@ -504,6 +658,28 @@ namespace Ryujinx.Graphics.Vulkan
         internal TextureStorage CreateTextureStorage(TextureCreateInfo info)
         {
             return new TextureStorage(this, _device, info);
+=======
+        public ITexture CreateTexture(TextureCreateInfo info, float scale)
+        {
+            if (info.Target == Target.TextureBuffer)
+            {
+                return new TextureBuffer(this, info, scale);
+            }
+
+            return CreateTextureView(info, scale);
+        }
+
+        internal TextureView CreateTextureView(TextureCreateInfo info, float scale)
+        {
+            // This should be disposed when all views are destroyed.
+            var storage = CreateTextureStorage(info, scale);
+            return storage.CreateView(info, 0, 0);
+        }
+
+        internal TextureStorage CreateTextureStorage(TextureCreateInfo info, float scale)
+        {
+            return new TextureStorage(this, _device, info, scale);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void DeleteBuffer(BufferHandle buffer)
@@ -519,9 +695,12 @@ namespace Ryujinx.Graphics.Vulkan
         internal void RegisterFlush()
         {
             SyncManager.RegisterFlush();
+<<<<<<< HEAD
 
             // Periodically free unused regions of the staging buffer to avoid doing it all at once.
             BufferManager.StagingBuffer.FreeCompleted();
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public PinnedSpan<byte> GetBufferData(BufferHandle buffer, int offset, int size)
@@ -539,6 +718,7 @@ namespace Ryujinx.Graphics.Vulkan
                 FormatFeatureFlags.TransferDstBit;
 
             bool supportsBc123CompressionFormat = FormatCapabilities.OptimalFormatsSupport(compressedFormatFeatureFlags,
+<<<<<<< HEAD
                 Format.Bc1RgbaSrgb,
                 Format.Bc1RgbaUnorm,
                 Format.Bc2Srgb,
@@ -616,12 +796,94 @@ namespace Ryujinx.Graphics.Vulkan
             {
                 SType = StructureType.PhysicalDeviceFeatures2,
                 PNext = &featuresVk12,
+=======
+                GAL.Format.Bc1RgbaSrgb,
+                GAL.Format.Bc1RgbaUnorm,
+                GAL.Format.Bc2Srgb,
+                GAL.Format.Bc2Unorm,
+                GAL.Format.Bc3Srgb,
+                GAL.Format.Bc3Unorm);
+
+            bool supportsBc45CompressionFormat = FormatCapabilities.OptimalFormatsSupport(compressedFormatFeatureFlags,
+                GAL.Format.Bc4Snorm,
+                GAL.Format.Bc4Unorm,
+                GAL.Format.Bc5Snorm,
+                GAL.Format.Bc5Unorm);
+
+            bool supportsBc67CompressionFormat = FormatCapabilities.OptimalFormatsSupport(compressedFormatFeatureFlags,
+                GAL.Format.Bc6HSfloat,
+                GAL.Format.Bc6HUfloat,
+                GAL.Format.Bc7Srgb,
+                GAL.Format.Bc7Unorm);
+
+            bool supportsEtc2CompressionFormat = FormatCapabilities.OptimalFormatsSupport(compressedFormatFeatureFlags,
+                GAL.Format.Etc2RgbaSrgb,
+                GAL.Format.Etc2RgbaUnorm,
+                GAL.Format.Etc2RgbPtaSrgb,
+                GAL.Format.Etc2RgbPtaUnorm,
+                GAL.Format.Etc2RgbSrgb,
+                GAL.Format.Etc2RgbUnorm);
+
+            bool supports5BitComponentFormat = FormatCapabilities.OptimalFormatsSupport(compressedFormatFeatureFlags,
+                GAL.Format.R5G6B5Unorm,
+                GAL.Format.R5G5B5A1Unorm,
+                GAL.Format.R5G5B5X1Unorm,
+                GAL.Format.B5G6R5Unorm,
+                GAL.Format.B5G5R5A1Unorm,
+                GAL.Format.A1B5G5R5Unorm);
+
+            bool supportsR4G4B4A4Format = FormatCapabilities.OptimalFormatsSupport(compressedFormatFeatureFlags,
+                GAL.Format.R4G4B4A4Unorm);
+
+            bool supportsAstcFormats = FormatCapabilities.OptimalFormatsSupport(compressedFormatFeatureFlags,
+                GAL.Format.Astc4x4Unorm,
+                GAL.Format.Astc5x4Unorm,
+                GAL.Format.Astc5x5Unorm,
+                GAL.Format.Astc6x5Unorm,
+                GAL.Format.Astc6x6Unorm,
+                GAL.Format.Astc8x5Unorm,
+                GAL.Format.Astc8x6Unorm,
+                GAL.Format.Astc8x8Unorm,
+                GAL.Format.Astc10x5Unorm,
+                GAL.Format.Astc10x6Unorm,
+                GAL.Format.Astc10x8Unorm,
+                GAL.Format.Astc10x10Unorm,
+                GAL.Format.Astc12x10Unorm,
+                GAL.Format.Astc12x12Unorm,
+                GAL.Format.Astc4x4Srgb,
+                GAL.Format.Astc5x4Srgb,
+                GAL.Format.Astc5x5Srgb,
+                GAL.Format.Astc6x5Srgb,
+                GAL.Format.Astc6x6Srgb,
+                GAL.Format.Astc8x5Srgb,
+                GAL.Format.Astc8x6Srgb,
+                GAL.Format.Astc8x8Srgb,
+                GAL.Format.Astc10x5Srgb,
+                GAL.Format.Astc10x6Srgb,
+                GAL.Format.Astc10x8Srgb,
+                GAL.Format.Astc10x10Srgb,
+                GAL.Format.Astc12x10Srgb,
+                GAL.Format.Astc12x12Srgb);
+
+            PhysicalDeviceVulkan12Features featuresVk12 = new PhysicalDeviceVulkan12Features()
+            {
+                SType = StructureType.PhysicalDeviceVulkan12Features
+            };
+
+            PhysicalDeviceFeatures2 features2 = new PhysicalDeviceFeatures2()
+            {
+                SType = StructureType.PhysicalDeviceFeatures2,
+                PNext = &featuresVk12
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             Api.GetPhysicalDeviceFeatures2(_physicalDevice.PhysicalDevice, &features2);
 
             var limits = _physicalDevice.PhysicalDeviceProperties.Limits;
+<<<<<<< HEAD
             var mainQueueProperties = _physicalDevice.QueueFamilyProperties[QueueFamilyIndex];
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
             return new Capabilities(
                 api: TargetApi.Vulkan,
@@ -641,18 +903,25 @@ namespace Ryujinx.Graphics.Vulkan
                 supportsR4G4B4A4Format: supportsR4G4B4A4Format,
                 supportsSnormBufferTextureFormat: true,
                 supports5BitComponentFormat: supports5BitComponentFormat,
+<<<<<<< HEAD
                 supportsSparseBuffer: features2.Features.SparseBinding && mainQueueProperties.QueueFlags.HasFlag(QueueFlags.SparseBindingBit),
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 supportsBlendEquationAdvanced: Capabilities.SupportsBlendEquationAdvanced,
                 supportsFragmentShaderInterlock: Capabilities.SupportsFragmentShaderInterlock,
                 supportsFragmentShaderOrderingIntel: false,
                 supportsGeometryShader: Capabilities.SupportsGeometryShader,
                 supportsGeometryShaderPassthrough: Capabilities.SupportsGeometryShaderPassthrough,
+<<<<<<< HEAD
                 supportsTransformFeedback: Capabilities.SupportsTransformFeedback,
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 supportsImageLoadFormatted: features2.Features.ShaderStorageImageReadWithoutFormat,
                 supportsLayerVertexTessellation: featuresVk12.ShaderOutputLayer,
                 supportsMismatchingViewFormat: true,
                 supportsCubemapView: !IsAmdGcn,
                 supportsNonConstantTextureOffset: false,
+<<<<<<< HEAD
                 supportsScaledVertexFormats: FormatCapabilities.SupportsScaledVertexFormats(),
                 supportsShaderBallot: false,
                 supportsShaderBarrierDivergence: Vendor != Vendor.Intel,
@@ -660,26 +929,41 @@ namespace Ryujinx.Graphics.Vulkan
                 supportsTextureGatherOffsets: features2.Features.ShaderImageGatherExtended && !IsMoltenVk,
                 supportsTextureShadowLod: false,
                 supportsVertexStoreAndAtomics: features2.Features.VertexPipelineStoresAndAtomics,
+=======
+                supportsShaderBallot: false,
+                supportsTextureShadowLod: false,
+>>>>>>> 1ec71635b (sync with main branch)
                 supportsViewportIndexVertexTessellation: featuresVk12.ShaderOutputViewportIndex,
                 supportsViewportMask: Capabilities.SupportsViewportArray2,
                 supportsViewportSwizzle: false,
                 supportsIndirectParameters: true,
+<<<<<<< HEAD
                 supportsDepthClipControl: Capabilities.SupportsDepthClipControl,
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 maximumUniformBuffersPerStage: Constants.MaxUniformBuffersPerStage,
                 maximumStorageBuffersPerStage: Constants.MaxStorageBuffersPerStage,
                 maximumTexturesPerStage: Constants.MaxTexturesPerStage,
                 maximumImagesPerStage: Constants.MaxImagesPerStage,
                 maximumComputeSharedMemorySize: (int)limits.MaxComputeSharedMemorySize,
                 maximumSupportedAnisotropy: (int)limits.MaxSamplerAnisotropy,
+<<<<<<< HEAD
                 shaderSubgroupSize: (int)Capabilities.SubgroupSize,
                 storageBufferOffsetAlignment: (int)limits.MinStorageBufferOffsetAlignment,
                 textureBufferOffsetAlignment: (int)limits.MinTexelBufferOffsetAlignment,
+=======
+                storageBufferOffsetAlignment: (int)limits.MinStorageBufferOffsetAlignment,
+>>>>>>> 1ec71635b (sync with main branch)
                 gatherBiasPrecision: IsIntelWindows || IsAmdWindows ? (int)Capabilities.SubTexelPrecisionBits : 0);
         }
 
         public HardwareInfo GetHardwareInfo()
         {
+<<<<<<< HEAD
             return new HardwareInfo(GpuVendor, GpuRenderer, GpuDriver);
+=======
+            return new HardwareInfo(GpuVendor, GpuRenderer);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -728,36 +1012,54 @@ namespace Ryujinx.Graphics.Vulkan
             {
                 return $"{(driverVersionRaw >> 22) & 0x3FF}.{(driverVersionRaw >> 14) & 0xFF}.{(driverVersionRaw >> 6) & 0xFF}.{driverVersionRaw & 0x3F}";
             }
+<<<<<<< HEAD
 
             return ParseStandardVulkanVersion(driverVersionRaw);
+=======
+            else
+            {
+                return ParseStandardVulkanVersion(driverVersionRaw);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private unsafe void PrintGpuInformation()
         {
             var properties = _physicalDevice.PhysicalDeviceProperties;
 
+<<<<<<< HEAD
             var hasDriverProperties = _physicalDevice.TryGetPhysicalDeviceDriverPropertiesKHR(Api, out var driverProperties);
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             string vendorName = VendorUtils.GetNameFromId(properties.VendorID);
 
             Vendor = VendorUtils.FromId(properties.VendorID);
 
             IsAmdWindows = Vendor == Vendor.Amd && OperatingSystem.IsWindows();
             IsIntelWindows = Vendor == Vendor.Intel && OperatingSystem.IsWindows();
+<<<<<<< HEAD
             IsTBDR =
                 Vendor == Vendor.Apple ||
+=======
+            IsTBDR = IsMoltenVk ||
+>>>>>>> 1ec71635b (sync with main branch)
                 Vendor == Vendor.Qualcomm ||
                 Vendor == Vendor.ARM ||
                 Vendor == Vendor.Broadcom ||
                 Vendor == Vendor.ImgTec;
 
             GpuVendor = vendorName;
+<<<<<<< HEAD
             GpuDriver = hasDriverProperties ? Marshal.PtrToStringAnsi((IntPtr)driverProperties.DriverName) : vendorName; // Fall back to vendor name if driver name isn't available.
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             GpuRenderer = Marshal.PtrToStringAnsi((IntPtr)properties.DeviceName);
             GpuVersion = $"Vulkan v{ParseStandardVulkanVersion(properties.ApiVersion)}, Driver v{ParseDriverVersion(ref properties)}";
 
             IsAmdGcn = !IsMoltenVk && Vendor == Vendor.Amd && VendorUtils.AmdGcnRegex().IsMatch(GpuRenderer);
 
+<<<<<<< HEAD
             if (Vendor == Vendor.Nvidia)
             {
                 var match = VendorUtils.NvidiaConsumerClassRegex().Match(GpuRenderer);
@@ -793,6 +1095,29 @@ namespace Ryujinx.Graphics.Vulkan
                 PrimitiveTopology.Quads => true,
                 PrimitiveTopology.TriangleFan => Capabilities.PortabilitySubset.HasFlag(PortabilitySubsetFlags.NoTriangleFans),
                 _ => false,
+=======
+            Logger.Notice.Print(LogClass.Gpu, $"{GpuVendor} {GpuRenderer} ({GpuVersion})");
+        }
+
+        internal GAL.PrimitiveTopology TopologyRemap(GAL.PrimitiveTopology topology)
+        {
+            return topology switch
+            {
+                GAL.PrimitiveTopology.Quads => GAL.PrimitiveTopology.Triangles,
+                GAL.PrimitiveTopology.QuadStrip => GAL.PrimitiveTopology.TriangleStrip,
+                GAL.PrimitiveTopology.TriangleFan => Capabilities.PortabilitySubset.HasFlag(PortabilitySubsetFlags.NoTriangleFans) ? GAL.PrimitiveTopology.Triangles : topology,
+                _ => topology
+            };
+        }
+
+        internal bool TopologyUnsupported(GAL.PrimitiveTopology topology)
+        {
+            return topology switch
+            {
+                GAL.PrimitiveTopology.Quads => true,
+                GAL.PrimitiveTopology.TriangleFan => Capabilities.PortabilitySubset.HasFlag(PortabilitySubsetFlags.NoTriangleFans),
+                _ => false
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -832,9 +1157,15 @@ namespace Ryujinx.Graphics.Vulkan
             SyncManager.Cleanup();
         }
 
+<<<<<<< HEAD
         public ICounterEvent ReportCounter(CounterType type, EventHandler<ulong> resultHandler, float divisor, bool hostReserved)
         {
             return _counters.QueueReport(type, resultHandler, divisor, hostReserved);
+=======
+        public ICounterEvent ReportCounter(CounterType type, EventHandler<ulong> resultHandler, bool hostReserved)
+        {
+            return _counters.QueueReport(type, resultHandler, hostReserved);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void ResetCounter(CounterType type)
@@ -844,7 +1175,11 @@ namespace Ryujinx.Graphics.Vulkan
 
         public void SetBufferData(BufferHandle buffer, int offset, ReadOnlySpan<byte> data)
         {
+<<<<<<< HEAD
             BufferManager.SetData(buffer, offset, data, _pipeline.CurrentCommandBuffer, _pipeline.EndRenderPassDelegate);
+=======
+            BufferManager.SetData(buffer, offset, data, _pipeline.CurrentCommandBuffer, _pipeline.EndRenderPass);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void UpdateCounters()
@@ -918,7 +1253,10 @@ namespace Ryujinx.Graphics.Vulkan
             BufferManager.Dispose();
             DescriptorSetManager.Dispose();
             PipelineLayoutCache.Dispose();
+<<<<<<< HEAD
             Barriers.Dispose();
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
             MemoryAllocator.Dispose();
 
@@ -953,4 +1291,8 @@ namespace Ryujinx.Graphics.Vulkan
                 HostMemoryAllocator.TryImport(BufferManager.HostImportedBufferMemoryRequirements, BufferManager.DefaultBufferMemoryFlags, address, size);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

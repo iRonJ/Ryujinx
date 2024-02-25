@@ -4,10 +4,17 @@ using System;
 
 namespace Ryujinx.Graphics.OpenGL
 {
+<<<<<<< HEAD
     readonly struct FormatTable
     {
         private static readonly FormatInfo[] _table;
         private static readonly SizedInternalFormat[] _tableImage;
+=======
+    struct FormatTable
+    {
+        private static FormatInfo[] _table;
+        private static SizedInternalFormat[] _tableImage;
+>>>>>>> 1ec71635b (sync with main branch)
 
         static FormatTable()
         {
@@ -16,7 +23,10 @@ namespace Ryujinx.Graphics.OpenGL
             _table = new FormatInfo[tableSize];
             _tableImage = new SizedInternalFormat[tableSize];
 
+<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Add(Format.R8Unorm,             new FormatInfo(1, true,  false, All.R8,                PixelFormat.Red,            PixelType.UnsignedByte));
             Add(Format.R8Snorm,             new FormatInfo(1, true,  false, All.R8Snorm,           PixelFormat.Red,            PixelType.Byte));
             Add(Format.R8Uint,              new FormatInfo(1, false, false, All.R8ui,              PixelFormat.RedInteger,     PixelType.UnsignedByte));
@@ -68,7 +78,10 @@ namespace Ryujinx.Graphics.OpenGL
             Add(Format.S8Uint,              new FormatInfo(1, false, false, All.StencilIndex8,     PixelFormat.StencilIndex,   PixelType.UnsignedByte));
             Add(Format.D16Unorm,            new FormatInfo(1, false, false, All.DepthComponent16,  PixelFormat.DepthComponent, PixelType.UnsignedShort));
             Add(Format.S8UintD24Unorm,      new FormatInfo(1, false, false, All.Depth24Stencil8,   PixelFormat.DepthStencil,   PixelType.UnsignedInt248));
+<<<<<<< HEAD
             Add(Format.X8UintD24Unorm,      new FormatInfo(1, false, false, All.DepthComponent24,  PixelFormat.DepthComponent, PixelType.UnsignedInt));
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Add(Format.D32Float,            new FormatInfo(1, false, false, All.DepthComponent32f, PixelFormat.DepthComponent, PixelType.Float));
             Add(Format.D24UnormS8Uint,      new FormatInfo(1, false, false, All.Depth24Stencil8,   PixelFormat.DepthStencil,   PixelType.UnsignedInt248));
             Add(Format.D32FloatS8Uint,      new FormatInfo(1, false, false, All.Depth32fStencil8,  PixelFormat.DepthStencil,   PixelType.Float32UnsignedInt248Rev));
@@ -162,7 +175,10 @@ namespace Ryujinx.Graphics.OpenGL
             Add(Format.A1B5G5R5Unorm,       new FormatInfo(4, true,  false, All.Rgb5A1,            PixelFormat.Rgba,           PixelType.UnsignedShort5551));
             Add(Format.B8G8R8A8Unorm,       new FormatInfo(4, true,  false, All.Rgba8,             PixelFormat.Rgba,           PixelType.UnsignedByte));
             Add(Format.B8G8R8A8Srgb,        new FormatInfo(4, false, false, All.Srgb8Alpha8,       PixelFormat.Rgba,           PixelType.UnsignedByte));
+<<<<<<< HEAD
             Add(Format.B10G10R10A2Unorm,    new FormatInfo(4, false, false, All.Rgb10A2,           PixelFormat.Rgba,           PixelType.UnsignedInt2101010Reversed));
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
             Add(Format.R8Unorm,           SizedInternalFormat.R8);
             Add(Format.R8Uint,            SizedInternalFormat.R8ui);
@@ -203,7 +219,10 @@ namespace Ryujinx.Graphics.OpenGL
             Add(Format.R10G10B10A2Unorm,  (SizedInternalFormat)All.Rgb10A2);
             Add(Format.R10G10B10A2Uint,   (SizedInternalFormat)All.Rgb10A2ui);
             Add(Format.R11G11B10Float,    (SizedInternalFormat)All.R11fG11fB10f);
+<<<<<<< HEAD
 #pragma warning restore IDE0055
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void Add(Format format, FormatInfo info)
@@ -225,6 +244,7 @@ namespace Ryujinx.Graphics.OpenGL
         {
             return _tableImage[(int)format];
         }
+<<<<<<< HEAD
 
         public static bool IsPackedDepthStencil(Format format)
         {
@@ -237,5 +257,7 @@ namespace Ryujinx.Graphics.OpenGL
         {
             return format == Format.D16Unorm || format == Format.D32Float || format == Format.X8UintD24Unorm;
         }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

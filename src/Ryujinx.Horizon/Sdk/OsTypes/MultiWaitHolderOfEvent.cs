@@ -4,7 +4,11 @@ namespace Ryujinx.Horizon.Sdk.OsTypes
 {
     class MultiWaitHolderOfEvent : MultiWaitHolder
     {
+<<<<<<< HEAD
         private readonly Event _event;
+=======
+        private Event _event;
+>>>>>>> 1ec71635b (sync with main branch)
         private LinkedListNode<MultiWaitHolderBase> _node;
 
         public override TriBool Signaled

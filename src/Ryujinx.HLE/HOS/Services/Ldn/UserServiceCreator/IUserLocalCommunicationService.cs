@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using LibHac.Ns;
 using Ryujinx.Common;
 using Ryujinx.Common.Configuration.Multiplayer;
@@ -69,19 +70,46 @@ namespace Ryujinx.HLE.HOS.Services.Ldn.UserServiceCreator
             }
 
             return false;
+=======
+﻿using Ryujinx.HLE.HOS.Ipc;
+using Ryujinx.HLE.HOS.Services.Ldn.Types;
+using Ryujinx.Horizon.Common;
+using System;
+using System.Net;
+
+namespace Ryujinx.HLE.HOS.Services.Ldn.UserServiceCreator
+{
+    class IUserLocalCommunicationService : IpcService
+    {
+        // TODO(Ac_K): Determine what the hardcoded unknown value is.
+        private const int UnknownValue = 90;
+
+        private NetworkInterface _networkInterface;
+
+        private int _stateChangeEventHandle = 0;
+
+        public IUserLocalCommunicationService(ServiceCtx context)
+        {
+            _networkInterface = new NetworkInterface(context.Device.System);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CommandCmif(0)]
         // GetState() -> s32 state
         public ResultCode GetState(ServiceCtx context)
         {
+<<<<<<< HEAD
             if (_nifmResultCode != ResultCode.Success)
+=======
+            if (_networkInterface.NifmState != ResultCode.Success)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 context.ResponseData.Write((int)NetworkState.Error);
 
                 return ResultCode.Success;
             }
 
+<<<<<<< HEAD
             // NOTE: Returns ResultCode.InvalidArgument if _state is null, doesn't occur in our case.
             context.ResponseData.Write((int)_state);
 
@@ -272,24 +300,48 @@ namespace Ryujinx.HLE.HOS.Services.Ldn.UserServiceCreator
             context.ResponseData.WriteStruct(networkConfig);
 
             return ResultCode.Success;
+=======
+            ResultCode result = _networkInterface.GetState(out NetworkState state);
+
+            if (result == ResultCode.Success)
+            {
+                context.ResponseData.Write((int)state);
+            }
+
+            return result;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CommandCmif(100)]
         // AttachStateChangeEvent() -> handle<copy>
         public ResultCode AttachStateChangeEvent(ServiceCtx context)
         {
+<<<<<<< HEAD
             if (_stateChangeEventHandle == 0 && context.Process.HandleTable.GenerateHandle(_stateChangeEvent.ReadableEvent, out _stateChangeEventHandle) != Result.Success)
             {
                 throw new InvalidOperationException("Out of handles!");
+=======
+            if (_stateChangeEventHandle == 0)
+            {
+                if (context.Process.HandleTable.GenerateHandle(_networkInterface.StateChangeEvent.ReadableEvent, out _stateChangeEventHandle) != Result.Success)
+                {
+                    throw new InvalidOperationException("Out of handles!");
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             context.Response.HandleDesc = IpcHandleDesc.MakeCopy(_stateChangeEventHandle);
 
+<<<<<<< HEAD
             // Returns ResultCode.InvalidArgument if handle is null, doesn't occur in our case since we already throw an Exception.
+=======
+            // Return ResultCode.InvalidArgument if handle is null, doesn't occur in our case since we already throw an Exception.
+>>>>>>> 1ec71635b (sync with main branch)
 
             return ResultCode.Success;
         }
 
+<<<<<<< HEAD
         [CommandCmif(101)]
         // GetNetworkInfoLatestUpdate() -> (buffer<network_info<0x480>, 0x1a>, buffer<node_latest_update, 0xa>)
         public ResultCode GetNetworkInfoLatestUpdate(ServiceCtx context)
@@ -947,12 +999,20 @@ namespace Ryujinx.HLE.HOS.Services.Ldn.UserServiceCreator
         public ResultCode InitializeOld(ServiceCtx context)
         {
             return InitializeImpl(context, context.Process.Pid, NifmRequestID);
+=======
+        [CommandCmif(400)]
+        // InitializeOld(u64, pid)
+        public ResultCode InitializeOld(ServiceCtx context)
+        {
+            return _networkInterface.Initialize(UnknownValue, 0, null, null);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [CommandCmif(401)]
         // Finalize()
         public ResultCode Finalize(ServiceCtx context)
         {
+<<<<<<< HEAD
             if (_nifmResultCode != ResultCode.Success)
             {
                 return _nifmResultCode;
@@ -1108,3 +1168,20 @@ namespace Ryujinx.HLE.HOS.Services.Ldn.UserServiceCreator
         }
     }
 }
+=======
+            return _networkInterface.Finalize();
+        }
+
+        [CommandCmif(402)] // 7.0.0+
+        // Initialize(u64 ip_addresses, u64, pid)
+        public ResultCode Initialize(ServiceCtx context)
+        {
+            // TODO(Ac_K): Determine what addresses are.
+            IPAddress unknownAddress1 = new IPAddress(context.RequestData.ReadUInt32());
+            IPAddress unknownAddress2 = new IPAddress(context.RequestData.ReadUInt32());
+
+            return _networkInterface.Initialize(UnknownValue, version: 1, unknownAddress1, unknownAddress2);
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

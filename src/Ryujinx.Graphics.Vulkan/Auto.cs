@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Diagnostics;
 using System.Threading;
 
@@ -18,12 +22,15 @@ namespace Ryujinx.Graphics.Vulkan
         void AddCommandBufferDependencies(CommandBufferScoped cbs);
     }
 
+<<<<<<< HEAD
     interface IMirrorable<T> where T : IDisposable
     {
         Auto<T> GetMirrorable(CommandBufferScoped cbs, ref int offset, int size, out bool mirrored);
         void ClearMirrors(CommandBufferScoped cbs, int offset, int size);
     }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     class Auto<T> : IAutoPrivate, IDisposable where T : IDisposable
     {
         private int _referenceCount;
@@ -32,7 +39,10 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly BitMap _cbOwnership;
         private readonly MultiFenceHolder _waitable;
         private readonly IAutoPrivate[] _referencedObjs;
+<<<<<<< HEAD
         private readonly IMirrorable<T> _mirrorable;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         private bool _disposed;
         private bool _destroyed;
@@ -44,11 +54,14 @@ namespace Ryujinx.Graphics.Vulkan
             _cbOwnership = new BitMap(CommandBufferPool.MaxCommandBuffers);
         }
 
+<<<<<<< HEAD
         public Auto(T value, IMirrorable<T> mirrorable, MultiFenceHolder waitable, params IAutoPrivate[] referencedObjs) : this(value, waitable, referencedObjs)
         {
             _mirrorable = mirrorable;
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Auto(T value, MultiFenceHolder waitable, params IAutoPrivate[] referencedObjs) : this(value)
         {
             _waitable = waitable;
@@ -60,6 +73,7 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
+<<<<<<< HEAD
         public T GetMirrorable(CommandBufferScoped cbs, ref int offset, int size, out bool mirrored)
         {
             var mirror = _mirrorable.GetMirrorable(cbs, ref offset, size, out mirrored);
@@ -71,6 +85,11 @@ namespace Ryujinx.Graphics.Vulkan
         {
             _mirrorable?.ClearMirrors(cbs, offset, size);
             _waitable?.AddBufferUse(cbs.CommandBufferIndex, offset, size, write);
+=======
+        public T Get(CommandBufferScoped cbs, int offset, int size)
+        {
+            _waitable?.AddBufferUse(cbs.CommandBufferIndex, offset, size);
+>>>>>>> 1ec71635b (sync with main branch)
             return Get(cbs);
         }
 

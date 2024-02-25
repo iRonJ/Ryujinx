@@ -4,6 +4,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class BracedExpression : BaseNode
     {
+<<<<<<< HEAD
         private readonly BaseNode _element;
         private readonly BaseNode _expression;
         private readonly bool _isArrayExpression;
@@ -12,6 +13,16 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
         {
             _element = element;
             _expression = expression;
+=======
+        private BaseNode _element;
+        private BaseNode _expression;
+        private bool     _isArrayExpression;
+
+        public BracedExpression(BaseNode element, BaseNode expression, bool isArrayExpression) : base(NodeType.BracedExpression)
+        {
+            _element           = element;
+            _expression        = expression;
+>>>>>>> 1ec71635b (sync with main branch)
             _isArrayExpression = isArrayExpression;
         }
 

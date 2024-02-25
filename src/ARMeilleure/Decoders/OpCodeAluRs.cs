@@ -3,7 +3,11 @@ namespace ARMeilleure.Decoders
     class OpCodeAluRs : OpCodeAlu, IOpCodeAluRs
     {
         public int Shift { get; }
+<<<<<<< HEAD
         public int Rm { get; }
+=======
+        public int Rm    { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ShiftType ShiftType { get; }
 
@@ -22,8 +26,16 @@ namespace ARMeilleure.Decoders
 
             Shift = shift;
 
+<<<<<<< HEAD
             Rm = (opCode >> 16) & 0x1f;
             ShiftType = (ShiftType)((opCode >> 22) & 0x3);
         }
     }
 }
+=======
+            Rm        =             (opCode >> 16) & 0x1f;
+            ShiftType = (ShiftType)((opCode >> 22) & 0x3);
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -26,7 +26,11 @@ namespace ARMeilleure.Instructions
 
         public static void EmitNZFlagsCheck(ArmEmitterContext context, Operand d)
         {
+<<<<<<< HEAD
             SetFlag(context, PState.NFlag, context.ICompareLess(d, Const(d.Type, 0)));
+=======
+            SetFlag(context, PState.NFlag, context.ICompareLess (d, Const(d.Type, 0)));
+>>>>>>> 1ec71635b (sync with main branch)
             SetFlag(context, PState.ZFlag, context.ICompareEqual(d, Const(d.Type, 0)));
         }
 
@@ -196,6 +200,7 @@ namespace ARMeilleure.Instructions
             {
                 // ARM32.
                 case IOpCode32AluImm op:
+<<<<<<< HEAD
                     {
                         if (ShouldSetFlags(context) && op.IsRotated && setCarry)
                         {
@@ -263,6 +268,62 @@ namespace ARMeilleure.Instructions
 
                 default:
                     throw InvalidOpCodeType(context.CurrOp);
+=======
+                {
+                    if (ShouldSetFlags(context) && op.IsRotated && setCarry)
+                    {
+                        SetFlag(context, PState.CFlag, Const((uint)op.Immediate >> 31));
+                    }
+
+                    return Const(op.Immediate);
+                }
+
+                case IOpCode32AluImm16 op: return Const(op.Immediate);
+
+                case IOpCode32AluRsImm op: return GetMShiftedByImmediate(context, op, setCarry);
+                case IOpCode32AluRsReg op: return GetMShiftedByReg(context, op, setCarry);
+
+                case IOpCode32AluReg op: return GetIntA32(context, op.Rm);
+
+                // ARM64.
+                case IOpCodeAluImm op:
+                {
+                    if (op.GetOperandType() == OperandType.I32)
+                    {
+                        return Const((int)op.Immediate);
+                    }
+                    else
+                    {
+                        return Const(op.Immediate);
+                    }
+                }
+
+                case IOpCodeAluRs op:
+                {
+                    Operand value = GetIntOrZR(context, op.Rm);
+
+                    switch (op.ShiftType)
+                    {
+                        case ShiftType.Lsl: value = context.ShiftLeft   (value, Const(op.Shift)); break;
+                        case ShiftType.Lsr: value = context.ShiftRightUI(value, Const(op.Shift)); break;
+                        case ShiftType.Asr: value = context.ShiftRightSI(value, Const(op.Shift)); break;
+                        case ShiftType.Ror: value = context.RotateRight (value, Const(op.Shift)); break;
+                    }
+
+                    return value;
+                }
+
+                case IOpCodeAluRx op:
+                {
+                    Operand value = GetExtendedM(context, op.Rm, op.IntType);
+
+                    value = context.ShiftLeft(value, Const(op.Shift));
+
+                    return value;
+                }
+
+                default: throw InvalidOpCodeType(context.CurrOp);
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -282,6 +343,7 @@ namespace ARMeilleure.Instructions
             {
                 switch (op.ShiftType)
                 {
+<<<<<<< HEAD
                     case ShiftType.Lsr:
                         shift = 32;
                         break;
@@ -291,6 +353,11 @@ namespace ARMeilleure.Instructions
                     case ShiftType.Ror:
                         shift = 1;
                         break;
+=======
+                    case ShiftType.Lsr: shift = 32; break;
+                    case ShiftType.Asr: shift = 32; break;
+                    case ShiftType.Ror: shift = 1;  break;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -300,6 +367,7 @@ namespace ARMeilleure.Instructions
 
                 switch (op.ShiftType)
                 {
+<<<<<<< HEAD
                     case ShiftType.Lsl:
                         m = GetLslC(context, m, setCarry, shift);
                         break;
@@ -309,6 +377,11 @@ namespace ARMeilleure.Instructions
                     case ShiftType.Asr:
                         m = GetAsrC(context, m, setCarry, shift);
                         break;
+=======
+                    case ShiftType.Lsl: m = GetLslC(context, m, setCarry, shift); break;
+                    case ShiftType.Lsr: m = GetLsrC(context, m, setCarry, shift); break;
+                    case ShiftType.Asr: m = GetAsrC(context, m, setCarry, shift); break;
+>>>>>>> 1ec71635b (sync with main branch)
                     case ShiftType.Ror:
                         if (op.Immediate != 0)
                         {
@@ -331,6 +404,7 @@ namespace ARMeilleure.Instructions
             {
                 switch (shiftType)
                 {
+<<<<<<< HEAD
                     case ShiftType.Lsr:
                         shift = 32;
                         break;
@@ -340,6 +414,11 @@ namespace ARMeilleure.Instructions
                     case ShiftType.Ror:
                         shift = 1;
                         break;
+=======
+                    case ShiftType.Lsr: shift = 32; break;
+                    case ShiftType.Asr: shift = 32; break;
+                    case ShiftType.Ror: shift = 1;  break;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -359,6 +438,7 @@ namespace ARMeilleure.Instructions
 
             switch (op.ShiftType)
             {
+<<<<<<< HEAD
                 case ShiftType.Lsl:
                     shiftResult = EmitLslC(context, m, setCarry, s, shiftIsZero);
                     break;
@@ -371,6 +451,12 @@ namespace ARMeilleure.Instructions
                 case ShiftType.Ror:
                     shiftResult = EmitRorC(context, m, setCarry, s, shiftIsZero);
                     break;
+=======
+                case ShiftType.Lsl: shiftResult = EmitLslC(context, m, setCarry, s, shiftIsZero); break;
+                case ShiftType.Lsr: shiftResult = EmitLsrC(context, m, setCarry, s, shiftIsZero); break;
+                case ShiftType.Asr: shiftResult = EmitAsrC(context, m, setCarry, s, shiftIsZero); break;
+                case ShiftType.Ror: shiftResult = EmitRorC(context, m, setCarry, s, shiftIsZero); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return context.ConditionalSelect(shiftIsZero, zeroResult, shiftResult);

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.DebugPad
 {
@@ -19,6 +23,12 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.DebugPad
         Left = 1 << 10,
         Up = 1 << 11,
         Right = 1 << 12,
+<<<<<<< HEAD
         Down = 1 << 13,
     }
 }
+=======
+        Down = 1 << 13
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

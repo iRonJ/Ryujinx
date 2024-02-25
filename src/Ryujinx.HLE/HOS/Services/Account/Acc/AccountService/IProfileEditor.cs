@@ -2,7 +2,11 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc.AccountService
 {
     class IProfileEditor : IpcService
     {
+<<<<<<< HEAD
         private readonly ProfileServer _profileServer;
+=======
+        private ProfileServer _profileServer;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IProfileEditor(UserProfile profile)
         {
@@ -51,4 +55,8 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc.AccountService
             return _profileServer.StoreWithImage(context);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.SurfaceFlinger.Types;
 using Ryujinx.HLE.HOS.Services.Time.Clock;
 using System;
@@ -54,10 +58,17 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                 if (Core.StillTracking(ref bufferItem))
                 {
+<<<<<<< HEAD
                     Core.Slots[bufferItem.Slot].AcquireCalled = true;
                     Core.Slots[bufferItem.Slot].NeedsCleanupOnRelease = true;
                     Core.Slots[bufferItem.Slot].BufferState = BufferState.Acquired;
                     Core.Slots[bufferItem.Slot].Fence = AndroidFence.NoFence;
+=======
+                    Core.Slots[bufferItem.Slot].AcquireCalled         = true;
+                    Core.Slots[bufferItem.Slot].NeedsCleanupOnRelease = true;
+                    Core.Slots[bufferItem.Slot].BufferState           = BufferState.Acquired;
+                    Core.Slots[bufferItem.Slot].Fence                 = AndroidFence.NoFence;
+>>>>>>> 1ec71635b (sync with main branch)
 
                     ulong targetFrameNumber = Core.Slots[bufferItem.Slot].FrameNumber;
 
@@ -159,12 +170,21 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                 Core.Slots[slot].GraphicBuffer.Set(graphicBuffer);
 
+<<<<<<< HEAD
                 Core.Slots[slot].BufferState = BufferState.Acquired;
                 Core.Slots[slot].AttachedByConsumer = true;
                 Core.Slots[slot].NeedsCleanupOnRelease = false;
                 Core.Slots[slot].Fence = AndroidFence.NoFence;
                 Core.Slots[slot].FrameNumber = 0;
                 Core.Slots[slot].AcquireCalled = false;
+=======
+                Core.Slots[slot].BufferState           = BufferState.Acquired;
+                Core.Slots[slot].AttachedByConsumer    = true;
+                Core.Slots[slot].NeedsCleanupOnRelease = false;
+                Core.Slots[slot].Fence                 = AndroidFence.NoFence;
+                Core.Slots[slot].FrameNumber           = 0;
+                Core.Slots[slot].AcquireCalled         = false;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return Status.Success;
@@ -197,7 +217,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 if (Core.Slots[slot].BufferState == BufferState.Acquired)
                 {
                     Core.Slots[slot].BufferState = BufferState.Free;
+<<<<<<< HEAD
                     Core.Slots[slot].Fence = fence;
+=======
+                    Core.Slots[slot].Fence       = fence;
+>>>>>>> 1ec71635b (sync with main branch)
 
                     listener = Core.ProducerListener;
                 }
@@ -237,7 +261,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                     return Status.NoInit;
                 }
 
+<<<<<<< HEAD
                 Core.ConsumerListener = consumerListener;
+=======
+                Core.ConsumerListener        = consumerListener;
+>>>>>>> 1ec71635b (sync with main branch)
                 Core.ConsumerControlledByApp = controlledByApp;
             }
 
@@ -253,7 +281,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                     return Status.BadValue;
                 }
 
+<<<<<<< HEAD
                 Core.IsAbandoned = true;
+=======
+                Core.IsAbandoned      = true;
+>>>>>>> 1ec71635b (sync with main branch)
                 Core.ConsumerListener = null;
 
                 Core.Queue.Clear();
@@ -304,7 +336,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
             lock (Core.Lock)
             {
+<<<<<<< HEAD
                 Core.DefaultWidth = (int)width;
+=======
+                Core.DefaultWidth  = (int)width;
+>>>>>>> 1ec71635b (sync with main branch)
                 Core.DefaultHeight = (int)height;
             }
 

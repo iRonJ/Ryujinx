@@ -8,25 +8,44 @@ namespace Ryujinx.HLE.Loaders.Npdm
         private const int AcidMagic = 'A' << 0 | 'C' << 8 | 'I' << 16 | 'D' << 24;
 
         public byte[] Rsa2048Signature { get; private set; }
+<<<<<<< HEAD
         public byte[] Rsa2048Modulus { get; private set; }
         public int Unknown1 { get; private set; }
         public int Flags { get; private set; }
+=======
+        public byte[] Rsa2048Modulus   { get; private set; }
+        public int    Unknown1         { get; private set; }
+        public int    Flags            { get; private set; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public long TitleIdRangeMin { get; private set; }
         public long TitleIdRangeMax { get; private set; }
 
+<<<<<<< HEAD
         public FsAccessControl FsAccessControl { get; private set; }
         public ServiceAccessControl ServiceAccessControl { get; private set; }
         public KernelAccessControl KernelAccessControl { get; private set; }
+=======
+        public FsAccessControl      FsAccessControl      { get; private set; }
+        public ServiceAccessControl ServiceAccessControl { get; private set; }
+        public KernelAccessControl  KernelAccessControl  { get; private set; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public Acid(Stream stream, int offset)
         {
             stream.Seek(offset, SeekOrigin.Begin);
 
+<<<<<<< HEAD
             BinaryReader reader = new(stream);
 
             Rsa2048Signature = reader.ReadBytes(0x100);
             Rsa2048Modulus = reader.ReadBytes(0x100);
+=======
+            BinaryReader reader = new BinaryReader(stream);
+
+            Rsa2048Signature = reader.ReadBytes(0x100);
+            Rsa2048Modulus   = reader.ReadBytes(0x100);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (reader.ReadInt32() != AcidMagic)
             {
@@ -44,12 +63,21 @@ namespace Ryujinx.HLE.Loaders.Npdm
             TitleIdRangeMin = reader.ReadInt64();
             TitleIdRangeMax = reader.ReadInt64();
 
+<<<<<<< HEAD
             int fsAccessControlOffset = reader.ReadInt32();
             int fsAccessControlSize = reader.ReadInt32();
             int serviceAccessControlOffset = reader.ReadInt32();
             int serviceAccessControlSize = reader.ReadInt32();
             int kernelAccessControlOffset = reader.ReadInt32();
             int kernelAccessControlSize = reader.ReadInt32();
+=======
+            int fsAccessControlOffset      = reader.ReadInt32();
+            int fsAccessControlSize        = reader.ReadInt32();
+            int serviceAccessControlOffset = reader.ReadInt32();
+            int serviceAccessControlSize   = reader.ReadInt32();
+            int kernelAccessControlOffset  = reader.ReadInt32();
+            int kernelAccessControlSize    = reader.ReadInt32();
+>>>>>>> 1ec71635b (sync with main branch)
 
             FsAccessControl = new FsAccessControl(stream, offset + fsAccessControlOffset, fsAccessControlSize);
 

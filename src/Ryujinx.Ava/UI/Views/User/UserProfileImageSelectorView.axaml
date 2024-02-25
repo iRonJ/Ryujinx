@@ -9,6 +9,10 @@
     Focusable="True"
     mc:Ignorable="d"
     x:Class="Ryujinx.Ava.UI.Views.User.UserProfileImageSelectorView"
+<<<<<<< HEAD
+=======
+    x:CompileBindings="True"
+>>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModles:UserProfileImageSelectorViewModel"
     Width="500"
     d:DesignWidth="500">
@@ -27,7 +31,11 @@
             Grid.Row="0"
             TextWrapping="Wrap"
             HorizontalAlignment="Left"
+<<<<<<< HEAD
             TextAlignment="Start"
+=======
+            TextAlignment="Left"
+>>>>>>> 1ec71635b (sync with main branch)
             Text="{locale:Locale ProfileImageSelectionNote}" />
         <StackPanel
             Grid.Row="2"
@@ -59,4 +67,8 @@
             </Button>
         </StackPanel>
     </Grid>
+<<<<<<< HEAD
 </UserControl>
+=======
+</UserControl>
+>>>>>>> 1ec71635b (sync with main branch)

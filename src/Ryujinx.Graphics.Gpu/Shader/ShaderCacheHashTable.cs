@@ -23,7 +23,11 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// </summary>
         /// <param name="stageIndex">Index of the shader stage</param>
         /// <returns>Guest code, or null if not present</returns>
+<<<<<<< HEAD
         public readonly byte[] GetByIndex(int stageIndex)
+=======
+        public byte[] GetByIndex(int stageIndex)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return stageIndex switch
             {
@@ -31,7 +35,11 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 2 => TessEvaluationCode,
                 3 => GeometryCode,
                 4 => FragmentCode,
+<<<<<<< HEAD
                 _ => VertexBCode,
+=======
+                _ => VertexBCode
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }
@@ -85,7 +93,11 @@ namespace Ryujinx.Graphics.Gpu.Shader
             /// <param name="id">ID of the guest code, if found</param>
             /// <param name="data">Cached guest code, if found</param>
             /// <returns>True if found, false otherwise</returns>
+<<<<<<< HEAD
             public readonly bool TryFind(IDataAccessor dataAccessor, out int id, out byte[] data)
+=======
+            public bool TryFind(IDataAccessor dataAccessor, out int id, out byte[] data)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return _cache.TryFindItem(dataAccessor, out id, out data);
             }
@@ -103,12 +115,20 @@ namespace Ryujinx.Graphics.Gpu.Shader
             public int GeometryId;
             public int FragmentId;
 
+<<<<<<< HEAD
             public readonly override bool Equals(object obj)
+=======
+            public override bool Equals(object obj)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return obj is IdTable other && Equals(other);
             }
 
+<<<<<<< HEAD
             public readonly bool Equals(IdTable other)
+=======
+            public bool Equals(IdTable other)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return other.VertexAId == VertexAId &&
                        other.VertexBId == VertexBId &&
@@ -118,7 +138,11 @@ namespace Ryujinx.Graphics.Gpu.Shader
                        other.FragmentId == FragmentId;
             }
 
+<<<<<<< HEAD
             public readonly override int GetHashCode()
+=======
+            public override int GetHashCode()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return HashCode.Combine(VertexAId, VertexBId, TessControlId, TessEvaluationId, GeometryId, FragmentId);
             }
@@ -154,7 +178,11 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// <param name="program">Program to be added</param>
         public void Add(CachedShaderProgram program)
         {
+<<<<<<< HEAD
             IdTable idTable = new();
+=======
+            IdTable idTable = new IdTable();
+>>>>>>> 1ec71635b (sync with main branch)
 
             foreach (var shader in program.Shaders)
             {
@@ -222,7 +250,11 @@ namespace Ryujinx.Graphics.Gpu.Shader
             out CachedGraphicsGuestCode guestCode)
         {
             var memoryManager = channel.MemoryManager;
+<<<<<<< HEAD
             IdTable idTable = new();
+=======
+            IdTable idTable = new IdTable();
+>>>>>>> 1ec71635b (sync with main branch)
             guestCode = new CachedGraphicsGuestCode();
 
             program = null;
@@ -260,7 +292,11 @@ namespace Ryujinx.Graphics.Gpu.Shader
                 return true;
             }
 
+<<<<<<< HEAD
             ShaderCodeAccessor codeAccessor = new(memoryManager, baseAddress);
+=======
+            ShaderCodeAccessor codeAccessor = new ShaderCodeAccessor(memoryManager, baseAddress);
+>>>>>>> 1ec71635b (sync with main branch)
             return idCache.TryFind(codeAccessor, out id, out data);
         }
 
@@ -279,4 +315,8 @@ namespace Ryujinx.Graphics.Gpu.Shader
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 using Ryujinx.Ava.Common.Locale;
 using Ryujinx.UI.Common;
 using Ryujinx.UI.Common.Helper;
+=======
+﻿using Ryujinx.Ava.Common.Locale;
+using Ryujinx.Ava.UI.Windows;
+using Ryujinx.Ui.Common;
+using Ryujinx.Ui.Common.Helper;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Threading.Tasks;
 
 namespace Ryujinx.Ava.UI.Helpers
@@ -23,7 +30,11 @@ namespace Ryujinx.Ava.UI.Helpers
                 UserError.FirmwareParsingFailed => LocaleManager.Instance[LocaleKeys.UserErrorFirmwareParsingFailed],
                 UserError.ApplicationNotFound => LocaleManager.Instance[LocaleKeys.UserErrorApplicationNotFound],
                 UserError.Unknown => LocaleManager.Instance[LocaleKeys.UserErrorUnknown],
+<<<<<<< HEAD
                 _ => LocaleManager.Instance[LocaleKeys.UserErrorUndefined],
+=======
+                _ => LocaleManager.Instance[LocaleKeys.UserErrorUndefined]
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -36,7 +47,11 @@ namespace Ryujinx.Ava.UI.Helpers
                 UserError.FirmwareParsingFailed => LocaleManager.Instance[LocaleKeys.UserErrorFirmwareParsingFailedDescription],
                 UserError.ApplicationNotFound => LocaleManager.Instance[LocaleKeys.UserErrorApplicationNotFoundDescription],
                 UserError.Unknown => LocaleManager.Instance[LocaleKeys.UserErrorUnknownDescription],
+<<<<<<< HEAD
                 _ => LocaleManager.Instance[LocaleKeys.UserErrorUndefinedDescription],
+=======
+                _ => LocaleManager.Instance[LocaleKeys.UserErrorUndefinedDescription]
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -47,7 +62,11 @@ namespace Ryujinx.Ava.UI.Helpers
                 UserError.NoKeys or
                     UserError.NoFirmware or
                     UserError.FirmwareParsingFailed => true,
+<<<<<<< HEAD
                 _ => false,
+=======
+                _ => false
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -62,11 +81,19 @@ namespace Ryujinx.Ava.UI.Helpers
             {
                 UserError.NoKeys => SetupGuideUrl + "#initial-setup---placement-of-prodkeys",
                 UserError.NoFirmware => SetupGuideUrl + "#initial-setup-continued---installation-of-firmware",
+<<<<<<< HEAD
                 _ => SetupGuideUrl,
             };
         }
 
         public static async Task ShowUserErrorDialog(UserError error)
+=======
+                _ => SetupGuideUrl
+            };
+        }
+
+        public static async Task ShowUserErrorDialog(UserError error, StyleableWindow owner)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             string errorCode = GetErrorCode(error);
 
@@ -87,4 +114,8 @@ namespace Ryujinx.Ava.UI.Helpers
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

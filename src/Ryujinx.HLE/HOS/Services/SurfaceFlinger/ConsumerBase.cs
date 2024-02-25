@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.SurfaceFlinger.Types;
+=======
+﻿using Ryujinx.HLE.HOS.Services.SurfaceFlinger.Types;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
@@ -8,8 +12,13 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         public class Slot
         {
             public AndroidStrongPointer<GraphicBuffer> GraphicBuffer;
+<<<<<<< HEAD
             public AndroidFence Fence;
             public ulong FrameNumber;
+=======
+            public AndroidFence                        Fence;
+            public ulong                               FrameNumber;
+>>>>>>> 1ec71635b (sync with main branch)
 
             public Slot()
             {
@@ -23,9 +32,15 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
         protected BufferQueueConsumer Consumer;
 
+<<<<<<< HEAD
         protected readonly object Lock = new();
 
         private readonly IConsumerListener _listener;
+=======
+        protected readonly object Lock = new object();
+
+        private IConsumerListener _listener;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ConsumerBase(BufferQueueConsumer consumer, bool controlledByApp, IConsumerListener listener)
         {
@@ -35,8 +50,13 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             }
 
             IsAbandoned = false;
+<<<<<<< HEAD
             Consumer = consumer;
             _listener = listener;
+=======
+            Consumer    = consumer;
+            _listener   = listener;
+>>>>>>> 1ec71635b (sync with main branch)
 
             Status connectStatus = consumer.Connect(this, controlledByApp);
 
@@ -81,7 +101,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         {
             Slots[slotIndex].GraphicBuffer.Reset();
 
+<<<<<<< HEAD
             Slots[slotIndex].Fence = AndroidFence.NoFence;
+=======
+            Slots[slotIndex].Fence       = AndroidFence.NoFence;
+>>>>>>> 1ec71635b (sync with main branch)
             Slots[slotIndex].FrameNumber = 0;
         }
 
@@ -123,7 +147,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             }
 
             Slots[bufferItem.Slot].FrameNumber = bufferItem.FrameNumber;
+<<<<<<< HEAD
             Slots[bufferItem.Slot].Fence = bufferItem.Fence;
+=======
+            Slots[bufferItem.Slot].Fence       = bufferItem.Fence;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return Status.Success;
         }
@@ -168,7 +196,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
             Slot slot = Slots[slotIndex];
 
+<<<<<<< HEAD
             // TODO: Check this. On Android, this checks the "handle". I assume NvMapHandle is the handle, but it might not be.
+=======
+            // TODO: Check this. On Android, this checks the "handle". I assume NvMapHandle is the handle, but it might not be. 
+>>>>>>> 1ec71635b (sync with main branch)
             return !slot.GraphicBuffer.IsNull && slot.GraphicBuffer.Object.Buffer.Surfaces[0].NvMapHandle == graphicBuffer.Object.Buffer.Surfaces[0].NvMapHandle;
         }
     }

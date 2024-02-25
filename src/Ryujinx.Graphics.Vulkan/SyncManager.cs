@@ -21,6 +21,7 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
+<<<<<<< HEAD
         private ulong _firstHandle;
 
         private readonly VulkanRenderer _gd;
@@ -28,6 +29,15 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly List<SyncHandle> _handles;
         private ulong _flushId;
         private long _waitTicks;
+=======
+        private ulong _firstHandle = 0;
+
+        private readonly VulkanRenderer _gd;
+        private readonly Device _device;
+        private List<SyncHandle> _handles;
+        private ulong FlushId;
+        private long WaitTicks;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public SyncManager(VulkanRenderer gd, Device device)
         {
@@ -38,13 +48,22 @@ namespace Ryujinx.Graphics.Vulkan
 
         public void RegisterFlush()
         {
+<<<<<<< HEAD
             _flushId++;
+=======
+            FlushId++;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void Create(ulong id, bool strict)
         {
+<<<<<<< HEAD
             ulong flushId = _flushId;
             MultiFenceHolder waitable = new();
+=======
+            ulong flushId = FlushId;
+            MultiFenceHolder waitable = new MultiFenceHolder();
+>>>>>>> 1ec71635b (sync with main branch)
             if (strict || _gd.InterruptAction == null)
             {
                 _gd.FlushAllCommands();
@@ -58,11 +77,19 @@ namespace Ryujinx.Graphics.Vulkan
                 _gd.CommandBufferPool.AddInUseWaitable(waitable);
             }
 
+<<<<<<< HEAD
             SyncHandle handle = new()
             {
                 ID = id,
                 Waitable = waitable,
                 FlushId = flushId,
+=======
+            SyncHandle handle = new SyncHandle
+            {
+                ID = id,
+                Waitable = waitable,
+                FlushId = flushId
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             lock (_handles)
@@ -132,11 +159,19 @@ namespace Ryujinx.Graphics.Vulkan
 
                 long beforeTicks = Stopwatch.GetTimestamp();
 
+<<<<<<< HEAD
                 if (result.NeedsFlush(_flushId))
                 {
                     _gd.InterruptAction(() =>
                     {
                         if (result.NeedsFlush(_flushId))
+=======
+                if (result.NeedsFlush(FlushId))
+                {
+                    _gd.InterruptAction(() =>
+                    {
+                        if (result.NeedsFlush(FlushId))
+>>>>>>> 1ec71635b (sync with main branch)
                         {
                             _gd.FlushAllCommands();
                         }
@@ -158,7 +193,11 @@ namespace Ryujinx.Graphics.Vulkan
                     }
                     else
                     {
+<<<<<<< HEAD
                         _waitTicks += Stopwatch.GetTimestamp() - beforeTicks;
+=======
+                        WaitTicks += Stopwatch.GetTimestamp() - beforeTicks;
+>>>>>>> 1ec71635b (sync with main branch)
                         result.Signalled = true;
                     }
                 }
@@ -177,10 +216,14 @@ namespace Ryujinx.Graphics.Vulkan
                     first = _handles.FirstOrDefault();
                 }
 
+<<<<<<< HEAD
                 if (first == null || first.NeedsFlush(_flushId))
                 {
                     break;
                 }
+=======
+                if (first == null || first.NeedsFlush(FlushId)) break;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 bool signaled = first.Waitable.WaitForFences(_gd.Api, _device, 0);
                 if (signaled)
@@ -195,8 +238,12 @@ namespace Ryujinx.Graphics.Vulkan
                             first.Waitable = null;
                         }
                     }
+<<<<<<< HEAD
                 }
                 else
+=======
+                } else
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     // This sync handle and any following have not been reached yet.
                     break;
@@ -206,8 +253,13 @@ namespace Ryujinx.Graphics.Vulkan
 
         public long GetAndResetWaitTicks()
         {
+<<<<<<< HEAD
             long result = _waitTicks;
             _waitTicks = 0;
+=======
+            long result = WaitTicks;
+            WaitTicks = 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return result;
         }

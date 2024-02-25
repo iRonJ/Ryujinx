@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Common;
 using System;
 using System.Collections.Generic;
@@ -7,6 +11,7 @@ namespace Ryujinx.Horizon.Sdk.OsTypes.Impl
 {
     class MultiWaitImpl
     {
+<<<<<<< HEAD
         private const int WaitTimedOut = -1;
         private const int WaitCancelled = -2;
         private const int WaitInvalid = -3;
@@ -14,6 +19,15 @@ namespace Ryujinx.Horizon.Sdk.OsTypes.Impl
         private readonly List<MultiWaitHolderBase> _multiWaits;
 
         private readonly object _lock = new();
+=======
+        private const int WaitTimedOut  = -1;
+        private const int WaitCancelled = -2;
+        private const int WaitInvalid   = -3;
+
+        private readonly List<MultiWaitHolderBase> _multiWaits;
+
+        private object _lock;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private int _waitingThreadHandle;
 
@@ -24,6 +38,11 @@ namespace Ryujinx.Horizon.Sdk.OsTypes.Impl
         public MultiWaitImpl()
         {
             _multiWaits = new List<MultiWaitHolderBase>();
+<<<<<<< HEAD
+=======
+
+            _lock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void LinkMultiWaitHolder(MultiWaitHolderBase multiWaitHolder)
@@ -63,7 +82,14 @@ namespace Ryujinx.Horizon.Sdk.OsTypes.Impl
                 }
             }
 
+<<<<<<< HEAD
             result ??= WaitAnyHandleImpl(infinite, timeout);
+=======
+            if (result == null)
+            {
+                result = WaitAnyHandleImpl(infinite, timeout);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
 
             UnlinkHoldersFromObjectsList();
             _waitingThreadHandle = 0;
@@ -95,7 +121,11 @@ namespace Ryujinx.Horizon.Sdk.OsTypes.Impl
                 }
                 else
                 {
+<<<<<<< HEAD
                     index = WaitSynchronization(objectHandles[..count], minTimeout);
+=======
+                    index = WaitSynchronization(objectHandles.Slice(0, count), minTimeout);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     DebugUtil.Assert(index != WaitInvalid);
                 }
@@ -168,7 +198,11 @@ namespace Ryujinx.Horizon.Sdk.OsTypes.Impl
 
             long minTime = endTime;
 
+<<<<<<< HEAD
             foreach (MultiWaitHolderBase holder in _multiWaits)
+=======
+            foreach (MultiWaitHolder holder in _multiWaits)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 long currentTime = holder.GetAbsoluteTimeToWakeup();
 
@@ -197,8 +231,15 @@ namespace Ryujinx.Horizon.Sdk.OsTypes.Impl
             {
                 return WaitCancelled;
             }
+<<<<<<< HEAD
 
             result.AbortOnFailure();
+=======
+            else
+            {
+                result.AbortOnFailure();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
 
             return index;
         }

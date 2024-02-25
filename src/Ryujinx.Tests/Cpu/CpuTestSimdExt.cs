@@ -10,6 +10,7 @@ namespace Ryujinx.Tests.Cpu
     {
 #if SimdExt
 
+<<<<<<< HEAD
         #region "ValueSource"
         private static ulong[] _8B_()
         {
@@ -22,6 +23,18 @@ namespace Ryujinx.Tests.Cpu
 
         [Test, Pairwise, Description("EXT <Vd>.8B, <Vn>.8B, <Vm>.8B, #<index>")]
         public void Ext_V_8B([Values(0u)] uint rd,
+=======
+#region "ValueSource"
+        private static ulong[] _8B_()
+        {
+            return new[] { 0x0000000000000000ul, 0x7F7F7F7F7F7F7F7Ful,
+                           0x8080808080808080ul, 0xFFFFFFFFFFFFFFFFul };
+        }
+#endregion
+
+        [Test, Pairwise, Description("EXT <Vd>.8B, <Vn>.8B, <Vm>.8B, #<index>")]
+        public void Ext_V_8B([Values(0u)]     uint rd,
+>>>>>>> 1ec71635b (sync with main branch)
                              [Values(1u, 0u)] uint rn,
                              [Values(2u, 0u)] uint rm,
                              [ValueSource(nameof(_8B_))] ulong z,
@@ -45,7 +58,11 @@ namespace Ryujinx.Tests.Cpu
         }
 
         [Test, Pairwise, Description("EXT <Vd>.16B, <Vn>.16B, <Vm>.16B, #<index>")]
+<<<<<<< HEAD
         public void Ext_V_16B([Values(0u)] uint rd,
+=======
+        public void Ext_V_16B([Values(0u)]     uint rd,
+>>>>>>> 1ec71635b (sync with main branch)
                               [Values(1u, 0u)] uint rn,
                               [Values(2u, 0u)] uint rm,
                               [ValueSource(nameof(_8B_))] ulong z,
@@ -69,4 +86,8 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

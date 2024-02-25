@@ -15,6 +15,7 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
 
         public int DestsCount => _dest != null ? 1 : 0;
 
+<<<<<<< HEAD
         private readonly HashSet<BasicBlock> _blocks;
 
         private class PhiSource
@@ -25,11 +26,27 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
             public PhiSource(BasicBlock block, Operand operand)
             {
                 Block = block;
+=======
+        private HashSet<BasicBlock> _blocks;
+
+        private class PhiSource
+        {
+            public BasicBlock Block   { get; }
+            public Operand    Operand { get; set; }
+
+            public PhiSource(BasicBlock block, Operand operand)
+            {
+                Block   = block;
+>>>>>>> 1ec71635b (sync with main branch)
                 Operand = operand;
             }
         }
 
+<<<<<<< HEAD
         private readonly List<PhiSource> _sources;
+=======
+        private List<PhiSource> _sources;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public int SourcesCount => _sources.Count;
 
@@ -69,7 +86,14 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
 
         public Operand GetDest(int index)
         {
+<<<<<<< HEAD
             ArgumentOutOfRangeException.ThrowIfNotEqual(index, 0);
+=======
+            if (index != 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+>>>>>>> 1ec71635b (sync with main branch)
 
             return _dest;
         }
@@ -101,4 +125,8 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
             _sources[index].Operand = source;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

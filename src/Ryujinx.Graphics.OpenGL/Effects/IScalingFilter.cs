@@ -15,4 +15,8 @@ namespace Ryujinx.Graphics.OpenGL.Effects
             Extents2D source,
             Extents2D destination);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -67,6 +67,12 @@ namespace ARMeilleure.IntermediateRepresentation
         Phi,
         Spill,
         SpillArg,
+<<<<<<< HEAD
         StoreToContext,
     }
 }
+=======
+        StoreToContext
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

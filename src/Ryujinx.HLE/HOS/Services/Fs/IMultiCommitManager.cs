@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using LibHac;
+=======
+﻿using LibHac;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using Ryujinx.HLE.HOS.Services.Fs.FileSystemProxy;
 

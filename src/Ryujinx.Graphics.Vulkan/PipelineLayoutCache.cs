@@ -21,7 +21,11 @@ namespace Ryujinx.Graphics.Vulkan
 
             public override int GetHashCode()
             {
+<<<<<<< HEAD
                 HashCode hasher = new();
+=======
+                HashCode hasher = new HashCode();
+>>>>>>> 1ec71635b (sync with main branch)
 
                 if (SetDescriptors != null)
                 {
@@ -83,10 +87,17 @@ namespace Ryujinx.Graphics.Vulkan
         {
             var key = new PlceKey(setDescriptors, usePushDescriptors);
 
+<<<<<<< HEAD
             return _plces.GetOrAdd(key, newKey => new PipelineLayoutCacheEntry(gd, device, setDescriptors, usePushDescriptors));
         }
 
         protected virtual void Dispose(bool disposing)
+=======
+            return _plces.GetOrAdd(key, (newKey) => new PipelineLayoutCacheEntry(gd, device, setDescriptors, usePushDescriptors));
+        }
+
+        protected virtual unsafe void Dispose(bool disposing)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (disposing)
             {

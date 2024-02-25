@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #define SimdMov32
+=======
+﻿#define SimdMov32
+>>>>>>> 1ec71635b (sync with main branch)
 
 using ARMeilleure.State;
 using NUnit.Framework;
@@ -35,7 +39,11 @@ namespace Ryujinx.Tests.Cpu
                 0b1110_0,
                 0b1111_0,
 
+<<<<<<< HEAD
                 0b1110_1,
+=======
+                0b1110_1
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             uint opcode = 0xf2800010u; // VMOV.I32 D0, #0
@@ -97,10 +105,14 @@ namespace Ryujinx.Tests.Cpu
             opcode |= (vn & 0x1e) << 15;
             opcode |= (rt & 0xf) << 12;
 
+<<<<<<< HEAD
             if (op)
             {
                 opcode |= 1 << 20;
             }
+=======
+            if (op) opcode |= 1 << 20;
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, r0: valueRn, r1: valueRn, r2: valueRn, r3: valueRn, v0: new V128(valueVn1, valueVn2));
 
@@ -220,10 +232,17 @@ namespace Ryujinx.Tests.Cpu
             opcode |= ((vd & 0x10) << 18);
             opcode |= ((vd & 0xf) << 12);
 
+<<<<<<< HEAD
             V128 v0 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v1 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v2 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v3 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v0 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v1 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v2 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v3 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, v0: v0, v1: v1, v2: v2, v3: v3);
 
@@ -250,10 +269,17 @@ namespace Ryujinx.Tests.Cpu
                 opcode |= 1 << 24;
             }
 
+<<<<<<< HEAD
             V128 v0 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v1 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v2 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v3 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v0 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v1 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v2 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v3 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, v0: v0, v1: v1, v2: v2, v3: v3);
 
@@ -282,10 +308,17 @@ namespace Ryujinx.Tests.Cpu
             opcode |= (vd & 0x10) << 18;
             opcode |= (vd & 0xf) << 12;
 
+<<<<<<< HEAD
             V128 v0 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v1 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v2 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v3 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v0 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v1 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v2 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v3 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, v0: v0, v1: v1, v2: v2, v3: v3);
 
@@ -351,20 +384,32 @@ namespace Ryujinx.Tests.Cpu
             if (q)
             {
                 opcode |= 1 << 6;
+<<<<<<< HEAD
                 vd <<= 1;
                 vm <<= 1;
             }
 
+=======
+                vd <<= 1; vm <<= 1;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
             opcode |= (vm & 0x10) << 1;
             opcode |= (vm & 0xf);
             opcode |= (vd & 0x10) << 18;
             opcode |= (vd & 0xf) << 12;
             opcode |= (size & 0x3) << 18;
 
+<<<<<<< HEAD
             V128 v0 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v1 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v2 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v3 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v0 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v1 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v2 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v3 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, v0: v0, v1: v1, v2: v2, v3: v3);
 
@@ -386,20 +431,32 @@ namespace Ryujinx.Tests.Cpu
             if (q)
             {
                 opcode |= 1 << 6;
+<<<<<<< HEAD
                 vd <<= 1;
                 vm <<= 1;
             }
 
+=======
+                vd <<= 1; vm <<= 1;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
             opcode |= (vm & 0x10) << 1;
             opcode |= (vm & 0xf);
             opcode |= (vd & 0x10) << 18;
             opcode |= (vd & 0xf) << 12;
             opcode |= (size & 0x3) << 18;
 
+<<<<<<< HEAD
             V128 v0 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v1 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v2 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v3 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v0 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v1 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v2 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v3 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, v0: v0, v1: v1, v2: v2, v3: v3);
 
@@ -421,20 +478,32 @@ namespace Ryujinx.Tests.Cpu
             if (q)
             {
                 opcode |= 1 << 6;
+<<<<<<< HEAD
                 vd <<= 1;
                 vm <<= 1;
             }
 
+=======
+                vd <<= 1; vm <<= 1;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
             opcode |= (vm & 0x10) << 1;
             opcode |= (vm & 0xf);
             opcode |= (vd & 0x10) << 18;
             opcode |= (vd & 0xf) << 12;
             opcode |= (size & 0x3) << 18;
 
+<<<<<<< HEAD
             V128 v0 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v1 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v2 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v3 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v0 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v1 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v2 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v3 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, v0: v0, v1: v1, v2: v2, v3: v3);
 
@@ -468,22 +537,38 @@ namespace Ryujinx.Tests.Cpu
             opcode |= (length & 0x3) << 8;
 
             var rnd = TestContext.CurrentContext.Random;
+<<<<<<< HEAD
             V128 v2 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v3 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v4 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v5 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v2 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v3 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v4 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v5 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             byte maxIndex = (byte)(length * 8 - 1);
             byte[] b0 = new byte[16];
             byte[] b1 = new byte[16];
+<<<<<<< HEAD
             for (int i = 0; i < 16; i++)
+=======
+            for (int i=0; i<16; i++)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 b0[i] = rnd.NextByte(maxIndex);
                 b1[i] = rnd.NextByte(maxIndex);
             }
 
+<<<<<<< HEAD
             V128 v0 = new(b0);
             V128 v1 = new(b1);
+=======
+            V128 v0 = new V128(b0);
+            V128 v1 = new V128(b1);
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, v0: v0, v1: v1, v2: v2, v3: v3, v4: v4, v5: v5);
 
@@ -502,9 +587,13 @@ namespace Ryujinx.Tests.Cpu
             if (q)
             {
                 opcode |= 1 << 6;
+<<<<<<< HEAD
                 vd <<= 1;
                 vm <<= 1;
                 vn <<= 1;
+=======
+                vd <<= 1; vm <<= 1; vn <<= 1;
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else if (imm4 > 7)
             {
@@ -518,10 +607,17 @@ namespace Ryujinx.Tests.Cpu
             opcode |= (vn & 0xf) << 16;
             opcode |= (imm4 & 0xf) << 8;
 
+<<<<<<< HEAD
             V128 v0 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v1 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v2 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v3 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v0 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v1 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v2 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v3 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, v0: v0, v1: v1, v2: v2, v3: v3);
 
@@ -552,7 +648,11 @@ namespace Ryujinx.Tests.Cpu
             opcode |= (size & 1) << 5; // E
             opcode |= (size & 2) << 21; // B
 
+<<<<<<< HEAD
             V128 v1 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v1 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, r0: valueRn, r1: valueRn, r2: valueRn, r3: valueRn, v0: new V128(valueVn1, valueVn2), v1: v1);
 
@@ -597,9 +697,15 @@ namespace Ryujinx.Tests.Cpu
 
             opcode |= imm4 << 16;
 
+<<<<<<< HEAD
             V128 v1 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v2 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
             V128 v3 = new(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+=======
+            V128 v1 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v2 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+            V128 v3 = new V128(TestContext.CurrentContext.Random.NextULong(), TestContext.CurrentContext.Random.NextULong());
+>>>>>>> 1ec71635b (sync with main branch)
 
             SingleOpcode(opcode, v0: new V128(valueVn1, valueVn2), v1: v1, v2: v2, v3: v3);
 
@@ -607,4 +713,8 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

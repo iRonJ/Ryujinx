@@ -11,6 +11,12 @@ namespace Ryujinx.Input
         Button7,
         Button8,
         Button9,
+<<<<<<< HEAD
         Count,
     }
 }
+=======
+        Count
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

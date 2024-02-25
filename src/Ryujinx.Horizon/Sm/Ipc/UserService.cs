@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
+=======
+﻿using Ryujinx.Horizon.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Sdk.Sm;
 using Ryujinx.Horizon.Sm.Impl;
@@ -10,7 +14,11 @@ namespace Ryujinx.Horizon.Sm.Ipc
         private readonly ServiceManager _serviceManager;
 
         private ulong _clientProcessId;
+<<<<<<< HEAD
         private bool _initialized;
+=======
+        private bool  _initialized;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public UserService(ServiceManager serviceManager)
         {
@@ -21,7 +29,11 @@ namespace Ryujinx.Horizon.Sm.Ipc
         public Result Initialize([ClientProcessId] ulong clientProcessId)
         {
             _clientProcessId = clientProcessId;
+<<<<<<< HEAD
             _initialized = true;
+=======
+            _initialized     = true;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return Result.Success;
         }
@@ -63,4 +75,8 @@ namespace Ryujinx.Horizon.Sm.Ipc
             return _serviceManager.UnregisterService(_clientProcessId, name);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

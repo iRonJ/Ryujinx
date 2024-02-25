@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
@@ -82,10 +86,15 @@ namespace ARMeilleure.Common
             }
             else
             {
+<<<<<<< HEAD
                 _page = new PageInfo
                 {
                     Pointer = (byte*)NativeAllocator.Instance.Allocate(_pageSize),
                 };
+=======
+                _page = new PageInfo();
+                _page.Pointer = (byte*)NativeAllocator.Instance.Allocate(_pageSize);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 _pages.Add(_page);
             }
@@ -108,7 +117,11 @@ namespace ARMeilleure.Common
             // Free excess pages that was allocated.
             while (_pages.Count > _pageCount)
             {
+<<<<<<< HEAD
                 NativeAllocator.Instance.Free(_pages[^1].Pointer);
+=======
+                NativeAllocator.Instance.Free(_pages[_pages.Count - 1].Pointer);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 _pages.RemoveAt(_pages.Count - 1);
             }
@@ -127,6 +140,7 @@ namespace ARMeilleure.Common
 
             // If arena is used frequently, keep pages for longer. Otherwise keep pages for a shorter amount of time.
             int now = Environment.TickCount;
+<<<<<<< HEAD
             int count = (now - _lastReset) switch
             {
                 >= 5000 => 0,
@@ -134,6 +148,14 @@ namespace ARMeilleure.Common
                 >= 1000 => 100,
                 >= 10 => 1500,
                 _ => 5000,
+=======
+            int count = (now - _lastReset) switch {
+                >= 5000 => 0,
+                >= 2500 => 50,
+                >= 1000 => 100,
+                >= 10   => 1500,
+                _       => 5000
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             for (int i = _pages.Count - 1; i >= 0; i--)

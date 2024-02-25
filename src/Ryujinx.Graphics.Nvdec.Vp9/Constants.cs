@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Nvdec.Vp9
+=======
+﻿namespace Ryujinx.Graphics.Nvdec.Vp9
+>>>>>>> 1ec71635b (sync with main branch)
 {
     internal static class Constants
     {
@@ -14,6 +18,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         public const int MaxRefFrames = 4;
 
         public const int MiSizeLog2 = 3;
+<<<<<<< HEAD
         public const int MiBlockSizeLog2 = 6 - MiSizeLog2; // 64 = 2^6
 
         public const int MiSize = 1 << MiSizeLog2; // pixels per mi-unit
@@ -21,6 +26,15 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         public const int MiMask = MiBlockSize - 1;
 
         public const int PartitionPloffset = 4; // number of probability models per block size
+=======
+        public const int MiBlockSizeLog2 = 6 - MiSizeLog2;  // 64 = 2^6
+
+        public const int MiSize = 1 << MiSizeLog2;              // pixels per mi-unit
+        public const int MiBlockSize = 1 << MiBlockSizeLog2;  // mi-units per max block
+        public const int MiMask = MiBlockSize - 1;
+
+        public const int PartitionPloffset = 4;  // number of probability models per block size
+>>>>>>> 1ec71635b (sync with main branch)
 
         /* Segment Feature Masks */
         public const int MaxMvRefCandidates = 2;
@@ -48,9 +62,15 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         public const int MvLow = -(1 << MvInUseBits);
 
         // Coefficient token alphabet
+<<<<<<< HEAD
         public const int ZeroToken = 0; // 0 Extra Bits 0+0
         public const int OneToken = 1; // 1 Extra Bits 0+1
         public const int TwoToken = 2; // 2 Extra Bits 0+1
+=======
+        public const int ZeroToken = 0;        // 0     Extra Bits 0+0
+        public const int OneToken = 1;         // 1     Extra Bits 0+1
+        public const int TwoToken = 2;         // 2     Extra Bits 0+1
+>>>>>>> 1ec71635b (sync with main branch)
 
         public const int PivotNode = 2;
 

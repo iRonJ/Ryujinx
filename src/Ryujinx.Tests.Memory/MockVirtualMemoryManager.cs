@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Memory;
+=======
+﻿using Ryujinx.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Memory.Range;
 using System;
 using System.Collections.Generic;
@@ -102,11 +106,14 @@ namespace Ryujinx.Tests.Memory
             throw new NotImplementedException();
         }
 
+<<<<<<< HEAD
         public void Reprotect(ulong va, ulong size, MemoryPermission protection)
         {
             throw new NotImplementedException();
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public void TrackingReprotect(ulong va, ulong size, MemoryPermission protection)
         {
             OnProtect?.Invoke(va, size, protection);

@@ -11,7 +11,11 @@ namespace Ryujinx.Graphics.GAL
         Texture2DMultisampleArray,
         Cubemap,
         CubemapArray,
+<<<<<<< HEAD
         TextureBuffer,
+=======
+        TextureBuffer
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     public static class TargetExtensions
@@ -31,4 +35,8 @@ namespace Ryujinx.Graphics.GAL
                 target == Target.CubemapArray;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

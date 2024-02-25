@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
+>>>>>>> 1ec71635b (sync with main branch)
 {
     struct NpadJoyColorState
     {
@@ -8,4 +12,8 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
         public uint RightBody;
         public uint RightButtons;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

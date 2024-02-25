@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+<<<<<<< HEAD
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -16,6 +17,13 @@ using System.Threading;
 using System.Timers;
 using static ARMeilleure.Translation.PTC.PtcFormatter;
 using Timer = System.Timers.Timer;
+=======
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Threading;
+
+using static ARMeilleure.Translation.PTC.PtcFormatter;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace ARMeilleure.Translation.PTC
 {
@@ -23,11 +31,15 @@ namespace ARMeilleure.Translation.PTC
     {
         private const string OuterHeaderMagicString = "Pohd\0\0\0\0";
 
+<<<<<<< HEAD
         private const uint InternalVersion = 5518; //! Not to be incremented manually for each change to the ARMeilleure project.
 
         private static readonly uint[] _migrateInternalVersions = {
             1866,
         };
+=======
+        private const uint InternalVersion = 1866; //! Not to be incremented manually for each change to the ARMeilleure project.
+>>>>>>> 1ec71635b (sync with main branch)
 
         private const int SaveInterval = 30; // Seconds.
 
@@ -35,7 +47,11 @@ namespace ARMeilleure.Translation.PTC
 
         private readonly Ptc _ptc;
 
+<<<<<<< HEAD
         private readonly Timer _timer;
+=======
+        private readonly System.Timers.Timer _timer;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly ulong _outerHeaderMagic;
 
@@ -52,13 +68,21 @@ namespace ARMeilleure.Translation.PTC
         public bool Enabled { get; private set; }
 
         public ulong StaticCodeStart { get; set; }
+<<<<<<< HEAD
         public ulong StaticCodeSize { get; set; }
+=======
+        public ulong StaticCodeSize  { get; set; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public PtcProfiler(Ptc ptc)
         {
             _ptc = ptc;
 
+<<<<<<< HEAD
             _timer = new Timer(SaveInterval * 1000d);
+=======
+            _timer = new System.Timers.Timer((double)SaveInterval * 1000d);
+>>>>>>> 1ec71635b (sync with main branch)
             _timer.Elapsed += PreSave;
 
             _outerHeaderMagic = BinaryPrimitives.ReadUInt64LittleEndian(EncodingCache.UTF8NoBOM.GetBytes(OuterHeaderMagicString).AsSpan());
@@ -135,8 +159,13 @@ namespace ARMeilleure.Translation.PTC
             string fileNameActual = $"{_ptc.CachePathActual}.info";
             string fileNameBackup = $"{_ptc.CachePathBackup}.info";
 
+<<<<<<< HEAD
             FileInfo fileInfoActual = new(fileNameActual);
             FileInfo fileInfoBackup = new(fileNameBackup);
+=======
+            FileInfo fileInfoActual = new FileInfo(fileNameActual);
+            FileInfo fileInfoBackup = new FileInfo(fileNameBackup);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (fileInfoActual.Exists && fileInfoActual.Length != 0L)
             {
@@ -175,7 +204,11 @@ namespace ARMeilleure.Translation.PTC
                     return false;
                 }
 
+<<<<<<< HEAD
                 if (outerHeader.InfoFileVersion != InternalVersion && !_migrateInternalVersions.Contains(outerHeader.InfoFileVersion))
+=======
+                if (outerHeader.InfoFileVersion != InternalVersion)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     InvalidateCompressedStream(compressedStream);
 
@@ -189,6 +222,7 @@ namespace ARMeilleure.Translation.PTC
                     return false;
                 }
 
+<<<<<<< HEAD
                 using MemoryStream stream = MemoryStreamManager.Shared.GetStream();
                 Debug.Assert(stream.Seek(0L, SeekOrigin.Begin) == 0L && stream.Length == 0L);
 
@@ -235,6 +269,44 @@ namespace ARMeilleure.Translation.PTC
                 Debug.Assert(stream.Position == stream.Length);
 
                 _lastHash = actualHash;
+=======
+                using (MemoryStream stream = MemoryStreamManager.Shared.GetStream())
+                {
+                    Debug.Assert(stream.Seek(0L, SeekOrigin.Begin) == 0L && stream.Length == 0L);
+
+                    try
+                    {
+                        deflateStream.CopyTo(stream);
+                    }
+                    catch
+                    {
+                        InvalidateCompressedStream(compressedStream);
+
+                        return false;
+                    }
+
+                    Debug.Assert(stream.Position == stream.Length);
+
+                    stream.Seek(0L, SeekOrigin.Begin);
+
+                    Hash128 expectedHash = DeserializeStructure<Hash128>(stream);
+
+                    Hash128 actualHash = XXHash128.ComputeHash(GetReadOnlySpan(stream));
+
+                    if (actualHash != expectedHash)
+                    {
+                        InvalidateCompressedStream(compressedStream);
+
+                        return false;
+                    }
+
+                    ProfiledFuncs = Deserialize(stream);
+
+                    Debug.Assert(stream.Position == stream.Length);
+
+                    _lastHash = actualHash;
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             long fileSize = new FileInfo(fileName).Length;
@@ -244,6 +316,7 @@ namespace ARMeilleure.Translation.PTC
             return true;
         }
 
+<<<<<<< HEAD
         private static Dictionary<ulong, FuncProfile> Deserialize(Stream stream, Func<ulong, FuncProfile, (ulong, FuncProfile)> migrateEntryFunc = null)
         {
             if (migrateEntryFunc != null)
@@ -255,23 +328,43 @@ namespace ARMeilleure.Translation.PTC
         }
 
         private static ReadOnlySpan<byte> GetReadOnlySpan(MemoryStream memoryStream)
+=======
+        private static Dictionary<ulong, FuncProfile> Deserialize(Stream stream)
+        {
+            return DeserializeDictionary<ulong, FuncProfile>(stream, (stream) => DeserializeStructure<FuncProfile>(stream));
+        }
+
+        private ReadOnlySpan<byte> GetReadOnlySpan(MemoryStream memoryStream)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return new(memoryStream.GetBuffer(), (int)memoryStream.Position, (int)memoryStream.Length - (int)memoryStream.Position);
         }
 
+<<<<<<< HEAD
         private static void InvalidateCompressedStream(FileStream compressedStream)
+=======
+        private void InvalidateCompressedStream(FileStream compressedStream)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             compressedStream.SetLength(0L);
         }
 
+<<<<<<< HEAD
         private void PreSave(object source, ElapsedEventArgs e)
+=======
+        private void PreSave(object source, System.Timers.ElapsedEventArgs e)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             _waitEvent.Reset();
 
             string fileNameActual = $"{_ptc.CachePathActual}.info";
             string fileNameBackup = $"{_ptc.CachePathBackup}.info";
 
+<<<<<<< HEAD
             FileInfo fileInfoActual = new(fileNameActual);
+=======
+            FileInfo fileInfoActual = new FileInfo(fileNameActual);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (fileInfoActual.Exists && fileInfoActual.Length != 0L)
             {
@@ -287,6 +380,7 @@ namespace ARMeilleure.Translation.PTC
         {
             int profiledFuncsCount;
 
+<<<<<<< HEAD
             OuterHeader outerHeader = new()
             {
                 Magic = _outerHeaderMagic,
@@ -294,6 +388,14 @@ namespace ARMeilleure.Translation.PTC
                 InfoFileVersion = InternalVersion,
                 Endianness = Ptc.GetEndianness(),
             };
+=======
+            OuterHeader outerHeader = new OuterHeader();
+
+            outerHeader.Magic = _outerHeaderMagic;
+
+            outerHeader.InfoFileVersion = InternalVersion;
+            outerHeader.Endianness = Ptc.GetEndianness();
+>>>>>>> 1ec71635b (sync with main branch)
 
             outerHeader.SetHeaderHash();
 
@@ -301,7 +403,11 @@ namespace ARMeilleure.Translation.PTC
             {
                 Debug.Assert(stream.Seek(0L, SeekOrigin.Begin) == 0L && stream.Length == 0L);
 
+<<<<<<< HEAD
                 stream.Seek(Unsafe.SizeOf<Hash128>(), SeekOrigin.Begin);
+=======
+                stream.Seek((long)Unsafe.SizeOf<Hash128>(), SeekOrigin.Begin);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 lock (_lock)
                 {
@@ -312,7 +418,11 @@ namespace ARMeilleure.Translation.PTC
 
                 Debug.Assert(stream.Position == stream.Length);
 
+<<<<<<< HEAD
                 stream.Seek(Unsafe.SizeOf<Hash128>(), SeekOrigin.Begin);
+=======
+                stream.Seek((long)Unsafe.SizeOf<Hash128>(), SeekOrigin.Begin);
+>>>>>>> 1ec71635b (sync with main branch)
                 Hash128 hash = XXHash128.ComputeHash(GetReadOnlySpan(stream));
 
                 stream.Seek(0L, SeekOrigin.Begin);
@@ -323,6 +433,7 @@ namespace ARMeilleure.Translation.PTC
                     return;
                 }
 
+<<<<<<< HEAD
                 using FileStream compressedStream = new(fileName, FileMode.OpenOrCreate);
                 using DeflateStream deflateStream = new(compressedStream, SaveCompressionLevel, true);
                 try
@@ -343,6 +454,30 @@ namespace ARMeilleure.Translation.PTC
                 if (compressedStream.Position < compressedStream.Length)
                 {
                     compressedStream.SetLength(compressedStream.Position);
+=======
+                using (FileStream compressedStream = new(fileName, FileMode.OpenOrCreate))
+                using (DeflateStream deflateStream = new(compressedStream, SaveCompressionLevel, true))
+                {
+                    try
+                    {
+                        SerializeStructure(compressedStream, outerHeader);
+
+                        stream.WriteTo(deflateStream);
+
+                        _lastHash = hash;
+                    }
+                    catch
+                    {
+                        compressedStream.Position = 0L;
+
+                        _lastHash = default;
+                    }
+
+                    if (compressedStream.Position < compressedStream.Length)
+                    {
+                        compressedStream.SetLength(compressedStream.Position);
+                    }
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -354,9 +489,15 @@ namespace ARMeilleure.Translation.PTC
             }
         }
 
+<<<<<<< HEAD
         private static void Serialize(Stream stream, Dictionary<ulong, FuncProfile> profiledFuncs)
         {
             SerializeDictionary(stream, profiledFuncs, SerializeStructure);
+=======
+        private void Serialize(Stream stream, Dictionary<ulong, FuncProfile> profiledFuncs)
+        {
+            SerializeDictionary(stream, profiledFuncs, (stream, structure) => SerializeStructure(stream, structure));
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1/*, Size = 29*/)]
@@ -374,14 +515,22 @@ namespace ARMeilleure.Translation.PTC
             {
                 Span<OuterHeader> spanHeader = MemoryMarshal.CreateSpan(ref this, 1);
 
+<<<<<<< HEAD
                 HeaderHash = XXHash128.ComputeHash(MemoryMarshal.AsBytes(spanHeader)[..(Unsafe.SizeOf<OuterHeader>() - Unsafe.SizeOf<Hash128>())]);
+=======
+                HeaderHash = XXHash128.ComputeHash(MemoryMarshal.AsBytes(spanHeader).Slice(0, Unsafe.SizeOf<OuterHeader>() - Unsafe.SizeOf<Hash128>()));
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             public bool IsHeaderValid()
             {
                 Span<OuterHeader> spanHeader = MemoryMarshal.CreateSpan(ref this, 1);
 
+<<<<<<< HEAD
                 return XXHash128.ComputeHash(MemoryMarshal.AsBytes(spanHeader)[..(Unsafe.SizeOf<OuterHeader>() - Unsafe.SizeOf<Hash128>())]) == HeaderHash;
+=======
+                return XXHash128.ComputeHash(MemoryMarshal.AsBytes(spanHeader).Slice(0, Unsafe.SizeOf<OuterHeader>() - Unsafe.SizeOf<Hash128>())) == HeaderHash;
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -438,4 +587,8 @@ namespace ARMeilleure.Translation.PTC
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

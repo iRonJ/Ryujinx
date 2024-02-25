@@ -58,7 +58,11 @@ namespace Ryujinx.Audio.Renderer.Server.Effect
             {
                 ulong bufferSize = (ulong)Unsafe.SizeOf<int>() * Parameter.BufferStorageSize + (ulong)Unsafe.SizeOf<AuxiliaryBufferHeader>();
 
+<<<<<<< HEAD
                 bool sendBufferUnmapped = !mapper.TryAttachBuffer(out _, ref WorkBuffers[0], Parameter.SendBufferInfoAddress, bufferSize);
+=======
+                bool sendBufferUnmapped = !mapper.TryAttachBuffer(out updateErrorInfo, ref WorkBuffers[0], Parameter.SendBufferInfoAddress, bufferSize);
+>>>>>>> 1ec71635b (sync with main branch)
                 bool returnBufferUnmapped = !mapper.TryAttachBuffer(out updateErrorInfo, ref WorkBuffers[1], Parameter.ReturnBufferInfoAddress, bufferSize);
 
                 BufferUnmapped = sendBufferUnmapped && returnBufferUnmapped;
@@ -82,4 +86,8 @@ namespace Ryujinx.Audio.Renderer.Server.Effect
             UpdateUsageStateForCommandGeneration();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -15,7 +15,11 @@ namespace ARMeilleure.CodeGen.X86
 
         private const int OpModRMBits = 24;
 
+<<<<<<< HEAD
         private const byte RexPrefix = 0x40;
+=======
+        private const byte RexPrefix  = 0x40;
+>>>>>>> 1ec71635b (sync with main branch)
         private const byte RexWPrefix = 0x48;
         private const byte LockPrefix = 0xf0;
 
@@ -799,7 +803,11 @@ namespace ARMeilleure.CodeGen.X86
                             {
                                 JumpIndex = _jumps.Count - 1,
                                 Position = (int)_stream.Position,
+<<<<<<< HEAD
                                 Symbol = source.Symbol,
+=======
+                                Symbol = source.Symbol
+>>>>>>> 1ec71635b (sync with main branch)
                             });
                         }
 
@@ -959,7 +967,11 @@ namespace ARMeilleure.CodeGen.X86
                 }
             }
 
+<<<<<<< HEAD
             bool needsSibByte = false;
+=======
+            bool needsSibByte      = false;
+>>>>>>> 1ec71635b (sync with main branch)
             bool needsDisplacement = false;
 
             int sib = 0;
@@ -971,7 +983,11 @@ namespace ARMeilleure.CodeGen.X86
 
                 X86Register baseRegLow = (X86Register)(baseReg.Index & 0b111);
 
+<<<<<<< HEAD
                 needsSibByte = memOp.Index != default || baseRegLow == X86Register.Rsp;
+=======
+                needsSibByte      = memOp.Index != default  || baseRegLow == X86Register.Rsp;
+>>>>>>> 1ec71635b (sync with main branch)
                 needsDisplacement = memOp.Displacement != 0 || baseRegLow == X86Register.Rbp;
 
                 if (needsDisplacement)
@@ -1049,7 +1065,11 @@ namespace ARMeilleure.CodeGen.X86
                     InstructionFlags.Prefix66 => 1,
                     InstructionFlags.PrefixF3 => 2,
                     InstructionFlags.PrefixF2 => 3,
+<<<<<<< HEAD
                     _ => 0,
+=======
+                    _ => 0
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 if (src1 != default)
@@ -1081,6 +1101,7 @@ namespace ARMeilleure.CodeGen.X86
 
                     switch (opCodeHigh)
                     {
+<<<<<<< HEAD
                         case 0xf:
                             vexByte1 |= 1;
                             break;
@@ -1094,6 +1115,13 @@ namespace ARMeilleure.CodeGen.X86
                         default:
                             Debug.Assert(false, $"Failed to VEX encode opcode 0x{opCode:X}.");
                             break;
+=======
+                        case 0xf:   vexByte1 |= 1; break;
+                        case 0xf38: vexByte1 |= 2; break;
+                        case 0xf3a: vexByte1 |= 3; break;
+
+                        default: Debug.Assert(false, $"Failed to VEX encode opcode 0x{opCode:X}."); break;
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     vexByte2 |= (rexPrefix & 8) << 4;
@@ -1199,6 +1227,7 @@ namespace ARMeilleure.CodeGen.X86
 
             switch ((ushort)(opCode >> 8))
             {
+<<<<<<< HEAD
                 case 0xf00:
                     mm = 0b01;
                     break;
@@ -1212,6 +1241,13 @@ namespace ARMeilleure.CodeGen.X86
                 default:
                     Debug.Fail($"Failed to EVEX encode opcode 0x{opCode:X}.");
                     break;
+=======
+                case 0xf00: mm = 0b01; break;
+                case 0xf38: mm = 0b10; break;
+                case 0xf3a: mm = 0b11; break;
+
+                default: Debug.Fail($"Failed to EVEX encode opcode 0x{opCode:X}."); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             WriteByte(
@@ -1233,7 +1269,11 @@ namespace ARMeilleure.CodeGen.X86
                 InstructionFlags.Prefix66 => 0b01,
                 InstructionFlags.PrefixF3 => 0b10,
                 InstructionFlags.PrefixF2 => 0b11,
+<<<<<<< HEAD
                 _ => 0,
+=======
+                _ => 0
+>>>>>>> 1ec71635b (sync with main branch)
             };
             WriteByte(
                 (byte)(
@@ -1249,6 +1289,7 @@ namespace ARMeilleure.CodeGen.X86
             byte ll = 0b00;
             switch (registerWidth)
             {
+<<<<<<< HEAD
                 case 128:
                     ll = 0b00;
                     break;
@@ -1262,6 +1303,13 @@ namespace ARMeilleure.CodeGen.X86
                 default:
                     Debug.Fail($"Invalid EVEX vector register width {registerWidth}.");
                     break;
+=======
+                case 128: ll = 0b00; break;
+                case 256: ll = 0b01; break;
+                case 512: ll = 0b10; break;
+
+                default: Debug.Fail($"Invalid EVEX vector register width {registerWidth}."); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
             // Embedded broadcast in the case of a memory operand
             bool bcast = broadcast;
@@ -1339,7 +1387,14 @@ namespace ARMeilleure.CodeGen.X86
                     ref Jump jump = ref jumps[i];
 
                     // If jump target not resolved yet, resolve it.
+<<<<<<< HEAD
                     jump.JumpTarget ??= _labels[jump.JumpLabel];
+=======
+                    if (jump.JumpTarget == null)
+                    {
+                        jump.JumpTarget = _labels[jump.JumpLabel];
+                    }
+>>>>>>> 1ec71635b (sync with main branch)
 
                     long jumpTarget = jump.JumpTarget.Value;
                     long offset = jumpTarget - jump.JumpPosition;
@@ -1577,4 +1632,8 @@ namespace ARMeilleure.CodeGen.X86
             _stream.WriteByte((byte)(value >> 56));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

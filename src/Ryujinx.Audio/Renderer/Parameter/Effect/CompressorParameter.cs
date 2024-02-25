@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Audio.Renderer.Server.Effect;
+=======
+﻿using Ryujinx.Audio.Renderer.Server.Effect;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Memory;
 using System.Runtime.InteropServices;
 
@@ -98,7 +102,11 @@ namespace Ryujinx.Audio.Renderer.Parameter.Effect
         /// Check if the <see cref="ChannelCount"/> is valid.
         /// </summary>
         /// <returns>Returns true if the <see cref="ChannelCount"/> is valid.</returns>
+<<<<<<< HEAD
         public readonly bool IsChannelCountValid()
+=======
+        public bool IsChannelCountValid()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return EffectInParameterVersion1.IsChannelCountValid(ChannelCount);
         }
@@ -107,7 +115,11 @@ namespace Ryujinx.Audio.Renderer.Parameter.Effect
         /// Check if the <see cref="ChannelCountMax"/> is valid.
         /// </summary>
         /// <returns>Returns true if the <see cref="ChannelCountMax"/> is valid.</returns>
+<<<<<<< HEAD
         public readonly bool IsChannelCountMaxValid()
+=======
+        public bool IsChannelCountMaxValid()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return EffectInParameterVersion1.IsChannelCountValid(ChannelCountMax);
         }

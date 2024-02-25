@@ -1,6 +1,10 @@
 using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
 
 namespace Ryujinx.Graphics.Shader.Translation
@@ -11,9 +15,15 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         private class DefMap
         {
+<<<<<<< HEAD
             private readonly Dictionary<Register, Operand> _map;
 
             private readonly long[] _phiMasks;
+=======
+            private Dictionary<Register, Operand> _map;
+
+            private long[] _phiMasks;
+>>>>>>> 1ec71635b (sync with main branch)
 
             public DefMap()
             {
@@ -37,7 +47,11 @@ namespace Ryujinx.Graphics.Shader.Translation
                 int key = GetKeyFromRegister(reg);
 
                 int index = key / 64;
+<<<<<<< HEAD
                 int bit = key & 63;
+=======
+                int bit   = key & 63;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 long mask = 1L << bit;
 
@@ -56,7 +70,11 @@ namespace Ryujinx.Graphics.Shader.Translation
                 int key = GetKeyFromRegister(reg);
 
                 int index = key / 64;
+<<<<<<< HEAD
                 int bit = key & 63;
+=======
+                int bit   = key & 63;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return (_phiMasks[index] & (1L << bit)) != 0;
             }
@@ -64,8 +82,13 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         private class LocalDefMap
         {
+<<<<<<< HEAD
             private readonly Operand[] _map;
             private readonly int[] _uses;
+=======
+            private Operand[] _map;
+            private int[] _uses;
+>>>>>>> 1ec71635b (sync with main branch)
             public int UseCount { get; private set; }
 
             public LocalDefMap()
@@ -110,7 +133,11 @@ namespace Ryujinx.Graphics.Shader.Translation
         private readonly struct Definition
         {
             public BasicBlock Block { get; }
+<<<<<<< HEAD
             public Operand Local { get; }
+=======
+            public Operand    Local { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
             public Definition(BasicBlock block, Operand local)
             {
@@ -122,14 +149,22 @@ namespace Ryujinx.Graphics.Shader.Translation
         public static void Rename(BasicBlock[] blocks)
         {
             DefMap[] globalDefs = new DefMap[blocks.Length];
+<<<<<<< HEAD
             LocalDefMap localDefs = new();
+=======
+            LocalDefMap localDefs = new LocalDefMap();
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int blkIndex = 0; blkIndex < blocks.Length; blkIndex++)
             {
                 globalDefs[blkIndex] = new DefMap();
             }
 
+<<<<<<< HEAD
             Queue<BasicBlock> dfPhiBlocks = new();
+=======
+            Queue<BasicBlock> dfPhiBlocks = new Queue<BasicBlock>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             // First pass, get all defs and locals uses.
             for (int blkIndex = 0; blkIndex < blocks.Length; blkIndex++)
@@ -302,7 +337,11 @@ namespace Ryujinx.Graphics.Shader.Translation
             // then use the definition from that Phi.
             Operand local = Local();
 
+<<<<<<< HEAD
             PhiNode phi = new(local);
+=======
+            PhiNode phi = new PhiNode(local);
+>>>>>>> 1ec71635b (sync with main branch)
 
             AddPhi(block, phi);
 
@@ -372,4 +411,8 @@ namespace Ryujinx.Graphics.Shader.Translation
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

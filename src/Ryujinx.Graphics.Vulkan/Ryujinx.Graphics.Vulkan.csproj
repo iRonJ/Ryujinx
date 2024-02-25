@@ -1,7 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+<<<<<<< HEAD
     <TargetFramework>net8.0</TargetFramework>
+=======
+    <TargetFramework>net7.0</TargetFramework>
+>>>>>>> 1ec71635b (sync with main branch)
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -21,6 +25,7 @@
     <EmbeddedResource Include="Effects\Shaders\SmaaBlend.spv" />
     <EmbeddedResource Include="Effects\Shaders\SmaaEdge.spv" />
     <EmbeddedResource Include="Effects\Shaders\SmaaNeighbour.spv" />
+<<<<<<< HEAD
     <EmbeddedResource Include="Shaders\SpirvBinaries\ChangeBufferStride.spv" />
     <EmbeddedResource Include="Shaders\SpirvBinaries\ColorBlitClearAlphaFragment.spv" />
     <EmbeddedResource Include="Shaders\SpirvBinaries\ColorBlitFragment.spv" />
@@ -47,6 +52,8 @@
     <EmbeddedResource Include="Shaders\SpirvBinaries\StencilBlitMsFragment.spv" />
     <EmbeddedResource Include="Shaders\SpirvBinaries\StencilDrawToMsFragment.spv" />
     <EmbeddedResource Include="Shaders\SpirvBinaries\StencilDrawToNonMsFragment.spv" />
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   </ItemGroup>
 
   <ItemGroup>

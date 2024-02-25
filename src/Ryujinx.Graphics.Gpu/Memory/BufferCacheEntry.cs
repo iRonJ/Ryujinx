@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Gpu.Memory
+=======
+﻿namespace Ryujinx.Graphics.Gpu.Memory
+>>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// A cached entry for easily locating a buffer that is used often internally.

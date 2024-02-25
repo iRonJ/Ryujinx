@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct DispatchComputeCommand : IGALCommand, IGALCommand<DispatchComputeCommand>
     {
         public readonly CommandType CommandType => CommandType.DispatchCompute;
+=======
+﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
+{
+    struct DispatchComputeCommand : IGALCommand, IGALCommand<DispatchComputeCommand>
+    {
+        public CommandType CommandType => CommandType.DispatchCompute;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _groupsX;
         private int _groupsY;
         private int _groupsZ;

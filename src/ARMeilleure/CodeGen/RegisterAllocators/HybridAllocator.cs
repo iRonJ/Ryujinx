@@ -20,7 +20,11 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
 
             public BlockInfo(bool hasCall, int intFixedRegisters, int vecFixedRegisters)
             {
+<<<<<<< HEAD
                 HasCall = hasCall;
+=======
+                HasCall           = hasCall;
+>>>>>>> 1ec71635b (sync with main branch)
                 IntFixedRegisters = intFixedRegisters;
                 VecFixedRegisters = vecFixedRegisters;
             }
@@ -39,7 +43,11 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
             private int _first;
             private int _last;
 
+<<<<<<< HEAD
             public readonly bool IsBlockLocal => _first == _last;
+=======
+            public bool IsBlockLocal => _first == _last;
+>>>>>>> 1ec71635b (sync with main branch)
 
             public LocalInfo(OperandType type, int uses, int blkIndex)
             {
@@ -53,7 +61,11 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
                 SpillOffset = default;
 
                 _first = -1;
+<<<<<<< HEAD
                 _last = -1;
+=======
+                _last  = -1;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 SetBlockIndex(blkIndex);
             }
@@ -348,17 +360,29 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
                                 if (dest.Type.IsInteger())
                                 {
                                     intLocalFreeRegisters &= ~(1 << selectedReg);
+<<<<<<< HEAD
                                     intUsedRegisters |= 1 << selectedReg;
+=======
+                                    intUsedRegisters      |=   1 << selectedReg;
+>>>>>>> 1ec71635b (sync with main branch)
                                 }
                                 else
                                 {
                                     vecLocalFreeRegisters &= ~(1 << selectedReg);
+<<<<<<< HEAD
                                     vecUsedRegisters |= 1 << selectedReg;
+=======
+                                    vecUsedRegisters      |=   1 << selectedReg;
+>>>>>>> 1ec71635b (sync with main branch)
                                 }
                             }
                             else
                             {
+<<<<<<< HEAD
                                 info.Register = default;
+=======
+                                info.Register    = default;
+>>>>>>> 1ec71635b (sync with main branch)
                                 info.SpillOffset = Const(stackAlloc.Allocate(dest.Type.GetSizeInBytes()));
                             }
                         }
@@ -382,7 +406,11 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
                                     : GetSpillTemp(dest, vecSpillTempRegisters, ref vecLocalAsg);
 
                                 info.Sequence = sequence;
+<<<<<<< HEAD
                                 info.Temp = temp;
+=======
+                                info.Temp     = temp;
+>>>>>>> 1ec71635b (sync with main branch)
                             }
 
                             dest = temp;
@@ -408,7 +436,11 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
         private static int SelectSpillTemps(int mask0, int mask1)
         {
             int selection = 0;
+<<<<<<< HEAD
             int count = 0;
+=======
+            int count     = 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             while (count < MaxIROperands && mask0 != 0)
             {
@@ -451,4 +483,8 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
             return local.AssignmentsCount + local.UsesCount;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

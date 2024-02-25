@@ -13,6 +13,10 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             switch (operation.Inst)
             {
                 case Instruction.Add:
+<<<<<<< HEAD
+=======
+                case Instruction.BitwiseExclusiveOr:
+>>>>>>> 1ec71635b (sync with main branch)
                     TryEliminateBinaryOpCommutative(operation, 0);
                     break;
 
@@ -20,6 +24,7 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                     TryEliminateBitwiseAnd(operation);
                     break;
 
+<<<<<<< HEAD
                 case Instruction.BitwiseExclusiveOr:
                     if (!TryEliminateXorSwap(operation))
                     {
@@ -27,6 +32,8 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
                     }
                     break;
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 case Instruction.BitwiseOr:
                     TryEliminateBitwiseOr(operation);
                     break;
@@ -55,9 +62,14 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
         private static void TryEliminateBitwiseAnd(Operation operation)
         {
             // Try to recognize and optimize those 3 patterns (in order):
+<<<<<<< HEAD
             //  x & 0xFFFFFFFF == x,          0xFFFFFFFF & y == y,
             //  x & 0x00000000 == 0x00000000, 0x00000000 & y == 0x00000000
 
+=======
+            // x & 0xFFFFFFFF == x,          0xFFFFFFFF & y == y,
+            // x & 0x00000000 == 0x00000000, 0x00000000 & y == 0x00000000
+>>>>>>> 1ec71635b (sync with main branch)
             Operand x = operation.GetSource(0);
             Operand y = operation.GetSource(1);
 
@@ -75,6 +87,7 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             }
         }
 
+<<<<<<< HEAD
         private static bool TryEliminateXorSwap(Operation xCopyOp)
         {
             // Try to recognize XOR swap pattern:
@@ -131,6 +144,13 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             //  x | 0x00000000 == x,          0x00000000 | y == y,
             //  x | 0xFFFFFFFF == 0xFFFFFFFF, 0xFFFFFFFF | y == 0xFFFFFFFF
 
+=======
+        private static void TryEliminateBitwiseOr(Operation operation)
+        {
+            // Try to recognize and optimize those 3 patterns (in order):
+            // x | 0x00000000 == x,          0x00000000 | y == y,
+            // x | 0xFFFFFFFF == 0xFFFFFFFF, 0xFFFFFFFF | y == 0xFFFFFFFF
+>>>>>>> 1ec71635b (sync with main branch)
             Operand x = operation.GetSource(0);
             Operand y = operation.GetSource(1);
 
@@ -202,4 +222,8 @@ namespace Ryujinx.Graphics.Shader.Translation.Optimizations
             return operand.Value == comparand;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

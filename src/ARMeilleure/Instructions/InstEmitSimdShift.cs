@@ -6,6 +6,10 @@ using ARMeilleure.Translation;
 using System;
 using System.Diagnostics;
 using System.Reflection;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
@@ -16,12 +20,21 @@ namespace ARMeilleure.Instructions
 
     static partial class InstEmit
     {
+<<<<<<< HEAD
         #region "Masks"
         private static readonly long[] _masks_SliSri = new long[] // Replication masks.
         {
             0x0101010101010101L, 0x0001000100010001L, 0x0000000100000001L, 0x0000000000000001L,
         };
         #endregion
+=======
+#region "Masks"
+        private static readonly long[] _masks_SliSri = new long[] // Replication masks.
+        {
+            0x0101010101010101L, 0x0001000100010001L, 0x0000000100000001L, 0x0000000000000001L
+        };
+#endregion
+>>>>>>> 1ec71635b (sync with main branch)
 
         public static void Rshrn_V(ArmEmitterContext context)
         {
@@ -50,6 +63,7 @@ namespace ARMeilleure.Instructions
 
                 switch (op.Size + 1)
                 {
+<<<<<<< HEAD
                     case 1:
                         mask = X86GetAllElements(context, (int)roundConst * 0x00010001);
                         break;
@@ -59,6 +73,11 @@ namespace ARMeilleure.Instructions
                     case 3:
                         mask = X86GetAllElements(context, roundConst);
                         break;
+=======
+                    case 1: mask = X86GetAllElements(context, (int)roundConst * 0x00010001); break;
+                    case 2: mask = X86GetAllElements(context, (int)roundConst); break;
+                    case 3: mask = X86GetAllElements(context,      roundConst); break;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 Intrinsic addInst = X86PaddInstruction[op.Size + 1];
@@ -116,7 +135,11 @@ namespace ARMeilleure.Instructions
             }
             else if (shift >= eSize)
             {
+<<<<<<< HEAD
                 if (op.RegisterSize == RegisterSize.Simd64)
+=======
+                if ((op.RegisterSize == RegisterSize.Simd64))
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     Operand res = context.VectorZeroUpper64(GetVec(op.Rd));
 
@@ -359,6 +382,7 @@ namespace ARMeilleure.Instructions
             }
         }
 
+<<<<<<< HEAD
         public static void Sqshl_Si(ArmEmitterContext context)
         {
             EmitShlImmOp(context, signedDst: true, ShlRegFlags.Signed | ShlRegFlags.Scalar | ShlRegFlags.Saturating);
@@ -369,6 +393,8 @@ namespace ARMeilleure.Instructions
             EmitShlImmOp(context, signedDst: true, ShlRegFlags.Signed | ShlRegFlags.Saturating);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static void Sqshrn_S(ArmEmitterContext context)
         {
             if (Optimizations.UseAdvSimd)
@@ -1189,14 +1215,22 @@ namespace ARMeilleure.Instructions
             Scalar = 1 << 0,
             Signed = 1 << 1,
 
+<<<<<<< HEAD
             Round = 1 << 2,
+=======
+            Round      = 1 << 2,
+>>>>>>> 1ec71635b (sync with main branch)
             Accumulate = 1 << 3,
 
             ScalarSx = Scalar | Signed,
             ScalarZx = Scalar,
 
             VectorSx = Signed,
+<<<<<<< HEAD
             VectorZx = 0,
+=======
+            VectorZx = 0
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void EmitScalarShrImmOpSx(ArmEmitterContext context, ShrImmFlags flags)
@@ -1225,9 +1259,15 @@ namespace ARMeilleure.Instructions
 
             Operand res = context.VectorZero();
 
+<<<<<<< HEAD
             bool scalar = (flags & ShrImmFlags.Scalar) != 0;
             bool signed = (flags & ShrImmFlags.Signed) != 0;
             bool round = (flags & ShrImmFlags.Round) != 0;
+=======
+            bool scalar     = (flags & ShrImmFlags.Scalar)     != 0;
+            bool signed     = (flags & ShrImmFlags.Signed)     != 0;
+            bool round      = (flags & ShrImmFlags.Round)      != 0;
+>>>>>>> 1ec71635b (sync with main branch)
             bool accumulate = (flags & ShrImmFlags.Accumulate) != 0;
 
             int shift = GetImmShr(op);
@@ -1303,7 +1343,11 @@ namespace ARMeilleure.Instructions
         [Flags]
         private enum ShrImmSaturatingNarrowFlags
         {
+<<<<<<< HEAD
             Scalar = 1 << 0,
+=======
+            Scalar    = 1 << 0,
+>>>>>>> 1ec71635b (sync with main branch)
             SignedSrc = 1 << 1,
             SignedDst = 1 << 2,
 
@@ -1315,7 +1359,11 @@ namespace ARMeilleure.Instructions
 
             VectorSxSx = SignedSrc | SignedDst,
             VectorSxZx = SignedSrc,
+<<<<<<< HEAD
             VectorZxZx = 0,
+=======
+            VectorZxZx = 0
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void EmitRoundShrImmSaturatingNarrowOp(ArmEmitterContext context, ShrImmSaturatingNarrowFlags flags)
@@ -1327,10 +1375,17 @@ namespace ARMeilleure.Instructions
         {
             OpCodeSimdShImm op = (OpCodeSimdShImm)context.CurrOp;
 
+<<<<<<< HEAD
             bool scalar = (flags & ShrImmSaturatingNarrowFlags.Scalar) != 0;
             bool signedSrc = (flags & ShrImmSaturatingNarrowFlags.SignedSrc) != 0;
             bool signedDst = (flags & ShrImmSaturatingNarrowFlags.SignedDst) != 0;
             bool round = (flags & ShrImmSaturatingNarrowFlags.Round) != 0;
+=======
+            bool scalar    = (flags & ShrImmSaturatingNarrowFlags.Scalar)    != 0;
+            bool signedSrc = (flags & ShrImmSaturatingNarrowFlags.SignedSrc) != 0;
+            bool signedDst = (flags & ShrImmSaturatingNarrowFlags.SignedDst) != 0;
+            bool round     = (flags & ShrImmSaturatingNarrowFlags.Round)     != 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             int shift = GetImmShr(op);
 
@@ -1600,6 +1655,7 @@ namespace ARMeilleure.Instructions
             Scalar = 1 << 0,
             Signed = 1 << 1,
             Round = 1 << 2,
+<<<<<<< HEAD
             Saturating = 1 << 3,
         }
 
@@ -1694,6 +1750,9 @@ namespace ARMeilleure.Instructions
             context.MarkLabel(lblEnd);
 
             return res;
+=======
+            Saturating = 1 << 3
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void EmitShlRegOp(ArmEmitterContext context, ShlRegFlags flags = ShlRegFlags.None)

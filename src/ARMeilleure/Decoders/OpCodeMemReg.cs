@@ -3,7 +3,11 @@ namespace ARMeilleure.Decoders
     class OpCodeMemReg : OpCodeMem
     {
         public bool Shift { get; }
+<<<<<<< HEAD
         public int Rm { get; }
+=======
+        public int  Rm    { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IntType IntType { get; }
 
@@ -11,6 +15,7 @@ namespace ARMeilleure.Decoders
 
         public OpCodeMemReg(InstDescriptor inst, ulong address, int opCode) : base(inst, address, opCode)
         {
+<<<<<<< HEAD
             Shift = ((opCode >> 12) & 0x1) != 0;
             IntType = (IntType)((opCode >> 13) & 0x7);
             Rm = (opCode >> 16) & 0x1f;
@@ -18,3 +23,12 @@ namespace ARMeilleure.Decoders
         }
     }
 }
+=======
+            Shift    =          ((opCode >> 12) & 0x1) != 0;
+            IntType  = (IntType)((opCode >> 13) & 0x7);
+            Rm       =           (opCode >> 16) & 0x1f;
+            Extend64 =          ((opCode >> 22) & 0x3) == 2;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

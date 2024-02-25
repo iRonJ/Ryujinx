@@ -1,6 +1,10 @@
 using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitAluHelper;
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
@@ -457,12 +461,20 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     MultiplyScale.M2 => ConstF(2f),
                     MultiplyScale.M4 => ConstF(4f),
                     MultiplyScale.M8 => ConstF(8f),
+<<<<<<< HEAD
                     _ => ConstF(1f), // Invalid, behave as if it had no scale.
+=======
+                    _ => ConstF(1f) // Invalid, behave as if it had no scale.
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 if (scaleConst.AsFloat() == 1f)
                 {
+<<<<<<< HEAD
                     context.TranslatorContext.GpuAccessor.Log($"Invalid FP multiply scale \"{scale}\".");
+=======
+                    context.Config.GpuAccessor.Log($"Invalid FP multiply scale \"{scale}\".");
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 if (isFP64)
@@ -528,4 +540,8 @@ namespace Ryujinx.Graphics.Shader.Instructions
             context.Copy(GetDest(rd), GetHalfPacked(context, swizzle, res, rd));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

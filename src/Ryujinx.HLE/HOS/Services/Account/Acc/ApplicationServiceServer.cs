@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using Ryujinx.Cpu;
 using Ryujinx.HLE.HOS.Kernel.Threading;
@@ -58,7 +62,11 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             }
 
             ulong outputPosition = context.Request.RecvListBuff[0].Position;
+<<<<<<< HEAD
             ulong outputSize = context.Request.RecvListBuff[0].Size;
+=======
+            ulong outputSize     = context.Request.RecvListBuff[0].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             MemoryHelper.FillWithZeros(context.Memory, outputPosition, (int)outputSize);
 
@@ -71,7 +79,11 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
                     break;
                 }
 
+<<<<<<< HEAD
                 context.Memory.Write(outputPosition + offset, userProfile.UserId.High);
+=======
+                context.Memory.Write(outputPosition + offset,     userProfile.UserId.High);
+>>>>>>> 1ec71635b (sync with main branch)
                 context.Memory.Write(outputPosition + offset + 8, userProfile.UserId.Low);
 
                 offset += 0x10;
@@ -148,7 +160,11 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
 
         public ResultCode CheckNetworkServiceAvailabilityAsync(ServiceCtx context, out IAsyncContext asyncContext)
         {
+<<<<<<< HEAD
             KEvent asyncEvent = new(context.Device.System.KernelContext);
+=======
+            KEvent         asyncEvent     = new(context.Device.System.KernelContext);
+>>>>>>> 1ec71635b (sync with main branch)
             AsyncExecution asyncExecution = new(asyncEvent);
 
             asyncExecution.Initialize(1000, CheckNetworkServiceAvailabilityAsyncImpl);
@@ -183,7 +199,11 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             }
 
             ulong inputPosition = context.Request.SendBuff[0].Position;
+<<<<<<< HEAD
             ulong inputSize = context.Request.SendBuff[0].Size;
+=======
+            ulong inputSize     = context.Request.SendBuff[0].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (inputSize != 0x24000)
             {
@@ -251,4 +271,8 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Bcat.Ipc.Types;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Bcat;
@@ -39,7 +43,11 @@ namespace Ryujinx.Horizon.Bcat.Ipc
             deliveryCacheProgressImpl = new DeliveryCacheProgressImpl
             {
                 State = DeliveryCacheProgressImpl.Status.Done,
+<<<<<<< HEAD
                 Result = 0,
+=======
+                Result = 0
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             Logger.Stub?.PrintStub(LogClass.ServiceBcat);

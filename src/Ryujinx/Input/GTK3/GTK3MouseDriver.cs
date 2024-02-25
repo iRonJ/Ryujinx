@@ -12,18 +12,31 @@ namespace Ryujinx.Input.GTK3
         private bool _isDisposed;
 
         public bool[] PressedButtons { get; }
+<<<<<<< HEAD
 
         public Vector2 CurrentPosition { get; private set; }
         public Vector2 Scroll { get; private set; }
+=======
+        
+        public Vector2 CurrentPosition { get; private set; }
+        public Vector2 Scroll{ get; private set; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public GTK3MouseDriver(Widget parent)
         {
             _widget = parent;
 
+<<<<<<< HEAD
             _widget.MotionNotifyEvent += Parent_MotionNotifyEvent;
             _widget.ButtonPressEvent += Parent_ButtonPressEvent;
             _widget.ButtonReleaseEvent += Parent_ButtonReleaseEvent;
             _widget.ScrollEvent += Parent_ScrollEvent;
+=======
+            _widget.MotionNotifyEvent  += Parent_MotionNotifyEvent;
+            _widget.ButtonPressEvent   += Parent_ButtonPressEvent;
+            _widget.ButtonReleaseEvent += Parent_ButtonReleaseEvent;
+            _widget.ScrollEvent        += Parent_ScrollEvent;
+>>>>>>> 1ec71635b (sync with main branch)
 
             PressedButtons = new bool[(int)MouseButton.Count];
         }
@@ -58,7 +71,11 @@ namespace Ryujinx.Input.GTK3
 
         public bool IsButtonPressed(MouseButton button)
         {
+<<<<<<< HEAD
             return PressedButtons[(int)button];
+=======
+            return PressedButtons[(int) button];
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public Size GetClientSize()
@@ -67,21 +84,37 @@ namespace Ryujinx.Input.GTK3
         }
 
         public string DriverName => "GTK3";
+<<<<<<< HEAD
 
         public event Action<string> OnGamepadConnected
         {
             add { }
+=======
+        
+        public event Action<string> OnGamepadConnected
+        {
+            add    { }
+>>>>>>> 1ec71635b (sync with main branch)
             remove { }
         }
 
         public event Action<string> OnGamepadDisconnected
         {
+<<<<<<< HEAD
             add { }
             remove { }
         }
 
         public ReadOnlySpan<string> GamepadsIds => new[] { "0" };
 
+=======
+            add    { }
+            remove { }
+        }
+
+        public ReadOnlySpan<string> GamepadsIds => new[] {"0"};
+        
+>>>>>>> 1ec71635b (sync with main branch)
         public IGamepad GetGamepad(string id)
         {
             return new GTK3Mouse(this);
@@ -94,8 +127,11 @@ namespace Ryujinx.Input.GTK3
                 return;
             }
 
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             _isDisposed = true;
 
             _widget.MotionNotifyEvent -= Parent_MotionNotifyEvent;
@@ -105,4 +141,8 @@ namespace Ryujinx.Input.GTK3
             _widget = null;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

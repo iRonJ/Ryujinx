@@ -29,6 +29,7 @@ namespace ARMeilleure.Translation.Cache
 
         private enum UnwindOp
         {
+<<<<<<< HEAD
             PushNonvol = 0,
             AllocLarge = 1,
             AllocSmall = 2,
@@ -38,6 +39,17 @@ namespace ARMeilleure.Translation.Cache
             SaveXmm128 = 8,
             SaveXmm128Far = 9,
             PushMachframe = 10,
+=======
+            PushNonvol    = 0,
+            AllocLarge    = 1,
+            AllocSmall    = 2,
+            SetFpreg      = 3,
+            SaveNonvol    = 4,
+            SaveNonvolFar = 5,
+            SaveXmm128    = 8,
+            SaveXmm128Far = 9,
+            PushMachframe = 10
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private unsafe delegate RuntimeFunction* GetRuntimeFunctionCallback(ulong controlPc, IntPtr context);
@@ -95,7 +107,11 @@ namespace ARMeilleure.Translation.Cache
         {
             int offset = (int)((long)controlPc - context.ToInt64());
 
+<<<<<<< HEAD
             if (!JitCache.TryFind(offset, out CacheEntry funcEntry, out _))
+=======
+            if (!JitCache.TryFind(offset, out CacheEntry funcEntry))
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return null; // Not found.
             }
@@ -111,6 +127,7 @@ namespace ARMeilleure.Translation.Cache
                 switch (entry.PseudoOp)
                 {
                     case UnwindPseudoOp.SaveXmm128:
+<<<<<<< HEAD
                         {
                             int stackOffset = entry.StackOffsetOrAllocSize;
 
@@ -165,11 +182,67 @@ namespace ARMeilleure.Translation.Cache
 
                     default:
                         throw new NotImplementedException($"({nameof(entry.PseudoOp)} = {entry.PseudoOp})");
+=======
+                    {
+                        int stackOffset = entry.StackOffsetOrAllocSize;
+
+                        Debug.Assert(stackOffset % 16 == 0);
+
+                        if (stackOffset <= 0xFFFF0)
+                        {
+                            _unwindInfo->UnwindCodes[codeIndex++] = PackUnwindOp(UnwindOp.SaveXmm128, entry.PrologOffset, entry.RegIndex);
+                            _unwindInfo->UnwindCodes[codeIndex++] = (ushort)(stackOffset / 16);
+                        }
+                        else
+                        {
+                            _unwindInfo->UnwindCodes[codeIndex++] = PackUnwindOp(UnwindOp.SaveXmm128Far, entry.PrologOffset, entry.RegIndex);
+                            _unwindInfo->UnwindCodes[codeIndex++] = (ushort)(stackOffset >> 0);
+                            _unwindInfo->UnwindCodes[codeIndex++] = (ushort)(stackOffset >> 16);
+                        }
+
+                        break;
+                    }
+
+                    case UnwindPseudoOp.AllocStack:
+                    {
+                        int allocSize = entry.StackOffsetOrAllocSize;
+
+                        Debug.Assert(allocSize % 8 == 0);
+
+                        if (allocSize <= 128)
+                        {
+                            _unwindInfo->UnwindCodes[codeIndex++] = PackUnwindOp(UnwindOp.AllocSmall, entry.PrologOffset, (allocSize / 8) - 1);
+                        }
+                        else if (allocSize <= 0x7FFF8)
+                        {
+                            _unwindInfo->UnwindCodes[codeIndex++] = PackUnwindOp(UnwindOp.AllocLarge, entry.PrologOffset, 0);
+                            _unwindInfo->UnwindCodes[codeIndex++] = (ushort)(allocSize / 8);
+                        }
+                        else
+                        {
+                            _unwindInfo->UnwindCodes[codeIndex++] = PackUnwindOp(UnwindOp.AllocLarge, entry.PrologOffset, 1);
+                            _unwindInfo->UnwindCodes[codeIndex++] = (ushort)(allocSize >> 0);
+                            _unwindInfo->UnwindCodes[codeIndex++] = (ushort)(allocSize >> 16);
+                        }
+
+                        break;
+                    }
+
+                    case UnwindPseudoOp.PushReg:
+                    {
+                        _unwindInfo->UnwindCodes[codeIndex++] = PackUnwindOp(UnwindOp.PushNonvol, entry.PrologOffset, entry.RegIndex);
+
+                        break;
+                    }
+
+                    default: throw new NotImplementedException($"({nameof(entry.PseudoOp)} = {entry.PseudoOp})");
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
             Debug.Assert(codeIndex <= MaxUnwindCodesArraySize);
 
+<<<<<<< HEAD
             _unwindInfo->VersionAndFlags = 1; // Flags: The function has no handler.
             _unwindInfo->SizeOfProlog = (byte)unwindInfo.PrologSize;
             _unwindInfo->CountOfUnwindCodes = (byte)codeIndex;
@@ -178,6 +251,16 @@ namespace ARMeilleure.Translation.Cache
             _runtimeFunction->BeginAddress = (uint)funcEntry.Offset;
             _runtimeFunction->EndAddress = (uint)(funcEntry.Offset + funcEntry.Size);
             _runtimeFunction->UnwindData = (uint)_sizeOfRuntimeFunction;
+=======
+            _unwindInfo->VersionAndFlags    = 1; // Flags: The function has no handler.
+            _unwindInfo->SizeOfProlog       = (byte)unwindInfo.PrologSize;
+            _unwindInfo->CountOfUnwindCodes = (byte)codeIndex;
+            _unwindInfo->FrameRegister      = 0;
+
+            _runtimeFunction->BeginAddress = (uint)funcEntry.Offset;
+            _runtimeFunction->EndAddress   = (uint)(funcEntry.Offset + funcEntry.Size);
+            _runtimeFunction->UnwindData   = (uint)_sizeOfRuntimeFunction;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return _runtimeFunction;
         }
@@ -187,4 +270,8 @@ namespace ARMeilleure.Translation.Cache
             return (ushort)(prologOffset | ((int)op << 8) | (opInfo << 12));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

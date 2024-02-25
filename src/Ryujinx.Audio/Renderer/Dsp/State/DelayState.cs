@@ -4,7 +4,11 @@ using System.Runtime.CompilerServices;
 
 namespace Ryujinx.Audio.Renderer.Dsp.State
 {
+<<<<<<< HEAD
     public struct DelayState
+=======
+    public class DelayState
+>>>>>>> 1ec71635b (sync with main branch)
     {
         public DelayLine[] DelayLines { get; }
         public float[] LowPassZ { get; set; }
@@ -53,7 +57,11 @@ namespace Ryujinx.Audio.Renderer.Dsp.State
             LowPassBaseGain = 1.0f - LowPassFeedbackGain;
         }
 
+<<<<<<< HEAD
         public readonly void UpdateLowPassFilter(ref float tempRawRef, uint channelCount)
+=======
+        public void UpdateLowPassFilter(ref float tempRawRef, uint channelCount)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             for (int i = 0; i < channelCount; i++)
             {
@@ -64,4 +72,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.State
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

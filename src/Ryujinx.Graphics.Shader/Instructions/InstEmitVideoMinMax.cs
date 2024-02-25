@@ -180,4 +180,8 @@ namespace Ryujinx.Graphics.Shader.Instructions
             context.Copy(Register(op.DestPredInv, RegisterType.Predicate), p1Res);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

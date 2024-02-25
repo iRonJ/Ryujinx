@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using Ryujinx.Cpu;
 using Ryujinx.HLE.Exceptions;
@@ -8,7 +12,10 @@ using Ryujinx.HLE.HOS.Kernel.Memory;
 using Ryujinx.HLE.HOS.Kernel.Process;
 using Ryujinx.HLE.HOS.Kernel.Threading;
 using Ryujinx.Horizon.Common;
+<<<<<<< HEAD
 using Ryujinx.Memory;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Buffers;
 using System.Threading;
@@ -92,7 +99,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             KHandleTable handleTable = KernelStatic.GetCurrentProcess().HandleTable;
 
+<<<<<<< HEAD
             KProcess process = new(_context);
+=======
+            KProcess process = new KProcess(_context);
+>>>>>>> 1ec71635b (sync with main branch)
 
             using var _ = new OnScopeExit(process.DecrementReferenceCount);
 
@@ -118,7 +129,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 ProcessCreationFlags.PoolPartitionApplet => MemoryRegion.Applet,
                 ProcessCreationFlags.PoolPartitionSystem => MemoryRegion.Service,
                 ProcessCreationFlags.PoolPartitionSystemNonSecure => MemoryRegion.NvServices,
+<<<<<<< HEAD
                 _ => MemoryRegion.NvServices,
+=======
+                _ => MemoryRegion.NvServices
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             Result result = process.Initialize(
@@ -139,7 +154,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
             return handleTable.GenerateHandle(process, out handle);
         }
 
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result StartProcess(int handle, int priority, int cpuCore, ulong mainThreadStackSize)
         {
             KProcess process = KernelStatic.GetCurrentProcess().HandleTable.GetObject<KProcess>(handle);
@@ -172,17 +190,25 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x5f)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x5f)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result FlushProcessDataCache(int processHandle, ulong address, ulong size)
         {
             // FIXME: This needs to be implemented as ARMv7 doesn't have any way to do cache maintenance operations on EL0.
             // As we don't support (and don't actually need) to flush the cache, this is stubbed.
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         // IPC
 
@@ -256,7 +282,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(0x22)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SendSyncRequestWithUserBuffer(
             [PointerSized] ulong messagePtr,
             [PointerSized] ulong messageSize,
@@ -306,7 +335,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return result;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         [Svc(0x23)]
         public Result SendAsyncRequestWithUserBuffer(
@@ -358,7 +390,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
             }
             else
             {
+<<<<<<< HEAD
                 KEvent doneEvent = new(_context);
+=======
+                KEvent doneEvent = new KEvent(_context);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 result = currentProcess.HandleTable.GenerateHandle(doneEvent.ReadableEvent, out doneEventHandle);
 
@@ -415,7 +451,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             if (isLight)
             {
+<<<<<<< HEAD
                 KLightSession session = new(_context);
+=======
+                KLightSession session = new KLightSession(_context);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 result = currentProcess.HandleTable.GenerateHandle(session.ServerSession, out serverSessionHandle);
 
@@ -436,7 +476,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
             }
             else
             {
+<<<<<<< HEAD
                 KSession session = new(_context);
+=======
+                KSession session = new KSession(_context);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 result = currentProcess.HandleTable.GenerateHandle(session.ServerSession, out serverSessionHandle);
 
@@ -752,7 +796,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KernelResult.MaximumExceeded;
             }
 
+<<<<<<< HEAD
             KPort port = new(_context, maxSessions, isLight, name);
+=======
+            KPort port = new KPort(_context, maxSessions, isLight, name);
+>>>>>>> 1ec71635b (sync with main branch)
 
             KProcess currentProcess = KernelStatic.GetCurrentProcess();
 
@@ -805,7 +853,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KAutoObject.RemoveName(_context, name);
             }
 
+<<<<<<< HEAD
             KPort port = new(_context, maxSessions, false, null);
+=======
+            KPort port = new KPort(_context, maxSessions, false, null);
+>>>>>>> 1ec71635b (sync with main branch)
 
             KProcess currentProcess = KernelStatic.GetCurrentProcess();
 
@@ -896,7 +948,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(2)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SetMemoryPermission([PointerSized] ulong address, [PointerSized] ulong size, KMemoryPermission permission)
         {
             if (!PageAligned(address))
@@ -928,10 +983,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return currentProcess.MemoryManager.SetMemoryPermission(address, size, permission);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(3)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(3)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SetMemoryAttribute(
             [PointerSized] ulong address,
             [PointerSized] ulong size,
@@ -950,6 +1010,7 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             MemoryAttribute attributes = attributeMask | attributeValue;
 
+<<<<<<< HEAD
             const MemoryAttribute SupportedAttributes = MemoryAttribute.Uncached | MemoryAttribute.PermissionLocked;
 
             if (attributes != attributeMask ||
@@ -960,6 +1021,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             // The permission locked attribute can't be unset.
             if ((attributeMask & MemoryAttribute.PermissionLocked) != (attributeValue & MemoryAttribute.PermissionLocked))
+=======
+            if (attributes != attributeMask ||
+               (attributes | MemoryAttribute.Uncached) != MemoryAttribute.Uncached)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return KernelResult.InvalidCombination;
             }
@@ -979,10 +1044,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return result;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(4)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(4)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result MapMemory([PointerSized] ulong dst, [PointerSized] ulong src, [PointerSized] ulong size)
         {
             if (!PageAligned(src | dst))
@@ -1018,10 +1088,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return process.MemoryManager.Map(dst, src, size);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(5)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(5)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result UnmapMemory([PointerSized] ulong dst, [PointerSized] ulong src, [PointerSized] ulong size)
         {
             if (!PageAligned(src | dst))
@@ -1057,7 +1132,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return process.MemoryManager.Unmap(dst, src, size);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         [Svc(6)]
         public Result QueryMemory([PointerSized] ulong infoPtr, [PointerSized] out ulong pageInfo, [PointerSized] ulong address)
@@ -1074,7 +1152,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
             return result;
         }
 
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result QueryMemory(out MemoryInfo info, out ulong pageInfo, ulong address)
         {
             KProcess process = KernelStatic.GetCurrentProcess();
@@ -1094,10 +1175,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x13)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x13)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result MapSharedMemory(int handle, [PointerSized] ulong address, [PointerSized] ulong size, KMemoryPermission permission)
         {
             if (!PageAligned(address))
@@ -1143,10 +1229,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 currentProcess,
                 permission);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x14)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x14)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result UnmapSharedMemory(int handle, [PointerSized] ulong address, [PointerSized] ulong size)
         {
             if (!PageAligned(address))
@@ -1186,7 +1277,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 size,
                 currentProcess);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         [Svc(0x15)]
         public Result CreateTransferMemory(out int handle, [PointerSized] ulong address, [PointerSized] ulong size, KMemoryPermission permission)
@@ -1234,7 +1328,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KernelResult.InvalidMemState;
             }
 
+<<<<<<< HEAD
             KTransferMemory transferMemory = new(_context);
+=======
+            KTransferMemory transferMemory = new KTransferMemory(_context);
+>>>>>>> 1ec71635b (sync with main branch)
 
             Result result = transferMemory.Initialize(address, size, permission);
 
@@ -1253,7 +1351,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(0x51)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result MapTransferMemory(int handle, [PointerSized] ulong address, [PointerSized] ulong size, KMemoryPermission permission)
         {
             if (!PageAligned(address))
@@ -1299,10 +1400,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 currentProcess,
                 permission);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x52)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x52)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result UnmapTransferMemory(int handle, [PointerSized] ulong address, [PointerSized] ulong size)
         {
             if (!PageAligned(address))
@@ -1342,10 +1448,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 size,
                 currentProcess);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x2c)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x2c)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result MapPhysicalMemory([PointerSized] ulong address, [PointerSized] ulong size)
         {
             if (!PageAligned(address))
@@ -1380,10 +1491,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return process.MemoryManager.MapPhysicalMemory(address, size);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x2d)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x2d)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result UnmapPhysicalMemory([PointerSized] ulong address, [PointerSized] ulong size)
         {
             if (!PageAligned(address))
@@ -1418,7 +1534,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return process.MemoryManager.UnmapPhysicalMemory(address, size);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         [Svc(0x4b)]
         public Result CreateCodeMemory(out int handle, [PointerSized] ulong address, [PointerSized] ulong size)
@@ -1440,7 +1559,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KernelResult.InvalidMemState;
             }
 
+<<<<<<< HEAD
             KCodeMemory codeMemory = new(_context);
+=======
+            KCodeMemory codeMemory = new KCodeMemory(_context);
+>>>>>>> 1ec71635b (sync with main branch)
 
             using var _ = new OnScopeExit(codeMemory.DecrementReferenceCount);
 
@@ -1462,7 +1585,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(0x4c)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result ControlCodeMemory(
             int handle,
             CodeMemoryOperation op,
@@ -1536,6 +1662,7 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
                     return codeMemory.UnmapFromOwner(address, size);
 
+<<<<<<< HEAD
                 default:
                     return KernelResult.InvalidEnumValue;
             }
@@ -1544,6 +1671,13 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
         [Svc(0x73)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+                default: return KernelResult.InvalidEnumValue;
+            }
+        }
+
+        [Svc(0x73)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SetProcessMemoryPermission(
             int handle,
             [PointerSized] ulong src,
@@ -1584,10 +1718,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return targetProcess.MemoryManager.SetProcessMemoryPermission(src, size, permission);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x74)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x74)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result MapProcessMemory(
             [PointerSized] ulong dst,
             int handle,
@@ -1623,7 +1762,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KernelResult.InvalidMemRange;
             }
 
+<<<<<<< HEAD
             KPageList pageList = new();
+=======
+            KPageList pageList = new KPageList();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Result result = srcProcess.MemoryManager.GetPagesIfStateEquals(
                 src,
@@ -1643,10 +1786,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return dstProcess.MemoryManager.MapPages(dst, pageList, MemoryState.ProcessMemory, KMemoryPermission.ReadAndWrite);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x75)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x75)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result UnmapProcessMemory(
             [PointerSized] ulong dst,
             int handle,
@@ -1691,10 +1839,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x77)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x77)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result MapProcessCodeMemory(int handle, ulong dst, ulong src, ulong size)
         {
             if (!PageAligned(dst) || !PageAligned(src))
@@ -1731,10 +1884,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return targetProcess.MemoryManager.MapProcessCodeMemory(dst, src, size);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x78)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x78)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result UnmapProcessCodeMemory(int handle, ulong dst, ulong src, ulong size)
         {
             if (!PageAligned(dst) || !PageAligned(src))
@@ -1771,7 +1929,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return targetProcess.MemoryManager.UnmapProcessCodeMemory(dst, src, size);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static bool PageAligned(ulong address)
         {
@@ -1781,7 +1942,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         // System
 
         [Svc(0x7b)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result TerminateProcess(int handle)
         {
             KProcess process = KernelStatic.GetCurrentProcess();
@@ -1810,15 +1974,23 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return result;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(7)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(7)]
+>>>>>>> 1ec71635b (sync with main branch)
         public void ExitProcess()
         {
             KernelStatic.GetCurrentProcess().TerminateCurrentProcess();
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         [Svc(0x11)]
         public Result SignalEvent(int handle)
@@ -1911,7 +2083,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(0x26)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public void Break(ulong reason)
         {
             KThread currentThread = KernelStatic.GetCurrentThread();
@@ -1937,10 +2112,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 Logger.Debug?.Print(LogClass.KernelSvc, "Debugger triggered.");
             }
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x27)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x27)]
+>>>>>>> 1ec71635b (sync with main branch)
         public void OutputDebugString([PointerSized] ulong strPtr, [PointerSized] ulong size)
         {
             KProcess process = KernelStatic.GetCurrentProcess();
@@ -1949,7 +2129,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             Logger.Warning?.Print(LogClass.KernelSvc, str);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         [Svc(0x29)]
         public Result GetInfo(out ulong value, InfoType id, int handle, long subId)
@@ -1995,6 +2178,7 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
                         switch (id)
                         {
+<<<<<<< HEAD
                             case InfoType.CoreMask:
                                 value = process.Capabilities.AllowedCpuCoresMask;
                                 break;
@@ -2045,6 +2229,35 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                             case InfoType.SystemResourceSizeTotal:
                                 value = process.PersonalMmHeapPagesCount * KPageTableBase.PageSize;
                                 break;
+=======
+                            case InfoType.CoreMask: value = process.Capabilities.AllowedCpuCoresMask; break;
+                            case InfoType.PriorityMask: value = process.Capabilities.AllowedThreadPriosMask; break;
+
+                            case InfoType.AliasRegionAddress: value = process.MemoryManager.AliasRegionStart; break;
+                            case InfoType.AliasRegionSize:
+                                value = (process.MemoryManager.AliasRegionEnd -
+                                         process.MemoryManager.AliasRegionStart); break;
+
+                            case InfoType.HeapRegionAddress: value = process.MemoryManager.HeapRegionStart; break;
+                            case InfoType.HeapRegionSize:
+                                value = (process.MemoryManager.HeapRegionEnd -
+                                         process.MemoryManager.HeapRegionStart); break;
+
+                            case InfoType.TotalMemorySize: value = process.GetMemoryCapacity(); break;
+
+                            case InfoType.UsedMemorySize: value = process.GetMemoryUsage(); break;
+
+                            case InfoType.AslrRegionAddress: value = process.MemoryManager.GetAddrSpaceBaseAddr(); break;
+
+                            case InfoType.AslrRegionSize: value = process.MemoryManager.GetAddrSpaceSize(); break;
+
+                            case InfoType.StackRegionAddress: value = process.MemoryManager.StackRegionStart; break;
+                            case InfoType.StackRegionSize:
+                                value = (process.MemoryManager.StackRegionEnd -
+                                         process.MemoryManager.StackRegionStart); break;
+
+                            case InfoType.SystemResourceSizeTotal: value = process.PersonalMmHeapPagesCount * KPageTableBase.PageSize; break;
+>>>>>>> 1ec71635b (sync with main branch)
 
                             case InfoType.SystemResourceSizeUsed:
                                 if (process.PersonalMmHeapPagesCount != 0)
@@ -2054,6 +2267,7 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
                                 break;
 
+<<<<<<< HEAD
                             case InfoType.ProgramId:
                                 value = process.TitleId;
                                 break;
@@ -2073,6 +2287,17 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                             case InfoType.IsApplication:
                                 value = process.IsApplication ? 1UL : 0UL;
                                 break;
+=======
+                            case InfoType.ProgramId: value = process.TitleId; break;
+
+                            case InfoType.UserExceptionContextAddress: value = process.UserExceptionContextAddress; break;
+
+                            case InfoType.TotalNonSystemMemorySize: value = process.GetMemoryCapacityWithoutPersonalMmHeap(); break;
+
+                            case InfoType.UsedNonSystemMemorySize: value = process.GetMemoryUsageWithoutPersonalMmHeap(); break;
+
+                            case InfoType.IsApplication: value = process.IsApplication ? 1UL : 0UL; break;
+>>>>>>> 1ec71635b (sync with main branch)
 
                             case InfoType.FreeThreadCount:
                                 if (process.ResourceLimit != null)
@@ -2251,8 +2476,12 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                         break;
                     }
 
+<<<<<<< HEAD
                 default:
                     return KernelResult.InvalidEnumValue;
+=======
+                default: return KernelResult.InvalidEnumValue;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return Result.Success;
@@ -2261,7 +2490,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         [Svc(0x45)]
         public Result CreateEvent(out int wEventHandle, out int rEventHandle)
         {
+<<<<<<< HEAD
             KEvent Event = new(_context);
+=======
+            KEvent Event = new KEvent(_context);
+>>>>>>> 1ec71635b (sync with main branch)
 
             KProcess process = KernelStatic.GetCurrentProcess();
 
@@ -2361,9 +2594,13 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 switch (id)
                 {
                     // Memory region capacity.
+<<<<<<< HEAD
                     case 0:
                         value = (long)region.Size;
                         break;
+=======
+                    case 0: value = (long)region.Size; break;
+>>>>>>> 1ec71635b (sync with main branch)
 
                     // Memory region free space.
                     case 1:
@@ -2385,12 +2622,17 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
                 switch (subId)
                 {
+<<<<<<< HEAD
                     case 0:
                         value = _context.PrivilegedProcessLowestId;
                         break;
                     case 1:
                         value = _context.PrivilegedProcessHighestId;
                         break;
+=======
+                    case 0: value = _context.PrivilegedProcessLowestId; break;
+                    case 1: value = _context.PrivilegedProcessHighestId; break;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -2398,7 +2640,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(0x30)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result GetResourceLimitLimitValue(out long limitValue, int handle, LimitableResource resource)
         {
             limitValue = 0;
@@ -2419,10 +2664,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x31)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x31)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result GetResourceLimitCurrentValue(out long limitValue, int handle, LimitableResource resource)
         {
             limitValue = 0;
@@ -2443,10 +2693,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x37)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x37)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result GetResourceLimitPeakValue(out long peak, int handle, LimitableResource resource)
         {
             peak = 0;
@@ -2467,12 +2722,19 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         [Svc(0x7d)]
         public Result CreateResourceLimit(out int handle)
         {
+<<<<<<< HEAD
             KResourceLimit limit = new(_context);
+=======
+            KResourceLimit limit = new KResourceLimit(_context);
+>>>>>>> 1ec71635b (sync with main branch)
 
             KProcess process = KernelStatic.GetCurrentProcess();
 
@@ -2480,7 +2742,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(0x7e)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SetResourceLimitLimitValue(int handle, LimitableResource resource, long limitValue)
         {
             if (resource >= LimitableResource.Count)
@@ -2497,7 +2762,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return resourceLimit.SetLimitValue(resource, limitValue);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         // Thread
 
@@ -2549,7 +2817,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KernelResult.ResLimitExceeded;
             }
 
+<<<<<<< HEAD
             KThread thread = new(_context);
+=======
+            KThread thread = new KThread(_context);
+>>>>>>> 1ec71635b (sync with main branch)
 
             Result result = currentProcess.InitializeThread(
                 thread,
@@ -2577,7 +2849,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(9)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result StartThread(int handle)
         {
             KProcess process = KernelStatic.GetCurrentProcess();
@@ -2604,17 +2879,25 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KernelResult.InvalidHandle;
             }
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0xa)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0xa)]
+>>>>>>> 1ec71635b (sync with main branch)
         public void ExitThread()
         {
             KThread currentThread = KernelStatic.GetCurrentThread();
 
             currentThread.Exit();
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         [Svc(0xb)]
         public void SleepThread(long timeout)
@@ -2623,6 +2906,7 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
             {
                 switch (timeout)
                 {
+<<<<<<< HEAD
                     case 0:
                         KScheduler.Yield(_context);
                         break;
@@ -2632,6 +2916,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                     case -2:
                         KScheduler.YieldToAnyThread(_context);
                         break;
+=======
+                    case 0: KScheduler.Yield(_context); break;
+                    case -1: KScheduler.YieldWithLoadBalancing(_context); break;
+                    case -2: KScheduler.YieldToAnyThread(_context); break;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
             else
@@ -2641,7 +2930,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(0xc)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result GetThreadPriority(out int priority, int handle)
         {
             KProcess process = KernelStatic.GetCurrentProcess();
@@ -2661,10 +2953,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KernelResult.InvalidHandle;
             }
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0xd)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0xd)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SetThreadPriority(int handle, int priority)
         {
             // TODO: NPDM check.
@@ -2682,10 +2979,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0xe)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0xe)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result GetThreadCoreMask(out int preferredCore, out ulong affinityMask, int handle)
         {
             KProcess process = KernelStatic.GetCurrentProcess();
@@ -2707,10 +3009,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KernelResult.InvalidHandle;
             }
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0xf)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0xf)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SetThreadCoreMask(int handle, int preferredCore, ulong affinityMask)
         {
             KProcess currentProcess = KernelStatic.GetCurrentProcess();
@@ -2758,18 +3065,28 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return thread.SetCoreAndAffinityMask(preferredCore, affinityMask);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x10)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x10)]
+>>>>>>> 1ec71635b (sync with main branch)
         public int GetCurrentProcessorNumber()
         {
             return KernelStatic.GetCurrentThread().CurrentCore;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x25)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x25)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result GetThreadId(out ulong threadUid, int handle)
         {
             KProcess process = KernelStatic.GetCurrentProcess();
@@ -2789,10 +3106,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 return KernelResult.InvalidHandle;
             }
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x32)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x32)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SetThreadActivity(int handle, bool pause)
         {
             KProcess process = KernelStatic.GetCurrentProcess();
@@ -2816,10 +3138,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return thread.SetActivity(pause);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x33)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x33)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result GetThreadContext3([PointerSized] ulong address, int handle)
         {
             KProcess currentProcess = KernelStatic.GetCurrentProcess();
@@ -2853,7 +3180,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return result;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         // Thread synchronization
 
@@ -2890,7 +3220,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                     return KernelResult.UserCopyFailed;
                 }
 
+<<<<<<< HEAD
                 Span<int> handles = new Span<int>(currentThread.WaitSyncHandles)[..handlesCount];
+=======
+                Span<int> handles = new Span<int>(currentThread.WaitSyncHandles).Slice(0, handlesCount);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 if (!KernelTransfer.UserToKernelArray(handlesPtr, handles))
                 {
@@ -2914,7 +3248,11 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             KThread currentThread = KernelStatic.GetCurrentThread();
 
+<<<<<<< HEAD
             var syncObjs = new Span<KSynchronizationObject>(currentThread.WaitSyncObjects)[..handles.Length];
+=======
+            var syncObjs = new Span<KSynchronizationObject>(currentThread.WaitSyncObjects).Slice(0, handles.Length);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (handles.Length != 0)
             {
@@ -2986,7 +3324,10 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         }
 
         [Svc(0x1a)]
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public Result ArbitrateLock(int ownerHandle, [PointerSized] ulong mutexAddress, int requesterHandle)
         {
             if (IsPointingInsideKernel(mutexAddress))
@@ -3003,10 +3344,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return currentProcess.AddressArbiter.ArbitrateLock(ownerHandle, mutexAddress, requesterHandle);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x1b)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x1b)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result ArbitrateUnlock([PointerSized] ulong mutexAddress)
         {
             if (IsPointingInsideKernel(mutexAddress))
@@ -3023,10 +3369,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return currentProcess.AddressArbiter.ArbitrateUnlock(mutexAddress);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x1c)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x1c)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result WaitProcessWideKeyAtomic(
             [PointerSized] ulong mutexAddress,
             [PointerSized] ulong condVarAddress,
@@ -3056,10 +3407,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 handle,
                 timeout);
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x1d)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x1d)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SignalProcessWideKey([PointerSized] ulong address, int count)
         {
             KProcess currentProcess = KernelStatic.GetCurrentProcess();
@@ -3068,10 +3424,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x34)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x34)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result WaitForAddress([PointerSized] ulong address, ArbitrationType type, int value, long timeout)
         {
             if (IsPointingInsideKernel(address))
@@ -3102,10 +3463,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                 _ => KernelResult.InvalidEnumValue,
             };
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         [Svc(0x35)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+
+        [Svc(0x35)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SignalToAddress([PointerSized] ulong address, SignalType type, int value, int count)
         {
             if (IsPointingInsideKernel(address))
@@ -3128,6 +3494,7 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
                     => currentProcess.AddressArbiter.SignalAndIncrementIfEqual(address, value, count),
                 SignalType.SignalAndModifyIfEqual
                     => currentProcess.AddressArbiter.SignalAndModifyIfEqual(address, value, count),
+<<<<<<< HEAD
                 _ => KernelResult.InvalidEnumValue,
             };
         }
@@ -3135,12 +3502,20 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
         [Svc(0x36)]
 #pragma warning disable CA1822 // Mark member as static
+=======
+                _ => KernelResult.InvalidEnumValue
+            };
+        }
+
+        [Svc(0x36)]
+>>>>>>> 1ec71635b (sync with main branch)
         public Result SynchronizePreemptionState()
         {
             KernelStatic.GetCurrentThread().SynchronizePreemptionState();
 
             return Result.Success;
         }
+<<<<<<< HEAD
 #pragma warning restore CA1822
 
         // Not actual syscalls, used by HLE services and such.
@@ -3173,6 +3548,8 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 
             return transferMemory.Address;
         }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static bool IsPointingInsideKernel(ulong address)
         {
@@ -3184,4 +3561,8 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
             return (address & 3) != 0;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

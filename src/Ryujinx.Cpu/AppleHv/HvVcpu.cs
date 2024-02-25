@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Diagnostics;
 using System.Runtime.Versioning;
 
@@ -12,13 +13,25 @@ namespace Ryujinx.Cpu.AppleHv
 
         public readonly ulong Handle;
         public readonly HvVcpuExit* ExitInfo;
+=======
+namespace Ryujinx.Cpu.AppleHv
+{
+    unsafe class HvVcpu
+    {
+        public readonly ulong Handle;
+        public readonly hv_vcpu_exit_t* ExitInfo;
+>>>>>>> 1ec71635b (sync with main branch)
         public readonly IHvExecutionContext ShadowContext;
         public readonly IHvExecutionContext NativeContext;
         public readonly bool IsEphemeral;
 
         public HvVcpu(
             ulong handle,
+<<<<<<< HEAD
             HvVcpuExit* exitInfo,
+=======
+            hv_vcpu_exit_t* exitInfo,
+>>>>>>> 1ec71635b (sync with main branch)
             IHvExecutionContext shadowContext,
             IHvExecutionContext nativeContext,
             bool isEphemeral)
@@ -29,6 +42,7 @@ namespace Ryujinx.Cpu.AppleHv
             NativeContext = nativeContext;
             IsEphemeral = isEphemeral;
         }
+<<<<<<< HEAD
 
         public void EnableAndUpdateVTimer()
         {
@@ -54,3 +68,7 @@ namespace Ryujinx.Cpu.AppleHv
         }
     }
 }
+=======
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

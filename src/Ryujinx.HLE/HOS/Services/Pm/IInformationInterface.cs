@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Kernel.Process;
+=======
+﻿using Ryujinx.HLE.HOS.Kernel.Process;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Pm
 {
@@ -24,4 +28,8 @@ namespace Ryujinx.HLE.HOS.Services.Pm
             return ResultCode.ProcessNotFound;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

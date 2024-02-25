@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Kernel.Threading;
 using Ryujinx.HLE.HOS.Services.SurfaceFlinger.Types;
 using System;
@@ -29,12 +33,17 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             SetPreallocatedBuffer,
             Reserved15,
             GetBufferInfo,
+<<<<<<< HEAD
             GetBufferHistory,
+=======
+            GetBufferHistory
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1, Size = 0x54)]
         public struct QueueBufferInput : IFlattenable
         {
+<<<<<<< HEAD
             public long Timestamp;
             public int IsAutoTimestamp;
             public Rect Crop;
@@ -44,18 +53,37 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             public int Async;
             public int SwapInterval;
             public AndroidFence Fence;
+=======
+            public long                    Timestamp;
+            public int                     IsAutoTimestamp;
+            public Rect                    Crop;
+            public NativeWindowScalingMode ScalingMode;
+            public NativeWindowTransform   Transform;
+            public uint                    StickyTransform;
+            public int                     Async;
+            public int                     SwapInterval;
+            public AndroidFence            Fence;
+>>>>>>> 1ec71635b (sync with main branch)
 
             public void Flatten(Parcel parcel)
             {
                 parcel.WriteUnmanagedType(ref this);
             }
 
+<<<<<<< HEAD
             public readonly uint GetFdCount()
+=======
+            public uint GetFdCount()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return 0;
             }
 
+<<<<<<< HEAD
             public readonly uint GetFlattenedSize()
+=======
+            public uint GetFlattenedSize()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return (uint)Unsafe.SizeOf<QueueBufferInput>();
             }
@@ -68,11 +96,19 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
         public struct QueueBufferOutput
         {
+<<<<<<< HEAD
             public uint Width;
             public uint Height;
             public NativeWindowTransform TransformHint;
             public uint NumPendingBuffers;
             public ulong FrameNumber;
+=======
+            public uint                  Width;
+            public uint                  Height;
+            public NativeWindowTransform TransformHint;
+            public uint                  NumPendingBuffers;
+            public ulong                 FrameNumber;
+>>>>>>> 1ec71635b (sync with main branch)
 
             public void WriteToParcel(Parcel parcel)
             {
@@ -108,6 +144,7 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
         public void OnTransact(uint code, uint flags, Parcel inputParcel, Parcel outputParcel)
         {
+<<<<<<< HEAD
             Status status = Status.Success;
             int slot;
             AndroidFence fence;
@@ -117,6 +154,17 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
             AndroidStrongPointer<GraphicBuffer> graphicBuffer;
             AndroidStrongPointer<AndroidFence> strongFence;
+=======
+            Status            status = Status.Success;
+            int               slot;
+            AndroidFence      fence;
+            QueueBufferInput  queueInput;
+            QueueBufferOutput queueOutput;
+            NativeWindowApi   api;
+
+            AndroidStrongPointer<GraphicBuffer> graphicBuffer;
+            AndroidStrongPointer<AndroidFence>  strongFence;
+>>>>>>> 1ec71635b (sync with main branch)
 
             switch ((TransactionCode)code)
             {
@@ -139,6 +187,7 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                     break;
                 case TransactionCode.DequeueBuffer:
+<<<<<<< HEAD
                     bool async = inputParcel.ReadBoolean();
                     uint width = inputParcel.ReadUInt32();
                     uint height = inputParcel.ReadUInt32();
@@ -146,6 +195,15 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                     uint usage = inputParcel.ReadUInt32();
 
                     status = DequeueBuffer(out int dequeueSlot, out fence, async, width, height, format, usage);
+=======
+                    bool        async  = inputParcel.ReadBoolean();
+                    uint        width  = inputParcel.ReadUInt32();
+                    uint        height = inputParcel.ReadUInt32();
+                    PixelFormat format = inputParcel.ReadUnmanagedType<PixelFormat>();
+                    uint        usage  = inputParcel.ReadUInt32();
+
+                    status      = DequeueBuffer(out int dequeueSlot, out fence, async, width, height, format, usage);
+>>>>>>> 1ec71635b (sync with main branch)
                     strongFence = new AndroidStrongPointer<AndroidFence>(fence);
 
                     outputParcel.WriteInt32(dequeueSlot);
@@ -163,7 +221,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                     break;
                 case TransactionCode.DetachNextBuffer:
+<<<<<<< HEAD
                     status = DetachNextBuffer(out graphicBuffer, out fence);
+=======
+                    status      = DetachNextBuffer(out graphicBuffer, out fence);
+>>>>>>> 1ec71635b (sync with main branch)
                     strongFence = new AndroidStrongPointer<AndroidFence>(fence);
 
                     outputParcel.WriteStrongPointer(ref graphicBuffer);
@@ -183,7 +245,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                     break;
                 case TransactionCode.QueueBuffer:
+<<<<<<< HEAD
                     slot = inputParcel.ReadInt32();
+=======
+                    slot       = inputParcel.ReadInt32();
+>>>>>>> 1ec71635b (sync with main branch)
                     queueInput = inputParcel.ReadFlattenable<QueueBufferInput>();
 
                     status = QueueBuffer(slot, ref queueInput, out queueOutput);
@@ -194,7 +260,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                     break;
                 case TransactionCode.CancelBuffer:
+<<<<<<< HEAD
                     slot = inputParcel.ReadInt32();
+=======
+                    slot  = inputParcel.ReadInt32();
+>>>>>>> 1ec71635b (sync with main branch)
                     fence = inputParcel.ReadFlattenable<AndroidFence>();
 
                     CancelBuffer(slot, ref fence);

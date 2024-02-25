@@ -19,4 +19,8 @@ namespace Ryujinx.Audio
         UnsupportedOperation = (513 << ErrorCodeShift) | ModuleId,
         InvalidExecutionContextOperation = (514 << ErrorCodeShift) | ModuleId,
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
+=======
+﻿using Ryujinx.Graphics.GAL;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.OpenGL.Image;
 using System;
 using System.Collections.Generic;
@@ -9,6 +13,10 @@ namespace Ryujinx.Graphics.OpenGL
     {
         public TextureCreateInfo Info;
         public TextureView View;
+<<<<<<< HEAD
+=======
+        public float ScaleFactor;
+>>>>>>> 1ec71635b (sync with main branch)
         public int RemainingFrames;
     }
 
@@ -19,8 +27,13 @@ namespace Ryujinx.Graphics.OpenGL
     {
         private const int DisposedLiveFrames = 2;
 
+<<<<<<< HEAD
         private readonly object _lock = new();
         private readonly Dictionary<TextureCreateInfo, List<DisposedTexture>> _textures = new();
+=======
+        private readonly object _lock = new object();
+        private readonly Dictionary<TextureCreateInfo, List<DisposedTexture>> _textures = new Dictionary<TextureCreateInfo, List<DisposedTexture>>();
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Add a texture that is not being used anymore to the resource pool to be used later.
@@ -31,7 +44,12 @@ namespace Ryujinx.Graphics.OpenGL
         {
             lock (_lock)
             {
+<<<<<<< HEAD
                 if (!_textures.TryGetValue(view.Info, out List<DisposedTexture> list))
+=======
+                List<DisposedTexture> list;
+                if (!_textures.TryGetValue(view.Info, out list))
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     list = new List<DisposedTexture>();
                     _textures.Add(view.Info, list);
@@ -41,7 +59,12 @@ namespace Ryujinx.Graphics.OpenGL
                 {
                     Info = view.Info,
                     View = view,
+<<<<<<< HEAD
                     RemainingFrames = DisposedLiveFrames,
+=======
+                    ScaleFactor = view.ScaleFactor,
+                    RemainingFrames = DisposedLiveFrames
+>>>>>>> 1ec71635b (sync with main branch)
                 });
             }
         }
@@ -50,20 +73,39 @@ namespace Ryujinx.Graphics.OpenGL
         /// Attempt to obtain a texture from the resource cache with the desired parameters.
         /// </summary>
         /// <param name="info">The creation info for the desired texture</param>
+<<<<<<< HEAD
         /// <returns>A TextureView with the description specified, or null if one was not found.</returns>
         public TextureView GetTextureOrNull(TextureCreateInfo info)
         {
             lock (_lock)
             {
                 if (!_textures.TryGetValue(info, out List<DisposedTexture> list))
+=======
+        /// <param name="scaleFactor">The scale factor for the desired texture</param>
+        /// <returns>A TextureView with the description specified, or null if one was not found.</returns>
+        public TextureView GetTextureOrNull(TextureCreateInfo info, float scaleFactor)
+        {
+            lock (_lock)
+            {
+                List<DisposedTexture> list;
+                if (!_textures.TryGetValue(info, out list))
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     return null;
                 }
 
                 foreach (DisposedTexture texture in list)
                 {
+<<<<<<< HEAD
                     list.Remove(texture);
                     return texture.View;
+=======
+                    if (scaleFactor == texture.ScaleFactor)
+                    {
+                        list.Remove(texture);
+                        return texture.View;
+                    }
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 return null;

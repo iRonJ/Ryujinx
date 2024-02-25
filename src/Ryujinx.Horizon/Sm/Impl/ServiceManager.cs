@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
+=======
+﻿using Ryujinx.Horizon.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Sdk.OsTypes;
 using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Sdk.Sm;
@@ -40,7 +44,11 @@ namespace Ryujinx.Horizon.Sm.Impl
             return result == KernelResult.SessionCountExceeded ? SmResult.OutOfSessions : result;
         }
 
+<<<<<<< HEAD
         private static Result GetServiceImpl(out int handle, ref ServiceInfo serviceInfo)
+=======
+        private Result GetServiceImpl(out int handle, ref ServiceInfo serviceInfo)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return HorizonStatic.Syscall.ConnectToPort(out handle, serviceInfo.PortHandle);
         }
@@ -96,8 +104,13 @@ namespace Ryujinx.Horizon.Sm.Impl
                 return result;
             }
 
+<<<<<<< HEAD
             freeService.PortHandle = clientPort;
             freeService.Name = name;
+=======
+            freeService.PortHandle     = clientPort;
+            freeService.Name           = name;
+>>>>>>> 1ec71635b (sync with main branch)
             freeService.OwnerProcessId = processId;
 
             return Result.Success;
@@ -140,7 +153,11 @@ namespace Ryujinx.Horizon.Sm.Impl
 
             int nameLength = 1;
 
+<<<<<<< HEAD
             for (; nameLength < ServiceName.Length; nameLength++)
+=======
+            for (; nameLength < name.Length; nameLength++)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 if (name[nameLength] == 0)
                 {
@@ -148,7 +165,11 @@ namespace Ryujinx.Horizon.Sm.Impl
                 }
             }
 
+<<<<<<< HEAD
             while (nameLength < ServiceName.Length)
+=======
+            while (nameLength < name.Length)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 if (name[nameLength++] != 0)
                 {
@@ -182,4 +203,8 @@ namespace Ryujinx.Horizon.Sm.Impl
             return -1;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace ARMeilleure.Memory
+=======
+﻿namespace ARMeilleure.Memory
+>>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// Indicates the type of a memory manager and the method it uses for memory mapping
@@ -28,10 +32,17 @@ namespace ARMeilleure.Memory
         /// Same as the host mapped memory manager type, but without masking the address within the address space.
         /// Allows invalid access from JIT code to the rest of the program, but is faster.
         /// </summary>
+<<<<<<< HEAD
         HostMappedUnsafe,
     }
 
     public static class MemoryManagerTypeExtensions
+=======
+        HostMappedUnsafe
+    }
+
+    static class MemoryManagerTypeExtensions
+>>>>>>> 1ec71635b (sync with main branch)
     {
         public static bool IsHostMapped(this MemoryManagerType type)
         {

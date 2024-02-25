@@ -49,10 +49,16 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         public static AstOperand Local(AggregateType type)
         {
+<<<<<<< HEAD
             AstOperand local = new(OperandType.LocalVariable)
             {
                 VarType = type,
             };
+=======
+            AstOperand local = new AstOperand(OperandType.LocalVariable);
+
+            local.VarType = type;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return local;
         }
@@ -72,4 +78,8 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             return node.LLNode.Previous?.Value;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

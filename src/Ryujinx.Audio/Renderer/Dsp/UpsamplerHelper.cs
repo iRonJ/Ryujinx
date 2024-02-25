@@ -13,11 +13,19 @@ namespace Ryujinx.Audio.Renderer.Dsp
         private const int FilterBankLength = 20;
         // Bank0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         private const int Bank0CenterIndex = 9;
+<<<<<<< HEAD
         private static readonly Array20<float> _bank1 = PrecomputeFilterBank(1.0f / 6.0f);
         private static readonly Array20<float> _bank2 = PrecomputeFilterBank(2.0f / 6.0f);
         private static readonly Array20<float> _bank3 = PrecomputeFilterBank(3.0f / 6.0f);
         private static readonly Array20<float> _bank4 = PrecomputeFilterBank(4.0f / 6.0f);
         private static readonly Array20<float> _bank5 = PrecomputeFilterBank(5.0f / 6.0f);
+=======
+        private static readonly Array20<float> Bank1 = PrecomputeFilterBank(1.0f / 6.0f);
+        private static readonly Array20<float> Bank2 = PrecomputeFilterBank(2.0f / 6.0f);
+        private static readonly Array20<float> Bank3 = PrecomputeFilterBank(3.0f / 6.0f);
+        private static readonly Array20<float> Bank4 = PrecomputeFilterBank(4.0f / 6.0f);
+        private static readonly Array20<float> Bank5 = PrecomputeFilterBank(5.0f / 6.0f);
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static Array20<float> PrecomputeFilterBank(float offset)
         {
@@ -32,6 +40,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
 
             float BlackmanWindow(float x)
             {
+<<<<<<< HEAD
                 const float A = 0.18f;
                 const float A0 = 0.5f - 0.5f * A;
                 const float A1 = -0.5f;
@@ -40,6 +49,16 @@ namespace Ryujinx.Audio.Renderer.Dsp
             }
 
             Array20<float> result = new();
+=======
+                const float a = 0.18f;
+                const float a0 = 0.5f - 0.5f * a;
+                const float a1 = -0.5f;
+                const float a2 = 0.5f * a;
+                return a0 + a1 * MathF.Cos(2 * MathF.PI * x) + a2 * MathF.Cos(4 * MathF.PI * x);
+            }
+            
+            Array20<float> result = new Array20<float>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < FilterBankLength; i++)
             {
@@ -58,10 +77,17 @@ namespace Ryujinx.Audio.Renderer.Dsp
             {
                 state.Scale = inputSampleCount switch
                 {
+<<<<<<< HEAD
                     40 => 6.0f,
                     80 => 3.0f,
                     160 => 1.5f,
                     _ => throw new ArgumentOutOfRangeException(nameof(inputSampleCount), inputSampleCount, null),
+=======
+                    40  => 6.0f,
+                    80  => 3.0f,
+                    160 => 1.5f,
+                    _   => throw new ArgumentOutOfRangeException()
+>>>>>>> 1ec71635b (sync with main branch)
                 };
                 state.Initialized = true;
             }
@@ -105,14 +131,22 @@ namespace Ryujinx.Audio.Renderer.Dsp
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             void NextInput(ref UpsamplerBufferState state, float input)
             {
+<<<<<<< HEAD
                 state.History.AsSpan()[1..].CopyTo(state.History.AsSpan());
+=======
+                state.History.AsSpan().Slice(1).CopyTo(state.History.AsSpan());
+>>>>>>> 1ec71635b (sync with main branch)
                 state.History[HistoryLength - 1] = input;
             }
 
             int inputBufferIndex = 0;
 
             switch (state.Scale)
+<<<<<<< HEAD
             {
+=======
+            { 
+>>>>>>> 1ec71635b (sync with main branch)
                 case 6.0f:
                     for (int i = 0; i < outputSampleCount; i++)
                     {
@@ -123,6 +157,7 @@ namespace Ryujinx.Audio.Renderer.Dsp
                                 outputBuffer[i] = state.History[Bank0CenterIndex];
                                 break;
                             case 1:
+<<<<<<< HEAD
                                 outputBuffer[i] = DoFilterBank(ref state, _bank1);
                                 break;
                             case 2:
@@ -136,6 +171,21 @@ namespace Ryujinx.Audio.Renderer.Dsp
                                 break;
                             case 5:
                                 outputBuffer[i] = DoFilterBank(ref state, _bank5);
+=======
+                                outputBuffer[i] = DoFilterBank(ref state, Bank1);
+                                break;
+                            case 2:
+                                outputBuffer[i] = DoFilterBank(ref state, Bank2);
+                                break;
+                            case 3:
+                                outputBuffer[i] = DoFilterBank(ref state, Bank3);
+                                break;
+                            case 4:
+                                outputBuffer[i] = DoFilterBank(ref state, Bank4);
+                                break;
+                            case 5:
+                                outputBuffer[i] = DoFilterBank(ref state, Bank5);
+>>>>>>> 1ec71635b (sync with main branch)
                                 break;
                         }
 
@@ -152,10 +202,17 @@ namespace Ryujinx.Audio.Renderer.Dsp
                                 outputBuffer[i] = state.History[Bank0CenterIndex];
                                 break;
                             case 1:
+<<<<<<< HEAD
                                 outputBuffer[i] = DoFilterBank(ref state, _bank2);
                                 break;
                             case 2:
                                 outputBuffer[i] = DoFilterBank(ref state, _bank4);
+=======
+                                outputBuffer[i] = DoFilterBank(ref state, Bank2);
+                                break;
+                            case 2:
+                                outputBuffer[i] = DoFilterBank(ref state, Bank4);
+>>>>>>> 1ec71635b (sync with main branch)
                                 break;
                         }
 
@@ -173,11 +230,19 @@ namespace Ryujinx.Audio.Renderer.Dsp
                                 outputBuffer[i] = state.History[Bank0CenterIndex];
                                 break;
                             case 1:
+<<<<<<< HEAD
                                 outputBuffer[i] = DoFilterBank(ref state, _bank4);
                                 break;
                             case 2:
                                 NextInput(ref state, inputBuffer[inputBufferIndex++]);
                                 outputBuffer[i] = DoFilterBank(ref state, _bank2);
+=======
+                                outputBuffer[i] = DoFilterBank(ref state, Bank4);
+                                break;
+                            case 2:
+                                NextInput(ref state, inputBuffer[inputBufferIndex++]);
+                                outputBuffer[i] = DoFilterBank(ref state, Bank2);
+>>>>>>> 1ec71635b (sync with main branch)
                                 break;
                         }
 
@@ -185,8 +250,16 @@ namespace Ryujinx.Audio.Renderer.Dsp
                     }
                     break;
                 default:
+<<<<<<< HEAD
                     throw new ArgumentOutOfRangeException(nameof(state), state.Scale, null);
             }
         }
     }
 }
+=======
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Configuration.Hid;
 using Ryujinx.Common.Configuration.Hid.Controller;
 using Ryujinx.Common.Configuration.Hid.Controller.Motion;
@@ -19,7 +23,11 @@ namespace Ryujinx.Input.Motion.CemuHook
 {
     public class Client : IDisposable
     {
+<<<<<<< HEAD
         public const uint Magic = 0x43555344; // DSUC
+=======
+        public const uint   Magic   = 0x43555344; // DSUC
+>>>>>>> 1ec71635b (sync with main branch)
         public const ushort Version = 1001;
 
         private bool _active;
@@ -29,15 +37,26 @@ namespace Ryujinx.Input.Motion.CemuHook
         private readonly Dictionary<int, UdpClient> _clients;
 
         private readonly bool[] _clientErrorStatus = new bool[Enum.GetValues<PlayerIndex>().Length];
+<<<<<<< HEAD
         private readonly long[] _clientRetryTimer = new long[Enum.GetValues<PlayerIndex>().Length];
         private readonly NpadManager _npadManager;
+=======
+        private readonly long[] _clientRetryTimer  = new long[Enum.GetValues<PlayerIndex>().Length];
+        private NpadManager _npadManager;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public Client(NpadManager npadManager)
         {
             _npadManager = npadManager;
+<<<<<<< HEAD
             _hosts = new Dictionary<int, IPEndPoint>();
             _motionData = new Dictionary<int, Dictionary<int, MotionInput>>();
             _clients = new Dictionary<int, UdpClient>();
+=======
+            _hosts       = new Dictionary<int, IPEndPoint>();
+            _motionData  = new Dictionary<int, Dictionary<int, MotionInput>>();
+            _clients     = new Dictionary<int, UdpClient>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             CloseClients();
         }
@@ -84,7 +103,11 @@ namespace Ryujinx.Input.Motion.CemuHook
 
                 try
                 {
+<<<<<<< HEAD
                     IPEndPoint endPoint = new(IPAddress.Parse(host), port);
+=======
+                    IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(host), port);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     client = new UdpClient(host, port);
 
@@ -141,9 +164,15 @@ namespace Ryujinx.Input.Motion.CemuHook
         {
             lock (_motionData)
             {
+<<<<<<< HEAD
                 if (_motionData.TryGetValue(player, out Dictionary<int, MotionInput> value))
                 {
                     if (value.TryGetValue(slot, out input))
+=======
+                if (_motionData.ContainsKey(player))
+                {
+                    if (_motionData[player].TryGetValue(slot, out input))
+>>>>>>> 1ec71635b (sync with main branch)
                     {
                         return true;
                     }
@@ -164,6 +193,7 @@ namespace Ryujinx.Input.Motion.CemuHook
 
         private void Send(byte[] data, int clientId)
         {
+<<<<<<< HEAD
             if (_clients.TryGetValue(clientId, out UdpClient client))
             {
                 if (client != null && client.Client != null && client.Client.Connected)
@@ -171,19 +201,36 @@ namespace Ryujinx.Input.Motion.CemuHook
                     try
                     {
                         client?.Send(data, data.Length);
+=======
+            if (_clients.TryGetValue(clientId, out UdpClient _client))
+            {
+                if (_client != null && _client.Client != null && _client.Client.Connected)
+                {
+                    try
+                    {
+                        _client?.Send(data, data.Length);
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                     catch (SocketException socketException)
                     {
                         if (!_clientErrorStatus[clientId])
                         {
+<<<<<<< HEAD
                             Logger.Warning?.PrintMsg(LogClass.Hid, $"Unable to send data request to motion source at {client.Client.RemoteEndPoint}. Error: {socketException.ErrorCode}");
+=======
+                            Logger.Warning?.PrintMsg(LogClass.Hid, $"Unable to send data request to motion source at {_client.Client.RemoteEndPoint}. Error: {socketException.ErrorCode}");
+>>>>>>> 1ec71635b (sync with main branch)
                         }
 
                         _clientErrorStatus[clientId] = true;
 
                         RemoveClient(clientId);
 
+<<<<<<< HEAD
                         client?.Dispose();
+=======
+                        _client?.Dispose();
+>>>>>>> 1ec71635b (sync with main branch)
 
                         SetRetryTimer(clientId);
                     }
@@ -193,7 +240,11 @@ namespace Ryujinx.Input.Motion.CemuHook
 
                         RemoveClient(clientId);
 
+<<<<<<< HEAD
                         client?.Dispose();
+=======
+                        _client?.Dispose();
+>>>>>>> 1ec71635b (sync with main branch)
 
                         SetRetryTimer(clientId);
                     }
@@ -203,6 +254,7 @@ namespace Ryujinx.Input.Motion.CemuHook
 
         private byte[] Receive(int clientId, int timeout = 0)
         {
+<<<<<<< HEAD
             if (_hosts.TryGetValue(clientId, out IPEndPoint endPoint) && _clients.TryGetValue(clientId, out UdpClient client))
             {
                 if (client != null && client.Client != null && client.Client.Connected)
@@ -210,6 +262,15 @@ namespace Ryujinx.Input.Motion.CemuHook
                     client.Client.ReceiveTimeout = timeout;
 
                     var result = client?.Receive(ref endPoint);
+=======
+            if (_hosts.TryGetValue(clientId, out IPEndPoint endPoint) && _clients.TryGetValue(clientId, out UdpClient _client))
+            {
+                if (_client != null && _client.Client != null && _client.Client.Connected)
+                {
+                    _client.Client.ReceiveTimeout = timeout;
+
+                    var result = _client?.Receive(ref endPoint);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     if (result.Length > 0)
                     {
@@ -242,9 +303,15 @@ namespace Ryujinx.Input.Motion.CemuHook
 
         public void ReceiveLoop(int clientId)
         {
+<<<<<<< HEAD
             if (_hosts.TryGetValue(clientId, out IPEndPoint endPoint) && _clients.TryGetValue(clientId, out UdpClient client))
             {
                 if (client != null && client.Client != null && client.Client.Connected)
+=======
+            if (_hosts.TryGetValue(clientId, out IPEndPoint endPoint) && _clients.TryGetValue(clientId, out UdpClient _client))
+            {
+                if (_client != null && _client.Client != null && _client.Client.Connected)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     try
                     {
@@ -271,7 +338,11 @@ namespace Ryujinx.Input.Motion.CemuHook
 
                         RemoveClient(clientId);
 
+<<<<<<< HEAD
                         client?.Dispose();
+=======
+                        _client?.Dispose();
+>>>>>>> 1ec71635b (sync with main branch)
 
                         SetRetryTimer(clientId);
                     }
@@ -281,7 +352,11 @@ namespace Ryujinx.Input.Motion.CemuHook
 
                         RemoveClient(clientId);
 
+<<<<<<< HEAD
                         client?.Dispose();
+=======
+                        _client?.Dispose();
+>>>>>>> 1ec71635b (sync with main branch)
 
                         SetRetryTimer(clientId);
                     }
@@ -297,8 +372,13 @@ namespace Ryujinx.Input.Motion.CemuHook
 
             data = data.AsSpan()[16..].ToArray();
 
+<<<<<<< HEAD
             using MemoryStream stream = new(data);
             using BinaryReader reader = new(stream);
+=======
+            using MemoryStream stream = new MemoryStream(data);
+            using BinaryReader reader = new BinaryReader(stream);
+>>>>>>> 1ec71635b (sync with main branch)
 
             switch (type)
             {
@@ -310,6 +390,7 @@ namespace Ryujinx.Input.Motion.CemuHook
                 case MessageType.Data:
                     ControllerDataResponse inputData = reader.ReadStruct<ControllerDataResponse>();
 
+<<<<<<< HEAD
                     Vector3 accelerometer = new()
                     {
                         X = -inputData.AccelerometerX,
@@ -322,6 +403,20 @@ namespace Ryujinx.Input.Motion.CemuHook
                         X = inputData.GyroscopePitch,
                         Y = inputData.GyroscopeRoll,
                         Z = -inputData.GyroscopeYaw,
+=======
+                    Vector3 accelerometer = new Vector3()
+                    {
+                        X = -inputData.AccelerometerX,
+                        Y = inputData.AccelerometerZ,
+                        Z = -inputData.AccelerometerY
+                    };
+
+                    Vector3 gyroscrope = new Vector3()
+                    {
+                        X = inputData.GyroscopePitch,
+                        Y = inputData.GyroscopeRoll,
+                        Z = -inputData.GyroscopeYaw
+>>>>>>> 1ec71635b (sync with main branch)
                     };
 
                     ulong timestamp = inputData.MotionTimestamp;
@@ -338,28 +433,53 @@ namespace Ryujinx.Input.Motion.CemuHook
                         {
                             int slot = inputData.Shared.Slot;
 
+<<<<<<< HEAD
                             if (_motionData.TryGetValue(clientId, out var motionDataItem))
                             {
                                 if (motionDataItem.TryGetValue(slot, out var previousData))
                                 {
+=======
+                            if (_motionData.ContainsKey(clientId))
+                            {
+                                if (_motionData[clientId].ContainsKey(slot))
+                                {
+                                    MotionInput previousData = _motionData[clientId][slot];
+
+>>>>>>> 1ec71635b (sync with main branch)
                                     previousData.Update(accelerometer, gyroscrope, timestamp, cemuHookConfig.Sensitivity, (float)cemuHookConfig.GyroDeadzone);
                                 }
                                 else
                                 {
+<<<<<<< HEAD
                                     MotionInput input = new();
 
                                     input.Update(accelerometer, gyroscrope, timestamp, cemuHookConfig.Sensitivity, (float)cemuHookConfig.GyroDeadzone);
 
                                     motionDataItem.Add(slot, input);
+=======
+                                    MotionInput input = new MotionInput();
+
+                                    input.Update(accelerometer, gyroscrope, timestamp, cemuHookConfig.Sensitivity, (float)cemuHookConfig.GyroDeadzone);
+
+                                    _motionData[clientId].Add(slot, input);
+>>>>>>> 1ec71635b (sync with main branch)
                                 }
                             }
                             else
                             {
+<<<<<<< HEAD
                                 MotionInput input = new();
 
                                 input.Update(accelerometer, gyroscrope, timestamp, cemuHookConfig.Sensitivity, (float)cemuHookConfig.GyroDeadzone);
 
                                 _motionData.Add(clientId, new Dictionary<int, MotionInput> { { slot, input } });
+=======
+                                MotionInput input = new MotionInput();
+
+                                input.Update(accelerometer, gyroscrope, timestamp, cemuHookConfig.Sensitivity, (float)cemuHookConfig.GyroDeadzone);
+
+                                _motionData.Add(clientId, new Dictionary<int, MotionInput>() { { slot, input } });
+>>>>>>> 1ec71635b (sync with main branch)
                             }
                         }
                         else
@@ -380,6 +500,7 @@ namespace Ryujinx.Input.Motion.CemuHook
 
             Header header = GenerateHeader(clientId);
 
+<<<<<<< HEAD
             using MemoryStream stream = MemoryStreamManager.Shared.GetStream();
             using BinaryWriter writer = new(stream);
 
@@ -411,6 +532,40 @@ namespace Ryujinx.Input.Motion.CemuHook
         }
 
         public void RequestData(int clientId, int slot)
+=======
+            using (MemoryStream stream = MemoryStreamManager.Shared.GetStream())
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                writer.WriteStruct(header);
+
+                ControllerInfoRequest request = new ControllerInfoRequest()
+                {
+                    Type       = MessageType.Info,
+                    PortsCount = 4
+                };
+
+                request.PortIndices[0] = (byte)slot;
+
+                writer.WriteStruct(request);
+
+                header.Length = (ushort)(stream.Length - 16);
+
+                writer.Seek(6, SeekOrigin.Begin);
+                writer.Write(header.Length);
+
+                Crc32.Hash(stream.ToArray(), header.Crc32.AsSpan());
+
+                writer.Seek(8, SeekOrigin.Begin);
+                writer.Write(header.Crc32.AsSpan());
+
+                byte[] data = stream.ToArray();
+
+                Send(data, clientId);
+            }
+        }
+
+        public unsafe void RequestData(int clientId, int slot)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (!_active)
             {
@@ -419,6 +574,7 @@ namespace Ryujinx.Input.Motion.CemuHook
 
             Header header = GenerateHeader(clientId);
 
+<<<<<<< HEAD
             using MemoryStream stream = MemoryStreamManager.Shared.GetStream();
             using BinaryWriter writer = new(stream);
 
@@ -456,6 +612,46 @@ namespace Ryujinx.Input.Motion.CemuHook
                 MagicString = Magic,
                 Version = Version,
                 Length = 0,
+=======
+            using (MemoryStream stream = MemoryStreamManager.Shared.GetStream())
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                writer.WriteStruct(header);
+
+                ControllerDataRequest request = new ControllerDataRequest()
+                {
+                    Type           = MessageType.Data,
+                    Slot           = (byte)slot,
+                    SubscriberType = SubscriberType.Slot
+                };
+
+                writer.WriteStruct(request);
+
+                header.Length = (ushort)(stream.Length - 16);
+
+                writer.Seek(6, SeekOrigin.Begin);
+                writer.Write(header.Length);
+
+                Crc32.Hash(stream.ToArray(), header.Crc32.AsSpan());
+
+                writer.Seek(8, SeekOrigin.Begin);
+                writer.Write(header.Crc32.AsSpan());
+
+                byte[] data = stream.ToArray();
+
+                Send(data, clientId);
+            }
+        }
+
+        private Header GenerateHeader(int clientId)
+        {
+            Header header = new Header()
+            {
+                Id          = (uint)clientId,
+                MagicString = Magic,
+                Version     = Version,
+                Length      = 0
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             return header;
@@ -463,10 +659,17 @@ namespace Ryujinx.Input.Motion.CemuHook
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             _active = false;
 
             CloseClients();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

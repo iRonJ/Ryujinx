@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Silk.NET.Vulkan;
+=======
+﻿using Silk.NET.Vulkan;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.Graphics.Vulkan
@@ -10,7 +14,11 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly HostMemoryAllocator _hostMemory;
 
         public DeviceMemory Memory { get; }
+<<<<<<< HEAD
         public IntPtr HostPointer { get; }
+=======
+        public IntPtr HostPointer { get;}
+>>>>>>> 1ec71635b (sync with main branch)
         public ulong Offset { get; }
         public ulong Size { get; }
 

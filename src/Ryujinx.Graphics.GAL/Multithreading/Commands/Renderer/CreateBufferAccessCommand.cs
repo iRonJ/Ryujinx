@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands.Renderer
 {
     struct CreateBufferAccessCommand : IGALCommand, IGALCommand<CreateBufferAccessCommand>
     {
         public readonly CommandType CommandType => CommandType.CreateBufferAccess;
+=======
+﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands.Renderer
+{
+    struct CreateBufferAccessCommand : IGALCommand, IGALCommand<CreateBufferAccessCommand>
+    {
+        public CommandType CommandType => CommandType.CreateBufferAccess;
+>>>>>>> 1ec71635b (sync with main branch)
         private BufferHandle _threadedHandle;
         private int _size;
         private BufferAccess _access;

@@ -84,9 +84,15 @@ namespace ARMeilleure.Instructions
             {
                 Operand res = GetIntOrZR(context, op.Rn);
 
+<<<<<<< HEAD
                 res = context.ShiftLeft(res, Const(bitsCount - 1 - op.Pos));
                 res = context.ShiftRightSI(res, Const(bitsCount - 1));
                 res = context.BitwiseAnd(res, Const(res.Type, ~op.TMask));
+=======
+                res = context.ShiftLeft   (res, Const(bitsCount - 1 - op.Pos));
+                res = context.ShiftRightSI(res, Const(bitsCount - 1));
+                res = context.BitwiseAnd  (res, Const(res.Type, ~op.TMask));
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Operand n2 = GetBfmN(context);
 
@@ -193,4 +199,8 @@ namespace ARMeilleure.Instructions
             return context.BitwiseAnd(context.RotateRight(res, Const(op.Shift)), Const(res.Type, mask));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -4,7 +4,11 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE
 {
     class IStorageAccessor : IpcService
     {
+<<<<<<< HEAD
         private readonly IStorage _storage;
+=======
+        private IStorage _storage;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IStorageAccessor(IStorage storage)
         {
@@ -83,4 +87,8 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

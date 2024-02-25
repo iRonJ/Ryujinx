@@ -2,6 +2,10 @@ using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
 using System;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitAluHelper;
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
@@ -483,8 +487,13 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
             else
             {
+<<<<<<< HEAD
                 Operand low = context.BitwiseAnd(res[0], Const(0xffff));
                 Operand high = context.ShiftLeft(res[1], Const(16));
+=======
+                Operand low  = context.BitwiseAnd(res[0], Const(0xffff));
+                Operand high = context.ShiftLeft (res[1], Const(16));
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Operand packed = context.BitwiseOr(low, high);
 
@@ -545,6 +554,7 @@ namespace Ryujinx.Graphics.Shader.Instructions
             }
             else
             {
+<<<<<<< HEAD
                 var inst = (cond & ~FComp.Nan) switch
                 {
                     FComp.Lt => Instruction.CompareLess,
@@ -555,6 +565,22 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     FComp.Ge => Instruction.CompareGreaterOrEqual,
                     _ => throw new ArgumentException($"Unexpected condition \"{cond}\"."),
                 };
+=======
+                Instruction inst;
+
+                switch (cond & ~FComp.Nan)
+                {
+                    case FComp.Lt: inst = Instruction.CompareLess; break;
+                    case FComp.Eq: inst = Instruction.CompareEqual; break;
+                    case FComp.Le: inst = Instruction.CompareLessOrEqual; break;
+                    case FComp.Gt: inst = Instruction.CompareGreater; break;
+                    case FComp.Ne: inst = Instruction.CompareNotEqual; break;
+                    case FComp.Ge: inst = Instruction.CompareGreaterOrEqual; break;
+
+                    default: throw new ArgumentException($"Unexpected condition \"{cond}\".");
+                }
+
+>>>>>>> 1ec71635b (sync with main branch)
                 res = context.Add(inst | fpType, Local(), srcA, srcB);
 
                 if ((cond & FComp.Nan) != 0)
@@ -567,4 +593,8 @@ namespace Ryujinx.Graphics.Shader.Instructions
             return res;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

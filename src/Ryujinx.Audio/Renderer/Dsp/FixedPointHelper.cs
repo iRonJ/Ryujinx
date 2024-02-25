@@ -36,4 +36,8 @@ namespace Ryujinx.Audio.Renderer.Dsp
             return ToInt(value + half, qBits);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

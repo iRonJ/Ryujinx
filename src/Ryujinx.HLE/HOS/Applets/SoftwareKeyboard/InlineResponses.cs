@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.IO;
+=======
+﻿using System.IO;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Text;
 
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
@@ -60,6 +64,7 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
         {
             uint resSize = 2 * sizeof(uint) + 0x1;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -67,24 +72,45 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             writer.Write((byte)1); // Data (ignored by the program)
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.FinishedInitialize, writer);
+                writer.Write((byte)1); // Data (ignored by the program)
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] Default(InlineKeyboardState state)
         {
             uint resSize = 2 * sizeof(uint);
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
             BeginResponse(state, InlineKeyboardResponse.Default, writer);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.Default, writer);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] ChangedString(string text, uint cursor, InlineKeyboardState state)
         {
             uint resSize = 6 * sizeof(uint) + MaxStrLenUTF16;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -92,12 +118,23 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF16, Encoding.Unicode, true);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.ChangedString, writer);
+                WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF16, Encoding.Unicode, true);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] MovedCursor(string text, uint cursor, InlineKeyboardState state)
         {
             uint resSize = 4 * sizeof(uint) + MaxStrLenUTF16;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -105,6 +142,16 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF16, Encoding.Unicode, false);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.MovedCursor, writer);
+                WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF16, Encoding.Unicode, false);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] MovedTab(string text, uint cursor, InlineKeyboardState state)
@@ -113,6 +160,7 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
 
             uint resSize = 4 * sizeof(uint) + MaxStrLenUTF16;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -120,12 +168,23 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF16, Encoding.Unicode, false);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.MovedTab, writer);
+                WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF16, Encoding.Unicode, false);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] DecidedEnter(string text, InlineKeyboardState state)
         {
             uint resSize = 3 * sizeof(uint) + MaxStrLenUTF16;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -133,24 +192,45 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             WriteString(text, writer, MaxStrLenUTF16, Encoding.Unicode);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.DecidedEnter, writer);
+                WriteString(text, writer, MaxStrLenUTF16, Encoding.Unicode);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] DecidedCancel(InlineKeyboardState state)
         {
             uint resSize = 2 * sizeof(uint);
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
             BeginResponse(state, InlineKeyboardResponse.DecidedCancel, writer);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.DecidedCancel, writer);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] ChangedStringUtf8(string text, uint cursor, InlineKeyboardState state)
         {
             uint resSize = 6 * sizeof(uint) + MaxStrLenUTF8;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -158,12 +238,23 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF8, Encoding.UTF8, true);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.ChangedStringUtf8, writer);
+                WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF8, Encoding.UTF8, true);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] MovedCursorUtf8(string text, uint cursor, InlineKeyboardState state)
         {
             uint resSize = 4 * sizeof(uint) + MaxStrLenUTF8;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -171,12 +262,23 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF8, Encoding.UTF8, false);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.MovedCursorUtf8, writer);
+                WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF8, Encoding.UTF8, false);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] DecidedEnterUtf8(string text, InlineKeyboardState state)
         {
             uint resSize = 3 * sizeof(uint) + MaxStrLenUTF8;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -184,48 +286,89 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             WriteString(text, writer, MaxStrLenUTF8, Encoding.UTF8);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.DecidedEnterUtf8, writer);
+                WriteString(text, writer, MaxStrLenUTF8, Encoding.UTF8);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] UnsetCustomizeDic(InlineKeyboardState state)
         {
             uint resSize = 2 * sizeof(uint);
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
             BeginResponse(state, InlineKeyboardResponse.UnsetCustomizeDic, writer);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.UnsetCustomizeDic, writer);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] ReleasedUserWordInfo(InlineKeyboardState state)
         {
             uint resSize = 2 * sizeof(uint);
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
             BeginResponse(state, InlineKeyboardResponse.ReleasedUserWordInfo, writer);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.ReleasedUserWordInfo, writer);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] UnsetCustomizedDictionaries(InlineKeyboardState state)
         {
             uint resSize = 2 * sizeof(uint);
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
             BeginResponse(state, InlineKeyboardResponse.UnsetCustomizedDictionaries, writer);
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.UnsetCustomizedDictionaries, writer);
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] ChangedStringV2(string text, uint cursor, InlineKeyboardState state)
         {
             uint resSize = 6 * sizeof(uint) + MaxStrLenUTF16 + 0x1;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -234,12 +377,24 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             writer.Write((byte)0); // Flag == 0
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.ChangedStringV2, writer);
+                WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF16, Encoding.Unicode, true);
+                writer.Write((byte)0); // Flag == 0
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] MovedCursorV2(string text, uint cursor, InlineKeyboardState state)
         {
             uint resSize = 4 * sizeof(uint) + MaxStrLenUTF16 + 0x1;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -248,12 +403,24 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             writer.Write((byte)0); // Flag == 0
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.MovedCursorV2, writer);
+                WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF16, Encoding.Unicode, false);
+                writer.Write((byte)0); // Flag == 0
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] ChangedStringUtf8V2(string text, uint cursor, InlineKeyboardState state)
         {
             uint resSize = 6 * sizeof(uint) + MaxStrLenUTF8 + 0x1;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -262,12 +429,24 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             writer.Write((byte)0); // Flag == 0
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.ChangedStringUtf8V2, writer);
+                WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF8, Encoding.UTF8, true);
+                writer.Write((byte)0); // Flag == 0
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static byte[] MovedCursorUtf8V2(string text, uint cursor, InlineKeyboardState state)
         {
             uint resSize = 4 * sizeof(uint) + MaxStrLenUTF8 + 0x1;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(new byte[resSize]);
             using BinaryWriter writer = new(stream);
 
@@ -276,6 +455,17 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
             writer.Write((byte)0); // Flag == 0
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(new byte[resSize]))
+            using (BinaryWriter writer = new BinaryWriter(stream))
+            {
+                BeginResponse(state, InlineKeyboardResponse.MovedCursorUtf8V2, writer);
+                WriteStringWithCursor(text, cursor, writer, MaxStrLenUTF8, Encoding.UTF8, false);
+                writer.Write((byte)0); // Flag == 0
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

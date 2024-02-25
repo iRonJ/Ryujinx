@@ -4,15 +4,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Ryujinx.Ava.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+<<<<<<< HEAD
+=======
+    xmlns:flex="clr-namespace:Avalonia.Flexbox;assembly=Avalonia.Flexbox"
+>>>>>>> 1ec71635b (sync with main branch)
     xmlns:helpers="clr-namespace:Ryujinx.Ava.UI.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Focusable="True"
+<<<<<<< HEAD
     mc:Ignorable="d"
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     x:DataType="viewModels:MainWindowViewModel">
+=======
+    mc:Ignorable="d">
+>>>>>>> 1ec71635b (sync with main branch)
     <UserControl.Resources>
         <helpers:BitmapArrayValueConverter x:Key="ByteImage" />
         <controls:ApplicationContextMenu x:Key="ApplicationContextMenu" />
@@ -28,6 +36,7 @@
             VerticalAlignment="Stretch"
             ContextFlyout="{StaticResource ApplicationContextMenu}"
             DoubleTapped="GameList_DoubleTapped"
+<<<<<<< HEAD
             ItemsSource="{Binding AppsObservableList}"
             SelectionChanged="GameList_SelectionChanged">
             <ListBox.ItemsPanel>
@@ -36,6 +45,17 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         Orientation="Horizontal" />
+=======
+            Items="{Binding AppsObservableList}"
+            SelectionChanged="GameList_SelectionChanged">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <flex:FlexPanel
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        AlignContent="FlexStart"
+                        JustifyContent="Center" />
+>>>>>>> 1ec71635b (sync with main branch)
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.Styles>
@@ -43,8 +63,13 @@
                     <Setter Property="Margin" Value="5" />
                     <Setter Property="CornerRadius" Value="4" />
                 </Style>
+<<<<<<< HEAD
                 <Style Selector="ListBoxItem:selected /template/ Rectangle#SelectionIndicator">
                     <Setter Property="MinHeight" Value="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).GridItemSelectorSize}" />
+=======
+                <Style Selector="ListBoxItem:selected /template/ Border#SelectionIndicator">
+                    <Setter Property="MinHeight" Value="{Binding $parent[UserControl].DataContext.GridItemSelectorSize}" />
+>>>>>>> 1ec71635b (sync with main branch)
                 </Style>
             </ListBox.Styles>
             <ListBox.ItemTemplate>
@@ -54,10 +79,17 @@
                             Margin="10"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
+<<<<<<< HEAD
                             Classes.huge="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).IsGridHuge}"
                             Classes.large="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).IsGridLarge}"
                             Classes.normal="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).IsGridMedium}"
                             Classes.small="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).IsGridSmall}"
+=======
+                            Classes.huge="{Binding $parent[UserControl].DataContext.IsGridHuge}"
+                            Classes.large="{Binding $parent[UserControl].DataContext.IsGridLarge}"
+                            Classes.normal="{Binding $parent[UserControl].DataContext.IsGridMedium}"
+                            Classes.small="{Binding $parent[UserControl].DataContext.IsGridSmall}"
+>>>>>>> 1ec71635b (sync with main branch)
                             ClipToBounds="True"
                             CornerRadius="4">
                             <Grid>
@@ -76,9 +108,15 @@
                                     Margin="0,10,0,0"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
+<<<<<<< HEAD
                                     IsVisible="{Binding $parent[UserControl].((viewModels:MainWindowViewModel)DataContext).ShowNames}">
                                     <TextBlock
                                         HorizontalAlignment="Center"
+=======
+                                    IsVisible="{Binding $parent[UserControl].DataContext.ShowNames}">
+                                    <TextBlock
+                                        HorizontalAlignment="Stretch"
+>>>>>>> 1ec71635b (sync with main branch)
                                         VerticalAlignment="Center"
                                         Text="{Binding TitleName}"
                                         TextAlignment="Center"
@@ -99,4 +137,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
+<<<<<<< HEAD
 </UserControl>
+=======
+</UserControl>
+>>>>>>> 1ec71635b (sync with main branch)

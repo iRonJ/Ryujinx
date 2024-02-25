@@ -29,4 +29,8 @@ namespace ARMeilleure.CodeGen.Linking
             _entries = entries;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

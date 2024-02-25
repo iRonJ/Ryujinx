@@ -2,7 +2,11 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc.AccountService
 {
     class IManagerForSystemService : IpcService
     {
+<<<<<<< HEAD
         private readonly ManagerServer _managerServer;
+=======
+        private ManagerServer _managerServer;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IManagerForSystemService(UserId userId)
         {
@@ -44,4 +48,8 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc.AccountService
             return _managerServer.LoadIdTokenCache(context);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

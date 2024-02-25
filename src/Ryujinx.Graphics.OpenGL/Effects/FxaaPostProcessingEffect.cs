@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using OpenTK.Graphics.OpenGL;
+=======
+﻿using OpenTK.Graphics.OpenGL;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common;
 using Ryujinx.Graphics.OpenGL.Image;
 
@@ -43,7 +47,11 @@ namespace Ryujinx.Graphics.OpenGL.Effects
             if (_textureStorage == null || _textureStorage.Info.Width != view.Width || _textureStorage.Info.Height != view.Height)
             {
                 _textureStorage?.Dispose();
+<<<<<<< HEAD
                 _textureStorage = new TextureStorage(_renderer, view.Info);
+=======
+                _textureStorage = new TextureStorage(_renderer, view.Info, view.ScaleFactor);
+>>>>>>> 1ec71635b (sync with main branch)
                 _textureStorage.CreateDefaultView();
             }
 
@@ -78,4 +86,8 @@ namespace Ryujinx.Graphics.OpenGL.Effects
             return textureView;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

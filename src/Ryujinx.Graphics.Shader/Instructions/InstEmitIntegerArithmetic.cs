@@ -371,7 +371,11 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 }
                 else
                 {
+<<<<<<< HEAD
                     context.TranslatorContext.GpuAccessor.Log($"Iadd3 has invalid component selection {part}.");
+=======
+                    context.Config.GpuAccessor.Log($"Iadd3 has invalid component selection {part}.");
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 return src;
@@ -510,9 +514,13 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 aLow = context.BitwiseNot(aLow);
                 aHigh = context.BitwiseNot(aHigh);
 
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
                 aLow = AddWithCarry(context, aLow, Const(1), out Operand aLowCOut);
 #pragma warning restore IDE0059
+=======
+                aLow = AddWithCarry(context, aLow, Const(1), out Operand aLowCOut);
+>>>>>>> 1ec71635b (sync with main branch)
                 aHigh = context.IAdd(aHigh, aLowCOut);
             }
 
@@ -555,7 +563,11 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     modeConv = XmadCop.Csfu;
                     break;
                 default:
+<<<<<<< HEAD
                     context.TranslatorContext.GpuAccessor.Log($"Invalid XMAD mode \"{mode}\".");
+=======
+                    context.Config.GpuAccessor.Log($"Invalid XMAD mode \"{mode}\".");
+>>>>>>> 1ec71635b (sync with main branch)
                     return;
             }
 
@@ -634,7 +646,11 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     break;
 
                 default:
+<<<<<<< HEAD
                     context.TranslatorContext.GpuAccessor.Log($"Invalid XMAD mode \"{mode}\".");
+=======
+                    context.Config.GpuAccessor.Log($"Invalid XMAD mode \"{mode}\".");
+>>>>>>> 1ec71635b (sync with main branch)
                     return;
             }
 
@@ -698,4 +714,8 @@ namespace Ryujinx.Graphics.Shader.Instructions
             SetZnFlags(context, res, setCC: true, extended: extended);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -9,9 +9,15 @@ namespace ARMeilleure.Decoders
 
         public int Immediate { get; protected set; }
 
+<<<<<<< HEAD
         public bool Index { get; }
         public bool Add { get; }
         public bool WBack { get; }
+=======
+        public bool Index        { get; }
+        public bool Add          { get; }
+        public bool WBack        { get; }
+>>>>>>> 1ec71635b (sync with main branch)
         public bool Unprivileged { get; }
 
         public bool IsLoad { get; }
@@ -24,6 +30,7 @@ namespace ARMeilleure.Decoders
             Rn = (opCode >> 16) & 0xf;
 
             bool isLoad = (opCode & (1 << 20)) != 0;
+<<<<<<< HEAD
             bool w = (opCode & (1 << 21)) != 0;
             bool u = (opCode & (1 << 23)) != 0;
             bool p = (opCode & (1 << 24)) != 0;
@@ -31,9 +38,22 @@ namespace ARMeilleure.Decoders
             Index = p;
             Add = u;
             WBack = !p || w;
+=======
+            bool w      = (opCode & (1 << 21)) != 0;
+            bool u      = (opCode & (1 << 23)) != 0;
+            bool p      = (opCode & (1 << 24)) != 0;
+
+            Index        = p;
+            Add          = u;
+            WBack        = !p || w;
+>>>>>>> 1ec71635b (sync with main branch)
             Unprivileged = !p && w;
 
             IsLoad = isLoad || inst.Name == InstName.Ldrd;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

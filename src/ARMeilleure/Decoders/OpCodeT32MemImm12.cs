@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace ARMeilleure.Decoders
+=======
+﻿namespace ARMeilleure.Decoders
+>>>>>>> 1ec71635b (sync with main branch)
 {
     class OpCodeT32MemImm12 : OpCodeT32, IOpCode32Mem
     {
@@ -22,4 +26,8 @@ namespace ARMeilleure.Decoders
             IsLoad = ((opCode >> 20) & 1) != 0;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -4,7 +4,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 {
     class GotoStatement
     {
+<<<<<<< HEAD
         public AstOperation Goto { get; }
+=======
+        public AstOperation  Goto  { get; }
+>>>>>>> 1ec71635b (sync with main branch)
         public AstAssignment Label { get; }
 
         public IAstNode Condition => Label.Destination;
@@ -15,9 +19,18 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         public GotoStatement(AstOperation branch, AstAssignment label, bool isLoop)
         {
+<<<<<<< HEAD
             Goto = branch;
             Label = label;
             IsLoop = isLoop;
         }
     }
 }
+=======
+            Goto   = branch;
+            Label  = label;
+            IsLoop = isLoop;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

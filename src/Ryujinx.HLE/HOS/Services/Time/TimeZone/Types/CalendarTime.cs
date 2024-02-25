@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Runtime.InteropServices;
+=======
+﻿using System.Runtime.InteropServices;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
 {
@@ -12,4 +16,8 @@ namespace Ryujinx.HLE.HOS.Services.Time.TimeZone
         public sbyte Minute;
         public sbyte Second;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

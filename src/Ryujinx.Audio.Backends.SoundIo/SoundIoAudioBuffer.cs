@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Audio.Backends.SoundIo
+=======
+﻿namespace Ryujinx.Audio.Backends.SoundIo
+>>>>>>> 1ec71635b (sync with main branch)
 {
     class SoundIoAudioBuffer
     {

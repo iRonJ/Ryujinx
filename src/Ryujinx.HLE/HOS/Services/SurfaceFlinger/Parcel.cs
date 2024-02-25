@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Utilities;
 using Ryujinx.HLE.HOS.Services.SurfaceFlinger.Types;
 using System;
@@ -13,7 +17,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
     {
         private readonly byte[] _rawData;
 
+<<<<<<< HEAD
         private Span<byte> Raw => new(_rawData);
+=======
+        private Span<byte> Raw => new Span<byte>(_rawData);
+>>>>>>> 1ec71635b (sync with main branch)
 
         private ref ParcelHeader Header => ref MemoryMarshal.Cast<byte, ParcelHeader>(_rawData)[0];
 
@@ -26,10 +34,17 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
         public Parcel(byte[] rawData)
         {
+<<<<<<< HEAD
             _rawData = rawData;
 
             _payloadPosition = 0;
             _objectPosition = 0;
+=======
+            _rawData  = rawData;
+
+            _payloadPosition = 0;
+            _objectPosition  = 0;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public Parcel(uint payloadSize, uint objectsSize)
@@ -38,18 +53,29 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
             _rawData = new byte[BitUtils.AlignUp<uint>(headerSize + payloadSize + objectsSize, 4)];
 
+<<<<<<< HEAD
             Header.PayloadSize = payloadSize;
             Header.ObjectsSize = objectsSize;
             Header.PayloadOffset = headerSize;
             Header.ObjectOffset = Header.PayloadOffset + Header.ObjectsSize;
+=======
+            Header.PayloadSize   = payloadSize;
+            Header.ObjectsSize   = objectsSize;
+            Header.PayloadOffset = headerSize;
+            Header.ObjectOffset  = Header.PayloadOffset + Header.ObjectsSize;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public string ReadInterfaceToken()
         {
             // Ignore the policy flags
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             int strictPolicy = ReadInt32();
 #pragma warning restore IDE0059
+=======
+            int strictPolicy = ReadInt32();
+>>>>>>> 1ec71635b (sync with main branch)
 
             return ReadString16();
         }
@@ -66,7 +92,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             ReadOnlySpan<byte> data = ReadInPlace((size + 1) * 2);
 
             // Return the unicode string without the last character (null terminator)
+<<<<<<< HEAD
             return Encoding.Unicode.GetString(data[..(size * 2)]);
+=======
+            return Encoding.Unicode.GetString(data.Slice(0, size * 2));
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public int ReadInt32() => ReadUnmanagedType<int>();
@@ -79,7 +109,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         {
             long flattenableSize = ReadInt64();
 
+<<<<<<< HEAD
             T result = new();
+=======
+            T result = new T();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Debug.Assert(flattenableSize == result.GetFlattenedSize());
 
@@ -88,7 +122,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             return result;
         }
 
+<<<<<<< HEAD
         public T ReadUnmanagedType<T>() where T : unmanaged
+=======
+        public T ReadUnmanagedType<T>() where T: unmanaged
+>>>>>>> 1ec71635b (sync with main branch)
         {
             ReadOnlySpan<byte> data = ReadInPlace(Unsafe.SizeOf<T>());
 
@@ -107,8 +145,13 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         [StructLayout(LayoutKind.Sequential, Size = 0x28)]
         private struct FlatBinderObject
         {
+<<<<<<< HEAD
             public int Type;
             public int Flags;
+=======
+            public int  Type;
+            public int  Flags;
+>>>>>>> 1ec71635b (sync with main branch)
             public long BinderId;
             public long Cookie;
 
@@ -117,12 +160,21 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             public Span<byte> ServiceName => MemoryMarshal.CreateSpan(ref _serviceNameStart, 0x8);
         }
 
+<<<<<<< HEAD
         public void WriteObject<T>(T obj, string serviceName) where T : IBinder
         {
             FlatBinderObject flatBinderObject = new()
             {
                 Type = 2,
                 Flags = 0,
+=======
+        public void WriteObject<T>(T obj, string serviceName) where T: IBinder
+        {
+            FlatBinderObject flatBinderObject = new FlatBinderObject
+            {
+                Type     = 2,
+                Flags    = 0,
+>>>>>>> 1ec71635b (sync with main branch)
                 BinderId = HOSBinderDriverServer.GetBinderId(obj),
             };
 
@@ -151,7 +203,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             }
         }
 
+<<<<<<< HEAD
         public void WriteStrongPointer<T>(ref AndroidStrongPointer<T> value) where T : unmanaged, IFlattenable
+=======
+        public void WriteStrongPointer<T>(ref AndroidStrongPointer<T> value) where T: unmanaged, IFlattenable
+>>>>>>> 1ec71635b (sync with main branch)
         {
             WriteBoolean(!value.IsNull);
 
@@ -207,17 +263,28 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         {
             uint headerSize = (uint)Unsafe.SizeOf<ParcelHeader>();
 
+<<<<<<< HEAD
             Header.PayloadSize = (uint)_payloadPosition;
             Header.ObjectsSize = (uint)_objectPosition;
             Header.PayloadOffset = headerSize;
             Header.ObjectOffset = Header.PayloadOffset + Header.PayloadSize;
+=======
+            Header.PayloadSize   = (uint)_payloadPosition;
+            Header.ObjectsSize   = (uint)_objectPosition;
+            Header.PayloadOffset = headerSize;
+            Header.ObjectOffset  = Header.PayloadOffset + Header.PayloadSize;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ReadOnlySpan<byte> Finish()
         {
             UpdateHeader();
 
+<<<<<<< HEAD
             return Raw[..(int)(Header.PayloadSize + Header.ObjectsSize + Unsafe.SizeOf<ParcelHeader>())];
+=======
+            return Raw.Slice(0, (int)(Header.PayloadSize + Header.ObjectsSize + Unsafe.SizeOf<ParcelHeader>()));
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

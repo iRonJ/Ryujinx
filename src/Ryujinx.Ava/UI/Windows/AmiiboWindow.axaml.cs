@@ -1,7 +1,11 @@
 using Avalonia.Interactivity;
 using Ryujinx.Ava.Common.Locale;
 using Ryujinx.Ava.UI.ViewModels;
+<<<<<<< HEAD
 using Ryujinx.UI.Common.Models.Amiibo;
+=======
+using Ryujinx.Ui.Common.Models.Amiibo;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.Windows
 {
@@ -9,10 +13,16 @@ namespace Ryujinx.Ava.UI.Windows
     {
         public AmiiboWindow(bool showAll, string lastScannedAmiiboId, string titleId)
         {
+<<<<<<< HEAD
             ViewModel = new AmiiboWindowViewModel(this, lastScannedAmiiboId, titleId)
             {
                 ShowAllAmiibo = showAll,
             };
+=======
+            ViewModel = new AmiiboWindowViewModel(this, lastScannedAmiiboId, titleId);
+
+            ViewModel.ShowAllAmiibo = showAll;
+>>>>>>> 1ec71635b (sync with main branch)
 
             DataContext = ViewModel;
 
@@ -57,4 +67,8 @@ namespace Ryujinx.Ava.UI.Windows
             Close();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

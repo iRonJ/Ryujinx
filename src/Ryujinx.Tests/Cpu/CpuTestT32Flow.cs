@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using ARMeilleure.State;
+=======
+﻿using ARMeilleure.State;
+>>>>>>> 1ec71635b (sync with main branch)
 using NUnit.Framework;
 
 namespace Ryujinx.Tests.Cpu
@@ -109,7 +113,11 @@ namespace Ryujinx.Tests.Cpu
 
             ExecuteOpcodes(runUnicorn: false);
 
+<<<<<<< HEAD
             Assert.That(GetContext().GetX(0), Is.EqualTo(CodeBaseAddress + 0x5));
+=======
+            Assert.That(GetContext().GetX(0), Is.EqualTo(0x1005));
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [Test]
@@ -133,7 +141,11 @@ namespace Ryujinx.Tests.Cpu
 
             ExecuteOpcodes(runUnicorn: false);
 
+<<<<<<< HEAD
             Assert.That(GetContext().GetX(0), Is.EqualTo(CodeBaseAddress + 0x5));
+=======
+            Assert.That(GetContext().GetX(0), Is.EqualTo(0x1005));
+>>>>>>> 1ec71635b (sync with main branch)
             Assert.That(GetContext().GetPstateFlag(PState.TFlag), Is.EqualTo(false));
         }
 
@@ -160,8 +172,16 @@ namespace Ryujinx.Tests.Cpu
 
             ExecuteOpcodes(runUnicorn: false);
 
+<<<<<<< HEAD
             Assert.That(GetContext().GetX(0), Is.EqualTo(CodeBaseAddress + 0x7));
             Assert.That(GetContext().GetPstateFlag(PState.TFlag), Is.EqualTo(false));
         }
     }
 }
+=======
+            Assert.That(GetContext().GetX(0), Is.EqualTo(0x1007));
+            Assert.That(GetContext().GetPstateFlag(PState.TFlag), Is.EqualTo(false));
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

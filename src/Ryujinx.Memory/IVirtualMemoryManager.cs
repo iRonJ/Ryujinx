@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Memory.Range;
+=======
+﻿using Ryujinx.Memory.Range;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Buffers;
 using System.Collections.Generic;
@@ -104,12 +108,15 @@ namespace Ryujinx.Memory
         /// <returns>True if the data was changed, false otherwise</returns>
         bool WriteWithRedundancyCheck(ulong va, ReadOnlySpan<byte> data);
 
+<<<<<<< HEAD
         /// <summary>
         /// Fills the specified memory region with the value specified in <paramref name="value"/>.
         /// </summary>
         /// <param name="va">Virtual address to fill the value into</param>
         /// <param name="size">Size of the memory region to fill</param>
         /// <param name="value">Value to fill with</param>
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         void Fill(ulong va, ulong size, byte value)
         {
             const int MaxChunkSize = 1 << 24;
@@ -201,6 +208,7 @@ namespace Ryujinx.Memory
         void SignalMemoryTracking(ulong va, ulong size, bool write, bool precise = false, int? exemptId = null);
 
         /// <summary>
+<<<<<<< HEAD
         /// Reprotect a region of virtual memory for guest access.
         /// </summary>
         /// <param name="va">Virtual address base</param>
@@ -209,6 +217,8 @@ namespace Ryujinx.Memory
         void Reprotect(ulong va, ulong size, MemoryPermission protection);
 
         /// <summary>
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         /// Reprotect a region of virtual memory for tracking.
         /// </summary>
         /// <param name="va">Virtual address base</param>

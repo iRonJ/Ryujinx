@@ -4,6 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+<<<<<<< HEAD
+=======
+    xmlns:flex="clr-namespace:Avalonia.Flexbox;assembly=Avalonia.Flexbox"
+>>>>>>> 1ec71635b (sync with main branch)
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="clr-namespace:Ryujinx.Ava.UI.Helpers"
     xmlns:models="clr-namespace:Ryujinx.Ava.UI.Models"
@@ -14,6 +18,10 @@
     d:DesignWidth="800"
     mc:Ignorable="d"
     Focusable="True"
+<<<<<<< HEAD
+=======
+    x:CompileBindings="True"
+>>>>>>> 1ec71635b (sync with main branch)
     x:DataType="viewModels:UserProfileViewModel">
     <UserControl.Resources>
         <helpers:BitmapArrayValueConverter x:Key="ByteImage" />
@@ -36,6 +44,7 @@
                 VerticalAlignment="Center"
                 SelectionChanged="ProfilesList_SelectionChanged"
                 Background="Transparent"
+<<<<<<< HEAD
                 ItemsSource="{Binding Profiles}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -43,6 +52,16 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Orientation="Horizontal"/>
+=======
+                Items="{Binding Profiles}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <flex:FlexPanel
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            AlignContent="FlexStart"
+                            JustifyContent="FlexStart" />
+>>>>>>> 1ec71635b (sync with main branch)
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.Styles>
@@ -50,7 +69,11 @@
                         <Setter Property="Margin" Value="5 5 0 5" />
                         <Setter Property="CornerRadius" Value="5" />
                     </Style>
+<<<<<<< HEAD
                     <Style Selector="Rectangle#SelectionIndicator">
+=======
+                    <Style Selector="Border#SelectionIndicator">
+>>>>>>> 1ec71635b (sync with main branch)
                         <Setter Property="Opacity" Value="0" />
                     </Style>
                 </ListBox.Styles>
@@ -58,8 +81,13 @@
                     <DataTemplate
                         DataType="models:UserProfile">
                         <Grid
+<<<<<<< HEAD
                             PointerEntered="Grid_PointerEntered"
                             PointerExited="Grid_OnPointerExited">
+=======
+                            PointerEnter="Grid_PointerEntered"
+                            PointerLeave="Grid_OnPointerExited">
+>>>>>>> 1ec71635b (sync with main branch)
                             <Border
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
@@ -159,4 +187,8 @@
                 Content="{locale:Locale UserProfilesClose}" />
         </StackPanel>
     </Grid>
+<<<<<<< HEAD
 </UserControl>
+=======
+</UserControl>
+>>>>>>> 1ec71635b (sync with main branch)

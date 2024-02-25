@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Sf.Cmif;
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
@@ -127,16 +131,26 @@ namespace Ryujinx.Horizon.Sdk.Sf
             return _bufferRanges[argIndex];
         }
 
+<<<<<<< HEAD
         public Result ProcessBuffers(ref ServiceDispatchContext context, scoped Span<bool> isBufferMapAlias, ServerMessageRuntimeMetadata runtimeMetadata)
+=======
+        public Result ProcessBuffers(ref ServiceDispatchContext context, bool[] isBufferMapAlias, ServerMessageRuntimeMetadata runtimeMetadata)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             bool mapAliasBuffersValid = true;
 
             ulong pointerBufferTail = context.PointerBuffer.Address;
             ulong pointerBufferHead = pointerBufferTail + context.PointerBuffer.Size;
 
+<<<<<<< HEAD
             int sendMapAliasIndex = 0;
             int recvMapAliasIndex = 0;
             int sendPointerIndex = 0;
+=======
+            int sendMapAliasIndex       = 0;
+            int recvMapAliasIndex       = 0;
+            int sendPointerIndex        = 0;
+>>>>>>> 1ec71635b (sync with main branch)
             int unfixedRecvPointerIndex = 0;
 
             for (int i = 0; i < _args.Length; i++)
@@ -186,8 +200,13 @@ namespace Ryujinx.Horizon.Sdk.Sf
                     if (flags.HasFlag(HipcBufferFlags.In))
                     {
                         var descriptor = context.Request.Data.SendStatics[sendPointerIndex++];
+<<<<<<< HEAD
                         ulong address = descriptor.Address;
                         ulong size = descriptor.Size;
+=======
+                        ulong address  = descriptor.Address;
+                        ulong size     = descriptor.Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
                         _bufferRanges[i] = new PointerAndSize(address, size);
 
@@ -206,14 +225,22 @@ namespace Ryujinx.Horizon.Sdk.Sf
                         }
                         else
                         {
+<<<<<<< HEAD
                             var data = MemoryMarshal.Cast<uint, byte>(context.Request.Data.DataWordsPadded);
+=======
+                            var data             = MemoryMarshal.Cast<uint, byte>(context.Request.Data.DataWords);
+>>>>>>> 1ec71635b (sync with main branch)
                             var recvPointerSizes = MemoryMarshal.Cast<byte, ushort>(data[runtimeMetadata.UnfixedOutPointerSizeOffset..]);
 
                             size = recvPointerSizes[unfixedRecvPointerIndex++];
                         }
 
                         pointerBufferHead = BitUtils.AlignDown(pointerBufferHead - size, 0x10UL);
+<<<<<<< HEAD
                         _bufferRanges[i] = new PointerAndSize(pointerBufferHead, size);
+=======
+                        _bufferRanges[i]  = new PointerAndSize(pointerBufferHead, size);
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
             }
@@ -246,7 +273,11 @@ namespace Ryujinx.Horizon.Sdk.Sf
             return mode == HipcBufferMode.Normal;
         }
 
+<<<<<<< HEAD
         public void SetOutBuffers(HipcMessageData response, ReadOnlySpan<bool> isBufferMapAlias)
+=======
+        public void SetOutBuffers(HipcMessageData response, bool[] isBufferMapAlias)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             int recvPointerIndex = 0;
 
@@ -305,6 +336,7 @@ namespace Ryujinx.Horizon.Sdk.Sf
         {
             ref var meta = ref context.Request.Meta;
             bool requestValid = true;
+<<<<<<< HEAD
             requestValid &= meta.SendPid == _hasInProcessIdHolder;
             requestValid &= meta.SendStaticsCount == _inPointerBuffersCount;
             requestValid &= meta.SendBuffersCount == _inMapAliasBuffersCount;
@@ -312,6 +344,15 @@ namespace Ryujinx.Horizon.Sdk.Sf
             requestValid &= meta.ExchangeBuffersCount == 0;
             requestValid &= meta.CopyHandlesCount == _inCopyHandlesCount;
             requestValid &= meta.MoveHandlesCount == _inMoveHandlesCount;
+=======
+            requestValid &= meta.SendPid              == _hasInProcessIdHolder;
+            requestValid &= meta.SendStaticsCount     == _inPointerBuffersCount;
+            requestValid &= meta.SendBuffersCount     == _inMapAliasBuffersCount;
+            requestValid &= meta.ReceiveBuffersCount  == _outMapAliasBuffersCount;
+            requestValid &= meta.ExchangeBuffersCount == 0;
+            requestValid &= meta.CopyHandlesCount     == _inCopyHandlesCount;
+            requestValid &= meta.MoveHandlesCount     == _inMoveHandlesCount;
+>>>>>>> 1ec71635b (sync with main branch)
 
             int rawSizeInBytes = meta.DataWordsCount * sizeof(uint);
             int commandRawSize = BitUtils.AlignUp(runtimeMetadata.UnfixedOutPointerSizeOffset + (OutUnfixedSizePointerBuffersCount * sizeof(ushort)), sizeof(uint));
@@ -345,7 +386,11 @@ namespace Ryujinx.Horizon.Sdk.Sf
                     continue;
                 }
 
+<<<<<<< HEAD
                 int index = inObjectIndex++;
+=======
+                int index    = inObjectIndex++;
+>>>>>>> 1ec71635b (sync with main branch)
                 var inObject = inObjects[index];
 
                 objects[index] = inObject?.ServiceObject;
@@ -386,9 +431,13 @@ namespace Ryujinx.Horizon.Sdk.Sf
             outRawData = MemoryMarshal.Cast<uint, byte>(response.DataWords);
         }
 
+<<<<<<< HEAD
 #pragma warning disable CA1822 // Mark member as static
         public void SetOutObjects(ref ServiceDispatchContext context, HipcMessageData response, Span<IServiceObject> objects)
 #pragma warning restore CA1822
+=======
+        public void SetOutObjects(ref ServiceDispatchContext context, HipcMessageData response, Span<IServiceObject> objects)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (objects.Length == 0)
             {
@@ -413,7 +462,11 @@ namespace Ryujinx.Horizon.Sdk.Sf
             }
         }
 
+<<<<<<< HEAD
         private static void SetOutObjectImpl(int index, HipcMessageData response, ServerSessionManager manager, ServiceObjectHolder obj)
+=======
+        private void SetOutObjectImpl(int index, HipcMessageData response, ServerSessionManager manager, ServiceObjectHolder obj)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (obj == null)
             {
@@ -427,4 +480,8 @@ namespace Ryujinx.Horizon.Sdk.Sf
             response.MoveHandles[index] = clientHandle;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

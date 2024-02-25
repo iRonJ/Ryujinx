@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Gpu.Image
+=======
+﻿namespace Ryujinx.Graphics.Gpu.Image
+>>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// One side of a two-way dependency between one texture view and another.

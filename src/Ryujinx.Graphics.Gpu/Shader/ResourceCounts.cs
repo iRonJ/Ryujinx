@@ -24,5 +24,18 @@ namespace Ryujinx.Graphics.Gpu.Shader
         /// Total of images used by the shaders.
         /// </summary>
         public int ImagesCount;
+<<<<<<< HEAD
     }
 }
+=======
+
+        /// <summary>
+        /// Creates a new instance of the shader resource counts class.
+        /// </summary>
+        public ResourceCounts()
+        {
+            UniformBuffersCount = 1; // The first binding is reserved for the support buffer.
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

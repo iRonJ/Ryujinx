@@ -11,4 +11,8 @@ namespace ARMeilleure.Decoders
             Id = (opCode >> 5) & 0xffff;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

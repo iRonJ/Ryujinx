@@ -7,7 +7,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
     {
         private const int IdMasksCount = 8;
 
+<<<<<<< HEAD
         private readonly int[] _idMasks;
+=======
+        private int[] _idMasks;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private int _nextFreeBitHint;
 
@@ -67,17 +71,32 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
         private bool TestBit(int bit)
         {
+<<<<<<< HEAD
             return (_idMasks[bit / 32] & (1 << (bit & 31))) != 0;
+=======
+            return (_idMasks[_nextFreeBitHint / 32] & (1 << (_nextFreeBitHint & 31))) != 0;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void SetBit(int bit)
         {
+<<<<<<< HEAD
             _idMasks[bit / 32] |= (1 << (bit & 31));
+=======
+            _idMasks[_nextFreeBitHint / 32] |= (1 << (_nextFreeBitHint & 31));
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void ClearBit(int bit)
         {
+<<<<<<< HEAD
             _idMasks[bit / 32] &= ~(1 << (bit & 31));
         }
     }
 }
+=======
+            _idMasks[_nextFreeBitHint / 32] &= ~(1 << (_nextFreeBitHint & 31));
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

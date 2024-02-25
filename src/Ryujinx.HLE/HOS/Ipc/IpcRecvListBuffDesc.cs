@@ -1,9 +1,18 @@
+<<<<<<< HEAD
+=======
+using System.IO;
+
+>>>>>>> 1ec71635b (sync with main branch)
 namespace Ryujinx.HLE.HOS.Ipc
 {
     struct IpcRecvListBuffDesc
     {
         public ulong Position { get; private set; }
+<<<<<<< HEAD
         public ulong Size { get; private set; }
+=======
+        public ulong Size     { get; private set; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IpcRecvListBuffDesc(ulong position, ulong size)
         {
@@ -18,4 +27,8 @@ namespace Ryujinx.HLE.HOS.Ipc
             Size = (ushort)(packedValue >> 48);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

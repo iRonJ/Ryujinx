@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using LibHac.Common;
+=======
+﻿using LibHac.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Fs;
 using LibHac.Fs.Fsa;
 using LibHac.FsSystem;
@@ -9,9 +13,15 @@ using LibHac.Tools.FsSystem.NcaUtils;
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.Loaders.Executables;
 using Ryujinx.HLE.Loaders.Processes.Extensions;
+<<<<<<< HEAD
 using System;
 using System.Collections.Concurrent;
 using System.IO;
+=======
+using System.Collections.Concurrent;
+using System.IO;
+using System.Linq;
+>>>>>>> 1ec71635b (sync with main branch)
 using Path = System.IO.Path;
 
 namespace Ryujinx.HLE.Loaders.Processes
@@ -28,14 +38,22 @@ namespace Ryujinx.HLE.Loaders.Processes
 
         public ProcessLoader(Switch device)
         {
+<<<<<<< HEAD
             _device = device;
+=======
+            _device         = device;
+>>>>>>> 1ec71635b (sync with main branch)
             _processesByPid = new ConcurrentDictionary<ulong, ProcessResult>();
         }
 
         public bool LoadXci(string path)
         {
             FileStream stream = new(path, FileMode.Open, FileAccess.Read);
+<<<<<<< HEAD
             Xci xci = new(_device.Configuration.VirtualFileSystem.KeySet, stream.AsStorage());
+=======
+            Xci        xci    = new(_device.Configuration.VirtualFileSystem.KeySet, stream.AsStorage());
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (!xci.HasPartition(XciPartitionType.Secure))
             {
@@ -68,16 +86,25 @@ namespace Ryujinx.HLE.Loaders.Processes
 
         public bool LoadNsp(string path)
         {
+<<<<<<< HEAD
             FileStream file = new(path, FileMode.Open, FileAccess.Read);
             PartitionFileSystem partitionFileSystem = new();
             partitionFileSystem.Initialize(file.AsStorage()).ThrowIfFailure();
+=======
+            FileStream          file                = new(path, FileMode.Open, FileAccess.Read);
+            PartitionFileSystem partitionFileSystem = new(file.AsStorage());
+>>>>>>> 1ec71635b (sync with main branch)
 
             (bool success, ProcessResult processResult) = partitionFileSystem.TryLoad(_device, path, out string errorMessage);
 
             if (processResult.ProcessId == 0)
             {
                 // This is not a normal NSP, it's actually a ExeFS as a NSP
+<<<<<<< HEAD
                 processResult = partitionFileSystem.Load(_device, new BlitStruct<ApplicationControlProperty>(1), partitionFileSystem.GetNpdm(), 0, true);
+=======
+                processResult = partitionFileSystem.Load(_device, new BlitStruct<ApplicationControlProperty>(1), partitionFileSystem.GetNpdm(), true);
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (processResult.ProcessId != 0 && _processesByPid.TryAdd(processResult.ProcessId, processResult))
@@ -101,7 +128,11 @@ namespace Ryujinx.HLE.Loaders.Processes
         public bool LoadNca(string path)
         {
             FileStream file = new(path, FileMode.Open, FileAccess.Read);
+<<<<<<< HEAD
             Nca nca = new(_device.Configuration.VirtualFileSystem.KeySet, file.AsStorage(false));
+=======
+            Nca        nca  = new(_device.Configuration.VirtualFileSystem.KeySet, file.AsStorage(false));
+>>>>>>> 1ec71635b (sync with main branch)
 
             ProcessResult processResult = nca.Load(_device, null, null);
 
@@ -141,20 +172,34 @@ namespace Ryujinx.HLE.Loaders.Processes
 
         public bool LoadNxo(string path)
         {
+<<<<<<< HEAD
             var nacpData = new BlitStruct<ApplicationControlProperty>(1);
             IFileSystem dummyExeFs = null;
             Stream romfsStream = null;
 
             string programName = "";
             ulong programId = 0000000000000000;
+=======
+            var         nacpData    = new BlitStruct<ApplicationControlProperty>(1);
+            IFileSystem dummyExeFs  = null;
+            Stream      romfsStream = null;
+
+            string programName = "";
+            ulong  programId   = 0000000000000000;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // Load executable.
             IExecutable executable;
 
             if (Path.GetExtension(path).ToLower() == ".nro")
             {
+<<<<<<< HEAD
                 FileStream input = new(path, FileMode.Open);
                 NroExecutable nro = new(input.AsStorage());
+=======
+                FileStream    input = new(path, FileMode.Open);
+                NroExecutable nro   = new(input.AsStorage());
+>>>>>>> 1ec71635b (sync with main branch)
 
                 executable = nro;
 
@@ -177,7 +222,11 @@ namespace Ryujinx.HLE.Loaders.Processes
 
                     if (string.IsNullOrWhiteSpace(programName))
                     {
+<<<<<<< HEAD
                         programName = Array.Find(nacpData.Value.Title.ItemsRo.ToArray(), x => x.Name[0] != 0).NameString.ToString();
+=======
+                        programName = nacpData.Value.Title.ItemsRo.ToArray().FirstOrDefault(x => x.Name[0] != 0).NameString.ToString();
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     if (nacpData.Value.PresenceGroupId != 0)
@@ -198,7 +247,11 @@ namespace Ryujinx.HLE.Loaders.Processes
             }
             else
             {
+<<<<<<< HEAD
                 programName = Path.GetFileNameWithoutExtension(path);
+=======
+                programName = System.IO.Path.GetFileNameWithoutExtension(path);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 executable = new NsoExecutable(new LocalStorage(path, FileAccess.Read), programName);
             }
@@ -215,7 +268,10 @@ namespace Ryujinx.HLE.Loaders.Processes
                                                                        allowCodeMemoryForJit: true,
                                                                        programName,
                                                                        programId,
+<<<<<<< HEAD
                                                                        0,
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                                                                        null,
                                                                        executable);
 
@@ -243,4 +299,8 @@ namespace Ryujinx.HLE.Loaders.Processes
             return false;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

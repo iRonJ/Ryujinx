@@ -13,12 +13,19 @@ namespace Ryujinx.Audio.Integration
         public enum Direction
         {
             Input,
+<<<<<<< HEAD
             Output,
         }
 
         float Volume { get; set; }
 
         IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount);
+=======
+            Output
+        }
+
+        IHardwareDeviceSession OpenDeviceSession(Direction direction, IVirtualMemoryManager memoryManager, SampleFormat sampleFormat, uint sampleRate, uint channelCount, float volume = 1f);
+>>>>>>> 1ec71635b (sync with main branch)
 
         ManualResetEvent GetUpdateRequiredEvent();
         ManualResetEvent GetPauseEvent();
@@ -35,4 +42,8 @@ namespace Ryujinx.Audio.Integration
             return this;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

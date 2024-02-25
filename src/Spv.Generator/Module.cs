@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+﻿using System.Collections.Generic;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Diagnostics;
 using System.IO;
 using static Spv.Specification;
@@ -15,6 +19,7 @@ namespace Spv.Generator
         private uint _bound;
 
         // Follow spec order here while keeping it as simple as possible.
+<<<<<<< HEAD
         private readonly List<Capability> _capabilities;
         private readonly List<string> _extensions;
         private readonly Dictionary<DeterministicStringKey, Instruction> _extInstImports;
@@ -40,6 +45,32 @@ namespace Spv.Generator
 
         private readonly GeneratorPool<Instruction> _instPool;
         private readonly GeneratorPool<LiteralInteger> _integerPool;
+=======
+        private List<Capability> _capabilities;
+        private List<string> _extensions;
+        private Dictionary<DeterministicStringKey, Instruction> _extInstImports;
+        private AddressingModel _addressingModel;
+        private MemoryModel _memoryModel;
+
+        private List<Instruction> _entrypoints;
+        private List<Instruction> _executionModes;
+        private List<Instruction> _debug;
+        private List<Instruction> _annotations;
+
+        // In the declaration block.
+        private Dictionary<TypeDeclarationKey, Instruction> _typeDeclarations;
+        // In the declaration block.
+        private List<Instruction> _globals;
+        // In the declaration block.
+        private Dictionary<ConstantKey, Instruction> _constants;
+        // In the declaration block, for function that aren't defined in the module.
+        private List<Instruction> _functionsDeclarations;
+
+        private List<Instruction> _functionsDefinitions;
+
+        private GeneratorPool<Instruction> _instPool;
+        private GeneratorPool<LiteralInteger> _integerPool;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public Module(uint version, GeneratorPool<Instruction> instPool = null, GeneratorPool<LiteralInteger> integerPool = null)
         {
@@ -55,7 +86,10 @@ namespace Spv.Generator
             _debug = new List<Instruction>();
             _annotations = new List<Instruction>();
             _typeDeclarations = new Dictionary<TypeDeclarationKey, Instruction>();
+<<<<<<< HEAD
             _typeDeclarationsList = new List<Instruction>();
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             _constants = new Dictionary<ConstantKey, Instruction>();
             _globals = new List<Instruction>();
             _functionsDeclarations = new List<Instruction>();
@@ -128,8 +162,12 @@ namespace Spv.Generator
 
             instruction.SetId(GetNewId());
 
+<<<<<<< HEAD
             _typeDeclarations[key] = instruction;
             _typeDeclarationsList.Add(instruction);
+=======
+            _typeDeclarations.Add(key, instruction);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void AddEntryPoint(ExecutionModel executionModel, Instruction function, string name, params Instruction[] interfaces)
@@ -146,7 +184,11 @@ namespace Spv.Generator
             _entrypoints.Add(entryPoint);
         }
 
+<<<<<<< HEAD
         public void AddExecutionMode(Instruction function, ExecutionMode mode, params IOperand[] parameters)
+=======
+        public void AddExecutionMode(Instruction function, ExecutionMode mode, params Operand[] parameters)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Debug.Assert(function.Opcode == Op.OpFunction);
 
@@ -228,7 +270,11 @@ namespace Spv.Generator
             _constants.Add(key, constant);
         }
 
+<<<<<<< HEAD
         public Instruction ExtInst(Instruction resultType, Instruction set, LiteralInteger instruction, params IOperand[] parameters)
+=======
+        public Instruction ExtInst(Instruction resultType, Instruction set, LiteralInteger instruction, params Operand[] parameters)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction result = NewInstruction(Op.OpExtInst, GetNewId(), resultType);
 
@@ -265,6 +311,7 @@ namespace Spv.Generator
             // Estimate the size needed for the generated code, to avoid expanding the MemoryStream.
             int sizeEstimate = 1024 + _functionsDefinitions.Count * 32;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(sizeEstimate);
 
             BinaryWriter writer = new(stream, System.Text.Encoding.ASCII);
@@ -362,6 +409,106 @@ namespace Spv.Generator
             LiteralInteger.UnregisterPool();
 
             return stream.ToArray();
+=======
+            using (MemoryStream stream = new MemoryStream(sizeEstimate))
+            {
+                BinaryWriter writer = new BinaryWriter(stream, System.Text.Encoding.ASCII);
+
+                // Header
+                writer.Write(MagicNumber);
+                writer.Write(_version);
+                writer.Write(GeneratorId);
+                writer.Write(_bound);
+                writer.Write(0u);
+
+                // 1.
+                foreach (Capability capability in _capabilities)
+                {
+                    Instruction capabilityInstruction = NewInstruction(Op.OpCapability);
+
+                    capabilityInstruction.AddOperand(capability);
+                    capabilityInstruction.Write(writer);
+                }
+
+                // 2.
+                foreach (string extension in _extensions)
+                {
+                    Instruction extensionInstruction = NewInstruction(Op.OpExtension);
+
+                    extensionInstruction.AddOperand(extension);
+                    extensionInstruction.Write(writer);
+                }
+
+                // 3.
+                foreach (Instruction extInstImport in _extInstImports.Values)
+                {
+                    extInstImport.Write(writer);
+                }
+
+                // 4.
+                Instruction memoryModelInstruction = NewInstruction(Op.OpMemoryModel);
+                memoryModelInstruction.AddOperand(_addressingModel);
+                memoryModelInstruction.AddOperand(_memoryModel);
+                memoryModelInstruction.Write(writer);
+
+                // 5.
+                foreach (Instruction entrypoint in _entrypoints)
+                {
+                    entrypoint.Write(writer);
+                }
+
+                // 6.
+                foreach (Instruction executionMode in _executionModes)
+                {
+                    executionMode.Write(writer);
+                }
+
+                // 7.
+                // TODO: Order debug information correctly.
+                foreach (Instruction debug in _debug)
+                {
+                    debug.Write(writer);
+                }
+
+                // 8.
+                foreach (Instruction annotation in _annotations)
+                {
+                    annotation.Write(writer);
+                }
+
+                // Ensure that everything is in the right order in the declarations section.
+                List<Instruction> declarations = new List<Instruction>();
+                declarations.AddRange(_typeDeclarations.Values);
+                declarations.AddRange(_globals);
+                declarations.AddRange(_constants.Values);
+                declarations.Sort((Instruction x, Instruction y) => x.Id.CompareTo(y.Id));
+
+                // 9.
+                foreach (Instruction declaration in declarations)
+                {
+                    declaration.Write(writer);
+                }
+
+                // 10.
+                foreach (Instruction functionDeclaration in _functionsDeclarations)
+                {
+                    functionDeclaration.Write(writer);
+                }
+
+                // 11.
+                foreach (Instruction functionDefinition in _functionsDefinitions)
+                {
+                    functionDefinition.Write(writer);
+                }
+
+                _instPool.Clear();
+                _integerPool.Clear();
+
+                LiteralInteger.UnregisterPool();
+
+                return stream.ToArray();
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

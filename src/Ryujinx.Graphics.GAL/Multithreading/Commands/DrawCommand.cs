@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct DrawIndexedCommand : IGALCommand, IGALCommand<DrawIndexedCommand>
     {
         public readonly CommandType CommandType => CommandType.DrawIndexed;
+=======
+﻿namespace Ryujinx.Graphics.GAL.Multithreading.Commands
+{
+    struct DrawIndexedCommand : IGALCommand, IGALCommand<DrawIndexedCommand>
+    {
+        public CommandType CommandType => CommandType.DrawIndexed;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _indexCount;
         private int _instanceCount;
         private int _firstIndex;

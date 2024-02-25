@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Cpu;
+=======
+﻿using Ryujinx.Cpu;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Kernel.Common;
 using Ryujinx.HLE.HOS.Kernel.Memory;
 using Ryujinx.HLE.HOS.Kernel.Process;

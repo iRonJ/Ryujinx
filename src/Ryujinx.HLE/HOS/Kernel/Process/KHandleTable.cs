@@ -7,9 +7,17 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 {
     class KHandleTable
     {
+<<<<<<< HEAD
         public const int SelfThreadHandle = (0x1ffff << 15) | 0;
         public const int SelfProcessHandle = (0x1ffff << 15) | 1;
 
+=======
+        public const int SelfThreadHandle  = (0x1ffff << 15) | 0;
+        public const int SelfProcessHandle = (0x1ffff << 15) | 1;
+
+        private readonly KernelContext _context;
+
+>>>>>>> 1ec71635b (sync with main branch)
         private KHandleEntry[] _table;
 
         private KHandleEntry _tableHead;
@@ -21,6 +29,14 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
         private ushort _idCounter;
 
+<<<<<<< HEAD
+=======
+        public KHandleTable(KernelContext context)
+        {
+            _context = context;
+        }
+
+>>>>>>> 1ec71635b (sync with main branch)
         public Result Initialize(uint size)
         {
             if (size > 1024)
@@ -74,7 +90,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
                 _nextFreeEntry = entry.Next;
 
+<<<<<<< HEAD
                 entry.Obj = obj;
+=======
+                entry.Obj      = obj;
+>>>>>>> 1ec71635b (sync with main branch)
                 entry.HandleId = _idCounter;
 
                 _activeSlotsCount++;
@@ -130,13 +150,21 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
         public void CancelHandleReservation(int handle)
         {
+<<<<<<< HEAD
             int index = handle & 0x7fff;
+=======
+            int index = (handle >> 0) & 0x7fff;
+>>>>>>> 1ec71635b (sync with main branch)
 
             lock (_table)
             {
                 KHandleEntry entry = _table[index];
 
+<<<<<<< HEAD
                 entry.Obj = null;
+=======
+                entry.Obj  = null;
+>>>>>>> 1ec71635b (sync with main branch)
                 entry.Next = _nextFreeEntry;
 
                 _nextFreeEntry = entry;
@@ -147,14 +175,22 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
         public void SetReservedHandleObj(int handle, KAutoObject obj)
         {
+<<<<<<< HEAD
             int index = (handle >> 0) & 0x7fff;
+=======
+            int index    = (handle >> 0) & 0x7fff;
+>>>>>>> 1ec71635b (sync with main branch)
             int handleId = (handle >> 15);
 
             lock (_table)
             {
                 KHandleEntry entry = _table[index];
 
+<<<<<<< HEAD
                 entry.Obj = obj;
+=======
+                entry.Obj      = obj;
+>>>>>>> 1ec71635b (sync with main branch)
                 entry.HandleId = (ushort)handleId;
 
                 obj.IncrementReferenceCount();
@@ -170,7 +206,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
                 return false;
             }
 
+<<<<<<< HEAD
             int index = (handle >> 0) & 0x7fff;
+=======
+            int index    = (handle >> 0) & 0x7fff;
+>>>>>>> 1ec71635b (sync with main branch)
             int handleId = (handle >> 15);
 
             KAutoObject obj = null;
@@ -185,7 +225,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
                     if ((obj = entry.Obj) != null && entry.HandleId == handleId)
                     {
+<<<<<<< HEAD
                         entry.Obj = null;
+=======
+                        entry.Obj  = null;
+>>>>>>> 1ec71635b (sync with main branch)
                         entry.Next = _nextFreeEntry;
 
                         _nextFreeEntry = entry;
@@ -207,7 +251,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
 
         public T GetObject<T>(int handle) where T : KAutoObject
         {
+<<<<<<< HEAD
             int index = (handle >> 0) & 0x7fff;
+=======
+            int index    = (handle >> 0) & 0x7fff;
+>>>>>>> 1ec71635b (sync with main branch)
             int handleId = (handle >> 15);
 
             lock (_table)
@@ -266,7 +314,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
                         }
 
                         entry.Obj.DecrementReferenceCount();
+<<<<<<< HEAD
                         entry.Obj = null;
+=======
+                        entry.Obj  = null;
+>>>>>>> 1ec71635b (sync with main branch)
                         entry.Next = _nextFreeEntry;
 
                         _nextFreeEntry = entry;
@@ -275,4 +327,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

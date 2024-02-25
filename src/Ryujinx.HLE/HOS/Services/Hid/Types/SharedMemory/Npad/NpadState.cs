@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Runtime.InteropServices;
+=======
+﻿using System.Runtime.InteropServices;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
 {
@@ -11,7 +15,11 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Npad
         {
             return new NpadState
             {
+<<<<<<< HEAD
                 InternalState = NpadInternalState.Create(),
+=======
+                InternalState = NpadInternalState.Create()
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
     }

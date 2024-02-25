@@ -7,6 +7,12 @@ namespace Ryujinx.Graphics.GAL
         NearestMipmapNearest,
         LinearMipmapNearest,
         NearestMipmapLinear,
+<<<<<<< HEAD
         LinearMipmapLinear,
     }
 }
+=======
+        LinearMipmapLinear
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

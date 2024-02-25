@@ -31,7 +31,11 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/padding.
         /// </summary>
+<<<<<<< HEAD
         private readonly byte _reserved1;
+=======
+        private byte _reserved1;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The target mix id of the effect.
@@ -58,7 +62,11 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/padding.
         /// </summary>
+<<<<<<< HEAD
         private readonly uint _reserved2;
+=======
+        private uint _reserved2;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Specific data storage.
@@ -70,6 +78,7 @@ namespace Ryujinx.Audio.Renderer.Parameter
 
         public Span<byte> SpecificData => SpanHelpers.AsSpan<SpecificDataStruct, byte>(ref _specificDataStart);
 
+<<<<<<< HEAD
         readonly EffectType IEffectInParameter.Type => Type;
 
         readonly bool IEffectInParameter.IsNew => IsNew;
@@ -83,6 +92,21 @@ namespace Ryujinx.Audio.Renderer.Parameter
         readonly ulong IEffectInParameter.BufferSize => BufferSize;
 
         readonly uint IEffectInParameter.ProcessingOrder => ProcessingOrder;
+=======
+        EffectType IEffectInParameter.Type => Type;
+
+        bool IEffectInParameter.IsNew => IsNew;
+
+        bool IEffectInParameter.IsEnabled => IsEnabled;
+
+        int IEffectInParameter.MixId => MixId;
+
+        ulong IEffectInParameter.BufferBase => BufferBase;
+
+        ulong IEffectInParameter.BufferSize => BufferSize;
+
+        uint IEffectInParameter.ProcessingOrder => ProcessingOrder;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         ///  Check if the given channel count is valid.
@@ -94,4 +118,8 @@ namespace Ryujinx.Audio.Renderer.Parameter
             return channelCount == 1 || channelCount == 2 || channelCount == 4 || channelCount == 6;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

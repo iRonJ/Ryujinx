@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 {
     readonly struct HipcBufferDescriptor
@@ -6,11 +7,22 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
         private readonly uint _sizeLow;
         private readonly uint _addressLow;
         private readonly uint _word2;
+=======
+﻿namespace Ryujinx.Horizon.Sdk.Sf.Hipc
+{
+    struct HipcBufferDescriptor
+    {
+#pragma warning disable CS0649
+        private uint _sizeLow;
+        private uint _addressLow;
+        private uint _word2;
+>>>>>>> 1ec71635b (sync with main branch)
 #pragma warning restore CS0649
 
         public ulong Address => _addressLow | (((ulong)_word2 << 4) & 0xf00000000UL) | (((ulong)_word2 << 34) & 0x7000000000UL);
         public ulong Size => _sizeLow | ((ulong)_word2 << 8) & 0xf00000000UL;
         public HipcBufferMode Mode => (HipcBufferMode)(_word2 & 3);
+<<<<<<< HEAD
 
         public HipcBufferDescriptor(ulong address, ulong size, HipcBufferMode mode)
         {
@@ -18,5 +30,7 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             _addressLow = (uint)address;
             _word2 = (uint)mode | ((uint)(address >> 34) & 0x1c) | ((uint)(size >> 32) << 24) | ((uint)(address >> 4) & 0xf0000000);
         }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

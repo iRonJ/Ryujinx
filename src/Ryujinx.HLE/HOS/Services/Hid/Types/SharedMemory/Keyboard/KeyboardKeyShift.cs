@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Keyboard
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Keyboard
+>>>>>>> 1ec71635b (sync with main branch)
 {
     enum KeyboardKeyShift
     {
@@ -133,6 +137,12 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Keyboard
         RightControl = 228,
         RightShift = 229,
         RightAlt = 230,
+<<<<<<< HEAD
         RightGui = 231,
     }
 }
+=======
+        RightGui = 231
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

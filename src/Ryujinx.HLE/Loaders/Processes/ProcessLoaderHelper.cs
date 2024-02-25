@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 using LibHac.Account;
 using LibHac.Common;
 using LibHac.Fs;
 using LibHac.Fs.Fsa;
 using LibHac.Fs.Shim;
+=======
+﻿using LibHac.Account;
+using LibHac.Common;
+using LibHac.Fs;
+using LibHac.Fs.Shim;
+using LibHac.FsSystem;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Loader;
 using LibHac.Ncm;
 using LibHac.Ns;
@@ -19,7 +27,10 @@ using Ryujinx.HLE.HOS.Kernel.Process;
 using Ryujinx.HLE.Loaders.Executables;
 using Ryujinx.HLE.Loaders.Processes.Extensions;
 using Ryujinx.Horizon.Common;
+<<<<<<< HEAD
 using Ryujinx.Horizon.Sdk.Arp;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -29,6 +40,7 @@ namespace Ryujinx.HLE.Loaders.Processes
 {
     static class ProcessLoaderHelper
     {
+<<<<<<< HEAD
         // NOTE: If you want to change this value make sure to increment the InternalVersion of Ptc and PtcProfiler.
         //       You also need to add a new migration path and adjust the existing ones.
         // TODO: Remove this workaround when ASLR is implemented.
@@ -38,6 +50,12 @@ namespace Ryujinx.HLE.Loaders.Processes
         {
             ulong applicationId = 0;
             int programCount = 0;
+=======
+        public static LibHac.Result RegisterProgramMapInfo(Switch device, PartitionFileSystem partitionFileSystem)
+        {
+            ulong applicationId = 0;
+            int   programCount  = 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             Span<bool> hasIndex = stackalloc bool[0x10];
 
@@ -50,7 +68,11 @@ namespace Ryujinx.HLE.Loaders.Processes
                     continue;
                 }
 
+<<<<<<< HEAD
                 ulong currentProgramId = nca.Header.TitleId;
+=======
+                ulong currentProgramId     = nca.Header.TitleId;
+>>>>>>> 1ec71635b (sync with main branch)
                 ulong currentMainProgramId = currentProgramId & ~0xFFFul;
 
                 if (applicationId == 0 && currentMainProgramId != 0)
@@ -88,9 +110,15 @@ namespace Ryujinx.HLE.Loaders.Processes
 
             for (int i = 0; i < programCount; i++)
             {
+<<<<<<< HEAD
                 mapInfo[i].ProgramId = new ProgramId(applicationId + (uint)i);
                 mapInfo[i].MainProgramId = new ApplicationId(applicationId);
                 mapInfo[i].ProgramIndex = (byte)i;
+=======
+                mapInfo[i].ProgramId     = new ProgramId(applicationId + (uint)i);
+                mapInfo[i].MainProgramId = new ApplicationId(applicationId);
+                mapInfo[i].ProgramIndex  = (byte)i;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return device.System.LibHacHorizonManager.NsClient.Fs.RegisterProgramIndexMapInfo(mapInfo[..programCount]);
@@ -108,9 +136,15 @@ namespace Ryujinx.HLE.Loaders.Processes
                 control = ref new BlitStruct<ApplicationControlProperty>(1).Value;
 
                 // The set sizes don't actually matter as long as they're non-zero because we use directory savedata.
+<<<<<<< HEAD
                 control.UserAccountSaveDataSize = 0x4000;
                 control.UserAccountSaveDataJournalSize = 0x4000;
                 control.SaveDataOwnerId = applicationId.Value;
+=======
+                control.UserAccountSaveDataSize        = 0x4000;
+                control.UserAccountSaveDataJournalSize = 0x4000;
+                control.SaveDataOwnerId                = applicationId.Value;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Logger.Warning?.Print(LogClass.Application, "No control file was found for this game. Using a dummy one instead. This may cause inaccuracies in some games.");
             }
@@ -143,10 +177,17 @@ namespace Ryujinx.HLE.Loaders.Processes
                 endOffset = kip.BssOffset + kip.BssSize;
             }
 
+<<<<<<< HEAD
             uint codeSize = BitUtils.AlignUp<uint>(kip.TextOffset + endOffset, KPageTableBase.PageSize);
             int codePagesCount = (int)(codeSize / KPageTableBase.PageSize);
             ulong codeBaseAddress = kip.Is64BitAddressSpace ? 0x8000000UL : 0x200000UL;
             ulong codeAddress = codeBaseAddress + kip.TextOffset;
+=======
+            uint  codeSize        = BitUtils.AlignUp<uint>(kip.TextOffset + endOffset, KPageTableBase.PageSize);
+            int   codePagesCount  = (int)(codeSize / KPageTableBase.PageSize);
+            ulong codeBaseAddress = kip.Is64BitAddressSpace ? 0x8000000UL : 0x200000UL;
+            ulong codeAddress     = codeBaseAddress + kip.TextOffset;
+>>>>>>> 1ec71635b (sync with main branch)
 
             ProcessCreationFlags flags = 0;
 
@@ -167,9 +208,15 @@ namespace Ryujinx.HLE.Loaders.Processes
                 flags |= ProcessCreationFlags.Is64Bit;
             }
 
+<<<<<<< HEAD
             ProcessCreationInfo creationInfo = new(kip.Name, kip.Version, kip.ProgramId, codeAddress, codePagesCount, flags, 0, 0);
             MemoryRegion memoryRegion = kip.UsesSecureMemory ? MemoryRegion.Service : MemoryRegion.Application;
             KMemoryRegionManager region = context.MemoryManager.MemoryRegions[(int)memoryRegion];
+=======
+            ProcessCreationInfo  creationInfo = new(kip.Name, kip.Version, kip.ProgramId, codeAddress, codePagesCount, flags, 0, 0);
+            MemoryRegion         memoryRegion = kip.UsesSecureMemory ? MemoryRegion.Service : MemoryRegion.Application;
+            KMemoryRegionManager region       = context.MemoryManager.MemoryRegions[(int)memoryRegion];
+>>>>>>> 1ec71635b (sync with main branch)
 
             Result result = region.AllocatePages(out KPageList pageList, (ulong)codePagesCount);
             if (result != Result.Success)
@@ -230,7 +277,10 @@ namespace Ryujinx.HLE.Loaders.Processes
             bool allowCodeMemoryForJit,
             string name,
             ulong programId,
+<<<<<<< HEAD
             byte programIndex,
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             byte[] arguments = null,
             params IExecutable[] executables)
         {
@@ -248,15 +298,25 @@ namespace Ryujinx.HLE.Loaders.Processes
             ref readonly var meta = ref npdm.Meta;
 
             ulong argsStart = 0;
+<<<<<<< HEAD
             uint argsSize = 0;
             ulong codeStart = ((meta.Flags & 1) != 0 ? 0x8000000UL : 0x200000UL) + CodeStartOffset;
             uint codeSize = 0;
+=======
+            uint  argsSize  = 0;
+            ulong codeStart = (meta.Flags & 1) != 0 ? 0x8000000UL : 0x200000UL;
+            uint  codeSize  = 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             var buildIds = executables.Select(e => (e switch
             {
                 NsoExecutable nso => Convert.ToHexString(nso.BuildId.ItemsRo.ToArray()),
                 NroExecutable nro => Convert.ToHexString(nro.Header.BuildId),
+<<<<<<< HEAD
                 _ => "",
+=======
+                _ => ""
+>>>>>>> 1ec71635b (sync with main branch)
             }).ToUpper());
 
             ulong[] nsoBase = new ulong[executables.Length];
@@ -266,7 +326,11 @@ namespace Ryujinx.HLE.Loaders.Processes
                 IExecutable nso = executables[index];
 
                 uint textEnd = nso.TextOffset + (uint)nso.Text.Length;
+<<<<<<< HEAD
                 uint roEnd = nso.RoOffset + (uint)nso.Ro.Length;
+=======
+                uint roEnd   = nso.RoOffset + (uint)nso.Ro.Length;
+>>>>>>> 1ec71635b (sync with main branch)
                 uint dataEnd = nso.DataOffset + (uint)nso.Data.Length + nso.BssSize;
 
                 uint nsoSize = textEnd;
@@ -297,7 +361,11 @@ namespace Ryujinx.HLE.Loaders.Processes
                 }
             }
 
+<<<<<<< HEAD
             int codePagesCount = (int)(codeSize / KPageTableBase.PageSize);
+=======
+            int codePagesCount           = (int)(codeSize / KPageTableBase.PageSize);
+>>>>>>> 1ec71635b (sync with main branch)
             int personalMmHeapPagesCount = (int)(meta.SystemResourceSize / KPageTableBase.PageSize);
 
             ProcessCreationInfo creationInfo = new(
@@ -342,7 +410,11 @@ namespace Ryujinx.HLE.Loaders.Processes
 
             if (result != Result.Success)
             {
+<<<<<<< HEAD
                 Logger.Error?.Print(LogClass.Loader, "Process initialization failed setting resource limit values.");
+=======
+                Logger.Error?.Print(LogClass.Loader, $"Process initialization failed setting resource limit values.");
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return ProcessResult.Failed;
             }
@@ -353,11 +425,16 @@ namespace Ryujinx.HLE.Loaders.Processes
             MemoryRegion memoryRegion = (MemoryRegion)(npdm.Acid.Flags >> 2 & 0xf);
             if (memoryRegion > MemoryRegion.NvServices)
             {
+<<<<<<< HEAD
                 Logger.Error?.Print(LogClass.Loader, "Process initialization failed due to invalid ACID flags.");
+=======
+                Logger.Error?.Print(LogClass.Loader, $"Process initialization failed due to invalid ACID flags.");
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return ProcessResult.Failed;
             }
 
+<<<<<<< HEAD
             string displayVersion;
 
             if (metaLoader.GetProgramId() > 0x0100000000007FFF)
@@ -369,11 +446,17 @@ namespace Ryujinx.HLE.Loaders.Processes
                 displayVersion = device.System.ContentManager.GetCurrentFirmwareVersion()?.VersionString ?? string.Empty;
             }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             var processContextFactory = new ArmProcessContextFactory(
                 context.Device.System.TickSource,
                 context.Device.Gpu,
                 $"{programId:x16}",
+<<<<<<< HEAD
                 displayVersion,
+=======
+                applicationControlProperties.Value.DisplayVersionString.ToString(),
+>>>>>>> 1ec71635b (sync with main branch)
                 diskCacheEnabled,
                 codeStart,
                 codeSize);
@@ -423,7 +506,11 @@ namespace Ryujinx.HLE.Loaders.Processes
             // Once everything is loaded, we can load cheats.
             device.Configuration.VirtualFileSystem.ModLoader.LoadCheats(programId, tamperInfo, device.TamperMachine);
 
+<<<<<<< HEAD
             ProcessResult processResult = new(
+=======
+            return new ProcessResult(
+>>>>>>> 1ec71635b (sync with main branch)
                 metaLoader,
                 applicationControlProperties,
                 diskCacheEnabled,
@@ -433,6 +520,7 @@ namespace Ryujinx.HLE.Loaders.Processes
                 meta.MainThreadPriority,
                 meta.MainThreadStackSize,
                 device.System.State.DesiredTitleLanguage);
+<<<<<<< HEAD
 
             // Register everything in arp service.
             device.System.ServiceTable.ArpWriter.AcquireRegistrar(out IRegistrar registrar);
@@ -452,14 +540,22 @@ namespace Ryujinx.HLE.Loaders.Processes
             updater.SetApplicationProcessProperty(process.Pid, new ApplicationProcessProperty() { ProgramIndex = programIndex });
 
             return processResult;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static Result LoadIntoMemory(KProcess process, IExecutable image, ulong baseAddress)
         {
             ulong textStart = baseAddress + image.TextOffset;
+<<<<<<< HEAD
             ulong roStart = baseAddress + image.RoOffset;
             ulong dataStart = baseAddress + image.DataOffset;
             ulong bssStart = baseAddress + image.BssOffset;
+=======
+            ulong roStart   = baseAddress + image.RoOffset;
+            ulong dataStart = baseAddress + image.DataOffset;
+            ulong bssStart  = baseAddress + image.BssOffset;
+>>>>>>> 1ec71635b (sync with main branch)
 
             ulong end = dataStart + (ulong)image.Data.Length;
 
@@ -469,7 +565,11 @@ namespace Ryujinx.HLE.Loaders.Processes
             }
 
             process.CpuMemory.Write(textStart, image.Text);
+<<<<<<< HEAD
             process.CpuMemory.Write(roStart, image.Ro);
+=======
+            process.CpuMemory.Write(roStart,   image.Ro);
+>>>>>>> 1ec71635b (sync with main branch)
             process.CpuMemory.Write(dataStart, image.Data);
 
             process.CpuMemory.Fill(bssStart, image.BssSize, 0);
@@ -501,4 +601,8 @@ namespace Ryujinx.HLE.Loaders.Processes
             return SetProcessMemoryPermission(dataStart, end - dataStart, KMemoryPermission.ReadAndWrite);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

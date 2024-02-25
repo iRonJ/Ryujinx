@@ -9,6 +9,10 @@ namespace Ryujinx.Horizon.Sdk.Lm
         Uart = 1 << 1,
         UartIfSleep = 1 << 2,
 
+<<<<<<< HEAD
         All = 0xffff,
+=======
+        All = 0xffff
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

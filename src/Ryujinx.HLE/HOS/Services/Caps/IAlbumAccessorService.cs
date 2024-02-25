@@ -5,4 +5,8 @@ namespace Ryujinx.HLE.HOS.Services.Caps
     {
         public IAlbumAccessorService(ServiceCtx context) { }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

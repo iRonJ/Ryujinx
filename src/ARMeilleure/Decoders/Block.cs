@@ -5,10 +5,17 @@ namespace ARMeilleure.Decoders
 {
     class Block
     {
+<<<<<<< HEAD
         public ulong Address { get; set; }
         public ulong EndAddress { get; set; }
 
         public Block Next { get; set; }
+=======
+        public ulong Address    { get; set; }
+        public ulong EndAddress { get; set; }
+
+        public Block Next   { get; set; }
+>>>>>>> 1ec71635b (sync with main branch)
         public Block Branch { get; set; }
 
         public bool Exit { get; set; }
@@ -43,14 +50,22 @@ namespace ARMeilleure.Decoders
 
             rightBlock.EndAddress = EndAddress;
 
+<<<<<<< HEAD
             rightBlock.Next = Next;
+=======
+            rightBlock.Next   = Next;
+>>>>>>> 1ec71635b (sync with main branch)
             rightBlock.Branch = Branch;
 
             rightBlock.OpCodes.AddRange(OpCodes.GetRange(splitIndex, splitCount));
 
             EndAddress = rightBlock.Address;
 
+<<<<<<< HEAD
             Next = rightBlock;
+=======
+            Next   = rightBlock;
+>>>>>>> 1ec71635b (sync with main branch)
             Branch = null;
 
             OpCodes.RemoveRange(splitIndex, splitCount);
@@ -58,9 +73,15 @@ namespace ARMeilleure.Decoders
 
         private static int BinarySearch(List<OpCode> opCodes, ulong address)
         {
+<<<<<<< HEAD
             int left = 0;
             int middle = 0;
             int right = opCodes.Count - 1;
+=======
+            int left   = 0;
+            int middle = 0;
+            int right  = opCodes.Count - 1;
+>>>>>>> 1ec71635b (sync with main branch)
 
             while (left <= right)
             {
@@ -92,10 +113,18 @@ namespace ARMeilleure.Decoders
         {
             if (OpCodes.Count > 0)
             {
+<<<<<<< HEAD
                 return OpCodes[^1];
+=======
+                return OpCodes[OpCodes.Count - 1];
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return null;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

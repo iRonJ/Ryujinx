@@ -30,7 +30,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
                         BasicBlock srcBlock = phi.GetBlock(index);
 
+<<<<<<< HEAD
                         Operation copyOp = new(Instruction.Copy, phi.Dest, src);
+=======
+                        Operation copyOp = new Operation(Instruction.Copy, phi.Dest, src);
+>>>>>>> 1ec71635b (sync with main branch)
 
                         srcBlock.Append(copyOp);
                     }
@@ -42,4 +46,8 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

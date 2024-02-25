@@ -17,20 +17,32 @@ namespace Ryujinx.HLE.HOS.Services
         public ServerBase Server { get; private set; }
 
         private IpcService _parent;
+<<<<<<< HEAD
         private readonly IdDictionary _domainObjects;
+=======
+        private IdDictionary _domainObjects;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _selfId;
         private bool _isDomain;
 
         public IpcService(ServerBase server = null)
         {
+<<<<<<< HEAD
             CmifCommands = typeof(IpcService).Assembly.GetTypes()
+=======
+            CmifCommands = Assembly.GetExecutingAssembly().GetTypes()
+>>>>>>> 1ec71635b (sync with main branch)
                 .Where(type => type == GetType())
                 .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public))
                 .SelectMany(methodInfo => methodInfo.GetCustomAttributes(typeof(CommandCmifAttribute))
                 .Select(command => (((CommandCmifAttribute)command).Id, methodInfo)))
                 .ToDictionary(command => command.Id, command => command.methodInfo);
 
+<<<<<<< HEAD
             TipcCommands = typeof(IpcService).Assembly.GetTypes()
+=======
+            TipcCommands = Assembly.GetExecutingAssembly().GetTypes()
+>>>>>>> 1ec71635b (sync with main branch)
                 .Where(type => type == GetType())
                 .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public))
                 .SelectMany(methodInfo => methodInfo.GetCustomAttributes(typeof(CommandTipcAttribute))
@@ -106,9 +118,13 @@ namespace Ryujinx.HLE.HOS.Services
                 }
             }
 
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             long sfciMagic = context.RequestData.ReadInt64();
 #pragma warning restore IDE0059
+=======
+            long sfciMagic = context.RequestData.ReadInt64();
+>>>>>>> 1ec71635b (sync with main branch)
             int commandId = (int)context.RequestData.ReadInt64();
 
             bool serviceExists = service.CmifCommands.TryGetValue(commandId, out MethodInfo processRequest);
@@ -129,8 +145,14 @@ namespace Ryujinx.HLE.HOS.Services
                 {
                     string serviceName;
 
+<<<<<<< HEAD
 
                     serviceName = (service is not DummyService dummyService) ? service.GetType().FullName : dummyService.ServiceName;
+=======
+                    DummyService dummyService = service as DummyService;
+
+                    serviceName = (dummyService == null) ? service.GetType().FullName : dummyService.ServiceName;
+>>>>>>> 1ec71635b (sync with main branch)
 
                     Logger.Warning?.Print(LogClass.KernelIpc, $"Missing service {serviceName}: {commandId} ignored");
                 }
@@ -182,8 +204,14 @@ namespace Ryujinx.HLE.HOS.Services
                 {
                     string serviceName;
 
+<<<<<<< HEAD
 
                     serviceName = (this is not DummyService dummyService) ? GetType().FullName : dummyService.ServiceName;
+=======
+                    DummyService dummyService = this as DummyService;
+
+                    serviceName = (dummyService == null) ? GetType().FullName : dummyService.ServiceName;
+>>>>>>> 1ec71635b (sync with main branch)
 
                     Logger.Warning?.Print(LogClass.KernelIpc, $"Missing service {serviceName}: {commandId} ignored");
                 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Sdb.Pdm.QueryService;
+=======
+﻿using Ryujinx.HLE.HOS.Services.Sdb.Pdm.QueryService;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Sdb.Pdm
 {
@@ -21,4 +25,8 @@ namespace Ryujinx.HLE.HOS.Services.Sdb.Pdm
             return QueryPlayStatisticsManager.GetPlayStatistics(context, true);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

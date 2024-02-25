@@ -39,4 +39,8 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 : InArguments[index];
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

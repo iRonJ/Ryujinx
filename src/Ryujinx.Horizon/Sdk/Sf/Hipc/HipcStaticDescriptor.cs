@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 {
     readonly struct HipcStaticDescriptor
@@ -7,6 +8,17 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
         public ulong Address => ((((_data >> 2) & 0x70) | ((_data >> 12) & 0xf)) << 32) | (_data >> 32);
         public ushort Size => (ushort)(_data >> 16);
         public int ReceiveIndex => (int)(_data & 0xf);
+=======
+﻿namespace Ryujinx.Horizon.Sdk.Sf.Hipc
+{
+    struct HipcStaticDescriptor
+    {
+        private readonly ulong _data;
+
+        public ulong  Address      => ((((_data >> 2) & 0x70) | ((_data >> 12) & 0xf)) << 32) | (_data >> 32);
+        public ushort Size         => (ushort)(_data >> 16);
+        public int    ReceiveIndex => (int)(_data & 0xf);
+>>>>>>> 1ec71635b (sync with main branch)
 
         public HipcStaticDescriptor(ulong address, ushort size, int receiveIndex)
         {
@@ -19,4 +31,8 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             _data = data;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

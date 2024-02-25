@@ -52,4 +52,8 @@ namespace ARMeilleure.Instructions
             context.Return(Const(op.Address));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

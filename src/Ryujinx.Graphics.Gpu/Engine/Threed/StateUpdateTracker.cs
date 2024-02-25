@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.Device;
+=======
+﻿using Ryujinx.Graphics.Device;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

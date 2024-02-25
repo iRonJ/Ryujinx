@@ -4,6 +4,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class BinaryExpression : BaseNode
     {
+<<<<<<< HEAD
         private readonly BaseNode _leftPart;
         private readonly string _name;
         private readonly BaseNode _rightPart;
@@ -12,6 +13,16 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
         {
             _leftPart = leftPart;
             _name = name;
+=======
+        private BaseNode _leftPart;
+        private string   _name;
+        private BaseNode _rightPart;
+
+        public BinaryExpression(BaseNode leftPart, string name, BaseNode rightPart) : base(NodeType.BinaryExpression)
+        {
+            _leftPart  = leftPart;
+            _name      = name;
+>>>>>>> 1ec71635b (sync with main branch)
             _rightPart = rightPart;
         }
 
@@ -38,4 +49,8 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

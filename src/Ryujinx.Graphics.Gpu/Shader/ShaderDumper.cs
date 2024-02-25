@@ -46,6 +46,7 @@ namespace Ryujinx.Graphics.Gpu.Shader
 
             CurrentDumpIndex++;
 
+<<<<<<< HEAD
             using MemoryStream stream = new(code);
             BinaryReader codeReader = new(stream);
 
@@ -53,6 +54,15 @@ namespace Ryujinx.Graphics.Gpu.Shader
             using FileStream codeFile = File.Create(codePath);
             BinaryWriter fullWriter = new(fullFile);
             BinaryWriter codeWriter = new(codeFile);
+=======
+            using MemoryStream stream = new MemoryStream(code);
+            BinaryReader codeReader = new BinaryReader(stream);
+
+            using FileStream fullFile = File.Create(fullPath);
+            using FileStream codeFile = File.Create(codePath);
+            BinaryWriter fullWriter = new BinaryWriter(fullFile);
+            BinaryWriter codeWriter = new BinaryWriter(codeFile);
+>>>>>>> 1ec71635b (sync with main branch)
 
             int headerSize = compute ? 0 : 0x50;
 
@@ -126,4 +136,8 @@ namespace Ryujinx.Graphics.Gpu.Shader
             return dir;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

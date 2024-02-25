@@ -5,7 +5,10 @@
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+<<<<<<< HEAD
     xmlns:controls="clr-namespace:Ryujinx.Ava.UI.Controls"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     xmlns:models="clr-namespace:Ryujinx.Ava.UI.Models"
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     xmlns:helpers="clr-namespace:Ryujinx.Ava.UI.Helpers"
@@ -15,6 +18,10 @@
     d:DesignWidth="800"
     x:Class="Ryujinx.Ava.UI.Views.Input.ControllerInputView"
     x:DataType="viewModels:ControllerInputViewModel"
+<<<<<<< HEAD
+=======
+    x:CompileBindings="True"
+>>>>>>> 1ec71635b (sync with main branch)
     mc:Ignorable="d"
     Focusable="True">
     <Design.DataContext>
@@ -66,7 +73,11 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         SelectionChanged="PlayerIndexBox_OnSelectionChanged"
+<<<<<<< HEAD
                         ItemsSource="{Binding PlayerIndexes}"
+=======
+                        Items="{Binding PlayerIndexes}"
+>>>>>>> 1ec71635b (sync with main branch)
                         SelectedIndex="{Binding PlayerId}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -94,15 +105,24 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Text="{locale:Locale ControllerSettingsProfile}" />
+<<<<<<< HEAD
                     <ui:FAComboBox
+=======
+                    <ui:ComboBox
+>>>>>>> 1ec71635b (sync with main branch)
                         Grid.Column="1"
                         IsEditable="True"
                         Name="ProfileBox"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         SelectedIndex="0"
+<<<<<<< HEAD
                         ItemsSource="{Binding ProfilesList}"
                         Text="{Binding ProfileName, Mode=TwoWay}" />
+=======
+                        Items="{Binding ProfilesList}"
+                        Text="{Binding ProfileName}" />
+>>>>>>> 1ec71635b (sync with main branch)
                     <Button
                         Grid.Column="2"
                         MinWidth="0"
@@ -170,7 +190,11 @@
                         Name="DeviceBox"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
+<<<<<<< HEAD
                         ItemsSource="{Binding DeviceList}"
+=======
+                        Items="{Binding DeviceList}"
+>>>>>>> 1ec71635b (sync with main branch)
                         SelectedIndex="{Binding Device}" />
                     <Button
                         Grid.Column="2"
@@ -203,8 +227,13 @@
                     <ComboBox
                         Grid.Column="1"
                         HorizontalAlignment="Stretch"
+<<<<<<< HEAD
                         ItemsSource="{Binding Controllers}"
                         SelectedIndex="{Binding Controller}">
+=======
+                        Items="{ReflectionBinding Controllers}"
+                        SelectedIndex="{ReflectionBinding Controller}">
+>>>>>>> 1ec71635b (sync with main branch)
                         <ComboBox.ItemTemplate>
                             <DataTemplate DataType="models:ControllerModel">
                                 <TextBlock Text="{Binding Name}" />
@@ -218,7 +247,10 @@
         <Grid
             Name="SettingButtons"
             MinHeight="450"
+<<<<<<< HEAD
             FlowDirection="LeftToRight"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             IsVisible="{Binding ShowSettings}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -462,12 +494,19 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Orientation="Horizontal">
+<<<<<<< HEAD
                                     <controls:SliderScroll
+=======
+                                    <Slider
+>>>>>>> 1ec71635b (sync with main branch)
                                         Width="130"
                                         Maximum="1"
                                         TickFrequency="0.01"
                                         IsSnapToTickEnabled="True"
+<<<<<<< HEAD
                                         SmallChange="0.01"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                                         Minimum="0"
                                         Value="{ReflectionBinding Configuration.DeadzoneLeft, Mode=TwoWay}" />
                                     <TextBlock
@@ -482,12 +521,19 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Orientation="Horizontal">
+<<<<<<< HEAD
                                     <controls:SliderScroll
+=======
+                                    <Slider
+>>>>>>> 1ec71635b (sync with main branch)
                                         Width="130"
                                         Maximum="2"
                                         TickFrequency="0.01"
                                         IsSnapToTickEnabled="True"
+<<<<<<< HEAD
                                         SmallChange="0.01"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                                         Minimum="0"
                                         Value="{ReflectionBinding Configuration.RangeLeft, Mode=TwoWay}" />
                                     <TextBlock
@@ -606,12 +652,19 @@
                         <StackPanel
                             HorizontalAlignment="Center"
                             Orientation="Horizontal">
+<<<<<<< HEAD
                             <controls:SliderScroll
+=======
+                            <Slider
+>>>>>>> 1ec71635b (sync with main branch)
                                 Width="130"
                                 Maximum="1"
                                 TickFrequency="0.01"
                                 IsSnapToTickEnabled="True"
+<<<<<<< HEAD
                                 SmallChange="0.01"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                                 Minimum="0"
                                 Value="{ReflectionBinding Configuration.TriggerThreshold, Mode=TwoWay}" />
                             <TextBlock
@@ -727,7 +780,11 @@
                             <Button
                                 Margin="10"
                                 Grid.Column="1"
+<<<<<<< HEAD
                                 Command="{Binding ShowMotionConfig}">
+=======
+                                Command="{ReflectionBinding ShowMotionConfig}">
+>>>>>>> 1ec71635b (sync with main branch)
                                 <TextBlock Text="{locale:Locale ControllerSettingsConfigureGeneral}" />
                             </Button>
                         </Grid>
@@ -754,7 +811,11 @@
                             <Button
                                 Margin="10"
                                 Grid.Column="1"
+<<<<<<< HEAD
                                 Command="{Binding ShowRumbleConfig}">
+=======
+                                Command="{ReflectionBinding ShowRumbleConfig}">
+>>>>>>> 1ec71635b (sync with main branch)
                                 <TextBlock Text="{locale:Locale ControllerSettingsConfigureGeneral}" />
                             </Button>
                         </Grid>
@@ -1085,12 +1146,19 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Orientation="Horizontal">
+<<<<<<< HEAD
                                     <controls:SliderScroll
+=======
+                                    <Slider
+>>>>>>> 1ec71635b (sync with main branch)
                                         Width="130"
                                         Maximum="1"
                                         TickFrequency="0.01"
                                         IsSnapToTickEnabled="True"
+<<<<<<< HEAD
                                         SmallChange="0.01"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                                         Padding="0"
                                         VerticalAlignment="Center"
                                         Minimum="0"
@@ -1107,12 +1175,19 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Orientation="Horizontal">
+<<<<<<< HEAD
                                     <controls:SliderScroll
+=======
+                                    <Slider
+>>>>>>> 1ec71635b (sync with main branch)
                                         Width="130"
                                         Maximum="2"
                                         TickFrequency="0.01"
                                         IsSnapToTickEnabled="True"
+<<<<<<< HEAD
                                         SmallChange="0.01"
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                                         Minimum="0"
                                         Value="{ReflectionBinding Configuration.RangeRight, Mode=TwoWay}" />
                                     <TextBlock
@@ -1127,4 +1202,8 @@
             </StackPanel>
         </Grid>
     </StackPanel>
+<<<<<<< HEAD
 </UserControl>
+=======
+</UserControl>
+>>>>>>> 1ec71635b (sync with main branch)

@@ -4,6 +4,7 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class ConditionalExpression : BaseNode
     {
+<<<<<<< HEAD
         private readonly BaseNode _thenNode;
         private readonly BaseNode _elseNode;
         private readonly BaseNode _conditionNode;
@@ -13,6 +14,17 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             _thenNode = thenNode;
             _conditionNode = conditionNode;
             _elseNode = elseNode;
+=======
+        private BaseNode _thenNode;
+        private BaseNode _elseNode;
+        private BaseNode _conditionNode;
+
+        public ConditionalExpression(BaseNode conditionNode, BaseNode thenNode, BaseNode elseNode) : base(NodeType.ConditionalExpression)
+        {
+            _thenNode      = thenNode;
+            _conditionNode = conditionNode;
+            _elseNode      = elseNode;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public override void PrintLeft(TextWriter writer)
@@ -26,4 +38,8 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             writer.Write(")");
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

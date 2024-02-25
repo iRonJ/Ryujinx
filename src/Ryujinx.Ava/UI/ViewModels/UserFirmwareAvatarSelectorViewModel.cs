@@ -28,6 +28,10 @@ namespace Ryujinx.Ava.UI.ViewModels
         private Color _backgroundColor = Colors.White;
 
         private int _selectedIndex;
+<<<<<<< HEAD
+=======
+        private byte[] _selectedImage;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public UserFirmwareAvatarSelectorViewModel()
         {
@@ -77,7 +81,15 @@ namespace Ryujinx.Ava.UI.ViewModels
             }
         }
 
+<<<<<<< HEAD
         public byte[] SelectedImage { get; private set; }
+=======
+        public byte[] SelectedImage
+        {
+            get => _selectedImage;
+            private set => _selectedImage = value;
+        }
+>>>>>>> 1ec71635b (sync with main branch)
 
         private void LoadImagesFromStore()
         {
@@ -105,6 +117,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             }
 
             string contentPath = contentManager.GetInstalledContentPath(0x010000000000080A, StorageId.BuiltInSystem, NcaContentType.Data);
+<<<<<<< HEAD
             string avatarPath = VirtualFileSystem.SwitchPathToSystemPath(contentPath);
 
             if (!string.IsNullOrWhiteSpace(avatarPath))
@@ -135,6 +148,40 @@ namespace Ryujinx.Ava.UI.ViewModels
                         avatarImage.SaveAsPng(streamPng);
 
                         _avatarStore.Add(item.FullPath, streamPng.ToArray());
+=======
+            string avatarPath = virtualFileSystem.SwitchPathToSystemPath(contentPath);
+
+            if (!string.IsNullOrWhiteSpace(avatarPath))
+            {
+                using (IStorage ncaFileStream = new LocalStorage(avatarPath, FileAccess.Read, FileMode.Open))
+                {
+                    Nca nca = new(virtualFileSystem.KeySet, ncaFileStream);
+                    IFileSystem romfs = nca.OpenFileSystem(NcaSectionType.Data, IntegrityCheckLevel.ErrorOnInvalid);
+
+                    foreach (DirectoryEntryEx item in romfs.EnumerateEntries())
+                    {
+                        // TODO: Parse DatabaseInfo.bin and table.bin files for more accuracy.
+                        if (item.Type == DirectoryEntryType.File && item.FullPath.Contains("chara") && item.FullPath.Contains("szs"))
+                        {
+                            using var file = new UniqueRef<IFile>();
+
+                            romfs.OpenFile(ref file.Ref, ("/" + item.FullPath).ToU8Span(), OpenMode.Read).ThrowIfFailure();
+
+                            using (MemoryStream stream = new())
+                            using (MemoryStream streamPng = new())
+                            {
+                                file.Get.AsStream().CopyTo(stream);
+
+                                stream.Position = 0;
+
+                                Image avatarImage = Image.LoadPixelData<Rgba32>(DecompressYaz0(stream), 256, 256);
+
+                                avatarImage.SaveAsPng(streamPng);
+
+                                _avatarStore.Add(item.FullPath, streamPng.ToArray());
+                            }
+                        }
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
             }
@@ -142,6 +189,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         private static byte[] DecompressYaz0(Stream stream)
         {
+<<<<<<< HEAD
             using BinaryReader reader = new(stream);
 
             reader.ReadInt32(); // Magic
@@ -220,3 +268,84 @@ namespace Ryujinx.Ava.UI.ViewModels
         }
     }
 }
+=======
+            using (BinaryReader reader = new(stream))
+            {
+                reader.ReadInt32(); // Magic
+
+                uint decodedLength = BinaryPrimitives.ReverseEndianness(reader.ReadUInt32());
+
+                reader.ReadInt64(); // Padding
+
+                byte[] input = new byte[stream.Length - stream.Position];
+                stream.Read(input, 0, input.Length);
+
+                uint inputOffset = 0;
+
+                byte[] output = new byte[decodedLength];
+                uint outputOffset = 0;
+
+                ushort mask = 0;
+                byte header = 0;
+
+                while (outputOffset < decodedLength)
+                {
+                    if ((mask >>= 1) == 0)
+                    {
+                        header = input[inputOffset++];
+                        mask = 0x80;
+                    }
+
+                    if ((header & mask) != 0)
+                    {
+                        if (outputOffset == output.Length)
+                        {
+                            break;
+                        }
+
+                        output[outputOffset++] = input[inputOffset++];
+                    }
+                    else
+                    {
+                        byte byte1 = input[inputOffset++];
+                        byte byte2 = input[inputOffset++];
+
+                        uint dist = (uint)((byte1 & 0xF) << 8) | byte2;
+                        uint position = outputOffset - (dist + 1);
+
+                        uint length = (uint)byte1 >> 4;
+                        if (length == 0)
+                        {
+                            length = (uint)input[inputOffset++] + 0x12;
+                        }
+                        else
+                        {
+                            length += 2;
+                        }
+
+                        uint gap = outputOffset - position;
+                        uint nonOverlappingLength = length;
+
+                        if (nonOverlappingLength > gap)
+                        {
+                            nonOverlappingLength = gap;
+                        }
+
+                        Buffer.BlockCopy(output, (int)position, output, (int)outputOffset, (int)nonOverlappingLength);
+                        outputOffset += nonOverlappingLength;
+                        position += nonOverlappingLength;
+                        length -= nonOverlappingLength;
+
+                        while (length-- > 0)
+                        {
+                            output[outputOffset++] = output[position++];
+                        }
+                    }
+                }
+
+                return output;
+            }
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

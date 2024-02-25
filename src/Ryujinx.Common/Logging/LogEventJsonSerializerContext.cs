@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Text.Json.Serialization;
+=======
+﻿using System.Text.Json.Serialization;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Common.Logging
 {
@@ -6,4 +10,8 @@ namespace Ryujinx.Common.Logging
     internal partial class LogEventJsonSerializerContext : JsonSerializerContext
     {
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

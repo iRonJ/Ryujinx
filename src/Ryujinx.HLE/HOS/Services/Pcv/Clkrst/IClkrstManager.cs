@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Ipc;
+=======
+﻿using Ryujinx.HLE.HOS.Ipc;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Pcv.Clkrst.ClkrstManager;
 using Ryujinx.HLE.HOS.Services.Pcv.Types;
 using Ryujinx.Horizon.Common;
@@ -19,7 +23,11 @@ namespace Ryujinx.HLE.HOS.Services.Pcv.Clkrst
         public ResultCode OpenSession(ServiceCtx context)
         {
             DeviceCode deviceCode = (DeviceCode)context.RequestData.ReadUInt32();
+<<<<<<< HEAD
             uint unknown = context.RequestData.ReadUInt32();
+=======
+            uint       unknown    = context.RequestData.ReadUInt32();
+>>>>>>> 1ec71635b (sync with main branch)
 
             // TODO: Service checks the deviceCode and the unk value.
 
@@ -54,4 +62,8 @@ namespace Ryujinx.HLE.HOS.Services.Pcv.Clkrst
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

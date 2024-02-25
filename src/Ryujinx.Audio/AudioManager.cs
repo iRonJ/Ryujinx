@@ -11,22 +11,38 @@ namespace Ryujinx.Audio
         /// <summary>
         /// Lock used to control the waiters registration.
         /// </summary>
+<<<<<<< HEAD
         private readonly object _lock = new();
+=======
+        private object _lock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Events signaled when the driver played audio buffers.
         /// </summary>
+<<<<<<< HEAD
         private readonly ManualResetEvent[] _updateRequiredEvents;
+=======
+        private ManualResetEvent[] _updateRequiredEvents;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Action to execute when the driver played audio buffers.
         /// </summary>
+<<<<<<< HEAD
         private readonly Action[] _actions;
+=======
+        private Action[] _actions;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The worker thread in charge of handling sessions update.
         /// </summary>
+<<<<<<< HEAD
         private readonly Thread _workerThread;
+=======
+        private Thread _workerThread;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private bool _isRunning;
 
@@ -44,7 +60,11 @@ namespace Ryujinx.Audio
 
             _workerThread = new Thread(Update)
             {
+<<<<<<< HEAD
                 Name = "AudioManager.Worker",
+=======
+                Name = "AudioManager.Worker"
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -115,7 +135,10 @@ namespace Ryujinx.Audio
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
 
@@ -130,4 +153,8 @@ namespace Ryujinx.Audio
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

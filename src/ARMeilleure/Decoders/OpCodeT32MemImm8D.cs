@@ -20,7 +20,11 @@ namespace ARMeilleure.Decoders
             Rn = (opCode >> 16) & 0xf;
 
             Index = ((opCode >> 24) & 1) != 0;
+<<<<<<< HEAD
             Add = ((opCode >> 23) & 1) != 0;
+=======
+            Add   = ((opCode >> 23) & 1) != 0;
+>>>>>>> 1ec71635b (sync with main branch)
             WBack = ((opCode >> 21) & 1) != 0;
 
             Immediate = (opCode & 0xff) << 2;
@@ -28,4 +32,8 @@ namespace ARMeilleure.Decoders
             IsLoad = ((opCode >> 20) & 1) != 0;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

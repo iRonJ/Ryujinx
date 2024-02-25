@@ -14,6 +14,12 @@ namespace Ryujinx.Audio.Renderer.Server.Types
         /// Audio renderer operation needs to be done manually via ExecuteAudioRenderer.
         /// </summary>
         /// <remarks>This is not supported on the DSP and is as such stubbed.</remarks>
+<<<<<<< HEAD
         Manual,
     }
 }
+=======
+        Manual
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

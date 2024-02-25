@@ -7,7 +7,11 @@ namespace Ryujinx.HLE.Loaders.Mods
 {
     public class MemPatch
     {
+<<<<<<< HEAD
         readonly Dictionary<uint, byte[]> _patches = new();
+=======
+        readonly Dictionary<uint, byte[]> _patches = new Dictionary<uint, byte[]>();
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Adds a patch to specified offset. Overwrites if already present. 
@@ -69,7 +73,11 @@ namespace Ryujinx.HLE.Loaders.Mods
             foreach (var (offset, patch) in _patches.OrderBy(item => item.Key))
             {
                 int patchOffset = (int)offset;
+<<<<<<< HEAD
                 int patchSize = patch.Length;
+=======
+                int patchSize   = patch.Length;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 if (patchOffset < protectedOffset || patchOffset > memory.Length)
                 {
@@ -93,4 +101,8 @@ namespace Ryujinx.HLE.Loaders.Mods
             return count;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.Exceptions;
+=======
+﻿using Ryujinx.HLE.Exceptions;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Tamper.Operations;
 using System;
 
@@ -10,7 +14,11 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
     /// </summary>
     class LegacyArithmetic
     {
+<<<<<<< HEAD
         const int OperationWidthIndex = 1;
+=======
+        const int OperationWidthIndex  = 1;
+>>>>>>> 1ec71635b (sync with main branch)
         const int DestinationRegisterIndex = 3;
         const int OperationTypeIndex = 4;
         const int ValueImmediateIndex = 8;
@@ -35,7 +43,11 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
             Register register = context.GetRegister(instruction[DestinationRegisterIndex]);
             byte operation = instruction[OperationTypeIndex];
             ulong immediate = InstructionHelper.GetImmediate(instruction, ValueImmediateIndex, ValueImmediateSize);
+<<<<<<< HEAD
             Value<ulong> rightHandSideValue = new(immediate);
+=======
+            Value<ulong> rightHandSideValue = new Value<ulong>(immediate);
+>>>>>>> 1ec71635b (sync with main branch)
 
             void Emit(Type operationType)
             {
@@ -44,6 +56,7 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
 
             switch (operation)
             {
+<<<<<<< HEAD
                 case Add:
                     Emit(typeof(OpAdd<>));
                     break;
@@ -59,6 +72,13 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
                 case Rsh:
                     Emit(typeof(OpRsh<>));
                     break;
+=======
+                case Add: Emit(typeof(OpAdd<>)); break;
+                case Sub: Emit(typeof(OpSub<>)); break;
+                case Mul: Emit(typeof(OpMul<>)); break;
+                case Lsh: Emit(typeof(OpLsh<>)); break;
+                case Rsh: Emit(typeof(OpRsh<>)); break;
+>>>>>>> 1ec71635b (sync with main branch)
                 default:
                     throw new TamperCompilationException($"Invalid arithmetic operation {operation} in Atmosphere cheat");
             }

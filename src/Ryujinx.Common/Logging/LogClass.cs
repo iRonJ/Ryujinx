@@ -70,7 +70,14 @@ namespace Ryujinx.Common.Logging
         ServiceVi,
         SurfaceFlinger,
         TamperMachine,
+<<<<<<< HEAD
         UI,
         Vic,
     }
 }
+=======
+        Ui,
+        Vic
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

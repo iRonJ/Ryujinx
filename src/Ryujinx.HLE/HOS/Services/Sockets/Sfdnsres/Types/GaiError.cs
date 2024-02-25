@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres
+>>>>>>> 1ec71635b (sync with main branch)
 {
     enum GaiError
     {
@@ -17,6 +21,12 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres
         BadHints,
         Protocol,
         Overflow,
+<<<<<<< HEAD
         Max,
     }
 }
+=======
+        Max
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

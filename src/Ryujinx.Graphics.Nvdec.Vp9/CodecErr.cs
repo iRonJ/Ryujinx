@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Nvdec.Vp9
+=======
+﻿namespace Ryujinx.Graphics.Nvdec.Vp9
+>>>>>>> 1ec71635b (sync with main branch)
 {
     internal enum CodecErr
     {
@@ -51,6 +55,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         /*!\brief An iterator reached the end of list.
          *
          */
+<<<<<<< HEAD
         CodecListEnd,
+=======
+        CodecListEnd
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

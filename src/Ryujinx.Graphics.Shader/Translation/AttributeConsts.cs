@@ -4,7 +4,10 @@ namespace Ryujinx.Graphics.Shader.Translation
     {
         public const int PrimitiveId = 0x060;
         public const int Layer = 0x064;
+<<<<<<< HEAD
         public const int ViewportIndex = 0x068;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public const int PositionX = 0x070;
         public const int PositionY = 0x074;
         public const int FrontColorDiffuseR = 0x280;
@@ -25,7 +28,10 @@ namespace Ryujinx.Graphics.Shader.Translation
         public const int TexCoordCount = 10;
         public const int TexCoordBase = 0x300;
         public const int TexCoordEnd = TexCoordBase + TexCoordCount * 16;
+<<<<<<< HEAD
         public const int ViewportMask = 0x3a0;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public const int FrontFacing = 0x3fc;
 
         public const int UserAttributesCount = 32;
@@ -35,4 +41,8 @@ namespace Ryujinx.Graphics.Shader.Translation
         public const int UserAttributePerPatchBase = 0x18;
         public const int UserAttributePerPatchEnd = 0x200;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

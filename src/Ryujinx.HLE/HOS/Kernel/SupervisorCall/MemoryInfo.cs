@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Kernel.Memory;
+=======
+﻿using Ryujinx.HLE.HOS.Kernel.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 {
@@ -11,9 +15,15 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
         public KMemoryPermission Permission;
         public int IpcRefCount;
         public int DeviceRefCount;
+<<<<<<< HEAD
 #pragma warning disable CS0414, IDE0052 // Remove unread private member
         private readonly int _padding;
 #pragma warning restore CS0414, IDE0052
+=======
+#pragma warning disable CS0414
+        private int _padding;
+#pragma warning restore CS0414
+>>>>>>> 1ec71635b (sync with main branch)
 
         public MemoryInfo(
             ulong address,
@@ -34,4 +44,8 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
             _padding = 0;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

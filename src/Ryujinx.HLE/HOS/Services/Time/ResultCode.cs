@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Diagnostics.CodeAnalysis;
 
 namespace Ryujinx.HLE.HOS.Services.Time
@@ -6,10 +7,18 @@ namespace Ryujinx.HLE.HOS.Services.Time
     public enum ResultCode
     {
         ModuleId = 116,
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Time
+{
+    public enum ResultCode
+    {
+        ModuleId       = 116,
+>>>>>>> 1ec71635b (sync with main branch)
         ErrorCodeShift = 9,
 
         Success = 0,
 
+<<<<<<< HEAD
         TimeServiceNotInitialized = (0 << ErrorCodeShift) | ModuleId,
         PermissionDenied = (1 << ErrorCodeShift) | ModuleId,
         TimeMismatch = (102 << ErrorCodeShift) | ModuleId,
@@ -23,5 +32,20 @@ namespace Ryujinx.HLE.HOS.Services.Time
         NotImplemented = (990 << ErrorCodeShift) | ModuleId,
         NetworkTimeNotAvailable = (1000 << ErrorCodeShift) | ModuleId,
         NetworkTimeTaskCanceled = (1003 << ErrorCodeShift) | ModuleId,
+=======
+        TimeServiceNotInitialized = (0    << ErrorCodeShift) | ModuleId,
+        PermissionDenied          = (1    << ErrorCodeShift) | ModuleId,
+        TimeMismatch              = (102  << ErrorCodeShift) | ModuleId,
+        UninitializedClock        = (103  << ErrorCodeShift) | ModuleId,
+        TimeNotFound              = (200  << ErrorCodeShift) | ModuleId,
+        Overflow                  = (201  << ErrorCodeShift) | ModuleId,
+        LocationNameTooLong       = (801  << ErrorCodeShift) | ModuleId,
+        OutOfRange                = (902  << ErrorCodeShift) | ModuleId,
+        TimeZoneConversionFailed  = (903  << ErrorCodeShift) | ModuleId,
+        TimeZoneNotFound          = (989  << ErrorCodeShift) | ModuleId,
+        NotImplemented            = (990  << ErrorCodeShift) | ModuleId,
+        NetworkTimeNotAvailable   = (1000 << ErrorCodeShift) | ModuleId,
+        NetworkTimeTaskCanceled   = (1003 << ErrorCodeShift) | ModuleId,
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

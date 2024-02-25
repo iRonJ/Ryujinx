@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Logging;
 using Ryujinx.Cpu;
 using Ryujinx.Cpu.AppleHv;
 using Ryujinx.Cpu.Jit;
 using Ryujinx.Cpu.LightningJit;
+=======
+﻿using Ryujinx.Common.Configuration;
+using Ryujinx.Cpu;
+using Ryujinx.Cpu.AppleHv;
+using Ryujinx.Cpu.Jit;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu;
 using Ryujinx.HLE.HOS.Kernel;
 using Ryujinx.HLE.HOS.Kernel.Process;
@@ -47,6 +54,7 @@ namespace Ryujinx.HLE.HOS
         {
             IArmProcessContext processContext;
 
+<<<<<<< HEAD
             bool isArm64Host = RuntimeInformation.ProcessArchitecture == Architecture.Arm64;
 
             if (OperatingSystem.IsMacOS() && isArm64Host && for64Bit && context.Device.Configuration.UseHypervisor)
@@ -54,6 +62,13 @@ namespace Ryujinx.HLE.HOS
                 var cpuEngine = new HvEngine(_tickSource);
                 var memoryManager = new HvMemoryManager(context.Memory, addressSpaceSize, invalidAccessHandler);
                 processContext = new ArmProcessContext<HvMemoryManager>(pid, cpuEngine, _gpu, memoryManager, addressSpaceSize, for64Bit);
+=======
+            if (OperatingSystem.IsMacOS() && RuntimeInformation.ProcessArchitecture == Architecture.Arm64 && for64Bit && context.Device.Configuration.UseHypervisor)
+            {
+                var cpuEngine = new HvEngine(_tickSource);
+                var memoryManager = new HvMemoryManager(context.Memory, addressSpaceSize, invalidAccessHandler);
+                processContext = new ArmProcessContext<HvMemoryManager>(pid, cpuEngine, _gpu, memoryManager, for64Bit);
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -61,6 +76,7 @@ namespace Ryujinx.HLE.HOS
 
                 if (!MemoryBlock.SupportsFlags(MemoryAllocationFlags.ViewCompatible))
                 {
+<<<<<<< HEAD
                     Logger.Warning?.Print(LogClass.Cpu, "Host system doesn't support views, falling back to software page table");
 
                     mode = MemoryManagerMode.SoftwarePageTable;
@@ -81,16 +97,27 @@ namespace Ryujinx.HLE.HOS
                         mode = MemoryManagerMode.SoftwarePageTable;
                     }
                 }
+=======
+                    mode = MemoryManagerMode.SoftwarePageTable;
+                }
+
+                var cpuEngine = new JitEngine(_tickSource);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 switch (mode)
                 {
                     case MemoryManagerMode.SoftwarePageTable:
                         var memoryManager = new MemoryManager(context.Memory, addressSpaceSize, invalidAccessHandler);
+<<<<<<< HEAD
                         processContext = new ArmProcessContext<MemoryManager>(pid, cpuEngine, _gpu, memoryManager, addressSpaceSize, for64Bit);
+=======
+                        processContext = new ArmProcessContext<MemoryManager>(pid, cpuEngine, _gpu, memoryManager, for64Bit);
+>>>>>>> 1ec71635b (sync with main branch)
                         break;
 
                     case MemoryManagerMode.HostMapped:
                     case MemoryManagerMode.HostMappedUnsafe:
+<<<<<<< HEAD
                         if (addressSpaceSize != addressSpace.AddressSpaceSize)
                         {
                             Logger.Warning?.Print(LogClass.Emulation, $"Allocated address space (0x{addressSpace.AddressSpaceSize:X}) is smaller than guest application requirements (0x{addressSpaceSize:X})");
@@ -102,6 +129,15 @@ namespace Ryujinx.HLE.HOS
 
                     default:
                         throw new InvalidOperationException($"{nameof(mode)} contains an invalid value: {mode}");
+=======
+                        bool unsafeMode = mode == MemoryManagerMode.HostMappedUnsafe;
+                        var memoryManagerHostMapped = new MemoryManagerHostMapped(context.Memory, addressSpaceSize, unsafeMode, invalidAccessHandler);
+                        processContext = new ArmProcessContext<MemoryManagerHostMapped>(pid, cpuEngine, _gpu, memoryManagerHostMapped, for64Bit);
+                        break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 

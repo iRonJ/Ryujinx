@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Texture
+=======
+﻿namespace Ryujinx.Graphics.Texture
+>>>>>>> 1ec71635b (sync with main branch)
 {
     public readonly struct Region
     {

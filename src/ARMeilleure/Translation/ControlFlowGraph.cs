@@ -130,7 +130,11 @@ namespace ARMeilleure.Translation
 
         public BasicBlock SplitEdge(BasicBlock predecessor, BasicBlock successor)
         {
+<<<<<<< HEAD
             BasicBlock splitBlock = new(Blocks.Count);
+=======
+            BasicBlock splitBlock = new BasicBlock(Blocks.Count);
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < predecessor.SuccessorsCount; i++)
             {
@@ -152,4 +156,8 @@ namespace ARMeilleure.Translation
             return splitBlock;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

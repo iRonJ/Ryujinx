@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "dqNHShpSnS/Yf5iFSi7KpjUf6hRNIUlXILRSxKzqcEUoJz5YH63jwXnPCvRP3LoQbQzSByysyoIjnnhlMhcklg==",
+  "success": true,
+  "projectFilePath": "/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Tests.Unicorn/Ryujinx.Tests.Unicorn.csproj",
+  "expectedPackageFiles": [
+    "/Users/ronj/.nuget/packages/fsharp.core/7.0.200/fsharp.core.7.0.200.nupkg.sha512",
+    "/Users/ronj/.nuget/packages/unicornengine.unicorn/2.0.2-rc1-fb78016/unicornengine.unicorn.2.0.2-rc1-fb78016.nupkg.sha512"
+  ],
+  "logs": []
+}

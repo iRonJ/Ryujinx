@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 using System;
 
 namespace ARMeilleure.Memory
 {
     public class ReservedRegion
+=======
+﻿using System;
+
+namespace ARMeilleure.Memory
+{
+    class ReservedRegion
+>>>>>>> 1ec71635b (sync with main branch)
     {
         public const int DefaultGranularity = 65536; // Mapping granularity in Windows.
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace ARMeilleure.Decoders
+=======
+﻿namespace ARMeilleure.Decoders
+>>>>>>> 1ec71635b (sync with main branch)
 {
     class OpCodeT32Alu : OpCodeT32, IOpCode32Alu
     {
@@ -17,4 +21,8 @@ namespace ARMeilleure.Decoders
             SetFlags = ((opCode >> 20) & 1) != 0;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

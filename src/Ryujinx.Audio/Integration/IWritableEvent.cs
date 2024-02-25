@@ -15,4 +15,8 @@ namespace Ryujinx.Audio.Integration
         /// </summary>
         void Clear();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

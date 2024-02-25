@@ -92,4 +92,8 @@ namespace Ryujinx.Audio.Renderer.Server.Effect
             destState = srcState;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

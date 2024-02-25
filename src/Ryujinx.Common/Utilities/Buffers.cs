@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -9,8 +13,13 @@ namespace Ryujinx.Common.Utilities
     [StructLayout(LayoutKind.Sequential, Size = 16)]
     public struct Buffer16
     {
+<<<<<<< HEAD
         [DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly ulong _dummy0;
         [DebuggerBrowsable(DebuggerBrowsableState.Never)] private readonly ulong _dummy1;
+=======
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private ulong _dummy0;
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)] private ulong _dummy1;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public byte this[int i]
         {

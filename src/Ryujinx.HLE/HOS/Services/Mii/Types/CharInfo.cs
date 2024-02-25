@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 
 namespace Ryujinx.HLE.HOS.Services.Mii.Types
@@ -59,11 +63,19 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         public byte MoleY;
         public byte Reserved;
 
+<<<<<<< HEAD
         readonly byte IStoredData<CharInfo>.Type => Type;
 
         readonly CreateId IStoredData<CharInfo>.CreateId => CreateId;
 
         public readonly ResultCode InvalidData => ResultCode.InvalidCharInfo;
+=======
+        byte IStoredData<CharInfo>.Type => Type;
+
+        CreateId IStoredData<CharInfo>.CreateId => CreateId;
+
+        public ResultCode InvalidData => ResultCode.InvalidCharInfo;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public bool IsValid()
         {
@@ -72,6 +84,7 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
 
         public uint Verify()
         {
+<<<<<<< HEAD
             if (!CreateId.IsValid)
             {
                 return 50;
@@ -276,12 +289,66 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             {
                 return 36;
             }
+=======
+            if (!CreateId.IsValid) return 50;
+            if (!Nickname.IsValid()) return 51;
+            if ((byte)FontRegion > 3) return 23;
+            if (FavoriteColor > 11) return 22;
+            if (Gender > Gender.Max) return 24;
+            if ((sbyte)Height < 0) return 32;
+            if ((sbyte)Build < 0) return 3;
+            if (Type > 1) return 53;
+            if (RegionMove > 3) return 49;
+            if (FacelineType > FacelineType.Max) return 21;
+            if (FacelineColor > FacelineColor.Max) return 18;
+            if (FacelineWrinkle > FacelineWrinkle.Max) return 20;
+            if (FacelineMake > FacelineMake.Max) return 19;
+            if (HairType > HairType.Max) return 31;
+            if (HairColor > CommonColor.Max) return 29;
+            if (HairFlip > HairFlip.Max) return 30;
+            if (EyeType > EyeType.Max) return 8;
+            if (EyeColor > CommonColor.Max) return 5;
+            if (EyeScale > 7) return 7;
+            if (EyeAspect > 6) return 4;
+            if (EyeRotate > 7) return 6;
+            if (EyeX > 12) return 9;
+            if (EyeY > 18) return 10;
+            if (EyebrowType > EyebrowType.Max) return 15;
+            if (EyebrowColor > CommonColor.Max) return 12;
+            if (EyebrowScale > 8) return 14;
+            if (EyebrowAspect > 6) return 11;
+            if (EyebrowRotate > 11) return 13;
+            if (EyebrowX > 12) return 16;
+            if (EyebrowY - 3 > 15) return 17;
+            if (NoseType > NoseType.Max) return 47;
+            if (NoseScale > 8) return 46;
+            if (NoseY> 18) return 48;
+            if (MouthType > MouthType.Max) return 40;
+            if (MouthColor > CommonColor.Max) return 38;
+            if (MouthScale > 8) return 39;
+            if (MouthAspect > 6) return 37;
+            if (MouthY > 18) return 41;
+            if (BeardColor > CommonColor.Max) return 1;
+            if (BeardType > BeardType.Max) return 2;
+            if (MustacheType > MustacheType.Max) return 43;
+            if (MustacheScale > 8) return 42;
+            if (MustacheY > 16) return 44;
+            if (GlassType > GlassType.Max) return 27;
+            if (GlassColor > CommonColor.Max) return 25;
+            if (GlassScale > 7) return 26;
+            if (GlassY > 20) return 28;
+            if (MoleType > MoleType.Max) return 34;
+            if (MoleScale > 8) return 33;
+            if (MoleX > 16) return 35;
+            if (MoleY >= 31) return 36;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return 0;
         }
 
         public void SetFromStoreData(StoreData storeData)
         {
+<<<<<<< HEAD
             Nickname = storeData.CoreData.Nickname;
             CreateId = storeData.CreateId;
             FontRegion = storeData.CoreData.FontRegion;
@@ -337,6 +404,63 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         }
 
         public readonly void SetSource(Source source)
+=======
+            Nickname        = storeData.CoreData.Nickname;
+            CreateId        = storeData.CreateId;
+            FontRegion      = storeData.CoreData.FontRegion;
+            FavoriteColor   = storeData.CoreData.FavoriteColor;
+            Gender          = storeData.CoreData.Gender;
+            Height          = storeData.CoreData.Height;
+            Build           = storeData.CoreData.Build;
+            Type            = storeData.CoreData.Type;
+            RegionMove      = storeData.CoreData.RegionMove;
+            FacelineType    = storeData.CoreData.FacelineType;
+            FacelineColor   = storeData.CoreData.FacelineColor;
+            FacelineWrinkle = storeData.CoreData.FacelineWrinkle;
+            FacelineMake    = storeData.CoreData.FacelineMake;
+            HairType        = storeData.CoreData.HairType;
+            HairColor       = storeData.CoreData.HairColor;
+            HairFlip        = storeData.CoreData.HairFlip;
+            EyeType         = storeData.CoreData.EyeType;
+            EyeColor        = storeData.CoreData.EyeColor;
+            EyeScale        = storeData.CoreData.EyeScale;
+            EyeAspect       = storeData.CoreData.EyeAspect;
+            EyeRotate       = storeData.CoreData.EyeRotate;
+            EyeX            = storeData.CoreData.EyeX;
+            EyeY            = storeData.CoreData.EyeY;
+            EyebrowType     = storeData.CoreData.EyebrowType;
+            EyebrowColor    = storeData.CoreData.EyebrowColor;
+            EyebrowScale    = storeData.CoreData.EyebrowScale;
+            EyebrowAspect   = storeData.CoreData.EyebrowAspect;
+            EyebrowRotate   = storeData.CoreData.EyebrowRotate;
+            EyebrowX        = storeData.CoreData.EyebrowX;
+            EyebrowY        = storeData.CoreData.EyebrowY;
+            NoseType        = storeData.CoreData.NoseType;
+            NoseScale       = storeData.CoreData.NoseScale;
+            NoseY           = storeData.CoreData.NoseY;
+            MouthType       = storeData.CoreData.MouthType;
+            MouthColor      = storeData.CoreData.MouthColor;
+            MouthScale      = storeData.CoreData.MouthScale;
+            MouthAspect     = storeData.CoreData.MouthAspect;
+            MouthY          = storeData.CoreData.MouthY;
+            BeardColor      = storeData.CoreData.BeardColor;
+            BeardType       = storeData.CoreData.BeardType;
+            MustacheType    = storeData.CoreData.MustacheType;
+            MustacheScale   = storeData.CoreData.MustacheScale;
+            MustacheY       = storeData.CoreData.MustacheY;
+            GlassType       = storeData.CoreData.GlassType;
+            GlassColor      = storeData.CoreData.GlassColor;
+            GlassScale      = storeData.CoreData.GlassScale;
+            GlassY          = storeData.CoreData.GlassY;
+            MoleType        = storeData.CoreData.MoleType;
+            MoleScale       = storeData.CoreData.MoleScale;
+            MoleX           = storeData.CoreData.MoleX;
+            MoleY           = storeData.CoreData.MoleY;
+            Reserved        = 0;
+        }
+
+        public void SetSource(Source source)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // Only implemented for Element variants.
         }
@@ -351,12 +475,20 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             return !x.Equals(y);
         }
 
+<<<<<<< HEAD
         public readonly override bool Equals(object obj)
+=======
+        public override bool Equals(object obj)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is CharInfo charInfo && Equals(charInfo);
         }
 
+<<<<<<< HEAD
         public readonly bool Equals(CharInfo cmpObj)
+=======
+        public bool Equals(CharInfo cmpObj)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (!cmpObj.IsValid())
             {
@@ -420,9 +552,15 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
             return result;
         }
 
+<<<<<<< HEAD
         public readonly override int GetHashCode()
         {
             HashCode hashCode = new();
+=======
+        public override int GetHashCode()
+        {
+            HashCode hashCode = new HashCode();
+>>>>>>> 1ec71635b (sync with main branch)
 
             hashCode.Add(Nickname);
             hashCode.Add(CreateId);

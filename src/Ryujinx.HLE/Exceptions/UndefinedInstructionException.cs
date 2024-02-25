@@ -10,4 +10,8 @@ namespace Ryujinx.HLE.Exceptions
 
         public UndefinedInstructionException(ulong address, int opCode) : base(string.Format(ExMsg, address, opCode)) { }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

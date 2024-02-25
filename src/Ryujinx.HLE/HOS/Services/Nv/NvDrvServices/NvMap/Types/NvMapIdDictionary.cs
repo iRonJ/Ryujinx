@@ -58,4 +58,8 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvMap
             return values;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

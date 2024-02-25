@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Runtime.CompilerServices;
+=======
+﻿using System.Runtime.CompilerServices;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Memory.Tracking
 {

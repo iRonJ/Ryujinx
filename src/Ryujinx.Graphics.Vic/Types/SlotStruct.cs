@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Vic.Types
+=======
+﻿namespace Ryujinx.Graphics.Vic.Types
+>>>>>>> 1ec71635b (sync with main branch)
 {
     struct SlotStruct
     {

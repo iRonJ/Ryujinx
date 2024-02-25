@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Resources.Programs;
+=======
+﻿using Ryujinx.Graphics.GAL.Multithreading.Resources.Programs;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -12,10 +16,17 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Resources
     {
         private const int MaxConcurrentCompilations = 8;
 
+<<<<<<< HEAD
         private readonly IRenderer _renderer;
 
         private readonly Queue<IProgramRequest> _toCompile;
         private readonly List<ThreadedProgram> _inProgress;
+=======
+        private IRenderer _renderer;
+
+        private Queue<IProgramRequest> _toCompile;
+        private List<ThreadedProgram> _inProgress;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ProgramQueue(IRenderer renderer)
         {

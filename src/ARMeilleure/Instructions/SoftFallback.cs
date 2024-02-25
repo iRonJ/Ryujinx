@@ -5,7 +5,11 @@ namespace ARMeilleure.Instructions
 {
     static class SoftFallback
     {
+<<<<<<< HEAD
         #region "ShrImm64"
+=======
+#region "ShrImm64"
+>>>>>>> 1ec71635b (sync with main branch)
         public static long SignedShrImm64(long value, long roundConst, int shift)
         {
             if (roundConst == 0L)
@@ -89,6 +93,7 @@ namespace ARMeilleure.Instructions
                 }
             }
         }
+<<<<<<< HEAD
         #endregion
 
         #region "Saturation"
@@ -98,6 +103,14 @@ namespace ARMeilleure.Instructions
             {
                 return 0;
             }
+=======
+#endregion
+
+#region "Saturation"
+        public static int SatF32ToS32(float value)
+        {
+            if (float.IsNaN(value)) return 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return value >= int.MaxValue ? int.MaxValue :
                    value <= int.MinValue ? int.MinValue : (int)value;
@@ -105,10 +118,14 @@ namespace ARMeilleure.Instructions
 
         public static long SatF32ToS64(float value)
         {
+<<<<<<< HEAD
             if (float.IsNaN(value))
             {
                 return 0;
             }
+=======
+            if (float.IsNaN(value)) return 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return value >= long.MaxValue ? long.MaxValue :
                    value <= long.MinValue ? long.MinValue : (long)value;
@@ -116,10 +133,14 @@ namespace ARMeilleure.Instructions
 
         public static uint SatF32ToU32(float value)
         {
+<<<<<<< HEAD
             if (float.IsNaN(value))
             {
                 return 0;
             }
+=======
+            if (float.IsNaN(value)) return 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return value >= uint.MaxValue ? uint.MaxValue :
                    value <= uint.MinValue ? uint.MinValue : (uint)value;
@@ -127,10 +148,14 @@ namespace ARMeilleure.Instructions
 
         public static ulong SatF32ToU64(float value)
         {
+<<<<<<< HEAD
             if (float.IsNaN(value))
             {
                 return 0;
             }
+=======
+            if (float.IsNaN(value)) return 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return value >= ulong.MaxValue ? ulong.MaxValue :
                    value <= ulong.MinValue ? ulong.MinValue : (ulong)value;
@@ -138,10 +163,14 @@ namespace ARMeilleure.Instructions
 
         public static int SatF64ToS32(double value)
         {
+<<<<<<< HEAD
             if (double.IsNaN(value))
             {
                 return 0;
             }
+=======
+            if (double.IsNaN(value)) return 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return value >= int.MaxValue ? int.MaxValue :
                    value <= int.MinValue ? int.MinValue : (int)value;
@@ -149,10 +178,14 @@ namespace ARMeilleure.Instructions
 
         public static long SatF64ToS64(double value)
         {
+<<<<<<< HEAD
             if (double.IsNaN(value))
             {
                 return 0;
             }
+=======
+            if (double.IsNaN(value)) return 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return value >= long.MaxValue ? long.MaxValue :
                    value <= long.MinValue ? long.MinValue : (long)value;
@@ -160,10 +193,14 @@ namespace ARMeilleure.Instructions
 
         public static uint SatF64ToU32(double value)
         {
+<<<<<<< HEAD
             if (double.IsNaN(value))
             {
                 return 0;
             }
+=======
+            if (double.IsNaN(value)) return 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return value >= uint.MaxValue ? uint.MaxValue :
                    value <= uint.MinValue ? uint.MinValue : (uint)value;
@@ -171,17 +208,27 @@ namespace ARMeilleure.Instructions
 
         public static ulong SatF64ToU64(double value)
         {
+<<<<<<< HEAD
             if (double.IsNaN(value))
             {
                 return 0;
             }
+=======
+            if (double.IsNaN(value)) return 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return value >= ulong.MaxValue ? ulong.MaxValue :
                    value <= ulong.MinValue ? ulong.MinValue : (ulong)value;
         }
+<<<<<<< HEAD
         #endregion
 
         #region "Count"
+=======
+#endregion
+
+#region "Count"
+>>>>>>> 1ec71635b (sync with main branch)
         public static ulong CountLeadingSigns(ulong value, int size) // size is 8, 16, 32 or 64 (SIMD&FP or Base Inst.).
         {
             value ^= value >> 1;
@@ -221,9 +268,15 @@ namespace ARMeilleure.Instructions
 
             return (ulong)count;
         }
+<<<<<<< HEAD
         #endregion
 
         #region "Table"
+=======
+#endregion
+
+#region "Table"
+>>>>>>> 1ec71635b (sync with main branch)
         public static V128 Tbl1(V128 vector, int bytes, V128 tb0)
         {
             return TblOrTbx(default, vector, bytes, tb0);
@@ -294,6 +347,7 @@ namespace ARMeilleure.Instructions
 
             return new V128(res);
         }
+<<<<<<< HEAD
         #endregion
 
         #region "Crc32"
@@ -309,6 +363,23 @@ namespace ARMeilleure.Instructions
         public static uint Crc32ch(uint crc, ushort value) => Crc32h(crc, Crc32cRevPoly, value);
         public static uint Crc32cw(uint crc, uint value) => Crc32w(crc, Crc32cRevPoly, value);
         public static uint Crc32cx(uint crc, ulong value) => Crc32x(crc, Crc32cRevPoly, value);
+=======
+#endregion
+
+#region "Crc32"
+        private const uint Crc32RevPoly  = 0xedb88320;
+        private const uint Crc32cRevPoly = 0x82f63b78;
+
+        public static uint Crc32b(uint crc, byte   value) => Crc32 (crc, Crc32RevPoly, value);
+        public static uint Crc32h(uint crc, ushort value) => Crc32h(crc, Crc32RevPoly, value);
+        public static uint Crc32w(uint crc, uint   value) => Crc32w(crc, Crc32RevPoly, value);
+        public static uint Crc32x(uint crc, ulong  value) => Crc32x(crc, Crc32RevPoly, value);
+
+        public static uint Crc32cb(uint crc, byte   value) => Crc32 (crc, Crc32cRevPoly, value);
+        public static uint Crc32ch(uint crc, ushort value) => Crc32h(crc, Crc32cRevPoly, value);
+        public static uint Crc32cw(uint crc, uint   value) => Crc32w(crc, Crc32cRevPoly, value);
+        public static uint Crc32cx(uint crc, ulong  value) => Crc32x(crc, Crc32cRevPoly, value);
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static uint Crc32h(uint crc, uint poly, ushort val)
         {
@@ -355,9 +426,15 @@ namespace ARMeilleure.Instructions
 
             return crc;
         }
+<<<<<<< HEAD
         #endregion
 
         #region "Aes"
+=======
+#endregion
+
+#region "Aes"
+>>>>>>> 1ec71635b (sync with main branch)
         public static V128 Decrypt(V128 value, V128 roundKey)
         {
             return CryptoHelper.AesInvSubBytes(CryptoHelper.AesInvShiftRows(value ^ roundKey));
@@ -377,9 +454,15 @@ namespace ARMeilleure.Instructions
         {
             return CryptoHelper.AesMixColumns(value);
         }
+<<<<<<< HEAD
         #endregion
 
         #region "Sha1"
+=======
+#endregion
+
+#region "Sha1"
+>>>>>>> 1ec71635b (sync with main branch)
         public static V128 HashChoose(V128 hash_abcd, uint hash_e, V128 wk)
         {
             for (int e = 0; e <= 3; e++)
@@ -450,7 +533,11 @@ namespace ARMeilleure.Instructions
             ulong t2 = w4_7.Extract<ulong>(0);
             ulong t1 = w0_3.Extract<ulong>(1);
 
+<<<<<<< HEAD
             V128 result = new(t1, t2);
+=======
+            V128 result = new V128(t1, t2);
+>>>>>>> 1ec71635b (sync with main branch)
 
             return result ^ (w0_3 ^ w8_11);
         }
@@ -496,9 +583,15 @@ namespace ARMeilleure.Instructions
         {
             return (value << count) | (value >> (32 - count));
         }
+<<<<<<< HEAD
         #endregion
 
         #region "Sha256"
+=======
+#endregion
+
+#region "Sha256"
+>>>>>>> 1ec71635b (sync with main branch)
         public static V128 HashLower(V128 hash_abcd, V128 hash_efgh, V128 wk)
         {
             return Sha256Hash(hash_abcd, hash_efgh, wk, part1: true);
@@ -511,7 +604,11 @@ namespace ARMeilleure.Instructions
 
         public static V128 Sha256SchedulePart1(V128 w0_3, V128 w4_7)
         {
+<<<<<<< HEAD
             V128 result = new();
+=======
+            V128 result = new V128();
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int e = 0; e <= 3; e++)
             {
@@ -529,7 +626,11 @@ namespace ARMeilleure.Instructions
 
         public static V128 Sha256SchedulePart2(V128 w0_3, V128 w8_11, V128 w12_15)
         {
+<<<<<<< HEAD
             V128 result = new();
+=======
+            V128 result = new V128();
+>>>>>>> 1ec71635b (sync with main branch)
 
             ulong t1 = w12_15.Extract<ulong>(1);
 
@@ -626,13 +727,21 @@ namespace ARMeilleure.Instructions
                 ? (uint)(value & 0xFFFFFFFFUL)
                 : (uint)(value >> 32);
         }
+<<<<<<< HEAD
         #endregion
+=======
+#endregion
+>>>>>>> 1ec71635b (sync with main branch)
 
         public static V128 PolynomialMult64_128(ulong op1, ulong op2)
         {
             V128 result = V128.Zero;
 
+<<<<<<< HEAD
             V128 op2_128 = new(op2, 0);
+=======
+            V128 op2_128 = new V128(op2, 0);
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < 64; i++)
             {

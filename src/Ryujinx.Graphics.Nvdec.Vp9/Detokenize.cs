@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Nvdec.Vp9.Dsp;
 using Ryujinx.Graphics.Nvdec.Vp9.Types;
 using Ryujinx.Graphics.Video;
@@ -17,9 +21,15 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
         private static int GetCoefContext(ReadOnlySpan<short> neighbors, ReadOnlySpan<byte> tokenCache, int c)
         {
+<<<<<<< HEAD
             const int MaxNeighbors = 2;
 
             return (1 + tokenCache[neighbors[MaxNeighbors * c + 0]] + tokenCache[neighbors[MaxNeighbors * c + 1]]) >> 1;
+=======
+            const int maxNeighbors = 2;
+
+            return (1 + tokenCache[neighbors[maxNeighbors * c + 0]] + tokenCache[neighbors[maxNeighbors * c + 1]]) >> 1;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static int ReadCoeff(
@@ -57,13 +67,21 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             int band, c = 0;
             ref Array6<Array6<Array3<byte>>> coefProbs = ref fc.CoefProbs[(int)txSize][(int)type][refr];
             Span<byte> tokenCache = stackalloc byte[32 * 32];
+<<<<<<< HEAD
             ReadOnlySpan<byte> bandTranslate = Luts.GetBandTranslate(txSize);
+=======
+            ReadOnlySpan<byte> bandTranslate = Luts.get_band_translate(txSize);
+>>>>>>> 1ec71635b (sync with main branch)
             int dqShift = (txSize == TxSize.Tx32x32) ? 1 : 0;
             int v;
             short dqv = dq[0];
             ReadOnlySpan<byte> cat6Prob = (xd.Bd == 12)
                 ? Luts.Vp9Cat6ProbHigh12
+<<<<<<< HEAD
                 : (xd.Bd == 10) ? Luts.Vp9Cat6ProbHigh12[2..] : Luts.Vp9Cat6Prob;
+=======
+                : (xd.Bd == 10) ? Luts.Vp9Cat6ProbHigh12.Slice(2) : Luts.Vp9Cat6Prob;
+>>>>>>> 1ec71635b (sync with main branch)
             int cat6Bits = (xd.Bd == 12) ? 18 : (xd.Bd == 10) ? 16 : 14;
             // Keep value, range, and count as locals.  The compiler produces better
             // results with the locals than using r directly.
@@ -75,7 +93,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             {
                 int val = -1;
                 band = bandTranslate[0];
+<<<<<<< HEAD
                 bandTranslate = bandTranslate[1..];
+=======
+                bandTranslate = bandTranslate.Slice(1);
+>>>>>>> 1ec71635b (sync with main branch)
                 ref Array3<byte> prob = ref coefProbs[band][ctx];
                 if (!xd.Counts.IsNull)
                 {
@@ -107,12 +129,20 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                         r.Value = value;
                         r.Range = range;
                         r.Count = count;
+<<<<<<< HEAD
 
                         return c; // Zero tokens at the end (no eob token)
                     }
                     ctx = GetCoefContext(nb, tokenCache, c);
                     band = bandTranslate[0];
                     bandTranslate = bandTranslate[1..];
+=======
+                        return c;  // Zero tokens at the end (no eob token)
+                    }
+                    ctx = GetCoefContext(nb, tokenCache, c);
+                    band = bandTranslate[0];
+                    bandTranslate = bandTranslate.Slice(1);
+>>>>>>> 1ec71635b (sync with main branch)
                     prob = ref coefProbs[band][ctx];
                 }
 
@@ -197,7 +227,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             r.Value = value;
             r.Range = range;
             r.Count = count;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             return c;
         }
 
@@ -238,8 +271,13 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             ref MacroBlockDPlane pd = ref xd.Plane[plane];
             ref Array2<short> dequant = ref pd.SegDequant[segId];
             int eob;
+<<<<<<< HEAD
             Span<sbyte> a = pd.AboveContext.AsSpan()[x..];
             Span<sbyte> l = pd.LeftContext.AsSpan()[y..];
+=======
+            Span<sbyte> a = pd.AboveContext.AsSpan().Slice(x);
+            Span<sbyte> l = pd.LeftContext.AsSpan().Slice(y);
+>>>>>>> 1ec71635b (sync with main branch)
             int ctx;
             int ctxShiftA = 0;
             int ctxShiftL = 0;

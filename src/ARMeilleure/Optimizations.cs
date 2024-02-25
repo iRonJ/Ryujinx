@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+using System.Runtime.Intrinsics.Arm;
+
+>>>>>>> 1ec71635b (sync with main branch)
 namespace ARMeilleure
 {
     using Arm64HardwareCapabilities = ARMeilleure.CodeGen.Arm64.HardwareCapabilities;
@@ -7,6 +12,7 @@ namespace ARMeilleure
     {
         public static bool FastFP { get; set; } = true;
 
+<<<<<<< HEAD
         public static bool AllowLcqInFunctionTable { get; set; } = true;
         public static bool UseUnmanagedDispatchLoop { get; set; } = true;
 
@@ -32,6 +38,32 @@ namespace ARMeilleure
         public static bool UsePclmulqdqIfAvailable { get; set; } = true;
         public static bool UseShaIfAvailable { get; set; } = true;
         public static bool UseGfniIfAvailable { get; set; } = true;
+=======
+        public static bool AllowLcqInFunctionTable  { get; set; } = true;
+        public static bool UseUnmanagedDispatchLoop { get; set; } = true;
+
+        public static bool UseAdvSimdIfAvailable    { get; set; } = true;
+        public static bool UseArm64PmullIfAvailable { get; set; } = true;
+
+        public static bool UseSseIfAvailable       { get; set; } = true;
+        public static bool UseSse2IfAvailable      { get; set; } = true;
+        public static bool UseSse3IfAvailable      { get; set; } = true;
+        public static bool UseSsse3IfAvailable     { get; set; } = true;
+        public static bool UseSse41IfAvailable     { get; set; } = true;
+        public static bool UseSse42IfAvailable     { get; set; } = true;
+        public static bool UsePopCntIfAvailable    { get; set; } = true;
+        public static bool UseAvxIfAvailable       { get; set; } = true;
+        public static bool UseAvx512FIfAvailable   { get; set; } = true;
+        public static bool UseAvx512VlIfAvailable  { get; set; } = true;
+        public static bool UseAvx512BwIfAvailable  { get; set; } = true;
+        public static bool UseAvx512DqIfAvailable  { get; set; } = true;
+        public static bool UseF16cIfAvailable      { get; set; } = true;
+        public static bool UseFmaIfAvailable       { get; set; } = true;
+        public static bool UseAesniIfAvailable     { get; set; } = true;
+        public static bool UsePclmulqdqIfAvailable { get; set; } = true;
+        public static bool UseShaIfAvailable       { get; set; } = true;
+        public static bool UseGfniIfAvailable      { get; set; } = true;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public static bool ForceLegacySse
         {
@@ -39,9 +71,13 @@ namespace ARMeilleure
             set => X86HardwareCapabilities.ForceLegacySse = value;
         }
 
+<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
         internal static bool UseAdvSimd    => UseAdvSimdIfAvailable    && Arm64HardwareCapabilities.SupportsAdvSimd;
         internal static bool UseArm64Aes   => UseArm64AesIfAvailable   && Arm64HardwareCapabilities.SupportsAes;
+=======
+        internal static bool UseAdvSimd    => UseAdvSimdIfAvailable    && Arm64HardwareCapabilities.SupportsAdvSimd;
+>>>>>>> 1ec71635b (sync with main branch)
         internal static bool UseArm64Pmull => UseArm64PmullIfAvailable && Arm64HardwareCapabilities.SupportsPmull;
 
         internal static bool UseSse       => UseSseIfAvailable       && X86HardwareCapabilities.SupportsSse;
@@ -62,7 +98,10 @@ namespace ARMeilleure
         internal static bool UsePclmulqdq => UsePclmulqdqIfAvailable && X86HardwareCapabilities.SupportsPclmulqdq;
         internal static bool UseSha       => UseShaIfAvailable       && X86HardwareCapabilities.SupportsSha;
         internal static bool UseGfni      => UseGfniIfAvailable      && X86HardwareCapabilities.SupportsGfni;
+<<<<<<< HEAD
 #pragma warning restore IDE0055
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
         internal static bool UseAvx512Ortho => UseAvx512F && UseAvx512Vl;
         internal static bool UseAvx512OrthoFloat => UseAvx512Ortho && UseAvx512Dq;

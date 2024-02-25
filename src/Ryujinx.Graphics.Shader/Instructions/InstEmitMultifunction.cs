@@ -76,7 +76,11 @@ namespace Ryujinx.Graphics.Shader.Instructions
                     break;
 
                 default:
+<<<<<<< HEAD
                     context.TranslatorContext.GpuAccessor.Log($"Invalid MUFU operation \"{op.MufuOp}\".");
+=======
+                    context.Config.GpuAccessor.Log($"Invalid MUFU operation \"{op.MufuOp}\".");
+>>>>>>> 1ec71635b (sync with main branch)
                     break;
             }
 
@@ -94,4 +98,8 @@ namespace Ryujinx.Graphics.Shader.Instructions
             context.Copy(GetDest(rd), srcB);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

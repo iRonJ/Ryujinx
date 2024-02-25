@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace ARMeilleure.Decoders
 {
@@ -24,21 +28,44 @@ namespace ARMeilleure.Decoders
 
         protected int GetQuadwordIndex(int index)
         {
+<<<<<<< HEAD
             return RegisterSize switch
             {
                 RegisterSize.Simd128 or RegisterSize.Simd64 => index >> 1,
                 _ => throw new InvalidOperationException(),
             };
+=======
+            switch (RegisterSize)
+            {
+                case RegisterSize.Simd128:
+                case RegisterSize.Simd64:
+                    return index >> 1;
+            }
+
+            throw new InvalidOperationException();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         protected int GetQuadwordSubindex(int index)
         {
+<<<<<<< HEAD
             return RegisterSize switch
             {
                 RegisterSize.Simd128 => 0,
                 RegisterSize.Simd64 => index & 1,
                 _ => throw new InvalidOperationException(),
             };
+=======
+            switch (RegisterSize)
+            {
+                case RegisterSize.Simd128:
+                    return 0;
+                case RegisterSize.Simd64:
+                    return index & 1;
+            }
+
+            throw new InvalidOperationException();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         protected OpCode32SimdBase(InstDescriptor inst, ulong address, int opCode, bool isThumb) : base(inst, address, opCode)

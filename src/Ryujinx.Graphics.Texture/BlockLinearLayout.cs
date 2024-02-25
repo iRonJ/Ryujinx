@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
@@ -15,11 +19,16 @@ namespace Ryujinx.Graphics.Texture
 
             public RobAndSliceSizes(int robSize, int sliceSize)
             {
+<<<<<<< HEAD
                 RobSize = robSize;
+=======
+                RobSize   = robSize;
+>>>>>>> 1ec71635b (sync with main branch)
                 SliceSize = sliceSize;
             }
         }
 
+<<<<<<< HEAD
         private readonly int _texBpp;
 
         private readonly int _bhMask;
@@ -33,6 +42,21 @@ namespace Ryujinx.Graphics.Texture
 
         private readonly int _robSize;
         private readonly int _sliceSize;
+=======
+        private int _texBpp;
+
+        private int _bhMask;
+        private int _bdMask;
+
+        private int _bhShift;
+        private int _bdShift;
+        private int _bppShift;
+
+        private int _xShift;
+
+        private int _robSize;
+        private int _sliceSize;
+>>>>>>> 1ec71635b (sync with main branch)
 
         // Variables for built in iteration.
         private int _yPart;
@@ -60,7 +84,11 @@ namespace Ryujinx.Graphics.Texture
 
             RobAndSliceSizes rsSizes = GetRobAndSliceSizes(width, height, gobBlocksInY, gobBlocksInZ);
 
+<<<<<<< HEAD
             _robSize = rsSizes.RobSize;
+=======
+            _robSize   = rsSizes.RobSize;
+>>>>>>> 1ec71635b (sync with main branch)
             _sliceSize = rsSizes.SliceSize;
         }
 
@@ -192,4 +220,8 @@ namespace Ryujinx.Graphics.Texture
             return offset + _yzPart;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

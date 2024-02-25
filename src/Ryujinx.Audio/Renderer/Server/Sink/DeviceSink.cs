@@ -72,4 +72,8 @@ namespace Ryujinx.Audio.Renderer.Server.Sink
             outStatus = new SinkOutStatus();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

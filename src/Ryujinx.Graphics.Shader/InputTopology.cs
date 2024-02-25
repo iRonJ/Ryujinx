@@ -6,7 +6,11 @@ namespace Ryujinx.Graphics.Shader
         Lines,
         LinesAdjacency,
         Triangles,
+<<<<<<< HEAD
         TrianglesAdjacency,
+=======
+        TrianglesAdjacency
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     static class InputTopologyExtensions
@@ -20,7 +24,11 @@ namespace Ryujinx.Graphics.Shader
                 InputTopology.LinesAdjacency => "lines_adjacency",
                 InputTopology.Triangles => "triangles",
                 InputTopology.TrianglesAdjacency => "triangles_adjacency",
+<<<<<<< HEAD
                 _ => "points",
+=======
+                _ => "points"
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -29,6 +37,7 @@ namespace Ryujinx.Graphics.Shader
             return topology switch
             {
                 InputTopology.Points => 1,
+<<<<<<< HEAD
                 InputTopology.Lines => 2,
                 InputTopology.LinesAdjacency => 4,
                 InputTopology.Triangles => 3,
@@ -42,12 +51,22 @@ namespace Ryujinx.Graphics.Shader
             return topology switch
             {
                 InputTopology.Points => 1,
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 InputTopology.Lines or
                 InputTopology.LinesAdjacency => 2,
                 InputTopology.Triangles or
                 InputTopology.TrianglesAdjacency => 3,
+<<<<<<< HEAD
                 _ => 1,
             };
         }
     }
 }
+=======
+                _ => 1
+            };
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

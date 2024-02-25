@@ -17,4 +17,8 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             Type = type;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

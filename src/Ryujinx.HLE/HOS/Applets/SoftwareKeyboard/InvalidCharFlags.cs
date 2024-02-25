@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
 {
@@ -51,6 +55,10 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
         /// <summary>
         /// Prohibits characters outside of those allowed in Mii Nicknames.
         /// </summary>
+<<<<<<< HEAD
         Username = 1 << 8,
+=======
+        Username = 1 << 8
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

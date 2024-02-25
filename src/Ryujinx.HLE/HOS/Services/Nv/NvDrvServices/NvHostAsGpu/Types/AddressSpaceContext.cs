@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.Gpu.Memory;
+=======
+﻿using Ryujinx.Graphics.Gpu.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 
 namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostAsGpu.Types
@@ -8,24 +12,40 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostAsGpu.Types
         private class Range
         {
             public ulong Start { get; }
+<<<<<<< HEAD
             public ulong End { get; }
+=======
+            public ulong End   { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
             public Range(ulong address, ulong size)
             {
                 Start = address;
+<<<<<<< HEAD
                 End = size + Start;
+=======
+                End   = size + Start;
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
         private class MappedMemory : Range
         {
             public ulong PhysicalAddress { get; }
+<<<<<<< HEAD
             public bool VaAllocated { get; }
+=======
+            public bool  VaAllocated     { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
             public MappedMemory(ulong address, ulong size, ulong physicalAddress, bool vaAllocated) : base(address, size)
             {
                 PhysicalAddress = physicalAddress;
+<<<<<<< HEAD
                 VaAllocated = vaAllocated;
+=======
+                VaAllocated     = vaAllocated;
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -38,7 +58,11 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostAsGpu.Types
         {
             Gmm = gmm;
 
+<<<<<<< HEAD
             _maps = new SortedList<ulong, Range>();
+=======
+            _maps         = new SortedList<ulong, Range>();
+>>>>>>> 1ec71635b (sync with main branch)
             _reservations = new SortedList<ulong, Range>();
         }
 
@@ -123,9 +147,15 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostAsGpu.Types
             return _reservations.Remove(gpuVa);
         }
 
+<<<<<<< HEAD
         private Range BinarySearch(SortedList<ulong, Range> list, ulong address)
         {
             int left = 0;
+=======
+        private static Range BinarySearch(SortedList<ulong, Range> list, ulong address)
+        {
+            int left  = 0;
+>>>>>>> 1ec71635b (sync with main branch)
             int right = list.Count - 1;
 
             while (left <= right)
@@ -154,11 +184,19 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostAsGpu.Types
             return null;
         }
 
+<<<<<<< HEAD
         private Range BinarySearchLt(SortedList<ulong, Range> list, ulong address)
         {
             Range ltRg = null;
 
             int left = 0;
+=======
+        private static Range BinarySearchLt(SortedList<ulong, Range> list, ulong address)
+        {
+            Range ltRg = null;
+
+            int left  = 0;
+>>>>>>> 1ec71635b (sync with main branch)
             int right = list.Count - 1;
 
             while (left <= right)

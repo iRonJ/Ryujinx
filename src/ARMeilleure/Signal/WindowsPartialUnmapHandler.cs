@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
 using Ryujinx.Common.Memory.PartialUnmaps;
 using System;
 using System.Runtime.InteropServices;
+=======
+﻿using ARMeilleure.IntermediateRepresentation;
+using ARMeilleure.Translation;
+using Ryujinx.Common.Memory.PartialUnmaps;
+using System;
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
 
 namespace ARMeilleure.Signal
@@ -10,6 +18,7 @@ namespace ARMeilleure.Signal
     /// <summary>
     /// Methods to handle signals caused by partial unmaps. See the structs for C# implementations of the methods.
     /// </summary>
+<<<<<<< HEAD
     internal static partial class WindowsPartialUnmapHandler
     {
         [LibraryImport("kernel32.dll", SetLastError = true, EntryPoint = "LoadLibraryA")]
@@ -32,6 +41,10 @@ namespace ARMeilleure.Signal
             return _getCurrentThreadIdPtr;
         }
 
+=======
+    internal static class WindowsPartialUnmapHandler
+    {
+>>>>>>> 1ec71635b (sync with main branch)
         public static Operand EmitRetryFromAccessViolation(EmitterContext context)
         {
             IntPtr partialRemapStatePtr = PartialUnmapState.GlobalState;
@@ -40,7 +53,11 @@ namespace ARMeilleure.Signal
             // Get the lock first.
             EmitNativeReaderLockAcquire(context, IntPtr.Add(partialRemapStatePtr, PartialUnmapState.PartialUnmapLockOffset));
 
+<<<<<<< HEAD
             IntPtr getCurrentThreadId = GetCurrentThreadIdFunc();
+=======
+            IntPtr getCurrentThreadId = WindowsSignalHandlerRegistration.GetCurrentThreadIdFunc();
+>>>>>>> 1ec71635b (sync with main branch)
             Operand threadId = context.Call(Const((ulong)getCurrentThreadId), OperandType.I32);
             Operand threadIndex = EmitThreadLocalMapIntGetOrReserve(context, localCountsPtr, threadId, Const(0));
 
@@ -157,6 +174,18 @@ namespace ARMeilleure.Signal
             return context.Add(structsPtr, context.SignExtend32(OperandType.I64, offset));
         }
 
+<<<<<<< HEAD
+=======
+        private static void EmitThreadLocalMapIntRelease(EmitterContext context, IntPtr threadLocalMapPtr, Operand threadId, Operand index)
+        {
+            Operand offset = context.Multiply(index, Const(sizeof(int)));
+            Operand idsPtr = Const((ulong)IntPtr.Add(threadLocalMapPtr, ThreadLocalMap<int>.ThreadIdsOffset));
+            Operand idPtr = context.Add(idsPtr, context.SignExtend32(OperandType.I64, offset));
+
+            context.CompareAndSwap(idPtr, threadId, Const(0));
+        }
+
+>>>>>>> 1ec71635b (sync with main branch)
         private static void EmitAtomicAddI32(EmitterContext context, Operand ptr, Operand additive)
         {
             Operand loop = Label();

@@ -55,7 +55,11 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
         ConversionOperatorType,
         LocalName,
         CtorVtableSpecialName,
+<<<<<<< HEAD
         ArrayType,
+=======
+        ArrayType
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     public abstract class BaseNode
@@ -99,15 +103,27 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             return null;
         }
 
+<<<<<<< HEAD
         public virtual void PrintRight(TextWriter writer) { }
 
         public override string ToString()
         {
             StringWriter writer = new();
+=======
+        public virtual void PrintRight(TextWriter writer) {}
+
+        public override string ToString()
+        {
+            StringWriter writer = new StringWriter();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Print(writer);
 
             return writer.ToString();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Mii.Types
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Mii.Types
+>>>>>>> 1ec71635b (sync with main branch)
 {
     enum EyeType : byte
     {
@@ -63,7 +67,12 @@ namespace Ryujinx.HLE.HOS.Services.Mii.Types
         RoundTired,
         WhiteLarge,
 
+<<<<<<< HEAD
         Min = Normal,
         Max = WhiteLarge,
+=======
+        Min = 0,
+        Max = 59
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

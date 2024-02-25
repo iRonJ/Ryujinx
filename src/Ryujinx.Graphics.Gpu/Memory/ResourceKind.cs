@@ -8,6 +8,10 @@ namespace Ryujinx.Graphics.Gpu.Memory
         None,
         Buffer,
         Texture,
+<<<<<<< HEAD
         Pool,
+=======
+        Pool
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

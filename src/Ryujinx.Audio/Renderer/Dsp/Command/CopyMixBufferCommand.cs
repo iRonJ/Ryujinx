@@ -27,4 +27,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             context.CopyBuffer(OutputBufferIndex, InputBufferIndex);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -47,7 +47,11 @@ namespace ARMeilleure.CodeGen.X86
                 0xc3, // ret
             };
 
+<<<<<<< HEAD
             using MemoryBlock memGetXcr0 = new((ulong)asmGetXcr0.Length);
+=======
+            using MemoryBlock memGetXcr0 = new MemoryBlock((ulong)asmGetXcr0.Length);
+>>>>>>> 1ec71635b (sync with main branch)
 
             memGetXcr0.Write(0, asmGetXcr0);
 
@@ -62,7 +66,11 @@ namespace ARMeilleure.CodeGen.X86
         public enum FeatureFlags1Edx
         {
             Sse = 1 << 25,
+<<<<<<< HEAD
             Sse2 = 1 << 26,
+=======
+            Sse2 = 1 << 26
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [Flags]
@@ -79,7 +87,11 @@ namespace ARMeilleure.CodeGen.X86
             Xsave = 1 << 26,
             Osxsave = 1 << 27,
             Avx = 1 << 28,
+<<<<<<< HEAD
             F16c = 1 << 29,
+=======
+            F16c = 1 << 29
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [Flags]
@@ -90,7 +102,11 @@ namespace ARMeilleure.CodeGen.X86
             Avx512dq = 1 << 17,
             Sha = 1 << 29,
             Avx512bw = 1 << 30,
+<<<<<<< HEAD
             Avx512vl = 1 << 31,
+=======
+            Avx512vl = 1 << 31
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         [Flags]
@@ -106,7 +122,11 @@ namespace ARMeilleure.CodeGen.X86
             YmmHi128 = 1 << 2,
             Opmask = 1 << 5,
             ZmmHi256 = 1 << 6,
+<<<<<<< HEAD
             Hi16Zmm = 1 << 7,
+=======
+            Hi16Zmm = 1 << 7
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static FeatureFlags1Edx FeatureInfo1Edx { get; }
@@ -141,4 +161,8 @@ namespace ARMeilleure.CodeGen.X86
         public static bool SupportsVexEncoding => SupportsAvx && !ForceLegacySse;
         public static bool SupportsEvexEncoding => SupportsAvx512F && !ForceLegacySse;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -8,6 +8,12 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         Label,
         LocalVariable,
         Register,
+<<<<<<< HEAD
         Undefined,
     }
 }
+=======
+        Undefined
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

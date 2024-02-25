@@ -8,14 +8,24 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         public TextureFormat Format { get; set; }
         public TextureFlags Flags { get; private set; }
 
+<<<<<<< HEAD
         public int Binding { get; private set; }
+=======
+        public int CbufSlot { get; private set; }
+        public int Handle { get; private set; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public TextureOperation(
             Instruction inst,
             SamplerType type,
             TextureFormat format,
             TextureFlags flags,
+<<<<<<< HEAD
             int binding,
+=======
+            int cbufSlot,
+            int handle,
+>>>>>>> 1ec71635b (sync with main branch)
             int compIndex,
             Operand[] dests,
             Operand[] sources) : base(inst, compIndex, dests, sources)
@@ -23,6 +33,7 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
             Type = type;
             Format = format;
             Flags = flags;
+<<<<<<< HEAD
             Binding = binding;
         }
 
@@ -34,6 +45,32 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
         }
 
         public void SetBinding(int binding)
+=======
+            CbufSlot = cbufSlot;
+            Handle = handle;
+        }
+
+        public TextureOperation(
+            Instruction inst,
+            SamplerType type,
+            TextureFormat format,
+            TextureFlags flags,
+            int handle,
+            int compIndex,
+            Operand[] dests,
+            Operand[] sources) : this(inst, type, format, flags, DefaultCbufSlot, handle, compIndex, dests, sources)
+        {
+        }
+
+        public void TurnIntoIndexed(int handle)
+        {
+            Type |= SamplerType.Indexed;
+            Flags &= ~TextureFlags.Bindless;
+            Handle = handle;
+        }
+
+        public void SetHandle(int handle, int cbufSlot = DefaultCbufSlot)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if ((Flags & TextureFlags.Bindless) != 0)
             {
@@ -42,7 +79,12 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
                 RemoveSource(0);
             }
 
+<<<<<<< HEAD
             Binding = binding;
+=======
+            CbufSlot = cbufSlot;
+            Handle = handle;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void SetLodLevelFlag()
@@ -50,4 +92,8 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
             Flags |= TextureFlags.LodLevel;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

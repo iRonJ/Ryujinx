@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
+=======
+﻿using Ryujinx.Common.Utilities;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -94,8 +98,13 @@ namespace Ryujinx.Graphics.Texture.Astc
             public int StartBlock { get; set; }
             public int OutputByteOffset { get; set; }
 
+<<<<<<< HEAD
             public readonly int TotalBlockCount => BlockCountX * BlockCountY * ImageSizeZ;
             public readonly int PixelCount => ImageSizeX * ImageSizeY * ImageSizeZ;
+=======
+            public int TotalBlockCount => BlockCountX * BlockCountY * ImageSizeZ;
+            public int PixelCount => ImageSizeX * ImageSizeY * ImageSizeZ;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static int QueryDecompressedSize(int sizeX, int sizeY, int sizeZ, int levelCount, int layerCount)
@@ -133,7 +142,11 @@ namespace Ryujinx.Graphics.Texture.Astc
 
             AstcLevel levelInfo = GetLevelInfo(index);
 
+<<<<<<< HEAD
             WriteDecompressedBlock(decompressedBytes, OutputBuffer.Span[levelInfo.OutputByteOffset..],
+=======
+            WriteDecompressedBlock(decompressedBytes, OutputBuffer.Span.Slice(levelInfo.OutputByteOffset),
+>>>>>>> 1ec71635b (sync with main branch)
                 index - levelInfo.StartBlock, levelInfo);
         }
 
@@ -171,7 +184,11 @@ namespace Ryujinx.Graphics.Texture.Astc
             for (int i = 0; i < outputPixelsY; i++)
             {
                 ReadOnlySpan<byte> blockRow = block.Slice(inputOffset, outputPixelsX * 4);
+<<<<<<< HEAD
                 Span<byte> outputRow = outputBuffer[outputOffset..];
+=======
+                Span<byte> outputRow = outputBuffer.Slice(outputOffset);
+>>>>>>> 1ec71635b (sync with main branch)
                 blockRow.CopyTo(outputRow);
 
                 inputOffset += BlockSizeX * 4;
@@ -189,7 +206,11 @@ namespace Ryujinx.Graphics.Texture.Astc
             public bool VoidExtentLdr;
             public bool VoidExtentHdr;
 
+<<<<<<< HEAD
             public readonly int GetPackedBitSize()
+=======
+            public int GetPackedBitSize()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 // How many indices do we have?
                 int indices = Height * Width;
@@ -204,7 +225,11 @@ namespace Ryujinx.Graphics.Texture.Astc
                 return intEncoded.GetBitLength(indices);
             }
 
+<<<<<<< HEAD
             public readonly int GetNumWeightValues()
+=======
+            public int GetNumWeightValues()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 int ret = Width * Height;
 
@@ -230,7 +255,11 @@ namespace Ryujinx.Graphics.Texture.Astc
         {
             byte[] output = new byte[QueryDecompressedSize(width, height, depth, levels, layers)];
 
+<<<<<<< HEAD
             AstcDecoder decoder = new(data, output, blockWidth, blockHeight, width, height, depth, levels, layers);
+=======
+            AstcDecoder decoder = new AstcDecoder(data, output, blockWidth, blockHeight, width, height, depth, levels, layers);
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < decoder.TotalBlockCount; i++)
             {
@@ -253,7 +282,11 @@ namespace Ryujinx.Graphics.Texture.Astc
             int levels,
             int layers)
         {
+<<<<<<< HEAD
             AstcDecoder decoder = new(data, outputBuffer, blockWidth, blockHeight, width, height, depth, levels, layers);
+=======
+            AstcDecoder decoder = new AstcDecoder(data, outputBuffer, blockWidth, blockHeight, width, height, depth, levels, layers);
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < decoder.TotalBlockCount; i++)
             {
@@ -274,7 +307,11 @@ namespace Ryujinx.Graphics.Texture.Astc
             int levels,
             int layers)
         {
+<<<<<<< HEAD
             AstcDecoder decoder = new(data, outputBuffer, blockWidth, blockHeight, width, height, depth, levels, layers);
+=======
+            AstcDecoder decoder = new AstcDecoder(data, outputBuffer, blockWidth, blockHeight, width, height, depth, levels, layers);
+>>>>>>> 1ec71635b (sync with main branch)
 
             // Lazy parallelism
             Enumerable.Range(0, decoder.TotalBlockCount).AsParallel().ForAll(x => decoder.ProcessBlock(x));
@@ -295,7 +332,11 @@ namespace Ryujinx.Graphics.Texture.Astc
         {
             byte[] output = new byte[QueryDecompressedSize(width, height, depth, levels, layers)];
 
+<<<<<<< HEAD
             AstcDecoder decoder = new(data, output, blockWidth, blockHeight, width, height, depth, levels, layers);
+=======
+            AstcDecoder decoder = new AstcDecoder(data, output, blockWidth, blockHeight, width, height, depth, levels, layers);
+>>>>>>> 1ec71635b (sync with main branch)
 
             Enumerable.Range(0, decoder.TotalBlockCount).AsParallel().ForAll(x => decoder.ProcessBlock(x));
 
@@ -310,7 +351,11 @@ namespace Ryujinx.Graphics.Texture.Astc
             int blockWidth,
             int blockHeight)
         {
+<<<<<<< HEAD
             BitStream128 bitStream = new(inputBlock);
+=======
+            BitStream128 bitStream = new BitStream128(inputBlock);
+>>>>>>> 1ec71635b (sync with main branch)
 
             DecodeBlockInfo(ref bitStream, out TexelWeightParams texelParams);
 
@@ -359,7 +404,11 @@ namespace Ryujinx.Graphics.Texture.Astc
 
             Span<uint> colorEndpointMode = stackalloc uint[4];
 
+<<<<<<< HEAD
             BitStream128 colorEndpointStream = new();
+=======
+            BitStream128 colorEndpointStream = new BitStream128();
+>>>>>>> 1ec71635b (sync with main branch)
 
             // Read extra config data...
             uint baseColorEndpointMode = 0;
@@ -388,6 +437,7 @@ namespace Ryujinx.Graphics.Texture.Astc
             {
                 switch (numberPartitions)
                 {
+<<<<<<< HEAD
                     case 2:
                         extraColorEndpointModeBits += 2;
                         break;
@@ -400,6 +450,12 @@ namespace Ryujinx.Graphics.Texture.Astc
                     default:
                         Debug.Assert(false);
                         break;
+=======
+                    case 2: extraColorEndpointModeBits += 2; break;
+                    case 3: extraColorEndpointModeBits += 5; break;
+                    case 4: extraColorEndpointModeBits += 8; break;
+                    default: Debug.Assert(false); break;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -456,12 +512,16 @@ namespace Ryujinx.Graphics.Texture.Astc
                 for (int i = 0; i < numberPartitions; i++)
                 {
                     colorEndpointMode[i] = baseMode;
+<<<<<<< HEAD
 
                     if (!(c[i]))
                     {
                         colorEndpointMode[i] -= 1;
                     }
 
+=======
+                    if (!(c[i])) colorEndpointMode[i] -= 1;
+>>>>>>> 1ec71635b (sync with main branch)
                     colorEndpointMode[i] <<= 2;
                     colorEndpointMode[i] |= m[i];
                 }
@@ -488,12 +548,16 @@ namespace Ryujinx.Graphics.Texture.Astc
             DecodeColorValues(colorValues, ref colorEndpointStream, colorEndpointMode, numberPartitions, colorDataBits);
 
             EndPointSet endPoints;
+<<<<<<< HEAD
 
             unsafe
             {
                 // Skip struct initialization
                 _ = &endPoints;
             }
+=======
+            unsafe { _ = &endPoints; } // Skip struct initialization
+>>>>>>> 1ec71635b (sync with main branch)
 
             int colorValuesPosition = 0;
 
@@ -520,6 +584,7 @@ namespace Ryujinx.Graphics.Texture.Astc
             texelWeightData[clearByteStart - 1] &= (byte)((1 << (texelParams.GetPackedBitSize() % 8)) - 1);
 
             int cLen = 16 - clearByteStart;
+<<<<<<< HEAD
             for (int i = clearByteStart; i < clearByteStart + cLen; i++)
             {
                 texelWeightData[i] = 0;
@@ -536,17 +601,30 @@ namespace Ryujinx.Graphics.Texture.Astc
             texelWeightValues.Reset();
 
             BitStream128 weightBitStream = new(texelWeightData);
+=======
+            for (int i = clearByteStart; i < clearByteStart + cLen; i++) texelWeightData[i] = 0;
+
+            IntegerSequence texelWeightValues;
+            unsafe { _ = &texelWeightValues; } // Skip struct initialization
+            texelWeightValues.Reset();
+
+            BitStream128 weightBitStream = new BitStream128(texelWeightData);
+>>>>>>> 1ec71635b (sync with main branch)
 
             IntegerEncoded.DecodeIntegerSequence(ref texelWeightValues, ref weightBitStream, texelParams.MaxWeight, texelParams.GetNumWeightValues());
 
             // Blocks can be at most 12x12, so we can have as many as 144 weights
             Weights weights;
+<<<<<<< HEAD
 
             unsafe
             {
                 // Skip struct initialization
                 _ = &weights;
             }
+=======
+            unsafe { _ = &weights; } // Skip struct initialization
+>>>>>>> 1ec71635b (sync with main branch)
 
             UnquantizeTexelWeights(ref weights, ref texelWeightValues, ref texelParams, blockWidth, blockHeight);
 
@@ -561,7 +639,11 @@ namespace Ryujinx.Graphics.Texture.Astc
                     int partition = Select2dPartition(partitionIndex, i, j, numberPartitions, ((blockHeight * blockWidth) < 32));
                     Debug.Assert(partition < numberPartitions);
 
+<<<<<<< HEAD
                     AstcPixel pixel = new();
+=======
+                    AstcPixel pixel = new AstcPixel();
+>>>>>>> 1ec71635b (sync with main branch)
                     for (int component = 0; component < 4; component++)
                     {
                         int component0 = endPoints.Get(partition)[0].GetComponent(component);
@@ -611,7 +693,11 @@ namespace Ryujinx.Graphics.Texture.Astc
                 {
                     if ((uint)index >= Count)
                     {
+<<<<<<< HEAD
                         throw new ArgumentOutOfRangeException(nameof(index), index, null);
+=======
+                        throw new ArgumentOutOfRangeException();
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     ref int start = ref Unsafe.Add(ref _start, index * 144);
@@ -664,6 +750,7 @@ namespace Ryujinx.Graphics.Texture.Astc
             byte seed11 = (byte)((rightNum >> 26) & 0xF);
             byte seed12 = (byte)(((rightNum >> 30) | (rightNum << 2)) & 0xF);
 
+<<<<<<< HEAD
             seed01 *= seed01;
             seed02 *= seed02;
             seed03 *= seed03;
@@ -676,6 +763,14 @@ namespace Ryujinx.Graphics.Texture.Astc
             seed10 *= seed10;
             seed11 *= seed11;
             seed12 *= seed12;
+=======
+            seed01 *= seed01; seed02 *= seed02;
+            seed03 *= seed03; seed04 *= seed04;
+            seed05 *= seed05; seed06 *= seed06;
+            seed07 *= seed07; seed08 *= seed08;
+            seed09 *= seed09; seed10 *= seed10;
+            seed11 *= seed11; seed12 *= seed12;
+>>>>>>> 1ec71635b (sync with main branch)
 
             int seedHash1, seedHash2, seedHash3;
 
@@ -692,6 +787,7 @@ namespace Ryujinx.Graphics.Texture.Astc
 
             seedHash3 = (seed & 0x10) != 0 ? seedHash1 : seedHash2;
 
+<<<<<<< HEAD
             seed01 >>= seedHash1;
             seed02 >>= seedHash2;
             seed03 >>= seedHash1;
@@ -704,12 +800,18 @@ namespace Ryujinx.Graphics.Texture.Astc
             seed10 >>= seedHash3;
             seed11 >>= seedHash3;
             seed12 >>= seedHash3;
+=======
+            seed01 >>= seedHash1; seed02 >>= seedHash2; seed03 >>= seedHash1; seed04 >>= seedHash2;
+            seed05 >>= seedHash1; seed06 >>= seedHash2; seed07 >>= seedHash1; seed08 >>= seedHash2;
+            seed09 >>= seedHash3; seed10 >>= seedHash3; seed11 >>= seedHash3; seed12 >>= seedHash3;
+>>>>>>> 1ec71635b (sync with main branch)
 
             int a = seed01 * x + seed02 * y + seed11 * z + (rightNum >> 14);
             int b = seed03 * x + seed04 * y + seed12 * z + (rightNum >> 10);
             int c = seed05 * x + seed06 * y + seed09 * z + (rightNum >> 6);
             int d = seed07 * x + seed08 * y + seed10 * z + (rightNum >> 2);
 
+<<<<<<< HEAD
             a &= 0x3F;
             b &= 0x3F;
             c &= 0x3F;
@@ -738,11 +840,22 @@ namespace Ryujinx.Graphics.Texture.Astc
                 return 2;
             }
 
+=======
+            a &= 0x3F; b &= 0x3F; c &= 0x3F; d &= 0x3F;
+
+            if (partitionCount < 4) d = 0;
+            if (partitionCount < 3) c = 0;
+
+            if (a >= b && a >= c && a >= d) return 0;
+            else if (b >= c && b >= d) return 1;
+            else if (c >= d) return 2;
+>>>>>>> 1ec71635b (sync with main branch)
             return 3;
         }
 
         static int Hash52(uint val)
         {
+<<<<<<< HEAD
             val ^= val >> 15;
             val -= val << 17;
             val += val << 7;
@@ -753,6 +866,11 @@ namespace Ryujinx.Graphics.Texture.Astc
             val ^= val >> 3;
             val ^= val << 6;
             val ^= val >> 17;
+=======
+            val ^= val >> 15; val -= val << 17; val += val << 7; val += val << 4;
+            val ^= val >> 5; val += val << 16; val ^= val >> 7; val ^= val >> 3;
+            val ^= val << 6; val ^= val >> 17;
+>>>>>>> 1ec71635b (sync with main branch)
 
             return (int)val;
         }
@@ -766,12 +884,16 @@ namespace Ryujinx.Graphics.Texture.Astc
         {
             int weightIndices = 0;
             Weights unquantized;
+<<<<<<< HEAD
 
             unsafe
             {
                 // Skip struct initialization
                 _ = &unquantized;
             }
+=======
+            unsafe { _ = &unquantized; } // Skip struct initialization
+>>>>>>> 1ec71635b (sync with main branch)
 
             Span<IntegerEncoded> weightsList = weights.List;
             Span<int> unquantized0 = unquantized[0];
@@ -792,10 +914,14 @@ namespace Ryujinx.Graphics.Texture.Astc
                     }
                 }
 
+<<<<<<< HEAD
                 if (++weightIndices >= texelParams.Width * texelParams.Height)
                 {
                     break;
                 }
+=======
+                if (++weightIndices >= texelParams.Width * texelParams.Height) break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             // Do infill if necessary (Section C.2.18) ...
@@ -876,6 +1002,7 @@ namespace Ryujinx.Graphics.Texture.Astc
                     break;
 
                 case IntegerEncoded.EIntegerEncoding.Trit:
+<<<<<<< HEAD
                     {
                         d = intEncoded.TritValue;
                         Debug.Assert(d < 3);
@@ -970,6 +1097,102 @@ namespace Ryujinx.Graphics.Texture.Astc
 
                         break;
                     }
+=======
+                {
+                    d = intEncoded.TritValue;
+                    Debug.Assert(d < 3);
+
+                    switch (bitLength)
+                    {
+                        case 0:
+                        {
+                            result = d switch
+                            {
+                                0 => 0,
+                                1 => 32,
+                                2 => 63,
+                                _ => 0
+                            };
+
+                            break;
+                        }
+
+                        case 1:
+                        {
+                            c = 50;
+                            break;
+                        }
+
+                        case 2:
+                        {
+                            c = 23;
+                            int b2 = (bitValue >> 1) & 1;
+                            b = (b2 << 6) | (b2 << 2) | b2;
+
+                            break;
+                        }
+
+                        case 3:
+                        {
+                            c = 11;
+                            int cb = (bitValue >> 1) & 3;
+                            b = (cb << 5) | cb;
+
+                            break;
+                        }
+
+                        default:
+                            throw new AstcDecoderException("Invalid trit encoding for texel weight.");
+                    }
+
+                    break;
+                }
+
+                case IntegerEncoded.EIntegerEncoding.Quint:
+                {
+                    d = intEncoded.QuintValue;
+                    Debug.Assert(d < 5);
+
+                    switch (bitLength)
+                    {
+                        case 0:
+                        {
+                            result = d switch
+                            {
+                                0 => 0,
+                                1 => 16,
+                                2 => 32,
+                                3 => 47,
+                                4 => 63,
+                                _ => 0
+                            };
+
+                            break;
+                        }
+
+                        case 1:
+                        {
+                            c = 28;
+
+                            break;
+                        }
+
+                        case 2:
+                        {
+                            c = 13;
+                            int b2 = (bitValue >> 1) & 1;
+                            b = (b2 << 6) | (b2 << 1);
+
+                            break;
+                        }
+
+                        default:
+                            throw new AstcDecoderException("Invalid quint encoding for texel weight.");
+                    }
+
+                    break;
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (intEncoded.GetEncoding() != IntegerEncoded.EIntegerEncoding.JustBits && bitLength > 0)
@@ -1024,6 +1247,7 @@ namespace Ryujinx.Graphics.Texture.Astc
             switch (colorEndpointMode)
             {
                 case 0:
+<<<<<<< HEAD
                     {
                         Span<uint> val = ReadUintColorValues(2, colorValues, ref colorValuesPosition);
 
@@ -1178,6 +1402,162 @@ namespace Ryujinx.Graphics.Texture.Astc
 
                         break;
                     }
+=======
+                {
+                    Span<uint> val = ReadUintColorValues(2, colorValues, ref colorValuesPosition);
+
+                    endPoints[0] = new AstcPixel(0xFF, (short)val[0], (short)val[0], (short)val[0]);
+                    endPoints[1] = new AstcPixel(0xFF, (short)val[1], (short)val[1], (short)val[1]);
+
+                    break;
+                }
+
+
+                case 1:
+                {
+                    Span<uint> val = ReadUintColorValues(2, colorValues, ref colorValuesPosition);
+                    int l0 = (int)((val[0] >> 2) | (val[1] & 0xC0));
+                    int l1 = (int)Math.Min(l0 + (val[1] & 0x3F), 0xFFU);
+
+                    endPoints[0] = new AstcPixel(0xFF, (short)l0, (short)l0, (short)l0);
+                    endPoints[1] = new AstcPixel(0xFF, (short)l1, (short)l1, (short)l1);
+
+                    break;
+                }
+
+                case 4:
+                {
+                    Span<uint> val = ReadUintColorValues(4, colorValues, ref colorValuesPosition);
+
+                    endPoints[0] = new AstcPixel((short)val[2], (short)val[0], (short)val[0], (short)val[0]);
+                    endPoints[1] = new AstcPixel((short)val[3], (short)val[1], (short)val[1], (short)val[1]);
+
+                    break;
+                }
+
+                case 5:
+                {
+                    Span<int> val = ReadIntColorValues(4, colorValues, ref colorValuesPosition);
+
+                    Bits.BitTransferSigned(ref val[1], ref val[0]);
+                    Bits.BitTransferSigned(ref val[3], ref val[2]);
+
+                    endPoints[0] = new AstcPixel((short)val[2], (short)val[0], (short)val[0], (short)val[0]);
+                    endPoints[1] = new AstcPixel((short)(val[2] + val[3]), (short)(val[0] + val[1]), (short)(val[0] + val[1]), (short)(val[0] + val[1]));
+
+                    endPoints[0].ClampByte();
+                    endPoints[1].ClampByte();
+
+                    break;
+                }
+
+                case 6:
+                {
+                    Span<uint> val = ReadUintColorValues(4, colorValues, ref colorValuesPosition);
+
+                    endPoints[0] = new AstcPixel(0xFF, (short)(val[0] * val[3] >> 8), (short)(val[1] * val[3] >> 8), (short)(val[2] * val[3] >> 8));
+                    endPoints[1] = new AstcPixel(0xFF, (short)val[0], (short)val[1], (short)val[2]);
+
+                    break;
+                }
+
+                case 8:
+                {
+                    Span<uint> val = ReadUintColorValues(6, colorValues, ref colorValuesPosition);
+
+                    if (val[1] + val[3] + val[5] >= val[0] + val[2] + val[4])
+                    {
+                        endPoints[0] = new AstcPixel(0xFF, (short)val[0], (short)val[2], (short)val[4]);
+                        endPoints[1] = new AstcPixel(0xFF, (short)val[1], (short)val[3], (short)val[5]);
+                    }
+                    else
+                    {
+                        endPoints[0] = AstcPixel.BlueContract(0xFF, (short)val[1], (short)val[3], (short)val[5]);
+                        endPoints[1] = AstcPixel.BlueContract(0xFF, (short)val[0], (short)val[2], (short)val[4]);
+                    }
+
+                    break;
+                }
+
+                case 9:
+                {
+                    Span<int> val = ReadIntColorValues(6, colorValues, ref colorValuesPosition);
+
+                    Bits.BitTransferSigned(ref val[1], ref val[0]);
+                    Bits.BitTransferSigned(ref val[3], ref val[2]);
+                    Bits.BitTransferSigned(ref val[5], ref val[4]);
+
+                    if (val[1] + val[3] + val[5] >= 0)
+                    {
+                        endPoints[0] = new AstcPixel(0xFF, (short)val[0], (short)val[2], (short)val[4]);
+                        endPoints[1] = new AstcPixel(0xFF, (short)(val[0] + val[1]), (short)(val[2] + val[3]), (short)(val[4] + val[5]));
+                    }
+                    else
+                    {
+                        endPoints[0] = AstcPixel.BlueContract(0xFF, val[0] + val[1], val[2] + val[3], val[4] + val[5]);
+                        endPoints[1] = AstcPixel.BlueContract(0xFF, val[0], val[2], val[4]);
+                    }
+
+                    endPoints[0].ClampByte();
+                    endPoints[1].ClampByte();
+
+                    break;
+                }
+
+                case 10:
+                {
+                    Span<uint> val = ReadUintColorValues(6, colorValues, ref colorValuesPosition);
+
+                    endPoints[0] = new AstcPixel((short)val[4], (short)(val[0] * val[3] >> 8), (short)(val[1] * val[3] >> 8), (short)(val[2] * val[3] >> 8));
+                    endPoints[1] = new AstcPixel((short)val[5], (short)val[0], (short)val[1], (short)val[2]);
+
+                    break;
+                }
+
+                case 12:
+                {
+                    Span<uint> val = ReadUintColorValues(8, colorValues, ref colorValuesPosition);
+
+                    if (val[1] + val[3] + val[5] >= val[0] + val[2] + val[4])
+                    {
+                        endPoints[0] = new AstcPixel((short)val[6], (short)val[0], (short)val[2], (short)val[4]);
+                        endPoints[1] = new AstcPixel((short)val[7], (short)val[1], (short)val[3], (short)val[5]);
+                    }
+                    else
+                    {
+                        endPoints[0] = AstcPixel.BlueContract((short)val[7], (short)val[1], (short)val[3], (short)val[5]);
+                        endPoints[1] = AstcPixel.BlueContract((short)val[6], (short)val[0], (short)val[2], (short)val[4]);
+                    }
+
+                    break;
+                }
+
+                case 13:
+                {
+                    Span<int> val = ReadIntColorValues(8, colorValues, ref colorValuesPosition);
+
+                    Bits.BitTransferSigned(ref val[1], ref val[0]);
+                    Bits.BitTransferSigned(ref val[3], ref val[2]);
+                    Bits.BitTransferSigned(ref val[5], ref val[4]);
+                    Bits.BitTransferSigned(ref val[7], ref val[6]);
+
+                    if (val[1] + val[3] + val[5] >= 0)
+                    {
+                        endPoints[0] = new AstcPixel((short)val[6], (short)val[0], (short)val[2], (short)val[4]);
+                        endPoints[1] = new AstcPixel((short)(val[7] + val[6]), (short)(val[0] + val[1]), (short)(val[2] + val[3]), (short)(val[4] + val[5]));
+                    }
+                    else
+                    {
+                        endPoints[0] = AstcPixel.BlueContract(val[6] + val[7], val[0] + val[1], val[2] + val[3], val[4] + val[5]);
+                        endPoints[1] = AstcPixel.BlueContract(val[6], val[0], val[2], val[4]);
+                    }
+
+                    endPoints[0].ClampByte();
+                    endPoints[1].ClampByte();
+
+                    break;
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 default:
                     throw new AstcDecoderException("Unsupported color endpoint mode (is it HDR?)");
@@ -1228,6 +1608,7 @@ namespace Ryujinx.Graphics.Texture.Astc
 
             // We now have enough to decode our integer sequence.
             IntegerSequence integerEncodedSequence;
+<<<<<<< HEAD
 
             unsafe
             {
@@ -1235,6 +1616,9 @@ namespace Ryujinx.Graphics.Texture.Astc
                 _ = &integerEncodedSequence;
             }
 
+=======
+            unsafe { _ = &integerEncodedSequence; } // Skip struct initialization
+>>>>>>> 1ec71635b (sync with main branch)
             integerEncodedSequence.Reset();
 
             IntegerEncoded.DecodeIntegerSequence(ref integerEncodedSequence, ref colorBitStream, range, numberValues);
@@ -1250,13 +1634,20 @@ namespace Ryujinx.Graphics.Texture.Astc
 
                 Debug.Assert(bitLength >= 1);
 
+<<<<<<< HEAD
                 int b = 0, c = 0, d = 0;
                 // A is just the lsb replicated 9 times.
                 int a = Bits.Replicate(bitValue & 1, 1, 9);
+=======
+                int a = 0, b = 0, c = 0, d = 0;
+                // A is just the lsb replicated 9 times.
+                a = Bits.Replicate(bitValue & 1, 1, 9);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 switch (intEncoded.GetEncoding())
                 {
                     case IntegerEncoded.EIntegerEncoding.JustBits:
+<<<<<<< HEAD
                         {
                             outputValues[outputIndices++] = Bits.Replicate(bitValue, bitLength, 8);
 
@@ -1392,6 +1783,143 @@ namespace Ryujinx.Graphics.Texture.Astc
                             }
                             break;
                         }
+=======
+                    {
+                        outputValues[outputIndices++] = Bits.Replicate(bitValue, bitLength, 8);
+
+                        break;
+                    }
+
+                    case IntegerEncoded.EIntegerEncoding.Trit:
+                    {
+                        d = intEncoded.TritValue;
+
+                        switch (bitLength)
+                        {
+                            case 1:
+                            {
+                                c = 204;
+
+                                break;
+                            }
+
+                            case 2:
+                            {
+                                c = 93;
+                                // B = b000b0bb0
+                                int b2 = (bitValue >> 1) & 1;
+                                b = (b2 << 8) | (b2 << 4) | (b2 << 2) | (b2 << 1);
+
+                                break;
+                            }
+
+                            case 3:
+                            {
+                                c = 44;
+                                // B = cb000cbcb
+                                int cb = (bitValue >> 1) & 3;
+                                b = (cb << 7) | (cb << 2) | cb;
+
+                                break;
+                            }
+
+
+                            case 4:
+                            {
+                                c = 22;
+                                // B = dcb000dcb
+                                int dcb = (bitValue >> 1) & 7;
+                                b = (dcb << 6) | dcb;
+
+                                break;
+                            }
+
+                            case 5:
+                            {
+                                c = 11;
+                                // B = edcb000ed
+                                int edcb = (bitValue >> 1) & 0xF;
+                                b = (edcb << 5) | (edcb >> 2);
+
+                                break;
+                            }
+
+                            case 6:
+                            {
+                                c = 5;
+                                // B = fedcb000f
+                                int fedcb = (bitValue >> 1) & 0x1F;
+                                b = (fedcb << 4) | (fedcb >> 4);
+
+                                break;
+                            }
+
+                            default:
+                                throw new AstcDecoderException("Unsupported trit encoding for color values.");
+                        }
+
+                        break;
+                    }
+
+                    case IntegerEncoded.EIntegerEncoding.Quint:
+                    {
+                        d = intEncoded.QuintValue;
+
+                        switch (bitLength)
+                        {
+                            case 1:
+                            {
+                                c = 113;
+
+                                break;
+                            }
+
+                            case 2:
+                            {
+                                c = 54;
+                                // B = b0000bb00
+                                int b2 = (bitValue >> 1) & 1;
+                                b = (b2 << 8) | (b2 << 3) | (b2 << 2);
+
+                                break;
+                            }
+
+                            case 3:
+                            {
+                                c = 26;
+                                // B = cb0000cbc
+                                int cb = (bitValue >> 1) & 3;
+                                b = (cb << 7) | (cb << 1) | (cb >> 1);
+
+                                break;
+                            }
+
+                            case 4:
+                            {
+                                c = 13;
+                                // B = dcb0000dc
+                                int dcb = (bitValue >> 1) & 7;
+                                b = (dcb << 6) | (dcb >> 1);
+
+                                break;
+                            }
+
+                            case 5:
+                            {
+                                c = 6;
+                                // B = edcb0000e
+                                int edcb = (bitValue >> 1) & 0xF;
+                                b = (edcb << 5) | (edcb >> 3);
+
+                                break;
+                            }
+
+                            default:
+                                throw new AstcDecoderException("Unsupported quint encoding for color values.");
+                        }
+                        break;
+                    }
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 if (intEncoded.GetEncoding() != IntegerEncoded.EIntegerEncoding.JustBits)
@@ -1581,6 +2109,7 @@ namespace Ryujinx.Graphics.Texture.Astc
             switch (layout)
             {
                 case 0:
+<<<<<<< HEAD
                     {
                         int a = (modeBits >> 5) & 0x3;
                         int b = (modeBits >> 7) & 0x3;
@@ -1680,6 +2209,107 @@ namespace Ryujinx.Graphics.Texture.Astc
 
                         break;
                     }
+=======
+                {
+                    int a = (modeBits >> 5) & 0x3;
+                    int b = (modeBits >> 7) & 0x3;
+
+                    texelParams.Width = b + 4;
+                    texelParams.Height = a + 2;
+
+                    break;
+                }
+
+                case 1:
+                {
+                    int a = (modeBits >> 5) & 0x3;
+                    int b = (modeBits >> 7) & 0x3;
+
+                    texelParams.Width = b + 8;
+                    texelParams.Height = a + 2;
+
+                    break;
+                }
+
+                case 2:
+                {
+                    int a = (modeBits >> 5) & 0x3;
+                    int b = (modeBits >> 7) & 0x3;
+
+                    texelParams.Width = a + 2;
+                    texelParams.Height = b + 8;
+
+                    break;
+                }
+
+                case 3:
+                {
+                    int a = (modeBits >> 5) & 0x3;
+                    int b = (modeBits >> 7) & 0x1;
+
+                    texelParams.Width = a + 2;
+                    texelParams.Height = b + 6;
+
+                    break;
+                }
+
+                case 4:
+                {
+                    int a = (modeBits >> 5) & 0x3;
+                    int b = (modeBits >> 7) & 0x1;
+
+                    texelParams.Width = b + 2;
+                    texelParams.Height = a + 2;
+
+                    break;
+                }
+
+                case 5:
+                {
+                    int a = (modeBits >> 5) & 0x3;
+
+                    texelParams.Width = 12;
+                    texelParams.Height = a + 2;
+
+                    break;
+                }
+
+                case 6:
+                {
+                    int a = (modeBits >> 5) & 0x3;
+
+                    texelParams.Width = a + 2;
+                    texelParams.Height = 12;
+
+                    break;
+                }
+
+                case 7:
+                {
+                    texelParams.Width = 6;
+                    texelParams.Height = 10;
+
+                    break;
+                }
+
+                case 8:
+                {
+                    texelParams.Width = 10;
+                    texelParams.Height = 6;
+                    break;
+                }
+
+                case 9:
+                {
+                    int a = (modeBits >> 5) & 0x3;
+                    int b = (modeBits >> 9) & 0x3;
+
+                    texelParams.Width = a + 6;
+                    texelParams.Height = b + 6;
+
+                    break;
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 default:
                     // Don't know this layout...

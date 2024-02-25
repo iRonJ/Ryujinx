@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.Device;
+=======
+﻿using Ryujinx.Graphics.Gpu.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Video;
 using System;
 using System.Diagnostics;
@@ -27,11 +31,19 @@ namespace Ryujinx.Graphics.Nvdec.Image
 
         private readonly CacheItem[] _pool = new CacheItem[MaxItems];
 
+<<<<<<< HEAD
         private readonly DeviceMemoryManager _mm;
 
         public SurfaceCache(DeviceMemoryManager mm)
         {
             _mm = mm;
+=======
+        private readonly MemoryManager _gmm;
+
+        public SurfaceCache(MemoryManager gmm)
+        {
+            _gmm = gmm;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ISurface Get(IDecoder decoder, uint lumaOffset, uint chromaOffset, int width, int height)
@@ -77,7 +89,11 @@ namespace Ryujinx.Graphics.Nvdec.Image
 
                             if ((lumaOffset | chromaOffset) != 0)
                             {
+<<<<<<< HEAD
                                 SurfaceReader.Read(_mm, surface, lumaOffset, chromaOffset);
+=======
+                                SurfaceReader.Read(_gmm, surface, lumaOffset, chromaOffset);
+>>>>>>> 1ec71635b (sync with main branch)
                             }
 
                             MoveToFront(i);
@@ -100,7 +116,11 @@ namespace Ryujinx.Graphics.Nvdec.Image
 
                         if ((lumaOffset | chromaOffset) != 0)
                         {
+<<<<<<< HEAD
                             SurfaceReader.Read(_mm, surface, lumaOffset, chromaOffset);
+=======
+                            SurfaceReader.Read(_gmm, surface, lumaOffset, chromaOffset);
+>>>>>>> 1ec71635b (sync with main branch)
                         }
 
                         MoveToFront(MaxItems - 1);

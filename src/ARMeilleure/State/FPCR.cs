@@ -13,10 +13,18 @@ namespace ARMeilleure.State
         Ide = 1u << 15,
         RMode0 = 1u << 22,
         RMode1 = 1u << 23,
+<<<<<<< HEAD
         Fz = 1u << 24,
         Dn = 1u << 25,
         Ahp = 1u << 26,
 
         Mask = Ahp | Dn | Fz | RMode1 | RMode0 | Ide | Ixe | Ufe | Ofe | Dze | Ioe, // 0x07C09F00u
+=======
+        Fz  = 1u << 24,
+        Dn  = 1u << 25,
+        Ahp = 1u << 26,
+
+        Mask = Ahp | Dn | Fz | RMode1 | RMode0 | Ide | Ixe | Ufe | Ofe | Dze | Ioe // 0x07C09F00u
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

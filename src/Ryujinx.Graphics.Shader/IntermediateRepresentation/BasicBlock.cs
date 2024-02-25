@@ -83,9 +83,18 @@ namespace Ryujinx.Graphics.Shader.IntermediateRepresentation
                 case Instruction.Discard:
                 case Instruction.Return:
                     return true;
+<<<<<<< HEAD
                 default:
                     return false;
             }
         }
     }
 }
+=======
+            }
+
+            return false;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types
+>>>>>>> 1ec71635b (sync with main branch)
 {
     class PollEvent
     {
@@ -11,4 +15,8 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types
             FileDescriptor = fileDescriptor;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
+=======
+﻿using Ryujinx.Common.Utilities;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -7,7 +11,11 @@ namespace Ryujinx.Common.Configuration.Hid.Controller.Motion
 {
     class JsonMotionConfigControllerConverter : JsonConverter<MotionConfigController>
     {
+<<<<<<< HEAD
         private static readonly MotionConfigJsonSerializerContext _serializerContext = new(JsonHelper.GetDefaultSerializerOptions());
+=======
+        private static readonly MotionConfigJsonSerializerContext SerializerContext = new(JsonHelper.GetDefaultSerializerOptions());
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static MotionInputBackendType GetMotionInputBackendType(ref Utf8JsonReader reader)
         {
@@ -55,8 +63,13 @@ namespace Ryujinx.Common.Configuration.Hid.Controller.Motion
 
             return motionBackendType switch
             {
+<<<<<<< HEAD
                 MotionInputBackendType.GamepadDriver => JsonSerializer.Deserialize(ref reader, _serializerContext.StandardMotionConfigController),
                 MotionInputBackendType.CemuHook => JsonSerializer.Deserialize(ref reader, _serializerContext.CemuHookMotionConfigController),
+=======
+                MotionInputBackendType.GamepadDriver => JsonSerializer.Deserialize(ref reader, SerializerContext.StandardMotionConfigController),
+                MotionInputBackendType.CemuHook => JsonSerializer.Deserialize(ref reader, SerializerContext.CemuHookMotionConfigController),
+>>>>>>> 1ec71635b (sync with main branch)
                 _ => throw new InvalidOperationException($"Unknown backend type {motionBackendType}"),
             };
         }
@@ -66,10 +79,17 @@ namespace Ryujinx.Common.Configuration.Hid.Controller.Motion
             switch (value.MotionBackend)
             {
                 case MotionInputBackendType.GamepadDriver:
+<<<<<<< HEAD
                     JsonSerializer.Serialize(writer, value as StandardMotionConfigController, _serializerContext.StandardMotionConfigController);
                     break;
                 case MotionInputBackendType.CemuHook:
                     JsonSerializer.Serialize(writer, value as CemuHookMotionConfigController, _serializerContext.CemuHookMotionConfigController);
+=======
+                    JsonSerializer.Serialize(writer, value as StandardMotionConfigController, SerializerContext.StandardMotionConfigController);
+                    break;
+                case MotionInputBackendType.CemuHook:
+                    JsonSerializer.Serialize(writer, value as CemuHookMotionConfigController, SerializerContext.CemuHookMotionConfigController);
+>>>>>>> 1ec71635b (sync with main branch)
                     break;
                 default:
                     throw new ArgumentException($"Unknown motion backend type {value.MotionBackend}");

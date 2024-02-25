@@ -8,9 +8,15 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
 {
     class IDisplayController : IpcService
     {
+<<<<<<< HEAD
         private readonly KTransferMemory _transferMem;
         private bool _lastApplicationCaptureBufferAcquired;
         private bool _callerAppletCaptureBufferAcquired;
+=======
+        private KTransferMemory _transferMem;
+        private bool            _lastApplicationCaptureBufferAcquired;
+        private bool            _callerAppletCaptureBufferAcquired;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IDisplayController(ServiceCtx context)
         {
@@ -22,7 +28,11 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
         public ResultCode TakeScreenShotOfOwnLayer(ServiceCtx context)
         {
             bool unknown1 = context.RequestData.ReadBoolean();
+<<<<<<< HEAD
             int unknown2 = context.RequestData.ReadInt32();
+=======
+            int  unknown2 = context.RequestData.ReadInt32();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Logger.Stub?.PrintStub(LogClass.ServiceAm, new { unknown1, unknown2 });
 
@@ -103,4 +113,8 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Sys
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

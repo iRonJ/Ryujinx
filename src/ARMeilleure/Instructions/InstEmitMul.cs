@@ -2,7 +2,11 @@ using ARMeilleure.Decoders;
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
 using System;
+<<<<<<< HEAD
 using System.Diagnostics.CodeAnalysis;
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 
 namespace ARMeilleure.Instructions
@@ -33,6 +37,7 @@ namespace ARMeilleure.Instructions
         public static void Umsubl(ArmEmitterContext context) => EmitMull(context, MullFlags.Subtract);
 
         [Flags]
+<<<<<<< HEAD
         [SuppressMessage("Design", "CA1069: Enums values should not be duplicated")]
         private enum MullFlags
         {
@@ -42,6 +47,16 @@ namespace ARMeilleure.Instructions
 
             SignedAdd = Signed | Add,
             SignedSubtract = Signed | Subtract,
+=======
+        private enum MullFlags
+        {
+            Subtract = 0,
+            Add      = 1 << 0,
+            Signed   = 1 << 1,
+
+            SignedAdd      = Signed | Add,
+            SignedSubtract = Signed | Subtract
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void EmitMull(ArmEmitterContext context, MullFlags flags)
@@ -98,4 +113,8 @@ namespace ARMeilleure.Instructions
             SetIntOrZR(context, op.Rd, d);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

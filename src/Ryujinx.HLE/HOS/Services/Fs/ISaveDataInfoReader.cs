@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using LibHac;
+=======
+﻿using LibHac;
+>>>>>>> 1ec71635b (sync with main branch)
 using LibHac.Common;
 using LibHac.Sf;
 
@@ -20,12 +24,23 @@ namespace Ryujinx.HLE.HOS.Services.Fs
             ulong bufferAddress = context.Request.ReceiveBuff[0].Position;
             ulong bufferLen = context.Request.ReceiveBuff[0].Size;
 
+<<<<<<< HEAD
             using var region = context.Memory.GetWritableRegion(bufferAddress, (int)bufferLen, true);
             Result result = _baseReader.Get.Read(out long readCount, new OutBuffer(region.Memory.Span));
 
             context.ResponseData.Write(readCount);
 
             return (ResultCode)result.Value;
+=======
+            using (var region = context.Memory.GetWritableRegion(bufferAddress, (int)bufferLen, true))
+            {
+                Result result = _baseReader.Get.Read(out long readCount, new OutBuffer(region.Memory.Span));
+
+                context.ResponseData.Write(readCount);
+
+                return (ResultCode)result.Value;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         protected override void Dispose(bool isDisposing)

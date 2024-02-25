@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Vulkan
 {
     internal class PersistentFlushBuffer : IDisposable
     {
+<<<<<<< HEAD
         private readonly VulkanRenderer _gd;
+=======
+        private VulkanRenderer _gd;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private BufferHolder _flushStorage;
 
@@ -20,7 +28,14 @@ namespace Ryujinx.Graphics.Vulkan
 
             if (flushStorage == null || size > _flushStorage.Size)
             {
+<<<<<<< HEAD
                 flushStorage?.Dispose();
+=======
+                if (flushStorage != null)
+                {
+                    flushStorage.Dispose();
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 flushStorage = _gd.BufferManager.Create(_gd, size);
                 _flushStorage = flushStorage;
@@ -57,7 +72,11 @@ namespace Ryujinx.Graphics.Vulkan
 
         public Span<byte> GetTextureData(CommandBufferPool cbp, TextureView view, int size)
         {
+<<<<<<< HEAD
             TextureCreateInfo info = view.Info;
+=======
+            GAL.TextureCreateInfo info = view.Info;
+>>>>>>> 1ec71635b (sync with main branch)
 
             var flushStorage = ResizeIfNeeded(size);
 

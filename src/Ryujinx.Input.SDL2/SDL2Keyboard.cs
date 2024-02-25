@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Configuration.Hid;
+=======
+﻿using Ryujinx.Common.Configuration.Hid;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Configuration.Hid.Keyboard;
 using System;
 using System.Collections.Generic;
@@ -24,6 +28,7 @@ namespace Ryujinx.Input.SDL2
             }
         }
 
+<<<<<<< HEAD
         private readonly object _userMappingLock = new();
 
 #pragma warning disable IDE0052 // Remove unread private member
@@ -31,6 +36,13 @@ namespace Ryujinx.Input.SDL2
 #pragma warning restore IDE0052
         private StandardKeyboardInputConfig _configuration;
         private readonly List<ButtonMappingEntry> _buttonsUserMapping;
+=======
+        private object _userMappingLock = new object();
+
+        private readonly SDL2KeyboardDriver _driver;
+        private StandardKeyboardInputConfig _configuration;
+        private List<ButtonMappingEntry> _buttonsUserMapping;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static readonly SDL_Keycode[] _keysDriverMapping = new SDL_Keycode[(int)Key.Count]
         {
@@ -210,6 +222,7 @@ namespace Ryujinx.Input.SDL2
 
         private static SDL_Keymod GetKeyboardModifierMask(Key key)
         {
+<<<<<<< HEAD
             return key switch
             {
                 Key.ShiftLeft => SDL_Keymod.KMOD_LSHIFT,
@@ -223,6 +236,31 @@ namespace Ryujinx.Input.SDL2
                 // NOTE: Menu key isn't supported by SDL2.
                 _ => SDL_Keymod.KMOD_NONE,
             };
+=======
+            switch (key)
+            {
+                case Key.ShiftLeft:
+                    return SDL_Keymod.KMOD_LSHIFT;
+                case Key.ShiftRight:
+                    return SDL_Keymod.KMOD_RSHIFT;
+                case Key.ControlLeft:
+                    return SDL_Keymod.KMOD_LCTRL;
+                case Key.ControlRight:
+                    return SDL_Keymod.KMOD_RCTRL;
+                case Key.AltLeft:
+                    return SDL_Keymod.KMOD_LALT;
+                case Key.AltRight:
+                    return SDL_Keymod.KMOD_RALT;
+                case Key.WinLeft:
+                    return SDL_Keymod.KMOD_LGUI;
+                case Key.WinRight:
+                    return SDL_Keymod.KMOD_RGUI;
+                // NOTE: Menu key isn't supported by SDL2.
+                case Key.Menu:
+                default:
+                    return SDL_Keymod.KMOD_NONE;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public KeyboardStateSnapshot GetKeyboardStateSnapshot()
@@ -408,4 +446,8 @@ namespace Ryujinx.Input.SDL2
             return Vector3.Zero;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

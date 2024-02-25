@@ -4,8 +4,13 @@ namespace Ryujinx.Audio.Renderer.Dsp.Effect
 {
     public class DelayLine3d : IDelayLine
     {
+<<<<<<< HEAD
         private readonly float[] _workBuffer;
         private readonly uint _sampleRate;
+=======
+        private float[] _workBuffer;
+        private uint _sampleRate;
+>>>>>>> 1ec71635b (sync with main branch)
         private uint _currentSampleIndex;
         private uint _lastSampleIndex;
 
@@ -73,4 +78,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.Effect
             return TapUnsafe(sampleIndex, -1);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

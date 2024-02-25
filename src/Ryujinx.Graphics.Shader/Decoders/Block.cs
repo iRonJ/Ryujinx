@@ -92,7 +92,11 @@ namespace Ryujinx.Graphics.Shader.Decoders
                 pushOpInfo.Consumers.Add(rightBlock, local);
             }
 
+<<<<<<< HEAD
             foreach ((ulong key, SyncTarget value) in SyncTargets)
+=======
+            foreach ((ulong  key, SyncTarget value) in SyncTargets)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 rightBlock.SyncTargets.Add(key, value);
             }
@@ -148,7 +152,11 @@ namespace Ryujinx.Graphics.Shader.Decoders
         {
             if (OpCodes.Count != 0)
             {
+<<<<<<< HEAD
                 return OpCodes[^1];
+=======
+                return OpCodes[OpCodes.Count - 1];
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return default;
@@ -165,4 +173,8 @@ namespace Ryujinx.Graphics.Shader.Decoders
             PushOpCodes.Add(new PushOpInfo(op));
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

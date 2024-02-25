@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu.Synchronization;
 using Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl.Types;
 using Ryujinx.HLE.HOS.Services.Nv.Types;
@@ -14,9 +18,15 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvHostCtrl
     {
         public const int EventsCount = 64;
 
+<<<<<<< HEAD
         private readonly bool _isProductionMode;
         private readonly Switch _device;
         private readonly NvHostEvent[] _events;
+=======
+        private bool          _isProductionMode;
+        private Switch        _device;
+        private NvHostEvent[] _events;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public NvHostCtrlDeviceFile(ServiceCtx context, IVirtualMemoryManager memory, ulong owner) : base(context, owner)
         {

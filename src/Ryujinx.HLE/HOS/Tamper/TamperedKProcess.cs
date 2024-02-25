@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.Exceptions;
 using Ryujinx.HLE.HOS.Kernel.Process;
 using System.Runtime.CompilerServices;
@@ -7,7 +11,11 @@ namespace Ryujinx.HLE.HOS.Tamper
 {
     class TamperedKProcess : ITamperedProcess
     {
+<<<<<<< HEAD
         private readonly KProcess _process;
+=======
+        private KProcess _process;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ProcessState State => _process.State;
 
@@ -65,4 +73,8 @@ namespace Ryujinx.HLE.HOS.Tamper
             Logger.Warning?.Print(LogClass.TamperMachine, "Process resuming is not supported!");
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

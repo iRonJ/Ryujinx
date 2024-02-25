@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 using System.Security.Cryptography;
+=======
+﻿using System.Security.Cryptography;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Spl
 {
     [Service("csrng")]
     class IRandomInterface : DisposableIpcService
     {
+<<<<<<< HEAD
         private readonly RandomNumberGenerator _rng;
+=======
+        private RandomNumberGenerator _rng;
+
+        private object _lock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IRandomInterface(ServiceCtx context)
         {
@@ -33,4 +43,8 @@ namespace Ryujinx.HLE.HOS.Services.Spl
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -2,13 +2,17 @@ using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Diagnostics;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Numerics;
 
 namespace Ryujinx.Graphics.Shader.StructuredIr
 {
     static class StructuredProgram
     {
+<<<<<<< HEAD
         // TODO: Eventually it should be possible to specify the parameter types for the function instead of using S32 for everything.
         private const AggregateType FuncParameterType = AggregateType.S32;
 
@@ -21,6 +25,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             bool debugMode)
         {
             StructuredProgramContext context = new(attributeUsage, definitions, resourceManager, debugMode);
+=======
+        public static StructuredProgramInfo MakeStructuredProgram(IReadOnlyList<Function> functions, ShaderConfig config)
+        {
+            StructuredProgramContext context = new StructuredProgramContext(config);
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int funcIndex = 0; funcIndex < functions.Count; funcIndex++)
             {
@@ -28,19 +37,33 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
                 BasicBlock[] blocks = function.Blocks;
 
+<<<<<<< HEAD
                 AggregateType returnType = function.ReturnsValue ? FuncParameterType : AggregateType.Void;
 
                 AggregateType[] inArguments = new AggregateType[function.InArgumentsCount];
+=======
+                AggregateType returnType = function.ReturnsValue ? AggregateType.S32 : AggregateType.Void;
+
+                AggregateType[] inArguments  = new AggregateType[function.InArgumentsCount];
+>>>>>>> 1ec71635b (sync with main branch)
                 AggregateType[] outArguments = new AggregateType[function.OutArgumentsCount];
 
                 for (int i = 0; i < inArguments.Length; i++)
                 {
+<<<<<<< HEAD
                     inArguments[i] = FuncParameterType;
+=======
+                    inArguments[i] = AggregateType.S32;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 for (int i = 0; i < outArguments.Length; i++)
                 {
+<<<<<<< HEAD
                     outArguments[i] = FuncParameterType;
+=======
+                    outArguments[i] = AggregateType.S32;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 context.EnterFunction(blocks.Length, function.Name, returnType, inArguments, outArguments);
@@ -63,7 +86,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                         }
                         else
                         {
+<<<<<<< HEAD
                             AddOperation(context, operation, targetLanguage, functions);
+=======
+                            AddOperation(context, operation);
+>>>>>>> 1ec71635b (sync with main branch)
                         }
                     }
                 }
@@ -78,7 +105,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             return context.Info;
         }
 
+<<<<<<< HEAD
         private static void AddOperation(StructuredProgramContext context, Operation operation, TargetLanguage targetLanguage, IReadOnlyList<Function> functions)
+=======
+        private static void AddOperation(StructuredProgramContext context, Operation operation)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Instruction inst = operation.Inst;
             StorageKind storageKind = operation.StorageKind;
@@ -89,16 +120,28 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 {
                     IoVariable ioVariable = (IoVariable)operation.GetSource(0).Value;
                     bool isOutput = storageKind.IsOutput();
+<<<<<<< HEAD
                     int location = 0;
                     int component = 0;
 
                     if (context.Definitions.HasPerLocationInputOrOutput(ioVariable, isOutput))
+=======
+                    bool perPatch = storageKind.IsPerPatch();
+                    int location = 0;
+                    int component = 0;
+
+                    if (context.Config.HasPerLocationInputOrOutput(ioVariable, isOutput))
+>>>>>>> 1ec71635b (sync with main branch)
                     {
                         location = operation.GetSource(1).Value;
 
                         if (operation.SourcesCount > 2 &&
                             operation.GetSource(2).Type == OperandType.Constant &&
+<<<<<<< HEAD
                             context.Definitions.HasPerLocationInputOrOutputComponent(ioVariable, location, operation.GetSource(2).Value, isOutput))
+=======
+                            context.Config.HasPerLocationInputOrOutputComponent(ioVariable, location, operation.GetSource(2).Value, isOutput))
+>>>>>>> 1ec71635b (sync with main branch)
                         {
                             component = operation.GetSource(2).Value;
                         }
@@ -108,7 +151,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 }
                 else if (storageKind == StorageKind.ConstantBuffer && operation.GetSource(0).Type == OperandType.Constant)
                 {
+<<<<<<< HEAD
                     context.ResourceManager.SetUsedConstantBufferBinding(operation.GetSource(0).Value);
+=======
+                    context.Config.ResourceManager.SetUsedConstantBufferBinding(operation.GetSource(0).Value);
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -119,6 +166,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
             IAstNode[] sources = new IAstNode[sourcesCount + outDestsCount];
 
+<<<<<<< HEAD
             if (inst == Instruction.Call && targetLanguage == TargetLanguage.Spirv)
             {
                 // SPIR-V requires that all function parameters are copied to a local variable before the call
@@ -156,6 +204,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 {
                     sources[index] = context.GetOperandOrCbLoad(operation.GetSource(index));
                 }
+=======
+            for (int index = 0; index < operation.SourcesCount; index++)
+            {
+                sources[index] = context.GetOperandOrCbLoad(operation.GetSource(index));
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             for (int index = 0; index < outDestsCount; index++)
@@ -169,7 +222,19 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
             AstTextureOperation GetAstTextureOperation(TextureOperation texOp)
             {
+<<<<<<< HEAD
                 return new AstTextureOperation(inst, texOp.Type, texOp.Format, texOp.Flags, texOp.Binding, texOp.Index, sources);
+=======
+                return new AstTextureOperation(
+                    inst,
+                    texOp.Type,
+                    texOp.Format,
+                    texOp.Flags,
+                    texOp.CbufSlot,
+                    texOp.Handle,
+                    texOp.Index,
+                    sources);
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             int componentsCount = BitOperations.PopCount((uint)operation.Index);
@@ -204,6 +269,7 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
                 switch (componentsCount)
                 {
+<<<<<<< HEAD
                     case 2:
                         destType |= AggregateType.Vector2;
                         break;
@@ -213,6 +279,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                     case 4:
                         destType |= AggregateType.Vector4;
                         break;
+=======
+                    case 2: destType |= AggregateType.Vector2; break;
+                    case 3: destType |= AggregateType.Vector3; break;
+                    case 4: destType |= AggregateType.Vector4; break;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 AstOperand destVec = context.NewTemp(destType);
@@ -222,7 +293,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 for (int i = 0; i < operation.DestsCount; i++)
                 {
                     AstOperand dest = context.GetOperand(operation.GetDest(i));
+<<<<<<< HEAD
                     AstOperand index = new(OperandType.Constant, i);
+=======
+                    AstOperand index = new AstOperand(OperandType.Constant, i);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     dest.VarType = destElemType;
 
@@ -243,7 +318,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 }
 
                 bool isCondSel = inst == Instruction.ConditionalSelect;
+<<<<<<< HEAD
                 bool isCopy = inst == Instruction.Copy;
+=======
+                bool isCopy    = inst == Instruction.Copy;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 if (isCondSel || isCopy)
                 {
@@ -315,12 +394,49 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             // decide which helper functions are needed on the final generated code.
             switch (operation.Inst)
             {
+<<<<<<< HEAD
+=======
+                case Instruction.AtomicMaxS32:
+                case Instruction.AtomicMinS32:
+                    if (operation.StorageKind == StorageKind.SharedMemory)
+                    {
+                        context.Info.HelperFunctionsMask |= HelperFunctionsMask.AtomicMinMaxS32Shared;
+                    }
+                    else if (operation.StorageKind == StorageKind.StorageBuffer)
+                    {
+                        context.Info.HelperFunctionsMask |= HelperFunctionsMask.AtomicMinMaxS32Storage;
+                    }
+                    break;
+>>>>>>> 1ec71635b (sync with main branch)
                 case Instruction.MultiplyHighS32:
                     context.Info.HelperFunctionsMask |= HelperFunctionsMask.MultiplyHighS32;
                     break;
                 case Instruction.MultiplyHighU32:
                     context.Info.HelperFunctionsMask |= HelperFunctionsMask.MultiplyHighU32;
                     break;
+<<<<<<< HEAD
+=======
+                case Instruction.Shuffle:
+                    context.Info.HelperFunctionsMask |= HelperFunctionsMask.Shuffle;
+                    break;
+                case Instruction.ShuffleDown:
+                    context.Info.HelperFunctionsMask |= HelperFunctionsMask.ShuffleDown;
+                    break;
+                case Instruction.ShuffleUp:
+                    context.Info.HelperFunctionsMask |= HelperFunctionsMask.ShuffleUp;
+                    break;
+                case Instruction.ShuffleXor:
+                    context.Info.HelperFunctionsMask |= HelperFunctionsMask.ShuffleXor;
+                    break;
+                case Instruction.StoreShared16:
+                case Instruction.StoreShared8:
+                    context.Info.HelperFunctionsMask |= HelperFunctionsMask.StoreSharedSmallInt;
+                    break;
+                case Instruction.StoreStorage16:
+                case Instruction.StoreStorage8:
+                    context.Info.HelperFunctionsMask |= HelperFunctionsMask.StoreStorageSmallInt;
+                    break;
+>>>>>>> 1ec71635b (sync with main branch)
                 case Instruction.SwizzleAdd:
                     context.Info.HelperFunctionsMask |= HelperFunctionsMask.SwizzleAdd;
                     break;
@@ -333,9 +449,15 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
 
         private static AggregateType GetVarTypeFromUses(Operand dest)
         {
+<<<<<<< HEAD
             HashSet<Operand> visited = new();
 
             Queue<Operand> pending = new();
+=======
+            HashSet<Operand> visited = new HashSet<Operand>();
+
+            Queue<Operand> pending = new Queue<Operand>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             bool Enqueue(Operand operand)
             {
@@ -414,7 +536,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
             {
                 Instruction.ImageLoad or
                 Instruction.TextureSample => true,
+<<<<<<< HEAD
                 _ => false,
+=======
+                _ => false
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -425,7 +551,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 Instruction.Branch or
                 Instruction.BranchIfFalse or
                 Instruction.BranchIfTrue => true,
+<<<<<<< HEAD
                 _ => false,
+=======
+                _ => false
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -437,7 +567,11 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 Instruction.BitwiseExclusiveOr or
                 Instruction.BitwiseNot or
                 Instruction.BitwiseOr => true,
+<<<<<<< HEAD
                 _ => false,
+=======
+                _ => false
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -449,8 +583,16 @@ namespace Ryujinx.Graphics.Shader.StructuredIr
                 Instruction.BitwiseExclusiveOr => Instruction.LogicalExclusiveOr,
                 Instruction.BitwiseNot => Instruction.LogicalNot,
                 Instruction.BitwiseOr => Instruction.LogicalOr,
+<<<<<<< HEAD
                 _ => throw new ArgumentException($"Unexpected instruction \"{inst}\"."),
             };
         }
     }
 }
+=======
+                _ => throw new ArgumentException($"Unexpected instruction \"{inst}\".")
+            };
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

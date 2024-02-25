@@ -2,6 +2,10 @@ using Microsoft.IO;
 using Ryujinx.Common;
 using Ryujinx.Common.Memory;
 using System;
+<<<<<<< HEAD
+=======
+using System.Buffers;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -14,10 +18,17 @@ namespace Ryujinx.HLE.HOS.Ipc
 
         public IpcHandleDesc HandleDesc { get; set; }
 
+<<<<<<< HEAD
         public List<IpcPtrBuffDesc> PtrBuff { get; private set; }
         public List<IpcBuffDesc> SendBuff { get; private set; }
         public List<IpcBuffDesc> ReceiveBuff { get; private set; }
         public List<IpcBuffDesc> ExchangeBuff { get; private set; }
+=======
+        public List<IpcPtrBuffDesc>      PtrBuff      { get; private set; }
+        public List<IpcBuffDesc>         SendBuff     { get; private set; }
+        public List<IpcBuffDesc>         ReceiveBuff  { get; private set; }
+        public List<IpcBuffDesc>         ExchangeBuff { get; private set; }
+>>>>>>> 1ec71635b (sync with main branch)
         public List<IpcRecvListBuffDesc> RecvListBuff { get; private set; }
 
         public List<int> ObjectIds { get; private set; }
@@ -26,9 +37,15 @@ namespace Ryujinx.HLE.HOS.Ipc
 
         public IpcMessage()
         {
+<<<<<<< HEAD
             PtrBuff = new List<IpcPtrBuffDesc>(0);
             SendBuff = new List<IpcBuffDesc>(0);
             ReceiveBuff = new List<IpcBuffDesc>(0);
+=======
+            PtrBuff      = new List<IpcPtrBuffDesc>(0);
+            SendBuff     = new List<IpcBuffDesc>(0);
+            ReceiveBuff  = new List<IpcBuffDesc>(0);
+>>>>>>> 1ec71635b (sync with main branch)
             ExchangeBuff = new List<IpcBuffDesc>(0);
             RecvListBuff = new List<IpcRecvListBuffDesc>(0);
 
@@ -37,6 +54,7 @@ namespace Ryujinx.HLE.HOS.Ipc
 
         public IpcMessage(ReadOnlySpan<byte> data, long cmdPtr)
         {
+<<<<<<< HEAD
             using RecyclableMemoryStream ms = MemoryStreamManager.Shared.GetStream(data);
 
             BinaryReader reader = new(ms);
@@ -86,12 +104,64 @@ namespace Ryujinx.HLE.HOS.Ipc
             rawDataSize *= 4;
 
             long recvListPos = reader.BaseStream.Position + rawDataSize;
+=======
+            using (RecyclableMemoryStream ms = MemoryStreamManager.Shared.GetStream(data))
+            {
+                BinaryReader reader = new BinaryReader(ms);
+
+                int word0 = reader.ReadInt32();
+                int word1 = reader.ReadInt32();
+
+                Type = (IpcMessageType)(word0 & 0xffff);
+
+                int  ptrBuffCount  = (word0 >> 16) & 0xf;
+                int  sendBuffCount = (word0 >> 20) & 0xf;
+                int  recvBuffCount = (word0 >> 24) & 0xf;
+                int  xchgBuffCount = (word0 >> 28) & 0xf;
+
+                int  rawDataSize   = (word1 >> 0) & 0x3ff;
+                int  recvListFlags = (word1 >> 10) & 0xf;
+                bool hndDescEnable = ((word1 >> 31) & 0x1) != 0;
+
+                if (hndDescEnable)
+                {
+                    HandleDesc = new IpcHandleDesc(reader);
+                }
+
+                PtrBuff = new List<IpcPtrBuffDesc>(ptrBuffCount);
+
+                for (int index = 0; index < ptrBuffCount; index++)
+                {
+                    PtrBuff.Add(new IpcPtrBuffDesc(reader));
+                }
+
+                static List<IpcBuffDesc> ReadBuff(BinaryReader reader, int count)
+                {
+                    List<IpcBuffDesc> buff = new List<IpcBuffDesc>(count);
+                    
+                    for (int index = 0; index < count; index++)
+                    {
+                        buff.Add(new IpcBuffDesc(reader));
+                    }
+                    
+                    return buff;
+                }
+
+                SendBuff = ReadBuff(reader, sendBuffCount);
+                ReceiveBuff = ReadBuff(reader, recvBuffCount);
+                ExchangeBuff = ReadBuff(reader, xchgBuffCount);
+
+                rawDataSize *= 4;
+
+                long recvListPos = reader.BaseStream.Position + rawDataSize;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // Only CMIF has the padding requirements.
             if (Type < IpcMessageType.TipcCloseSession)
             {
                 long pad0 = GetPadSize16(reader.BaseStream.Position + cmdPtr);
 
+<<<<<<< HEAD
                 if (rawDataSize != 0)
                 {
                     rawDataSize -= (int)pad0;
@@ -123,6 +193,40 @@ namespace Ryujinx.HLE.HOS.Ipc
             }
 
             ObjectIds = new List<int>(0);
+=======
+                    if (rawDataSize != 0)
+                    {
+                        rawDataSize -= (int)pad0;
+                    }
+
+                    reader.BaseStream.Seek(pad0, SeekOrigin.Current);
+                }
+
+                int recvListCount = recvListFlags - 2;
+
+                if (recvListCount == 0)
+                {
+                    recvListCount = 1;
+                }
+                else if (recvListCount < 0)
+                {
+                    recvListCount = 0;
+                }
+
+                RawData = reader.ReadBytes(rawDataSize);
+
+                reader.BaseStream.Seek(recvListPos, SeekOrigin.Begin);
+
+                RecvListBuff = new List<IpcRecvListBuffDesc>(recvListCount);
+
+                for (int index = 0; index < recvListCount; index++)
+                {
+                    RecvListBuff.Add(new IpcRecvListBuffDesc(reader.ReadUInt64()));
+                }
+
+                ObjectIds = new List<int>(0);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public RecyclableMemoryStream GetStream(long cmdPtr, ulong recvListAddr)
@@ -132,10 +236,17 @@ namespace Ryujinx.HLE.HOS.Ipc
             int word0;
             int word1;
 
+<<<<<<< HEAD
             word0 = (int)Type;
             word0 |= (PtrBuff.Count & 0xf) << 16;
             word0 |= (SendBuff.Count & 0xf) << 20;
             word0 |= (ReceiveBuff.Count & 0xf) << 24;
+=======
+            word0  = (int)Type;
+            word0 |= (PtrBuff.Count      & 0xf) << 16;
+            word0 |= (SendBuff.Count     & 0xf) << 20;
+            word0 |= (ReceiveBuff.Count  & 0xf) << 24;
+>>>>>>> 1ec71635b (sync with main branch)
             word0 |= (ExchangeBuff.Count & 0xf) << 28;
 
             using RecyclableMemoryStream handleDataStream = HandleDesc?.GetStream();
@@ -236,7 +347,11 @@ namespace Ryujinx.HLE.HOS.Ipc
             return ms;
         }
 
+<<<<<<< HEAD
         private static long GetPadSize16(long position)
+=======
+        private long GetPadSize16(long position)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if ((position & 0xf) != 0)
             {

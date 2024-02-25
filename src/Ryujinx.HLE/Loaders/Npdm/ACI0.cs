@@ -9,17 +9,29 @@ namespace Ryujinx.HLE.Loaders.Npdm
 
         public ulong TitleId { get; set; }
 
+<<<<<<< HEAD
         public int FsVersion { get; private set; }
         public ulong FsPermissionsBitmask { get; private set; }
 
         public ServiceAccessControl ServiceAccessControl { get; private set; }
         public KernelAccessControl KernelAccessControl { get; private set; }
+=======
+        public int   FsVersion            { get; private set; }
+        public ulong FsPermissionsBitmask { get; private set; }
+
+        public ServiceAccessControl ServiceAccessControl { get; private set; }
+        public KernelAccessControl  KernelAccessControl  { get; private set; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public Aci0(Stream stream, int offset)
         {
             stream.Seek(offset, SeekOrigin.Begin);
 
+<<<<<<< HEAD
             BinaryReader reader = new(stream);
+=======
+            BinaryReader reader = new BinaryReader(stream);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (reader.ReadInt32() != Aci0Magic)
             {
@@ -33,6 +45,7 @@ namespace Ryujinx.HLE.Loaders.Npdm
             // Reserved.
             stream.Seek(8, SeekOrigin.Current);
 
+<<<<<<< HEAD
             int fsAccessHeaderOffset = reader.ReadInt32();
             int fsAccessHeaderSize = reader.ReadInt32();
             int serviceAccessControlOffset = reader.ReadInt32();
@@ -43,6 +56,18 @@ namespace Ryujinx.HLE.Loaders.Npdm
             FsAccessHeader fsAccessHeader = new(stream, offset + fsAccessHeaderOffset, fsAccessHeaderSize);
 
             FsVersion = fsAccessHeader.Version;
+=======
+            int fsAccessHeaderOffset       = reader.ReadInt32();
+            int fsAccessHeaderSize         = reader.ReadInt32();
+            int serviceAccessControlOffset = reader.ReadInt32();
+            int serviceAccessControlSize   = reader.ReadInt32();
+            int kernelAccessControlOffset  = reader.ReadInt32();
+            int kernelAccessControlSize    = reader.ReadInt32();
+
+            FsAccessHeader fsAccessHeader = new FsAccessHeader(stream, offset + fsAccessHeaderOffset, fsAccessHeaderSize);
+
+            FsVersion            = fsAccessHeader.Version;
+>>>>>>> 1ec71635b (sync with main branch)
             FsPermissionsBitmask = fsAccessHeader.PermissionsBitmask;
 
             ServiceAccessControl = new ServiceAccessControl(stream, offset + serviceAccessControlOffset, serviceAccessControlSize);

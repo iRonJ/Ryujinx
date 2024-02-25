@@ -10,6 +10,7 @@ namespace Ryujinx.Graphics.GAL
         public ViewportSwizzle SwizzleW { get; }
 
         public float DepthNear { get; }
+<<<<<<< HEAD
         public float DepthFar { get; }
 
         public Viewport(
@@ -28,6 +29,26 @@ namespace Ryujinx.Graphics.GAL
             SwizzleW = swizzleW;
             DepthNear = depthNear;
             DepthFar = depthFar;
+=======
+        public float DepthFar  { get; }
+
+        public Viewport(
+            Rectangle<float> region,
+            ViewportSwizzle  swizzleX,
+            ViewportSwizzle  swizzleY,
+            ViewportSwizzle  swizzleZ,
+            ViewportSwizzle  swizzleW,
+            float            depthNear,
+            float            depthFar)
+        {
+            Region    = region;
+            SwizzleX  = swizzleX;
+            SwizzleY  = swizzleY;
+            SwizzleZ  = swizzleZ;
+            SwizzleW  = swizzleW;
+            DepthNear = depthNear;
+            DepthFar  = depthFar;
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

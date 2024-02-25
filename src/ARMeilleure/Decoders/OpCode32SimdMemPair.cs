@@ -1,15 +1,27 @@
+<<<<<<< HEAD
 using ARMeilleure.State;
+=======
+﻿using ARMeilleure.State;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace ARMeilleure.Decoders
 {
     class OpCode32SimdMemPair : OpCode32, IOpCode32Simd
     {
+<<<<<<< HEAD
         private static readonly int[] _regsMap =
+=======
+        private static int[] _regsMap =
+>>>>>>> 1ec71635b (sync with main branch)
         {
             1, 1, 4, 2,
             1, 1, 3, 1,
             1, 1, 2, 1,
+<<<<<<< HEAD
             1, 1, 1, 1,
+=======
+            1, 1, 1, 1
+>>>>>>> 1ec71635b (sync with main branch)
         };
 
         public int Vd { get; }

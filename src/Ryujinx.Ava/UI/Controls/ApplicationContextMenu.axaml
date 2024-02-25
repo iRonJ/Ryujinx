@@ -2,21 +2,28 @@
     x:Class="Ryujinx.Ava.UI.Controls.ApplicationContextMenu"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+<<<<<<< HEAD
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     x:DataType="viewModels:MainWindowViewModel">
 	<MenuItem
         Click="RunApplication_Click"
         Header="{locale:Locale GameListContextMenuRunApplication}" />
+=======
+    xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale">
+>>>>>>> 1ec71635b (sync with main branch)
     <MenuItem
         Click="ToggleFavorite_Click"
         Header="{locale:Locale GameListContextMenuToggleFavorite}"
         ToolTip.Tip="{locale:Locale GameListContextMenuToggleFavoriteToolTip}" />
+<<<<<<< HEAD
 	<MenuItem
 		Click="CreateApplicationShortcut_Click"
 		Header="{locale:Locale GameListContextMenuCreateShortcut}"
         IsEnabled="{Binding CreateShortcutEnabled}"
 		ToolTip.Tip="{OnPlatform Default={locale:Locale GameListContextMenuCreateShortcutToolTip}, macOS={locale:Locale GameListContextMenuCreateShortcutToolTipMacOS}}" />
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     <Separator />
     <MenuItem
         Click="OpenUserSaveDirectory_Click"
@@ -47,11 +54,14 @@
         Header="{locale:Locale GameListContextMenuManageCheat}"
         ToolTip.Tip="{locale:Locale GameListContextMenuManageCheatToolTip}" />
     <MenuItem
+<<<<<<< HEAD
         Click="OpenModManager_Click"
         Header="{locale:Locale GameListContextMenuManageMod}"
         ToolTip.Tip="{locale:Locale GameListContextMenuManageModToolTip}" />
     <Separator />
     <MenuItem
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         Click="OpenModsDirectory_Click"
         Header="{locale:Locale GameListContextMenuOpenModsDirectory}"
         ToolTip.Tip="{locale:Locale GameListContextMenuOpenModsDirectoryToolTip}" />
@@ -92,4 +102,8 @@
             Header="{locale:Locale GameListContextMenuExtractDataLogo}"
             ToolTip.Tip="{locale:Locale GameListContextMenuExtractDataLogoToolTip}" />
     </MenuItem>
+<<<<<<< HEAD
 </MenuFlyout>
+=======
+</MenuFlyout>
+>>>>>>> 1ec71635b (sync with main branch)

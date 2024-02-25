@@ -23,4 +23,8 @@ namespace Ryujinx.Audio.Backends.Common
             return bufferSize / GetSampleSize(format) / channelCount;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

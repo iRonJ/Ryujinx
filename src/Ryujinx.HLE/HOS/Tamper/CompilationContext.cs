@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Tamper.Operations;
+=======
+﻿using Ryujinx.HLE.HOS.Tamper.Operations;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 
 namespace Ryujinx.HLE.HOS.Tamper
@@ -21,6 +25,7 @@ namespace Ryujinx.HLE.HOS.Tamper
 
         public CompilationContext(ulong exeAddress, ulong heapAddress, ulong aliasAddress, ulong aslrAddress, ITamperedProcess process)
         {
+<<<<<<< HEAD
             Process = process;
             PressedKeys = new Parameter<long>(0);
             BlockStack = new Stack<OperationBlock>();
@@ -31,6 +36,18 @@ namespace Ryujinx.HLE.HOS.Tamper
             HeapAddress = heapAddress;
             AliasAddress = aliasAddress;
             AslrAddress = aslrAddress;
+=======
+            Process         = process;
+            PressedKeys     = new Parameter<long>(0);
+            BlockStack      = new Stack<OperationBlock>();
+            Registers       = new Dictionary<byte, Register>();
+            SavedRegisters  = new Dictionary<byte, Register>();
+            StaticRegisters = new Dictionary<byte, Register>();
+            ExeAddress      = exeAddress;
+            HeapAddress     = heapAddress;
+            AliasAddress    = aliasAddress;
+            AslrAddress     = aslrAddress;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public Register GetRegister(byte index)

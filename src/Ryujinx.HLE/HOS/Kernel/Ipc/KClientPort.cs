@@ -17,7 +17,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         public KClientPort(KernelContext context, KPort parent, int maxSessions) : base(context)
         {
             _maxSessions = maxSessions;
+<<<<<<< HEAD
             _parent = parent;
+=======
+            _parent      = parent;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public Result Connect(out KClientSession clientSession)
@@ -39,7 +43,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 return KernelResult.SessionCountExceeded;
             }
 
+<<<<<<< HEAD
             KSession session = new(KernelContext, this);
+=======
+            KSession session = new KSession(KernelContext, this);
+>>>>>>> 1ec71635b (sync with main branch)
 
             Result result = _parent.EnqueueIncomingSession(session.ServerSession);
 
@@ -75,7 +83,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
                 return KernelResult.SessionCountExceeded;
             }
 
+<<<<<<< HEAD
             KLightSession session = new(KernelContext);
+=======
+            KLightSession session = new KLightSession(KernelContext);
+>>>>>>> 1ec71635b (sync with main branch)
 
             Result result = _parent.EnqueueIncomingLightSession(session.ServerSession);
 
@@ -133,7 +145,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         {
             KAutoObject foundObj = FindNamedObject(context, name);
 
+<<<<<<< HEAD
             if (foundObj is not KClientPort)
+=======
+            if (!(foundObj is KClientPort))
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return KernelResult.NotFound;
             }
@@ -141,4 +157,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             return KAutoObject.RemoveName(context, name);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -4,7 +4,11 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
 {
     public class IntegerCastExpression : ParentNode
     {
+<<<<<<< HEAD
         private readonly string _number;
+=======
+        private string _number;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IntegerCastExpression(BaseNode type, string number) : base(NodeType.IntegerCastExpression, type)
         {
@@ -19,4 +23,8 @@ namespace Ryujinx.HLE.HOS.Diagnostics.Demangler.Ast
             writer.Write(_number);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

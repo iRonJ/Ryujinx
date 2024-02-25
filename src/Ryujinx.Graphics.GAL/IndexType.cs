@@ -4,6 +4,12 @@ namespace Ryujinx.Graphics.GAL
     {
         UByte,
         UShort,
+<<<<<<< HEAD
         UInt,
     }
 }
+=======
+        UInt
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

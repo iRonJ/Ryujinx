@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
@@ -28,14 +32,22 @@ namespace Ryujinx.Common.SystemInterop
         {
             public int GdiplusVersion;
 
+<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
+=======
+#pragma warning disable CS0649
+>>>>>>> 1ec71635b (sync with main branch)
             public IntPtr DebugEventCallback;
             public int SuppressBackgroundThread;
             public int SuppressExternalCodecs;
             public int StartupParameters;
 #pragma warning restore CS0649
 
+<<<<<<< HEAD
             public static StartupInputEx Default => new()
+=======
+            public static StartupInputEx Default => new StartupInputEx
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 // We assume Windows 8 and upper
                 GdiplusVersion = 2,

@@ -67,7 +67,11 @@ namespace Ryujinx.Graphics.Gpu.Image
             DescriptorCache = new T2[count];
 
             Address = address;
+<<<<<<< HEAD
             Size = size;
+=======
+            Size    = size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             _memoryTracking = physicalMemory.BeginGranularTracking(address, size, ResourceKind.Pool);
             _memoryTracking.RegisterPreciseAction(address, size, PreciseAction);
@@ -219,4 +223,8 @@ namespace Ryujinx.Graphics.Gpu.Image
             _memoryTracking.Dispose();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -5,6 +5,10 @@ using ARMeilleure.Translation;
 using ARMeilleure.Translation.PTC;
 using System;
 using System.Reflection;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.IntermediateRepresentation.Operand.Factory;
 
@@ -19,7 +23,11 @@ namespace ARMeilleure.Instructions
         {
             Zx,
             Sx32,
+<<<<<<< HEAD
             Sx64,
+=======
+            Sx64
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void EmitLoadZx(ArmEmitterContext context, Operand address, int rt, int size)
@@ -65,6 +73,7 @@ namespace ARMeilleure.Instructions
 
                     switch (size)
                     {
+<<<<<<< HEAD
                         case 0:
                             value = context.SignExtend8(destType, value);
                             break;
@@ -74,6 +83,11 @@ namespace ARMeilleure.Instructions
                         case 2:
                             value = context.SignExtend32(destType, value);
                             break;
+=======
+                        case 0: value = context.SignExtend8 (destType, value); break;
+                        case 1: value = context.SignExtend16(destType, value); break;
+                        case 2: value = context.SignExtend32(destType, value); break;
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
 
@@ -133,7 +147,11 @@ namespace ARMeilleure.Instructions
             Operand temp = context.AllocateLocal(size == 3 ? OperandType.I64 : OperandType.I32);
 
             Operand lblSlowPath = Label();
+<<<<<<< HEAD
             Operand lblEnd = Label();
+=======
+            Operand lblEnd      = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Operand physAddr = EmitPtPointerLoad(context, address, lblSlowPath, write: false, size);
 
@@ -141,6 +159,7 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     value = context.Load8(physAddr);
                     break;
@@ -153,6 +172,12 @@ namespace ARMeilleure.Instructions
                 case 3:
                     value = context.Load(OperandType.I64, physAddr);
                     break;
+=======
+                case 0: value = context.Load8 (physAddr);                  break;
+                case 1: value = context.Load16(physAddr);                  break;
+                case 2: value = context.Load  (OperandType.I32, physAddr); break;
+                case 3: value = context.Load  (OperandType.I64, physAddr); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             context.Copy(temp, value);
@@ -174,7 +199,11 @@ namespace ARMeilleure.Instructions
         private static void EmitReadInt(ArmEmitterContext context, Operand address, int rt, int size)
         {
             Operand lblSlowPath = Label();
+<<<<<<< HEAD
             Operand lblEnd = Label();
+=======
+            Operand lblEnd      = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Operand physAddr = EmitPtPointerLoad(context, address, lblSlowPath, write: false, size);
 
@@ -182,6 +211,7 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     value = context.Load8(physAddr);
                     break;
@@ -194,6 +224,12 @@ namespace ARMeilleure.Instructions
                 case 3:
                     value = context.Load(OperandType.I64, physAddr);
                     break;
+=======
+                case 0: value = context.Load8 (physAddr);                  break;
+                case 1: value = context.Load16(physAddr);                  break;
+                case 2: value = context.Load  (OperandType.I32, physAddr); break;
+                case 3: value = context.Load  (OperandType.I64, physAddr); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             SetInt(context, rt, value);
@@ -225,7 +261,11 @@ namespace ARMeilleure.Instructions
                 1 => context.Load16(physAddr),
                 2 => context.Load(OperandType.I32, physAddr),
                 3 => context.Load(OperandType.I64, physAddr),
+<<<<<<< HEAD
                 _ => context.Load(OperandType.V128, physAddr),
+=======
+                _ => context.Load(OperandType.V128, physAddr)
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -238,7 +278,11 @@ namespace ARMeilleure.Instructions
             int size)
         {
             Operand lblSlowPath = Label();
+<<<<<<< HEAD
             Operand lblEnd = Label();
+=======
+            Operand lblEnd      = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Operand physAddr = EmitPtPointerLoad(context, address, lblSlowPath, write: false, size);
 
@@ -246,6 +290,7 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     value = context.VectorInsert8(vector, context.Load8(physAddr), elem);
                     break;
@@ -261,6 +306,13 @@ namespace ARMeilleure.Instructions
                 case 4:
                     value = context.Load(OperandType.V128, physAddr);
                     break;
+=======
+                case 0: value = context.VectorInsert8 (vector, context.Load8(physAddr), elem);                 break;
+                case 1: value = context.VectorInsert16(vector, context.Load16(physAddr), elem);                break;
+                case 2: value = context.VectorInsert  (vector, context.Load(OperandType.I32, physAddr), elem); break;
+                case 3: value = context.VectorInsert  (vector, context.Load(OperandType.I64, physAddr), elem); break;
+                case 4: value = context.Load          (OperandType.V128, physAddr);                            break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             context.Copy(GetVec(rt), value);
@@ -285,7 +337,11 @@ namespace ARMeilleure.Instructions
         private static void EmitWriteInt(ArmEmitterContext context, Operand address, int rt, int size)
         {
             Operand lblSlowPath = Label();
+<<<<<<< HEAD
             Operand lblEnd = Label();
+=======
+            Operand lblEnd      = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Operand physAddr = EmitPtPointerLoad(context, address, lblSlowPath, write: true, size);
 
@@ -298,6 +354,7 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     context.Store8(physAddr, value);
                     break;
@@ -310,6 +367,12 @@ namespace ARMeilleure.Instructions
                 case 3:
                     context.Store(physAddr, value);
                     break;
+=======
+                case 0: context.Store8 (physAddr, value); break;
+                case 1: context.Store16(physAddr, value); break;
+                case 2: context.Store  (physAddr, value); break;
+                case 3: context.Store  (physAddr, value); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (!context.Memory.Type.IsHostMapped())
@@ -360,7 +423,11 @@ namespace ARMeilleure.Instructions
             int size)
         {
             Operand lblSlowPath = Label();
+<<<<<<< HEAD
             Operand lblEnd = Label();
+=======
+            Operand lblEnd      = Label();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Operand physAddr = EmitPtPointerLoad(context, address, lblSlowPath, write: true, size);
 
@@ -368,6 +435,7 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     context.Store8(physAddr, context.VectorExtract8(value, elem));
                     break;
@@ -383,6 +451,13 @@ namespace ARMeilleure.Instructions
                 case 4:
                     context.Store(physAddr, value);
                     break;
+=======
+                case 0: context.Store8 (physAddr, context.VectorExtract8(value, elem));                 break;
+                case 1: context.Store16(physAddr, context.VectorExtract16(value, elem));                break;
+                case 2: context.Store  (physAddr, context.VectorExtract(OperandType.I32, value, elem)); break;
+                case 3: context.Store  (physAddr, context.VectorExtract(OperandType.I64, value, elem)); break;
+                case 4: context.Store  (physAddr, value);                                               break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (!context.Memory.Type.IsHostMapped())
@@ -513,6 +588,7 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadByte));
                     break;
@@ -525,6 +601,12 @@ namespace ARMeilleure.Instructions
                 case 3:
                     info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadUInt64));
                     break;
+=======
+                case 0: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadByte));   break;
+                case 1: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadUInt16)); break;
+                case 2: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadUInt32)); break;
+                case 3: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadUInt64)); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return context.Call(info, address);
@@ -542,6 +624,7 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadByte));
                     break;
@@ -557,12 +640,20 @@ namespace ARMeilleure.Instructions
                 case 4:
                     info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadVector128));
                     break;
+=======
+                case 0: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadByte));      break;
+                case 1: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadUInt16));    break;
+                case 2: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadUInt32));    break;
+                case 3: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadUInt64));    break;
+                case 4: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.ReadVector128)); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             Operand value = context.Call(info, address);
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     value = context.VectorInsert8(vector, value, elem);
                     break;
@@ -575,6 +666,12 @@ namespace ARMeilleure.Instructions
                 case 3:
                     value = context.VectorInsert(vector, value, elem);
                     break;
+=======
+                case 0: value = context.VectorInsert8 (vector, value, elem); break;
+                case 1: value = context.VectorInsert16(vector, value, elem); break;
+                case 2: value = context.VectorInsert  (vector, value, elem); break;
+                case 3: value = context.VectorInsert  (vector, value, elem); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             context.Copy(GetVec(rt), value);
@@ -586,6 +683,7 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteByte));
                     break;
@@ -598,6 +696,12 @@ namespace ARMeilleure.Instructions
                 case 3:
                     info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteUInt64));
                     break;
+=======
+                case 0: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteByte));   break;
+                case 1: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteUInt16)); break;
+                case 2: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteUInt32)); break;
+                case 3: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteUInt64)); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             Operand value = GetInt(context, rt);
@@ -621,6 +725,7 @@ namespace ARMeilleure.Instructions
 
             switch (size)
             {
+<<<<<<< HEAD
                 case 0:
                     info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteByte));
                     break;
@@ -636,6 +741,13 @@ namespace ARMeilleure.Instructions
                 case 4:
                     info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteVector128));
                     break;
+=======
+                case 0: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteByte));      break;
+                case 1: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteUInt16));    break;
+                case 2: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteUInt32));    break;
+                case 3: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteUInt64));    break;
+                case 4: info = typeof(NativeInterface).GetMethod(nameof(NativeInterface.WriteVector128)); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             Operand value = default;
@@ -644,6 +756,7 @@ namespace ARMeilleure.Instructions
             {
                 switch (size)
                 {
+<<<<<<< HEAD
                     case 0:
                         value = context.VectorExtract8(GetVec(rt), elem);
                         break;
@@ -656,6 +769,12 @@ namespace ARMeilleure.Instructions
                     case 3:
                         value = context.VectorExtract(OperandType.I64, GetVec(rt), elem);
                         break;
+=======
+                    case 0: value = context.VectorExtract8 (GetVec(rt), elem);                  break;
+                    case 1: value = context.VectorExtract16(GetVec(rt), elem);                  break;
+                    case 2: value = context.VectorExtract  (OperandType.I32, GetVec(rt), elem); break;
+                    case 3: value = context.VectorExtract  (OperandType.I64, GetVec(rt), elem); break;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
             else
@@ -686,6 +805,7 @@ namespace ARMeilleure.Instructions
         // ARM32 helpers.
         public static Operand GetMemM(ArmEmitterContext context, bool setCarry = true)
         {
+<<<<<<< HEAD
             return context.CurrOp switch
             {
                 IOpCode32MemRsImm op => GetMShiftedByImmediate(context, op, setCarry),
@@ -694,6 +814,20 @@ namespace ARMeilleure.Instructions
                 OpCode32SimdMemImm op => Const(op.Immediate),
                 _ => throw InvalidOpCodeType(context.CurrOp),
             };
+=======
+            switch (context.CurrOp)
+            {
+                case IOpCode32MemRsImm op: return GetMShiftedByImmediate(context, op, setCarry);
+
+                case IOpCode32MemReg op: return GetIntA32(context, op.Rm);
+
+                case IOpCode32Mem op: return Const(op.Immediate);
+
+                case OpCode32SimdMemImm op: return Const(op.Immediate);
+
+                default: throw InvalidOpCodeType(context.CurrOp);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static Exception InvalidOpCodeType(OpCode opCode)
@@ -711,6 +845,7 @@ namespace ARMeilleure.Instructions
             {
                 switch (op.ShiftType)
                 {
+<<<<<<< HEAD
                     case ShiftType.Lsr:
                         shift = 32;
                         break;
@@ -720,6 +855,11 @@ namespace ARMeilleure.Instructions
                     case ShiftType.Ror:
                         shift = 1;
                         break;
+=======
+                    case ShiftType.Lsr: shift = 32; break;
+                    case ShiftType.Asr: shift = 32; break;
+                    case ShiftType.Ror: shift = 1; break;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -729,6 +869,7 @@ namespace ARMeilleure.Instructions
 
                 switch (op.ShiftType)
                 {
+<<<<<<< HEAD
                     case ShiftType.Lsl:
                         m = InstEmitAluHelper.GetLslC(context, m, setCarry, shift);
                         break;
@@ -738,6 +879,11 @@ namespace ARMeilleure.Instructions
                     case ShiftType.Asr:
                         m = InstEmitAluHelper.GetAsrC(context, m, setCarry, shift);
                         break;
+=======
+                    case ShiftType.Lsl: m = InstEmitAluHelper.GetLslC(context, m, setCarry, shift); break;
+                    case ShiftType.Lsr: m = InstEmitAluHelper.GetLsrC(context, m, setCarry, shift); break;
+                    case ShiftType.Asr: m = InstEmitAluHelper.GetAsrC(context, m, setCarry, shift); break;
+>>>>>>> 1ec71635b (sync with main branch)
                     case ShiftType.Ror:
                         if (op.Immediate != 0)
                         {

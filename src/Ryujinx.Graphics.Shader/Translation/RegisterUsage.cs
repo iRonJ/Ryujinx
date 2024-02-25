@@ -10,7 +10,11 @@ namespace Ryujinx.Graphics.Shader.Translation
     static class RegisterUsage
     {
         private const int RegsCount = 256;
+<<<<<<< HEAD
         private const int RegsMask = RegsCount - 1;
+=======
+        private const int RegsMask  = RegsCount - 1;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private const int GprMasks = 4;
         private const int PredMasks = 1;
@@ -36,7 +40,11 @@ namespace Ryujinx.Graphics.Shader.Translation
                 FlagMask = flagMask;
             }
 
+<<<<<<< HEAD
             public readonly long GetMask(int index)
+=======
+            public long GetMask(int index)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return index switch
                 {
@@ -46,7 +54,11 @@ namespace Ryujinx.Graphics.Shader.Translation
                     3 => GprMask3,
                     4 => PredMask,
                     5 => FlagMask,
+<<<<<<< HEAD
                     _ => throw new ArgumentOutOfRangeException(nameof(index)),
+=======
+                    _ => throw new ArgumentOutOfRangeException(nameof(index))
+>>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 
@@ -93,12 +105,20 @@ namespace Ryujinx.Graphics.Shader.Translation
                 return !x.Equals(y);
             }
 
+<<<<<<< HEAD
             public readonly override bool Equals(object obj)
+=======
+            public override bool Equals(object obj)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return obj is RegisterMask regMask && Equals(regMask);
             }
 
+<<<<<<< HEAD
             public readonly bool Equals(RegisterMask other)
+=======
+            public bool Equals(RegisterMask other)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return GprMask0 == other.GprMask0 &&
                        GprMask1 == other.GprMask1 &&
@@ -108,7 +128,11 @@ namespace Ryujinx.Graphics.Shader.Translation
                        FlagMask == other.FlagMask;
             }
 
+<<<<<<< HEAD
             public readonly override int GetHashCode()
+=======
+            public override int GetHashCode()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return HashCode.Combine(GprMask0, GprMask1, GprMask2, GprMask3, PredMask, FlagMask);
             }
@@ -121,18 +145,30 @@ namespace Ryujinx.Graphics.Shader.Translation
 
             public FunctionRegisterUsage(Register[] inArguments, Register[] outArguments)
             {
+<<<<<<< HEAD
                 InArguments = inArguments;
+=======
+                InArguments  = inArguments;
+>>>>>>> 1ec71635b (sync with main branch)
                 OutArguments = outArguments;
             }
         }
 
         public static FunctionRegisterUsage RunPass(ControlFlowGraph cfg)
         {
+<<<<<<< HEAD
             List<Register> inArguments = new();
             List<Register> outArguments = new();
 
             // Compute local register inputs and outputs used inside blocks.
             RegisterMask[] localInputs = new RegisterMask[cfg.Blocks.Length];
+=======
+            List<Register> inArguments  = new List<Register>();
+            List<Register> outArguments = new List<Register>();
+
+            // Compute local register inputs and outputs used inside blocks.
+            RegisterMask[] localInputs  = new RegisterMask[cfg.Blocks.Length];
+>>>>>>> 1ec71635b (sync with main branch)
             RegisterMask[] localOutputs = new RegisterMask[cfg.Blocks.Length];
 
             foreach (BasicBlock block in cfg.Blocks)
@@ -165,11 +201,19 @@ namespace Ryujinx.Graphics.Shader.Translation
             // Compute global register inputs and outputs used across blocks.
             RegisterMask[] globalCmnOutputs = new RegisterMask[cfg.Blocks.Length];
 
+<<<<<<< HEAD
             RegisterMask[] globalInputs = new RegisterMask[cfg.Blocks.Length];
             RegisterMask[] globalOutputs = new RegisterMask[cfg.Blocks.Length];
 
             RegisterMask allOutputs = new();
             RegisterMask allCmnOutputs = new(-1L, -1L, -1L, -1L, -1L, -1L);
+=======
+            RegisterMask[] globalInputs  = new RegisterMask[cfg.Blocks.Length];
+            RegisterMask[] globalOutputs = new RegisterMask[cfg.Blocks.Length];
+
+            RegisterMask allOutputs = new RegisterMask();
+            RegisterMask allCmnOutputs = new RegisterMask(-1L, -1L, -1L, -1L, -1L, -1L);
+>>>>>>> 1ec71635b (sync with main branch)
 
             bool modified;
 
@@ -389,14 +433,22 @@ namespace Ryujinx.Graphics.Shader.Translation
 
                     mask &= ~(1L << bit);
 
+<<<<<<< HEAD
                     Register register = new(baseRegIndex + bit, regType);
+=======
+                    Register register = new Register(baseRegIndex + bit, regType);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     if (fillArgsList)
                     {
                         inArguments.Add(register);
                     }
 
+<<<<<<< HEAD
                     Operation copyOp = new(Instruction.Copy, OperandHelper.Register(register), OperandHelper.Argument(argIndex++));
+=======
+                    Operation copyOp = new Operation(Instruction.Copy, OperandHelper.Register(register), OperandHelper.Argument(argIndex++));
+>>>>>>> 1ec71635b (sync with main branch)
 
                     if (node == null)
                     {
@@ -429,14 +481,22 @@ namespace Ryujinx.Graphics.Shader.Translation
 
                     mask &= ~(1L << bit);
 
+<<<<<<< HEAD
                     Register register = new(baseRegIndex + bit, regType);
+=======
+                    Register register = new Register(baseRegIndex + bit, regType);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     if (fillArgsList)
                     {
                         outArguments.Add(register);
                     }
 
+<<<<<<< HEAD
                     Operation copyOp = new(Instruction.Copy, OperandHelper.Argument(argIndex++), OperandHelper.Register(register));
+=======
+                    Operation copyOp = new Operation(Instruction.Copy, OperandHelper.Argument(argIndex++), OperandHelper.Register(register));
+>>>>>>> 1ec71635b (sync with main branch)
 
                     if (node == null)
                     {
@@ -475,7 +535,11 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         private static bool EndsWithReturn(BasicBlock block)
         {
+<<<<<<< HEAD
             if (block.GetLastOp() is not Operation operation)
+=======
+            if (!(block.GetLastOp() is Operation operation))
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 return false;
             }
@@ -483,4 +547,8 @@ namespace Ryujinx.Graphics.Shader.Translation
             return operation.Inst == Instruction.Return;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

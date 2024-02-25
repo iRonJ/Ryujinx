@@ -17,4 +17,8 @@ namespace ARMeilleure.Decoders
                 : RegisterSize.Int32;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

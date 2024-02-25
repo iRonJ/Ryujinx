@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using ARMeilleure.Memory;
+=======
+﻿using ARMeilleure.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Memory;
 using Ryujinx.Memory.Range;
 using Ryujinx.Memory.Tracking;
@@ -84,6 +88,10 @@ namespace Ryujinx.Cpu.Jit
 
             ulong remainingSize = size;
             ulong oVa = va;
+<<<<<<< HEAD
+=======
+            ulong oPa = pa;
+>>>>>>> 1ec71635b (sync with main branch)
             while (remainingSize != 0)
             {
                 _pageTable.Write((va / PageSize) * PteSize, PaToPte(pa));
@@ -245,7 +253,11 @@ namespace Ryujinx.Cpu.Jit
 
                         size = Math.Min(data.Length, PageSize - (int)(va & PageMask));
 
+<<<<<<< HEAD
                         data[..size].CopyTo(_backingMemory.GetSpan(pa, size));
+=======
+                        data.Slice(0, size).CopyTo(_backingMemory.GetSpan(pa, size));
+>>>>>>> 1ec71635b (sync with main branch)
 
                         offset += size;
                     }
@@ -297,7 +309,11 @@ namespace Ryujinx.Cpu.Jit
         }
 
         /// <inheritdoc/>
+<<<<<<< HEAD
         public WritableRegion GetWritableRegion(ulong va, int size, bool tracked = false)
+=======
+        public unsafe WritableRegion GetWritableRegion(ulong va, int size, bool tracked = false)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (size == 0)
             {
@@ -344,7 +360,11 @@ namespace Ryujinx.Cpu.Jit
         /// <param name="startVa">The virtual address of the beginning of the first page</param>
         /// <remarks>This function does not differentiate between allocated and unallocated pages.</remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         private static int GetPagesCount(ulong va, uint size, out ulong startVa)
+=======
+        private int GetPagesCount(ulong va, uint size, out ulong startVa)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // WARNING: Always check if ulong does not overflow during the operations.
             startVa = va & ~(ulong)PageMask;
@@ -481,7 +501,11 @@ namespace Ryujinx.Cpu.Jit
 
                     size = Math.Min(data.Length, PageSize - (int)(va & PageMask));
 
+<<<<<<< HEAD
                     _backingMemory.GetSpan(pa, size).CopyTo(data[..size]);
+=======
+                    _backingMemory.GetSpan(pa, size).CopyTo(data.Slice(0, size));
+>>>>>>> 1ec71635b (sync with main branch)
 
                     offset += size;
                 }
@@ -575,18 +599,35 @@ namespace Ryujinx.Cpu.Jit
             }
         }
 
+<<<<<<< HEAD
+=======
+        private ulong GetPhysicalAddress(ulong va)
+        {
+            // We return -1L if the virtual address is invalid or unmapped.
+            if (!ValidateAddress(va) || !IsMapped(va))
+            {
+                return ulong.MaxValue;
+            }
+
+            return GetPhysicalAddressInternal(va);
+        }
+
+>>>>>>> 1ec71635b (sync with main branch)
         private ulong GetPhysicalAddressInternal(ulong va)
         {
             return PteToPa(_pageTable.Read<ulong>((va / PageSize) * PteSize) & ~(0xffffUL << 48)) + (va & PageMask);
         }
 
         /// <inheritdoc/>
+<<<<<<< HEAD
         public void Reprotect(ulong va, ulong size, MemoryPermission protection)
         {
             // TODO
         }
 
         /// <inheritdoc/>
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public void TrackingReprotect(ulong va, ulong size, MemoryPermission protection)
         {
             AssertValidAddressAndSize(va, size);
@@ -598,7 +639,11 @@ namespace Ryujinx.Cpu.Jit
             {
                 MemoryPermission.None => 0L,
                 MemoryPermission.Write => 2L << PointerTagBit,
+<<<<<<< HEAD
                 _ => 3L << PointerTagBit,
+=======
+                _ => 3L << PointerTagBit
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             int pages = GetPagesCount(va, (uint)size, out va);
@@ -691,5 +736,10 @@ namespace Ryujinx.Cpu.Jit
         /// Disposes of resources used by the memory manager.
         /// </summary>
         protected override void Destroy() => _pageTable.Dispose();
+<<<<<<< HEAD
+=======
+
+        private void ThrowInvalidMemoryRegionException(string message) => throw new InvalidMemoryRegionException(message);
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

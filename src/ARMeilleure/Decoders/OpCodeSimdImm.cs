@@ -2,9 +2,15 @@ namespace ARMeilleure.Decoders
 {
     class OpCodeSimdImm : OpCode, IOpCodeSimd
     {
+<<<<<<< HEAD
         public int Rd { get; }
         public long Immediate { get; }
         public int Size { get; }
+=======
+        public int  Rd        { get; }
+        public long Immediate { get; }
+        public int  Size      { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public new static OpCode Create(InstDescriptor inst, ulong address, int opCode) => new OpCodeSimdImm(inst, address, opCode);
 
@@ -13,14 +19,24 @@ namespace ARMeilleure.Decoders
             Rd = opCode & 0x1f;
 
             int cMode = (opCode >> 12) & 0xf;
+<<<<<<< HEAD
             int op = (opCode >> 29) & 0x1;
 
             int modeLow = cMode & 1;
+=======
+            int op    = (opCode >> 29) & 0x1;
+
+            int modeLow  = cMode &  1;
+>>>>>>> 1ec71635b (sync with main branch)
             int modeHigh = cMode >> 1;
 
             long imm;
 
+<<<<<<< HEAD
             imm = ((uint)opCode >> 5) & 0x1f;
+=======
+            imm  = ((uint)opCode >>  5) & 0x1f;
+>>>>>>> 1ec71635b (sync with main branch)
             imm |= ((uint)opCode >> 11) & 0xe0;
 
             if (modeHigh == 0b111)
@@ -67,20 +83,32 @@ namespace ARMeilleure.Decoders
             else if ((modeHigh & 0b110) == 0b100)
             {
                 // 16-bits shifted Immediate.
+<<<<<<< HEAD
                 Size = 1;
                 imm <<= (modeHigh & 1) << 3;
+=======
+                Size = 1; imm <<= (modeHigh & 1) << 3;
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else if ((modeHigh & 0b100) == 0b000)
             {
                 // 32-bits shifted Immediate.
+<<<<<<< HEAD
                 Size = 2;
                 imm <<= modeHigh << 3;
+=======
+                Size = 2; imm <<= modeHigh << 3;
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else if ((modeHigh & 0b111) == 0b110)
             {
                 // 32-bits shifted Immediate (fill with ones).
+<<<<<<< HEAD
                 Size = 2;
                 imm = ShlOnes(imm, 8 << modeLow);
+=======
+                Size = 2; imm = ShlOnes(imm, 8 << modeLow);
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -107,4 +135,8 @@ namespace ARMeilleure.Decoders
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

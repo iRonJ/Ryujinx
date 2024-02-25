@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 using System;
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 namespace Ryujinx.Cpu
 {
     /// <summary>
     /// CPU context interface.
     /// </summary>
+<<<<<<< HEAD
     public interface ICpuContext : IDisposable
+=======
+    public interface ICpuContext
+>>>>>>> 1ec71635b (sync with main branch)
     {
         /// <summary>
         /// Creates a new execution context that will store thread CPU register state when executing guest code.

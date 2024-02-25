@@ -13,6 +13,9 @@ namespace Ryujinx.Graphics.GAL
         void SetAntiAliasing(AntiAliasing antialiasing);
         void SetScalingFilter(ScalingFilter type);
         void SetScalingFilterLevel(float level);
+<<<<<<< HEAD
         void SetColorSpacePassthrough(bool colorSpacePassThroughEnabled);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

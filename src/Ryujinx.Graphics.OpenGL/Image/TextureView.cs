@@ -23,7 +23,11 @@ namespace Ryujinx.Graphics.OpenGL.Image
             TextureStorage parent,
             TextureCreateInfo info,
             int firstLayer,
+<<<<<<< HEAD
             int firstLevel) : base(info)
+=======
+            int firstLevel) : base(info, parent.ScaleFactor)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             _renderer = renderer;
             _parent = parent;
@@ -72,7 +76,11 @@ namespace Ryujinx.Graphics.OpenGL.Image
                 (int)Info.SwizzleR.Convert(),
                 (int)Info.SwizzleG.Convert(),
                 (int)Info.SwizzleB.Convert(),
+<<<<<<< HEAD
                 (int)Info.SwizzleA.Convert(),
+=======
+                (int)Info.SwizzleA.Convert()
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             if (Info.Format == Format.A1B5G5R5Unorm)
@@ -88,7 +96,13 @@ namespace Ryujinx.Graphics.OpenGL.Image
             {
                 // Swap B <-> R for BGRA formats, as OpenGL has no support for them
                 // and we need to manually swap the components on read/write on the GPU.
+<<<<<<< HEAD
                 (swizzleRgba[2], swizzleRgba[0]) = (swizzleRgba[0], swizzleRgba[2]);
+=======
+                int temp = swizzleRgba[0];
+                swizzleRgba[0] = swizzleRgba[2];
+                swizzleRgba[2] = temp;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             GL.TexParameter(target, TextureParameterName.TextureSwizzleRgba, swizzleRgba);
@@ -140,6 +154,7 @@ namespace Ryujinx.Graphics.OpenGL.Image
                 int levels = Math.Min(Info.Levels, destinationView.Info.Levels - firstLevel);
                 _renderer.TextureCopyIncompatible.CopyIncompatibleFormats(this, destinationView, 0, firstLayer, 0, firstLevel, layers, levels);
             }
+<<<<<<< HEAD
             else if (destinationView.Format.IsDepthOrStencil() != Format.IsDepthOrStencil())
             {
                 int layers = Math.Min(Info.GetLayers(), destinationView.Info.GetLayers() - firstLayer);
@@ -162,6 +177,8 @@ namespace Ryujinx.Graphics.OpenGL.Image
                     }
                 }
             }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             else
             {
                 _renderer.TextureCopy.CopyUnscaled(this, destinationView, 0, firstLayer, 0, firstLevel);
@@ -191,6 +208,7 @@ namespace Ryujinx.Graphics.OpenGL.Image
             {
                 _renderer.TextureCopyIncompatible.CopyIncompatibleFormats(this, destinationView, srcLayer, dstLayer, srcLevel, dstLevel, 1, 1);
             }
+<<<<<<< HEAD
             else if (destinationView.Format.IsDepthOrStencil() != Format.IsDepthOrStencil())
             {
                 int minWidth = Math.Min(Width, destinationView.Width);
@@ -198,6 +216,8 @@ namespace Ryujinx.Graphics.OpenGL.Image
 
                 _renderer.TextureCopy.PboCopy(this, destinationView, srcLayer, dstLayer, srcLevel, dstLevel, minWidth, minHeight);
             }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             else
             {
                 _renderer.TextureCopy.CopyUnscaled(this, destinationView, srcLayer, dstLayer, srcLevel, dstLevel, 1, 1);
@@ -213,8 +233,13 @@ namespace Ryujinx.Graphics.OpenGL.Image
             // This approach uses blit, which causes a resolution loss since some samples will be lost
             // in the process.
 
+<<<<<<< HEAD
             Extents2D srcRegion = new(0, 0, Width, Height);
             Extents2D dstRegion = new(0, 0, destinationView.Width, destinationView.Height);
+=======
+            Extents2D srcRegion = new Extents2D(0, 0, Width, Height);
+            Extents2D dstRegion = new Extents2D(0, 0, destinationView.Width, destinationView.Height);
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (destinationView.Target.IsMultisample())
             {
@@ -239,7 +264,11 @@ namespace Ryujinx.Graphics.OpenGL.Image
                 {
                     Target.Texture2DMultisample => Target.Texture2D,
                     Target.Texture2DMultisampleArray => Target.Texture2DArray,
+<<<<<<< HEAD
                     _ => Target,
+=======
+                    _ => Target
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 TextureView intermmediate = _renderer.TextureCopy.IntermediatePool.GetOrCreateWithAtLeast(
@@ -383,7 +412,11 @@ namespace Ryujinx.Graphics.OpenGL.Image
                     TextureTarget.TextureCubeMapArray => (layer / 6) * mipSize,
                     TextureTarget.Texture1DArray => layer * mipSize,
                     TextureTarget.Texture2DArray => layer * mipSize,
+<<<<<<< HEAD
                     _ => 0,
+=======
+                    _ => 0
+>>>>>>> 1ec71635b (sync with main branch)
                 };
             }
 

@@ -2,10 +2,17 @@ namespace ARMeilleure.Decoders
 {
     class OpCodeSimdMemMs : OpCodeMemReg, IOpCodeSimd
     {
+<<<<<<< HEAD
         public int Reps { get; }
         public int SElems { get; }
         public int Elems { get; }
         public bool WBack { get; }
+=======
+        public int  Reps   { get; }
+        public int  SElems { get; }
+        public int  Elems  { get; }
+        public bool WBack  { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public new static OpCode Create(InstDescriptor inst, ulong address, int opCode) => new OpCodeSimdMemMs(inst, address, opCode);
 
@@ -13,6 +20,7 @@ namespace ARMeilleure.Decoders
         {
             switch ((opCode >> 12) & 0xf)
             {
+<<<<<<< HEAD
                 case 0b0000:
                     Reps = 1;
                     SElems = 4;
@@ -48,6 +56,20 @@ namespace ARMeilleure.Decoders
             }
 
             Size = (opCode >> 10) & 3;
+=======
+                case 0b0000: Reps = 1; SElems = 4; break;
+                case 0b0010: Reps = 4; SElems = 1; break;
+                case 0b0100: Reps = 1; SElems = 3; break;
+                case 0b0110: Reps = 3; SElems = 1; break;
+                case 0b0111: Reps = 1; SElems = 1; break;
+                case 0b1000: Reps = 1; SElems = 2; break;
+                case 0b1010: Reps = 2; SElems = 1; break;
+
+                default: Instruction = InstDescriptor.Undefined; return;
+            }
+
+            Size  =  (opCode >> 10) & 3;
+>>>>>>> 1ec71635b (sync with main branch)
             WBack = ((opCode >> 23) & 1) != 0;
 
             bool q = ((opCode >> 30) & 1) != 0;
@@ -68,4 +90,8 @@ namespace ARMeilleure.Decoders
             Elems = (GetBitsCount() >> 3) >> Size;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

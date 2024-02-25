@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+using Avalonia;
+>>>>>>> 1ec71635b (sync with main branch)
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
@@ -18,7 +22,13 @@ namespace Ryujinx.Ava.UI.Applet
             Message = message;
             DataContext = this;
             InitializeComponent();
+<<<<<<< HEAD
 
+=======
+#if DEBUG
+            this.AttachDevTools();
+#endif
+>>>>>>> 1ec71635b (sync with main branch)
             int responseId = 0;
 
             if (buttons != null)
@@ -39,6 +49,12 @@ namespace Ryujinx.Ava.UI.Applet
         {
             DataContext = this;
             InitializeComponent();
+<<<<<<< HEAD
+=======
+#if DEBUG
+            this.AttachDevTools();
+#endif
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public string Message { get; set; }
@@ -71,4 +87,8 @@ namespace Ryujinx.Ava.UI.Applet
             return _buttonResponse;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.News
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.News
+>>>>>>> 1ec71635b (sync with main branch)
 {
     [Service("news:a")]
     [Service("news:c")]
@@ -9,4 +13,8 @@ namespace Ryujinx.HLE.HOS.Services.News
     {
         public IServiceCreator(ServiceCtx context) { }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

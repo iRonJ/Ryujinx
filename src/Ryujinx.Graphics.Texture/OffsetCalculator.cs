@@ -7,6 +7,7 @@ namespace Ryujinx.Graphics.Texture
 {
     public class OffsetCalculator
     {
+<<<<<<< HEAD
         private readonly int _width;
         private readonly int _height;
         private readonly int _stride;
@@ -14,11 +15,21 @@ namespace Ryujinx.Graphics.Texture
         private readonly int _bytesPerPixel;
 
         private readonly BlockLinearLayout _layoutConverter;
+=======
+        private int  _width;
+        private int  _height;
+        private int  _stride;
+        private bool _isLinear;
+        private int  _bytesPerPixel;
+
+        private BlockLinearLayout _layoutConverter;
+>>>>>>> 1ec71635b (sync with main branch)
 
         // Variables for built in iteration.
         private int _yPart;
 
         public OffsetCalculator(
+<<<<<<< HEAD
             int width,
             int height,
             int stride,
@@ -31,6 +42,20 @@ namespace Ryujinx.Graphics.Texture
             _height = height;
             _stride = stride;
             _isLinear = isLinear;
+=======
+            int  width,
+            int  height,
+            int  stride,
+            bool isLinear,
+            int  gobBlocksInY,
+            int  gobBlocksInZ,
+            int  bytesPerPixel)
+        {
+            _width         = width;
+            _height        = height;
+            _stride        = stride;
+            _isLinear      = isLinear;
+>>>>>>> 1ec71635b (sync with main branch)
             _bytesPerPixel = bytesPerPixel;
 
             int wAlignment = GobStride / bytesPerPixel;
@@ -138,4 +163,8 @@ namespace Ryujinx.Graphics.Texture
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

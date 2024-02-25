@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Ipc;
 using Ryujinx.HLE.HOS.Kernel.Threading;
 using Ryujinx.Horizon.Common;
@@ -17,6 +21,7 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         {
             int binderId = context.RequestData.ReadInt32();
 
+<<<<<<< HEAD
             uint code = context.RequestData.ReadUInt32();
             uint flags = context.RequestData.ReadUInt32();
 
@@ -24,11 +29,24 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             ulong dataSize = context.Request.SendBuff[0].Size;
 
             ulong replyPos = context.Request.ReceiveBuff[0].Position;
+=======
+            uint code  = context.RequestData.ReadUInt32();
+            uint flags = context.RequestData.ReadUInt32();
+
+            ulong dataPos  = context.Request.SendBuff[0].Position;
+            ulong dataSize = context.Request.SendBuff[0].Size;
+
+            ulong replyPos  = context.Request.ReceiveBuff[0].Position;
+>>>>>>> 1ec71635b (sync with main branch)
             ulong replySize = context.Request.ReceiveBuff[0].Size;
 
             ReadOnlySpan<byte> inputParcel = context.Memory.GetSpan(dataPos, (int)dataSize);
 
+<<<<<<< HEAD
             Span<byte> outputParcel = new(new byte[replySize]);
+=======
+            Span<byte> outputParcel = new Span<byte>(new byte[replySize]);
+>>>>>>> 1ec71635b (sync with main branch)
 
             ResultCode result = OnTransact(binderId, code, flags, inputParcel, outputParcel);
 
@@ -45,8 +63,13 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         public ResultCode AdjustRefcount(ServiceCtx context)
         {
             int binderId = context.RequestData.ReadInt32();
+<<<<<<< HEAD
             int addVal = context.RequestData.ReadInt32();
             int type = context.RequestData.ReadInt32();
+=======
+            int addVal   = context.RequestData.ReadInt32();
+            int type     = context.RequestData.ReadInt32();
+>>>>>>> 1ec71635b (sync with main branch)
 
             return AdjustRefcount(binderId, addVal, type);
         }
@@ -77,14 +100,22 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         {
             int binderId = context.RequestData.ReadInt32();
 
+<<<<<<< HEAD
             uint code = context.RequestData.ReadUInt32();
             uint flags = context.RequestData.ReadUInt32();
 
             (ulong dataPos, ulong dataSize) = context.Request.GetBufferType0x21();
+=======
+            uint code  = context.RequestData.ReadUInt32();
+            uint flags = context.RequestData.ReadUInt32();
+
+            (ulong dataPos, ulong dataSize)   = context.Request.GetBufferType0x21();
+>>>>>>> 1ec71635b (sync with main branch)
             (ulong replyPos, ulong replySize) = context.Request.GetBufferType0x22();
 
             ReadOnlySpan<byte> inputParcel = context.Memory.GetSpan(dataPos, (int)dataSize);
 
+<<<<<<< HEAD
             using IMemoryOwner<byte> outputParcelOwner = ByteMemoryPool.RentCleared(replySize);
 
             Span<byte> outputParcel = outputParcelOwner.Memory.Span;
@@ -97,6 +128,21 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
             }
 
             return result;
+=======
+            using (IMemoryOwner<byte> outputParcelOwner = ByteMemoryPool.Shared.RentCleared(replySize))
+            {
+                Span<byte> outputParcel = outputParcelOwner.Memory.Span;
+                
+                ResultCode result = OnTransact(binderId, code, flags, inputParcel, outputParcel);
+
+                if (result == ResultCode.Success)
+                {
+                    context.Memory.Write(replyPos, outputParcel);
+                }
+
+                return result;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         protected abstract ResultCode AdjustRefcount(int binderId, int addVal, int type);
@@ -105,4 +151,8 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
         protected abstract ResultCode OnTransact(int binderId, uint code, uint flags, ReadOnlySpan<byte> inputParcel, Span<byte> outputParcel);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

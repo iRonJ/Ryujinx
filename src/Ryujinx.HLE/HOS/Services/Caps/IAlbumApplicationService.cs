@@ -18,7 +18,11 @@ namespace Ryujinx.HLE.HOS.Services.Caps
 
         [CommandCmif(102)]
         // GetAlbumFileList0AafeAruidDeprecated(pid, u16 content_type, u64 start_time, u64 end_time, nn::applet::AppletResourceUserId) -> (u64 count, buffer<ApplicationAlbumFileEntry, 0x6>)
+<<<<<<< HEAD
         public ResultCode GetAlbumFileList0AafeAruidDeprecated(ServiceCtx context)
+=======
+        public ResultCode GetAlbumFileList0AafeAruidDeprecated(ServiceCtx context) 
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // NOTE: ApplicationAlbumFileEntry size is 0x30.
             return GetAlbumFileList(context);
@@ -35,18 +39,30 @@ namespace Ryujinx.HLE.HOS.Services.Caps
         private ResultCode GetAlbumFileList(ServiceCtx context)
         {
             ResultCode resultCode = ResultCode.Success;
+<<<<<<< HEAD
             ulong count = 0;
 
             ContentType contentType = (ContentType)context.RequestData.ReadUInt16();
             ulong startTime = context.RequestData.ReadUInt64();
             ulong endTime = context.RequestData.ReadUInt64();
+=======
+            ulong      count      = 0;
+
+            ContentType contentType = (ContentType)context.RequestData.ReadUInt16();
+            ulong       startTime   = context.RequestData.ReadUInt64();
+            ulong       endTime     = context.RequestData.ReadUInt64();
+>>>>>>> 1ec71635b (sync with main branch)
 
             context.RequestData.ReadUInt16(); // Alignment.
 
             ulong appletResourceUserId = context.RequestData.ReadUInt64();
 
             ulong applicationAlbumFileEntryPosition = context.Request.ReceiveBuff[0].Position;
+<<<<<<< HEAD
             ulong applicationAlbumFileEntrySize = context.Request.ReceiveBuff[0].Size;
+=======
+            ulong applicationAlbumFileEntrySize     = context.Request.ReceiveBuff[0].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             MemoryHelper.FillWithZeros(context.Memory, applicationAlbumFileEntryPosition, (int)applicationAlbumFileEntrySize);
 
@@ -66,4 +82,8 @@ namespace Ryujinx.HLE.HOS.Services.Caps
             return resultCode;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

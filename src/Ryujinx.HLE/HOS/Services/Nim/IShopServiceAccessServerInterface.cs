@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using LibHac.Ncm;
+=======
+﻿using LibHac.Ncm;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.HOS.Services.Arp;
 using Ryujinx.HLE.HOS.Services.Nim.ShopServiceAccessServerInterface;
@@ -41,4 +45,8 @@ namespace Ryujinx.HLE.HOS.Services.Nim
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

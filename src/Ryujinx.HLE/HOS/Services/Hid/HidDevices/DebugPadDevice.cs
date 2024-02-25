@@ -13,7 +13,11 @@ namespace Ryujinx.HLE.HOS.Services.Hid
 
             ref DebugPadState previousEntry = ref lifo.GetCurrentEntryRef();
 
+<<<<<<< HEAD
             DebugPadState newState = new();
+=======
+            DebugPadState newState = new DebugPadState();
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (Active)
             {
@@ -25,4 +29,8 @@ namespace Ryujinx.HLE.HOS.Services.Hid
             lifo.Write(ref newState);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

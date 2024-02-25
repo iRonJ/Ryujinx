@@ -34,4 +34,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.Effect
             return (uint)MathF.Round(sampleRate * delayTime);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

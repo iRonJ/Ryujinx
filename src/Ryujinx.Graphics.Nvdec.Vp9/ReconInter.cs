@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Nvdec.Vp9.Types;
 using System;
 using System.Diagnostics;
@@ -84,15 +88,25 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
         private static Mv MiMvPredQ4(ref ModeInfo mi, int idx)
         {
+<<<<<<< HEAD
             return new Mv
+=======
+            Mv res = new Mv()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 Row = (short)RoundMvCompQ4(
                     mi.Bmi[0].Mv[idx].Row + mi.Bmi[1].Mv[idx].Row +
                     mi.Bmi[2].Mv[idx].Row + mi.Bmi[3].Mv[idx].Row),
                 Col = (short)RoundMvCompQ4(
                     mi.Bmi[0].Mv[idx].Col + mi.Bmi[1].Mv[idx].Col +
+<<<<<<< HEAD
                     mi.Bmi[2].Mv[idx].Col + mi.Bmi[3].Mv[idx].Col),
             };
+=======
+                    mi.Bmi[2].Mv[idx].Col + mi.Bmi[3].Mv[idx].Col)
+            };
+            return res;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static int RoundMvCompQ2(int value)
@@ -102,15 +116,25 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
         private static Mv MiMvPredQ2(ref ModeInfo mi, int idx, int block0, int block1)
         {
+<<<<<<< HEAD
             return new Mv
+=======
+            Mv res = new Mv()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 Row = (short)RoundMvCompQ2(
                     mi.Bmi[block0].Mv[idx].Row +
                     mi.Bmi[block1].Mv[idx].Row),
                 Col = (short)RoundMvCompQ2(
                     mi.Bmi[block0].Mv[idx].Col +
+<<<<<<< HEAD
                     mi.Bmi[block1].Mv[idx].Col),
             };
+=======
+                    mi.Bmi[block1].Mv[idx].Col)
+            };
+            return res;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static Mv ClampMvToUmvBorderSb(ref MacroBlockD xd, ref Mv srcMv, int bw, int bh, int ssX, int ssY)
@@ -122,10 +146,17 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             int spelRight = spelLeft - SubpelShifts;
             int spelTop = (Constants.Vp9InterpExtend + bh) << SubpelBits;
             int spelBottom = spelTop - SubpelShifts;
+<<<<<<< HEAD
             Mv clampedMv = new()
             {
                 Row = (short)(srcMv.Row * (1 << (1 - ssY))),
                 Col = (short)(srcMv.Col * (1 << (1 - ssX))),
+=======
+            Mv clampedMv = new Mv()
+            {
+                Row = (short)(srcMv.Row * (1 << (1 - ssY))),
+                Col = (short)(srcMv.Col * (1 << (1 - ssX)))
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             Debug.Assert(ssX <= 1);
@@ -143,6 +174,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         public static Mv AverageSplitMvs(ref MacroBlockDPlane pd, ref ModeInfo mi, int refr, int block)
         {
             int ssIdx = ((pd.SubsamplingX > 0 ? 1 : 0) << 1) | (pd.SubsamplingY > 0 ? 1 : 0);
+<<<<<<< HEAD
             Mv res = new();
             switch (ssIdx)
             {
@@ -161,6 +193,16 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                 default:
                     Debug.Assert(ssIdx <= 3 && ssIdx >= 0);
                     break;
+=======
+            Mv res = new Mv();
+            switch (ssIdx)
+            {
+                case 0: res = mi.Bmi[block].Mv[refr]; break;
+                case 1: res = MiMvPredQ2(ref mi, refr, block, block + 2); break;
+                case 2: res = MiMvPredQ2(ref mi, refr, block, block + 1); break;
+                case 3: res = MiMvPredQ4(ref mi, refr); break;
+                default: Debug.Assert(ssIdx <= 3 && ssIdx >= 0); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
             return res;
         }
@@ -169,7 +211,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         {
             int x = !sf.IsNull ? sf.Value.ScaleValueX(xOffset) : xOffset;
             int y = !sf.IsNull ? sf.Value.ScaleValueY(yOffset) : yOffset;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             return y * stride + x;
         }
 

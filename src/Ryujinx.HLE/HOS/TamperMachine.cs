@@ -17,18 +17,29 @@ namespace Ryujinx.HLE.HOS
         private const int TamperMachineSleepMs = 1000 / 12;
 
         private Thread _tamperThread = null;
+<<<<<<< HEAD
         private readonly ConcurrentQueue<ITamperProgram> _programs = new();
         private long _pressedKeys = 0;
         private readonly Dictionary<string, ITamperProgram> _programDictionary = new();
+=======
+        private ConcurrentQueue<ITamperProgram> _programs = new ConcurrentQueue<ITamperProgram>();
+        private long _pressedKeys = 0;
+        private Dictionary<string, ITamperProgram> _programDictionary = new Dictionary<string, ITamperProgram>();
+>>>>>>> 1ec71635b (sync with main branch)
 
         private void Activate()
         {
             if (_tamperThread == null || !_tamperThread.IsAlive)
             {
+<<<<<<< HEAD
                 _tamperThread = new Thread(this.TamperRunner)
                 {
                     Name = "HLE.TamperMachine",
                 };
+=======
+                _tamperThread = new Thread(this.TamperRunner);
+                _tamperThread.Name = "HLE.TamperMachine";
+>>>>>>> 1ec71635b (sync with main branch)
                 _tamperThread.Start();
             }
         }
@@ -41,7 +52,11 @@ namespace Ryujinx.HLE.HOS
             }
 
             ITamperedProcess tamperedProcess = new TamperedKProcess(info.Process);
+<<<<<<< HEAD
             AtmosphereCompiler compiler = new(exeAddress, info.HeapAddress, info.AliasAddress, info.AslrAddress, tamperedProcess);
+=======
+            AtmosphereCompiler compiler = new AtmosphereCompiler(exeAddress, info.HeapAddress, info.AliasAddress, info.AslrAddress, tamperedProcess);
+>>>>>>> 1ec71635b (sync with main branch)
             ITamperProgram program = compiler.Compile(name, rawInstructions);
 
             if (program != null)
@@ -55,7 +70,11 @@ namespace Ryujinx.HLE.HOS
             Activate();
         }
 
+<<<<<<< HEAD
         private static bool CanInstallOnPid(ulong pid)
+=======
+        private bool CanInstallOnPid(ulong pid)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // Do not allow tampering of kernel processes.
             if (pid < KernelConstants.InitialProcessId)
@@ -84,7 +103,11 @@ namespace Ryujinx.HLE.HOS
             }
         }
 
+<<<<<<< HEAD
         private static bool IsProcessValid(ITamperedProcess process)
+=======
+        private bool IsProcessValid(ITamperedProcess process)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return process.State != ProcessState.Crashed && process.State != ProcessState.Exiting && process.State != ProcessState.Exited;
         }

@@ -1,11 +1,17 @@
 using Ryujinx.Cpu.AppleHv.Arm;
 using Ryujinx.Memory;
 using System;
+<<<<<<< HEAD
 using System.Runtime.Versioning;
 
 namespace Ryujinx.Cpu.AppleHv
 {
     [SupportedOSPlatform("macos")]
+=======
+
+namespace Ryujinx.Cpu.AppleHv
+{
+>>>>>>> 1ec71635b (sync with main branch)
     class HvAddressSpace : IDisposable
     {
         private const ulong KernelRegionBase = unchecked((ulong)-(1L << 39));
@@ -20,16 +26,28 @@ namespace Ryujinx.Cpu.AppleHv
         private const ulong AllocationGranule = 1UL << 14;
 
         private readonly ulong _asBase;
+<<<<<<< HEAD
+=======
+        private readonly ulong _asSize;
+>>>>>>> 1ec71635b (sync with main branch)
         private readonly ulong _backingSize;
 
         private readonly HvAddressSpaceRange _userRange;
         private readonly HvAddressSpaceRange _kernelRange;
 
+<<<<<<< HEAD
         private readonly MemoryBlock _kernelCodeBlock;
+=======
+        private MemoryBlock _kernelCodeBlock;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public HvAddressSpace(MemoryBlock backingMemory, ulong asSize)
         {
             (_asBase, var ipaAllocator) = HvVm.CreateAddressSpace(backingMemory);
+<<<<<<< HEAD
+=======
+            _asSize = asSize;
+>>>>>>> 1ec71635b (sync with main branch)
             _backingSize = backingMemory.Size;
 
             _userRange = new HvAddressSpaceRange(ipaAllocator);
@@ -58,13 +76,18 @@ namespace Ryujinx.Cpu.AppleHv
             _kernelCodeBlock.Write(KernelRegionEretOffset, 0xD69F03E0u); // ERET
 
             ulong kernelCodePa = ipaAllocator.Allocate(AllocationGranule);
+<<<<<<< HEAD
             HvApi.hv_vm_map((ulong)_kernelCodeBlock.Pointer, kernelCodePa, AllocationGranule, HvMemoryFlags.Read | HvMemoryFlags.Exec).ThrowOnError();
+=======
+            HvApi.hv_vm_map((ulong)_kernelCodeBlock.Pointer, kernelCodePa, AllocationGranule, hv_memory_flags_t.HV_MEMORY_READ | hv_memory_flags_t.HV_MEMORY_EXEC).ThrowOnError();
+>>>>>>> 1ec71635b (sync with main branch)
 
             _kernelRange.Map(KernelRegionCodeOffset, kernelCodePa, KernelRegionCodeSize, ApFlags.UserNoneKernelReadExecute);
         }
 
         public void InitializeMmu(ulong vcpu)
         {
+<<<<<<< HEAD
             HvApi.hv_vcpu_set_sys_reg(vcpu, HvSysReg.VBAR_EL1, KernelRegionBase + KernelRegionCodeOffset);
 
             HvApi.hv_vcpu_set_sys_reg(vcpu, HvSysReg.TTBR0_EL1, _userRange.GetIpaBase());
@@ -72,6 +95,15 @@ namespace Ryujinx.Cpu.AppleHv
             HvApi.hv_vcpu_set_sys_reg(vcpu, HvSysReg.MAIR_EL1, 0xffUL);
             HvApi.hv_vcpu_set_sys_reg(vcpu, HvSysReg.TCR_EL1, 0x00000011B5193519UL);
             HvApi.hv_vcpu_set_sys_reg(vcpu, HvSysReg.SCTLR_EL1, 0x0000000034D5D925UL);
+=======
+            HvApi.hv_vcpu_set_sys_reg(vcpu, hv_sys_reg_t.HV_SYS_REG_VBAR_EL1, KernelRegionBase + KernelRegionCodeOffset);
+
+            HvApi.hv_vcpu_set_sys_reg(vcpu, hv_sys_reg_t.HV_SYS_REG_TTBR0_EL1, _userRange.GetIpaBase());
+            HvApi.hv_vcpu_set_sys_reg(vcpu, hv_sys_reg_t.HV_SYS_REG_TTBR1_EL1, _kernelRange.GetIpaBase());
+            HvApi.hv_vcpu_set_sys_reg(vcpu, hv_sys_reg_t.HV_SYS_REG_MAIR_EL1, 0xffUL);
+            HvApi.hv_vcpu_set_sys_reg(vcpu, hv_sys_reg_t.HV_SYS_REG_TCR_EL1, 0x00000011B5193519UL);
+            HvApi.hv_vcpu_set_sys_reg(vcpu, hv_sys_reg_t.HV_SYS_REG_SCTLR_EL1, 0x0000000034D5D925UL);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public bool GetAndClearUserTlbInvalidationPending()
@@ -115,7 +147,11 @@ namespace Ryujinx.Cpu.AppleHv
                 MemoryPermission.ReadAndWrite => ApFlags.UserReadWriteKernelReadWrite,
                 MemoryPermission.ReadAndExecute => ApFlags.UserReadExecuteKernelRead,
                 MemoryPermission.ReadWriteExecute => ApFlags.UserReadWriteExecuteKernelReadWrite,
+<<<<<<< HEAD
                 _ => throw new ArgumentException($"Permission \"{permission}\" is invalid."),
+=======
+                _ => throw new ArgumentException($"Permission \"{permission}\" is invalid.")
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -126,4 +162,8 @@ namespace Ryujinx.Cpu.AppleHv
             HvVm.DestroyAddressSpace(_asBase, _backingSize);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

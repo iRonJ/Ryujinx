@@ -4,6 +4,12 @@ namespace Ryujinx.Graphics.GAL
     {
         Bilinear,
         Nearest,
+<<<<<<< HEAD
         Fsr,
     }
 }
+=======
+        Fsr
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

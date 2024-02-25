@@ -22,4 +22,8 @@ namespace ARMeilleure.Decoders
             Immediate = (long)address + DecoderHelper.DecodeImmS19_2(opCode);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

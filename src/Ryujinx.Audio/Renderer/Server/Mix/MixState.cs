@@ -7,6 +7,10 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Audio.Constants;
 
 namespace Ryujinx.Audio.Renderer.Server.Mix
@@ -65,7 +69,11 @@ namespace Ryujinx.Audio.Renderer.Server.Mix
         /// <summary>
         /// The effect processing order storage.
         /// </summary>
+<<<<<<< HEAD
         private readonly IntPtr _effectProcessingOrderArrayPointer;
+=======
+        private IntPtr _effectProcessingOrderArrayPointer;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The max element count that can be found in the effect processing order storage.
@@ -119,7 +127,11 @@ namespace Ryujinx.Audio.Renderer.Server.Mix
         /// <summary>
         /// The array used to order effects associated to this mix.
         /// </summary>
+<<<<<<< HEAD
         public readonly Span<int> EffectProcessingOrderArray
+=======
+        public Span<int> EffectProcessingOrderArray
+>>>>>>> 1ec71635b (sync with main branch)
         {
             get
             {
@@ -174,7 +186,11 @@ namespace Ryujinx.Audio.Renderer.Server.Mix
         /// <summary>
         /// Clear the <see cref="EffectProcessingOrderArray"/> to its default state.
         /// </summary>
+<<<<<<< HEAD
         public readonly void ClearEffectProcessingOrder()
+=======
+        public void ClearEffectProcessingOrder()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             EffectProcessingOrderArray.Fill(-1);
         }
@@ -183,7 +199,11 @@ namespace Ryujinx.Audio.Renderer.Server.Mix
         /// Return true if the mix has any destinations.
         /// </summary>
         /// <returns>True if the mix has any destinations.</returns>
+<<<<<<< HEAD
         public readonly bool HasAnyDestination()
+=======
+        public bool HasAnyDestination()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return DestinationMixId != UnusedMixId || DestinationSplitterId != UnusedSplitterId;
         }
@@ -309,4 +329,8 @@ namespace Ryujinx.Audio.Renderer.Server.Mix
             return isDirty;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

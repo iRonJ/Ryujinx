@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
+=======
+﻿using Ryujinx.Graphics.GAL;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu.Engine.GPFifo;
 using Ryujinx.Graphics.Gpu.Image;
 using Ryujinx.Graphics.Gpu.Memory;
@@ -125,7 +129,10 @@ namespace Ryujinx.Graphics.Gpu
         /// </summary>
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             _context.DeferredActions.Enqueue(Destroy);
         }
 
@@ -135,7 +142,10 @@ namespace Ryujinx.Graphics.Gpu
         /// </summary>
         private void Destroy()
         {
+<<<<<<< HEAD
             _processor.Dispose();
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             TextureManager.Dispose();
 
             var oldMemoryManager = Interlocked.Exchange(ref _memoryManager, null);

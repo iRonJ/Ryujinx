@@ -32,4 +32,8 @@ namespace Ryujinx.Graphics.Shader
             Code = line + Environment.NewLine + Code;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

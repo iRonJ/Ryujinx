@@ -4,6 +4,12 @@ namespace Ryujinx.Ava.UI.Models
     {
         None,
         Keyboard,
+<<<<<<< HEAD
         Controller,
     }
 }
+=======
+        Controller
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

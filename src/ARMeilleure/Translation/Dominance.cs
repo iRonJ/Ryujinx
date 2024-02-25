@@ -29,7 +29,11 @@ namespace ARMeilleure.Translation
 
             cfg.Entry.ImmediateDominator = cfg.Entry;
 
+<<<<<<< HEAD
             Debug.Assert(cfg.Entry == cfg.PostOrderBlocks[^1]);
+=======
+            Debug.Assert(cfg.Entry == cfg.PostOrderBlocks[cfg.PostOrderBlocks.Length - 1]);
+>>>>>>> 1ec71635b (sync with main branch)
 
             bool modified;
 
@@ -92,4 +96,8 @@ namespace ARMeilleure.Translation
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

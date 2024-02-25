@@ -23,7 +23,11 @@ namespace ARMeilleure.State
             public int Running;
         }
 
+<<<<<<< HEAD
         private static NativeCtxStorage _dummyStorage = new();
+=======
+        private static NativeCtxStorage _dummyStorage = new NativeCtxStorage();
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly IJitMemoryBlock _block;
 
@@ -266,4 +270,8 @@ namespace ARMeilleure.State
 
         public void Dispose() => _block.Dispose();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

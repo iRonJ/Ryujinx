@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 namespace Ryujinx.Horizon.Sdk.Sf.Cmif
 {
     struct CmifRequestFormat
@@ -18,6 +19,28 @@ namespace Ryujinx.Horizon.Sdk.Sf.Cmif
         public int OutFixedPointersCount;
         public int ObjectsCount;
         public int HandlesCount;
+=======
+﻿namespace Ryujinx.Horizon.Sdk.Sf.Cmif
+{
+    struct CmifRequestFormat
+    {
+#pragma warning disable CS0649
+        public int  ObjectId;
+        public uint RequestId;
+        public uint Context;
+        public int  DataSize;
+        public int  ServerPointerSize;
+        public int  InAutoBuffersCount;
+        public int  OutAutoBuffersCount;
+        public int  InBuffersCount;
+        public int  OutBuffersCount;
+        public int  InOutBuffersCount;
+        public int  InPointersCount;
+        public int  OutPointersCount;
+        public int  OutFixedPointersCount;
+        public int  ObjectsCount;
+        public int  HandlesCount;
+>>>>>>> 1ec71635b (sync with main branch)
         public bool SendPid;
 #pragma warning restore CS0649
     }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+﻿using System.Collections.Generic;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Text.Json.Serialization;
 
 namespace Ryujinx.Common.Configuration
@@ -8,4 +12,8 @@ namespace Ryujinx.Common.Configuration
     public partial class DownloadableContentJsonSerializerContext : JsonSerializerContext
     {
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

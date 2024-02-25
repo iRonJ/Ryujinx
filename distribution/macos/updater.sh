@@ -5,7 +5,11 @@ set -e
 INSTALL_DIRECTORY=$1
 NEW_APP_DIRECTORY=$2
 APP_PID=$3
+<<<<<<< HEAD
 APP_ARGUMENTS=("${@:4}")
+=======
+APP_ARGUMENTS="${@:4}"
+>>>>>>> 1ec71635b (sync with main branch)
 
 error_handler() {
     local lineno="$1"
@@ -25,6 +29,7 @@ error_handler() {
     exit 1
 }
 
+<<<<<<< HEAD
 trap 'error_handler ${LINENO}' ERR
 
 # Wait for Ryujinx to exit.
@@ -46,6 +51,16 @@ done
 
 sleep 1
 
+=======
+# Wait for Ryujinx to exit
+# NOTE: in case no fds are open, lsof could be returning with a process still living.
+# We wait 1s and assume the process stopped after that
+lsof -p $APP_PID +r 1 &>/dev/null
+sleep 1
+
+trap 'error_handler ${LINENO}' ERR
+
+>>>>>>> 1ec71635b (sync with main branch)
 # Now replace and reopen.
 rm -rf "$INSTALL_DIRECTORY"
 mv "$NEW_APP_DIRECTORY" "$INSTALL_DIRECTORY"
@@ -53,5 +68,10 @@ mv "$NEW_APP_DIRECTORY" "$INSTALL_DIRECTORY"
 if [ "$#" -le 3 ]; then
     open -a "$INSTALL_DIRECTORY"
 else
+<<<<<<< HEAD
     open -a "$INSTALL_DIRECTORY" --args "${APP_ARGUMENTS[@]}"
 fi
+=======
+    open -a "$INSTALL_DIRECTORY" --args "$APP_ARGUMENTS"
+fi
+>>>>>>> 1ec71635b (sync with main branch)

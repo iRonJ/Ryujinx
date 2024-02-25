@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 using System;
 
 namespace Ryujinx.Graphics.Shader.Decoders
 {
     [Flags]
+=======
+namespace Ryujinx.Graphics.Shader.Decoders
+{
+>>>>>>> 1ec71635b (sync with main branch)
     enum InstProps : ushort
     {
         None = 0,
@@ -26,6 +31,12 @@ namespace Ryujinx.Graphics.Shader.Decoders
         Tex = 1 << 12,
         TexB = 1 << 13,
         Bra = 1 << 14,
+<<<<<<< HEAD
         NoPred = 1 << 15,
     }
 }
+=======
+        NoPred = 1 << 15
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

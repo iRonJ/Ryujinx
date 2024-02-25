@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Buffers.Binary;
 
@@ -6,7 +10,12 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
 {
     internal struct Reader
     {
+<<<<<<< HEAD
         private static readonly byte[] _norm = {
+=======
+        private static readonly byte[] Norm = new byte[]
+        {
+>>>>>>> 1ec71635b (sync with main branch)
             0, 7, 6, 6, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
             3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
             2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -16,7 +25,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+<<<<<<< HEAD
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+=======
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+>>>>>>> 1ec71635b (sync with main branch)
         };
         private const int BdValueSize = sizeof(ulong) * 8;
 
@@ -43,8 +56,12 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
                 Count = -8;
                 Range = 255;
                 Fill();
+<<<<<<< HEAD
 
                 return ReadBit() != 0; // Marker bit
+=======
+                return ReadBit() != 0;  // Marker bit
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -65,7 +82,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
                 ulong bigEndianValues = BinaryPrimitives.ReadUInt64BigEndian(buffer);
                 nv = bigEndianValues >> (BdValueSize - bits);
                 count += bits;
+<<<<<<< HEAD
                 buffer = buffer[(bits >> 3)..];
+=======
+                buffer = buffer.Slice(bits >> 3);
+>>>>>>> 1ec71635b (sync with main branch)
                 value = Value | (nv << (shift & 0x7));
             }
             else
@@ -84,7 +105,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
                     {
                         count += 8;
                         value |= (ulong)buffer[0] << shift;
+<<<<<<< HEAD
                         buffer = buffer[1..];
+=======
+                        buffer = buffer.Slice(1);
+>>>>>>> 1ec71635b (sync with main branch)
                         shift -= 8;
                     }
                 }
@@ -98,7 +123,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
             Count = count;
         }
 
+<<<<<<< HEAD
         public readonly bool HasError()
+=======
+        public bool HasError()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // Check if we have reached the end of the buffer.
             //
@@ -146,7 +175,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
             }
 
             {
+<<<<<<< HEAD
                 int shift = _norm[range];
+=======
+                int shift = Norm[range];
+>>>>>>> 1ec71635b (sync with main branch)
                 range <<= shift;
                 value <<= shift;
                 count -= shift;
@@ -160,7 +193,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
 
         public int ReadBit()
         {
+<<<<<<< HEAD
             return Read(128); // vpx_prob_half
+=======
+            return Read(128);  // vpx_prob_half
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public int ReadLiteral(int bits)
@@ -181,6 +218,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
 
             while ((i = tree[i + Read(probs[i >> 1])]) > 0)
             {
+<<<<<<< HEAD
+=======
+                continue;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             return -i;
@@ -202,10 +243,17 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
 
             if (value >= bigsplit)
             {
+<<<<<<< HEAD
                 range -= split;
                 value -= bigsplit;
                 {
                     int shift = _norm[range];
+=======
+                range = range - split;
+                value = value - bigsplit;
+                {
+                    int shift = Norm[range];
+>>>>>>> 1ec71635b (sync with main branch)
                     range <<= shift;
                     value <<= shift;
                     count -= shift;
@@ -214,7 +262,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9.Dsp
             }
             range = split;
             {
+<<<<<<< HEAD
                 int shift = _norm[range];
+=======
+                int shift = Norm[range];
+>>>>>>> 1ec71635b (sync with main branch)
                 range <<= shift;
                 value <<= shift;
                 count -= shift;

@@ -9,7 +9,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
     {
         public KProcess CreatorProcess { get; }
 
+<<<<<<< HEAD
         private readonly KSession _parent;
+=======
+        private KSession _parent;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ChannelState State { get; set; }
 
@@ -17,7 +21,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
 
         public KClientSession(KernelContext context, KSession parent, KClientPort parentPort) : base(context)
         {
+<<<<<<< HEAD
             _parent = parent;
+=======
+            _parent    = parent;
+>>>>>>> 1ec71635b (sync with main branch)
             ParentPort = parentPort;
 
             parentPort?.IncrementReferenceCount();
@@ -32,11 +40,19 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         {
             KThread currentThread = KernelStatic.GetCurrentThread();
 
+<<<<<<< HEAD
             KSessionRequest request = new(currentThread, customCmdBuffAddr, customCmdBuffSize);
 
             KernelContext.CriticalSection.Enter();
 
             currentThread.SignaledObj = null;
+=======
+            KSessionRequest request = new KSessionRequest(currentThread, customCmdBuffAddr, customCmdBuffSize);
+
+            KernelContext.CriticalSection.Enter();
+
+            currentThread.SignaledObj   = null;
+>>>>>>> 1ec71635b (sync with main branch)
             currentThread.ObjSyncResult = Result.Success;
 
             Result result = _parent.ServerSession.EnqueueRequest(request);
@@ -55,7 +71,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
         {
             KThread currentThread = KernelStatic.GetCurrentThread();
 
+<<<<<<< HEAD
             KSessionRequest request = new(currentThread, customCmdBuffAddr, customCmdBuffSize, asyncEvent);
+=======
+            KSessionRequest request = new KSessionRequest(currentThread, customCmdBuffAddr, customCmdBuffSize, asyncEvent);
+>>>>>>> 1ec71635b (sync with main branch)
 
             KernelContext.CriticalSection.Enter();
 
@@ -81,4 +101,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Ipc
             _parent.DecrementReferenceCount();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

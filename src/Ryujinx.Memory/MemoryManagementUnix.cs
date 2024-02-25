@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 using System;
 using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
+=======
+﻿using System;
+using System.Collections.Concurrent;
+using System.Runtime.Versioning;
+using System.Text;
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Memory.MemoryManagerUnixHelper;
 
 namespace Ryujinx.Memory
@@ -10,7 +18,11 @@ namespace Ryujinx.Memory
     [SupportedOSPlatform("macos")]
     static class MemoryManagementUnix
     {
+<<<<<<< HEAD
         private static readonly ConcurrentDictionary<IntPtr, ulong> _allocations = new();
+=======
+        private static readonly ConcurrentDictionary<IntPtr, ulong> _allocations = new ConcurrentDictionary<IntPtr, ulong>();
+>>>>>>> 1ec71635b (sync with main branch)
 
         public static IntPtr Allocate(ulong size, bool forJit)
         {
@@ -50,11 +62,19 @@ namespace Ryujinx.Memory
                 }
             }
 
+<<<<<<< HEAD
             IntPtr ptr = Mmap(IntPtr.Zero, size, prot, flags, -1, 0);
 
             if (ptr == MAP_FAILED)
             {
                 throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
+=======
+            IntPtr ptr = mmap(IntPtr.Zero, size, prot, flags, -1, 0);
+
+            if (ptr == new IntPtr(-1L))
+            {
+                throw new OutOfMemoryException();
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (!_allocations.TryAdd(ptr, size))
@@ -66,7 +86,11 @@ namespace Ryujinx.Memory
             return ptr;
         }
 
+<<<<<<< HEAD
         public static void Commit(IntPtr address, ulong size, bool forJit)
+=======
+        public static bool Commit(IntPtr address, ulong size, bool forJit)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             MmapProts prot = MmapProts.PROT_READ | MmapProts.PROT_WRITE;
 
@@ -75,6 +99,7 @@ namespace Ryujinx.Memory
                 prot |= MmapProts.PROT_EXEC;
             }
 
+<<<<<<< HEAD
             if (mprotect(address, size, prot) != 0)
             {
                 throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
@@ -98,6 +123,19 @@ namespace Ryujinx.Memory
             {
                 throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
             }
+=======
+            return mprotect(address, size, prot) == 0;
+        }
+
+        public static bool Decommit(IntPtr address, ulong size)
+        {
+            // Must be writable for madvise to work properly.
+            mprotect(address, size, MmapProts.PROT_READ | MmapProts.PROT_WRITE);
+
+            madvise(address, size, MADV_REMOVE);
+
+            return mprotect(address, size, MmapProts.PROT_NONE) == 0;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static bool Reprotect(IntPtr address, ulong size, MemoryPermission permission)
@@ -115,7 +153,11 @@ namespace Ryujinx.Memory
                 MemoryPermission.ReadAndExecute => MmapProts.PROT_READ | MmapProts.PROT_EXEC,
                 MemoryPermission.ReadWriteExecute => MmapProts.PROT_READ | MmapProts.PROT_WRITE | MmapProts.PROT_EXEC,
                 MemoryPermission.Execute => MmapProts.PROT_EXEC,
+<<<<<<< HEAD
                 _ => throw new MemoryProtectionException(permission),
+=======
+                _ => throw new MemoryProtectionException(permission)
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -140,57 +182,96 @@ namespace Ryujinx.Memory
 
             if (OperatingSystem.IsMacOS())
             {
+<<<<<<< HEAD
                 byte[] memName = "Ryujinx-XXXXXX"u8.ToArray();
+=======
+                byte[] memName = Encoding.ASCII.GetBytes("Ryujinx-XXXXXX");
+>>>>>>> 1ec71635b (sync with main branch)
 
                 fixed (byte* pMemName = memName)
                 {
                     fd = shm_open((IntPtr)pMemName, 0x2 | 0x200 | 0x800 | 0x400, 384); // O_RDWR | O_CREAT | O_EXCL | O_TRUNC, 0600
                     if (fd == -1)
                     {
+<<<<<<< HEAD
                         throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
+=======
+                        throw new OutOfMemoryException();
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     if (shm_unlink((IntPtr)pMemName) != 0)
                     {
+<<<<<<< HEAD
                         throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
+=======
+                        throw new OutOfMemoryException();
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
             }
             else
             {
+<<<<<<< HEAD
                 byte[] fileName = "/dev/shm/Ryujinx-XXXXXX"u8.ToArray();
+=======
+                byte[] fileName = Encoding.ASCII.GetBytes("/dev/shm/Ryujinx-XXXXXX");
+>>>>>>> 1ec71635b (sync with main branch)
 
                 fixed (byte* pFileName = fileName)
                 {
                     fd = mkstemp((IntPtr)pFileName);
                     if (fd == -1)
                     {
+<<<<<<< HEAD
                         throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
+=======
+                        throw new OutOfMemoryException();
+>>>>>>> 1ec71635b (sync with main branch)
                     }
 
                     if (unlink((IntPtr)pFileName) != 0)
                     {
+<<<<<<< HEAD
                         throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
+=======
+                        throw new OutOfMemoryException();
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
             }
 
             if (ftruncate(fd, (IntPtr)size) != 0)
             {
+<<<<<<< HEAD
                 throw new SystemException(Marshal.GetLastPInvokeErrorMessage());
             }
 
             return fd;
+=======
+                throw new OutOfMemoryException();
+            }
+
+            return (IntPtr)fd;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void DestroySharedMemory(IntPtr handle)
         {
+<<<<<<< HEAD
             close(handle.ToInt32());
+=======
+            close((int)handle);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static IntPtr MapSharedMemory(IntPtr handle, ulong size)
         {
+<<<<<<< HEAD
             return Mmap(IntPtr.Zero, size, MmapProts.PROT_READ | MmapProts.PROT_WRITE, MmapFlags.MAP_SHARED, handle.ToInt32(), 0);
+=======
+            return mmap(IntPtr.Zero, size, MmapProts.PROT_READ | MmapProts.PROT_WRITE, MmapFlags.MAP_SHARED, (int)handle, 0);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void UnmapSharedMemory(IntPtr address, ulong size)
@@ -200,12 +281,23 @@ namespace Ryujinx.Memory
 
         public static void MapView(IntPtr sharedMemory, ulong srcOffset, IntPtr location, ulong size)
         {
+<<<<<<< HEAD
             Mmap(location, size, MmapProts.PROT_READ | MmapProts.PROT_WRITE, MmapFlags.MAP_FIXED | MmapFlags.MAP_SHARED, sharedMemory.ToInt32(), (long)srcOffset);
+=======
+            mmap(location, size, MmapProts.PROT_READ | MmapProts.PROT_WRITE, MmapFlags.MAP_FIXED | MmapFlags.MAP_SHARED, (int)sharedMemory, (long)srcOffset);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static void UnmapView(IntPtr location, ulong size)
         {
+<<<<<<< HEAD
             Mmap(location, size, MmapProts.PROT_NONE, MmapFlags.MAP_FIXED | MmapFlags.MAP_PRIVATE | MmapFlags.MAP_ANONYMOUS | MmapFlags.MAP_NORESERVE, -1, 0);
         }
     }
 }
+=======
+            mmap(location, size, MmapProts.PROT_NONE, MmapFlags.MAP_FIXED | MmapFlags.MAP_PRIVATE | MmapFlags.MAP_ANONYMOUS | MmapFlags.MAP_NORESERVE, -1, 0);
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
+=======
+﻿using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -8,11 +12,19 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd
 {
     class BsdContext
     {
+<<<<<<< HEAD
         private static readonly ConcurrentDictionary<ulong, BsdContext> _registry = new();
 
         private readonly object _lock = new();
 
         private readonly List<IFileDescriptor> _fds;
+=======
+        private static ConcurrentDictionary<ulong, BsdContext> _registry = new ConcurrentDictionary<ulong, BsdContext>();
+
+        private readonly object _lock = new object();
+
+        private List<IFileDescriptor> _fds;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private BsdContext()
         {
@@ -181,4 +193,8 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd
             return processContext;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

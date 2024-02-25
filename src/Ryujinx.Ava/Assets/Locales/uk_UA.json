@@ -7,7 +7,10 @@
   "SettingsTabSystemMemoryManagerModeSoftware": "Програмне забезпечення",
   "SettingsTabSystemMemoryManagerModeHost": "Хост (швидко)",
   "SettingsTabSystemMemoryManagerModeHostUnchecked": "Неперевірений хост (найшвидший, небезпечний)",
+<<<<<<< HEAD
   "SettingsTabSystemUseHypervisor": "Use Hypervisor",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "MenuBarFile": "_Файл",
   "MenuBarFileOpenFromFile": "_Завантажити програму з файлу",
   "MenuBarFileOpenUnpacked": "Завантажити _розпаковану гру",
@@ -27,9 +30,12 @@
   "MenuBarToolsInstallFirmware": "Встановити прошивку",
   "MenuBarFileToolsInstallFirmwareFromFile": "Встановити прошивку з XCI або ZIP",
   "MenuBarFileToolsInstallFirmwareFromDirectory": "Встановити прошивку з теки",
+<<<<<<< HEAD
   "MenuBarToolsManageFileTypes": "Manage file types",
   "MenuBarToolsInstallFileTypes": "Install file types",
   "MenuBarToolsUninstallFileTypes": "Uninstall file types",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "MenuBarHelp": "Довідка",
   "MenuBarHelpCheckForUpdates": "Перевірити оновлення",
   "MenuBarHelpAbout": "Про програму",
@@ -74,6 +80,7 @@
   "GameListContextMenuExtractDataLogoToolTip": "Видобуває розділ логотипу з поточної конфігурації програми (включаючи оновлення)",
   "StatusBarGamesLoaded": "{0}/{1} Ігор завантажено",
   "StatusBarSystemVersion": "Версія системи: {0}",
+<<<<<<< HEAD
   "LinuxVmMaxMapCountDialogTitle": "Low limit for memory mappings detected",
   "LinuxVmMaxMapCountDialogTextPrimary": "Would you like to increase the value of vm.max_map_count to {0}",
   "LinuxVmMaxMapCountDialogTextSecondary": "Some games might try to create more memory mappings than currently allowed. Ryujinx will crash as soon as this limit gets exceeded.",
@@ -81,16 +88,22 @@
   "LinuxVmMaxMapCountDialogButtonPersistent": "Yes, permanently",
   "LinuxVmMaxMapCountWarningTextPrimary": "Max amount of memory mappings is lower than recommended.",
   "LinuxVmMaxMapCountWarningTextSecondary": "The current value of vm.max_map_count ({0}) is lower than {1}. Some games might try to create more memory mappings than currently allowed. Ryujinx will crash as soon as this limit gets exceeded.\n\nYou might want to either manually increase the limit or install pkexec, which allows Ryujinx to assist with that.",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "Settings": "Налаштування",
   "SettingsTabGeneral": "Інтерфейс користувача",
   "SettingsTabGeneralGeneral": "Загальні",
   "SettingsTabGeneralEnableDiscordRichPresence": "Увімкнути розширену присутність Discord",
   "SettingsTabGeneralCheckUpdatesOnLaunch": "Перевіряти наявність оновлень під час запуску",
   "SettingsTabGeneralShowConfirmExitDialog": "Показати діалогове вікно «Підтвердити вихід».",
+<<<<<<< HEAD
   "SettingsTabGeneralHideCursor": "Hide Cursor:",
   "SettingsTabGeneralHideCursorNever": "Never",
   "SettingsTabGeneralHideCursorOnIdle": "Приховати курсор у режимі очікування",
   "SettingsTabGeneralHideCursorAlways": "Always",
+=======
+  "SettingsTabGeneralHideCursorOnIdle": "Приховати курсор у режимі очікування",
+>>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabGeneralGameDirectories": "Каталоги ігор",
   "SettingsTabGeneralAdd": "Додати",
   "SettingsTabGeneralRemove": "Видалити",
@@ -172,7 +185,10 @@
   "SettingsTabLoggingEnableFsAccessLogs": "Увімкнути журнали доступу Fs",
   "SettingsTabLoggingFsGlobalAccessLogMode": "Режим журналу глобального доступу Fs:",
   "SettingsTabLoggingDeveloperOptions": "Параметри розробника (УВАГА: знизиться продуктивність)",
+<<<<<<< HEAD
   "SettingsTabLoggingDeveloperOptionsNote": "WARNING: Will reduce performance",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "SettingsTabLoggingGraphicsBackendLogLevel": "Рівень журналу графічного сервера:",
   "SettingsTabLoggingGraphicsBackendLogLevelNone": "Ні",
   "SettingsTabLoggingGraphicsBackendLogLevelError": "Помилка",
@@ -223,6 +239,7 @@
   "ControllerSettingsDPadDown": "Вниз",
   "ControllerSettingsDPadLeft": "Вліво",
   "ControllerSettingsDPadRight": "Вправо",
+<<<<<<< HEAD
   "ControllerSettingsStickButton": "Button",
   "ControllerSettingsStickUp": "Up",
   "ControllerSettingsStickDown": "Down",
@@ -234,6 +251,28 @@
   "ControllerSettingsStickDeadzone": "Deadzone:",
   "ControllerSettingsLStick": "Лівий джойстик",
   "ControllerSettingsRStick": "Правий джойстик",
+=======
+  "ControllerSettingsLStick": "Лівий джойстик",
+  "ControllerSettingsLStickButton": "Кнопка",
+  "ControllerSettingsLStickUp": "Вгору",
+  "ControllerSettingsLStickDown": "Вниз",
+  "ControllerSettingsLStickLeft": "Вліво",
+  "ControllerSettingsLStickRight": "Вправо",
+  "ControllerSettingsLStickStick": "Джойстик",
+  "ControllerSettingsLStickInvertXAxis": "Інвертувати джойстик по X",
+  "ControllerSettingsLStickInvertYAxis": "Інвертувати джойстик по Y",
+  "ControllerSettingsLStickDeadzone": "Мертва зона:",
+  "ControllerSettingsRStick": "Правий джойстик",
+  "ControllerSettingsRStickButton": "Кнопка",
+  "ControllerSettingsRStickUp": "Вгору",
+  "ControllerSettingsRStickDown": "Вниз",
+  "ControllerSettingsRStickLeft": "Вліво",
+  "ControllerSettingsRStickRight": "Вправо",
+  "ControllerSettingsRStickStick": "Джойстик",
+  "ControllerSettingsRStickInvertXAxis": "Інвертувати джойстик по X",
+  "ControllerSettingsRStickInvertYAxis": "Інвертувати джойстик по Y",
+  "ControllerSettingsRStickDeadzone": "Мертва зона:",
+>>>>>>> 1ec71635b (sync with main branch)
   "ControllerSettingsTriggersLeft": "Тригери ліворуч",
   "ControllerSettingsTriggersRight": "Тригери праворуч",
   "ControllerSettingsTriggersButtonsLeft": "Кнопки тригерів ліворуч",
@@ -266,9 +305,14 @@
   "UserProfilesChangeProfileImage": "Змінити зображення профілю",
   "UserProfilesAvailableUserProfiles": "Доступні профілі користувачів:",
   "UserProfilesAddNewProfile": "Створити профіль",
+<<<<<<< HEAD
   "UserProfilesDelete": "Delete",
   "UserProfilesClose": "Закрити",
   "ProfileNameSelectionWatermark": "Choose a nickname",
+=======
+  "UserProfilesDeleteSelectedProfile": "Видалити вибране",
+  "UserProfilesClose": "Закрити",
+>>>>>>> 1ec71635b (sync with main branch)
   "ProfileImageSelectionTitle": "Вибір зображення профілю",
   "ProfileImageSelectionHeader": "Виберіть зображення профілю",
   "ProfileImageSelectionNote": "Ви можете імпортувати власне зображення профілю або вибрати аватар із мікропрограми системи",
@@ -289,7 +333,10 @@
   "ControllerSettingsSaveProfileToolTip": "Зберегти профіль",
   "MenuBarFileToolsTakeScreenshot": "Зробити знімок екрана",
   "MenuBarFileToolsHideUi": "Сховати інтерфейс",
+<<<<<<< HEAD
   "GameListContextMenuRunApplication": "Run Application",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "GameListContextMenuToggleFavorite": "Перемкнути вибране",
   "GameListContextMenuToggleFavoriteToolTip": "Перемкнути улюблений статус гри",
   "SettingsTabGeneralTheme": "Тема",
@@ -345,10 +392,13 @@
   "DialogFirmwareInstallEmbeddedSuccessMessage": "Встановлену прошивку не знайдено, але Ryujinx вдалося встановити прошивку {0} з наданої гри.\\nТепер запуститься емулятор.",
   "DialogFirmwareNoFirmwareInstalledMessage": "Прошивка не встановлена",
   "DialogFirmwareInstalledMessage": "Встановлено прошивку {0}",
+<<<<<<< HEAD
   "DialogInstallFileTypesSuccessMessage": "Successfully installed file types!",
   "DialogInstallFileTypesErrorMessage": "Failed to install file types.",
   "DialogUninstallFileTypesSuccessMessage": "Successfully uninstalled file types!",
   "DialogUninstallFileTypesErrorMessage": "Failed to uninstall file types.",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "DialogOpenSettingsWindowLabel": "Відкрити вікно налаштувань",
   "DialogControllerAppletTitle": "Аплет контролера",
   "DialogMessageDialogErrorExceptionMessage": "Помилка показу діалогового вікна повідомлення: {0}",
@@ -380,9 +430,12 @@
   "DialogFirmwareInstallerFirmwareInstallSuccessMessage": "Версію системи {0} успішно встановлено.",
   "DialogUserProfileDeletionWarningMessage": "Якщо вибраний профіль буде видалено, інші профілі не відкриватимуться",
   "DialogUserProfileDeletionConfirmMessage": "Ви хочете видалити вибраний профіль",
+<<<<<<< HEAD
   "DialogUserProfileUnsavedChangesTitle": "Warning - Unsaved Changes",
   "DialogUserProfileUnsavedChangesMessage": "You have made changes to this user profile that have not been saved.",
   "DialogUserProfileUnsavedChangesSubMessage": "Do you want to discard your changes?",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "DialogControllerSettingsModifiedConfirmMessage": "Поточні налаштування контролера оновлено.",
   "DialogControllerSettingsModifiedConfirmSubMessage": "Ви хочете зберегти?",
   "DialogLoadNcaErrorMessage": "{0}. Файл з помилкою: {1}",
@@ -431,7 +484,10 @@
   "DlcManagerEnableAllButton": "Увімкнути всі",
   "DlcManagerDisableAllButton": "Вимкнути всі",
   "MenuBarOptionsChangeLanguage": "Змінити мову",
+<<<<<<< HEAD
   "MenuBarShowFileTypes": "Show File Types",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "CommonSort": "Сортувати",
   "CommonShowNames": "Показати назви",
   "CommonFavorite": "Вибрані",
@@ -461,7 +517,10 @@
   "MemoryManagerSoftwareTooltip": "Використовує програмну таблицю сторінок для перекладу адрес. Найвища точність, але найповільніша продуктивність.",
   "MemoryManagerHostTooltip": "Пряме відображення пам'яті в адресному просторі хосту. Набагато швидша компіляція та виконання JIT.",
   "MemoryManagerUnsafeTooltip": "Пряме відображення пам’яті, але не маскує адресу в гостьовому адресному просторі перед доступом. Швидше, але ціною безпеки. Гостьова програма може отримати доступ до пам’яті з будь-якого місця в Ryujinx, тому запускайте в цьому режимі лише програми, яким ви довіряєте.",
+<<<<<<< HEAD
   "UseHypervisorTooltip": "Use Hypervisor instead of JIT. Greatly improves performance when available, but can be unstable in its current state.",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "DRamTooltip": "Використовує альтернативний макет MemoryMode для імітації моделі розробки Switch.\n\nЦе корисно лише для пакетів текстур з вищою роздільною здатністю або модифікацій із роздільною здатністю 4K. НЕ покращує продуктивність.\n\nЗалиште вимкненим, якщо не впевнені.",
   "IgnoreMissingServicesTooltip": "Ігнорує нереалізовані служби Horizon OS. Це може допомогти в обході збоїв під час завантаження певних ігор.\n\nЗалиште вимкненим, якщо не впевнені.",
   "GraphicsBackendThreadingTooltip": "Виконує команди графічного сервера в другому потоці.\n\nПрискорює компіляцію шейдерів, зменшує затримки та покращує продуктивність драйверів GPU без власної підтримки багатопоточності. Трохи краща продуктивність на драйверах з багатопотоковістю.\nВстановіть значення «Авто», якщо не впевнені",
@@ -544,9 +603,12 @@
   "SwkbdMinCharacters": "Мінімальна кількість символів: {0}",
   "SwkbdMinRangeCharacters": "Має бути {0}-{1} символів",
   "SoftwareKeyboard": "Програмна клавіатура",
+<<<<<<< HEAD
   "SoftwareKeyboardModeNumbersOnly": "Must be numbers only",
   "SoftwareKeyboardModeAlphabet": "Must be non CJK-characters only",
   "SoftwareKeyboardModeASCII": "Must be ASCII text only",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "DialogControllerAppletMessagePlayerRange": "Програма запитує {0} гравця(ів) з:\n\nТИПИ: {1}\n\nГРАВЦІ: {2}\n\n{3}Будь ласка, відкрийте «Налаштування» та повторно налаштуйте «Введення» або натисніть «Закрити».",
   "DialogControllerAppletMessage": "Програма запитує рівно стільки гравців: {0} з:\n\nТИПАМИ: {1}\n\nГРАВЦІВ: {2}\n\n{3}Будь ласка, відкрийте «Налаштування» та повторно налаштуйте «Введення» або натисніть «Закрити».",
   "DialogControllerAppletDockModeSet": "Встановлено режим док-станції. Ручний також недійсний.\n",
@@ -592,7 +654,10 @@
   "DlcWindowTitle": "Менеджер вмісту для завантаження",
   "UpdateWindowTitle": "Менеджер оновлення назв",
   "CheatWindowHeading": "Коди доступні для {0} [{1}]",
+<<<<<<< HEAD
   "BuildId": "BuildId:",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "DlcWindowHeading": "Вміст для завантаження, доступний для {1} ({2}): {0}",
   "UserProfilesEditProfile": "Редагувати вибране",
   "Cancel": "Скасувати",
@@ -620,8 +685,11 @@
   "SettingsTabHotkeysVolumeDownHotkey": "Зменшити гучність:",
   "SettingsEnableMacroHLE": "Увімкнути макрос HLE",
   "SettingsEnableMacroHLETooltip": "Високорівнева емуляція коду макросу GPU.\n\nПокращує продуктивність, але може викликати графічні збої в деяких іграх.\n\nЗалиште увімкненим, якщо не впевнені.",
+<<<<<<< HEAD
   "SettingsEnableColorSpacePassthrough": "Color Space Passthrough",
   "SettingsEnableColorSpacePassthroughTooltip": "Directs the Vulkan backend to pass through color information without specifying a color space. For users with wide gamut displays, this may result in more vibrant colors, at the cost of color correctness.",
+=======
+>>>>>>> 1ec71635b (sync with main branch)
   "VolumeShort": "Гуч",
   "UserProfilesManageSaves": "Керувати збереженнями",
   "DeleteUserSave": "Ви хочете видалити збереження користувача для цієї гри?",
@@ -633,6 +701,7 @@
   "Search": "Пошук",
   "UserProfilesRecoverLostAccounts": "Відновлення втрачених облікових записів",
   "Recover": "Відновити",
+<<<<<<< HEAD
   "UserProfilesRecoverHeading": "Знайдено збереження для наступних облікових записів",
   "UserProfilesRecoverEmptyList": "No profiles to recover",
   "GraphicsAATooltip": "Applies anti-aliasing to the game render",
@@ -654,3 +723,7 @@
   "AboutChangelogButton": "View Changelog on GitHub",
   "AboutChangelogButtonTooltipMessage": "Click to open the changelog for this version in your default browser."
 }
+=======
+  "UserProfilesRecoverHeading": "Знайдено збереження для наступних облікових записів"
+}
+>>>>>>> 1ec71635b (sync with main branch)

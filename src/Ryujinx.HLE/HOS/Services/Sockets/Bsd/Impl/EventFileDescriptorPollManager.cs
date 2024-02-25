@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
 using System.Collections.Generic;
 using System.Threading;
@@ -13,7 +17,14 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
         {
             get
             {
+<<<<<<< HEAD
                 _instance ??= new EventFileDescriptorPollManager();
+=======
+                if (_instance == null)
+                {
+                    _instance = new EventFileDescriptorPollManager();
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return _instance;
             }
@@ -28,7 +39,11 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
         {
             updatedCount = 0;
 
+<<<<<<< HEAD
             List<ManualResetEvent> waiters = new();
+=======
+            List<ManualResetEvent> waiters = new List<ManualResetEvent>();
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < events.Count; i++)
             {
@@ -116,4 +131,8 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             return LinuxError.EOPNOTSUPP;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

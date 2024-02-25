@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using ARMeilleure.Instructions;
+=======
+﻿using ARMeilleure.Instructions;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace ARMeilleure.Decoders
 {
@@ -32,4 +36,8 @@ namespace ARMeilleure.Decoders
             Immediate = pc + imm32;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

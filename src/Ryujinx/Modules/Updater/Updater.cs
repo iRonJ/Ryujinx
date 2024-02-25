@@ -5,9 +5,15 @@ using ICSharpCode.SharpZipLib.Zip;
 using Ryujinx.Common;
 using Ryujinx.Common.Logging;
 using Ryujinx.Common.Utilities;
+<<<<<<< HEAD
 using Ryujinx.UI;
 using Ryujinx.UI.Common.Models.Github;
 using Ryujinx.UI.Widgets;
+=======
+using Ryujinx.Ui;
+using Ryujinx.Ui.Common.Models.Github;
+using Ryujinx.Ui.Widgets;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,18 +30,29 @@ namespace Ryujinx.Modules
 {
     public static class Updater
     {
+<<<<<<< HEAD
         private const string GitHubApiUrl = "https://api.github.com";
+=======
+        private const string GitHubApiURL = "https://api.github.com";
+>>>>>>> 1ec71635b (sync with main branch)
         private const int ConnectionCount = 4;
 
         internal static bool Running;
 
+<<<<<<< HEAD
         private static readonly string _homeDir = AppDomain.CurrentDomain.BaseDirectory;
         private static readonly string _updateDir = Path.Combine(Path.GetTempPath(), "Ryujinx", "update");
         private static readonly string _updatePublishDir = Path.Combine(_updateDir, "publish");
+=======
+        private static readonly string HomeDir          = AppDomain.CurrentDomain.BaseDirectory;
+        private static readonly string UpdateDir        = Path.Combine(Path.GetTempPath(), "Ryujinx", "update");
+        private static readonly string UpdatePublishDir = Path.Combine(UpdateDir, "publish");
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static string _buildVer;
         private static string _platformExt;
         private static string _buildUrl;
+<<<<<<< HEAD
         private static long _buildSize;
 
         private static readonly GithubReleasesJsonSerializerContext _serializerContext = new(JsonHelper.GetDefaultSerializerOptions());
@@ -46,6 +63,18 @@ namespace Ryujinx.Modules
         private static HttpClient ConstructHttpClient()
         {
             HttpClient result = new();
+=======
+        private static long   _buildSize;
+
+        private static readonly GithubReleasesJsonSerializerContext SerializerContext = new(JsonHelper.GetDefaultSerializerOptions());
+
+        // On Windows, GtkSharp.Dependencies adds these extra dirs that must be cleaned during updates.
+        private static readonly string[] WindowsDependencyDirs = new string[] { "bin", "etc", "lib", "share" };
+
+        private static HttpClient ConstructHttpClient()
+        {
+            HttpClient result = new HttpClient();
+>>>>>>> 1ec71635b (sync with main branch)
 
             // Required by GitHub to interact with APIs.
             result.DefaultRequestHeaders.Add("User-Agent", "Ryujinx-Updater/1.0.0");
@@ -55,10 +84,14 @@ namespace Ryujinx.Modules
 
         public static async Task BeginParse(MainWindow mainWindow, bool showVersionUpToDate)
         {
+<<<<<<< HEAD
             if (Running)
             {
                 return;
             }
+=======
+            if (Running) return;
+>>>>>>> 1ec71635b (sync with main branch)
 
             Running = true;
             mainWindow.UpdateMenuItem.Sensitive = false;
@@ -68,18 +101,30 @@ namespace Ryujinx.Modules
             // Detect current platform
             if (OperatingSystem.IsMacOS())
             {
+<<<<<<< HEAD
                 _platformExt = "osx_x64.zip";
+=======
+                _platformExt  = "osx_x64.zip";
+>>>>>>> 1ec71635b (sync with main branch)
                 artifactIndex = 1;
             }
             else if (OperatingSystem.IsWindows())
             {
+<<<<<<< HEAD
                 _platformExt = "win_x64.zip";
+=======
+                _platformExt  = "win_x64.zip";
+>>>>>>> 1ec71635b (sync with main branch)
                 artifactIndex = 2;
             }
             else if (OperatingSystem.IsLinux())
             {
+<<<<<<< HEAD
                 var arch = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "arm64" : "x64";
                 _platformExt = $"linux_{arch}.tar.gz";
+=======
+                _platformExt  = "linux_x64.tar.gz";
+>>>>>>> 1ec71635b (sync with main branch)
                 artifactIndex = 0;
             }
 
@@ -109,11 +154,19 @@ namespace Ryujinx.Modules
             try
             {
                 using HttpClient jsonClient = ConstructHttpClient();
+<<<<<<< HEAD
                 string buildInfoUrl = $"{GitHubApiUrl}/repos/{ReleaseInformation.ReleaseChannelOwner}/{ReleaseInformation.ReleaseChannelRepo}/releases/latest";
 
                 // Fetch latest build information
                 string fetchedJson = await jsonClient.GetStringAsync(buildInfoUrl);
                 var fetched = JsonHelper.Deserialize(fetchedJson, _serializerContext.GithubReleasesJsonResponse);
+=======
+                string buildInfoURL = $"{GitHubApiURL}/repos/{ReleaseInformation.ReleaseChannelOwner}/{ReleaseInformation.ReleaseChannelRepo}/releases/latest";
+
+                // Fetch latest build information
+                string  fetchedJson = await jsonClient.GetStringAsync(buildInfoURL);
+                var fetched = JsonHelper.Deserialize(fetchedJson, SerializerContext.GithubReleasesJsonResponse);
+>>>>>>> 1ec71635b (sync with main branch)
                 _buildVer = fetched.Name;
 
                 foreach (var asset in fetched.Assets)
@@ -180,6 +233,7 @@ namespace Ryujinx.Modules
             }
 
             // Fetch build size information to learn chunk sizes.
+<<<<<<< HEAD
             using HttpClient buildSizeClient = ConstructHttpClient();
             try
             {
@@ -199,12 +253,36 @@ namespace Ryujinx.Modules
 
             // Show a message asking the user if they want to update
             UpdateDialog updateDialog = new(mainWindow, newVersion, _buildUrl);
+=======
+            using (HttpClient buildSizeClient = ConstructHttpClient())
+            {
+                try
+                {
+                    buildSizeClient.DefaultRequestHeaders.Add("Range", "bytes=0-0");
+
+                    HttpResponseMessage message = await buildSizeClient.GetAsync(new Uri(_buildUrl), HttpCompletionOption.ResponseHeadersRead);
+
+                    _buildSize = message.Content.Headers.ContentRange.Length.Value;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warning?.Print(LogClass.Application, ex.Message);
+                    Logger.Warning?.Print(LogClass.Application, "Couldn't determine build size for update, using single-threaded updater");
+
+                    _buildSize = -1;
+                }
+            }
+
+            // Show a message asking the user if they want to update
+            UpdateDialog updateDialog = new UpdateDialog(mainWindow, newVersion, _buildUrl);
+>>>>>>> 1ec71635b (sync with main branch)
             updateDialog.Show();
         }
 
         public static void UpdateRyujinx(UpdateDialog updateDialog, string downloadUrl)
         {
             // Empty update dir, although it shouldn't ever have anything inside it
+<<<<<<< HEAD
             if (Directory.Exists(_updateDir))
             {
                 Directory.Delete(_updateDir, true);
@@ -217,6 +295,20 @@ namespace Ryujinx.Modules
             // Download the update .zip
             updateDialog.MainText.Text = "Downloading Update...";
             updateDialog.ProgressBar.Value = 0;
+=======
+            if (Directory.Exists(UpdateDir))
+            {
+                Directory.Delete(UpdateDir, true);
+            }
+
+            Directory.CreateDirectory(UpdateDir);
+
+            string updateFile = Path.Combine(UpdateDir, "update.bin");
+
+            // Download the update .zip
+            updateDialog.MainText.Text        = "Downloading Update...";
+            updateDialog.ProgressBar.Value    = 0;
+>>>>>>> 1ec71635b (sync with main branch)
             updateDialog.ProgressBar.MaxValue = 100;
 
             if (_buildSize >= 0)
@@ -239,8 +331,13 @@ namespace Ryujinx.Modules
             int totalProgressPercentage = 0;
             int[] progressPercentage = new int[ConnectionCount];
 
+<<<<<<< HEAD
             List<byte[]> list = new(ConnectionCount);
             List<WebClient> webClients = new(ConnectionCount);
+=======
+            List<byte[]> list = new List<byte[]>(ConnectionCount);
+            List<WebClient> webClients = new List<WebClient>(ConnectionCount);
+>>>>>>> 1ec71635b (sync with main branch)
 
             for (int i = 0; i < ConnectionCount; i++)
             {
@@ -251,7 +348,11 @@ namespace Ryujinx.Modules
             {
 #pragma warning disable SYSLIB0014
                 // TODO: WebClient is obsolete and need to be replaced with a more complex logic using HttpClient.
+<<<<<<< HEAD
                 using WebClient client = new();
+=======
+                using WebClient client = new WebClient();
+>>>>>>> 1ec71635b (sync with main branch)
 #pragma warning restore SYSLIB0014
                 webClients.Add(client);
 
@@ -339,6 +440,7 @@ namespace Ryujinx.Modules
 
         private static void DoUpdateWithSingleThreadWorker(UpdateDialog updateDialog, string downloadUrl, string updateFile)
         {
+<<<<<<< HEAD
             using HttpClient client = new();
             // We do not want to timeout while downloading
             client.Timeout = TimeSpan.FromDays(1);
@@ -365,6 +467,37 @@ namespace Ryujinx.Modules
 
                 updateDialog.ProgressBar.Value = ((double)byteWritten / totalBytes) * 100;
                 updateFileStream.Write(buffer, 0, readSize);
+=======
+            using HttpClient client = new HttpClient();
+            // We do not want to timeout while downloading
+            client.Timeout = TimeSpan.FromDays(1);
+
+            using (HttpResponseMessage response = client.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead).Result)
+            using (Stream remoteFileStream = response.Content.ReadAsStreamAsync().Result)
+            {
+                using (Stream updateFileStream = File.Open(updateFile, FileMode.Create))
+                {
+                    long totalBytes = response.Content.Headers.ContentLength.Value;
+                    long byteWritten = 0;
+
+                    byte[] buffer = new byte[32 * 1024];
+
+                    while (true)
+                    {
+                        int readSize = remoteFileStream.Read(buffer);
+
+                        if (readSize == 0)
+                        {
+                            break;
+                        }
+
+                        byteWritten += readSize;
+
+                        updateDialog.ProgressBar.Value = ((double)byteWritten / totalBytes) * 100;
+                        updateFileStream.Write(buffer, 0, readSize);
+                    }
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             InstallUpdate(updateDialog, updateFile);
@@ -372,9 +505,15 @@ namespace Ryujinx.Modules
 
         private static void DoUpdateWithSingleThread(UpdateDialog updateDialog, string downloadUrl, string updateFile)
         {
+<<<<<<< HEAD
             Thread worker = new(() => DoUpdateWithSingleThreadWorker(updateDialog, downloadUrl, updateFile))
             {
                 Name = "Updater.SingleThreadWorker",
+=======
+            Thread worker = new Thread(() => DoUpdateWithSingleThreadWorker(updateDialog, downloadUrl, updateFile))
+            {
+                Name = "Updater.SingleThreadWorker"
+>>>>>>> 1ec71635b (sync with main branch)
             };
             worker.Start();
         }
@@ -382,14 +521,24 @@ namespace Ryujinx.Modules
         private static async void InstallUpdate(UpdateDialog updateDialog, string updateFile)
         {
             // Extract Update
+<<<<<<< HEAD
             updateDialog.MainText.Text = "Extracting Update...";
+=======
+            updateDialog.MainText.Text     = "Extracting Update...";
+>>>>>>> 1ec71635b (sync with main branch)
             updateDialog.ProgressBar.Value = 0;
 
             if (OperatingSystem.IsLinux())
             {
+<<<<<<< HEAD
                 using Stream inStream = File.OpenRead(updateFile);
                 using Stream gzipStream = new GZipInputStream(inStream);
                 using TarInputStream tarStream = new(gzipStream, Encoding.ASCII);
+=======
+                using Stream         inStream   = File.OpenRead(updateFile);
+                using Stream         gzipStream = new GZipInputStream(inStream);
+                using TarInputStream tarStream  = new TarInputStream(gzipStream, Encoding.ASCII);
+>>>>>>> 1ec71635b (sync with main branch)
                 updateDialog.ProgressBar.MaxValue = inStream.Length;
 
                 await Task.Run(() =>
@@ -400,6 +549,7 @@ namespace Ryujinx.Modules
                     {
                         while ((tarEntry = tarStream.GetNextEntry()) != null)
                         {
+<<<<<<< HEAD
                             if (tarEntry.IsDirectory)
                             {
                                 continue;
@@ -411,6 +561,18 @@ namespace Ryujinx.Modules
 
                             using FileStream outStream = File.OpenWrite(outPath);
                             tarStream.CopyEntryContents(outStream);
+=======
+                            if (tarEntry.IsDirectory) continue;
+
+                            string outPath = Path.Combine(UpdateDir, tarEntry.Name);
+
+                            Directory.CreateDirectory(Path.GetDirectoryName(outPath));
+
+                            using (FileStream outStream = File.OpenWrite(outPath))
+                            {
+                                tarStream.CopyEntryContents(outStream);
+                            }
+>>>>>>> 1ec71635b (sync with main branch)
 
                             File.SetUnixFileMode(outPath, (UnixFileMode)tarEntry.TarHeader.Mode);
                             File.SetLastWriteTime(outPath, DateTime.SpecifyKind(tarEntry.ModTime, DateTimeKind.Utc));
@@ -429,14 +591,20 @@ namespace Ryujinx.Modules
             }
             else
             {
+<<<<<<< HEAD
                 using Stream inStream = File.OpenRead(updateFile);
                 using ZipFile zipFile = new(inStream);
+=======
+                using Stream  inStream = File.OpenRead(updateFile);
+                using ZipFile zipFile  = new ZipFile(inStream);
+>>>>>>> 1ec71635b (sync with main branch)
                 updateDialog.ProgressBar.MaxValue = zipFile.Count;
 
                 await Task.Run(() =>
                 {
                     foreach (ZipEntry zipEntry in zipFile)
                     {
+<<<<<<< HEAD
                         if (zipEntry.IsDirectory)
                         {
                             continue;
@@ -449,6 +617,19 @@ namespace Ryujinx.Modules
                         using Stream zipStream = zipFile.GetInputStream(zipEntry);
                         using FileStream outStream = File.OpenWrite(outPath);
                         zipStream.CopyTo(outStream);
+=======
+                        if (zipEntry.IsDirectory) continue;
+
+                        string outPath = Path.Combine(UpdateDir, zipEntry.Name);
+
+                        Directory.CreateDirectory(Path.GetDirectoryName(outPath));
+
+                        using (Stream     zipStream = zipFile.GetInputStream(zipEntry))
+                        using (FileStream outStream = File.OpenWrite(outPath))
+                        {
+                            zipStream.CopyTo(outStream);
+                        }
+>>>>>>> 1ec71635b (sync with main branch)
 
                         File.SetLastWriteTime(outPath, DateTime.SpecifyKind(zipEntry.DateTime, DateTimeKind.Utc));
 
@@ -465,8 +646,13 @@ namespace Ryujinx.Modules
 
             List<string> allFiles = EnumerateFilesToDelete().ToList();
 
+<<<<<<< HEAD
             updateDialog.MainText.Text = "Renaming Old Files...";
             updateDialog.ProgressBar.Value = 0;
+=======
+            updateDialog.MainText.Text        = "Renaming Old Files...";
+            updateDialog.ProgressBar.Value    = 0;
+>>>>>>> 1ec71635b (sync with main branch)
             updateDialog.ProgressBar.MaxValue = allFiles.Count;
 
             // Replace old files
@@ -491,6 +677,7 @@ namespace Ryujinx.Modules
 
                 Application.Invoke(delegate
                 {
+<<<<<<< HEAD
                     updateDialog.MainText.Text = "Adding New Files...";
                     updateDialog.ProgressBar.Value = 0;
                     updateDialog.ProgressBar.MaxValue = Directory.GetFiles(_updatePublishDir, "*", SearchOption.AllDirectories).Length;
@@ -504,6 +691,21 @@ namespace Ryujinx.Modules
             updateDialog.MainText.Text = "Update Complete!";
             updateDialog.SecondaryText.Text = "Do you want to restart Ryujinx now?";
             updateDialog.Modal = true;
+=======
+                    updateDialog.MainText.Text        = "Adding New Files...";
+                    updateDialog.ProgressBar.Value    = 0;
+                    updateDialog.ProgressBar.MaxValue = Directory.GetFiles(UpdatePublishDir, "*", SearchOption.AllDirectories).Length;
+                });
+
+                MoveAllFilesOver(UpdatePublishDir, HomeDir, updateDialog);
+            });
+
+            Directory.Delete(UpdateDir, true);
+
+            updateDialog.MainText.Text      = "Update Complete!";
+            updateDialog.SecondaryText.Text = "Do you want to restart Ryujinx now?";
+            updateDialog.Modal              = true;
+>>>>>>> 1ec71635b (sync with main branch)
 
             updateDialog.ProgressBar.Hide();
             updateDialog.YesButton.Show();
@@ -513,6 +715,19 @@ namespace Ryujinx.Modules
         public static bool CanUpdate(bool showWarnings)
         {
 #if !DISABLE_UPDATER
+<<<<<<< HEAD
+=======
+            if (RuntimeInformation.OSArchitecture != Architecture.X64)
+            {
+                if (showWarnings)
+                {
+                    GtkDialog.CreateWarningDialog("You are not running a supported system architecture!", "(Only x64 systems are supported!)");
+                }
+
+                return false;
+            }
+
+>>>>>>> 1ec71635b (sync with main branch)
             if (!NetworkInterface.GetIsNetworkAvailable())
             {
                 if (showWarnings)
@@ -523,7 +738,11 @@ namespace Ryujinx.Modules
                 return false;
             }
 
+<<<<<<< HEAD
             if (Program.Version.Contains("dirty") || !ReleaseInformation.IsValid)
+=======
+            if (Program.Version.Contains("dirty") || !ReleaseInformation.IsValid())
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 if (showWarnings)
                 {
@@ -537,7 +756,11 @@ namespace Ryujinx.Modules
 #else
             if (showWarnings)
             {
+<<<<<<< HEAD
                 if (ReleaseInformation.IsFlatHubBuild)
+=======
+                if (ReleaseInformation.IsFlatHubBuild())
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     GtkDialog.CreateWarningDialog("Updater Disabled!", "Please update Ryujinx via FlatHub.");
                 }
@@ -554,6 +777,7 @@ namespace Ryujinx.Modules
         // NOTE: This method should always reflect the latest build layout.
         private static IEnumerable<string> EnumerateFilesToDelete()
         {
+<<<<<<< HEAD
             var files = Directory.EnumerateFiles(_homeDir); // All files directly in base dir.
 
             // Determine and exclude user files only when the updater is running, not when cleaning old files
@@ -573,6 +797,15 @@ namespace Ryujinx.Modules
                 foreach (string dir in _windowsDependencyDirs)
                 {
                     string dirPath = Path.Combine(_homeDir, dir);
+=======
+            var files = Directory.EnumerateFiles(HomeDir); // All files directly in base dir.
+
+            if (OperatingSystem.IsWindows())
+            {
+                foreach (string dir in WindowsDependencyDirs)
+                {
+                    string dirPath = Path.Combine(HomeDir, dir);
+>>>>>>> 1ec71635b (sync with main branch)
                     if (Directory.Exists(dirPath))
                     {
                         files = files.Concat(Directory.EnumerateFiles(dirPath, "*", SearchOption.AllDirectories));
@@ -619,4 +852,8 @@ namespace Ryujinx.Modules
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

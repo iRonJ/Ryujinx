@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Generic;
 
 namespace Ryujinx.Memory.Range
@@ -16,11 +20,14 @@ namespace Ryujinx.Memory.Range
         private bool HasSingleRange => _ranges == null;
 
         /// <summary>
+<<<<<<< HEAD
         /// Indicates that the range is fully unmapped.
         /// </summary>
         public bool IsUnmapped => HasSingleRange && _singleRange.Address == InvalidAddress;
 
         /// <summary>
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         /// Total of physical sub-ranges on the virtual memory region.
         /// </summary>
         public int Count => HasSingleRange ? 1 : _ranges.Length;
@@ -43,6 +50,7 @@ namespace Ryujinx.Memory.Range
         /// <exception cref="ArgumentNullException"><paramref name="ranges"/> is null</exception>
         public MultiRange(MemoryRange[] ranges)
         {
+<<<<<<< HEAD
             ArgumentNullException.ThrowIfNull(ranges);
 
             if (ranges.Length == 1)
@@ -55,6 +63,10 @@ namespace Ryujinx.Memory.Range
                 _singleRange = MemoryRange.Empty;
                 _ranges = ranges;
             }
+=======
+            _singleRange = MemoryRange.Empty;
+            _ranges = ranges ?? throw new ArgumentNullException(nameof(ranges));
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -67,7 +79,14 @@ namespace Ryujinx.Memory.Range
         {
             if (HasSingleRange)
             {
+<<<<<<< HEAD
                 ArgumentOutOfRangeException.ThrowIfGreaterThan(size, _singleRange.Size - offset);
+=======
+                if (_singleRange.Size - offset < size)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(size));
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return new MultiRange(_singleRange.Address + offset, size);
             }
@@ -106,7 +125,11 @@ namespace Ryujinx.Memory.Range
                     offset -= range.Size;
                 }
 
+<<<<<<< HEAD
                 return ranges.Count == 1 ? new MultiRange(ranges[0].Address, ranges[0].Size) : new MultiRange(ranges.ToArray());
+=======
+                return new MultiRange(ranges.ToArray());
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -120,7 +143,14 @@ namespace Ryujinx.Memory.Range
         {
             if (HasSingleRange)
             {
+<<<<<<< HEAD
                 ArgumentOutOfRangeException.ThrowIfNotEqual(index, 0);
+=======
+                if (index != 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(index));
+                }
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return _singleRange;
             }
@@ -319,7 +349,11 @@ namespace Ryujinx.Memory.Range
                 return _singleRange.GetHashCode();
             }
 
+<<<<<<< HEAD
             HashCode hash = new();
+=======
+            HashCode hash = new HashCode();
+>>>>>>> 1ec71635b (sync with main branch)
 
             foreach (MemoryRange range in _ranges)
             {
@@ -337,6 +371,7 @@ namespace Ryujinx.Memory.Range
         {
             return HasSingleRange ? _singleRange.ToString() : string.Join(", ", _ranges);
         }
+<<<<<<< HEAD
 
         public static bool operator ==(MultiRange left, MultiRange right)
         {
@@ -347,5 +382,7 @@ namespace Ryujinx.Memory.Range
         {
             return !(left == right);
         }
+=======
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

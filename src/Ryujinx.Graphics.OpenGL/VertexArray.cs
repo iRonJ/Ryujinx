@@ -20,7 +20,11 @@ namespace Ryujinx.Graphics.OpenGL
         private uint _vertexBuffersLimited;
 
         private BufferRange _indexBuffer;
+<<<<<<< HEAD
         private readonly BufferHandle _tempIndexBuffer;
+=======
+        private BufferHandle _tempIndexBuffer;
+>>>>>>> 1ec71635b (sync with main branch)
         private BufferHandle _tempVertexBuffer;
         private int _tempVertexBufferSize;
 
@@ -102,7 +106,11 @@ namespace Ryujinx.Graphics.OpenGL
                 }
 
                 int offset = attrib.Offset;
+<<<<<<< HEAD
                 int size = fmtInfo.Components;
+=======
+                int size   = fmtInfo.Components;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 bool isFloat = fmtInfo.PixelType == PixelType.Float ||
                                fmtInfo.PixelType == PixelType.HalfFloat;

@@ -4,9 +4,13 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService
 {
     class IManagerDisplayService : IpcService
     {
+<<<<<<< HEAD
 #pragma warning disable IDE0052 // Remove unread private member
         private readonly IApplicationDisplayService _applicationDisplayService;
 #pragma warning restore IDE0052
+=======
+        private IApplicationDisplayService _applicationDisplayService;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IManagerDisplayService(IApplicationDisplayService applicationDisplayService)
         {
@@ -31,10 +35,15 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService
         // CreateManagedLayer(u32, u64, nn::applet::AppletResourceUserId) -> u64
         public ResultCode CreateManagedLayer(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             long layerFlags = context.RequestData.ReadInt64();
             long displayId = context.RequestData.ReadInt64();
 #pragma warning restore IDE0059
+=======
+            long layerFlags           = context.RequestData.ReadInt64();
+            long displayId            = context.RequestData.ReadInt64();
+>>>>>>> 1ec71635b (sync with main branch)
             long appletResourceUserId = context.RequestData.ReadInt64();
 
             ulong pid = context.Device.System.AppletState.AppletResourceUserIds.GetData<ulong>((int)appletResourceUserId);
@@ -81,4 +90,8 @@ namespace Ryujinx.HLE.HOS.Services.Vi.RootService.ApplicationDisplayService
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

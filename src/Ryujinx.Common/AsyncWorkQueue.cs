@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Collections.Concurrent;
 using System.Threading;
 
@@ -25,7 +29,11 @@ namespace Ryujinx.Common
             _workerThread = new Thread(DoWork)
             {
                 Name = name,
+<<<<<<< HEAD
                 IsBackground = true,
+=======
+                IsBackground = true
+>>>>>>> 1ec71635b (sync with main branch)
             };
             _workerThread.Start();
         }

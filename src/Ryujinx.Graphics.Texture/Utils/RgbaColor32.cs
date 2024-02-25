@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 using System;
 using System.Diagnostics.CodeAnalysis;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.X86;
@@ -12,25 +16,41 @@ namespace Ryujinx.Graphics.Texture.Utils
 
         public int R
         {
+<<<<<<< HEAD
             readonly get => _color.GetElement(0);
+=======
+            get => _color.GetElement(0);
+>>>>>>> 1ec71635b (sync with main branch)
             set => _color = _color.WithElement(0, value);
         }
 
         public int G
         {
+<<<<<<< HEAD
             readonly get => _color.GetElement(1);
+=======
+            get => _color.GetElement(1);
+>>>>>>> 1ec71635b (sync with main branch)
             set => _color = _color.WithElement(1, value);
         }
 
         public int B
         {
+<<<<<<< HEAD
             readonly get => _color.GetElement(2);
+=======
+            get => _color.GetElement(2);
+>>>>>>> 1ec71635b (sync with main branch)
             set => _color = _color.WithElement(2, value);
         }
 
         public int A
         {
+<<<<<<< HEAD
             readonly get => _color.GetElement(3);
+=======
+            get => _color.GetElement(3);
+>>>>>>> 1ec71635b (sync with main branch)
             set => _color = _color.WithElement(3, value);
         }
 
@@ -103,11 +123,19 @@ namespace Ryujinx.Graphics.Texture.Utils
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         public static RgbaColor32 operator <<(RgbaColor32 x, [ConstantExpected] byte shift)
         {
             if (Sse2.IsSupported)
             {
                 return new RgbaColor32(Sse2.ShiftLeftLogical(x._color, shift));
+=======
+        public static RgbaColor32 operator <<(RgbaColor32 x, int shift)
+        {
+            if (Sse2.IsSupported)
+            {
+                return new RgbaColor32(Sse2.ShiftLeftLogical(x._color, (byte)shift));
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -116,11 +144,19 @@ namespace Ryujinx.Graphics.Texture.Utils
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         public static RgbaColor32 operator >>(RgbaColor32 x, [ConstantExpected] byte shift)
         {
             if (Sse2.IsSupported)
             {
                 return new RgbaColor32(Sse2.ShiftRightLogical(x._color, shift));
+=======
+        public static RgbaColor32 operator >>(RgbaColor32 x, int shift)
+        {
+            if (Sse2.IsSupported)
+            {
+                return new RgbaColor32(Sse2.ShiftRightLogical(x._color, (byte)shift));
+>>>>>>> 1ec71635b (sync with main branch)
             }
             else
             {
@@ -181,7 +217,11 @@ namespace Ryujinx.Graphics.Texture.Utils
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
         public readonly RgbaColor8 GetColor8()
+=======
+        public RgbaColor8 GetColor8()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (Sse41.IsSupported)
             {
@@ -212,17 +252,29 @@ namespace Ryujinx.Graphics.Texture.Utils
             return (byte)Math.Clamp(value, 0, 255);
         }
 
+<<<<<<< HEAD
         public readonly override int GetHashCode()
+=======
+        public override int GetHashCode()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return HashCode.Combine(R, G, B, A);
         }
 
+<<<<<<< HEAD
         public readonly override bool Equals(object obj)
+=======
+        public override bool Equals(object obj)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is RgbaColor32 other && Equals(other);
         }
 
+<<<<<<< HEAD
         public readonly bool Equals(RgbaColor32 other)
+=======
+        public bool Equals(RgbaColor32 other)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _color.Equals(other._color);
         }

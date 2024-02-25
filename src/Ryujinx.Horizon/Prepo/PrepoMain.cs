@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Horizon.Prepo
+=======
+﻿namespace Ryujinx.Horizon.Prepo
+>>>>>>> 1ec71635b (sync with main branch)
 {
     class PrepoMain : IService
     {
@@ -14,4 +18,8 @@ namespace Ryujinx.Horizon.Prepo
             ipcServer.Shutdown();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

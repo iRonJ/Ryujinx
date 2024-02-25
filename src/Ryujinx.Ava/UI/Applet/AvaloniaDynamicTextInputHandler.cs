@@ -1,13 +1,27 @@
+<<<<<<< HEAD
 using Avalonia;
+=======
+﻿using Avalonia;
+>>>>>>> 1ec71635b (sync with main branch)
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Threading;
 using Ryujinx.Ava.Input;
+<<<<<<< HEAD
 using Ryujinx.Ava.UI.Helpers;
 using Ryujinx.Ava.UI.Windows;
 using Ryujinx.HLE.UI;
 using System;
 using System.Threading;
+=======
+using Ryujinx.Ava.UI.Controls;
+using Ryujinx.Ava.UI.Helpers;
+using Ryujinx.Ava.UI.Windows;
+using Ryujinx.HLE.Ui;
+using System;
+using System.Threading;
+
+>>>>>>> 1ec71635b (sync with main branch)
 using HidKey = Ryujinx.Common.Configuration.Hid.Key;
 
 namespace Ryujinx.Ava.UI.Applet
@@ -15,7 +29,11 @@ namespace Ryujinx.Ava.UI.Applet
     class AvaloniaDynamicTextInputHandler : IDynamicTextInputHandler
     {
         private MainWindow _parent;
+<<<<<<< HEAD
         private readonly OffscreenTextBox _hiddenTextBox;
+=======
+        private OffscreenTextBox _hiddenTextBox;
+>>>>>>> 1ec71635b (sync with main branch)
         private bool _canProcessInput;
         private IDisposable _textChangedSubscription;
         private IDisposable _selectionStartChangedSubscription;
@@ -74,7 +92,11 @@ namespace Ryujinx.Ava.UI.Applet
                 return;
             }
 
+<<<<<<< HEAD
             e.RoutedEvent = OffscreenTextBox.GetKeyUpRoutedEvent();
+=======
+            e.RoutedEvent = _hiddenTextBox.GetKeyUpRoutedEvent();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Dispatcher.UIThread.InvokeAsync(() =>
             {
@@ -94,7 +116,11 @@ namespace Ryujinx.Ava.UI.Applet
                 return;
             }
 
+<<<<<<< HEAD
             e.RoutedEvent = OffscreenTextBox.GetKeyUpRoutedEvent();
+=======
+            e.RoutedEvent = _hiddenTextBox.GetKeyUpRoutedEvent();
+>>>>>>> 1ec71635b (sync with main branch)
 
             Dispatcher.UIThread.InvokeAsync(() =>
             {

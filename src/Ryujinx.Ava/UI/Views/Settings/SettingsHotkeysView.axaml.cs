@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Avalonia.Controls;
+=======
+﻿using Avalonia.Controls;
+>>>>>>> 1ec71635b (sync with main branch)
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -12,12 +16,21 @@ namespace Ryujinx.Ava.UI.Views.Settings
     public partial class SettingsHotkeysView : UserControl
     {
         private ButtonKeyAssigner _currentAssigner;
+<<<<<<< HEAD
         private readonly IGamepadDriver _avaloniaKeyboardDriver;
 
         public SettingsHotkeysView()
         {
             InitializeComponent();
             _avaloniaKeyboardDriver = new AvaloniaKeyboardDriver(this);
+=======
+        private IGamepadDriver AvaloniaKeyboardDriver;
+    
+        public SettingsHotkeysView()
+        {
+            InitializeComponent();
+            AvaloniaKeyboardDriver = new AvaloniaKeyboardDriver(this);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private void MouseClick(object sender, PointerPressedEventArgs e)
@@ -28,7 +41,11 @@ namespace Ryujinx.Ava.UI.Views.Settings
 
             PointerPressed -= MouseClick;
         }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 1ec71635b (sync with main branch)
         private void Button_Checked(object sender, RoutedEventArgs e)
         {
             if (sender is ToggleButton button)
@@ -42,11 +59,19 @@ namespace Ryujinx.Ava.UI.Views.Settings
                 {
                     _currentAssigner = new ButtonKeyAssigner(button);
 
+<<<<<<< HEAD
                     this.Focus(NavigationMethod.Pointer);
 
                     PointerPressed += MouseClick;
 
                     var keyboard = (IKeyboard)_avaloniaKeyboardDriver.GetGamepad(_avaloniaKeyboardDriver.GamepadsIds[0]);
+=======
+                    FocusManager.Instance?.Focus(this, NavigationMethod.Pointer);
+
+                    PointerPressed += MouseClick;
+
+                    var keyboard = (IKeyboard)AvaloniaKeyboardDriver.GetGamepad(AvaloniaKeyboardDriver.GamepadsIds[0]);
+>>>>>>> 1ec71635b (sync with main branch)
                     IButtonAssigner assigner = new KeyboardKeyAssigner(keyboard);
 
                     _currentAssigner.GetInputAndAssign(assigner);
@@ -78,4 +103,8 @@ namespace Ryujinx.Ava.UI.Views.Settings
             _currentAssigner = null;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

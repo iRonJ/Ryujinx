@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
+=======
+﻿using BufferHandle = Ryujinx.Graphics.GAL.BufferHandle;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Vulkan
 {
     internal struct VertexBufferState
     {
+<<<<<<< HEAD
         private const int VertexBufferMaxMirrorable = 0x20000;
 
         public static VertexBufferState Null => new(null, 0, 0, 0);
+=======
+        public static VertexBufferState Null => new VertexBufferState(null, 0, 0, 0);
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly int _offset;
         private readonly int _size;
@@ -76,6 +84,7 @@ namespace Ryujinx.Graphics.Vulkan
 
                     return;
                 }
+<<<<<<< HEAD
 
                 autoBuffer = gd.BufferManager.GetBuffer(cbs.CommandBuffer, _handle, false, out int size);
 
@@ -85,11 +94,25 @@ namespace Ryujinx.Graphics.Vulkan
                 if (_offset >= size)
                 {
                     autoBuffer = null;
+=======
+                else
+                {
+                    autoBuffer = gd.BufferManager.GetBuffer(cbs.CommandBuffer, _handle, false, out int size);
+
+                    // The original stride must be reapplied in case it was rewritten.
+                    state.Internal.VertexBindingDescriptions[DescriptorIndex].Stride = (uint)_stride;
+
+                    if (_offset >= size)
+                    {
+                        autoBuffer = null;
+                    }
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
             if (autoBuffer != null)
             {
+<<<<<<< HEAD
                 int offset = _offset;
                 bool mirrorable = _size <= VertexBufferMaxMirrorable;
                 var buffer = mirrorable ? autoBuffer.GetMirrorable(cbs, ref offset, _size, out _).Value : autoBuffer.Get(cbs, offset, _size).Value;
@@ -99,16 +122,29 @@ namespace Ryujinx.Graphics.Vulkan
         }
 
         public readonly bool BoundEquals(Auto<DisposableBuffer> buffer)
+=======
+                var buffer = autoBuffer.Get(cbs, _offset, _size).Value;
+
+                updater.BindVertexBuffer(cbs, binding, buffer, (ulong)_offset, (ulong)_size, (ulong)_stride);
+            }
+        }
+
+        public bool BoundEquals(Auto<DisposableBuffer> buffer)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _buffer == buffer;
         }
 
+<<<<<<< HEAD
         public readonly bool Overlaps(Auto<DisposableBuffer> buffer, int offset, int size)
         {
             return buffer == _buffer && offset < _offset + _size && offset + size > _offset;
         }
 
         public readonly bool Matches(Auto<DisposableBuffer> buffer, int descriptorIndex, int offset, int size, int stride = 0)
+=======
+        public bool Matches(Auto<DisposableBuffer> buffer, int descriptorIndex, int offset, int size, int stride = 0)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _buffer == buffer && DescriptorIndex == descriptorIndex && _offset == offset && _size == size && _stride == stride;
         }
@@ -124,7 +160,11 @@ namespace Ryujinx.Graphics.Vulkan
             }
         }
 
+<<<<<<< HEAD
         public readonly void Dispose()
+=======
+        public void Dispose()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // Only dispose if this buffer is not refetched on each bind.
 

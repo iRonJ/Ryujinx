@@ -17,4 +17,8 @@ namespace Ryujinx.Ava.UI.Renderer
             return _getProcAddress(procName);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

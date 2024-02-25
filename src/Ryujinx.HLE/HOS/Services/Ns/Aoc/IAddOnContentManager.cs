@@ -11,11 +11,19 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
     class IAddOnContentManager : IpcService
     {
         private readonly KEvent _addOnContentListChangedEvent;
+<<<<<<< HEAD
         private int _addOnContentListChangedEventHandle;
 
         private ulong _addOnContentBaseId;
 
         private readonly List<ulong> _mountedAocTitleIds = new();
+=======
+        private int             _addOnContentListChangedEventHandle;
+
+        private ulong _addOnContentBaseId;
+
+        private List<ulong> _mountedAocTitleIds = new List<ulong>();
+>>>>>>> 1ec71635b (sync with main branch)
 
         public IAddOnContentManager(ServiceCtx context)
         {
@@ -44,9 +52,13 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
         // CountAddOnContent(pid) -> u32
         public ResultCode CountAddOnContent(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong pid = context.Request.HandleDesc.PId;
 #pragma warning restore IDE0059
+=======
+            ulong pid = context.Request.HandleDesc.PId;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // NOTE: Service call arp:r GetApplicationLaunchProperty to get TitleId using the PId.
 
@@ -57,9 +69,13 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
         // ListAddOnContent(u32 start_index, u32 buffer_size, pid) -> (u32 count, buffer<u32>)
         public ResultCode ListAddOnContent(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong pid = context.Request.HandleDesc.PId;
 #pragma warning restore IDE0059
+=======
+            ulong pid = context.Request.HandleDesc.PId;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // NOTE: Service call arp:r GetApplicationLaunchProperty to get TitleId using the PId.
 
@@ -79,9 +95,13 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
         // GetAddOnContentBaseId(pid) -> u64
         public ResultCode GetAddOnContentBaseId(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong pid = context.Request.HandleDesc.PId;
 #pragma warning restore IDE0059
+=======
+            ulong pid = context.Request.HandleDesc.PId;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // NOTE: Service call arp:r GetApplicationLaunchProperty to get TitleId using the PId.
 
@@ -101,9 +121,13 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
         // PrepareAddOnContent(u32 index, pid)
         public ResultCode PrepareAddOnContent(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong pid = context.Request.HandleDesc.PId;
 #pragma warning restore IDE0059
+=======
+            ulong pid = context.Request.HandleDesc.PId;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // NOTE: Service call arp:r GetApplicationLaunchProperty to get TitleId using the PId.
 
@@ -131,9 +155,13 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
         // GetAddOnContentListChangedEventWithProcessId(pid) -> handle<copy>
         public ResultCode GetAddOnContentListChangedEventWithProcessId(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong pid = context.Request.HandleDesc.PId;
 #pragma warning restore IDE0059
+=======
+            ulong pid = context.Request.HandleDesc.PId;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // NOTE: Service call arp:r GetApplicationLaunchProperty to get TitleId using the PId.
 
@@ -152,9 +180,13 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
         // NotifyMountAddOnContent(pid, u64 title_id)
         public ResultCode NotifyMountAddOnContent(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong pid = context.Request.HandleDesc.PId;
 #pragma warning restore IDE0059
+=======
+            ulong pid = context.Request.HandleDesc.PId;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // NOTE: Service call arp:r GetApplicationLaunchProperty to get TitleId using the PId.
 
@@ -172,9 +204,13 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
         // NotifyUnmountAddOnContent(pid, u64 title_id)
         public ResultCode NotifyUnmountAddOnContent(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong pid = context.Request.HandleDesc.PId;
 #pragma warning restore IDE0059
+=======
+            ulong pid = context.Request.HandleDesc.PId;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // NOTE: Service call arp:r GetApplicationLaunchProperty to get TitleId using the PId.
 
@@ -189,9 +225,13 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
         // CheckAddOnContentMountStatus(pid)
         public ResultCode CheckAddOnContentMountStatus(ServiceCtx context)
         {
+<<<<<<< HEAD
 #pragma warning disable IDE0059 // Remove unnecessary value assignment
             ulong pid = context.Request.HandleDesc.PId;
 #pragma warning restore IDE0059
+=======
+            ulong pid = context.Request.HandleDesc.PId;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // NOTE: Service call arp:r GetApplicationLaunchProperty to get TitleId using the PId.
             //       Then it does some internal checks and returns InvalidBufferSize if they fail.
@@ -255,10 +295,17 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
             // NOTE: Service call sys:set GetQuestFlag and store it internally.
             //       If QuestFlag is true, counts some extra titles.
 
+<<<<<<< HEAD
             uint startIndex = context.RequestData.ReadUInt32();
             uint indexNumber = context.RequestData.ReadUInt32();
             ulong bufferPosition = context.Request.ReceiveBuff[0].Position;
             ulong bufferSize = context.Request.ReceiveBuff[0].Size;
+=======
+            uint  startIndex     = context.RequestData.ReadUInt32();
+            uint  indexNumber    = context.RequestData.ReadUInt32();
+            ulong bufferPosition = context.Request.ReceiveBuff[0].Position;
+            ulong bufferSize     = context.Request.ReceiveBuff[0].Size;
+>>>>>>> 1ec71635b (sync with main branch)
 
             // TODO: This should use _addOnContentBaseId;
             uint aocTotalCount = (uint)context.Device.System.ContentManager.GetAocCount();
@@ -359,4 +406,8 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
             return ((ulong)errorCode & 0x1FF | ((((ulong)errorCode >> 9) & 0x1FFF) << 32)) + 2000;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

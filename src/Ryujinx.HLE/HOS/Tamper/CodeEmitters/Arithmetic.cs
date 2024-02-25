@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.Exceptions;
+=======
+﻿using Ryujinx.HLE.Exceptions;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Tamper.Operations;
 using System;
 using System.Collections.Generic;
@@ -27,7 +31,11 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
         private const byte Lsh = 3; // lhs << rhs
         private const byte Rsh = 4; // lhs >> rhs
         private const byte And = 5; // lhs & rhs
+<<<<<<< HEAD
         private const byte Or = 6; // lhs | rhs
+=======
+        private const byte Or  = 6; // lhs | rhs
+>>>>>>> 1ec71635b (sync with main branch)
         private const byte Not = 7; // ~lhs (discards right-hand operand)
         private const byte Xor = 8; // lhs ^ rhs
         private const byte Mov = 9; // lhs (discards right-hand operand)
@@ -73,11 +81,17 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
 
             void Emit(Type operationType, IOperand rhs = null)
             {
+<<<<<<< HEAD
                 List<IOperand> operandList = new()
                 {
                     destinationRegister,
                     leftHandSideRegister,
                 };
+=======
+                List<IOperand> operandList = new List<IOperand>();
+                operandList.Add(destinationRegister);
+                operandList.Add(leftHandSideRegister);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 if (rhs != null)
                 {
@@ -89,6 +103,7 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
 
             switch (operation)
             {
+<<<<<<< HEAD
                 case Add:
                     Emit(typeof(OpAdd<>), rightHandSideOperand);
                     break;
@@ -119,6 +134,18 @@ namespace Ryujinx.HLE.HOS.Tamper.CodeEmitters
                 case Mov:
                     Emit(typeof(OpMov<>));
                     break;
+=======
+                case Add: Emit(typeof(OpAdd<>), rightHandSideOperand); break;
+                case Sub: Emit(typeof(OpSub<>), rightHandSideOperand); break;
+                case Mul: Emit(typeof(OpMul<>), rightHandSideOperand); break;
+                case Lsh: Emit(typeof(OpLsh<>), rightHandSideOperand); break;
+                case Rsh: Emit(typeof(OpRsh<>), rightHandSideOperand); break;
+                case And: Emit(typeof(OpAnd<>), rightHandSideOperand); break;
+                case Or:  Emit(typeof(OpOr<> ), rightHandSideOperand); break;
+                case Not: Emit(typeof(OpNot<>)                      ); break;
+                case Xor: Emit(typeof(OpXor<>), rightHandSideOperand); break;
+                case Mov: Emit(typeof(OpMov<>)                      ); break;
+>>>>>>> 1ec71635b (sync with main branch)
                 default:
                     throw new TamperCompilationException($"Invalid arithmetic operation {operation} in Atmosphere cheat");
             }

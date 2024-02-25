@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Kernel.Threading;
 using System;
 using System.Collections.Generic;
@@ -7,11 +11,19 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 {
     class HOSBinderDriverServer : IHOSBinderDriver
     {
+<<<<<<< HEAD
         private static readonly Dictionary<int, IBinder> _registeredBinderObjects = new();
 
         private static int _lastBinderId = 0;
 
         private static readonly object _lock = new();
+=======
+        private static Dictionary<int, IBinder> _registeredBinderObjects = new Dictionary<int, IBinder>();
+
+        private static int _lastBinderId = 0;
+
+        private static object _lock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
 
         public static int RegisterBinderObject(IBinder binder)
         {

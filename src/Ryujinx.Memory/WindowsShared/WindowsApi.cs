@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+<<<<<<< HEAD
 using System.Runtime.Versioning;
 
 namespace Ryujinx.Memory.WindowsShared
@@ -9,6 +10,15 @@ namespace Ryujinx.Memory.WindowsShared
     {
         public static readonly IntPtr InvalidHandleValue = new(-1);
         public static readonly IntPtr CurrentProcessHandle = new(-1);
+=======
+
+namespace Ryujinx.Memory.WindowsShared
+{
+    static partial class WindowsApi
+    {
+        public static readonly IntPtr InvalidHandleValue = new IntPtr(-1);
+        public static readonly IntPtr CurrentProcessHandle = new IntPtr(-1);
+>>>>>>> 1ec71635b (sync with main branch)
 
         [LibraryImport("kernel32.dll", SetLastError = true)]
         public static partial IntPtr VirtualAlloc(
@@ -96,8 +106,16 @@ namespace Ryujinx.Memory.WindowsShared
                 MemoryPermission.ReadAndExecute => MemoryProtection.ExecuteRead,
                 MemoryPermission.ReadWriteExecute => MemoryProtection.ExecuteReadWrite,
                 MemoryPermission.Execute => MemoryProtection.Execute,
+<<<<<<< HEAD
                 _ => throw new MemoryProtectionException(permission),
             };
         }
     }
 }
+=======
+                _ => throw new MemoryProtectionException(permission)
+            };
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

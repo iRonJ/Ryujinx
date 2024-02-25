@@ -68,10 +68,17 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
 
         public LinkedListNode<KThread> ProcessListNode { get; set; }
 
+<<<<<<< HEAD
         private readonly LinkedList<KThread> _mutexWaiters;
         private LinkedListNode<KThread> _mutexWaiterNode;
 
         private readonly LinkedList<KThread> _pinnedWaiters;
+=======
+        private LinkedList<KThread> _mutexWaiters;
+        private LinkedListNode<KThread> _mutexWaiterNode;
+
+        private LinkedList<KThread> _pinnedWaiters;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public KThread MutexOwner { get; private set; }
 
@@ -112,7 +119,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
 
         public bool WaitingInArbitration { get; set; }
 
+<<<<<<< HEAD
         private readonly object _activityOperationLock = new();
+=======
+        private object _activityOperationLock;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public KThread(KernelContext context) : base(context)
         {
@@ -123,6 +134,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
 
             _mutexWaiters = new LinkedList<KThread>();
             _pinnedWaiters = new LinkedList<KThread>();
+<<<<<<< HEAD
+=======
+
+            _activityOperationLock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public Result Initialize(
@@ -659,7 +675,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
             const int MaxRegistersAArch32 = 15;
             const int MaxFpuRegistersAArch32 = 16;
 
+<<<<<<< HEAD
             ThreadContext context = new();
+=======
+            ThreadContext context = new ThreadContext();
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (Owner.Flags.HasFlag(ProcessCreationFlags.Is64Bit))
             {
@@ -1433,4 +1453,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Threading
             Owner.CpuMemory.Write<ushort>(_tlsAddress + TlsUserInterruptFlagOffset, 0);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

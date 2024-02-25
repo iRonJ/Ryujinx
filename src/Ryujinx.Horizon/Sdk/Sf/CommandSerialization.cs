@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Horizon.Sdk.Sf.Cmif;
+=======
+﻿using Ryujinx.Horizon.Sdk.Sf.Cmif;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
 using Ryujinx.Memory;
 using System;
@@ -66,4 +70,8 @@ namespace Ryujinx.Horizon.Sdk.Sf
             response.MoveHandles[index] = value;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

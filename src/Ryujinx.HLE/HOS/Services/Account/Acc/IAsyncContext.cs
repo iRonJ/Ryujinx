@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.HOS.Ipc;
+=======
+﻿﻿using Ryujinx.HLE.HOS.Ipc;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Account.Acc.AsyncContext;
 using Ryujinx.Horizon.Common;
 using System;
@@ -18,12 +22,20 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
         // GetSystemEvent() -> handle<copy>
         public ResultCode GetSystemEvent(ServiceCtx context)
         {
+<<<<<<< HEAD
             if (context.Process.HandleTable.GenerateHandle(AsyncExecution.SystemEvent.ReadableEvent, out int systemEventHandle) != Result.Success)
+=======
+            if (context.Process.HandleTable.GenerateHandle(AsyncExecution.SystemEvent.ReadableEvent, out int _systemEventHandle) != Result.Success)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 throw new InvalidOperationException("Out of handles!");
             }
 
+<<<<<<< HEAD
             context.Response.HandleDesc = IpcHandleDesc.MakeCopy(systemEventHandle);
+=======
+            context.Response.HandleDesc = IpcHandleDesc.MakeCopy(_systemEventHandle);
+>>>>>>> 1ec71635b (sync with main branch)
 
             return ResultCode.Success;
         }
@@ -76,4 +88,8 @@ namespace Ryujinx.HLE.HOS.Services.Account.Acc
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

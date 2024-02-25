@@ -57,6 +57,7 @@ namespace Ryujinx.Graphics.Shader.Translation
             return context.Add(Instruction.AtomicXor, storageKind, Local(), a, b, c);
         }
 
+<<<<<<< HEAD
         public static Operand AtomicAdd(this EmitterContext context, StorageKind storageKind, int binding, Operand e0, Operand e1, Operand value)
         {
             return context.Add(Instruction.AtomicAdd, storageKind, Local(), Const(binding), e0, e1, value);
@@ -119,6 +120,11 @@ namespace Ryujinx.Graphics.Shader.Translation
             context.Add(new Operation(Instruction.Ballot, index, dest, a));
 
             return dest;
+=======
+        public static Operand Ballot(this EmitterContext context, Operand a)
+        {
+            return context.Add(Instruction.Ballot, Local(), a);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static Operand Barrier(this EmitterContext context)
@@ -433,11 +439,14 @@ namespace Ryujinx.Graphics.Shader.Translation
             return context.Add(Instruction.FP32 | Instruction.SquareRoot, Local(), a);
         }
 
+<<<<<<< HEAD
         public static Operand FPSubtract(this EmitterContext context, Operand a, Operand b, Instruction fpType = Instruction.FP32)
         {
             return context.Add(fpType | Instruction.Subtract, Local(), a, b);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static Operand FPTruncate(this EmitterContext context, Operand a, Instruction fpType = Instruction.FP32)
         {
             return context.Add(fpType | Instruction.Truncate, Local(), a);
@@ -613,6 +622,7 @@ namespace Ryujinx.Graphics.Shader.Translation
             return context.Add(Instruction.Subtract, Local(), a, b);
         }
 
+<<<<<<< HEAD
         public static Operand ImageAtomic(
             this EmitterContext context,
             SamplerType type,
@@ -652,16 +662,21 @@ namespace Ryujinx.Graphics.Shader.Translation
             context.Add(new TextureOperation(Instruction.ImageStore, type, format, flags, binding, 0, null, sources));
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static Operand IsNan(this EmitterContext context, Operand a, Instruction fpType = Instruction.FP32)
         {
             return context.Add(fpType | Instruction.IsNan, Local(), a);
         }
 
+<<<<<<< HEAD
         public static Operand Load(this EmitterContext context, StorageKind storageKind, Operand e0, Operand e1)
         {
             return context.Add(Instruction.Load, storageKind, Local(), e0, e1);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static Operand Load(this EmitterContext context, StorageKind storageKind, int binding)
         {
             return context.Add(Instruction.Load, storageKind, Local(), Const(binding));
@@ -714,6 +729,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                 : context.Load(storageKind, (int)ioVariable, arrayIndex, elemIndex);
         }
 
+<<<<<<< HEAD
         public static Operand Lod(
             this EmitterContext context,
             SamplerType type,
@@ -727,6 +743,21 @@ namespace Ryujinx.Graphics.Shader.Translation
             context.Add(new TextureOperation(Instruction.Lod, type, TextureFormat.Unknown, flags, binding, compIndex, new[] { dest }, sources));
 
             return dest;
+=======
+        public static Operand LoadGlobal(this EmitterContext context, Operand a, Operand b)
+        {
+            return context.Add(Instruction.LoadGlobal, Local(), a, b);
+        }
+
+        public static Operand LoadLocal(this EmitterContext context, Operand a)
+        {
+            return context.Add(Instruction.LoadLocal, Local(), a);
+        }
+
+        public static Operand LoadShared(this EmitterContext context, Operand a)
+        {
+            return context.Add(Instruction.LoadShared, Local(), a);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static Operand MemoryBarrier(this EmitterContext context)
@@ -763,6 +794,10 @@ namespace Ryujinx.Graphics.Shader.Translation
 
         public static void Return(this EmitterContext context)
         {
+<<<<<<< HEAD
+=======
+            context.PrepareForReturn();
+>>>>>>> 1ec71635b (sync with main branch)
             context.Add(Instruction.Return);
         }
 
@@ -786,46 +821,59 @@ namespace Ryujinx.Graphics.Shader.Translation
             return context.Add(Instruction.ShiftRightU32, Local(), a, b);
         }
 
+<<<<<<< HEAD
         public static Operand Shuffle(this EmitterContext context, Operand a, Operand b)
         {
             return context.Add(Instruction.Shuffle, Local(), a, b);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static (Operand, Operand) Shuffle(this EmitterContext context, Operand a, Operand b, Operand c)
         {
             return context.Add(Instruction.Shuffle, (Local(), Local()), a, b, c);
         }
 
+<<<<<<< HEAD
         public static Operand ShuffleDown(this EmitterContext context, Operand a, Operand b)
         {
             return context.Add(Instruction.ShuffleDown, Local(), a, b);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static (Operand, Operand) ShuffleDown(this EmitterContext context, Operand a, Operand b, Operand c)
         {
             return context.Add(Instruction.ShuffleDown, (Local(), Local()), a, b, c);
         }
 
+<<<<<<< HEAD
         public static Operand ShuffleUp(this EmitterContext context, Operand a, Operand b)
         {
             return context.Add(Instruction.ShuffleUp, Local(), a, b);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static (Operand, Operand) ShuffleUp(this EmitterContext context, Operand a, Operand b, Operand c)
         {
             return context.Add(Instruction.ShuffleUp, (Local(), Local()), a, b, c);
         }
 
+<<<<<<< HEAD
         public static Operand ShuffleXor(this EmitterContext context, Operand a, Operand b)
         {
             return context.Add(Instruction.ShuffleXor, Local(), a, b);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static (Operand, Operand) ShuffleXor(this EmitterContext context, Operand a, Operand b, Operand c)
         {
             return context.Add(Instruction.ShuffleXor, (Local(), Local()), a, b, c);
         }
 
+<<<<<<< HEAD
         public static Operand Store(this EmitterContext context, StorageKind storageKind, Operand e0, Operand e1, Operand value)
         {
             return context.Add(Instruction.Store, storageKind, null, e0, e1, value);
@@ -846,6 +894,8 @@ namespace Ryujinx.Graphics.Shader.Translation
             return context.Add(Instruction.Store, storageKind, null, Const(binding), e0, e1, value);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static Operand Store(
             this EmitterContext context,
             StorageKind storageKind,
@@ -885,6 +935,7 @@ namespace Ryujinx.Graphics.Shader.Translation
                 : context.Add(Instruction.Store, storageKind, null, Const((int)ioVariable), arrayIndex, elemIndex, value);
         }
 
+<<<<<<< HEAD
         public static void TextureSample(
             this EmitterContext context,
             SamplerType type,
@@ -924,6 +975,41 @@ namespace Ryujinx.Graphics.Shader.Translation
             context.Add(new TextureOperation(Instruction.TextureQuerySize, type, TextureFormat.Unknown, flags, binding, compIndex, new[] { dest }, sources));
 
             return dest;
+=======
+        public static Operand StoreGlobal(this EmitterContext context, Operand a, Operand b, Operand c)
+        {
+            return context.Add(Instruction.StoreGlobal, null, a, b, c);
+        }
+
+        public static Operand StoreGlobal16(this EmitterContext context, Operand a, Operand b, Operand c)
+        {
+            return context.Add(Instruction.StoreGlobal16, null, a, b, c);
+        }
+
+        public static Operand StoreGlobal8(this EmitterContext context, Operand a, Operand b, Operand c)
+        {
+            return context.Add(Instruction.StoreGlobal8, null, a, b, c);
+        }
+
+        public static Operand StoreLocal(this EmitterContext context, Operand a, Operand b)
+        {
+            return context.Add(Instruction.StoreLocal, null, a, b);
+        }
+
+        public static Operand StoreShared(this EmitterContext context, Operand a, Operand b)
+        {
+            return context.Add(Instruction.StoreShared, null, a, b);
+        }
+
+        public static Operand StoreShared16(this EmitterContext context, Operand a, Operand b)
+        {
+            return context.Add(Instruction.StoreShared16, null, a, b);
+        }
+
+        public static Operand StoreShared8(this EmitterContext context, Operand a, Operand b)
+        {
+            return context.Add(Instruction.StoreShared8, null, a, b);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public static Operand UnpackDouble2x32High(this EmitterContext context, Operand a)
@@ -979,4 +1065,8 @@ namespace Ryujinx.Graphics.Shader.Translation
             return context.Add(Instruction.VoteAny, Local(), a);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

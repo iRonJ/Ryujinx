@@ -209,14 +209,22 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
             new AdvancedBlendUcode(AdvancedBlendOp.HslHue,           AdvancedBlendOverlap.Conjoint,     false, GenConjointHslHue),
             new AdvancedBlendUcode(AdvancedBlendOp.HslSaturation,    AdvancedBlendOverlap.Conjoint,     false, GenConjointHslSaturation),
             new AdvancedBlendUcode(AdvancedBlendOp.HslColor,         AdvancedBlendOverlap.Conjoint,     false, GenConjointHslColor),
+<<<<<<< HEAD
             new AdvancedBlendUcode(AdvancedBlendOp.HslLuminosity,    AdvancedBlendOverlap.Conjoint,     false, GenConjointHslLuminosity),
+=======
+            new AdvancedBlendUcode(AdvancedBlendOp.HslLuminosity,    AdvancedBlendOverlap.Conjoint,     false, GenConjointHslLuminosity)
+>>>>>>> 1ec71635b (sync with main branch)
         };
 
         public static string GenTable()
         {
             // This can be used to generate the table on AdvancedBlendPreGenTable.
 
+<<<<<<< HEAD
             StringBuilder sb = new();
+=======
+            StringBuilder sb = new StringBuilder();
+>>>>>>> 1ec71635b (sync with main branch)
 
             sb.AppendLine($"private static Dictionary<Hash128, AdvancedBlendEntry> _entries = new()");
             sb.AppendLine("{");
@@ -4223,4 +4231,8 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
             return new FixedFunctionAlpha(BlendOp.MaximumGl, BlendFactor.OneGl, BlendFactor.OneGl);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

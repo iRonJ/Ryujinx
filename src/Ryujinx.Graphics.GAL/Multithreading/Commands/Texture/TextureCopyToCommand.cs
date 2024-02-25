@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL.Multithreading.Model;
+=======
+﻿using Ryujinx.Graphics.GAL.Multithreading.Model;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL.Multithreading.Resources;
 
 namespace Ryujinx.Graphics.GAL.Multithreading.Commands.Texture
 {
     struct TextureCopyToCommand : IGALCommand, IGALCommand<TextureCopyToCommand>
     {
+<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.TextureCopyTo;
+=======
+        public CommandType CommandType => CommandType.TextureCopyTo;
+>>>>>>> 1ec71635b (sync with main branch)
         private TableRef<ThreadedTexture> _texture;
         private TableRef<ThreadedTexture> _destination;
         private int _firstLayer;

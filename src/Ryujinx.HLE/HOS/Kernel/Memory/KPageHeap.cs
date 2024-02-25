@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common;
+=======
+﻿using Ryujinx.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 
 namespace Ryujinx.HLE.HOS.Kernel.Memory
@@ -7,7 +11,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
     {
         private class Block
         {
+<<<<<<< HEAD
             private readonly KPageBitmap _bitmap = new();
+=======
+            private KPageBitmap _bitmap = new KPageBitmap();
+>>>>>>> 1ec71635b (sync with main branch)
             private ulong _heapAddress;
             private ulong _endOffset;
 
@@ -29,8 +37,13 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
                     ? 1UL << nextBlockShift
                     : 1UL << blockShift;
 
+<<<<<<< HEAD
                 address = BitUtils.AlignDown(address, align);
                 endAddress = BitUtils.AlignUp(endAddress, align);
+=======
+                address    = BitUtils.AlignDown(address,    align);
+                endAddress = BitUtils.AlignUp  (endAddress, align);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 _heapAddress = address;
                 _endOffset = (endAddress - address) / (1UL << blockShift);
@@ -84,6 +97,7 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
             }
         }
 
+<<<<<<< HEAD
         private static readonly int[] _memoryBlockPageShifts = { 12, 16, 21, 22, 25, 29, 30 };
 
 #pragma warning disable IDE0052 // Remove unread private member
@@ -91,6 +105,13 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
         private readonly ulong _heapSize;
         private ulong _usedSize;
 #pragma warning restore IDE0052
+=======
+        private static readonly int[] _memoryBlockPageShifts = new int[] { 12, 16, 21, 22, 25, 29, 30 };
+
+        private readonly ulong _heapAddress;
+        private readonly ulong _heapSize;
+        private ulong _usedSize;
+>>>>>>> 1ec71635b (sync with main branch)
         private readonly int _blocksCount;
         private readonly Block[] _blocks;
 
@@ -177,19 +198,33 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
 
             int bigIndex = _blocksCount - 1;
 
+<<<<<<< HEAD
             ulong start = address;
             ulong end = address + pagesCount * KPageTableBase.PageSize;
             ulong beforeStart = start;
             ulong beforeEnd = start;
             ulong afterStart = end;
             ulong afterEnd = end;
+=======
+            ulong start       = address;
+            ulong end         = address + pagesCount * KPageTableBase.PageSize;
+            ulong beforeStart = start;
+            ulong beforeEnd   = start;
+            ulong afterStart  = end;
+            ulong afterEnd    = end;
+>>>>>>> 1ec71635b (sync with main branch)
 
             while (bigIndex >= 0)
             {
                 ulong blockSize = _blocks[bigIndex].Size;
 
+<<<<<<< HEAD
                 ulong bigStart = BitUtils.AlignUp(start, blockSize);
                 ulong bigEnd = BitUtils.AlignDown(end, blockSize);
+=======
+                ulong bigStart = BitUtils.AlignUp  (start, blockSize);
+                ulong bigEnd   = BitUtils.AlignDown(end,   blockSize);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 if (bigStart < bigEnd)
                 {
@@ -198,7 +233,11 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
                         FreeBlock(block, bigIndex);
                     }
 
+<<<<<<< HEAD
                     beforeEnd = bigStart;
+=======
+                    beforeEnd  = bigStart;
+>>>>>>> 1ec71635b (sync with main branch)
                     afterStart = bigEnd;
 
                     break;

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Horizon.Common;
+=======
+﻿using Ryujinx.Horizon.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Horizon.Sdk.OsTypes;
 using Ryujinx.Horizon.Sdk.Sf.Cmif;
 using Ryujinx.Horizon.Sdk.Sm;
@@ -10,7 +14,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
     {
         private readonly SmApi _sm;
 
+<<<<<<< HEAD
         private readonly bool _canDeferInvokeRequest;
+=======
+        private bool _canDeferInvokeRequest;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly MultiWait _multiWait;
         private readonly MultiWait _waitList;
@@ -26,8 +34,13 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 
         private enum UserDataTag
         {
+<<<<<<< HEAD
             Server = 1,
             Session = 2,
+=======
+            Server  = 1,
+            Session = 2
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ServerManagerBase(SmApi sm, ManagerOptions options) : base(options.MaxDomainObjects, options.MaxDomains)
@@ -36,6 +49,7 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             _canDeferInvokeRequest = options.CanDeferInvokeRequest;
 
             _multiWait = new MultiWait();
+<<<<<<< HEAD
             _waitList = new MultiWait();
 
             _multiWaitSelectionLock = new object();
@@ -43,6 +57,15 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 
             _requestStopEvent = new Event(EventClearMode.ManualClear);
             _notifyEvent = new Event(EventClearMode.ManualClear);
+=======
+            _waitList  = new MultiWait();
+
+            _multiWaitSelectionLock = new object();
+            _waitListLock           = new object();
+
+            _requestStopEvent = new Event(EventClearMode.ManualClear);
+            _notifyEvent      = new Event(EventClearMode.ManualClear);
+>>>>>>> 1ec71635b (sync with main branch)
 
             _requestStopEventHolder = new MultiWaitHolderOfEvent(_requestStopEvent);
             _multiWait.LinkMultiWaitHolder(_requestStopEventHolder);
@@ -113,9 +136,13 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 
         public void ServiceRequests()
         {
+<<<<<<< HEAD
             while (WaitAndProcessRequestsImpl())
             {
             }
+=======
+            while (WaitAndProcessRequestsImpl());
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public void WaitAndProcessRequests()
@@ -185,7 +212,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
         protected override void RegisterSessionToWaitList(ServerSession session)
         {
             session.HasReceived = false;
+<<<<<<< HEAD
             session.UserData = UserDataTag.Session;
+=======
+            session.UserData    = UserDataTag.Session;
+>>>>>>> 1ec71635b (sync with main branch)
 
             RegisterToWaitList(session);
         }
@@ -211,9 +242,15 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
         {
             return (UserDataTag)holder.UserData switch
             {
+<<<<<<< HEAD
                 UserDataTag.Server => ProcessForServer(holder),
                 UserDataTag.Session => ProcessForSession(holder),
                 _ => throw new NotImplementedException(((UserDataTag)holder.UserData).ToString()),
+=======
+                UserDataTag.Server  => ProcessForServer(holder),
+                UserDataTag.Session => ProcessForSession(holder),
+                _                   => throw new NotImplementedException(((UserDataTag)holder.UserData).ToString())
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 

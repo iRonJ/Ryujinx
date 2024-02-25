@@ -2,10 +2,17 @@ using System;
 
 namespace Ryujinx.Tests.Unicorn
 {
+<<<<<<< HEAD
     public readonly struct SimdValue : IEquatable<SimdValue>
     {
         private readonly ulong _e0;
         private readonly ulong _e1;
+=======
+    public struct SimdValue : IEquatable<SimdValue>
+    {
+        private ulong _e0;
+        private ulong _e1;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public SimdValue(ulong e0, ulong e1)
         {
@@ -39,11 +46,16 @@ namespace Ryujinx.Tests.Unicorn
             return BitConverter.Int64BitsToDouble(GetInt64(index));
         }
 
+<<<<<<< HEAD
         public int GetInt32(int index) => (int)GetUInt32(index);
+=======
+        public int  GetInt32(int index) => (int)GetUInt32(index);
+>>>>>>> 1ec71635b (sync with main branch)
         public long GetInt64(int index) => (long)GetUInt64(index);
 
         public uint GetUInt32(int index)
         {
+<<<<<<< HEAD
             return index switch
             {
                 0 => (uint)(_e0 >> 0),
@@ -52,16 +64,37 @@ namespace Ryujinx.Tests.Unicorn
                 3 => (uint)(_e1 >> 32),
                 _ => throw new ArgumentOutOfRangeException(nameof(index)),
             };
+=======
+            switch (index)
+            {
+                case 0: return (uint)(_e0 >> 0);
+                case 1: return (uint)(_e0 >> 32);
+                case 2: return (uint)(_e1 >> 0);
+                case 3: return (uint)(_e1 >> 32);
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(index));
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public ulong GetUInt64(int index)
         {
+<<<<<<< HEAD
             return index switch
             {
                 0 => _e0,
                 1 => _e1,
                 _ => throw new ArgumentOutOfRangeException(nameof(index)),
             };
+=======
+            switch (index)
+            {
+                case 0: return _e0;
+                case 1: return _e1;
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(index));
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public byte[] ToArray()
@@ -107,4 +140,8 @@ namespace Ryujinx.Tests.Unicorn
             return $"0x{_e1:X16}{_e0:X16}";
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -11,7 +11,11 @@ namespace Ryujinx.Tests.Cpu
     {
 #if System
 
+<<<<<<< HEAD
         #region "ValueSource (Types)"
+=======
+#region "ValueSource (Types)"
+>>>>>>> 1ec71635b (sync with main branch)
         private static IEnumerable<ulong> _GenNzcv_()
         {
             yield return 0x0000000000000000ul;
@@ -33,14 +37,21 @@ namespace Ryujinx.Tests.Cpu
 
             yield return rnd;
         }
+<<<<<<< HEAD
         #endregion
 
         #region "ValueSource (Opcodes)"
+=======
+#endregion
+
+#region "ValueSource (Opcodes)"
+>>>>>>> 1ec71635b (sync with main branch)
         private static uint[] _MrsMsr_Nzcv_()
         {
             return new[]
             {
                 0xD53B4200u, // MRS X0, NZCV
+<<<<<<< HEAD
                 0xD51B4200u, // MSR NZCV, X0
             };
         }
@@ -50,6 +61,17 @@ namespace Ryujinx.Tests.Cpu
         public void MrsMsr_Nzcv([ValueSource(nameof(_MrsMsr_Nzcv_))] uint opcodes,
                                 [Values(0u, 1u, 31u)] uint rt,
                                 [ValueSource(nameof(_GenNzcv_))] ulong xt)
+=======
+                0xD51B4200u  // MSR NZCV, X0
+            };
+        }
+#endregion
+
+        [Test, Pairwise]
+        public void MrsMsr_Nzcv([ValueSource("_MrsMsr_Nzcv_")] uint opcodes,
+                                [Values(0u, 1u, 31u)] uint rt,
+                                [ValueSource("_GenNzcv_")] ulong xt)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             opcodes |= (rt & 31) << 0;
 
@@ -66,4 +88,8 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

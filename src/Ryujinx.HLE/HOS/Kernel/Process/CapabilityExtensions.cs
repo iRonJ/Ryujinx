@@ -19,4 +19,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Process
             return (uint)BitOperations.TrailingZeroCount(type.GetFlag());
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Am.AppletAE
 {
     internal class AppletSession
     {
+<<<<<<< HEAD
         private readonly IAppletFifo<byte[]> _inputData;
         private readonly IAppletFifo<byte[]> _outputData;
+=======
+        private IAppletFifo<byte[]> _inputData;
+        private IAppletFifo<byte[]> _outputData;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public event EventHandler DataAvailable;
 
@@ -23,7 +32,11 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE
             IAppletFifo<byte[]> inputData,
             IAppletFifo<byte[]> outputData)
         {
+<<<<<<< HEAD
             _inputData = inputData;
+=======
+            _inputData  = inputData;
+>>>>>>> 1ec71635b (sync with main branch)
             _outputData = outputData;
 
             _inputData.DataAvailable += OnDataAvailable;

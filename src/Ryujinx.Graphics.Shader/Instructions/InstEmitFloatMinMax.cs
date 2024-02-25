@@ -103,4 +103,8 @@ namespace Ryujinx.Graphics.Shader.Instructions
             SetFPZnFlags(context, res, writeCC, fpType);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
+=======
+﻿using Ryujinx.Graphics.GAL;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Threading;
 
@@ -16,6 +20,7 @@ namespace Ryujinx.Graphics.Vulkan.Queries
 
         public ulong DrawIndex { get; }
 
+<<<<<<< HEAD
         private readonly CounterQueue _queue;
         private readonly BufferedQuery _counter;
 
@@ -23,6 +28,15 @@ namespace Ryujinx.Graphics.Vulkan.Queries
         private int _refCount = 1; // Starts with a reference from the counter queue.
 
         private readonly object _lock = new();
+=======
+        private CounterQueue _queue;
+        private BufferedQuery _counter;
+
+        private bool _hostAccessReserved = false;
+        private int _refCount = 1; // Starts with a reference from the counter queue.
+
+        private object _lock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
         private ulong _result = ulong.MaxValue;
         private double _divisor = 1f;
 

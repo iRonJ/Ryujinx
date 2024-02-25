@@ -14,7 +14,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
         Max = 3,
         Rcp = 4,
         Add = 5,
+<<<<<<< HEAD
         Sub = 6,
+=======
+        Sub = 6
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -29,7 +33,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
         LT = 4,
         LE = 5,
         GT = 6,
+<<<<<<< HEAD
         GE = 7,
+=======
+        GE = 7
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -49,7 +57,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
         Temp1 = 0xa,
         Temp2 = 0xb,
         PBR = 0xc,
+<<<<<<< HEAD
         ConstantRGB = 0xd,
+=======
+        ConstantRGB = 0xd
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -64,7 +76,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
         Temp0 = 4,
         Temp1 = 5,
         Temp2 = 6,
+<<<<<<< HEAD
         PBR = 7,
+=======
+        PBR = 7
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -75,7 +91,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
         Temp0 = 0,
         Temp1 = 1,
         Temp2 = 2,
+<<<<<<< HEAD
         PBR = 3,
+=======
+        PBR = 3
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -88,7 +108,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
         RRR = 2,
         GGG = 3,
         BBB = 4,
+<<<<<<< HEAD
         RToA = 5,
+=======
+        RToA = 5
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
@@ -99,13 +123,21 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
         RGB = 0,
         R = 1,
         G = 2,
+<<<<<<< HEAD
         B = 3,
+=======
+        B = 3
+>>>>>>> 1ec71635b (sync with main branch)
     }
 
     /// <summary>
     /// Floating-point RGB color values.
     /// </summary>
+<<<<<<< HEAD
     readonly struct RgbFloat
+=======
+    struct RgbFloat
+>>>>>>> 1ec71635b (sync with main branch)
     {
         /// <summary>
         /// Red component value.
@@ -139,6 +171,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
     /// <summary>
     /// Blend microcode destination operand, including swizzle, write mask and condition code update flag.
     /// </summary>
+<<<<<<< HEAD
     readonly struct Dest
     {
         public static Dest Temp0 => new(OpDst.Temp0, Swizzle.RGB, WriteMask.RGB, false);
@@ -157,6 +190,26 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
         public Dest B => new(Dst, Swizzle, WriteMask.B, WriteCC);
 
         public Dest CC => new(Dst, Swizzle, WriteMask, true);
+=======
+    struct Dest
+    {
+        public static Dest Temp0 => new Dest(OpDst.Temp0, Swizzle.RGB, WriteMask.RGB, false);
+        public static Dest Temp1 => new Dest(OpDst.Temp1, Swizzle.RGB, WriteMask.RGB, false);
+        public static Dest Temp2 => new Dest(OpDst.Temp2, Swizzle.RGB, WriteMask.RGB, false);
+        public static Dest PBR => new Dest(OpDst.PBR, Swizzle.RGB, WriteMask.RGB, false);
+
+        public Dest GBR => new Dest(Dst, Swizzle.GBR, WriteMask, WriteCC);
+        public Dest RRR => new Dest(Dst, Swizzle.RRR, WriteMask, WriteCC);
+        public Dest GGG => new Dest(Dst, Swizzle.GGG, WriteMask, WriteCC);
+        public Dest BBB => new Dest(Dst, Swizzle.BBB, WriteMask, WriteCC);
+        public Dest RToA => new Dest(Dst, Swizzle.RToA, WriteMask, WriteCC);
+
+        public Dest R => new Dest(Dst, Swizzle, WriteMask.R, WriteCC);
+        public Dest G => new Dest(Dst, Swizzle, WriteMask.G, WriteCC);
+        public Dest B => new Dest(Dst, Swizzle, WriteMask.B, WriteCC);
+
+        public Dest CC => new Dest(Dst, Swizzle, WriteMask, true);
+>>>>>>> 1ec71635b (sync with main branch)
 
         public OpDst Dst { get; }
         public Swizzle Swizzle { get; }
@@ -182,7 +235,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
     /// <summary>
     /// Blend microcode operaiton.
     /// </summary>
+<<<<<<< HEAD
     readonly struct UcodeOp
+=======
+    struct UcodeOp
+>>>>>>> 1ec71635b (sync with main branch)
     {
         public readonly uint Word;
 
@@ -292,14 +349,26 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
             _constantIndex = index;
         }
 
+<<<<<<< HEAD
         public readonly uint[] GetCode()
+=======
+        public uint[] GetCode()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _code?.ToArray();
         }
 
+<<<<<<< HEAD
         public readonly RgbFloat[] GetConstants()
+=======
+        public RgbFloat[] GetConstants()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _constants;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

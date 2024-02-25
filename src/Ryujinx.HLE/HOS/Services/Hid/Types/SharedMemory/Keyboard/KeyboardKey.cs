@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Keyboard
 {
@@ -26,4 +30,8 @@ namespace Ryujinx.HLE.HOS.Services.Hid.Types.SharedMemory.Keyboard
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

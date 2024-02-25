@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace ARMeilleure.Decoders
+=======
+﻿namespace ARMeilleure.Decoders
+>>>>>>> 1ec71635b (sync with main branch)
 {
     class OpCodeT16ShiftImm : OpCodeT16, IOpCode32AluRsImm
     {
@@ -15,8 +19,13 @@ namespace ARMeilleure.Decoders
 
         public OpCodeT16ShiftImm(InstDescriptor inst, ulong address, int opCode) : base(inst, address, opCode)
         {
+<<<<<<< HEAD
             Rd = (opCode >> 0) & 0x7;
             Rm = (opCode >> 3) & 0x7;
+=======
+            Rd        = (opCode >> 0) & 0x7;
+            Rm        = (opCode >> 3) & 0x7;
+>>>>>>> 1ec71635b (sync with main branch)
             Immediate = (opCode >> 6) & 0x1F;
             ShiftType = (ShiftType)((opCode >> 11) & 3);
         }

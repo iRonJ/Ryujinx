@@ -24,4 +24,8 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// </summary>
         private unsafe fixed byte _reserved[24];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

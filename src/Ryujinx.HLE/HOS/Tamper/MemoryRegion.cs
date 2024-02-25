@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Tamper
+=======
+﻿namespace Ryujinx.HLE.HOS.Tamper
+>>>>>>> 1ec71635b (sync with main branch)
 {
     /// <summary>
     /// The regions in the virtual address space of the process that are used as base address of memory operations.

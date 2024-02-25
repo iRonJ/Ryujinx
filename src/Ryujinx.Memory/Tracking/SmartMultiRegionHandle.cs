@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Runtime.CompilerServices;
 
 namespace Ryujinx.Memory.Tracking
@@ -17,7 +21,11 @@ namespace Ryujinx.Memory.Tracking
         private readonly ulong _address;
         private readonly ulong _granularity;
         private readonly ulong _size;
+<<<<<<< HEAD
         private readonly MemoryTracking _tracking;
+=======
+        private MemoryTracking _tracking;
+>>>>>>> 1ec71635b (sync with main branch)
         private readonly int _id;
 
         public bool Dirty { get; private set; } = true;
@@ -271,8 +279,11 @@ namespace Ryujinx.Memory.Tracking
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             foreach (var handle in _handles)
             {
                 handle?.Dispose();

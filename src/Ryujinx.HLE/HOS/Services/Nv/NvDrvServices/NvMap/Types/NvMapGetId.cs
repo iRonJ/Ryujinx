@@ -8,4 +8,8 @@ namespace Ryujinx.HLE.HOS.Services.Nv.NvDrvServices.NvMap
         public int Id;
         public int Handle;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

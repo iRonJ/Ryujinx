@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 
 namespace Ryujinx.Common
@@ -13,7 +17,11 @@ namespace Ryujinx.Common
 
         public ObjectPool(Func<T> factory, int size)
         {
+<<<<<<< HEAD
             _items = new T[size - 1];
+=======
+            _items   = new T[size - 1];
+>>>>>>> 1ec71635b (sync with main branch)
             _factory = factory;
         }
 

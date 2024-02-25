@@ -25,7 +25,11 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/padding.
         /// </summary>
+<<<<<<< HEAD
         private readonly ushort _reserved1;
+=======
+        private ushort _reserved1;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// The node id of the sink.
@@ -50,4 +54,8 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// </summary>
         public Span<byte> SpecificData => SpanHelpers.AsSpan<SpecificDataStruct, byte>(ref _specificDataStart);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

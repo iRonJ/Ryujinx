@@ -13,20 +13,36 @@ namespace Ryujinx.HLE.Loaders.Executables
     {
         public byte[] Program { get; }
         public Span<byte> Text => Program.AsSpan((int)TextOffset, (int)TextSize);
+<<<<<<< HEAD
         public Span<byte> Ro => Program.AsSpan((int)RoOffset, (int)RoSize);
         public Span<byte> Data => Program.AsSpan((int)DataOffset, (int)DataSize);
 
         public uint TextOffset { get; }
         public uint RoOffset { get; }
+=======
+        public Span<byte> Ro   => Program.AsSpan((int)RoOffset,   (int)RoSize);
+        public Span<byte> Data => Program.AsSpan((int)DataOffset, (int)DataSize);
+
+        public uint TextOffset { get; }
+        public uint RoOffset   { get; }
+>>>>>>> 1ec71635b (sync with main branch)
         public uint DataOffset { get; }
         public uint BssOffset => DataOffset + (uint)Data.Length;
 
         public uint TextSize { get; }
+<<<<<<< HEAD
         public uint RoSize { get; }
         public uint DataSize { get; }
         public uint BssSize { get; }
 
         public string Name;
+=======
+        public uint RoSize   { get; }
+        public uint DataSize { get; }
+        public uint BssSize  { get; }
+
+        public string        Name;
+>>>>>>> 1ec71635b (sync with main branch)
         public Array32<byte> BuildId;
 
         [GeneratedRegex(@"[a-z]:[\\/][ -~]{5,}\.nss", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)]
@@ -38,24 +54,41 @@ namespace Ryujinx.HLE.Loaders.Executables
 
         public NsoExecutable(IStorage inStorage, string name = null)
         {
+<<<<<<< HEAD
             NsoReader reader = new();
+=======
+            NsoReader reader = new NsoReader();
+>>>>>>> 1ec71635b (sync with main branch)
 
             reader.Initialize(inStorage.AsFile(OpenMode.Read)).ThrowIfFailure();
 
             TextOffset = reader.Header.Segments[0].MemoryOffset;
+<<<<<<< HEAD
             RoOffset = reader.Header.Segments[1].MemoryOffset;
             DataOffset = reader.Header.Segments[2].MemoryOffset;
             BssSize = reader.Header.BssSize;
+=======
+            RoOffset   = reader.Header.Segments[1].MemoryOffset;
+            DataOffset = reader.Header.Segments[2].MemoryOffset;
+            BssSize    = reader.Header.BssSize;
+>>>>>>> 1ec71635b (sync with main branch)
 
             reader.GetSegmentSize(NsoReader.SegmentType.Data, out uint uncompressedSize).ThrowIfFailure();
 
             Program = new byte[DataOffset + uncompressedSize];
 
             TextSize = DecompressSection(reader, NsoReader.SegmentType.Text, TextOffset);
+<<<<<<< HEAD
             RoSize = DecompressSection(reader, NsoReader.SegmentType.Ro, RoOffset);
             DataSize = DecompressSection(reader, NsoReader.SegmentType.Data, DataOffset);
 
             Name = name;
+=======
+            RoSize   = DecompressSection(reader, NsoReader.SegmentType.Ro,   RoOffset);
+            DataSize = DecompressSection(reader, NsoReader.SegmentType.Data, DataOffset);
+
+            Name    = name;
+>>>>>>> 1ec71635b (sync with main branch)
             BuildId = reader.Header.ModuleId;
 
             PrintRoSectionInfo();
@@ -74,12 +107,21 @@ namespace Ryujinx.HLE.Loaders.Executables
 
         private void PrintRoSectionInfo()
         {
+<<<<<<< HEAD
             string rawTextBuffer = Encoding.ASCII.GetString(Ro);
             StringBuilder stringBuilder = new();
 
             string modulePath = null;
 
             if (BitConverter.ToInt32(Ro[..4]) == 0)
+=======
+            string        rawTextBuffer = Encoding.ASCII.GetString(Ro);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            string modulePath = null;
+
+            if (BitConverter.ToInt32(Ro.Slice(0, 4)) == 0)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 int length = BitConverter.ToInt32(Ro.Slice(4, 4));
                 if (length > 0)
@@ -108,7 +150,11 @@ namespace Ryujinx.HLE.Loaders.Executables
             MatchCollection sdkMwMatches = SdkMwRegex().Matches(rawTextBuffer);
             if (sdkMwMatches.Count != 0)
             {
+<<<<<<< HEAD
                 string libHeader = "    SDK Libraries: ";
+=======
+                string libHeader  = "    SDK Libraries: ";
+>>>>>>> 1ec71635b (sync with main branch)
                 string libContent = string.Join($"\n{new string(' ', libHeader.Length)}", sdkMwMatches);
 
                 stringBuilder.AppendLine($"{libHeader}{libContent}");
@@ -120,4 +166,8 @@ namespace Ryujinx.HLE.Loaders.Executables
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

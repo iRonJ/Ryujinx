@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Services.Sockets.Bsd.Types;
 using System;
 using System.Collections.Generic;
@@ -299,6 +303,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
         {
             try
             {
+<<<<<<< HEAD
                 LinuxError result = WinSockHelper.ValidateSocketOption(option, level, write: false);
 
                 if (result != LinuxError.SUCCESS)
@@ -314,6 +319,13 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
                     optionValue.Clear();
 
                     return LinuxError.SUCCESS;
+=======
+                if (!WinSockHelper.TryConvertSocketOption(option, level, out SocketOptionName optionName))
+                {
+                    Logger.Warning?.Print(LogClass.ServiceBsd, $"Unsupported GetSockOpt Option: {option} Level: {level}");
+
+                    return LinuxError.EOPNOTSUPP;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 byte[] tempOptionValue = new byte[optionValue.Length];
@@ -334,6 +346,7 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
         {
             try
             {
+<<<<<<< HEAD
                 LinuxError result = WinSockHelper.ValidateSocketOption(option, level, write: true);
 
                 if (result != LinuxError.SUCCESS)
@@ -343,11 +356,17 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
                     return result;
                 }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 if (!WinSockHelper.TryConvertSocketOption(option, level, out SocketOptionName optionName))
                 {
                     Logger.Warning?.Print(LogClass.ServiceBsd, $"Unsupported SetSockOpt Option: {option} Level: {level}");
 
+<<<<<<< HEAD
                     return LinuxError.SUCCESS;
+=======
+                    return LinuxError.EOPNOTSUPP;
+>>>>>>> 1ec71635b (sync with main branch)
                 }
 
                 int value = optionValue.Length >= 4 ? MemoryMarshal.Read<int>(optionValue) : MemoryMarshal.Read<byte>(optionValue);
@@ -481,7 +500,11 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
 
             if (!CanSupportMMsgHdr(message))
             {
+<<<<<<< HEAD
                 Logger.Warning?.Print(LogClass.ServiceBsd, "Unsupported BsdMMsgHdr");
+=======
+                Logger.Warning?.Print(LogClass.ServiceBsd, $"Unsupported BsdMMsgHdr");
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return LinuxError.EOPNOTSUPP;
             }
@@ -519,7 +542,11 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
 
             if (!CanSupportMMsgHdr(message))
             {
+<<<<<<< HEAD
                 Logger.Warning?.Print(LogClass.ServiceBsd, "Unsupported BsdMMsgHdr");
+=======
+                Logger.Warning?.Print(LogClass.ServiceBsd, $"Unsupported BsdMMsgHdr");
+>>>>>>> 1ec71635b (sync with main branch)
 
                 return LinuxError.EOPNOTSUPP;
             }
@@ -546,4 +573,8 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Bsd.Impl
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

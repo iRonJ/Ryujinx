@@ -166,4 +166,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
             Owner.DecrementReferenceCount();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

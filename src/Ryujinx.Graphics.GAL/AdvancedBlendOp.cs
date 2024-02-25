@@ -47,6 +47,12 @@ namespace Ryujinx.Graphics.GAL
         HslHue,
         HslSaturation,
         HslColor,
+<<<<<<< HEAD
         HslLuminosity,
     }
 }
+=======
+        HslLuminosity
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

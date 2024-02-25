@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Horizon.Sdk.OsTypes.Impl;
+=======
+﻿using Ryujinx.Horizon.Sdk.OsTypes.Impl;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Horizon.Sdk.OsTypes
 {

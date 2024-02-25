@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.HLE.UI;
+=======
+using Ryujinx.HLE.Ui;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,8 +16,13 @@ namespace Ryujinx.Headless.SDL2
         private bool _canProcessInput;
 
         public event DynamicTextChangedHandler TextChangedEvent;
+<<<<<<< HEAD
         public event KeyPressedHandler KeyPressedEvent { add { } remove { } }
         public event KeyReleasedHandler KeyReleasedEvent { add { } remove { } }
+=======
+        public event KeyPressedHandler         KeyPressedEvent  { add { } remove { } }
+        public event KeyReleasedHandler        KeyReleasedEvent { add { } remove { } }
+>>>>>>> 1ec71635b (sync with main branch)
 
         public bool TextProcessingEnabled
         {
@@ -48,4 +57,8 @@ namespace Ryujinx.Headless.SDL2
 
         public void Dispose() { }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

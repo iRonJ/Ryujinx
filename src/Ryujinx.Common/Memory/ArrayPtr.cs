@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -16,12 +20,20 @@ namespace Ryujinx.Common.Memory
         /// <summary>
         /// Null pointer.
         /// </summary>
+<<<<<<< HEAD
         public static ArrayPtr<T> Null => new() { _ptr = IntPtr.Zero };
+=======
+        public static ArrayPtr<T> Null => new ArrayPtr<T>() { _ptr = IntPtr.Zero };
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// True if the pointer is null, false otherwise.
         /// </summary>
+<<<<<<< HEAD
         public readonly bool IsNull => _ptr == IntPtr.Zero;
+=======
+        public bool IsNull => _ptr == IntPtr.Zero;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Number of elements on the array.
@@ -37,7 +49,11 @@ namespace Ryujinx.Common.Memory
         /// </remarks>
         /// <param name="index">Index of the element</param>
         /// <returns>Reference to the element at the given index</returns>
+<<<<<<< HEAD
         public readonly ref T this[int index] => ref Unsafe.AsRef<T>((T*)_ptr + index);
+=======
+        public ref T this[int index] => ref Unsafe.AsRef<T>((T*)_ptr + index);
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Creates a new array from a given reference.
@@ -81,7 +97,11 @@ namespace Ryujinx.Common.Memory
         /// </summary>
         /// <param name="start">Index where the new array should start</param>
         /// <returns>New array starting at the specified position</returns>
+<<<<<<< HEAD
         public ArrayPtr<T> Slice(int start) => new(ref this[start], Length - start);
+=======
+        public ArrayPtr<T> Slice(int start) => new ArrayPtr<T>(ref this[start], Length - start);
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Gets a span from the array.
@@ -93,19 +113,33 @@ namespace Ryujinx.Common.Memory
         /// Gets the array base pointer.
         /// </summary>
         /// <returns>Base pointer</returns>
+<<<<<<< HEAD
         public readonly T* ToPointer() => (T*)_ptr;
 
         public readonly override bool Equals(object obj)
+=======
+        public T* ToPointer() => (T*)_ptr;
+
+        public override bool Equals(object obj)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return obj is ArrayPtr<T> other && Equals(other);
         }
 
+<<<<<<< HEAD
         public readonly bool Equals([AllowNull] ArrayPtr<T> other)
+=======
+        public bool Equals([AllowNull] ArrayPtr<T> other)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return _ptr == other._ptr && Length == other.Length;
         }
 
+<<<<<<< HEAD
         public readonly override int GetHashCode()
+=======
+        public override int GetHashCode()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return HashCode.Combine(_ptr, Length);
         }

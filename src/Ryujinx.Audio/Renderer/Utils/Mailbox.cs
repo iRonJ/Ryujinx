@@ -9,8 +9,13 @@ namespace Ryujinx.Audio.Renderer.Utils
     /// <typeparam name="T">The target unmanaged type used</typeparam>
     public class Mailbox<T> : IDisposable where T : unmanaged
     {
+<<<<<<< HEAD
         private readonly BlockingCollection<T> _messageQueue;
         private readonly BlockingCollection<T> _responseQueue;
+=======
+        private BlockingCollection<T> _messageQueue;
+        private BlockingCollection<T> _responseQueue;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public Mailbox()
         {
@@ -40,7 +45,10 @@ namespace Ryujinx.Audio.Renderer.Utils
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             Dispose(true);
         }
 
@@ -53,4 +61,8 @@ namespace Ryujinx.Audio.Renderer.Utils
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

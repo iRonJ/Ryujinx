@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Pm
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Pm
+>>>>>>> 1ec71635b (sync with main branch)
 {
     [Service("pm:shell")]
     class IShellInterface : IpcService

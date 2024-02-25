@@ -6,11 +6,17 @@
     xmlns:locale="clr-namespace:Ryujinx.Ava.Common.Locale"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{locale:Locale ErrorWindowTitle}"
+<<<<<<< HEAD
     xmlns:views="using:Ryujinx.Ava.UI.Applet"
     Width="450"
     Height="340"
     CanResize="False"
     x:DataType="views:ErrorAppletWindow"
+=======
+    Width="450"
+    Height="340"
+    CanResize="False"
+>>>>>>> 1ec71635b (sync with main branch)
     SizeToContent="Height"
     mc:Ignorable="d"
     Focusable="True">
@@ -34,7 +40,11 @@
             Height="80"
             MinWidth="50"
             Margin="5,10,20,10"
+<<<<<<< HEAD
             Source="resm:Ryujinx.UI.Common.Resources.Logo_Ryujinx.png?assembly=Ryujinx.UI.Common" />
+=======
+            Source="resm:Ryujinx.Ui.Common.Resources.Logo_Ryujinx.png?assembly=Ryujinx.Ui.Common" />
+>>>>>>> 1ec71635b (sync with main branch)
         <TextBlock
             Grid.Row="1"
             Grid.Column="1"
@@ -51,4 +61,8 @@
             Orientation="Horizontal"
             Spacing="10" />
     </Grid>
+<<<<<<< HEAD
 </Window>
+=======
+</Window>
+>>>>>>> 1ec71635b (sync with main branch)

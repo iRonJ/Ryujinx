@@ -38,22 +38,38 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
         /// </summary>
         public uint VoiceDropCount;
 
+<<<<<<< HEAD
         public readonly int GetEntryCount()
+=======
+        public int GetEntryCount()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return EntryCount;
         }
 
+<<<<<<< HEAD
         public readonly int GetEntryCountOffset()
+=======
+        public int GetEntryCountOffset()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return 4;
         }
 
+<<<<<<< HEAD
         public readonly int GetEntryDetailCount()
+=======
+        public int GetEntryDetailCount()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return EntryDetailCount;
         }
 
+<<<<<<< HEAD
         public readonly void SetDspRunningBehind(bool isRunningBehind)
+=======
+        public void SetDspRunningBehind(bool isRunningBehind)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // NOTE: Not present in version 1
         }
@@ -68,7 +84,11 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
             EntryDetailCount = entryDetailCount;
         }
 
+<<<<<<< HEAD
         public readonly void SetIndex(uint index)
+=======
+        public void SetIndex(uint index)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // NOTE: Not present in version 1
         }
@@ -83,7 +103,11 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
             NextOffset = nextOffset;
         }
 
+<<<<<<< HEAD
         public readonly void SetStartRenderingTicks(ulong startTicks)
+=======
+        public void SetStartRenderingTicks(ulong startTicks)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             // NOTE: not present in version 1
         }
@@ -98,4 +122,8 @@ namespace Ryujinx.Audio.Renderer.Server.Performance
             VoiceDropCount = voiceCount;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

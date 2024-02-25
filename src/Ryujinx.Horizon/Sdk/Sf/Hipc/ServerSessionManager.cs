@@ -75,7 +75,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             }
 
             session.PointerBuffer = GetSessionPointerBuffer(session);
+<<<<<<< HEAD
             session.SavedMessage = GetSessionSavedMessageBuffer(session);
+=======
+            session.SavedMessage  = GetSessionSavedMessageBuffer(session);
+>>>>>>> 1ec71635b (sync with main branch)
 
             RegisterSessionToWaitList(session);
 
@@ -110,10 +114,17 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
         }
 
         protected virtual Server AllocateServer(
+<<<<<<< HEAD
             int portIndex,
             int portHandle,
             ServiceName name,
             bool managed,
+=======
+            int                 portIndex,
+            int                 portHandle,
+            ServiceName         name,
+            bool                managed,
+>>>>>>> 1ec71635b (sync with main branch)
             ServiceObjectHolder staticHoder)
         {
             throw new NotSupportedException();
@@ -161,6 +172,7 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 
                 return Result.Success;
             }
+<<<<<<< HEAD
 
             Result result = ProcessRequestImpl(session, message, message);
 
@@ -180,6 +192,31 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             CloseSessionImpl(session);
 
             return Result.Success;
+=======
+            else
+            {
+                Result result = ProcessRequestImpl(session, message, message);
+
+                if (result.IsSuccess)
+                {
+                    RegisterSessionToWaitList(session);
+
+                    return Result.Success;
+                }
+                else if (SfResult.RequestContextChanged(result))
+                {
+                    return result;
+                }
+                else
+                {
+                    Logger.Warning?.Print(LogClass.KernelIpc, $"Request processing returned error {result}");
+
+                    CloseSessionImpl(session);
+
+                    return Result.Success;
+                }
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private Result ProcessRequestImpl(ServerSession session, Span<byte> inMessage, Span<byte> outMessage)
@@ -188,6 +225,7 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 
             using var _ = new ScopedInlineContextChange(GetInlineContext(commandType, inMessage));
 
+<<<<<<< HEAD
             return commandType switch
             {
                 CommandType.Request or CommandType.RequestWithContext => DispatchRequest(session.ServiceObjectHolder, session, inMessage, outMessage),
@@ -195,6 +233,20 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
                 _ => HipcResult.UnknownCommandType,
             };
         }
+=======
+            switch (commandType)
+            {
+                case CommandType.Request:
+                case CommandType.RequestWithContext:
+                    return DispatchRequest(session.ServiceObjectHolder, session, inMessage, outMessage);
+                case CommandType.Control:
+                case CommandType.ControlWithContext:
+                    return DispatchManagerRequest(session, inMessage, outMessage);
+                default:
+                    return HipcResult.UnknownCommandType;
+        }
+    }
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static int GetInlineContext(CommandType commandType, ReadOnlySpan<byte> inMessage)
         {
@@ -212,12 +264,20 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             return 0;
         }
 
+<<<<<<< HEAD
         protected static Result ReceiveRequest(ServerSession session, Span<byte> message)
+=======
+        protected Result ReceiveRequest(ServerSession session, Span<byte> message)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return ReceiveRequestImpl(session, message);
         }
 
+<<<<<<< HEAD
         private static Result ReceiveRequestImpl(ServerSession session, Span<byte> message)
+=======
+        private Result ReceiveRequestImpl(ServerSession session, Span<byte> message)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             PointerAndSize pointerBuffer = session.PointerBuffer;
 
@@ -225,19 +285,32 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             {
                 if (pointerBuffer.Address != 0)
                 {
+<<<<<<< HEAD
                     HipcMessageData messageData = HipcMessage.WriteMessage(message, new HipcMetadata
                     {
                         Type = (int)CommandType.Invalid,
                         ReceiveStaticsCount = HipcMessage.AutoReceiveStatic,
+=======
+                    HipcMessageData messageData = HipcMessage.WriteMessage(message, new HipcMetadata()
+                    {
+                        Type                = (int)CommandType.Invalid,
+                        ReceiveStaticsCount = HipcMessage.AutoReceiveStatic
+>>>>>>> 1ec71635b (sync with main branch)
                     });
 
                     messageData.ReceiveList[0] = new HipcReceiveListEntry(pointerBuffer.Address, pointerBuffer.Size);
                 }
                 else
                 {
+<<<<<<< HEAD
                     MemoryMarshal.Cast<byte, Header>(message)[0] = new Header
                     {
                         Type = CommandType.Invalid,
+=======
+                    MemoryMarshal.Cast<byte, Header>(message)[0] = new Header()
+                    {
+                        Type = CommandType.Invalid
+>>>>>>> 1ec71635b (sync with main branch)
                     };
                 }
 
@@ -267,9 +340,15 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 
         protected virtual Result DispatchRequest(
             ServiceObjectHolder objectHolder,
+<<<<<<< HEAD
             ServerSession session,
             Span<byte> inMessage,
             Span<byte> outMessage)
+=======
+            ServerSession       session,
+            Span<byte>          inMessage,
+            Span<byte>          outMessage)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             HipcMessage request;
 
@@ -282,6 +361,7 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
                 return HipcResult.InvalidRequestSize;
             }
 
+<<<<<<< HEAD
             var dispatchCtx = new ServiceDispatchContext
             {
                 ServiceObject = objectHolder.ServiceObject,
@@ -292,6 +372,18 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
                 InMessageBuffer = inMessage,
                 OutMessageBuffer = outMessage,
                 Request = request,
+=======
+            var dispatchCtx = new ServiceDispatchContext()
+            {
+                ServiceObject    = objectHolder.ServiceObject,
+                Manager          = this,
+                Session          = session,
+                HandlesToClose   = new HandlesToClose(),
+                PointerBuffer    = session.PointerBuffer,
+                InMessageBuffer  = inMessage,
+                OutMessageBuffer = outMessage,
+                Request          = request
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             ReadOnlySpan<byte> inRawData = MemoryMarshal.Cast<uint, byte>(dispatchCtx.Request.Data.DataWords);
@@ -328,4 +420,8 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
             return this;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

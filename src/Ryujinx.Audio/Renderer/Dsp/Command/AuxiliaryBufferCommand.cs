@@ -31,6 +31,7 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
 
         public bool IsEffectEnabled { get; }
 
+<<<<<<< HEAD
         public AuxiliaryBufferCommand(
             uint bufferOffset,
             byte inputBufferOffset,
@@ -43,6 +44,11 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             uint updateCount,
             uint writeOffset,
             int nodeId)
+=======
+        public AuxiliaryBufferCommand(uint bufferOffset, byte inputBufferOffset, byte outputBufferOffset,
+                          ref AuxiliaryBufferAddresses sendBufferInfo, bool isEnabled, uint countMax,
+                          CpuAddress outputBuffer, CpuAddress inputBuffer, uint updateCount, uint writeOffset, int nodeId)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             Enabled = true;
             NodeId = nodeId;
@@ -164,7 +170,11 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
 
                 if (readResult != context.SampleCount)
                 {
+<<<<<<< HEAD
                     outputBuffer[(int)readResult..(int)context.SampleCount].Clear();
+=======
+                    outputBuffer.Slice((int)readResult, (int)context.SampleCount - (int)readResult).Fill(0);
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
             else
@@ -179,4 +189,8 @@ namespace Ryujinx.Audio.Renderer.Dsp.Command
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using LibHac.Ns;
+=======
+﻿using LibHac.Ns;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Ava.Common.Locale;
 
 namespace Ryujinx.Ava.UI.Models
@@ -16,4 +20,8 @@ namespace Ryujinx.Ava.UI.Models
             Path = path;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

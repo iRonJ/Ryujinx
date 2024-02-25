@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 using Silk.NET.Vulkan;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using Semaphore = Silk.NET.Vulkan.Semaphore;
+=======
+﻿using Silk.NET.Vulkan;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Thread = System.Threading.Thread;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Vulkan
 {
@@ -11,8 +19,13 @@ namespace Ryujinx.Graphics.Vulkan
     {
         public const int MaxCommandBuffers = 16;
 
+<<<<<<< HEAD
         private readonly int _totalCommandBuffers;
         private readonly int _totalCommandBuffersMask;
+=======
+        private int _totalCommandBuffers;
+        private int _totalCommandBuffersMask;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private readonly Vk _api;
         private readonly Device _device;
@@ -27,7 +40,10 @@ namespace Ryujinx.Graphics.Vulkan
         {
             public bool InUse;
             public bool InConsumption;
+<<<<<<< HEAD
             public int SubmissionCount;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             public CommandBuffer CommandBuffer;
             public FenceHolder Fence;
             public SemaphoreHolder Semaphore;
@@ -38,12 +54,20 @@ namespace Ryujinx.Graphics.Vulkan
 
             public void Initialize(Vk api, Device device, CommandPool pool)
             {
+<<<<<<< HEAD
                 var allocateInfo = new CommandBufferAllocateInfo
+=======
+                var allocateInfo = new CommandBufferAllocateInfo()
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     SType = StructureType.CommandBufferAllocateInfo,
                     CommandBufferCount = 1,
                     CommandPool = pool,
+<<<<<<< HEAD
                     Level = CommandBufferLevel.Primary,
+=======
+                    Level = CommandBufferLevel.Primary
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 api.AllocateCommandBuffers(device, allocateInfo, out CommandBuffer);
@@ -69,12 +93,20 @@ namespace Ryujinx.Graphics.Vulkan
             _queueLock = queueLock;
             _owner = Thread.CurrentThread;
 
+<<<<<<< HEAD
             var commandPoolCreateInfo = new CommandPoolCreateInfo
+=======
+            var commandPoolCreateInfo = new CommandPoolCreateInfo()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.CommandPoolCreateInfo,
                 QueueFamilyIndex = queueFamilyIndex,
                 Flags = CommandPoolCreateFlags.TransientBit |
+<<<<<<< HEAD
                         CommandPoolCreateFlags.ResetCommandBufferBit,
+=======
+                        CommandPoolCreateFlags.ResetCommandBufferBit
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             api.CreateCommandPool(device, commandPoolCreateInfo, null, out _pool).ThrowOnError();
@@ -194,11 +226,14 @@ namespace Ryujinx.Graphics.Vulkan
             return _commandBuffers[cbIndex].Fence;
         }
 
+<<<<<<< HEAD
         public int GetSubmissionCount(int cbIndex)
         {
             return _commandBuffers[cbIndex].SubmissionCount;
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         private int FreeConsumed(bool wait)
         {
             int freeEntry = 0;
@@ -250,9 +285,15 @@ namespace Ryujinx.Graphics.Vulkan
 
                         _inUseCount++;
 
+<<<<<<< HEAD
                         var commandBufferBeginInfo = new CommandBufferBeginInfo
                         {
                             SType = StructureType.CommandBufferBeginInfo,
+=======
+                        var commandBufferBeginInfo = new CommandBufferBeginInfo()
+                        {
+                            SType = StructureType.CommandBufferBeginInfo
+>>>>>>> 1ec71635b (sync with main branch)
                         };
 
                         _api.BeginCommandBuffer(entry.CommandBuffer, commandBufferBeginInfo).ThrowOnError();
@@ -288,7 +329,10 @@ namespace Ryujinx.Graphics.Vulkan
                 Debug.Assert(entry.CommandBuffer.Handle == cbs.CommandBuffer.Handle);
                 entry.InUse = false;
                 entry.InConsumption = true;
+<<<<<<< HEAD
                 entry.SubmissionCount++;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 _inUseCount--;
 
                 var commandBuffer = entry.CommandBuffer;
@@ -299,7 +343,11 @@ namespace Ryujinx.Graphics.Vulkan
                 {
                     fixed (PipelineStageFlags* pWaitDstStageMask = waitDstStageMask)
                     {
+<<<<<<< HEAD
                         SubmitInfo sInfo = new()
+=======
+                        SubmitInfo sInfo = new SubmitInfo()
+>>>>>>> 1ec71635b (sync with main branch)
                         {
                             SType = StructureType.SubmitInfo,
                             WaitSemaphoreCount = waitSemaphores != null ? (uint)waitSemaphores.Length : 0,
@@ -308,7 +356,11 @@ namespace Ryujinx.Graphics.Vulkan
                             CommandBufferCount = 1,
                             PCommandBuffers = &commandBuffer,
                             SignalSemaphoreCount = signalSemaphores != null ? (uint)signalSemaphores.Length : 0,
+<<<<<<< HEAD
                             PSignalSemaphores = pSignalSemaphores,
+=======
+                            PSignalSemaphores = pSignalSemaphores
+>>>>>>> 1ec71635b (sync with main branch)
                         };
 
                         lock (_queueLock)

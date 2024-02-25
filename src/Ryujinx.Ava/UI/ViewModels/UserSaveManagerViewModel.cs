@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using DynamicData;
+=======
+﻿using DynamicData;
+>>>>>>> 1ec71635b (sync with main branch)
 using DynamicData.Binding;
 using Ryujinx.Ava.Common.Locale;
 using Ryujinx.Ava.UI.Models;
@@ -15,7 +19,11 @@ namespace Ryujinx.Ava.UI.ViewModels
         private string _search;
         private ObservableCollection<SaveModel> _saves = new();
         private ObservableCollection<SaveModel> _views = new();
+<<<<<<< HEAD
         private readonly AccountManager _accountManager;
+=======
+        private AccountManager _accountManager;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public string SaveManagerHeading => LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.SaveManagerHeading, _accountManager.LastOpenedUser.Name, _accountManager.LastOpenedUser.UserId);
 
@@ -102,6 +110,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         private IComparer<SaveModel> GetComparer()
         {
+<<<<<<< HEAD
             return SortIndex switch
             {
                 0 => OrderIndex == 0
@@ -115,3 +124,21 @@ namespace Ryujinx.Ava.UI.ViewModels
         }
     }
 }
+=======
+            switch (SortIndex)
+            {
+                case 0:
+                    return OrderIndex == 0
+                        ? SortExpressionComparer<SaveModel>.Ascending(save => save.Title)
+                        : SortExpressionComparer<SaveModel>.Descending(save => save.Title);
+                case 1:
+                    return OrderIndex == 0
+                        ? SortExpressionComparer<SaveModel>.Ascending(save => save.Size)
+                        : SortExpressionComparer<SaveModel>.Descending(save => save.Size);
+                default:
+                    return null;
+            }
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

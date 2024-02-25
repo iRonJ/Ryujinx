@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Cpu;
 using Ryujinx.HLE.HOS.Kernel.Threading;
 using Ryujinx.HLE.HOS.Services.Settings;
@@ -15,24 +19,38 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
         private readonly ITickSource _tickSource;
 
+<<<<<<< HEAD
 #pragma warning disable IDE0052 // Remove unread private member
         private uint _stickyTransform;
 #pragma warning restore IDE0052
+=======
+        private uint _stickyTransform;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private uint _nextCallbackTicket;
         private uint _currentCallbackTicket;
         private uint _callbackTicket;
 
+<<<<<<< HEAD
         private readonly object _callbackLock = new();
+=======
+        private readonly object _callbackLock = new object();
+>>>>>>> 1ec71635b (sync with main branch)
 
         public BufferQueueProducer(BufferQueueCore core, ITickSource tickSource)
         {
             Core = core;
             _tickSource = tickSource;
 
+<<<<<<< HEAD
             _stickyTransform = 0;
             _callbackTicket = 0;
             _nextCallbackTicket = 0;
+=======
+            _stickyTransform       = 0;
+            _callbackTicket        = 0;
+            _nextCallbackTicket    = 0;
+>>>>>>> 1ec71635b (sync with main branch)
             _currentCallbackTicket = 0;
         }
 
@@ -136,7 +154,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         {
             if ((width == 0 && height != 0) || (height == 0 && width != 0))
             {
+<<<<<<< HEAD
                 slot = BufferSlotArray.InvalidBufferSlot;
+=======
+                slot  = BufferSlotArray.InvalidBufferSlot;
+>>>>>>> 1ec71635b (sync with main branch)
                 fence = AndroidFence.NoFence;
 
                 return Status.BadValue;
@@ -159,7 +181,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                 if (status != Status.Success)
                 {
+<<<<<<< HEAD
                     slot = BufferSlotArray.InvalidBufferSlot;
+=======
+                    slot  = BufferSlotArray.InvalidBufferSlot;
+>>>>>>> 1ec71635b (sync with main branch)
                     fence = AndroidFence.NoFence;
 
                     return status;
@@ -178,7 +204,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                 if (width == 0 || height == 0)
                 {
+<<<<<<< HEAD
                     width = (uint)Core.DefaultWidth;
+=======
+                    width  = (uint)Core.DefaultWidth;
+>>>>>>> 1ec71635b (sync with main branch)
                     height = (uint)Core.DefaultHeight;
                 }
 
@@ -192,7 +222,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 {
                     if (!Core.Slots[slot].IsPreallocated)
                     {
+<<<<<<< HEAD
                         slot = BufferSlotArray.InvalidBufferSlot;
+=======
+                        slot  = BufferSlotArray.InvalidBufferSlot;
+>>>>>>> 1ec71635b (sync with main branch)
                         fence = AndroidFence.NoFence;
 
                         return Status.NoMemory;
@@ -204,7 +238,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                                             $"available: Width = {graphicBuffer.Width} Height = {graphicBuffer.Height} Format = {graphicBuffer.Format} Usage = {graphicBuffer.Usage:x} " +
                                             $"requested: Width = {width} Height = {height} Format = {format} Usage = {usage:x}");
 
+<<<<<<< HEAD
                         slot = BufferSlotArray.InvalidBufferSlot;
+=======
+                        slot  = BufferSlotArray.InvalidBufferSlot;
+>>>>>>> 1ec71635b (sync with main branch)
                         fence = AndroidFence.NoFence;
 
                         return Status.NoInit;
@@ -217,8 +255,13 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                 fence = Core.Slots[slot].Fence;
 
+<<<<<<< HEAD
                 Core.Slots[slot].Fence = AndroidFence.NoFence;
                 Core.Slots[slot].QueueTime = TimeSpanType.Zero;
+=======
+                Core.Slots[slot].Fence            = AndroidFence.NoFence;
+                Core.Slots[slot].QueueTime        = TimeSpanType.Zero;
+>>>>>>> 1ec71635b (sync with main branch)
                 Core.Slots[slot].PresentationTime = TimeSpanType.Zero;
 
                 Core.CheckSystemEventsLocked(Core.GetMaxBufferCountLocked(async));
@@ -269,7 +312,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 if (Core.IsAbandoned)
                 {
                     graphicBuffer = default;
+<<<<<<< HEAD
                     fence = AndroidFence.NoFence;
+=======
+                    fence         = AndroidFence.NoFence;
+>>>>>>> 1ec71635b (sync with main branch)
 
                     return Status.NoInit;
                 }
@@ -290,13 +337,21 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 if (nextBufferSlot == BufferSlotArray.InvalidBufferSlot)
                 {
                     graphicBuffer = default;
+<<<<<<< HEAD
                     fence = AndroidFence.NoFence;
+=======
+                    fence         = AndroidFence.NoFence;
+>>>>>>> 1ec71635b (sync with main branch)
 
                     return Status.NoMemory;
                 }
 
                 graphicBuffer = Core.Slots[nextBufferSlot].GraphicBuffer;
+<<<<<<< HEAD
                 fence = Core.Slots[nextBufferSlot].Fence;
+=======
+                fence         = Core.Slots[nextBufferSlot].Fence;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Core.FreeBufferLocked(nextBufferSlot);
 
@@ -328,8 +383,13 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                 Core.Slots[slot].GraphicBuffer.Set(graphicBuffer);
 
+<<<<<<< HEAD
                 Core.Slots[slot].BufferState = BufferState.Dequeued;
                 Core.Slots[slot].Fence = AndroidFence.NoFence;
+=======
+                Core.Slots[slot].BufferState         = BufferState.Dequeued;
+                Core.Slots[slot].Fence               = AndroidFence.NoFence;
+>>>>>>> 1ec71635b (sync with main branch)
                 Core.Slots[slot].RequestBufferCalled = true;
 
                 return returnFlags;
@@ -352,10 +412,17 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                     return Status.BadValue;
             }
 
+<<<<<<< HEAD
             BufferItem item = new();
 
             IConsumerListener frameAvailableListener = null;
             IConsumerListener frameReplaceListener = null;
+=======
+            BufferItem item = new BufferItem();
+
+            IConsumerListener frameAvailableListener = null;
+            IConsumerListener frameReplaceListener   = null;
+>>>>>>> 1ec71635b (sync with main branch)
 
             lock (Core.Lock)
             {
@@ -390,6 +457,7 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                     return Status.BadValue;
                 }
 
+<<<<<<< HEAD
                 Core.Slots[slot].Fence = input.Fence;
                 Core.Slots[slot].BufferState = BufferState.Queued;
                 Core.FrameCounter++;
@@ -409,6 +477,27 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 item.Slot = slot;
                 item.Fence = input.Fence;
                 item.IsDroppable = Core.DequeueBufferCannotBlock || input.Async != 0;
+=======
+                Core.Slots[slot].Fence       = input.Fence;
+                Core.Slots[slot].BufferState = BufferState.Queued;
+                Core.FrameCounter++;
+                Core.Slots[slot].FrameNumber      = Core.FrameCounter;
+                Core.Slots[slot].QueueTime        = TimeSpanType.FromTimeSpan(_tickSource.ElapsedTime);
+                Core.Slots[slot].PresentationTime = TimeSpanType.Zero;
+
+                item.AcquireCalled             = Core.Slots[slot].AcquireCalled;
+                item.Crop                      = input.Crop;
+                item.Transform                 = input.Transform;
+                item.TransformToDisplayInverse = (input.Transform & NativeWindowTransform.InverseDisplay) == NativeWindowTransform.InverseDisplay;
+                item.ScalingMode               = input.ScalingMode;
+                item.Timestamp                 = input.Timestamp;
+                item.IsAutoTimestamp           = input.IsAutoTimestamp != 0;
+                item.SwapInterval              = input.SwapInterval;
+                item.FrameNumber               = Core.FrameCounter;
+                item.Slot                      = slot;
+                item.Fence                     = input.Fence;
+                item.IsDroppable               = Core.DequeueBufferCannotBlock || input.Async != 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 item.GraphicBuffer.Set(Core.Slots[slot].GraphicBuffer);
                 item.GraphicBuffer.Object.IncrementNvMapHandleRefCount(Core.Owner);
@@ -418,8 +507,13 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 Core.BufferHistory[Core.BufferHistoryPosition] = new BufferInfo
                 {
                     FrameNumber = Core.FrameCounter,
+<<<<<<< HEAD
                     QueueTime = Core.Slots[slot].QueueTime,
                     State = BufferState.Queued,
+=======
+                    QueueTime   = Core.Slots[slot].QueueTime,
+                    State       = BufferState.Queued
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 _stickyTransform = input.StickyTransform;
@@ -462,10 +556,17 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                 output = new QueueBufferOutput
                 {
+<<<<<<< HEAD
                     Width = (uint)Core.DefaultWidth,
                     Height = (uint)Core.DefaultHeight,
                     TransformHint = Core.TransformHint,
                     NumPendingBuffers = (uint)Core.Queue.Count,
+=======
+                    Width             = (uint)Core.DefaultWidth,
+                    Height            = (uint)Core.DefaultHeight,
+                    TransformHint     = Core.TransformHint,
+                    NumPendingBuffers = (uint)Core.Queue.Count
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 if ((input.StickyTransform & 8) != 0)
@@ -508,7 +609,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
                 Core.Slots[slot].BufferState = BufferState.Free;
                 Core.Slots[slot].FrameNumber = 0;
+<<<<<<< HEAD
                 Core.Slots[slot].Fence = fence;
+=======
+                Core.Slots[slot].Fence       = fence;
+>>>>>>> 1ec71635b (sync with main branch)
                 Core.SignalDequeueEvent();
                 Core.SignalWaitBufferFreeEvent();
             }
@@ -570,7 +675,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                     return Status.BadValue;
                 }
 
+<<<<<<< HEAD
                 Core.BufferHasBeenQueued = false;
+=======
+                Core.BufferHasBeenQueued      = false;
+>>>>>>> 1ec71635b (sync with main branch)
                 Core.DequeueBufferCannotBlock = Core.ConsumerControlledByApp && producerControlledByApp;
 
                 switch (api)
@@ -580,11 +689,19 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                     case NativeWindowApi.Media:
                     case NativeWindowApi.Camera:
                         Core.ProducerListener = listener;
+<<<<<<< HEAD
                         Core.ConnectedApi = api;
 
                         output.Width = (uint)Core.DefaultWidth;
                         output.Height = (uint)Core.DefaultHeight;
                         output.TransformHint = Core.TransformHint;
+=======
+                        Core.ConnectedApi     = api;
+
+                        output.Width             = (uint)Core.DefaultWidth;
+                        output.Height            = (uint)Core.DefaultHeight;
+                        output.TransformHint     = Core.TransformHint;
+>>>>>>> 1ec71635b (sync with main branch)
                         output.NumPendingBuffers = (uint)Core.Queue.Count;
 
                         if (NxSettings.Settings.TryGetValue("nv!nvn_no_vsync_capability", out object noVSyncCapability) && (bool)noVSyncCapability)
@@ -629,7 +746,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                             producerListener = Core.ProducerListener;
 
                             Core.ProducerListener = null;
+<<<<<<< HEAD
                             Core.ConnectedApi = NativeWindowApi.NoApi;
+=======
+                            Core.ConnectedApi     = NativeWindowApi.NoApi;
+>>>>>>> 1ec71635b (sync with main branch)
 
                             Core.SignalWaitBufferFreeEvent();
                             Core.SignalFrameAvailableEvent();
@@ -669,6 +790,7 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 
             lock (Core.Lock)
             {
+<<<<<<< HEAD
                 // If we are replacing a buffer that has already been queued, make sure we release the references.
                 if (Core.Slots[slot].BufferState == BufferState.Queued)
                 {
@@ -682,6 +804,15 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 Core.Slots[slot].NeedsCleanupOnRelease = false;
                 Core.Slots[slot].IsPreallocated = !graphicBuffer.IsNull;
                 Core.Slots[slot].FrameNumber = 0;
+=======
+                Core.Slots[slot].BufferState           = BufferState.Free;
+                Core.Slots[slot].Fence                 = AndroidFence.NoFence;
+                Core.Slots[slot].RequestBufferCalled   = false;
+                Core.Slots[slot].AcquireCalled         = false;
+                Core.Slots[slot].NeedsCleanupOnRelease = false;
+                Core.Slots[slot].IsPreallocated        = !graphicBuffer.IsNull;
+                Core.Slots[slot].FrameNumber           = 0;
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Core.Slots[slot].GraphicBuffer.Set(graphicBuffer);
 
@@ -697,8 +828,13 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
                 {
                     // NOTE: Nintendo set the default width, height and format from the GraphicBuffer..
                     //       This is entirely wrong and should only be controlled by the consumer...
+<<<<<<< HEAD
                     Core.DefaultWidth = graphicBuffer.Object.Width;
                     Core.DefaultHeight = graphicBuffer.Object.Height;
+=======
+                    Core.DefaultWidth        = graphicBuffer.Object.Width;
+                    Core.DefaultHeight       = graphicBuffer.Object.Height;
+>>>>>>> 1ec71635b (sync with main branch)
                     Core.DefaultBufferFormat = graphicBuffer.Object.Format;
                 }
                 else
@@ -737,7 +873,11 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         {
             bool tryAgain = true;
 
+<<<<<<< HEAD
             freeSlot = BufferSlotArray.InvalidBufferSlot;
+=======
+            freeSlot     = BufferSlotArray.InvalidBufferSlot;
+>>>>>>> 1ec71635b (sync with main branch)
             returnStatus = Status.Success;
 
             while (tryAgain)

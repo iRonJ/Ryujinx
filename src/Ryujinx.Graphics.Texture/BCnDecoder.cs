@@ -54,10 +54,17 @@ namespace Ryujinx.Graphics.Texture
 
                             if (copyHeight == 4)
                             {
+<<<<<<< HEAD
                                 outputLine0 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[lineBaseOOffs..]);
                                 outputLine1 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[(lineBaseOOffs + width)..]);
                                 outputLine2 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[(lineBaseOOffs + width * 2)..]);
                                 outputLine3 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[(lineBaseOOffs + width * 3)..]);
+=======
+                                outputLine0 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs));
+                                outputLine1 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs + width));
+                                outputLine2 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs + width * 2));
+                                outputLine3 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs + width * 3));
+>>>>>>> 1ec71635b (sync with main branch)
                             }
 
                             for (int x = 0; x < w; x++)
@@ -84,7 +91,11 @@ namespace Ryujinx.Graphics.Texture
                                     }
                                 }
 
+<<<<<<< HEAD
                                 data = data[8..];
+=======
+                                data = data.Slice(8);
+>>>>>>> 1ec71635b (sync with main branch)
                             }
                         }
 
@@ -142,10 +153,17 @@ namespace Ryujinx.Graphics.Texture
 
                             if (copyHeight == 4)
                             {
+<<<<<<< HEAD
                                 outputLine0 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[lineBaseOOffs..]);
                                 outputLine1 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[(lineBaseOOffs + width)..]);
                                 outputLine2 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[(lineBaseOOffs + width * 2)..]);
                                 outputLine3 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[(lineBaseOOffs + width * 3)..]);
+=======
+                                outputLine0 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs));
+                                outputLine1 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs + width));
+                                outputLine2 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs + width * 2));
+                                outputLine3 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs + width * 3));
+>>>>>>> 1ec71635b (sync with main branch)
                             }
 
                             for (int x = 0; x < w; x++)
@@ -153,7 +171,11 @@ namespace Ryujinx.Graphics.Texture
                                 int baseX = x * BlockWidth;
                                 int copyWidth = Math.Min(BlockWidth, width - baseX);
 
+<<<<<<< HEAD
                                 BC23DecodeTileRgb(tile, data[8..]);
+=======
+                                BC23DecodeTileRgb(tile, data.Slice(8));
+>>>>>>> 1ec71635b (sync with main branch)
 
                                 ulong block = BinaryPrimitives.ReadUInt64LittleEndian(data);
 
@@ -179,7 +201,11 @@ namespace Ryujinx.Graphics.Texture
                                     }
                                 }
 
+<<<<<<< HEAD
                                 data = data[16..];
+=======
+                                data = data.Slice(16);
+>>>>>>> 1ec71635b (sync with main branch)
                             }
                         }
 
@@ -238,10 +264,17 @@ namespace Ryujinx.Graphics.Texture
 
                             if (copyHeight == 4)
                             {
+<<<<<<< HEAD
                                 outputLine0 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[lineBaseOOffs..]);
                                 outputLine1 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[(lineBaseOOffs + width)..]);
                                 outputLine2 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[(lineBaseOOffs + width * 2)..]);
                                 outputLine3 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint[(lineBaseOOffs + width * 3)..]);
+=======
+                                outputLine0 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs));
+                                outputLine1 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs + width));
+                                outputLine2 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs + width * 2));
+                                outputLine3 = MemoryMarshal.Cast<uint, Vector128<byte>>(outputAsUint.Slice(lineBaseOOffs + width * 3));
+>>>>>>> 1ec71635b (sync with main branch)
                             }
 
                             for (int x = 0; x < w; x++)
@@ -249,7 +282,11 @@ namespace Ryujinx.Graphics.Texture
                                 int baseX = x * BlockWidth;
                                 int copyWidth = Math.Min(BlockWidth, width - baseX);
 
+<<<<<<< HEAD
                                 BC23DecodeTileRgb(tile, data[8..]);
+=======
+                                BC23DecodeTileRgb(tile, data.Slice(8));
+>>>>>>> 1ec71635b (sync with main branch)
 
                                 ulong block = BinaryPrimitives.ReadUInt64LittleEndian(data);
 
@@ -276,7 +313,11 @@ namespace Ryujinx.Graphics.Texture
                                     }
                                 }
 
+<<<<<<< HEAD
                                 data = data[16..];
+=======
+                                data = data.Slice(16);
+>>>>>>> 1ec71635b (sync with main branch)
                             }
                         }
 
@@ -305,7 +346,11 @@ namespace Ryujinx.Graphics.Texture
             int alignedWidth = BitUtils.AlignUp(width, 4);
 
             byte[] output = new byte[size];
+<<<<<<< HEAD
             Span<byte> outputSpan = new(output);
+=======
+            Span<byte> outputSpan = new Span<byte>(output);
+>>>>>>> 1ec71635b (sync with main branch)
 
             ReadOnlySpan<ulong> data64 = MemoryMarshal.Cast<byte, ulong>(data);
 
@@ -338,10 +383,17 @@ namespace Ryujinx.Graphics.Texture
 
                             if (copyHeight == 4)
                             {
+<<<<<<< HEAD
                                 outputLine0 = MemoryMarshal.Cast<byte, uint>(outputSpan[lineBaseOOffs..]);
                                 outputLine1 = MemoryMarshal.Cast<byte, uint>(outputSpan[(lineBaseOOffs + alignedWidth)..]);
                                 outputLine2 = MemoryMarshal.Cast<byte, uint>(outputSpan[(lineBaseOOffs + alignedWidth * 2)..]);
                                 outputLine3 = MemoryMarshal.Cast<byte, uint>(outputSpan[(lineBaseOOffs + alignedWidth * 3)..]);
+=======
+                                outputLine0 = MemoryMarshal.Cast<byte, uint>(outputSpan.Slice(lineBaseOOffs));
+                                outputLine1 = MemoryMarshal.Cast<byte, uint>(outputSpan.Slice(lineBaseOOffs + alignedWidth));
+                                outputLine2 = MemoryMarshal.Cast<byte, uint>(outputSpan.Slice(lineBaseOOffs + alignedWidth * 2));
+                                outputLine3 = MemoryMarshal.Cast<byte, uint>(outputSpan.Slice(lineBaseOOffs + alignedWidth * 3));
+>>>>>>> 1ec71635b (sync with main branch)
                             }
 
                             for (int x = 0; x < w; x++)
@@ -382,7 +434,11 @@ namespace Ryujinx.Graphics.Texture
                                     }
                                 }
 
+<<<<<<< HEAD
                                 data64 = data64[1..];
+=======
+                                data64 = data64.Slice(1);
+>>>>>>> 1ec71635b (sync with main branch)
                             }
                         }
 
@@ -450,10 +506,17 @@ namespace Ryujinx.Graphics.Texture
 
                             if (copyHeight == 4)
                             {
+<<<<<<< HEAD
                                 outputLine0 = MemoryMarshal.Cast<ushort, ulong>(outputAsUshort[lineBaseOOffs..]);
                                 outputLine1 = MemoryMarshal.Cast<ushort, ulong>(outputAsUshort[(lineBaseOOffs + alignedWidth)..]);
                                 outputLine2 = MemoryMarshal.Cast<ushort, ulong>(outputAsUshort[(lineBaseOOffs + alignedWidth * 2)..]);
                                 outputLine3 = MemoryMarshal.Cast<ushort, ulong>(outputAsUshort[(lineBaseOOffs + alignedWidth * 3)..]);
+=======
+                                outputLine0 = MemoryMarshal.Cast<ushort, ulong>(outputAsUshort.Slice(lineBaseOOffs));
+                                outputLine1 = MemoryMarshal.Cast<ushort, ulong>(outputAsUshort.Slice(lineBaseOOffs + alignedWidth));
+                                outputLine2 = MemoryMarshal.Cast<ushort, ulong>(outputAsUshort.Slice(lineBaseOOffs + alignedWidth * 2));
+                                outputLine3 = MemoryMarshal.Cast<ushort, ulong>(outputAsUshort.Slice(lineBaseOOffs + alignedWidth * 3));
+>>>>>>> 1ec71635b (sync with main branch)
                             }
 
                             for (int x = 0; x < w; x++)
@@ -507,7 +570,11 @@ namespace Ryujinx.Graphics.Texture
                                     }
                                 }
 
+<<<<<<< HEAD
                                 data64 = data64[2..];
+=======
+                                data64 = data64.Slice(2);
+>>>>>>> 1ec71635b (sync with main branch)
                             }
                         }
 
@@ -548,7 +615,11 @@ namespace Ryujinx.Graphics.Texture
                 {
                     for (int z = 0; z < depth; z++)
                     {
+<<<<<<< HEAD
                         BC6Decoder.Decode(output.AsSpan()[outputOffset..], data[inputOffset..], width, height, signed);
+=======
+                        BC6Decoder.Decode(output.AsSpan().Slice(outputOffset), data.Slice(inputOffset), width, height, signed);
+>>>>>>> 1ec71635b (sync with main branch)
 
                         inputOffset += w * h * 16;
                         outputOffset += width * height * 8;
@@ -586,7 +657,11 @@ namespace Ryujinx.Graphics.Texture
                 {
                     for (int z = 0; z < depth; z++)
                     {
+<<<<<<< HEAD
                         BC7Decoder.Decode(output.AsSpan()[outputOffset..], data[inputOffset..], width, height);
+=======
+                        BC7Decoder.Decode(output.AsSpan().Slice(outputOffset), data.Slice(inputOffset), width, height);
+>>>>>>> 1ec71635b (sync with main branch)
 
                         inputOffset += w * h * 16;
                         outputOffset += width * height * 4;
@@ -813,7 +888,11 @@ namespace Ryujinx.Graphics.Texture
             {
                 Span<uint> outputAsUint = MemoryMarshal.Cast<byte, uint>(output);
 
+<<<<<<< HEAD
                 uint indices = BinaryPrimitives.ReadUInt32LittleEndian(input[4..]);
+=======
+                uint indices = BinaryPrimitives.ReadUInt32LittleEndian(input.Slice(4));
+>>>>>>> 1ec71635b (sync with main branch)
 
                 for (int i = 0; i < BlockWidth * BlockHeight; i++, indices >>= 2)
                 {
@@ -891,4 +970,8 @@ namespace Ryujinx.Graphics.Texture
             return r | (g & 0xff00) | (b & 0xff0000);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

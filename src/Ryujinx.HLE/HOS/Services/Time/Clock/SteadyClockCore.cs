@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Utilities;
+=======
+﻿using Ryujinx.Common.Utilities;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Cpu;
 using System;
 
@@ -7,6 +11,7 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
     abstract class SteadyClockCore
     {
         private UInt128 _clockSourceId;
+<<<<<<< HEAD
         private bool _isRtcResetDetected;
         private bool _isInitialized;
 
@@ -15,6 +20,16 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
             _clockSourceId = UInt128Utils.CreateRandom();
             _isRtcResetDetected = false;
             _isInitialized = false;
+=======
+        private bool    _isRtcResetDetected;
+        private bool    _isInitialized;
+
+        public SteadyClockCore()
+        {
+            _clockSourceId      = UInt128Utils.CreateRandom();
+            _isRtcResetDetected = false;
+            _isInitialized      = false;
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         public UInt128 GetClockSourceId()
@@ -37,7 +52,11 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
             return new TimeSpanType(0);
         }
 
+<<<<<<< HEAD
         public virtual void SetTestOffset(TimeSpanType testOffset) { }
+=======
+        public virtual void SetTestOffset(TimeSpanType testOffset) {}
+>>>>>>> 1ec71635b (sync with main branch)
 
         public ResultCode GetRtcValue(out ulong rtcValue)
         {
@@ -61,7 +80,11 @@ namespace Ryujinx.HLE.HOS.Services.Time.Clock
             return new TimeSpanType(0);
         }
 
+<<<<<<< HEAD
         public virtual void SetInternalOffset(TimeSpanType internalOffset) { }
+=======
+        public virtual void SetInternalOffset(TimeSpanType internalOffset) {}
+>>>>>>> 1ec71635b (sync with main branch)
 
         public virtual SteadyClockTimePoint GetTimePoint(ITickSource tickSource)
         {

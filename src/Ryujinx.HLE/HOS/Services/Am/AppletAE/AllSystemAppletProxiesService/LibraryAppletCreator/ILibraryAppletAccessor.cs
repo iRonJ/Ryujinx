@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.HOS.Applets;
 using Ryujinx.HLE.HOS.Ipc;
 using Ryujinx.HLE.HOS.Kernel;
@@ -10,6 +14,7 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Lib
 {
     class ILibraryAppletAccessor : DisposableIpcService
     {
+<<<<<<< HEAD
         private readonly KernelContext _kernelContext;
 
         private readonly IApplet _applet;
@@ -20,6 +25,18 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Lib
         private readonly KEvent _stateChangedEvent;
         private readonly KEvent _normalOutDataEvent;
         private readonly KEvent _interactiveOutDataEvent;
+=======
+        private KernelContext _kernelContext;
+
+        private IApplet _applet;
+
+        private AppletSession _normalSession;
+        private AppletSession _interactiveSession;
+
+        private KEvent _stateChangedEvent;
+        private KEvent _normalOutDataEvent;
+        private KEvent _interactiveOutDataEvent;
+>>>>>>> 1ec71635b (sync with main branch)
 
         private int _stateChangedEventHandle;
         private int _normalOutDataEventHandle;
@@ -31,17 +48,30 @@ namespace Ryujinx.HLE.HOS.Services.Am.AppletAE.AllSystemAppletProxiesService.Lib
         {
             _kernelContext = system.KernelContext;
 
+<<<<<<< HEAD
             _stateChangedEvent = new KEvent(system.KernelContext);
             _normalOutDataEvent = new KEvent(system.KernelContext);
+=======
+            _stateChangedEvent       = new KEvent(system.KernelContext);
+            _normalOutDataEvent      = new KEvent(system.KernelContext);
+>>>>>>> 1ec71635b (sync with main branch)
             _interactiveOutDataEvent = new KEvent(system.KernelContext);
 
             _applet = AppletManager.Create(appletId, system);
 
+<<<<<<< HEAD
             _normalSession = new AppletSession();
             _interactiveSession = new AppletSession();
 
             _applet.AppletStateChanged += OnAppletStateChanged;
             _normalSession.DataAvailable += OnNormalOutData;
+=======
+            _normalSession      = new AppletSession();
+            _interactiveSession = new AppletSession();
+
+            _applet.AppletStateChanged        += OnAppletStateChanged;
+            _normalSession.DataAvailable      += OnNormalOutData;
+>>>>>>> 1ec71635b (sync with main branch)
             _interactiveSession.DataAvailable += OnInteractiveOutData;
 
             Logger.Info?.Print(LogClass.ServiceAm, $"Applet '{appletId}' created.");

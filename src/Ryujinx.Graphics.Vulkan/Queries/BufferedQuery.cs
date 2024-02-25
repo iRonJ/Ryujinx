@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.GAL;
 using Silk.NET.Vulkan;
 using System;
@@ -23,10 +27,17 @@ namespace Ryujinx.Graphics.Vulkan.Queries
         private readonly BufferHolder _buffer;
         private readonly IntPtr _bufferMap;
         private readonly CounterType _type;
+<<<<<<< HEAD
         private readonly bool _result32Bit;
         private readonly bool _isSupported;
 
         private readonly long _defaultValue;
+=======
+        private bool _result32Bit;
+        private bool _isSupported;
+
+        private long _defaultValue;
+>>>>>>> 1ec71635b (sync with main branch)
         private int? _resetSequence;
 
         public unsafe BufferedQuery(VulkanRenderer gd, Device device, PipelineFull pipeline, CounterType type, bool result32Bit)
@@ -44,12 +55,20 @@ namespace Ryujinx.Graphics.Vulkan.Queries
                 QueryPipelineStatisticFlags flags = type == CounterType.PrimitivesGenerated ?
                     QueryPipelineStatisticFlags.GeometryShaderPrimitivesBit : 0;
 
+<<<<<<< HEAD
                 var queryPoolCreateInfo = new QueryPoolCreateInfo
+=======
+                var queryPoolCreateInfo = new QueryPoolCreateInfo()
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     SType = StructureType.QueryPoolCreateInfo,
                     QueryCount = 1,
                     QueryType = GetQueryType(type),
+<<<<<<< HEAD
                     PipelineStatistics = flags,
+=======
+                    PipelineStatistics = flags
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 gd.Api.CreateQueryPool(device, queryPoolCreateInfo, null, out _queryPool).ThrowOnError();
@@ -63,14 +82,22 @@ namespace Ryujinx.Graphics.Vulkan.Queries
             _buffer = buffer;
         }
 
+<<<<<<< HEAD
         private static bool QueryTypeSupported(VulkanRenderer gd, CounterType type)
+=======
+        private bool QueryTypeSupported(VulkanRenderer gd, CounterType type)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return type switch
             {
                 CounterType.SamplesPassed => true,
                 CounterType.PrimitivesGenerated => gd.Capabilities.SupportsPipelineStatisticsQuery,
                 CounterType.TransformFeedbackPrimitivesWritten => gd.Capabilities.SupportsTransformFeedbackQueries,
+<<<<<<< HEAD
                 _ => false,
+=======
+                _ => false
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -81,7 +108,11 @@ namespace Ryujinx.Graphics.Vulkan.Queries
                 CounterType.SamplesPassed => QueryType.Occlusion,
                 CounterType.PrimitivesGenerated => QueryType.PipelineStatistics,
                 CounterType.TransformFeedbackPrimitivesWritten => QueryType.TransformFeedbackStreamExt,
+<<<<<<< HEAD
                 _ => QueryType.Occlusion,
+=======
+                _ => QueryType.Occlusion
+>>>>>>> 1ec71635b (sync with main branch)
             };
         }
 
@@ -107,7 +138,11 @@ namespace Ryujinx.Graphics.Vulkan.Queries
             _resetSequence = null;
         }
 
+<<<<<<< HEAD
         public void End(bool withResult)
+=======
+        public unsafe void End(bool withResult)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             if (_isSupported)
             {
@@ -183,7 +218,11 @@ namespace Ryujinx.Graphics.Vulkan.Queries
 
         public void PoolCopy(CommandBufferScoped cbs)
         {
+<<<<<<< HEAD
             var buffer = _buffer.GetBuffer(cbs.CommandBuffer, true).Get(cbs, 0, sizeof(long), true).Value;
+=======
+            var buffer = _buffer.GetBuffer(cbs.CommandBuffer, true).Get(cbs, 0, sizeof(long)).Value;
+>>>>>>> 1ec71635b (sync with main branch)
 
             QueryResultFlags flags = QueryResultFlags.ResultWaitBit;
 

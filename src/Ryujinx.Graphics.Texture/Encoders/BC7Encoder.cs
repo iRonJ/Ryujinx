@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.Texture.Utils;
+=======
+﻿using Ryujinx.Graphics.Texture.Utils;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Diagnostics;
 using System.Numerics;
@@ -59,7 +63,11 @@ namespace Ryujinx.Graphics.Texture.Encoders
 
         private static readonly int[] _mostFrequentPartitions = new int[]
         {
+<<<<<<< HEAD
             0, 13, 2, 1, 15, 14, 10, 23,
+=======
+            0, 13, 2, 1, 15, 14, 10, 23
+>>>>>>> 1ec71635b (sync with main branch)
         };
 
         private static Block CompressBlock(ReadOnlySpan<byte> data, int x, int y, int width, int height, bool fastMode)
@@ -119,12 +127,20 @@ namespace Ryujinx.Graphics.Texture.Encoders
                         {
                             uint c = tile[i];
 
+<<<<<<< HEAD
                             if (!uniqueRGB[..uniqueRGBCount].Contains(c & rgbMask))
+=======
+                            if (!uniqueRGB.Slice(0, uniqueRGBCount).Contains(c & rgbMask))
+>>>>>>> 1ec71635b (sync with main branch)
                             {
                                 uniqueRGB[uniqueRGBCount++] = c & rgbMask;
                             }
 
+<<<<<<< HEAD
                             if (!uniqueAlpha[..uniqueAlphaCount].Contains(c & alphaMask))
+=======
+                            if (!uniqueAlpha.Slice(0, uniqueAlphaCount).Contains(c & alphaMask))
+>>>>>>> 1ec71635b (sync with main branch)
                             {
                                 uniqueAlpha[uniqueAlphaCount++] = c & alphaMask;
                             }
@@ -233,7 +249,11 @@ namespace Ryujinx.Graphics.Texture.Encoders
                     1 => new RgbaColor8(255, 0, 0, 0).ToUInt32(),
                     2 => new RgbaColor8(0, 255, 0, 0).ToUInt32(),
                     3 => new RgbaColor8(0, 0, 255, 0).ToUInt32(),
+<<<<<<< HEAD
                     _ => new RgbaColor8(0, 0, 0, 255).ToUInt32(),
+=======
+                    _ => new RgbaColor8(0, 0, 0, 255).ToUInt32()
+>>>>>>> 1ec71635b (sync with main branch)
                 };
             }
             else
@@ -356,7 +376,11 @@ namespace Ryujinx.Graphics.Texture.Encoders
 
             bool alphaSwapSubset = alphaIndices[0] >= (alphaIndexCount >> 1);
 
+<<<<<<< HEAD
             Block block = new();
+=======
+            Block block = new Block();
+>>>>>>> 1ec71635b (sync with main branch)
 
             int offset = 0;
 
@@ -591,7 +615,11 @@ namespace Ryujinx.Graphics.Texture.Encoders
                     RgbaColor32 e132 = RgbaColor8.FromUInt32(c1).GetColor32();
 
                     palette[0] = e032;
+<<<<<<< HEAD
                     palette[^1] = e132;
+=======
+                    palette[palette.Length - 1] = e132;
+>>>>>>> 1ec71635b (sync with main branch)
 
                     for (int i = 1; i < palette.Length - 1; i++)
                     {
@@ -888,7 +916,11 @@ namespace Ryujinx.Graphics.Texture.Encoders
 
             int distRange = Math.Max(1, maxDist - minDist);
 
+<<<<<<< HEAD
             RgbaColor32 nV = new(n);
+=======
+            RgbaColor32 nV = new RgbaColor32(n);
+>>>>>>> 1ec71635b (sync with main branch)
 
             int bestErrorSum = int.MaxValue;
             RgbaColor8 bestE0 = default;
@@ -922,8 +954,13 @@ namespace Ryujinx.Graphics.Texture.Encoders
 
                 for (int start = 0; start < numInterpolatedColors - maxIndex; start++)
                 {
+<<<<<<< HEAD
                     RgbaColor32 sumY = new(0);
                     RgbaColor32 sumXY = new(0);
+=======
+                    RgbaColor32 sumY = new RgbaColor32(0);
+                    RgbaColor32 sumXY = new RgbaColor32(0);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     for (int i = 0; i < indices.Length; i++)
                     {
@@ -933,8 +970,13 @@ namespace Ryujinx.Graphics.Texture.Encoders
                         sumXY += new RgbaColor32(start + indices[i]) * y;
                     }
 
+<<<<<<< HEAD
                     RgbaColor32 sumXV = new(sumX);
                     RgbaColor32 sumXXV = new(sumXX);
+=======
+                    RgbaColor32 sumXV = new RgbaColor32(sumX);
+                    RgbaColor32 sumXXV = new RgbaColor32(sumXX);
+>>>>>>> 1ec71635b (sync with main branch)
                     RgbaColor32 m = RgbaColor32.DivideGuarded((nV * sumXY - sumXV * sumY) << 6, nV * sumXXV - sumXV * sumXV, 0);
                     RgbaColor32 b = ((sumY << 6) - m * sumXV) / nV;
 

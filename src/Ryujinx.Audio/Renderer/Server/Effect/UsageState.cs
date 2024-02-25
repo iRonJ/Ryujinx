@@ -23,6 +23,12 @@ namespace Ryujinx.Audio.Renderer.Server.Effect
         /// <summary>
         /// The effect is disabled.
         /// </summary>
+<<<<<<< HEAD
         Disabled,
     }
 }
+=======
+        Disabled
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

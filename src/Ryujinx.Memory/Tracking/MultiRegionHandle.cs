@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Linq;
+=======
+﻿using System;
+using System.Collections.Generic;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -22,11 +27,19 @@ namespace Ryujinx.Memory.Tracking
         private readonly ulong Granularity;
         private readonly ulong Size;
 
+<<<<<<< HEAD
         private readonly ConcurrentBitmap _dirtyBitmap;
 
         private int _sequenceNumber;
         private readonly BitMap _sequenceNumberBitmap;
         private readonly BitMap _dirtyCheckedBitmap;
+=======
+        private ConcurrentBitmap _dirtyBitmap;
+
+        private int _sequenceNumber;
+        private BitMap _sequenceNumberBitmap;
+        private BitMap _dirtyCheckedBitmap;
+>>>>>>> 1ec71635b (sync with main branch)
         private int _uncheckedHandles;
 
         public bool Dirty { get; private set; } = true;
@@ -55,7 +68,11 @@ namespace Ryujinx.Memory.Tracking
                 // It is assumed that the provided handles do not overlap, in order, are on page boundaries,
                 // and don't extend past the requested range.
 
+<<<<<<< HEAD
                 foreach (RegionHandle handle in handles.Cast<RegionHandle>())
+=======
+                foreach (RegionHandle handle in handles)
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     int startIndex = (int)((handle.RealAddress - address) / granularity);
 
@@ -407,8 +424,11 @@ namespace Ryujinx.Memory.Tracking
 
         public void Dispose()
         {
+<<<<<<< HEAD
             GC.SuppressFinalize(this);
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             foreach (var handle in _handles)
             {
                 handle.Dispose();

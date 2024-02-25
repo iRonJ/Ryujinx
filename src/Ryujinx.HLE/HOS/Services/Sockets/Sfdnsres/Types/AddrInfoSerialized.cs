@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.HLE.Utilities;
 using System;
 using System.Diagnostics;
@@ -94,7 +98,11 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres.Types
 
             Header.ToNetworkOrder();
 
+<<<<<<< HEAD
             MemoryMarshal.Write(buffer, in Header);
+=======
+            MemoryMarshal.Write(buffer, ref Header);
+>>>>>>> 1ec71635b (sync with main branch)
 
             buffer = buffer[Unsafe.SizeOf<AddrInfoSerializedHeader>()..];
 
@@ -103,7 +111,11 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres.Types
                 AddrInfo4 socketAddress = SocketAddress.Value;
                 socketAddress.ToNetworkOrder();
 
+<<<<<<< HEAD
                 MemoryMarshal.Write(buffer, in socketAddress);
+=======
+                MemoryMarshal.Write(buffer, ref socketAddress);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 buffer = buffer[Unsafe.SizeOf<AddrInfo4>()..];
             }
@@ -117,7 +129,11 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres.Types
                 Array4<byte> rawIPv4Address = RawIPv4Address.Value;
                 AddrInfo4.RawIpv4AddressNetworkEndianSwap(ref rawIPv4Address);
 
+<<<<<<< HEAD
                 MemoryMarshal.Write(buffer, in rawIPv4Address);
+=======
+                MemoryMarshal.Write(buffer, ref rawIPv4Address);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 buffer = buffer[Unsafe.SizeOf<Array4<byte>>()..];
             }

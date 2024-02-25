@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 using ARMeilleure.Decoders;
 using ARMeilleure.IntermediateRepresentation;
 using ARMeilleure.Translation;
 using System;
+=======
+﻿using ARMeilleure.Decoders;
+using ARMeilleure.IntermediateRepresentation;
+using ARMeilleure.Translation;
+using System;
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static ARMeilleure.Instructions.InstEmitFlowHelper;
 using static ARMeilleure.Instructions.InstEmitHelper;
 using static ARMeilleure.Instructions.InstEmitSimdHelper;
@@ -189,7 +197,11 @@ namespace ARMeilleure.Instructions
                 2 => context.Multiply(context.ZeroExtend32(OperandType.I64, insert), Const(0x0000000100000001u)),
                 1 => context.Multiply(context.ZeroExtend16(OperandType.I64, insert), Const(0x0001000100010001u)),
                 0 => context.Multiply(context.ZeroExtend8(OperandType.I64, insert), Const(0x0101010101010101u)),
+<<<<<<< HEAD
                 _ => throw new InvalidOperationException($"Invalid Vdup size \"{op.Size}\"."),
+=======
+                _ => throw new InvalidOperationException($"Invalid Vdup size \"{op.Size}\".")
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             InsertScalar(context, op.Vd, insert);
@@ -211,7 +223,11 @@ namespace ARMeilleure.Instructions
                 2 => context.Multiply(context.ZeroExtend32(OperandType.I64, insert), Const(0x0000000100000001u)),
                 1 => context.Multiply(context.ZeroExtend16(OperandType.I64, insert), Const(0x0001000100010001u)),
                 0 => context.Multiply(context.ZeroExtend8(OperandType.I64, insert), Const(0x0101010101010101u)),
+<<<<<<< HEAD
                 _ => throw new InvalidOperationException($"Invalid Vdup size \"{op.Size}\"."),
+=======
+                _ => throw new InvalidOperationException($"Invalid Vdup size \"{op.Size}\".")
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             InsertScalar(context, op.Vd, insert);
@@ -1115,6 +1131,7 @@ namespace ARMeilleure.Instructions
             }
         }
 
+<<<<<<< HEAD
         public static void Vpadal(ArmEmitterContext context)
         {
             OpCode32Simd op = (OpCode32Simd)context.CurrOp;
@@ -1122,6 +1139,8 @@ namespace ARMeilleure.Instructions
             EmitVectorPairwiseTernaryLongOpI32(context, (op1, op2, op3) => context.Add(context.Add(op1, op2), op3), op.Opc != 1);
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public static void Vpaddl(ArmEmitterContext context)
         {
             OpCode32Simd op = (OpCode32Simd)context.CurrOp;
@@ -1660,7 +1679,11 @@ namespace ARMeilleure.Instructions
         {
             IOpCode32Simd op = (IOpCode32Simd)context.CurrOp;
 
+<<<<<<< HEAD
             Operand genericEmit(Operand n, Operand m)
+=======
+            Func<Operand, Operand, Operand> genericEmit = (n, m) =>
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 Operand nNum = context.Copy(n);
                 Operand mNum = context.Copy(m);
@@ -1694,7 +1717,11 @@ namespace ARMeilleure.Instructions
 
                     return context.AddIntrinsic(isMaxNum ? Intrinsic.X86Maxpd : Intrinsic.X86Minpd, nNum, mNum);
                 }
+<<<<<<< HEAD
             }
+=======
+            };
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (scalar)
             {

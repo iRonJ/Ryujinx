@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres
+>>>>>>> 1ec71635b (sync with main branch)
 {
     enum NetDbError
     {
@@ -8,6 +12,12 @@ namespace Ryujinx.HLE.HOS.Services.Sockets.Sfdnsres
         TryAgain,
         NoRecovery,
         NoData,
+<<<<<<< HEAD
         NoAddress = NoData,
     }
 }
+=======
+        NoAddress = NoData
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

@@ -26,4 +26,8 @@ namespace Ryujinx.Graphics.Nvdec
             _vp8Decoder = null;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

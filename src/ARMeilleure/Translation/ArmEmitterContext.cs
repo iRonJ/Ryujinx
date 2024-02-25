@@ -55,7 +55,11 @@ namespace ARMeilleure.Translation
         public Aarch32Mode Mode { get; }
 
         private int _ifThenBlockStateIndex = 0;
+<<<<<<< HEAD
         private Condition[] _ifThenBlockState = Array.Empty<Condition>();
+=======
+        private Condition[] _ifThenBlockState = { };
+>>>>>>> 1ec71635b (sync with main branch)
         public bool IsInIfThenBlock => _ifThenBlockStateIndex < _ifThenBlockState.Length;
         public Condition CurrentIfThenBlockCond => _ifThenBlockState[_ifThenBlockStateIndex];
 
@@ -96,7 +100,11 @@ namespace ARMeilleure.Translation
 
                 OperandType returnType = GetOperandType(info.ReturnType);
 
+<<<<<<< HEAD
                 Symbol symbol = new(SymbolType.DelegateTable, (ulong)index);
+=======
+                Symbol symbol = new Symbol(SymbolType.DelegateTable, (ulong)index);
+>>>>>>> 1ec71635b (sync with main branch)
 
                 Symbols.Add((ulong)funcPtr.ToInt64(), info.Name);
 
@@ -219,7 +227,10 @@ namespace ARMeilleure.Translation
             {
                 switch (condition)
                 {
+<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                     case Condition.Eq:   return ICompareEqual           (n, m);
                     case Condition.Ne:   return ICompareNotEqual        (n, m);
                     case Condition.GeUn: return ICompareGreaterOrEqualUI(n, m);
@@ -230,7 +241,10 @@ namespace ARMeilleure.Translation
                     case Condition.Lt:   return ICompareLess            (n, m);
                     case Condition.Gt:   return ICompareGreater         (n, m);
                     case Condition.Le:   return ICompareLessOrEqual     (n, m);
+<<<<<<< HEAD
 #pragma warning restore IDE0055
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
             else if (cmpName == InstName.Adds && _optOpLastCompare is IOpCodeAluImm op)
@@ -255,14 +269,20 @@ namespace ARMeilleure.Translation
 
                 switch (condition)
                 {
+<<<<<<< HEAD
 #pragma warning disable IDE0055 // Disable formatting
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                     case Condition.Eq: return ICompareEqual         (n, m);
                     case Condition.Ne: return ICompareNotEqual      (n, m);
                     case Condition.Ge: return ICompareGreaterOrEqual(n, m);
                     case Condition.Lt: return ICompareLess          (n, m);
                     case Condition.Gt: return ICompareGreater       (n, m);
                     case Condition.Le: return ICompareLessOrEqual   (n, m);
+<<<<<<< HEAD
 #pragma warning restore IDE0055
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
 
@@ -283,4 +303,8 @@ namespace ARMeilleure.Translation
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

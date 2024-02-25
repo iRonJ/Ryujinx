@@ -19,9 +19,15 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
         // SetDefaultDeliveryTarget(pid, buffer<bytes, 5> unknown)
         public ResultCode SetDefaultDeliveryTarget(ServiceCtx context)
         {
+<<<<<<< HEAD
             ulong inBufferPosition = context.Request.SendBuff[0].Position;
             ulong inBufferSize = context.Request.SendBuff[0].Size;
             byte[] buffer = new byte[inBufferSize];
+=======
+            ulong  inBufferPosition = context.Request.SendBuff[0].Position;
+            ulong  inBufferSize     = context.Request.SendBuff[0].Size;
+            byte[] buffer           = new byte[inBufferSize];
+>>>>>>> 1ec71635b (sync with main branch)
 
             context.Memory.Read(inBufferPosition, buffer);
 
@@ -65,4 +71,8 @@ namespace Ryujinx.HLE.HOS.Services.Ns.Aoc
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

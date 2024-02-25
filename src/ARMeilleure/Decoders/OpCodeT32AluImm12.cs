@@ -13,4 +13,8 @@ namespace ARMeilleure.Decoders
             Immediate = (opCode & 0xff) | ((opCode >> 4) & 0x700) | ((opCode >> 15) & 0x800);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

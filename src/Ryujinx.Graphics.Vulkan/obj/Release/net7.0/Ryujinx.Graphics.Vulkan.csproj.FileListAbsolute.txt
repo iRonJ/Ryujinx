@@ -1,0 +1,15 @@
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/bin/Release/net7.0/Ryujinx.Graphics.Vulkan.deps.json
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/bin/Release/net7.0/Ryujinx.Graphics.Vulkan.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/bin/Release/net7.0/Ryujinx.Common.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/bin/Release/net7.0/Ryujinx.Graphics.GAL.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/bin/Release/net7.0/Ryujinx.Graphics.Shader.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/bin/Release/net7.0/Spv.Generator.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/obj/Release/net7.0/Ryujinx.Graphics.Vulkan.csproj.AssemblyReference.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/obj/Release/net7.0/Ryujinx.Graphics.Vulkan.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/obj/Release/net7.0/Ryujinx.Graphics.Vulkan.AssemblyInfoInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/obj/Release/net7.0/Ryujinx.Graphics.Vulkan.AssemblyInfo.cs
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/obj/Release/net7.0/Ryujinx.Graphics.Vulkan.csproj.CoreCompileInputs.cache
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/obj/Release/net7.0/Ryujinx.Graphics.Vulkan.csproj.CopyComplete
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/obj/Release/net7.0/Ryujinx.Graphics.Vulkan.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/obj/Release/net7.0/refint/Ryujinx.Graphics.Vulkan.dll
+/Users/ronj/Downloads/Ryujinx-buffer-mirrors-2023/src/Ryujinx.Graphics.Vulkan/obj/Release/net7.0/ref/Ryujinx.Graphics.Vulkan.dll

@@ -2,7 +2,11 @@ namespace Ryujinx.Graphics.GAL.Multithreading.Commands
 {
     struct SetPolygonModeCommand : IGALCommand, IGALCommand<SetPolygonModeCommand>
     {
+<<<<<<< HEAD
         public readonly CommandType CommandType => CommandType.SetPolygonMode;
+=======
+        public CommandType CommandType => CommandType.SetPolygonMode;
+>>>>>>> 1ec71635b (sync with main branch)
         private PolygonMode _frontMode;
         private PolygonMode _backMode;
 

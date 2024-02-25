@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.Graphics.Nvdec
+=======
+﻿namespace Ryujinx.Graphics.Nvdec
+>>>>>>> 1ec71635b (sync with main branch)
 {
     public enum ApplicationId
     {

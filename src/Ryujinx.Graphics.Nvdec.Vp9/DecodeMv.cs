@@ -1,10 +1,19 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Memory;
+=======
+﻿using Ryujinx.Common.Memory;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Nvdec.Vp9.Dsp;
 using Ryujinx.Graphics.Nvdec.Vp9.Types;
 using Ryujinx.Graphics.Video;
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+<<<<<<< HEAD
+=======
+using Mv = Ryujinx.Graphics.Nvdec.Vp9.Types.Mv;
+using MvRef = Ryujinx.Graphics.Nvdec.Vp9.Types.MvRef;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Graphics.Nvdec.Vp9
 {
@@ -59,6 +68,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         {
             switch (maxTxSize)
             {
+<<<<<<< HEAD
                 case TxSize.Tx8x8:
                     return fc.Tx8x8Prob[ctx].AsSpan();
                 case TxSize.Tx16x16:
@@ -69,6 +79,12 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                     Debug.Assert(false, "Invalid maxTxSize.");
 
                     return ReadOnlySpan<byte>.Empty;
+=======
+                case TxSize.Tx8x8: return fc.Tx8x8Prob[ctx].AsSpan();
+                case TxSize.Tx16x16: return fc.Tx16x16Prob[ctx].AsSpan();
+                case TxSize.Tx32x32: return fc.Tx32x32Prob[ctx].AsSpan();
+                default: Debug.Assert(false, "Invalid maxTxSize."); return ReadOnlySpan<byte>.Empty;
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -76,6 +92,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         {
             switch (maxTxSize)
             {
+<<<<<<< HEAD
                 case TxSize.Tx8x8:
                     return counts.Tx8x8[ctx].AsSpan();
                 case TxSize.Tx16x16:
@@ -86,6 +103,12 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                     Debug.Assert(false, "Invalid maxTxSize.");
 
                     return Span<uint>.Empty;
+=======
+                case TxSize.Tx8x8: return counts.Tx8x8[ctx].AsSpan();
+                case TxSize.Tx16x16: return counts.Tx16x16[ctx].AsSpan();
+                case TxSize.Tx32x32: return counts.Tx32x32[ctx].AsSpan();
+                default: Debug.Assert(false, "Invalid maxTxSize."); return Span<uint>.Empty;
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -120,8 +143,15 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             {
                 return ReadSelectedTxSize(ref cm, ref xd, maxTxSize, ref r);
             }
+<<<<<<< HEAD
 
             return (TxSize)Math.Min((int)maxTxSize, (int)Luts.TxModeToBiggestTxSize[(int)txMode]);
+=======
+            else
+            {
+                return (TxSize)Math.Min((int)maxTxSize, (int)Luts.TxModeToBiggestTxSize[(int)txMode]);
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static int DecGetSegmentId(ref Vp9Common cm, ArrayPtr<byte> segmentIds, int miOffset, int xMis, int yMis)
@@ -137,7 +167,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             }
 
             Debug.Assert(segmentId >= 0 && segmentId < Constants.MaxSegments);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             return segmentId;
         }
 
@@ -182,19 +215,29 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
             if (!seg.Enabled)
             {
+<<<<<<< HEAD
                 return 0; // Default for disabled segmentation
+=======
+                return 0;  // Default for disabled segmentation
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             if (!seg.UpdateMap)
             {
                 CopySegmentId(ref cm, cm.LastFrameSegMap, cm.CurrentFrameSegMap, miOffset, xMis, yMis);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 return 0;
             }
 
             segmentId = ReadSegmentId(ref r, ref cm.Fc.Value.SegTreeProb);
             SetSegmentId(ref cm, miOffset, xMis, yMis, segmentId);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             return segmentId;
         }
 
@@ -214,7 +257,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
             if (!seg.Enabled)
             {
+<<<<<<< HEAD
                 return 0; // Default for disabled segmentation
+=======
+                return 0;  // Default for disabled segmentation
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             predictedSegmentId = !cm.LastFrameSegMap.IsNull
@@ -224,7 +271,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             if (!seg.UpdateMap)
             {
                 CopySegmentId(ref cm, cm.LastFrameSegMap, cm.CurrentFrameSegMap, miOffset, xMis, yMis);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                 return predictedSegmentId;
             }
 
@@ -239,7 +289,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                 segmentId = ReadSegmentId(ref r, ref cm.Fc.Value.SegTreeProb);
             }
             SetSegmentId(ref cm, miOffset, xMis, yMis, segmentId);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             return segmentId;
         }
 
@@ -249,6 +302,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             {
                 return 1;
             }
+<<<<<<< HEAD
 
             int ctx = xd.GetSkipContext();
             int skip = r.Read(cm.Fc.Value.SkipProb[ctx]);
@@ -258,6 +312,19 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             }
 
             return skip;
+=======
+            else
+            {
+                int ctx = xd.GetSkipContext();
+                int skip = r.Read(cm.Fc.Value.SkipProb[ctx]);
+                if (!xd.Counts.IsNull)
+                {
+                    ++xd.Counts.Value.Skip[ctx][skip];
+                }
+
+                return skip;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static int ReadMvComponent(ref Reader r, ref Vp9EntropyProbs fc, int mvcomp, bool usehp)
@@ -276,7 +343,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             else
             {
                 int i;
+<<<<<<< HEAD
                 int n = (int)mvClass + Constants.Class0Bits - 1; // Number of bits
+=======
+                int n = (int)mvClass + Constants.Class0Bits - 1;  // Number of bits
+>>>>>>> 1ec71635b (sync with main branch)
 
                 d = 0;
                 for (i = 0; i < n; ++i)
@@ -295,7 +366,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
             // Result
             mag += ((d << 3) | (fr << 1) | hp) + 1;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             return sign ? -mag : mag;
         }
 
@@ -309,7 +383,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         {
             MvJointType jointType = (MvJointType)r.ReadTree(Luts.Vp9MvJointTree, fc.Joints.AsSpan());
             bool useHP = allowHP && refr.UseMvHp();
+<<<<<<< HEAD
             Mv diff = new();
+=======
+            Mv diff = new Mv();
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (Mv.MvJointVertical(jointType))
             {
@@ -338,10 +416,19 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                     ++xd.Counts.Value.CompInter[ctx][(int)mode];
                 }
 
+<<<<<<< HEAD
                 return mode; // SingleReference or CompoundReference
             }
 
             return cm.ReferenceMode;
+=======
+                return mode;  // SingleReference or CompoundReference
+            }
+            else
+            {
+                return cm.ReferenceMode;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         // Read the referncence frame
@@ -444,9 +531,13 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                     mi.Bmi[0].Mode = mi.Bmi[1].Mode = ReadIntraModeY(ref cm, ref xd, ref r, 0);
                     mi.Bmi[2].Mode = mi.Bmi[3].Mode = mi.Mode = ReadIntraModeY(ref cm, ref xd, ref r, 0);
                     break;
+<<<<<<< HEAD
                 default:
                     mi.Mode = ReadIntraModeY(ref cm, ref xd, ref r, Luts.SizeGroupLookup[(int)bsize]);
                     break;
+=======
+                default: mi.Mode = ReadIntraModeY(ref cm, ref xd, ref r, Luts.SizeGroupLookup[(int)bsize]); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             mi.UvMode = ReadIntraModeUv(ref cm, ref xd, ref r, (byte)mi.Mode);
@@ -515,8 +606,12 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                         ZeroMvPair(ref mv);
                         break;
                     }
+<<<<<<< HEAD
                 default:
                     return false;
+=======
+                default: return false;
+>>>>>>> 1ec71635b (sync with main branch)
             }
             return ret;
         }
@@ -527,6 +622,7 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             {
                 return cm.Seg.GetSegData(segmentId, SegLvlFeatures.SegLvlRefFrame) != Constants.IntraFrame;
             }
+<<<<<<< HEAD
 
             int ctx = xd.GetIntraInterContext();
             bool isInter = r.Read(cm.Fc.Value.IntraInterProb[ctx]) != 0;
@@ -536,6 +632,19 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             }
 
             return isInter;
+=======
+            else
+            {
+                int ctx = xd.GetIntraInterContext();
+                bool isInter = r.Read(cm.Fc.Value.IntraInterProb[ctx]) != 0;
+                if (!xd.Counts.IsNull)
+                {
+                    ++xd.Counts.Value.IntraInter[ctx][isInter ? 1 : 0];
+                }
+
+                return isInter;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static void DecFindBestRefMvs(bool allowHP, Span<Mv> mvlist, ref Mv bestMv, int refmvCount)
@@ -558,7 +667,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                 {
                     mvRefList[refMvCount] = mv;
                     refMvCount++;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                     return true;
                 }
             }
@@ -617,7 +729,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
         // This function searches the neighborhood of a given MB/SB
         // to try and find candidate reference vectors.
+<<<<<<< HEAD
         private static int DecFindMvRefs(
+=======
+        private static unsafe int DecFindMvRefs(
+>>>>>>> 1ec71635b (sync with main branch)
             ref Vp9Common cm,
             ref MacroBlockD xd,
             PredictionMode mode,
@@ -639,7 +755,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
             bool earlyBreak = mode != PredictionMode.NearMv;
 
             // Blank the reference vector list
+<<<<<<< HEAD
             mvRefList[..Constants.MaxMvRefCandidates].Clear();
+=======
+            mvRefList.Slice(0, Constants.MaxMvRefCandidates).Fill(new Mv());
+>>>>>>> 1ec71635b (sync with main branch)
 
             i = 0;
             if (isSub8X8 != 0)
@@ -817,9 +937,13 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
             switch (block)
             {
+<<<<<<< HEAD
                 case 0:
                     bestSub8x8 = mvList[refmvCount - 1];
                     break;
+=======
+                case 0: bestSub8x8 = mvList[refmvCount - 1]; break;
+>>>>>>> 1ec71635b (sync with main branch)
                 case 1:
                 case 2:
                     if (bMode == PredictionMode.NearestMv)
@@ -862,9 +986,13 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                         }
                     }
                     break;
+<<<<<<< HEAD
                 default:
                     Debug.Assert(false, "Invalid block index.");
                     break;
+=======
+                default: Debug.Assert(false, "Invalid block index."); break;
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -899,7 +1027,11 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         {
             BlockSize bsize = mi.SbType;
             bool allowHP = cm.AllowHighPrecisionMv;
+<<<<<<< HEAD
             Array2<Mv> bestRefMvs = new();
+=======
+            Array2<Mv> bestRefMvs = new Array2<Mv>();
+>>>>>>> 1ec71635b (sync with main branch)
             int refr, isCompound;
             byte interModeCtx;
             Span<Position> mvRefSearch = Luts.MvRefBlocks[(int)bsize];
@@ -914,7 +1046,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                 if (bsize < BlockSize.Block8x8)
                 {
                     xd.ErrorInfo.Value.InternalError(CodecErr.CodecUnsupBitstream, "Invalid usage of segement feature on small blocks");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                     return;
                 }
             }
@@ -957,11 +1092,19 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
                 int num4X4H = 1 << xd.BmodeBlocksHl;
                 int idx, idy;
                 PredictionMode bMode = 0;
+<<<<<<< HEAD
                 Array2<Mv> bestSub8x8 = new();
                 const uint InvalidMv = 0x80008000;
                 // Initialize the 2nd element as even though it won't be used meaningfully
                 // if isCompound is false.
                 Unsafe.As<Mv, uint>(ref bestSub8x8[1]) = InvalidMv;
+=======
+                Array2<Mv> bestSub8x8 = new Array2<Mv>();
+                const uint invalidMv = 0x80008000;
+                // Initialize the 2nd element as even though it won't be used meaningfully
+                // if isCompound is false.
+                Unsafe.As<Mv, uint>(ref bestSub8x8[1]) = invalidMv;
+>>>>>>> 1ec71635b (sync with main branch)
                 for (idy = 0; idy < 2; idy += num4X4H)
                 {
                     for (idx = 0; idx < 2; idx += num4X4W)
@@ -1043,10 +1186,18 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
                 return leftMi.Value.GetYMode(b + 1);
             }
+<<<<<<< HEAD
 
             Debug.Assert(b == 1 || b == 3);
 
             return curMi.Value.Bmi[b - 1].Mode;
+=======
+            else
+            {
+                Debug.Assert(b == 1 || b == 3);
+                return curMi.Value.Bmi[b - 1].Mode;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static PredictionMode AboveBlockMode(Ptr<ModeInfo> curMi, Ptr<ModeInfo> aboveMi, int b)
@@ -1060,10 +1211,18 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
 
                 return aboveMi.Value.GetYMode(b + 2);
             }
+<<<<<<< HEAD
 
             Debug.Assert(b == 2 || b == 3);
 
             return curMi.Value.Bmi[b - 2].Mode;
+=======
+            else
+            {
+                Debug.Assert(b == 2 || b == 3);
+                return curMi.Value.Bmi[b - 2].Mode;
+            }
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         private static ReadOnlySpan<byte> GetYModeProbs(
@@ -1075,7 +1234,10 @@ namespace Ryujinx.Graphics.Nvdec.Vp9
         {
             PredictionMode above = AboveBlockMode(mi, aboveMi, block);
             PredictionMode left = LeftBlockMode(mi, leftMi, block);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             return fc.KfYModeProb[(int)above][(int)left].AsSpan();
         }
 

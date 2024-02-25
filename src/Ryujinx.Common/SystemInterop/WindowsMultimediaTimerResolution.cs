@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -17,7 +21,11 @@ namespace Ryujinx.Common.SystemInterop
         {
             public uint wPeriodMin;
             public uint wPeriodMax;
+<<<<<<< HEAD
         }
+=======
+        };
+>>>>>>> 1ec71635b (sync with main branch)
 
         [LibraryImport("winmm.dll", EntryPoint = "timeGetDevCaps", SetLastError = true)]
         private static partial uint TimeGetDevCaps(ref TimeCaps timeCaps, uint sizeTimeCaps);
@@ -111,4 +119,8 @@ namespace Ryujinx.Common.SystemInterop
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

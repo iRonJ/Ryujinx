@@ -1,7 +1,13 @@
 using Microsoft.IdentityModel.Tokens;
+<<<<<<< HEAD
 using Ryujinx.Ava.UI.Models;
 using System;
 using System.Collections.ObjectModel;
+=======
+using System;
+using System.Collections.ObjectModel;
+using UserProfile = Ryujinx.Ava.UI.Models.UserProfile;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Ava.UI.ViewModels
 {
@@ -20,9 +26,15 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         public bool IsEmpty { get; set; }
 
+<<<<<<< HEAD
         public void Dispose()
         {
             GC.SuppressFinalize(this);
         }
     }
 }
+=======
+        public void Dispose() { }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

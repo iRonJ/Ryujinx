@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // This file was auto-generated from NVIDIA official Maxwell definitions.
+=======
+﻿// This file was auto-generated from NVIDIA official Maxwell definitions.
+>>>>>>> 1ec71635b (sync with main branch)
 
 using Ryujinx.Common.Memory;
 using Ryujinx.Graphics.Gpu.Engine.InlineToMemory;
@@ -98,6 +102,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
     /// </summary>
     unsafe struct ComputeClassState
     {
+<<<<<<< HEAD
 #pragma warning disable CS0649 // Field is never assigned to
         public uint SetObject;
         public readonly int SetObjectClassId => (int)(SetObject & 0xFFFF);
@@ -116,6 +121,26 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint SetGlobalRenderEnableB;
         public uint SetGlobalRenderEnableC;
         public readonly int SetGlobalRenderEnableCMode => (int)(SetGlobalRenderEnableC & 0x7);
+=======
+#pragma warning disable CS0649
+        public uint SetObject;
+        public int SetObjectClassId => (int)((SetObject >> 0) & 0xFFFF);
+        public int SetObjectEngineId => (int)((SetObject >> 16) & 0x1F);
+        public fixed uint Reserved04[63];
+        public uint NoOperation;
+        public uint SetNotifyA;
+        public int SetNotifyAAddressUpper => (int)((SetNotifyA >> 0) & 0xFF);
+        public uint SetNotifyB;
+        public uint Notify;
+        public NotifyType NotifyType => (NotifyType)(Notify);
+        public uint WaitForIdle;
+        public fixed uint Reserved114[7];
+        public uint SetGlobalRenderEnableA;
+        public int SetGlobalRenderEnableAOffsetUpper => (int)((SetGlobalRenderEnableA >> 0) & 0xFF);
+        public uint SetGlobalRenderEnableB;
+        public uint SetGlobalRenderEnableC;
+        public int SetGlobalRenderEnableCMode => (int)((SetGlobalRenderEnableC >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public uint SendGoIdle;
         public uint PmTrigger;
         public uint PmTriggerWfi;
@@ -126,6 +151,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint LineLengthIn;
         public uint LineCount;
         public uint OffsetOutUpper;
+<<<<<<< HEAD
         public readonly int OffsetOutUpperValue => (int)(OffsetOutUpper & 0xFF);
         public uint OffsetOut;
         public uint PitchOut;
@@ -133,11 +159,21 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public readonly SetDstBlockSizeWidth SetDstBlockSizeWidth => (SetDstBlockSizeWidth)(SetDstBlockSize & 0xF);
         public readonly SetDstBlockSizeHeight SetDstBlockSizeHeight => (SetDstBlockSizeHeight)((SetDstBlockSize >> 4) & 0xF);
         public readonly SetDstBlockSizeDepth SetDstBlockSizeDepth => (SetDstBlockSizeDepth)((SetDstBlockSize >> 8) & 0xF);
+=======
+        public int OffsetOutUpperValue => (int)((OffsetOutUpper >> 0) & 0xFF);
+        public uint OffsetOut;
+        public uint PitchOut;
+        public uint SetDstBlockSize;
+        public SetDstBlockSizeWidth SetDstBlockSizeWidth => (SetDstBlockSizeWidth)((SetDstBlockSize >> 0) & 0xF);
+        public SetDstBlockSizeHeight SetDstBlockSizeHeight => (SetDstBlockSizeHeight)((SetDstBlockSize >> 4) & 0xF);
+        public SetDstBlockSizeDepth SetDstBlockSizeDepth => (SetDstBlockSizeDepth)((SetDstBlockSize >> 8) & 0xF);
+>>>>>>> 1ec71635b (sync with main branch)
         public uint SetDstWidth;
         public uint SetDstHeight;
         public uint SetDstDepth;
         public uint SetDstLayer;
         public uint SetDstOriginBytesX;
+<<<<<<< HEAD
         public readonly int SetDstOriginBytesXV => (int)(SetDstOriginBytesX & 0xFFFFF);
         public uint SetDstOriginSamplesY;
         public readonly int SetDstOriginSamplesYV => (int)(SetDstOriginSamplesY & 0xFFFF);
@@ -154,6 +190,24 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public fixed uint Reserved1B8[9];
         public uint SetI2mSemaphoreA;
         public readonly int SetI2mSemaphoreAOffsetUpper => (int)(SetI2mSemaphoreA & 0xFF);
+=======
+        public int SetDstOriginBytesXV => (int)((SetDstOriginBytesX >> 0) & 0xFFFFF);
+        public uint SetDstOriginSamplesY;
+        public int SetDstOriginSamplesYV => (int)((SetDstOriginSamplesY >> 0) & 0xFFFF);
+        public uint LaunchDma;
+        public LaunchDmaDstMemoryLayout LaunchDmaDstMemoryLayout => (LaunchDmaDstMemoryLayout)((LaunchDma >> 0) & 0x1);
+        public LaunchDmaCompletionType LaunchDmaCompletionType => (LaunchDmaCompletionType)((LaunchDma >> 4) & 0x3);
+        public LaunchDmaInterruptType LaunchDmaInterruptType => (LaunchDmaInterruptType)((LaunchDma >> 8) & 0x3);
+        public LaunchDmaSemaphoreStructSize LaunchDmaSemaphoreStructSize => (LaunchDmaSemaphoreStructSize)((LaunchDma >> 12) & 0x1);
+        public bool LaunchDmaReductionEnable => (LaunchDma & 0x2) != 0;
+        public LaunchDmaReductionOp LaunchDmaReductionOp => (LaunchDmaReductionOp)((LaunchDma >> 13) & 0x7);
+        public LaunchDmaReductionFormat LaunchDmaReductionFormat => (LaunchDmaReductionFormat)((LaunchDma >> 2) & 0x3);
+        public bool LaunchDmaSysmembarDisable => (LaunchDma & 0x40) != 0;
+        public uint LoadInlineData;
+        public fixed uint Reserved1B8[9];
+        public uint SetI2mSemaphoreA;
+        public int SetI2mSemaphoreAOffsetUpper => (int)((SetI2mSemaphoreA >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public uint SetI2mSemaphoreB;
         public uint SetI2mSemaphoreC;
         public fixed uint Reserved1E8[2];
@@ -162,13 +216,18 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint SetI2mSpareNoop02;
         public uint SetI2mSpareNoop03;
         public uint SetValidSpanOverflowAreaA;
+<<<<<<< HEAD
         public readonly int SetValidSpanOverflowAreaAAddressUpper => (int)(SetValidSpanOverflowAreaA & 0xFF);
+=======
+        public int SetValidSpanOverflowAreaAAddressUpper => (int)((SetValidSpanOverflowAreaA >> 0) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public uint SetValidSpanOverflowAreaB;
         public uint SetValidSpanOverflowAreaC;
         public uint SetCoalesceWaitingPeriodUnit;
         public uint PerfmonTransfer;
         public uint SetShaderSharedMemoryWindow;
         public uint SetSelectMaxwellTextureHeaders;
+<<<<<<< HEAD
         public readonly bool SetSelectMaxwellTextureHeadersV => (SetSelectMaxwellTextureHeaders & 0x1) != 0;
         public uint InvalidateShaderCaches;
         public readonly bool InvalidateShaderCachesInstruction => (InvalidateShaderCaches & 0x1) != 0;
@@ -176,6 +235,15 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public readonly bool InvalidateShaderCachesConstant => (InvalidateShaderCaches & 0x1000) != 0;
         public readonly bool InvalidateShaderCachesLocks => (InvalidateShaderCaches & 0x2) != 0;
         public readonly bool InvalidateShaderCachesFlushData => (InvalidateShaderCaches & 0x4) != 0;
+=======
+        public bool SetSelectMaxwellTextureHeadersV => (SetSelectMaxwellTextureHeaders & 0x1) != 0;
+        public uint InvalidateShaderCaches;
+        public bool InvalidateShaderCachesInstruction => (InvalidateShaderCaches & 0x1) != 0;
+        public bool InvalidateShaderCachesData => (InvalidateShaderCaches & 0x10) != 0;
+        public bool InvalidateShaderCachesConstant => (InvalidateShaderCaches & 0x1000) != 0;
+        public bool InvalidateShaderCachesLocks => (InvalidateShaderCaches & 0x2) != 0;
+        public bool InvalidateShaderCachesFlushData => (InvalidateShaderCaches & 0x4) != 0;
+>>>>>>> 1ec71635b (sync with main branch)
         public uint SetReservedSwMethod00;
         public uint SetReservedSwMethod01;
         public uint SetReservedSwMethod02;
@@ -185,6 +253,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint SetReservedSwMethod06;
         public uint SetReservedSwMethod07;
         public uint SetCwdControl;
+<<<<<<< HEAD
         public readonly SetCwdControlSmSelection SetCwdControlSmSelection => (SetCwdControlSmSelection)(SetCwdControl & 0x1);
         public uint InvalidateTextureHeaderCacheNoWfi;
         public readonly InvalidateCacheLines InvalidateTextureHeaderCacheNoWfiLines => (InvalidateCacheLines)(InvalidateTextureHeaderCacheNoWfi & 0x1);
@@ -192,6 +261,15 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint SetCwdRefCounter;
         public readonly int SetCwdRefCounterSelect => (int)(SetCwdRefCounter & 0x3F);
         public readonly int SetCwdRefCounterValue => (int)((SetCwdRefCounter >> 8) & 0xFFFF);
+=======
+        public SetCwdControlSmSelection SetCwdControlSmSelection => (SetCwdControlSmSelection)((SetCwdControl >> 0) & 0x1);
+        public uint InvalidateTextureHeaderCacheNoWfi;
+        public InvalidateCacheLines InvalidateTextureHeaderCacheNoWfiLines => (InvalidateCacheLines)((InvalidateTextureHeaderCacheNoWfi >> 0) & 0x1);
+        public int InvalidateTextureHeaderCacheNoWfiTag => (int)((InvalidateTextureHeaderCacheNoWfi >> 4) & 0x3FFFFF);
+        public uint SetCwdRefCounter;
+        public int SetCwdRefCounterSelect => (int)((SetCwdRefCounter >> 0) & 0x3F);
+        public int SetCwdRefCounterValue => (int)((SetCwdRefCounter >> 8) & 0xFFFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public uint SetReservedSwMethod08;
         public uint SetReservedSwMethod09;
         public uint SetReservedSwMethod10;
@@ -201,6 +279,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint SetReservedSwMethod14;
         public uint SetReservedSwMethod15;
         public uint SetGwcScgType;
+<<<<<<< HEAD
         public readonly SetGwcScgTypeScgType SetGwcScgTypeScgType => (SetGwcScgTypeScgType)(SetGwcScgType & 0x1);
         public uint SetScgControl;
         public readonly int SetScgControlCompute1MaxSmCount => (int)(SetScgControl & 0x1FF);
@@ -254,6 +333,61 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint SetSpaVersion;
         public readonly int SetSpaVersionMinor => (int)(SetSpaVersion & 0xFF);
         public readonly int SetSpaVersionMajor => (int)((SetSpaVersion >> 8) & 0xFF);
+=======
+        public SetGwcScgTypeScgType SetGwcScgTypeScgType => (SetGwcScgTypeScgType)((SetGwcScgType >> 0) & 0x1);
+        public uint SetScgControl;
+        public int SetScgControlCompute1MaxSmCount => (int)((SetScgControl >> 0) & 0x1FF);
+        public uint InvalidateConstantBufferCacheA;
+        public int InvalidateConstantBufferCacheAAddressUpper => (int)((InvalidateConstantBufferCacheA >> 0) & 0xFF);
+        public uint InvalidateConstantBufferCacheB;
+        public uint InvalidateConstantBufferCacheC;
+        public int InvalidateConstantBufferCacheCByteCount => (int)((InvalidateConstantBufferCacheC >> 0) & 0x1FFFF);
+        public bool InvalidateConstantBufferCacheCThruL2 => (InvalidateConstantBufferCacheC & 0x80000000) != 0;
+        public uint SetComputeClassVersion;
+        public int SetComputeClassVersionCurrent => (int)((SetComputeClassVersion >> 0) & 0xFFFF);
+        public int SetComputeClassVersionOldestSupported => (int)((SetComputeClassVersion >> 16) & 0xFFFF);
+        public uint CheckComputeClassVersion;
+        public int CheckComputeClassVersionCurrent => (int)((CheckComputeClassVersion >> 0) & 0xFFFF);
+        public int CheckComputeClassVersionOldestSupported => (int)((CheckComputeClassVersion >> 16) & 0xFFFF);
+        public uint SetQmdVersion;
+        public int SetQmdVersionCurrent => (int)((SetQmdVersion >> 0) & 0xFFFF);
+        public int SetQmdVersionOldestSupported => (int)((SetQmdVersion >> 16) & 0xFFFF);
+        public uint SetWfiConfig;
+        public bool SetWfiConfigEnableScgTypeWfi => (SetWfiConfig & 0x1) != 0;
+        public uint CheckQmdVersion;
+        public int CheckQmdVersionCurrent => (int)((CheckQmdVersion >> 0) & 0xFFFF);
+        public int CheckQmdVersionOldestSupported => (int)((CheckQmdVersion >> 16) & 0xFFFF);
+        public uint WaitForIdleScgType;
+        public uint InvalidateSkedCaches;
+        public bool InvalidateSkedCachesV => (InvalidateSkedCaches & 0x1) != 0;
+        public uint SetScgRenderEnableControl;
+        public bool SetScgRenderEnableControlCompute1UsesRenderEnable => (SetScgRenderEnableControl & 0x1) != 0;
+        public fixed uint Reserved2A0[4];
+        public uint SetCwdSlotCount;
+        public int SetCwdSlotCountV => (int)((SetCwdSlotCount >> 0) & 0xFF);
+        public uint SendPcasA;
+        public uint SendPcasB;
+        public int SendPcasBFrom => (int)((SendPcasB >> 0) & 0xFFFFFF);
+        public int SendPcasBDelta => (int)((SendPcasB >> 24) & 0xFF);
+        public uint SendSignalingPcasB;
+        public bool SendSignalingPcasBInvalidate => (SendSignalingPcasB & 0x1) != 0;
+        public bool SendSignalingPcasBSchedule => (SendSignalingPcasB & 0x2) != 0;
+        public fixed uint Reserved2C0[9];
+        public uint SetShaderLocalMemoryNonThrottledA;
+        public int SetShaderLocalMemoryNonThrottledASizeUpper => (int)((SetShaderLocalMemoryNonThrottledA >> 0) & 0xFF);
+        public uint SetShaderLocalMemoryNonThrottledB;
+        public uint SetShaderLocalMemoryNonThrottledC;
+        public int SetShaderLocalMemoryNonThrottledCMaxSmCount => (int)((SetShaderLocalMemoryNonThrottledC >> 0) & 0x1FF);
+        public uint SetShaderLocalMemoryThrottledA;
+        public int SetShaderLocalMemoryThrottledASizeUpper => (int)((SetShaderLocalMemoryThrottledA >> 0) & 0xFF);
+        public uint SetShaderLocalMemoryThrottledB;
+        public uint SetShaderLocalMemoryThrottledC;
+        public int SetShaderLocalMemoryThrottledCMaxSmCount => (int)((SetShaderLocalMemoryThrottledC >> 0) & 0x1FF);
+        public fixed uint Reserved2FC[5];
+        public uint SetSpaVersion;
+        public int SetSpaVersionMinor => (int)((SetSpaVersion >> 0) & 0xFF);
+        public int SetSpaVersionMajor => (int)((SetSpaVersion >> 8) & 0xFF);
+>>>>>>> 1ec71635b (sync with main branch)
         public fixed uint Reserved314[123];
         public uint SetFalcon00;
         public uint SetFalcon01;
@@ -291,6 +425,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint SetShaderLocalMemoryWindow;
         public fixed uint Reserved780[4];
         public uint SetShaderLocalMemoryA;
+<<<<<<< HEAD
         public readonly int SetShaderLocalMemoryAAddressUpper => (int)(SetShaderLocalMemoryA & 0xFF);
         public uint SetShaderLocalMemoryB;
         public fixed uint Reserved798[383];
@@ -299,6 +434,16 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public fixed uint ReservedD98[19];
         public uint SetSmTimeoutInterval;
         public readonly int SetSmTimeoutIntervalCounterBit => (int)(SetSmTimeoutInterval & 0x3F);
+=======
+        public int SetShaderLocalMemoryAAddressUpper => (int)((SetShaderLocalMemoryA >> 0) & 0xFF);
+        public uint SetShaderLocalMemoryB;
+        public fixed uint Reserved798[383];
+        public uint SetShaderCacheControl;
+        public bool SetShaderCacheControlIcachePrefetchEnable => (SetShaderCacheControl & 0x1) != 0;
+        public fixed uint ReservedD98[19];
+        public uint SetSmTimeoutInterval;
+        public int SetSmTimeoutIntervalCounterBit => (int)((SetSmTimeoutInterval >> 0) & 0x3F);
+>>>>>>> 1ec71635b (sync with main branch)
         public fixed uint ReservedDE8[87];
         public uint SetSpareNoop12;
         public uint SetSpareNoop13;
@@ -319,6 +464,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint SetSpareNoop11;
         public fixed uint Reserved1070[103];
         public uint InvalidateSamplerCacheAll;
+<<<<<<< HEAD
         public readonly bool InvalidateSamplerCacheAllV => (InvalidateSamplerCacheAll & 0x1) != 0;
         public uint InvalidateTextureHeaderCacheAll;
         public readonly bool InvalidateTextureHeaderCacheAllV => (InvalidateTextureHeaderCacheAll & 0x1) != 0;
@@ -375,6 +521,64 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public fixed uint Reserved169C[170];
         public uint SetRenderEnableOverride;
         public readonly SetRenderEnableOverrideMode SetRenderEnableOverrideMode => (SetRenderEnableOverrideMode)(SetRenderEnableOverride & 0x3);
+=======
+        public bool InvalidateSamplerCacheAllV => (InvalidateSamplerCacheAll & 0x1) != 0;
+        public uint InvalidateTextureHeaderCacheAll;
+        public bool InvalidateTextureHeaderCacheAllV => (InvalidateTextureHeaderCacheAll & 0x1) != 0;
+        public fixed uint Reserved1214[29];
+        public uint InvalidateTextureDataCacheNoWfi;
+        public InvalidateCacheLines InvalidateTextureDataCacheNoWfiLines => (InvalidateCacheLines)((InvalidateTextureDataCacheNoWfi >> 0) & 0x1);
+        public int InvalidateTextureDataCacheNoWfiTag => (int)((InvalidateTextureDataCacheNoWfi >> 4) & 0x3FFFFF);
+        public fixed uint Reserved128C[7];
+        public uint ActivatePerfSettingsForComputeContext;
+        public bool ActivatePerfSettingsForComputeContextAll => (ActivatePerfSettingsForComputeContext & 0x1) != 0;
+        public fixed uint Reserved12AC[33];
+        public uint InvalidateSamplerCache;
+        public InvalidateCacheLines InvalidateSamplerCacheLines => (InvalidateCacheLines)((InvalidateSamplerCache >> 0) & 0x1);
+        public int InvalidateSamplerCacheTag => (int)((InvalidateSamplerCache >> 4) & 0x3FFFFF);
+        public uint InvalidateTextureHeaderCache;
+        public InvalidateCacheLines InvalidateTextureHeaderCacheLines => (InvalidateCacheLines)((InvalidateTextureHeaderCache >> 0) & 0x1);
+        public int InvalidateTextureHeaderCacheTag => (int)((InvalidateTextureHeaderCache >> 4) & 0x3FFFFF);
+        public uint InvalidateTextureDataCache;
+        public InvalidateCacheLines InvalidateTextureDataCacheLines => (InvalidateCacheLines)((InvalidateTextureDataCache >> 0) & 0x1);
+        public int InvalidateTextureDataCacheTag => (int)((InvalidateTextureDataCache >> 4) & 0x3FFFFF);
+        public fixed uint Reserved133C[58];
+        public uint InvalidateSamplerCacheNoWfi;
+        public InvalidateCacheLines InvalidateSamplerCacheNoWfiLines => (InvalidateCacheLines)((InvalidateSamplerCacheNoWfi >> 0) & 0x1);
+        public int InvalidateSamplerCacheNoWfiTag => (int)((InvalidateSamplerCacheNoWfi >> 4) & 0x3FFFFF);
+        public fixed uint Reserved1428[64];
+        public uint SetShaderExceptions;
+        public bool SetShaderExceptionsEnable => (SetShaderExceptions & 0x1) != 0;
+        public fixed uint Reserved152C[9];
+        public uint SetRenderEnableA;
+        public int SetRenderEnableAOffsetUpper => (int)((SetRenderEnableA >> 0) & 0xFF);
+        public uint SetRenderEnableB;
+        public uint SetRenderEnableC;
+        public int SetRenderEnableCMode => (int)((SetRenderEnableC >> 0) & 0x7);
+        public uint SetTexSamplerPoolA;
+        public int SetTexSamplerPoolAOffsetUpper => (int)((SetTexSamplerPoolA >> 0) & 0xFF);
+        public uint SetTexSamplerPoolB;
+        public uint SetTexSamplerPoolC;
+        public int SetTexSamplerPoolCMaximumIndex => (int)((SetTexSamplerPoolC >> 0) & 0xFFFFF);
+        public fixed uint Reserved1568[3];
+        public uint SetTexHeaderPoolA;
+        public int SetTexHeaderPoolAOffsetUpper => (int)((SetTexHeaderPoolA >> 0) & 0xFF);
+        public uint SetTexHeaderPoolB;
+        public uint SetTexHeaderPoolC;
+        public int SetTexHeaderPoolCMaximumIndex => (int)((SetTexHeaderPoolC >> 0) & 0x3FFFFF);
+        public fixed uint Reserved1580[34];
+        public uint SetProgramRegionA;
+        public int SetProgramRegionAAddressUpper => (int)((SetProgramRegionA >> 0) & 0xFF);
+        public uint SetProgramRegionB;
+        public fixed uint Reserved1610[34];
+        public uint InvalidateShaderCachesNoWfi;
+        public bool InvalidateShaderCachesNoWfiInstruction => (InvalidateShaderCachesNoWfi & 0x1) != 0;
+        public bool InvalidateShaderCachesNoWfiGlobalData => (InvalidateShaderCachesNoWfi & 0x10) != 0;
+        public bool InvalidateShaderCachesNoWfiConstant => (InvalidateShaderCachesNoWfi & 0x1000) != 0;
+        public fixed uint Reserved169C[170];
+        public uint SetRenderEnableOverride;
+        public SetRenderEnableOverrideMode SetRenderEnableOverrideMode => (SetRenderEnableOverrideMode)((SetRenderEnableOverride >> 0) & 0x3);
+>>>>>>> 1ec71635b (sync with main branch)
         public fixed uint Reserved1948[57];
         public uint PipeNop;
         public uint SetSpare00;
@@ -383,6 +587,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public uint SetSpare03;
         public fixed uint Reserved1A40[48];
         public uint SetReportSemaphoreA;
+<<<<<<< HEAD
         public readonly int SetReportSemaphoreAOffsetUpper => (int)(SetReportSemaphoreA & 0xFF);
         public uint SetReportSemaphoreB;
         public uint SetReportSemaphoreC;
@@ -397,6 +602,22 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public fixed uint Reserved1B10[702];
         public uint SetBindlessTexture;
         public readonly int SetBindlessTextureConstantBufferSlotSelect => (int)(SetBindlessTexture & 0x7);
+=======
+        public int SetReportSemaphoreAOffsetUpper => (int)((SetReportSemaphoreA >> 0) & 0xFF);
+        public uint SetReportSemaphoreB;
+        public uint SetReportSemaphoreC;
+        public uint SetReportSemaphoreD;
+        public SetReportSemaphoreDOperation SetReportSemaphoreDOperation => (SetReportSemaphoreDOperation)((SetReportSemaphoreD >> 0) & 0x3);
+        public bool SetReportSemaphoreDAwakenEnable => (SetReportSemaphoreD & 0x100000) != 0;
+        public SetReportSemaphoreDStructureSize SetReportSemaphoreDStructureSize => (SetReportSemaphoreDStructureSize)((SetReportSemaphoreD >> 28) & 0x1);
+        public bool SetReportSemaphoreDFlushDisable => (SetReportSemaphoreD & 0x4) != 0;
+        public bool SetReportSemaphoreDReductionEnable => (SetReportSemaphoreD & 0x8) != 0;
+        public SetReportSemaphoreDReductionOp SetReportSemaphoreDReductionOp => (SetReportSemaphoreDReductionOp)((SetReportSemaphoreD >> 9) & 0x7);
+        public SetReportSemaphoreDReductionFormat SetReportSemaphoreDReductionFormat => (SetReportSemaphoreDReductionFormat)((SetReportSemaphoreD >> 17) & 0x3);
+        public fixed uint Reserved1B10[702];
+        public uint SetBindlessTexture;
+        public int SetBindlessTextureConstantBufferSlotSelect => (int)((SetBindlessTexture >> 0) & 0x7);
+>>>>>>> 1ec71635b (sync with main branch)
         public uint SetTrapHandler;
         public fixed uint Reserved2610[843];
         public Array8<uint> SetShaderPerformanceCounterValueUpper;
@@ -423,6 +644,7 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public bool SetShaderPerformanceCounterControlBWindowed(int i) => (SetShaderPerformanceCounterControlB[i] & 0x8) != 0;
         public int SetShaderPerformanceCounterControlBFunc(int i) => (int)((SetShaderPerformanceCounterControlB[i] >> 4) & 0xFFFF);
         public uint SetShaderPerformanceCounterTrapControl;
+<<<<<<< HEAD
         public readonly int SetShaderPerformanceCounterTrapControlMask => (int)(SetShaderPerformanceCounterTrapControl & 0xFF);
         public uint StartShaderPerformanceCounter;
         public readonly int StartShaderPerformanceCounterCounterMask => (int)(StartShaderPerformanceCounter & 0xFF);
@@ -430,6 +652,15 @@ namespace Ryujinx.Graphics.Gpu.Engine.Compute
         public readonly int StopShaderPerformanceCounterCounterMask => (int)(StopShaderPerformanceCounter & 0xFF);
         public fixed uint Reserved33E8[6];
         public Array256<uint> SetMmeShadowScratch;
+=======
+        public int SetShaderPerformanceCounterTrapControlMask => (int)((SetShaderPerformanceCounterTrapControl >> 0) & 0xFF);
+        public uint StartShaderPerformanceCounter;
+        public int StartShaderPerformanceCounterCounterMask => (int)((StartShaderPerformanceCounter >> 0) & 0xFF);
+        public uint StopShaderPerformanceCounter;
+        public int StopShaderPerformanceCounterCounterMask => (int)((StopShaderPerformanceCounter >> 0) & 0xFF);
+        public fixed uint Reserved33E8[6];
+        public MmeShadowScratch SetMmeShadowScratch;
+>>>>>>> 1ec71635b (sync with main branch)
 #pragma warning restore CS0649
     }
 }

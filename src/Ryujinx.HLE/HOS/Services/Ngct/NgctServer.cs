@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Logging;
+=======
+﻿using Ryujinx.Common.Logging;
+>>>>>>> 1ec71635b (sync with main branch)
 using System.Text;
 
 namespace Ryujinx.HLE.HOS.Services.Ngct
@@ -12,10 +16,17 @@ namespace Ryujinx.HLE.HOS.Services.Ngct
             //       If both conditions are true, it does this following code. Since we currently stub it, it's fine to don't check settings service values.
 
             ulong bufferPosition = context.Request.PtrBuff[0].Position;
+<<<<<<< HEAD
             ulong bufferSize = context.Request.PtrBuff[0].Size;
 
             bool isMatch = false;
             string text = "";
+=======
+            ulong bufferSize     = context.Request.PtrBuff[0].Size;
+
+            bool   isMatch = false;
+            string text    = "";
+>>>>>>> 1ec71635b (sync with main branch)
 
             if (bufferSize != 0)
             {
@@ -53,11 +64,19 @@ namespace Ryujinx.HLE.HOS.Services.Ngct
             //       If both conditions are true, it does this following code. Since we currently stub it, it's fine to don't check settings service values.
 
             ulong bufferPosition = context.Request.PtrBuff[0].Position;
+<<<<<<< HEAD
             ulong bufferSize = context.Request.PtrBuff[0].Size;
 
             ulong bufferFilteredPosition = context.Request.RecvListBuff[0].Position;
 
             string text = "";
+=======
+            ulong bufferSize     = context.Request.PtrBuff[0].Size;
+
+            ulong bufferFilteredPosition = context.Request.RecvListBuff[0].Position;
+
+            string text         = "";
+>>>>>>> 1ec71635b (sync with main branch)
             string textFiltered = "";
 
             if (bufferSize != 0)
@@ -89,4 +108,8 @@ namespace Ryujinx.HLE.HOS.Services.Ngct
             return ResultCode.Success;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

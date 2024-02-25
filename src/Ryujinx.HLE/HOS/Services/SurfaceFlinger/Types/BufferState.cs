@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
 {
     internal enum BufferState
@@ -8,3 +9,15 @@ namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
         Acquired = 3,
     }
 }
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.SurfaceFlinger
+{
+    internal enum BufferState
+    {
+        Free     = 0,
+        Dequeued = 1,
+        Queued   = 2,
+        Acquired = 3
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

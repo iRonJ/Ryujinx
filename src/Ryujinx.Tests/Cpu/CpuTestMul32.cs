@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #define Mul32
+=======
+﻿#define Mul32
+>>>>>>> 1ec71635b (sync with main branch)
 
 using NUnit.Framework;
 
@@ -9,7 +13,11 @@ namespace Ryujinx.Tests.Cpu
     {
 #if Mul32
 
+<<<<<<< HEAD
         #region "ValueSource (Opcodes)"
+=======
+#region "ValueSource (Opcodes)"
+>>>>>>> 1ec71635b (sync with main branch)
         private static uint[] _Smlabb_Smlabt_Smlatb_Smlatt_()
         {
             return new[]
@@ -49,10 +57,17 @@ namespace Ryujinx.Tests.Cpu
                 0xe12000e0u, // SMULWT R0, R0, R0
             };
         }
+<<<<<<< HEAD
         #endregion
 
         [Test, Pairwise, Description("SMLA<x><y> <Rd>, <Rn>, <Rm>, <Ra>")]
         public void Smla___32bit([ValueSource(nameof(_Smlabb_Smlabt_Smlatb_Smlatt_))] uint opcode,
+=======
+#endregion
+
+        [Test, Pairwise, Description("SMLA<x><y> <Rd>, <Rn>, <Rm>, <Ra>")]
+        public void Smla___32bit([ValueSource("_Smlabb_Smlabt_Smlatb_Smlatt_")] uint opcode,
+>>>>>>> 1ec71635b (sync with main branch)
                                  [Values(0u, 0xdu)] uint rn,
                                  [Values(1u, 0xdu)] uint rm,
                                  [Values(2u, 0xdu)] uint ra,
@@ -74,7 +89,11 @@ namespace Ryujinx.Tests.Cpu
         }
 
         [Test, Pairwise, Description("SMLAW<x> <Rd>, <Rn>, <Rm>, <Ra>")]
+<<<<<<< HEAD
         public void Smlaw__32bit([ValueSource(nameof(_Smlawb_Smlawt_))] uint opcode,
+=======
+        public void Smlaw__32bit([ValueSource("_Smlawb_Smlawt_")] uint opcode,
+>>>>>>> 1ec71635b (sync with main branch)
                                  [Values(0u, 0xdu)] uint rn,
                                  [Values(1u, 0xdu)] uint rm,
                                  [Values(2u, 0xdu)] uint ra,
@@ -96,7 +115,11 @@ namespace Ryujinx.Tests.Cpu
         }
 
         [Test, Pairwise, Description("SMUL<x><y> <Rd>, <Rn>, <Rm>")]
+<<<<<<< HEAD
         public void Smul___32bit([ValueSource(nameof(_Smulbb_Smulbt_Smultb_Smultt_))] uint opcode,
+=======
+        public void Smul___32bit([ValueSource("_Smulbb_Smulbt_Smultb_Smultt_")] uint opcode,
+>>>>>>> 1ec71635b (sync with main branch)
                                  [Values(0u, 0xdu)] uint rn,
                                  [Values(1u, 0xdu)] uint rm,
                                  [Values(2u, 0xdu)] uint rd,
@@ -115,7 +138,11 @@ namespace Ryujinx.Tests.Cpu
         }
 
         [Test, Pairwise, Description("SMULW<x> <Rd>, <Rn>, <Rm>")]
+<<<<<<< HEAD
         public void Smulw__32bit([ValueSource(nameof(_Smulwb_Smulwt_))] uint opcode,
+=======
+        public void Smulw__32bit([ValueSource("_Smulwb_Smulwt_")] uint opcode,
+>>>>>>> 1ec71635b (sync with main branch)
                                  [Values(0u, 0xdu)] uint rn,
                                  [Values(1u, 0xdu)] uint rm,
                                  [Values(2u, 0xdu)] uint rd,
@@ -134,4 +161,8 @@ namespace Ryujinx.Tests.Cpu
         }
 #endif
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

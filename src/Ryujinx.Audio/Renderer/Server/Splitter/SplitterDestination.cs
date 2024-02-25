@@ -65,7 +65,11 @@ namespace Ryujinx.Audio.Renderer.Server.Splitter
         /// <summary>
         /// Get the  <see cref="Span{SplitterDestination}"/> of the next element or <see cref="Span{SplitterDestination}.Empty"/> if not present.
         /// </summary>
+<<<<<<< HEAD
         public readonly Span<SplitterDestination> Next
+=======
+        public Span<SplitterDestination> Next
+>>>>>>> 1ec71635b (sync with main branch)
         {
             get
             {
@@ -138,7 +142,11 @@ namespace Ryujinx.Audio.Renderer.Server.Splitter
         /// Return true if the <see cref="SplitterDestination"/> is used and has a destination.
         /// </summary>
         /// <returns>True if the <see cref="SplitterDestination"/> is used and has a destination.</returns>
+<<<<<<< HEAD
         public readonly bool IsConfigured()
+=======
+        public bool IsConfigured()
+>>>>>>> 1ec71635b (sync with main branch)
         {
             return IsUsed && DestinationId != Constants.UnusedMixId;
         }
@@ -160,8 +168,13 @@ namespace Ryujinx.Audio.Renderer.Server.Splitter
         /// </summary>
         public void ClearVolumes()
         {
+<<<<<<< HEAD
             MixBufferVolume.Clear();
             PreviousMixBufferVolume.Clear();
+=======
+            MixBufferVolume.Fill(0);
+            PreviousMixBufferVolume.Fill(0);
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -190,4 +203,8 @@ namespace Ryujinx.Audio.Renderer.Server.Splitter
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

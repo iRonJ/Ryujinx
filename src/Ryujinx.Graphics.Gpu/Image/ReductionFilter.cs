@@ -10,6 +10,10 @@ namespace Ryujinx.Graphics.Gpu.Image
     {
         Average,
         Minimum,
+<<<<<<< HEAD
         Maximum,
+=======
+        Maximum
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.Device;
+=======
+﻿using Ryujinx.Graphics.Device;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Graphics.Gpu.Engine.GPFifo;
 using System;
 
@@ -48,7 +52,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
 
             if (_executionEngine == null)
             {
+<<<<<<< HEAD
                 if (GraphicsConfig.EnableMacroHLE && MacroHLETable.TryGetMacroHLEFunction(code[Position..], context.Capabilities, out _hleFunction))
+=======
+                if (GraphicsConfig.EnableMacroHLE && MacroHLETable.TryGetMacroHLEFunction(code.Slice(Position), context.Capabilities, out _hleFunction))
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     _executionEngine = new MacroHLE(processor, _hleFunction);
                 }
@@ -84,7 +92,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
             if (_executionPending)
             {
                 _executionPending = false;
+<<<<<<< HEAD
                 _executionEngine?.Execute(code[Position..], state, _argument);
+=======
+                _executionEngine?.Execute(code.Slice(Position), state, _argument);
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -93,7 +105,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.MME
         /// </summary>
         /// <param name="gpuVa">GPU virtual address where the command word is located</param>
         /// <param name="argument">Argument to be pushed</param>
+<<<<<<< HEAD
         public readonly void PushArgument(ulong gpuVa, int argument)
+=======
+        public void PushArgument(ulong gpuVa, int argument)
+>>>>>>> 1ec71635b (sync with main branch)
         {
             _executionEngine?.Fifo.Enqueue(new FifoWord(gpuVa, argument));
         }

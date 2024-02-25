@@ -94,7 +94,11 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/unused.
         /// </summary>
+<<<<<<< HEAD
         private readonly uint _reserved1;
+=======
+        private uint _reserved1;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// User state address required by the data source.
@@ -143,7 +147,11 @@ namespace Ryujinx.Audio.Renderer.Parameter
         /// <summary>
         /// Reserved/unused.
         /// </summary>
+<<<<<<< HEAD
         private readonly ushort _reserved2;
+=======
+        private ushort _reserved2;
+>>>>>>> 1ec71635b (sync with main branch)
 
         /// <summary>
         /// Change the behaviour of the voice.
@@ -222,7 +230,11 @@ namespace Ryujinx.Audio.Renderer.Parameter
             /// <summary>
             /// Reserved/unused.
             /// </summary>
+<<<<<<< HEAD
             private readonly byte _reserved;
+=======
+            private byte _reserved;
+>>>>>>> 1ec71635b (sync with main branch)
 
             /// <summary>
             /// If set to anything other than 0, specifies how many times to loop the wavebuffer.
@@ -260,12 +272,21 @@ namespace Ryujinx.Audio.Renderer.Parameter
             /// <typeparam name="T">The PCM sample type</typeparam>
             /// <returns>Returns true if the sample offset are in range of the size.</returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
+<<<<<<< HEAD
             private readonly bool IsSampleOffsetInRangeForPcm<T>() where T : unmanaged
             {
                 uint dataTypeSize = (uint)Unsafe.SizeOf<T>();
 
                 return (ulong)StartSampleOffset * dataTypeSize <= Size &&
                        (ulong)EndSampleOffset * dataTypeSize <= Size;
+=======
+            private bool IsSampleOffsetInRangeForPcm<T>() where T : unmanaged
+            {
+                uint dataTypeSize = (uint)Unsafe.SizeOf<T>();
+
+                return StartSampleOffset * dataTypeSize <= Size &&
+                       EndSampleOffset * dataTypeSize <= Size;
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             /// <summary>
@@ -273,6 +294,7 @@ namespace Ryujinx.Audio.Renderer.Parameter
             /// </summary>
             /// <param name="format">The target <see cref="SampleFormat"/></param>
             /// <returns>Returns true if the sample offset are in range of the size.</returns>
+<<<<<<< HEAD
             public readonly bool IsSampleOffsetValid(SampleFormat format)
             {
                 return format switch
@@ -282,6 +304,29 @@ namespace Ryujinx.Audio.Renderer.Parameter
                     SampleFormat.Adpcm => AdpcmHelper.GetAdpcmDataSize((int)StartSampleOffset) <= Size && AdpcmHelper.GetAdpcmDataSize((int)EndSampleOffset) <= Size,
                     _ => throw new NotImplementedException($"{format} not implemented!"),
                 };
+=======
+            public bool IsSampleOffsetValid(SampleFormat format)
+            {
+                bool result;
+
+                switch (format)
+                {
+                    case SampleFormat.PcmInt16:
+                        result = IsSampleOffsetInRangeForPcm<ushort>();
+                        break;
+                    case SampleFormat.PcmFloat:
+                        result = IsSampleOffsetInRangeForPcm<float>();
+                        break;
+                    case SampleFormat.Adpcm:
+                        result = AdpcmHelper.GetAdpcmDataSize((int)StartSampleOffset) <= Size &&
+                                 AdpcmHelper.GetAdpcmDataSize((int)EndSampleOffset) <= Size;
+                        break;
+                    default:
+                        throw new NotImplementedException($"{format} not implemented!");
+                }
+
+                return result;
+>>>>>>> 1ec71635b (sync with main branch)
             }
         }
 
@@ -304,7 +349,11 @@ namespace Ryujinx.Audio.Renderer.Parameter
             /// <summary>
             /// Skip pitch and Sample Rate Conversion (SRC).
             /// </summary>
+<<<<<<< HEAD
             SkipPitchAndSampleRateConversion = 2,
+=======
+            SkipPitchAndSampleRateConversion = 2
+>>>>>>> 1ec71635b (sync with main branch)
         }
 
         /// <summary>
@@ -326,7 +375,14 @@ namespace Ryujinx.Audio.Renderer.Parameter
             /// <summary>
             /// Resample interpolating 1 samples per output sample.
             /// </summary>
+<<<<<<< HEAD
             Low,
         }
     }
 }
+=======
+            Low
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

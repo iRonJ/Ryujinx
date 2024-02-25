@@ -239,4 +239,8 @@ namespace Ryujinx.HLE.HOS.Kernel.Memory
             return (EndAddr - address) / KPageTableBase.PageSize;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

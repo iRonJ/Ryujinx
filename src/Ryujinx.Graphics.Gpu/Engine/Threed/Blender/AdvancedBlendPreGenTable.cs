@@ -8,7 +8,11 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
     /// <summary>
     /// Advanced blend function entry.
     /// </summary>
+<<<<<<< HEAD
     readonly struct AdvancedBlendEntry
+=======
+    struct AdvancedBlendEntry
+>>>>>>> 1ec71635b (sync with main branch)
     {
         /// <summary>
         /// Advanced blend operation.
@@ -270,4 +274,8 @@ namespace Ryujinx.Graphics.Gpu.Engine.Threed.Blender
             { new Hash128(0x8652300E32D93050, 0x9460E7B449132371), new AdvancedBlendEntry(AdvancedBlendOp.HslLuminosity, AdvancedBlendOverlap.Conjoint, false, new[] { new RgbFloat(0.3f, 0.59f, 0.11f) }, new FixedFunctionAlpha(BlendUcodeEnable.EnableRGB, BlendOp.MaximumGl, BlendFactor.OneGl, BlendFactor.OneGl)) },
         };
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

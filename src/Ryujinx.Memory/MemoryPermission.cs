@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using System;
+=======
+﻿using System;
+>>>>>>> 1ec71635b (sync with main branch)
 
 namespace Ryujinx.Memory
 {
@@ -46,6 +50,10 @@ namespace Ryujinx.Memory
         /// <summary>
         /// Indicates an invalid protection.
         /// </summary>
+<<<<<<< HEAD
         Invalid = 255,
+=======
+        Invalid = 255
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

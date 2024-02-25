@@ -22,4 +22,8 @@ namespace ARMeilleure.CodeGen.RegisterAllocators
             return offset;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

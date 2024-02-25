@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace Ryujinx.HLE.HOS.Services.Ssl.Types
+=======
+﻿namespace Ryujinx.HLE.HOS.Services.Ssl.Types
+>>>>>>> 1ec71635b (sync with main branch)
 {
     enum CaCertificateId : uint
     {
@@ -63,6 +67,10 @@ namespace Ryujinx.HLE.HOS.Services.Ssl.Types
         GTSRootR4,
         SecurityCommunicationRootCA,
 
+<<<<<<< HEAD
         All = uint.MaxValue,
+=======
+        All = uint.MaxValue
+>>>>>>> 1ec71635b (sync with main branch)
     }
 }

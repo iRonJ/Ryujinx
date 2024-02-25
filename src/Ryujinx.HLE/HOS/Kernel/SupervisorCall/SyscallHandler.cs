@@ -41,4 +41,8 @@ namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
             currentThread.HandlePostSyscall();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

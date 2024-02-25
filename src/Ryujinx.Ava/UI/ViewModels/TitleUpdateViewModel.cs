@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Platform.Storage;
+=======
+using Avalonia.Collections;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
+>>>>>>> 1ec71635b (sync with main branch)
 using Avalonia.Threading;
 using LibHac.Common;
 using LibHac.Fs;
@@ -17,12 +23,20 @@ using Ryujinx.Common.Configuration;
 using Ryujinx.Common.Logging;
 using Ryujinx.Common.Utilities;
 using Ryujinx.HLE.FileSystem;
+<<<<<<< HEAD
 using Ryujinx.UI.App.Common;
+=======
+using Ryujinx.HLE.HOS;
+using Ryujinx.Ui.App.Common;
+>>>>>>> 1ec71635b (sync with main branch)
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+<<<<<<< HEAD
 using System.Threading.Tasks;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 using Path = System.IO.Path;
 using SpanHelpers = LibHac.Common.SpanHelpers;
 
@@ -30,16 +44,28 @@ namespace Ryujinx.Ava.UI.ViewModels
 {
     public class TitleUpdateViewModel : BaseModel
     {
+<<<<<<< HEAD
         public TitleUpdateMetadata TitleUpdateWindowData;
         public readonly string TitleUpdateJsonPath;
         private VirtualFileSystem VirtualFileSystem { get; }
         private ulong TitleId { get; }
+=======
+        public TitleUpdateMetadata _titleUpdateWindowData;
+        public readonly string     _titleUpdateJsonPath;
+        private VirtualFileSystem  _virtualFileSystem { get; }
+        private ulong              _titleId           { get; }
+        private string             _titleName         { get; }
+>>>>>>> 1ec71635b (sync with main branch)
 
         private AvaloniaList<TitleUpdateModel> _titleUpdates = new();
         private AvaloniaList<object> _views = new();
         private object _selectedUpdate;
 
+<<<<<<< HEAD
         private static readonly TitleUpdateMetadataJsonSerializerContext _serializerContext = new(JsonHelper.GetDefaultSerializerOptions());
+=======
+        private static readonly TitleUpdateMetadataJsonSerializerContext SerializerContext = new(JsonHelper.GetDefaultSerializerOptions());
+>>>>>>> 1ec71635b (sync with main branch)
 
         public AvaloniaList<TitleUpdateModel> TitleUpdates
         {
@@ -71,6 +97,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             }
         }
 
+<<<<<<< HEAD
         public IStorageProvider StorageProvider;
 
         public TitleUpdateViewModel(VirtualFileSystem virtualFileSystem, ulong titleId)
@@ -98,6 +125,29 @@ namespace Ryujinx.Ava.UI.ViewModels
                 {
                     Selected = "",
                     Paths = new List<string>(),
+=======
+        public TitleUpdateViewModel(VirtualFileSystem virtualFileSystem, ulong titleId, string titleName)
+        {
+            _virtualFileSystem = virtualFileSystem;
+
+            _titleId   = titleId;
+            _titleName = titleName;
+
+            _titleUpdateJsonPath = Path.Combine(AppDataManager.GamesDirPath, titleId.ToString("x16"), "updates.json");
+
+            try
+            {
+                _titleUpdateWindowData = JsonHelper.DeserializeFromFile(_titleUpdateJsonPath, SerializerContext.TitleUpdateMetadata);
+            }
+            catch
+            {
+                Logger.Warning?.Print(LogClass.Application, $"Failed to deserialize title update data for {_titleId} at {_titleUpdateJsonPath}");
+
+                _titleUpdateWindowData = new TitleUpdateMetadata
+                {
+                    Selected = "",
+                    Paths    = new List<string>()
+>>>>>>> 1ec71635b (sync with main branch)
                 };
 
                 Save();
@@ -108,12 +158,20 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         private void LoadUpdates()
         {
+<<<<<<< HEAD
             foreach (string path in TitleUpdateWindowData.Paths)
+=======
+            foreach (string path in _titleUpdateWindowData.Paths)
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 AddUpdate(path);
             }
 
+<<<<<<< HEAD
             TitleUpdateModel selected = TitleUpdates.FirstOrDefault(x => x.Path == TitleUpdateWindowData.Selected, null);
+=======
+            TitleUpdateModel selected = TitleUpdates.FirstOrDefault(x => x.Path == _titleUpdateWindowData.Selected, null);
+>>>>>>> 1ec71635b (sync with main branch)
 
             SelectedUpdate = selected;
 
@@ -132,8 +190,12 @@ namespace Ryujinx.Ava.UI.ViewModels
                 {
                     return -1;
                 }
+<<<<<<< HEAD
 
                 if (string.IsNullOrEmpty(second.Control.DisplayVersionString.ToString()))
+=======
+                else if (string.IsNullOrEmpty(second.Control.DisplayVersionString.ToString()))
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     return 1;
                 }
@@ -170,9 +232,13 @@ namespace Ryujinx.Ava.UI.ViewModels
 
                 try
                 {
+<<<<<<< HEAD
                     var pfs = new PartitionFileSystem();
                     pfs.Initialize(file.AsStorage()).ThrowIfFailure();
                     (Nca patchNca, Nca controlNca) = ApplicationLibrary.GetGameUpdateDataFromPartition(VirtualFileSystem, pfs, TitleId.ToString("x16"), 0);
+=======
+                    (Nca patchNca, Nca controlNca) = ApplicationLibrary.GetGameUpdateDataFromPartition(_virtualFileSystem, new PartitionFileSystem(file.AsStorage()), _titleId.ToString("x16"), 0);
+>>>>>>> 1ec71635b (sync with main branch)
 
                     if (controlNca != null && patchNca != null)
                     {
@@ -187,12 +253,26 @@ namespace Ryujinx.Ava.UI.ViewModels
                     }
                     else
                     {
+<<<<<<< HEAD
                         Dispatcher.UIThread.InvokeAsync(() => ContentDialogHelper.CreateErrorDialog(LocaleManager.Instance[LocaleKeys.DialogUpdateAddUpdateErrorMessage]));
+=======
+                        Dispatcher.UIThread.Post(async () =>
+                        {
+                            await ContentDialogHelper.CreateErrorDialog(LocaleManager.Instance[LocaleKeys.DialogUpdateAddUpdateErrorMessage]);
+                        });
+>>>>>>> 1ec71635b (sync with main branch)
                     }
                 }
                 catch (Exception ex)
                 {
+<<<<<<< HEAD
                     Dispatcher.UIThread.InvokeAsync(() => ContentDialogHelper.CreateErrorDialog(LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.DialogLoadFileErrorMessage, ex.Message, path)));
+=======
+                    Dispatcher.UIThread.Post(async () =>
+                    {
+                        await ContentDialogHelper.CreateErrorDialog(LocaleManager.Instance.UpdateAndGetDynamicValue(LocaleKeys.DialogLoadNcaErrorMessage, ex.Message, path));
+                    });
+>>>>>>> 1ec71635b (sync with main branch)
                 }
             }
         }
@@ -204,6 +284,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             SortUpdates();
         }
 
+<<<<<<< HEAD
         public async Task Add()
         {
             var result = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
@@ -223,6 +304,33 @@ namespace Ryujinx.Ava.UI.ViewModels
             foreach (var file in result)
             {
                 AddUpdate(file.Path.LocalPath);
+=======
+        public async void Add()
+        {
+            OpenFileDialog dialog = new()
+            {
+                Title         = LocaleManager.Instance[LocaleKeys.SelectUpdateDialogTitle],
+                AllowMultiple = true
+            };
+
+            dialog.Filters.Add(new FileDialogFilter
+            {
+                Name       = "NSP",
+                Extensions = { "nsp" }
+            });
+
+            if (Avalonia.Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                string[] files = await dialog.ShowAsync(desktop.MainWindow);
+
+                if (files != null)
+                {
+                    foreach (string file in files)
+                    {
+                        AddUpdate(file);
+                    }
+                }
+>>>>>>> 1ec71635b (sync with main branch)
             }
 
             SortUpdates();
@@ -230,6 +338,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         public void Save()
         {
+<<<<<<< HEAD
             TitleUpdateWindowData.Paths.Clear();
             TitleUpdateWindowData.Selected = "";
 
@@ -247,3 +356,22 @@ namespace Ryujinx.Ava.UI.ViewModels
         }
     }
 }
+=======
+            _titleUpdateWindowData.Paths.Clear();
+            _titleUpdateWindowData.Selected = "";
+
+            foreach (TitleUpdateModel update in TitleUpdates)
+            {
+                _titleUpdateWindowData.Paths.Add(update.Path);
+
+                if (update == SelectedUpdate)
+                {
+                    _titleUpdateWindowData.Selected = update.Path;
+                }
+            }
+
+            JsonHelper.SerializeToFile(_titleUpdateJsonPath, _titleUpdateWindowData, SerializerContext.TitleUpdateMetadata);
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

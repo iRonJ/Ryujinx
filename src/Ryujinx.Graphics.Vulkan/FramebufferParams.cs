@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Graphics.GAL;
+=======
+﻿using Ryujinx.Graphics.GAL;
+>>>>>>> 1ec71635b (sync with main branch)
 using Silk.NET.Vulkan;
 using System;
 using System.Linq;
@@ -12,9 +16,13 @@ namespace Ryujinx.Graphics.Vulkan
         private readonly Auto<DisposableImageView>[] _attachments;
         private readonly TextureView[] _colors;
         private readonly TextureView _depthStencil;
+<<<<<<< HEAD
         private readonly TextureView[] _colorsCanonical;
         private readonly TextureView _baseAttachment;
         private readonly uint _validColorAttachments;
+=======
+        private uint _validColorAttachments;
+>>>>>>> 1ec71635b (sync with main branch)
 
         public uint Width { get; }
         public uint Height { get; }
@@ -23,6 +31,7 @@ namespace Ryujinx.Graphics.Vulkan
         public uint[] AttachmentSamples { get; }
         public VkFormat[] AttachmentFormats { get; }
         public int[] AttachmentIndices { get; }
+<<<<<<< HEAD
         public uint AttachmentIntegerFormatMask { get; }
 
         public int AttachmentsCount { get; }
@@ -48,13 +57,38 @@ namespace Ryujinx.Graphics.Vulkan
                 _colors = new TextureView[] { view };
                 _colorsCanonical = _colors;
             }
+=======
+
+        public int AttachmentsCount { get; }
+        public int MaxColorAttachmentIndex => AttachmentIndices.Length > 0 ? AttachmentIndices[AttachmentIndices.Length - 1] : -1;
+        public bool HasDepthStencil { get; }
+        public int ColorAttachmentsCount => AttachmentsCount - (HasDepthStencil ? 1 : 0);
+
+        public FramebufferParams(
+            Device device,
+            Auto<DisposableImageView> view,
+            uint width,
+            uint height,
+            uint samples,
+            bool isDepthStencil,
+            VkFormat format)
+        {
+            _device = device;
+            _attachments = new[] { view };
+            _validColorAttachments = isDepthStencil ? 0u : 1u;
+>>>>>>> 1ec71635b (sync with main branch)
 
             Width = width;
             Height = height;
             Layers = 1;
 
+<<<<<<< HEAD
             AttachmentSamples = new[] { (uint)view.Info.Samples };
             AttachmentFormats = new[] { view.VkFormat };
+=======
+            AttachmentSamples = new[] { samples };
+            AttachmentFormats = new[] { format };
+>>>>>>> 1ec71635b (sync with main branch)
             AttachmentIndices = isDepthStencil ? Array.Empty<int>() : new[] { 0 };
 
             AttachmentsCount = 1;
@@ -72,7 +106,10 @@ namespace Ryujinx.Graphics.Vulkan
 
             _attachments = new Auto<DisposableImageView>[count];
             _colors = new TextureView[colorsCount];
+<<<<<<< HEAD
             _colorsCanonical = colors.Select(color => color is TextureView view && view.Valid ? view : null).ToArray();
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
             AttachmentSamples = new uint[count];
             AttachmentFormats = new VkFormat[count];
@@ -84,7 +121,10 @@ namespace Ryujinx.Graphics.Vulkan
 
             int index = 0;
             int bindIndex = 0;
+<<<<<<< HEAD
             uint attachmentIntegerFormatMask = 0;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
             foreach (ITexture color in colors)
             {
@@ -95,17 +135,23 @@ namespace Ryujinx.Graphics.Vulkan
                     _attachments[index] = texture.GetImageViewForAttachment();
                     _colors[index] = texture;
                     _validColorAttachments |= 1u << bindIndex;
+<<<<<<< HEAD
                     _baseAttachment = texture;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
                     AttachmentSamples[index] = (uint)texture.Info.Samples;
                     AttachmentFormats[index] = texture.VkFormat;
                     AttachmentIndices[index] = bindIndex;
 
+<<<<<<< HEAD
                     if (texture.Info.Format.IsInteger())
                     {
                         attachmentIntegerFormatMask |= 1u << bindIndex;
                     }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
                     width = Math.Min(width, (uint)texture.Width);
                     height = Math.Min(height, (uint)texture.Height);
                     layers = Math.Min(layers, (uint)texture.Layers);
@@ -119,13 +165,19 @@ namespace Ryujinx.Graphics.Vulkan
                 bindIndex++;
             }
 
+<<<<<<< HEAD
             AttachmentIntegerFormatMask = attachmentIntegerFormatMask;
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
             if (depthStencil is TextureView dsTexture && dsTexture.Valid)
             {
                 _attachments[count - 1] = dsTexture.GetImageViewForAttachment();
                 _depthStencil = dsTexture;
+<<<<<<< HEAD
                 _baseAttachment ??= dsTexture;
+=======
+>>>>>>> 1ec71635b (sync with main branch)
 
                 AttachmentSamples[count - 1] = (uint)dsTexture.Info.Samples;
                 AttachmentFormats[count - 1] = dsTexture.VkFormat;
@@ -159,6 +211,7 @@ namespace Ryujinx.Graphics.Vulkan
             return _attachments[index];
         }
 
+<<<<<<< HEAD
         public Auto<DisposableImageView> GetDepthStencilAttachment()
         {
             if (!HasDepthStencil)
@@ -169,6 +222,8 @@ namespace Ryujinx.Graphics.Vulkan
             return _attachments[AttachmentsCount - 1];
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public ComponentType GetAttachmentComponentType(int index)
         {
             if (_colors != null && (uint)index < _colors.Length)
@@ -179,8 +234,12 @@ namespace Ryujinx.Graphics.Vulkan
                 {
                     return ComponentType.SignedInteger;
                 }
+<<<<<<< HEAD
 
                 if (format.IsUint())
+=======
+                else if (format.IsUint())
+>>>>>>> 1ec71635b (sync with main branch)
                 {
                     return ComponentType.UnsignedInteger;
                 }
@@ -189,6 +248,7 @@ namespace Ryujinx.Graphics.Vulkan
             return ComponentType.Float;
         }
 
+<<<<<<< HEAD
         public ImageAspectFlags GetDepthStencilAspectFlags()
         {
             if (_depthStencil == null)
@@ -199,6 +259,8 @@ namespace Ryujinx.Graphics.Vulkan
             return _depthStencil.Info.Format.ConvertAspectFlags();
         }
 
+=======
+>>>>>>> 1ec71635b (sync with main branch)
         public bool IsValidColorAttachment(int bindIndex)
         {
             return (uint)bindIndex < Constants.MaxRenderTargets && (_validColorAttachments & (1u << bindIndex)) != 0;
@@ -228,7 +290,11 @@ namespace Ryujinx.Graphics.Vulkan
                 attachments[i] = _attachments[i].Get(cbs).Value;
             }
 
+<<<<<<< HEAD
             var framebufferCreateInfo = new FramebufferCreateInfo
+=======
+            var framebufferCreateInfo = new FramebufferCreateInfo()
+>>>>>>> 1ec71635b (sync with main branch)
             {
                 SType = StructureType.FramebufferCreateInfo,
                 RenderPass = renderPass.Get(cbs).Value,
@@ -236,13 +302,18 @@ namespace Ryujinx.Graphics.Vulkan
                 PAttachments = attachments,
                 Width = Width,
                 Height = Height,
+<<<<<<< HEAD
                 Layers = Layers,
+=======
+                Layers = Layers
+>>>>>>> 1ec71635b (sync with main branch)
             };
 
             api.CreateFramebuffer(_device, framebufferCreateInfo, null, out var framebuffer).ThrowOnError();
             return new Auto<DisposableFramebuffer>(new DisposableFramebuffer(api, _device, framebuffer), null, _attachments);
         }
 
+<<<<<<< HEAD
         public TextureView[] GetAttachmentViews()
         {
             var result = new TextureView[_attachments.Length];
@@ -294,6 +365,41 @@ namespace Ryujinx.Graphics.Vulkan
         public TextureView GetDepthStencilView()
         {
             return _depthStencil;
+=======
+        public void UpdateModifications()
+        {
+            if (_colors != null)
+            {
+                for (int index = 0; index < _colors.Length; index++)
+                {
+                    _colors[index].Storage.SetModification(
+                        AccessFlags.ColorAttachmentWriteBit,
+                        PipelineStageFlags.ColorAttachmentOutputBit);
+                }
+            }
+
+            _depthStencil?.Storage.SetModification(
+                AccessFlags.DepthStencilAttachmentWriteBit,
+                PipelineStageFlags.ColorAttachmentOutputBit);
+        }
+
+        public void InsertClearBarrier(CommandBufferScoped cbs, int index)
+        {
+            if (_colors != null)
+            {
+                int realIndex = Array.IndexOf(AttachmentIndices, index);
+
+                if (realIndex != -1)
+                {
+                    _colors[realIndex].Storage?.InsertReadToWriteBarrier(cbs, AccessFlags.ColorAttachmentWriteBit, PipelineStageFlags.ColorAttachmentOutputBit);
+                }
+            }
+        }
+
+        public void InsertClearBarrierDS(CommandBufferScoped cbs)
+        {
+            _depthStencil?.Storage?.InsertReadToWriteBarrier(cbs, AccessFlags.DepthStencilAttachmentWriteBit, PipelineStageFlags.LateFragmentTestsBit);
+>>>>>>> 1ec71635b (sync with main branch)
         }
     }
 }

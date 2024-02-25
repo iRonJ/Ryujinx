@@ -2,7 +2,11 @@ using ARMeilleure.State;
 
 namespace Ryujinx.Cpu.AppleHv
 {
+<<<<<<< HEAD
     class HvExecutionContextShadow : IHvExecutionContext
+=======
+    unsafe class HvExecutionContextShadow : IHvExecutionContext
+>>>>>>> 1ec71635b (sync with main branch)
     {
         public ulong Pc { get; set; }
         public ulong ElrEl1 { get; set; }
@@ -46,5 +50,19 @@ namespace Ryujinx.Cpu.AppleHv
         {
             _v[index] = value;
         }
+<<<<<<< HEAD
     }
 }
+=======
+
+        public void RequestInterrupt()
+        {
+        }
+
+        public bool GetAndClearInterruptRequested()
+        {
+            return false;
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

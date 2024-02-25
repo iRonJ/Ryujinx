@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Ryujinx.Common.Configuration.Hid.Controller;
+=======
+﻿using Ryujinx.Common.Configuration.Hid.Controller;
+>>>>>>> 1ec71635b (sync with main branch)
 using Ryujinx.Common.Configuration.Hid.Keyboard;
 using Ryujinx.Common.Utilities;
 using System;
@@ -9,7 +13,11 @@ namespace Ryujinx.Common.Configuration.Hid
 {
     public class JsonInputConfigConverter : JsonConverter<InputConfig>
     {
+<<<<<<< HEAD
         private static readonly InputConfigJsonSerializerContext _serializerContext = new(JsonHelper.GetDefaultSerializerOptions());
+=======
+        private static readonly InputConfigJsonSerializerContext SerializerContext = new(JsonHelper.GetDefaultSerializerOptions());
+>>>>>>> 1ec71635b (sync with main branch)
 
         private static InputBackendType GetInputBackendType(ref Utf8JsonReader reader)
         {
@@ -57,8 +65,13 @@ namespace Ryujinx.Common.Configuration.Hid
 
             return backendType switch
             {
+<<<<<<< HEAD
                 InputBackendType.WindowKeyboard => JsonSerializer.Deserialize(ref reader, _serializerContext.StandardKeyboardInputConfig),
                 InputBackendType.GamepadSDL2 => JsonSerializer.Deserialize(ref reader, _serializerContext.StandardControllerInputConfig),
+=======
+                InputBackendType.WindowKeyboard => JsonSerializer.Deserialize(ref reader, SerializerContext.StandardKeyboardInputConfig),
+                InputBackendType.GamepadSDL2 => JsonSerializer.Deserialize(ref reader, SerializerContext.StandardControllerInputConfig),
+>>>>>>> 1ec71635b (sync with main branch)
                 _ => throw new InvalidOperationException($"Unknown backend type {backendType}"),
             };
         }
@@ -68,10 +81,17 @@ namespace Ryujinx.Common.Configuration.Hid
             switch (value.Backend)
             {
                 case InputBackendType.WindowKeyboard:
+<<<<<<< HEAD
                     JsonSerializer.Serialize(writer, value as StandardKeyboardInputConfig, _serializerContext.StandardKeyboardInputConfig);
                     break;
                 case InputBackendType.GamepadSDL2:
                     JsonSerializer.Serialize(writer, value as StandardControllerInputConfig, _serializerContext.StandardControllerInputConfig);
+=======
+                    JsonSerializer.Serialize(writer, value as StandardKeyboardInputConfig, SerializerContext.StandardKeyboardInputConfig);
+                    break;
+                case InputBackendType.GamepadSDL2:
+                    JsonSerializer.Serialize(writer, value as StandardControllerInputConfig, SerializerContext.StandardControllerInputConfig);
+>>>>>>> 1ec71635b (sync with main branch)
                     break;
                 default:
                     throw new ArgumentException($"Unknown backend type {value.Backend}");

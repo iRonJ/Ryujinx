@@ -7,6 +7,12 @@ namespace Ryujinx.Cpu
     {
         Unloaded,
         Loading,
+<<<<<<< HEAD
         Loaded,
     }
 }
+=======
+        Loaded
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)

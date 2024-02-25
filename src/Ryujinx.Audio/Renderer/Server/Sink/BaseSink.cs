@@ -99,4 +99,8 @@ namespace Ryujinx.Audio.Renderer.Server.Sink
             errorInfo = new ErrorInfo();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1ec71635b (sync with main branch)

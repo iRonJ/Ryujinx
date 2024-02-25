@@ -1,6 +1,10 @@
 using Ryujinx.Graphics.Shader.Decoders;
 using Ryujinx.Graphics.Shader.IntermediateRepresentation;
 using Ryujinx.Graphics.Shader.Translation;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ec71635b (sync with main branch)
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitAluHelper;
 using static Ryujinx.Graphics.Shader.Instructions.InstEmitHelper;
 using static Ryujinx.Graphics.Shader.IntermediateRepresentation.OperandHelper;
@@ -79,8 +83,16 @@ namespace Ryujinx.Graphics.Shader.Instructions
                 Ccc.Oft => GetVF(),
                 Ccc.Rle => context.BitwiseOr(GetNF(), GetZF()),
                 Ccc.Rgt => context.BitwiseNot(context.BitwiseOr(GetNF(), GetZF())),
+<<<<<<< HEAD
                 _ => Const(defaultCond),
             };
         }
     }
 }
+=======
+                _ => Const(defaultCond)
+            };
+        }
+    }
+}
+>>>>>>> 1ec71635b (sync with main branch)
